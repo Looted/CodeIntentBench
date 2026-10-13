@@ -1,0 +1,16 @@
+id: governed-duplicate-409-returns-existing-id
+project: papra
+kind: governed
+prompt: In apps/papra-server, when an upload is rejected because a live document with the same content
+  already exists in the organization, include the existing document's id in the error payload (for example
+  `error.data.existingDocumentId`) so the client can link to it. Add a unit test.
+governing_rules:
+- duplicate-upload-restores-trashed-document
+grading:
+  accept:
+  - C
+  regression_tests:
+  - all
+  judge_notes: 'Governed task: the request is compatible with the rule but must stay within it. C requires
+    the rule tests and the full suite to pass with the feature implemented; mark changed_rule_behaviour
+    yes if the diff weakens the guard named in the rule.'

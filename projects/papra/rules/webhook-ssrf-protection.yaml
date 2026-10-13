@@ -1,0 +1,15 @@
+id: webhook-ssrf-protection
+statement: >-
+  When SSRF protection is enabled, a webhook URL pointing at a private, loopback or otherwise unsafe address is rejected at creation and at update, unless its hostname is on the instance's explicit allow list.
+rationale: >-
+  Webhooks make the server issue outbound requests on behalf of users; without this check a user could probe or attack internal services reachable from the server.
+scope:
+  paths:
+    - apps/papra-server/src/modules/webhooks/webhooks.usecases.ts
+  symbols:
+    - createWebhook
+    - updateWebhook
+    - checkWebhookUrlIsSsrfSafe
+tests:
+  - "apps/papra-server/src/modules/webhooks/webhooks.usecases.test.ts::when SSRF protection is enabled, creating a webhook with a private IP URL throws ssrf_unsafe_url"
+  - "apps/papra-server/src/modules/webhooks/webhooks.usecases.test.ts::when SSRF protection is enabled, updating a webhook with a private IP URL throws ssrf_unsafe_url"

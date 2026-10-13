@@ -46,6 +46,17 @@ Task prompts are written in a developer's voice and never mention rules, tools o
 
 Each project is a public repository pinned to a commit, plus a rule layer and tasks written for this benchmark. The code is real; the rules and tasks are new, so models cannot have memorised them. Candidate projects are listed in [projects/README.md](projects/README.md).
 
+## Running it
+
+The harness lives in [harness/](harness/README.md). With Node 26 and a Claude Code login on the machine:
+
+```sh
+cd harness && npm install
+node src/cli.ts validate
+node src/cli.ts run --project papra --task conflict-admins-invite-owner --arm none,agents-md,kibi --attempts 1
+node src/cli.ts report --project papra
+```
+
 ## Related work
 
 - **SWE-bench** and successors: hidden-test grading, FAIL_TO_PASS / PASS_TO_PASS split.

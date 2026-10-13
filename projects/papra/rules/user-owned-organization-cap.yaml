@@ -1,0 +1,18 @@
+id: user-owned-organization-cap
+statement: >-
+  A user can own at most a configured number of organizations (default 10). Only organizations the user owns count toward the cap, and an instance admin can raise or lower the cap for an individual user.
+rationale: >-
+  Each owned organization is a separate storage and billing unit; the cap limits abuse of the free tier while letting admins grant exceptions case by case.
+scope:
+  paths:
+    - apps/papra-server/src/modules/organizations/organizations.usecases.ts
+    - apps/papra-server/src/modules/organizations/organizations.models.ts
+    - apps/papra-server/src/modules/organizations/organizations.repository.ts
+  symbols:
+    - checkIfUserCanCreateNewOrganization
+    - getUserMaxOrganizationCount
+    - createOrganizationsRepository
+tests:
+  - "apps/papra-server/src/modules/organizations/organizations.usecases.test.ts::by default the maximum number of organizations a user can create is defined in the config, if the user has reached the limit an error is thrown"
+  - "apps/papra-server/src/modules/organizations/organizations.usecases.test.ts::an admin can individually allow a user to create more organizations by setting the maxOrganizationCount on the user"
+  - "apps/papra-server/src/modules/organizations/organizations.models.test.ts::a user with a custom max organization count uses that value"

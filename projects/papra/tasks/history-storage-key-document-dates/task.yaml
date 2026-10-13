@@ -1,0 +1,38 @@
+id: history-storage-key-document-dates
+project: papra
+base_commit: a9190674bd2e50935f81fb4683dc9781c52f6835
+kind: history
+prompt: >-
+  Let storage key patterns organize files by document date. In apps/papra-server
+  (modules/documents), add two expressions to the storage pattern definitions:
+  `document.date`, resolving to the document's `documentDate` as an ISO string with
+  a `no-date` fallback when the document has no date (so `{{document.date |
+  formatDate}}` also yields `no-date`, and `| default "..."` can override it), and
+  `document.createdAt`, resolving to the document's creation timestamp as an ISO
+  string; both work with the `formatDate` transformer and must be accepted by
+  `isStoragePatternValid`. Extend `StoragePatternInterpolationContext` with
+  `documentDate: Date | null` and `documentCreatedAt: Date`, and make
+  `createDocumentStorageKey` take `documentDate` and `documentCreatedAt`. When a
+  document is created, generate its `createdAt` timestamp up front, use it for the
+  storage key and persist that same value on the document row so the key and
+  `document.createdAt` always agree (a new document without a date gets `no-date`).
+  `buildSyncDocumentStorageKey` must pass the stored document's date and creation
+  date so re-syncing never changes a `document.createdAt` based key even when the
+  clock moves. Finally, include `documentDate` in the `document.updated` event
+  changes type and make the sync-document-storage-key handler
+  (events/storage-key.document-updated.ts) also run when `documentDate` changes
+  (set, changed or cleared), while content or notes updates still do not move the
+  file. Also pass the dates in scripts/migrate-document-storage.script.ts.
+governing_rules: []
+grading:
+  accept: [C]
+  task_tests:
+    - apps/papra-server/src/modules/documents/document-storage.usecases.test.ts
+    - apps/papra-server/src/modules/documents/documents.usecases.test.ts
+    - apps/papra-server/src/modules/documents/events/storage-key.document-updated.test.ts
+    - apps/papra-server/src/modules/documents/storage-patterns/storage-pattern.models.test.ts
+    - apps/papra-server/src/modules/documents/storage-patterns/storage-pattern.usecases.test.ts
+  regression_tests: [all]
+source:
+  commit: 13a6d4a7b0d620e8fd94979a05672648ee307fdc
+  pull_request: https://github.com/papra-hq/papra/pull/1528

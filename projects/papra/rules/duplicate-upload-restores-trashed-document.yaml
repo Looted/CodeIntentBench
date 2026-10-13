@@ -1,0 +1,17 @@
+id: duplicate-upload-restores-trashed-document
+statement: >-
+  Within an organization a file with identical content is stored only once. Uploading a duplicate of a live document is rejected with a conflict, while uploading a duplicate of a document that sits in the trash restores that document in place (new name, previous tags cleared, tagging rules re-applied) instead of creating a second record.
+rationale: >-
+  Content-addressed deduplication keeps storage usage honest, and treating a re-upload as "restore" matches what users mean when they drop a file they had deleted by mistake.
+scope:
+  paths:
+    - apps/papra-server/src/modules/documents/documents.usecases.ts
+    - apps/papra-server/src/modules/documents/documents.repository.ts
+  symbols:
+    - createDocument
+    - handleExistingDocument
+    - createDocumentsRepository
+tests:
+  - "apps/papra-server/src/modules/documents/documents.usecases.test.ts::in the same organization, we should not be able to have two documents with the same content, an error is raised if the document already exists"
+  - "apps/papra-server/src/modules/documents/documents.usecases.test.ts::when restoring a deleted document via duplicate upload, the optimistically saved new file should be cleaned up to prevent orphan files"
+  - "apps/papra-server/src/modules/documents/documents.repository.test.ts::a document is unique by organization, an error is raised if a document with the same hash already exists"

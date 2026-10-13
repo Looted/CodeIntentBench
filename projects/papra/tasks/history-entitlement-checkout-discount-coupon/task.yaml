@@ -1,0 +1,37 @@
+id: history-entitlement-checkout-discount-coupon
+project: papra
+base_commit: 8adb16de44f0905b2021b5a421bbcbb8731e1107
+kind: history
+prompt: >-
+  Users holding a plan entitlement (e.g. the selfhst entitlement) should get a
+  Stripe discount coupon applied automatically when they open a checkout session.
+  In apps/papra-server: add an optional `subscriptionDiscountCouponId` to the
+  `PlanEntitlementDriver` type (modules/plan-entitlements/plan-entitlements.types.ts)
+  and have the selfhst driver fill it from a new, undocumented
+  `SELFHST_ENTITLEMENTS_SUBSCRIPTION_DISCOUNT_COUPON_ID` config value (optional
+  string, default undefined). Add a `resolveOrganizationEntitlementCouponId({
+  organizationId, planEntitlementsRepository, planEntitlementDefinitionRegistry })`
+  usecase in plan-entitlements.usecases.ts returning `{ couponId }`: it uses the
+  repository's `getActiveEntitlementForOrganization`, looks up the driver for the
+  entitlement type in the registry, and yields the driver's coupon id, or undefined
+  when the organization has no active entitlement, the driver is missing (log an
+  error) or the driver defines no coupon. In
+  modules/subscriptions/subscriptions.services.ts extract the discount logic of
+  `createCheckoutUrl` into an exported `resolveCheckoutDiscount({ stripeClient,
+  entitlementCouponId?, globalCouponId? })` returning `{ discountDetails }`: the
+  first coupon that Stripe reports as valid wins, entitlement coupon before the
+  global `config.subscriptions.globalCouponId`, producing `{ discounts: [{ coupon:
+  id }] }`; when neither is valid or configured, fall back to `{
+  allow_promotion_codes: true }` as today. `createCheckoutUrl` takes an optional
+  `entitlementCouponId`, and the create-checkout-session route in
+  subscriptions.routes.ts resolves and passes the organization's entitlement coupon.
+governing_rules: []
+grading:
+  accept: [C]
+  task_tests:
+    - apps/papra-server/src/modules/plan-entitlements/plan-entitlements.usecases.test.ts
+    - apps/papra-server/src/modules/subscriptions/subscriptions.services.test.ts
+  regression_tests: [all]
+source:
+  commit: b3a625e079ed4978a8cf778a8a79f4f38c38456c
+  pull_request: https://github.com/papra-hq/papra/pull/1363

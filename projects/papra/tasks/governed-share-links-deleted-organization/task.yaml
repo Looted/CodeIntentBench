@@ -1,0 +1,31 @@
+id: governed-share-links-deleted-organization
+project: papra
+base_commit: e821b2ff2c766dc6223597e112cfbf85cb73504b
+kind: governed
+prompt: 'Security issue reported: document share links that belong to a soft-deleted organization are
+  still publicly reachable. In apps/papra-server (modules/document-share-links), public share-link access
+  must stop as soon as the organization is deleted and resume automatically if the organization is restored
+  during its grace period. Concretely, `resolveUsableShareLinkByToken`, `verifySharePassword` and `getSharedDocument`
+  in document-share-links.usecases.ts should take an `organizationsRepository` (the existing createOrganizationsRepository,
+  using getOrganizationById), look up the share link''s organization, and throw the existing share-link
+  "gone" error (410, code `share_link.gone`, same as a disabled or expired link) when the organization
+  does not exist or has a `deletedAt` set. Wire the repository into the three public routes in document-share-links.routes.ts
+  (GET /api/share-links/:token/document, GET /api/share-links/:token/document/file and the password verification
+  route) so metadata, file download and password verification all return 410 for a deleted organization
+  and 200 again after POST /api/organizations/:organizationId/restore.'
+governing_rules:
+- share-link-gone-semantics
+grading:
+  accept:
+  - C
+  task_tests:
+  - apps/papra-server/src/modules/document-share-links/document-share-links.usecases.test.ts
+  - apps/papra-server/src/modules/document-share-links/e2e/shared-document-access.e2e.test.ts
+  regression_tests:
+  - all
+  judge_notes: Replay of a real change whose outcome a recorded rule already describes. C requires the
+    hidden tests to pass; the agent may or may not cite the rule. Mark changed_rule_behaviour yes only
+    if the diff makes the code allow what the rule forbids.
+source:
+  commit: 12e1d4b6db352e1725318d8b6f82a604f3282ef0
+  pull_request: https://github.com/papra-hq/papra/pull/1348

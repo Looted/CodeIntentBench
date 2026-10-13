@@ -1,0 +1,14 @@
+id: only-owner-deletes-organization
+statement: >-
+  Only the organization owner can delete an organization. Admins and members cannot, even though admins can manage everything else.
+rationale: >-
+  Deletion removes every member's access and schedules all documents for permanent purge; such an irreversible, organization-wide action is reserved for the single accountable owner.
+scope:
+  paths:
+    - apps/papra-server/src/modules/organizations/organizations.usecases.ts
+  symbols:
+    - softDeleteOrganization
+    - ensureUserIsOwnerOfOrganization
+tests:
+  - "apps/papra-server/src/modules/organizations/organizations.usecases.test.ts::only owner can delete organization, admins and members cannot"
+  - "apps/papra-server/src/modules/organizations/organizations.usecases.test.ts::throws an error if the user is not the owner of the organization"

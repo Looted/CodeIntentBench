@@ -1,0 +1,15 @@
+id: signup-email-domain-restrictions
+statement: >-
+  When an allowed-domain list is configured, only emails whose domain is exactly in the list may sign up; subdomains are not implicitly allowed. A domain on the forbidden list is always rejected, even if it also appears on the allowed list. Matching ignores case.
+rationale: >-
+  Self-hosted instances use the allowlist to restrict sign-up to their own organization; exact matching and forbidden-wins semantics keep the policy predictable and fail closed.
+scope:
+  paths:
+    - apps/papra-server/src/modules/app/auth/auth.models.ts
+    - apps/papra-server/src/modules/app/auth/auth.services.ts
+  symbols:
+    - isEmailDomainAllowed
+tests:
+  - "apps/papra-server/src/modules/app/auth/auth.models.test.ts::forbidden domains take precedence over allowed domains"
+  - "apps/papra-server/src/modules/app/auth/auth.models.test.ts::an allowed domain does not implicitly allow its subdomains"
+  - "apps/papra-server/src/modules/app/auth/auth.models.test.ts::a non-empty allowlist only permits listed domains"

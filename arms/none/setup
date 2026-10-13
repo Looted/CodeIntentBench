@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Arm `none`: the rules reach the agent through nothing. The workspace is left as checked out.
+set -euo pipefail
+echo "arm none: no rule delivery"
