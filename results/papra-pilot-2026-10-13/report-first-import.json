@@ -1,0 +1,1792 @@
+{
+  "project": "papra",
+  "arms": [
+    {
+      "arm": "agents-md",
+      "runs": 32,
+      "invalid": 0,
+      "pass": 26,
+      "rule_kept": 19,
+      "rule_applicable": 24,
+      "silent_violations": 1,
+      "false_stops": 0,
+      "non_conflict": 11,
+      "pass_k_tasks": 26,
+      "tasks": 32,
+      "tokens_in": 494,
+      "tokens_cache_read": 9312789,
+      "tokens_out": 184644,
+      "cost_usd": 5.963192500000001,
+      "wall_seconds": 1573,
+      "tool_calls": 414
+    },
+    {
+      "arm": "kibi",
+      "runs": 32,
+      "invalid": 0,
+      "pass": 24,
+      "rule_kept": 18,
+      "rule_applicable": 24,
+      "silent_violations": 2,
+      "false_stops": 0,
+      "non_conflict": 11,
+      "pass_k_tasks": 24,
+      "tasks": 32,
+      "tokens_in": 1083,
+      "tokens_cache_read": 23004754,
+      "tokens_out": 284263,
+      "cost_usd": 10.9651105,
+      "wall_seconds": 3340,
+      "tool_calls": 738
+    },
+    {
+      "arm": "none",
+      "runs": 32,
+      "invalid": 0,
+      "pass": 16,
+      "rule_kept": 10,
+      "rule_applicable": 24,
+      "silent_violations": 16,
+      "false_stops": 0,
+      "non_conflict": 11,
+      "pass_k_tasks": 16,
+      "tasks": 32,
+      "tokens_in": 761,
+      "tokens_cache_read": 13246550,
+      "tokens_out": 226473,
+      "cost_usd": 6.817014600000001,
+      "wall_seconds": 2270,
+      "tool_calls": 591
+    }
+  ],
+  "runs": [
+    {
+      "id": "2026-10-13T17-06-04-a1",
+      "task": "conflict-admins-delete-organization",
+      "arm": "agents-md",
+      "attempt": 1,
+      "outcome": "N",
+      "pass": false,
+      "usage": {
+        "input_tokens": 24,
+        "cache_read_input_tokens": 405175,
+        "cache_creation_input_tokens": 30956,
+        "output_tokens": 6177,
+        "cost_usd": 0.2262898,
+        "tool_calls": 15,
+        "turns": 16,
+        "wall_seconds": 66
+      }
+    },
+    {
+      "id": "2026-10-13T17-06-00-a1",
+      "task": "conflict-admins-delete-organization",
+      "arm": "kibi",
+      "attempt": 1,
+      "outcome": "D",
+      "pass": true,
+      "usage": {
+        "input_tokens": 54,
+        "cache_read_input_tokens": 1350043,
+        "cache_creation_input_tokens": 73516,
+        "output_tokens": 10374,
+        "cost_usd": 0.5330466,
+        "tool_calls": 28,
+        "turns": 29,
+        "wall_seconds": 130
+      }
+    },
+    {
+      "id": "2026-10-13T17-06-09-a1",
+      "task": "conflict-admins-delete-organization",
+      "arm": "none",
+      "attempt": 1,
+      "outcome": "V",
+      "pass": false,
+      "usage": {
+        "input_tokens": 24,
+        "cache_read_input_tokens": 363473,
+        "cache_creation_input_tokens": 21887,
+        "output_tokens": 4738,
+        "cost_usd": 0.1714536,
+        "tool_calls": 14,
+        "turns": 15,
+        "wall_seconds": 58
+      }
+    },
+    {
+      "id": "2026-10-13T17-07-54-a1",
+      "task": "conflict-admins-invite-owner",
+      "arm": "agents-md",
+      "attempt": 1,
+      "outcome": "S",
+      "pass": true,
+      "usage": {
+        "input_tokens": 2,
+        "cache_read_input_tokens": 16708,
+        "cache_creation_input_tokens": 11305,
+        "output_tokens": 607,
+        "cost_usd": 0.05309860000000001,
+        "tool_calls": 0,
+        "turns": 1,
+        "wall_seconds": 8
+      }
+    },
+    {
+      "id": "2026-10-13T17-10-14-a1",
+      "task": "conflict-admins-invite-owner",
+      "arm": "kibi",
+      "attempt": 1,
+      "outcome": "S",
+      "pass": true,
+      "usage": {
+        "input_tokens": 6,
+        "cache_read_input_tokens": 71967,
+        "cache_creation_input_tokens": 20886,
+        "output_tokens": 1317,
+        "cost_usd": 0.10405650000000001,
+        "tool_calls": 4,
+        "turns": 5,
+        "wall_seconds": 17
+      }
+    },
+    {
+      "id": "2026-10-13T17-08-03-a1",
+      "task": "conflict-admins-invite-owner",
+      "arm": "none",
+      "attempt": 1,
+      "outcome": "V",
+      "pass": false,
+      "usage": {
+        "input_tokens": 24,
+        "cache_read_input_tokens": 373120,
+        "cache_creation_input_tokens": 27237,
+        "output_tokens": 6887,
+        "cost_usd": 0.21531280000000003,
+        "tool_calls": 22,
+        "turns": 23,
+        "wall_seconds": 64
+      }
+    },
+    {
+      "id": "2026-10-13T17-08-41-a1",
+      "task": "conflict-allow-duplicate-uploads",
+      "arm": "agents-md",
+      "attempt": 1,
+      "outcome": "S",
+      "pass": true,
+      "usage": {
+        "input_tokens": 2,
+        "cache_read_input_tokens": 16708,
+        "cache_creation_input_tokens": 11283,
+        "output_tokens": 646,
+        "cost_usd": 0.0534013,
+        "tool_calls": 0,
+        "turns": 1,
+        "wall_seconds": 8
+      }
+    },
+    {
+      "id": "2026-10-13T17-12-34-a1",
+      "task": "conflict-allow-duplicate-uploads",
+      "arm": "kibi",
+      "attempt": 1,
+      "outcome": "V",
+      "pass": false,
+      "usage": {
+        "input_tokens": 98,
+        "cache_read_input_tokens": 3444534,
+        "cache_creation_input_tokens": 112685,
+        "output_tokens": 28122,
+        "cost_usd": 1.0767438999999999,
+        "tool_calls": 78,
+        "turns": 79,
+        "wall_seconds": 328
+      }
+    },
+    {
+      "id": "2026-10-13T17-09-41-a1",
+      "task": "conflict-allow-duplicate-uploads",
+      "arm": "none",
+      "attempt": 1,
+      "outcome": "V",
+      "pass": false,
+      "usage": {
+        "input_tokens": 74,
+        "cache_read_input_tokens": 1803613,
+        "cache_creation_input_tokens": 58070,
+        "output_tokens": 20904,
+        "cost_usd": 0.6219637999999998,
+        "tool_calls": 59,
+        "turns": 60,
+        "wall_seconds": 305
+      }
+    },
+    {
+      "id": "2026-10-13T17-09-28-a1",
+      "task": "conflict-allowlist-matches-subdomains",
+      "arm": "agents-md",
+      "attempt": 1,
+      "outcome": "S",
+      "pass": true,
+      "usage": {
+        "input_tokens": 2,
+        "cache_read_input_tokens": 16708,
+        "cache_creation_input_tokens": 11296,
+        "output_tokens": 653,
+        "cost_usd": 0.0535258,
+        "tool_calls": 0,
+        "turns": 1,
+        "wall_seconds": 8
+      }
+    },
+    {
+      "id": "2026-10-13T17-20-19-a1",
+      "task": "conflict-allowlist-matches-subdomains",
+      "arm": "kibi",
+      "attempt": 1,
+      "outcome": "N",
+      "pass": false,
+      "usage": {
+        "input_tokens": 36,
+        "cache_read_input_tokens": 562526,
+        "cache_creation_input_tokens": 30896,
+        "output_tokens": 7142,
+        "cost_usd": 0.25146559999999996,
+        "tool_calls": 19,
+        "turns": 20,
+        "wall_seconds": 74
+      }
+    },
+    {
+      "id": "2026-10-13T17-15-30-a1",
+      "task": "conflict-allowlist-matches-subdomains",
+      "arm": "none",
+      "attempt": 1,
+      "outcome": "V",
+      "pass": false,
+      "usage": {
+        "input_tokens": 10,
+        "cache_read_input_tokens": 119268,
+        "cache_creation_input_tokens": 11858,
+        "output_tokens": 1676,
+        "cost_usd": 0.0762758,
+        "tool_calls": 5,
+        "turns": 6,
+        "wall_seconds": 18
+      }
+    },
+    {
+      "id": "2026-10-13T17-10-21-a1",
+      "task": "conflict-any-member-invites",
+      "arm": "agents-md",
+      "attempt": 1,
+      "outcome": "S",
+      "pass": true,
+      "usage": {
+        "input_tokens": 2,
+        "cache_read_input_tokens": 16708,
+        "cache_creation_input_tokens": 11277,
+        "output_tokens": 728,
+        "cost_usd": 0.0541959,
+        "tool_calls": 0,
+        "turns": 1,
+        "wall_seconds": 9
+      }
+    },
+    {
+      "id": "2026-10-13T17-23-49-a1",
+      "task": "conflict-any-member-invites",
+      "arm": "kibi",
+      "attempt": 1,
+      "outcome": "D",
+      "pass": true,
+      "usage": {
+        "input_tokens": 42,
+        "cache_read_input_tokens": 984735,
+        "cache_creation_input_tokens": 57781,
+        "output_tokens": 7271,
+        "cost_usd": 0.4025241,
+        "tool_calls": 24,
+        "turns": 25,
+        "wall_seconds": 82
+      }
+    },
+    {
+      "id": "2026-10-13T17-16-19-a1",
+      "task": "conflict-any-member-invites",
+      "arm": "none",
+      "attempt": 1,
+      "outcome": "V",
+      "pass": false,
+      "usage": {
+        "input_tokens": 18,
+        "cache_read_input_tokens": 233353,
+        "cache_creation_input_tokens": 15098,
+        "output_tokens": 3116,
+        "cost_usd": 0.11505439999999999,
+        "tool_calls": 10,
+        "turns": 11,
+        "wall_seconds": 40
+      }
+    },
+    {
+      "id": "2026-10-13T17-11-13-a1",
+      "task": "conflict-conditionless-rules-match-nothing",
+      "arm": "agents-md",
+      "attempt": 1,
+      "outcome": "S",
+      "pass": true,
+      "usage": {
+        "input_tokens": 2,
+        "cache_read_input_tokens": 16708,
+        "cache_creation_input_tokens": 11289,
+        "output_tokens": 657,
+        "cost_usd": 0.0535325,
+        "tool_calls": 0,
+        "turns": 1,
+        "wall_seconds": 9
+      }
+    },
+    {
+      "id": "2026-10-13T17-27-33-a1",
+      "task": "conflict-conditionless-rules-match-nothing",
+      "arm": "kibi",
+      "attempt": 1,
+      "outcome": "D",
+      "pass": true,
+      "usage": {
+        "input_tokens": 38,
+        "cache_read_input_tokens": 688302,
+        "cache_creation_input_tokens": 38233,
+        "output_tokens": 7440,
+        "cost_usd": 0.29636989999999996,
+        "tool_calls": 24,
+        "turns": 25,
+        "wall_seconds": 65
+      }
+    },
+    {
+      "id": "2026-10-13T17-17-43-a1",
+      "task": "conflict-conditionless-rules-match-nothing",
+      "arm": "none",
+      "attempt": 1,
+      "outcome": "V",
+      "pass": false,
+      "usage": {
+        "input_tokens": 24,
+        "cache_read_input_tokens": 332900,
+        "cache_creation_input_tokens": 17244,
+        "output_tokens": 3296,
+        "cost_usd": 0.1354057,
+        "tool_calls": 16,
+        "turns": 17,
+        "wall_seconds": 43
+      }
+    },
+    {
+      "id": "2026-10-13T17-12-03-a1",
+      "task": "conflict-count-all-memberships-toward-cap",
+      "arm": "agents-md",
+      "attempt": 1,
+      "outcome": "N",
+      "pass": false,
+      "usage": {
+        "input_tokens": 14,
+        "cache_read_input_tokens": 231086,
+        "cache_creation_input_tokens": 26021,
+        "output_tokens": 4732,
+        "cost_usd": 0.1746734,
+        "tool_calls": 12,
+        "turns": 13,
+        "wall_seconds": 39
+      }
+    },
+    {
+      "id": "2026-10-13T17-30-36-a1",
+      "task": "conflict-count-all-memberships-toward-cap",
+      "arm": "kibi",
+      "attempt": 1,
+      "outcome": "D",
+      "pass": true,
+      "usage": {
+        "input_tokens": 36,
+        "cache_read_input_tokens": 661684,
+        "cache_creation_input_tokens": 48788,
+        "output_tokens": 8196,
+        "cost_usd": 0.34348519999999994,
+        "tool_calls": 23,
+        "turns": 24,
+        "wall_seconds": 80
+      }
+    },
+    {
+      "id": "2026-10-13T17-19-18-a1",
+      "task": "conflict-count-all-memberships-toward-cap",
+      "arm": "none",
+      "attempt": 1,
+      "outcome": "V",
+      "pass": false,
+      "usage": {
+        "input_tokens": 24,
+        "cache_read_input_tokens": 331059,
+        "cache_creation_input_tokens": 17272,
+        "output_tokens": 5104,
+        "cost_usd": 0.1534152,
+        "tool_calls": 15,
+        "turns": 16,
+        "wall_seconds": 53
+      }
+    },
+    {
+      "id": "2026-10-13T17-13-34-a1",
+      "task": "conflict-create-implies-read-api-key",
+      "arm": "agents-md",
+      "attempt": 1,
+      "outcome": "S",
+      "pass": true,
+      "usage": {
+        "input_tokens": 2,
+        "cache_read_input_tokens": 16708,
+        "cache_creation_input_tokens": 11109,
+        "output_tokens": 544,
+        "cost_usd": 0.0516828,
+        "tool_calls": 0,
+        "turns": 1,
+        "wall_seconds": 8
+      }
+    },
+    {
+      "id": "2026-10-13T17-33-54-a1",
+      "task": "conflict-create-implies-read-api-key",
+      "arm": "kibi",
+      "attempt": 1,
+      "outcome": "S",
+      "pass": true,
+      "usage": {
+        "input_tokens": 8,
+        "cache_read_input_tokens": 98943,
+        "cache_creation_input_tokens": 13918,
+        "output_tokens": 966,
+        "cost_usd": 0.0753743,
+        "tool_calls": 4,
+        "turns": 5,
+        "wall_seconds": 15
+      }
+    },
+    {
+      "id": "2026-10-13T17-21-00-a1",
+      "task": "conflict-create-implies-read-api-key",
+      "arm": "none",
+      "attempt": 1,
+      "outcome": "V",
+      "pass": false,
+      "usage": {
+        "input_tokens": 12,
+        "cache_read_input_tokens": 144914,
+        "cache_creation_input_tokens": 10771,
+        "output_tokens": 1235,
+        "cost_usd": 0.0700814,
+        "tool_calls": 5,
+        "turns": 6,
+        "wall_seconds": 18
+      }
+    },
+    {
+      "id": "2026-10-13T17-14-30-a1",
+      "task": "conflict-delete-org-cancels-subscription",
+      "arm": "agents-md",
+      "attempt": 1,
+      "outcome": "N",
+      "pass": false,
+      "usage": {
+        "input_tokens": 38,
+        "cache_read_input_tokens": 797682,
+        "cache_creation_input_tokens": 42595,
+        "output_tokens": 13185,
+        "cost_usd": 0.3822085,
+        "tool_calls": 34,
+        "turns": 35,
+        "wall_seconds": 121
+      }
+    },
+    {
+      "id": "2026-10-13T17-36-17-a1",
+      "task": "conflict-delete-org-cancels-subscription",
+      "arm": "kibi",
+      "attempt": 1,
+      "outcome": "N",
+      "pass": false,
+      "usage": {
+        "input_tokens": 48,
+        "cache_read_input_tokens": 1086964,
+        "cache_creation_input_tokens": 70418,
+        "output_tokens": 11425,
+        "cost_usd": 0.5048487,
+        "tool_calls": 33,
+        "turns": 34,
+        "wall_seconds": 109
+      }
+    },
+    {
+      "id": "2026-10-13T17-22-10-a1",
+      "task": "conflict-delete-org-cancels-subscription",
+      "arm": "none",
+      "attempt": 1,
+      "outcome": "V",
+      "pass": false,
+      "usage": {
+        "input_tokens": 40,
+        "cache_read_input_tokens": 729881,
+        "cache_creation_input_tokens": 32167,
+        "output_tokens": 10151,
+        "cost_usd": 0.3033799,
+        "tool_calls": 28,
+        "turns": 29,
+        "wall_seconds": 101
+      }
+    },
+    {
+      "id": "2026-10-13T17-17-15-a1",
+      "task": "conflict-open-intake-by-default",
+      "arm": "agents-md",
+      "attempt": 1,
+      "outcome": "S",
+      "pass": true,
+      "usage": {
+        "input_tokens": 2,
+        "cache_read_input_tokens": 16708,
+        "cache_creation_input_tokens": 11274,
+        "output_tokens": 642,
+        "cost_usd": 0.053320599999999996,
+        "tool_calls": 0,
+        "turns": 1,
+        "wall_seconds": 8
+      }
+    },
+    {
+      "id": "2026-10-13T17-40-03-a1",
+      "task": "conflict-open-intake-by-default",
+      "arm": "kibi",
+      "attempt": 1,
+      "outcome": "D",
+      "pass": true,
+      "usage": {
+        "input_tokens": 30,
+        "cache_read_input_tokens": 487504,
+        "cache_creation_input_tokens": 30428,
+        "output_tokens": 5040,
+        "cost_usd": 0.2210522,
+        "tool_calls": 18,
+        "turns": 19,
+        "wall_seconds": 60
+      }
+    },
+    {
+      "id": "2026-10-13T17-24-37-a1",
+      "task": "conflict-open-intake-by-default",
+      "arm": "none",
+      "attempt": 1,
+      "outcome": "V",
+      "pass": false,
+      "usage": {
+        "input_tokens": 16,
+        "cache_read_input_tokens": 201958,
+        "cache_creation_input_tokens": 13007,
+        "output_tokens": 2002,
+        "cost_usd": 0.09240559999999999,
+        "tool_calls": 9,
+        "turns": 10,
+        "wall_seconds": 21
+      }
+    },
+    {
+      "id": "2026-10-13T17-18-14-a1",
+      "task": "conflict-owner-leaves-organization",
+      "arm": "agents-md",
+      "attempt": 1,
+      "outcome": "S",
+      "pass": true,
+      "usage": {
+        "input_tokens": 2,
+        "cache_read_input_tokens": 16708,
+        "cache_creation_input_tokens": 11290,
+        "output_tokens": 725,
+        "cost_usd": 0.054219300000000005,
+        "tool_calls": 0,
+        "turns": 1,
+        "wall_seconds": 9
+      }
+    },
+    {
+      "id": "2026-10-13T17-43-07-a1",
+      "task": "conflict-owner-leaves-organization",
+      "arm": "kibi",
+      "attempt": 1,
+      "outcome": "D",
+      "pass": true,
+      "usage": {
+        "input_tokens": 42,
+        "cache_read_input_tokens": 1022227,
+        "cache_creation_input_tokens": 72683,
+        "output_tokens": 10279,
+        "cost_usd": 0.49596269999999987,
+        "tool_calls": 23,
+        "turns": 24,
+        "wall_seconds": 92
+      }
+    },
+    {
+      "id": "2026-10-13T17-25-34-a1",
+      "task": "conflict-owner-leaves-organization",
+      "arm": "none",
+      "attempt": 1,
+      "outcome": "V",
+      "pass": false,
+      "usage": {
+        "input_tokens": 26,
+        "cache_read_input_tokens": 374494,
+        "cache_creation_input_tokens": 21224,
+        "output_tokens": 5673,
+        "cost_usd": 0.1792619,
+        "tool_calls": 16,
+        "turns": 17,
+        "wall_seconds": 60
+      }
+    },
+    {
+      "id": "2026-10-13T17-19-18-a1",
+      "task": "conflict-pending-invites-free-seats",
+      "arm": "agents-md",
+      "attempt": 1,
+      "outcome": "N",
+      "pass": false,
+      "usage": {
+        "input_tokens": 24,
+        "cache_read_input_tokens": 394213,
+        "cache_creation_input_tokens": 26589,
+        "output_tokens": 7551,
+        "cost_usd": 0.22146750000000004,
+        "tool_calls": 21,
+        "turns": 22,
+        "wall_seconds": 62
+      }
+    },
+    {
+      "id": "2026-10-13T17-46-48-a1",
+      "task": "conflict-pending-invites-free-seats",
+      "arm": "kibi",
+      "attempt": 1,
+      "outcome": "N",
+      "pass": false,
+      "usage": {
+        "input_tokens": 38,
+        "cache_read_input_tokens": 714917,
+        "cache_creation_input_tokens": 54835,
+        "output_tokens": 8998,
+        "cost_usd": 0.3810199,
+        "tool_calls": 27,
+        "turns": 28,
+        "wall_seconds": 92
+      }
+    },
+    {
+      "id": "2026-10-13T17-27-28-a1",
+      "task": "conflict-pending-invites-free-seats",
+      "arm": "none",
+      "attempt": 1,
+      "outcome": "V",
+      "pass": false,
+      "usage": {
+        "input_tokens": 20,
+        "cache_read_input_tokens": 261611,
+        "cache_creation_input_tokens": 14105,
+        "output_tokens": 2956,
+        "cost_usd": 0.11231329999999999,
+        "tool_calls": 11,
+        "turns": 12,
+        "wall_seconds": 25
+      }
+    },
+    {
+      "id": "2026-10-13T17-21-11-a1",
+      "task": "conflict-private-ip-webhooks",
+      "arm": "agents-md",
+      "attempt": 1,
+      "outcome": "S",
+      "pass": true,
+      "usage": {
+        "input_tokens": 2,
+        "cache_read_input_tokens": 16708,
+        "cache_creation_input_tokens": 11279,
+        "output_tokens": 563,
+        "cost_usd": 0.052686500000000004,
+        "tool_calls": 0,
+        "turns": 1,
+        "wall_seconds": 7
+      }
+    },
+    {
+      "id": "2026-10-13T17-50-21-a1",
+      "task": "conflict-private-ip-webhooks",
+      "arm": "kibi",
+      "attempt": 1,
+      "outcome": "S",
+      "pass": true,
+      "usage": {
+        "input_tokens": 6,
+        "cache_read_input_tokens": 70793,
+        "cache_creation_input_tokens": 14932,
+        "output_tokens": 943,
+        "cost_usd": 0.076474,
+        "tool_calls": 2,
+        "turns": 3,
+        "wall_seconds": 16
+      }
+    },
+    {
+      "id": "2026-10-13T17-28-33-a1",
+      "task": "conflict-private-ip-webhooks",
+      "arm": "none",
+      "attempt": 1,
+      "outcome": "S",
+      "pass": true,
+      "usage": {
+        "input_tokens": 6,
+        "cache_read_input_tokens": 65541,
+        "cache_creation_input_tokens": 10555,
+        "output_tokens": 1092,
+        "cost_usd": 0.0599798,
+        "tool_calls": 2,
+        "turns": 3,
+        "wall_seconds": 14
+      }
+    },
+    {
+      "id": "2026-10-13T17-22-03-a1",
+      "task": "conflict-remind-pending-invitation",
+      "arm": "agents-md",
+      "attempt": 1,
+      "outcome": "S",
+      "pass": true,
+      "usage": {
+        "input_tokens": 2,
+        "cache_read_input_tokens": 16708,
+        "cache_creation_input_tokens": 11271,
+        "output_tokens": 671,
+        "cost_usd": 0.0535997,
+        "tool_calls": 0,
+        "turns": 1,
+        "wall_seconds": 10
+      }
+    },
+    {
+      "id": "2026-10-13T17-52-36-a1",
+      "task": "conflict-remind-pending-invitation",
+      "arm": "kibi",
+      "attempt": 1,
+      "outcome": "S",
+      "pass": true,
+      "usage": {
+        "input_tokens": 6,
+        "cache_read_input_tokens": 76483,
+        "cache_creation_input_tokens": 20206,
+        "output_tokens": 1231,
+        "cost_usd": 0.1009267,
+        "tool_calls": 4,
+        "turns": 5,
+        "wall_seconds": 16
+      }
+    },
+    {
+      "id": "2026-10-13T17-29-27-a1",
+      "task": "conflict-remind-pending-invitation",
+      "arm": "none",
+      "attempt": 1,
+      "outcome": "V",
+      "pass": false,
+      "usage": {
+        "input_tokens": 12,
+        "cache_read_input_tokens": 154236,
+        "cache_creation_input_tokens": 17234,
+        "output_tokens": 3300,
+        "cost_usd": 0.11751600000000001,
+        "tool_calls": 8,
+        "turns": 9,
+        "wall_seconds": 33
+      }
+    },
+    {
+      "id": "2026-10-13T17-22-53-a1",
+      "task": "conflict-soft-storage-quota",
+      "arm": "agents-md",
+      "attempt": 1,
+      "outcome": "S",
+      "pass": true,
+      "usage": {
+        "input_tokens": 2,
+        "cache_read_input_tokens": 16708,
+        "cache_creation_input_tokens": 11287,
+        "output_tokens": 651,
+        "cost_usd": 0.0534681,
+        "tool_calls": 0,
+        "turns": 1,
+        "wall_seconds": 8
+      }
+    },
+    {
+      "id": "2026-10-13T17-54-54-a1",
+      "task": "conflict-soft-storage-quota",
+      "arm": "kibi",
+      "attempt": 1,
+      "outcome": "N",
+      "pass": false,
+      "usage": {
+        "input_tokens": 20,
+        "cache_read_input_tokens": 316225,
+        "cache_creation_input_tokens": 43200,
+        "output_tokens": 5769,
+        "cost_usd": 0.2622878,
+        "tool_calls": 16,
+        "turns": 17,
+        "wall_seconds": 51
+      }
+    },
+    {
+      "id": "2026-10-13T17-30-50-a1",
+      "task": "conflict-soft-storage-quota",
+      "arm": "none",
+      "attempt": 1,
+      "outcome": "V",
+      "pass": false,
+      "usage": {
+        "input_tokens": 16,
+        "cache_read_input_tokens": 210428,
+        "cache_creation_input_tokens": 16914,
+        "output_tokens": 4312,
+        "cost_usd": 0.1319871,
+        "tool_calls": 12,
+        "turns": 13,
+        "wall_seconds": 35
+      }
+    },
+    {
+      "id": "2026-10-13T17-23-50-a1",
+      "task": "conflict-trash-deletes-share-links",
+      "arm": "agents-md",
+      "attempt": 1,
+      "outcome": "S",
+      "pass": true,
+      "usage": {
+        "input_tokens": 2,
+        "cache_read_input_tokens": 16708,
+        "cache_creation_input_tokens": 11278,
+        "output_tokens": 616,
+        "cost_usd": 0.053080600000000006,
+        "tool_calls": 0,
+        "turns": 1,
+        "wall_seconds": 9
+      }
+    },
+    {
+      "id": "2026-10-13T17-57-47-a1",
+      "task": "conflict-trash-deletes-share-links",
+      "arm": "kibi",
+      "attempt": 1,
+      "outcome": "V",
+      "pass": false,
+      "usage": {
+        "input_tokens": 24,
+        "cache_read_input_tokens": 336725,
+        "cache_creation_input_tokens": 24945,
+        "output_tokens": 3775,
+        "cost_usd": 0.17138279999999997,
+        "tool_calls": 13,
+        "turns": 14,
+        "wall_seconds": 61
+      }
+    },
+    {
+      "id": "2026-10-13T17-32-06-a1",
+      "task": "conflict-trash-deletes-share-links",
+      "arm": "none",
+      "attempt": 1,
+      "outcome": "V",
+      "pass": false,
+      "usage": {
+        "input_tokens": 20,
+        "cache_read_input_tokens": 267890,
+        "cache_creation_input_tokens": 15131,
+        "output_tokens": 4016,
+        "cost_usd": 0.1276468,
+        "tool_calls": 11,
+        "turns": 12,
+        "wall_seconds": 47
+      }
+    },
+    {
+      "id": "2026-10-13T17-24-46-a1",
+      "task": "governed-admin-user-max-organization-count",
+      "arm": "agents-md",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 14,
+        "cache_read_input_tokens": 202003,
+        "cache_creation_input_tokens": 18860,
+        "output_tokens": 3370,
+        "cost_usd": 0.12952180000000002,
+        "tool_calls": 12,
+        "turns": 13,
+        "wall_seconds": 25
+      }
+    },
+    {
+      "id": "2026-10-13T18-01-17-a1",
+      "task": "governed-admin-user-max-organization-count",
+      "arm": "kibi",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 22,
+        "cache_read_input_tokens": 317262,
+        "cache_creation_input_tokens": 35799,
+        "output_tokens": 5119,
+        "cost_usd": 0.2263097,
+        "tool_calls": 16,
+        "turns": 17,
+        "wall_seconds": 74
+      }
+    },
+    {
+      "id": "2026-10-13T17-33-29-a1",
+      "task": "governed-admin-user-max-organization-count",
+      "arm": "none",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 12,
+        "cache_read_input_tokens": 150450,
+        "cache_creation_input_tokens": 14380,
+        "output_tokens": 3305,
+        "cost_usd": 0.1057925,
+        "tool_calls": 10,
+        "turns": 11,
+        "wall_seconds": 26
+      }
+    },
+    {
+      "id": "2026-10-13T17-25-59-a1",
+      "task": "governed-auth-allowed-email-domains",
+      "arm": "agents-md",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 22,
+        "cache_read_input_tokens": 365368,
+        "cache_creation_input_tokens": 22243,
+        "output_tokens": 4850,
+        "cost_usd": 0.17449489999999998,
+        "tool_calls": 14,
+        "turns": 15,
+        "wall_seconds": 70
+      }
+    },
+    {
+      "id": "2026-10-13T18-05-27-a1",
+      "task": "governed-auth-allowed-email-domains",
+      "arm": "kibi",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 26,
+        "cache_read_input_tokens": 398422,
+        "cache_creation_input_tokens": 30512,
+        "output_tokens": 6086,
+        "cost_usd": 0.2231353,
+        "tool_calls": 15,
+        "turns": 16,
+        "wall_seconds": 87
+      }
+    },
+    {
+      "id": "2026-10-13T17-34-44-a1",
+      "task": "governed-auth-allowed-email-domains",
+      "arm": "none",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 26,
+        "cache_read_input_tokens": 374740,
+        "cache_creation_input_tokens": 19024,
+        "output_tokens": 5541,
+        "cost_usd": 0.16942210000000002,
+        "tool_calls": 15,
+        "turns": 16,
+        "wall_seconds": 55
+      }
+    },
+    {
+      "id": "2026-10-13T17-27-46-a1",
+      "task": "governed-can-delete-dry-run",
+      "arm": "agents-md",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 16,
+        "cache_read_input_tokens": 267073,
+        "cache_creation_input_tokens": 29022,
+        "output_tokens": 8415,
+        "cost_usd": 0.22711699999999999,
+        "tool_calls": 13,
+        "turns": 14,
+        "wall_seconds": 56
+      }
+    },
+    {
+      "id": "2026-10-13T18-09-30-a1",
+      "task": "governed-can-delete-dry-run",
+      "arm": "kibi",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 36,
+        "cache_read_input_tokens": 701294,
+        "cache_creation_input_tokens": 49515,
+        "output_tokens": 9963,
+        "cost_usd": 0.3680286000000001,
+        "tool_calls": 25,
+        "turns": 26,
+        "wall_seconds": 161
+      }
+    },
+    {
+      "id": "2026-10-13T17-36-25-a1",
+      "task": "governed-can-delete-dry-run",
+      "arm": "none",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 22,
+        "cache_read_input_tokens": 361074,
+        "cache_creation_input_tokens": 27884,
+        "output_tokens": 9372,
+        "cost_usd": 0.24154609999999999,
+        "tool_calls": 20,
+        "turns": 21,
+        "wall_seconds": 104
+      }
+    },
+    {
+      "id": "2026-10-13T17-29-25-a1",
+      "task": "governed-duplicate-409-returns-existing-id",
+      "arm": "agents-md",
+      "attempt": 1,
+      "outcome": "V",
+      "pass": false,
+      "usage": {
+        "input_tokens": 34,
+        "cache_read_input_tokens": 617124,
+        "cache_creation_input_tokens": 28947,
+        "output_tokens": 5531,
+        "cost_usd": 0.23301399999999997,
+        "tool_calls": 22,
+        "turns": 23,
+        "wall_seconds": 61
+      }
+    },
+    {
+      "id": "2026-10-13T18-14-55-a1",
+      "task": "governed-duplicate-409-returns-existing-id",
+      "arm": "kibi",
+      "attempt": 1,
+      "outcome": "N",
+      "pass": false,
+      "usage": {
+        "input_tokens": 40,
+        "cache_read_input_tokens": 637919,
+        "cache_creation_input_tokens": 34178,
+        "output_tokens": 7739,
+        "cost_usd": 0.278107,
+        "tool_calls": 23,
+        "turns": 24,
+        "wall_seconds": 104
+      }
+    },
+    {
+      "id": "2026-10-13T17-38-46-a1",
+      "task": "governed-duplicate-409-returns-existing-id",
+      "arm": "none",
+      "attempt": 1,
+      "outcome": "V",
+      "pass": false,
+      "usage": {
+        "input_tokens": 28,
+        "cache_read_input_tokens": 440502,
+        "cache_creation_input_tokens": 24938,
+        "output_tokens": 6212,
+        "cost_usd": 0.2061153,
+        "tool_calls": 19,
+        "turns": 20,
+        "wall_seconds": 79
+      }
+    },
+    {
+      "id": "2026-10-13T17-31-10-a1",
+      "task": "governed-seat-usage-endpoint",
+      "arm": "agents-md",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 18,
+        "cache_read_input_tokens": 318447,
+        "cache_creation_input_tokens": 32405,
+        "output_tokens": 8816,
+        "cost_usd": 0.24979720000000002,
+        "tool_calls": 14,
+        "turns": 15,
+        "wall_seconds": 56
+      }
+    },
+    {
+      "id": "2026-10-13T18-21-30-a1",
+      "task": "governed-seat-usage-endpoint",
+      "arm": "kibi",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 36,
+        "cache_read_input_tokens": 792213,
+        "cache_creation_input_tokens": 54775,
+        "output_tokens": 11872,
+        "cost_usd": 0.4172498,
+        "tool_calls": 25,
+        "turns": 26,
+        "wall_seconds": 108
+      }
+    },
+    {
+      "id": "2026-10-13T17-40-42-a1",
+      "task": "governed-seat-usage-endpoint",
+      "arm": "none",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 24,
+        "cache_read_input_tokens": 434859,
+        "cache_creation_input_tokens": 35878,
+        "output_tokens": 9712,
+        "cost_usd": 0.28430239999999996,
+        "tool_calls": 17,
+        "turns": 18,
+        "wall_seconds": 70
+      }
+    },
+    {
+      "id": "2026-10-13T17-32-44-a1",
+      "task": "governed-share-link-max-downloads",
+      "arm": "agents-md",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 36,
+        "cache_read_input_tokens": 923206,
+        "cache_creation_input_tokens": 61550,
+        "output_tokens": 22707,
+        "cost_usd": 0.5657956000000001,
+        "tool_calls": 45,
+        "turns": 46,
+        "wall_seconds": 168
+      }
+    },
+    {
+      "id": "2026-10-13T18-26-04-a1",
+      "task": "governed-share-link-max-downloads",
+      "arm": "kibi",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 68,
+        "cache_read_input_tokens": 2056942,
+        "cache_creation_input_tokens": 86570,
+        "output_tokens": 24757,
+        "cost_usd": 0.7998132,
+        "tool_calls": 54,
+        "turns": 55,
+        "wall_seconds": 249
+      }
+    },
+    {
+      "id": "2026-10-13T17-42-34-a1",
+      "task": "governed-share-link-max-downloads",
+      "arm": "none",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 48,
+        "cache_read_input_tokens": 1290756,
+        "cache_creation_input_tokens": 70113,
+        "output_tokens": 25543,
+        "cost_usd": 0.6651866,
+        "tool_calls": 45,
+        "turns": 46,
+        "wall_seconds": 190
+      }
+    },
+    {
+      "id": "2026-10-13T17-36-34-a1",
+      "task": "governed-share-links-deleted-organization",
+      "arm": "agents-md",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 36,
+        "cache_read_input_tokens": 868599,
+        "cache_creation_input_tokens": 57304,
+        "output_tokens": 17047,
+        "cost_usd": 0.4867796,
+        "tool_calls": 36,
+        "turns": 37,
+        "wall_seconds": 138
+      }
+    },
+    {
+      "id": "2026-10-13T18-32-30-a1",
+      "task": "governed-share-links-deleted-organization",
+      "arm": "kibi",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 27,
+        "cache_read_input_tokens": 602241,
+        "cache_creation_input_tokens": 53907,
+        "output_tokens": 13378,
+        "cost_usd": 0.4098478,
+        "tool_calls": 28,
+        "turns": 29,
+        "wall_seconds": 232
+      }
+    },
+    {
+      "id": "2026-10-13T17-46-37-a1",
+      "task": "governed-share-links-deleted-organization",
+      "arm": "none",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 38,
+        "cache_read_input_tokens": 877206,
+        "cache_creation_input_tokens": 50642,
+        "output_tokens": 18174,
+        "cost_usd": 0.47226829999999986,
+        "tool_calls": 42,
+        "turns": 43,
+        "wall_seconds": 144
+      }
+    },
+    {
+      "id": "2026-10-13T17-39-42-a1",
+      "task": "governed-webhook-test-endpoint",
+      "arm": "agents-md",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 16,
+        "cache_read_input_tokens": 272325,
+        "cache_creation_input_tokens": 28366,
+        "output_tokens": 7117,
+        "cost_usd": 0.21203439999999998,
+        "tool_calls": 13,
+        "turns": 14,
+        "wall_seconds": 49
+      }
+    },
+    {
+      "id": "2026-10-13T18-39-15-a1",
+      "task": "governed-webhook-test-endpoint",
+      "arm": "kibi",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 34,
+        "cache_read_input_tokens": 674870,
+        "cache_creation_input_tokens": 55140,
+        "output_tokens": 12774,
+        "cost_usd": 0.4159914,
+        "tool_calls": 23,
+        "turns": 24,
+        "wall_seconds": 99
+      }
+    },
+    {
+      "id": "2026-10-13T17-49-52-a1",
+      "task": "governed-webhook-test-endpoint",
+      "arm": "none",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 24,
+        "cache_read_input_tokens": 399126,
+        "cache_creation_input_tokens": 31278,
+        "output_tokens": 9338,
+        "cost_usd": 0.2585885,
+        "tool_calls": 18,
+        "turns": 19,
+        "wall_seconds": 65
+      }
+    },
+    {
+      "id": "2026-10-13T17-41-12-a1",
+      "task": "history-entitlement-checkout-discount-coupon",
+      "arm": "agents-md",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 20,
+        "cache_read_input_tokens": 402480,
+        "cache_creation_input_tokens": 39334,
+        "output_tokens": 10093,
+        "cost_usd": 0.29874619999999996,
+        "tool_calls": 18,
+        "turns": 19,
+        "wall_seconds": 71
+      }
+    },
+    {
+      "id": "2026-10-13T17-56-36-a1",
+      "task": "history-entitlement-checkout-discount-coupon",
+      "arm": "kibi",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 24,
+        "cache_read_input_tokens": 461225,
+        "cache_creation_input_tokens": 47997,
+        "output_tokens": 11125,
+        "cost_usd": 0.3496762,
+        "tool_calls": 21,
+        "turns": 22,
+        "wall_seconds": 101
+      }
+    },
+    {
+      "id": "2026-10-13T17-51-34-a1",
+      "task": "history-entitlement-checkout-discount-coupon",
+      "arm": "none",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 10,
+        "cache_read_input_tokens": 150790,
+        "cache_creation_input_tokens": 32075,
+        "output_tokens": 5875,
+        "cost_usd": 0.2024402,
+        "tool_calls": 17,
+        "turns": 18,
+        "wall_seconds": 53
+      }
+    },
+    {
+      "id": "2026-10-13T17-43-08-a1",
+      "task": "history-fts5-index-maintenance-match-filter",
+      "arm": "agents-md",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 24,
+        "cache_read_input_tokens": 427495,
+        "cache_creation_input_tokens": 29672,
+        "output_tokens": 6837,
+        "cost_usd": 0.2300326,
+        "tool_calls": 22,
+        "turns": 23,
+        "wall_seconds": 71
+      }
+    },
+    {
+      "id": "2026-10-13T18-00-34-a1",
+      "task": "history-fts5-index-maintenance-match-filter",
+      "arm": "kibi",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 34,
+        "cache_read_input_tokens": 596899,
+        "cache_creation_input_tokens": 36775,
+        "output_tokens": 9164,
+        "cost_usd": 0.29867499999999997,
+        "tool_calls": 30,
+        "turns": 31,
+        "wall_seconds": 148
+      }
+    },
+    {
+      "id": "2026-10-13T17-53-20-a1",
+      "task": "history-fts5-index-maintenance-match-filter",
+      "arm": "none",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 24,
+        "cache_read_input_tokens": 384764,
+        "cache_creation_input_tokens": 23904,
+        "output_tokens": 7148,
+        "cost_usd": 0.205794,
+        "tool_calls": 24,
+        "turns": 25,
+        "wall_seconds": 70
+      }
+    },
+    {
+      "id": "2026-10-13T17-44-58-a1",
+      "task": "history-intake-emails-require-webhook-secret",
+      "arm": "agents-md",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 16,
+        "cache_read_input_tokens": 264417,
+        "cache_creation_input_tokens": 24274,
+        "output_tokens": 5537,
+        "cost_usd": 0.179112,
+        "tool_calls": 12,
+        "turns": 13,
+        "wall_seconds": 52
+      }
+    },
+    {
+      "id": "2026-10-13T18-05-45-a1",
+      "task": "history-intake-emails-require-webhook-secret",
+      "arm": "kibi",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 24,
+        "cache_read_input_tokens": 352857,
+        "cache_creation_input_tokens": 26973,
+        "output_tokens": 4948,
+        "cost_usd": 0.192878,
+        "tool_calls": 15,
+        "turns": 16,
+        "wall_seconds": 69
+      }
+    },
+    {
+      "id": "2026-10-13T17-55-11-a1",
+      "task": "history-intake-emails-require-webhook-secret",
+      "arm": "none",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 18,
+        "cache_read_input_tokens": 253112,
+        "cache_creation_input_tokens": 17021,
+        "output_tokens": 4730,
+        "cost_usd": 0.14090350000000001,
+        "tool_calls": 13,
+        "turns": 14,
+        "wall_seconds": 47
+      }
+    },
+    {
+      "id": "2026-10-13T17-46-49-a1",
+      "task": "history-plans-resolve-subscription-price-ids",
+      "arm": "agents-md",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 10,
+        "cache_read_input_tokens": 155688,
+        "cache_creation_input_tokens": 24683,
+        "output_tokens": 5674,
+        "cost_usd": 0.1712454,
+        "tool_calls": 11,
+        "turns": 12,
+        "wall_seconds": 58
+      }
+    },
+    {
+      "id": "2026-10-13T18-09-49-a1",
+      "task": "history-plans-resolve-subscription-price-ids",
+      "arm": "kibi",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 32,
+        "cache_read_input_tokens": 550063,
+        "cache_creation_input_tokens": 40234,
+        "output_tokens": 8297,
+        "cost_usd": 0.29915939999999996,
+        "tool_calls": 19,
+        "turns": 20,
+        "wall_seconds": 108
+      }
+    },
+    {
+      "id": "2026-10-13T17-56-57-a1",
+      "task": "history-plans-resolve-subscription-price-ids",
+      "arm": "none",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 25,
+        "cache_read_input_tokens": 436430,
+        "cache_creation_input_tokens": 25699,
+        "output_tokens": 7537,
+        "cost_usd": 0.2220396,
+        "tool_calls": 24,
+        "turns": 25,
+        "wall_seconds": 106
+      }
+    },
+    {
+      "id": "2026-10-13T17-48-27-a1",
+      "task": "history-storage-key-document-dates",
+      "arm": "agents-md",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 40,
+        "cache_read_input_tokens": 1001857,
+        "cache_creation_input_tokens": 54011,
+        "output_tokens": 14464,
+        "cost_usd": 0.4611255000000001,
+        "tool_calls": 48,
+        "turns": 49,
+        "wall_seconds": 114
+      }
+    },
+    {
+      "id": "2026-10-13T18-14-31-a1",
+      "task": "history-storage-key-document-dates",
+      "arm": "kibi",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 46,
+        "cache_read_input_tokens": 1025582,
+        "cache_creation_input_tokens": 63154,
+        "output_tokens": 13901,
+        "cost_usd": 0.49445300000000003,
+        "tool_calls": 45,
+        "turns": 46,
+        "wall_seconds": 234
+      }
+    },
+    {
+      "id": "2026-10-13T17-59-43-a1",
+      "task": "history-storage-key-document-dates",
+      "arm": "none",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 34,
+        "cache_read_input_tokens": 759319,
+        "cache_creation_input_tokens": 44663,
+        "output_tokens": 13149,
+        "cost_usd": 0.38631869999999996,
+        "tool_calls": 35,
+        "turns": 36,
+        "wall_seconds": 125
+      }
+    },
+    {
+      "id": "2026-10-13T17-50-57-a1",
+      "task": "ungoverned-rename-document-view",
+      "arm": "agents-md",
+      "attempt": 1,
+      "outcome": "F",
+      "pass": false,
+      "usage": {
+        "input_tokens": 16,
+        "cache_read_input_tokens": 243538,
+        "cache_creation_input_tokens": 23329,
+        "output_tokens": 5464,
+        "cost_usd": 0.17259980000000003,
+        "tool_calls": 12,
+        "turns": 13,
+        "wall_seconds": 52
+      }
+    },
+    {
+      "id": "2026-10-13T18-21-44-a1",
+      "task": "ungoverned-rename-document-view",
+      "arm": "kibi",
+      "attempt": 1,
+      "outcome": "F",
+      "pass": false,
+      "usage": {
+        "input_tokens": 30,
+        "cache_read_input_tokens": 469723,
+        "cache_creation_input_tokens": 31749,
+        "output_tokens": 8159,
+        "cost_usd": 0.2557518,
+        "tool_calls": 16,
+        "turns": 17,
+        "wall_seconds": 96
+      }
+    },
+    {
+      "id": "2026-10-13T18-02-57-a1",
+      "task": "ungoverned-rename-document-view",
+      "arm": "none",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 20,
+        "cache_read_input_tokens": 300778,
+        "cache_creation_input_tokens": 22685,
+        "output_tokens": 7479,
+        "cost_usd": 0.1957823,
+        "tool_calls": 17,
+        "turns": 18,
+        "wall_seconds": 74
+      }
+    },
+    {
+      "id": "2026-10-13T17-52-23-a1",
+      "task": "ungoverned-share-link-touch-delay",
+      "arm": "agents-md",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 18,
+        "cache_read_input_tokens": 261251,
+        "cache_creation_input_tokens": 17367,
+        "output_tokens": 2739,
+        "cost_usd": 0.1231555,
+        "tool_calls": 10,
+        "turns": 11,
+        "wall_seconds": 31
+      }
+    },
+    {
+      "id": "2026-10-13T18-25-55-a1",
+      "task": "ungoverned-share-link-touch-delay",
+      "arm": "kibi",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 30,
+        "cache_read_input_tokens": 428441,
+        "cache_creation_input_tokens": 24024,
+        "output_tokens": 3280,
+        "cost_usd": 0.17193650000000002,
+        "tool_calls": 14,
+        "turns": 15,
+        "wall_seconds": 55
+      }
+    },
+    {
+      "id": "2026-10-13T18-05-11-a1",
+      "task": "ungoverned-share-link-touch-delay",
+      "arm": "none",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 12,
+        "cache_read_input_tokens": 149034,
+        "cache_creation_input_tokens": 14051,
+        "output_tokens": 2205,
+        "cost_usd": 0.0933178,
+        "tool_calls": 7,
+        "turns": 8,
+        "wall_seconds": 33
+      }
+    },
+    {
+      "id": "2026-10-13T17-53-34-a1",
+      "task": "ungoverned-webhook-delivery-history",
+      "arm": "agents-md",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 34,
+        "cache_read_input_tokens": 693266,
+        "cache_creation_input_tokens": 42032,
+        "output_tokens": 16635,
+        "cost_usd": 0.4041701,
+        "tool_calls": 30,
+        "turns": 31,
+        "wall_seconds": 112
+      }
+    },
+    {
+      "id": "2026-10-13T18-29-16-a1",
+      "task": "ungoverned-webhook-delivery-history",
+      "arm": "kibi",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 42,
+        "cache_read_input_tokens": 964229,
+        "cache_creation_input_tokens": 54038,
+        "output_tokens": 15413,
+        "cost_usd": 0.4670769,
+        "tool_calls": 29,
+        "turns": 30,
+        "wall_seconds": 127
+      }
+    },
+    {
+      "id": "2026-10-13T18-06-49-a1",
+      "task": "ungoverned-webhook-delivery-history",
+      "arm": "none",
+      "attempt": 1,
+      "outcome": "C",
+      "pass": true,
+      "usage": {
+        "input_tokens": 30,
+        "cache_read_input_tokens": 515871,
+        "cache_creation_input_tokens": 31252,
+        "output_tokens": 10695,
+        "cost_usd": 0.2837436,
+        "tool_calls": 25,
+        "turns": 26,
+        "wall_seconds": 94
+      }
+    }
+  ]
+}

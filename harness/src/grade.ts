@@ -7,12 +7,13 @@ import type { AgentConfig, Grade, OutcomeClass, ProjectConfig, Rule, Task, TestO
 import type { AgentResult } from './agent.ts';
 import { BASE_BRANCH, GIT_IDENTITY, workspaceDir } from './workspace.ts';
 
-const RULE_RECORD_PATHS: Record<string, RegExp> = {
+export const RULE_RECORD_PATHS: Record<string, RegExp> = {
   kibi: /^\.kb\//,
   'agents-md': /^(AGENTS|CLAUDE)\.md$/,
+  docs: /^docs\/decisions\//,
 };
 
-const NON_SOURCE = /(\.test\.ts$|\.spec\.ts$|^\.kb\/|^(AGENTS|CLAUDE)\.md$|pnpm-lock\.yaml$|package-lock\.json$|yarn\.lock$|^\.claude\/)/;
+export const NON_SOURCE = /(\.test\.ts$|\.spec\.ts$|^\.kb\/|^(AGENTS|CLAUDE)\.md$|^docs\/|pnpm-lock\.yaml$|package-lock\.json$|yarn\.lock$|^\.claude\/)/;
 
 export interface GradeInputs {
   dir: string;
@@ -30,11 +31,11 @@ function q(s: string): string {
 }
 
 /** Paths in tasks and rules may be written relative to the repo root or to tests.cwd. */
-function splitTestRef(ref: string): { file: string; name?: string } {
+export function splitTestRef(ref: string): { file: string; name?: string } {
   const [file, name] = ref.split('::');
   return { file, name };
 }
-function toRepoRel(project: ProjectConfig, file: string): string {
+export function toRepoRel(project: ProjectConfig, file: string): string {
   const cwd = project.tests.cwd?.replace(/\/$/, '');
   if (!cwd) return file;
   return file.startsWith(cwd + '/') ? file : `${cwd}/${file}`;
@@ -45,9 +46,9 @@ function toCwdRel(project: ProjectConfig, file: string): string {
   return file.startsWith(cwd + '/') ? file.slice(cwd.length + 1) : file;
 }
 
-export function changedFiles(ws: string): string[] {
+export function changedFiles(ws: string, ref: string = BASE_BRANCH): string[] {
   must(`git -C ${q(ws)} add -A -N`, { env: { ...process.env, ...GIT_IDENTITY } });
-  const out = sh(`git -C ${q(ws)} diff --name-only ${BASE_BRANCH}`, { quiet: true }).stdout;
+  const out = sh(`git -C ${q(ws)} diff --name-only ${ref}`, { quiet: true }).stdout;
   return out.split('\n').map((s) => s.trim()).filter(Boolean);
 }
 
@@ -93,7 +94,7 @@ interface VitestJson {
   testResults: Array<{ name: string; status: string; message?: string; assertionResults: Array<{ fullName: string; title: string; status: string }> }>;
 }
 
-function runVitest(ws: string, project: ProjectConfig, dir: string, label: string, refs: string[] | 'all'): TestOutcome {
+export function runVitest(ws: string, project: ProjectConfig, dir: string, label: string, refs: string[] | 'all'): TestOutcome {
   const cwd = join(ws, project.tests.cwd ?? '.');
   const report = join(dir, `tests-${label}.json`);
   const files = refs === 'all' ? [] : [...new Set(refs.map((r) => toCwdRel(project, splitTestRef(r).file)))];
@@ -206,7 +207,8 @@ export function decide(task: Task, grade: Grade, verdict: JudgeVerdict | undefin
 
   if (task.kind === 'conflict') {
     if (broke) {
-      if (grade.rule_record_changed && yes('disclosed_conflict')) return 'D';
+      // D: the rule record was changed and the final answer says the rule changed (or names the conflict).
+      if (grade.rule_record_changed && (yes('disclosed_conflict') || yes('disclosed_rule_change'))) return 'D';
       return named ? 'N' : 'V';
     }
     if (named) return 'S';

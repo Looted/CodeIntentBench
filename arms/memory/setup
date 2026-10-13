@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Arm `memory`: decisions live in a passive notes memory outside the repository,
+# reached over MCP (harness/src/arm-tools/memory-mcp.ts, file-backed, keyword search).
+# Arguments: <workspace> <rulesDir> <runDir>
+set -euo pipefail
+ws="$1"; rules="$2"; run="$3"
+here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+harness="$(cd "$here/../../harness" && pwd)"
+node_bin="$(command -v node)"
+cat > "$run/mcp.json" <<JSON
+{ "mcpServers": { "memory": { "command": "$node_bin", "args": ["$harness/src/arm-tools/memory-mcp.ts", "--store", "$run/memory.json"] } } }
+JSON
+if [ -n "$(ls -A "$rules" 2>/dev/null)" ]; then
+  node "$harness/src/arm-tools/seed-store.ts" memory "$run/memory.json" "$rules"
+fi

@@ -59,6 +59,8 @@ export interface ArmHost {
   path_prepend?: string[];
   /** Tool patterns the arm's tools need under `--permissions accept-edits` (merged with --allowed-tools). */
   allowed_tools?: string[];
+  /** An MCP configuration file passed with `--mcp-config` (and `--strict-mcp-config`); `${RUN_DIR}` expands. */
+  mcp_config?: string;
 }
 
 export interface AgentConfig {
@@ -135,4 +137,93 @@ export interface RunRecord {
   final_answer?: string;
   grade?: Grade;
   hygiene?: unknown;
+}
+
+// ---------------------------------------------------------------------------
+// Feature arcs: one feature revisited over several fresh sessions on a carried
+// workspace. Each family tests one public claim of a memory tool.
+
+export type ArcFamily = 'recall' | 'rationale' | 'surfacing' | 'navigation' | 'drift' | 'evidence' | 'branch' | 'standing';
+export type StepKind = 'intent' | 'work' | 'control' | 'probe';
+/** How a step's outcome is decided from tests and judge answers. */
+export type StepDecision = 'intent' | 'work' | 'conflict' | 'require' | 'leak' | 'delegated';
+/** Arc steps add L (a decision from another branch applied where it does not hold). */
+export type StepOutcome = OutcomeClass | 'L';
+
+export interface ArcIntent {
+  /** The decision in one or two sentences, as ground truth for the judge. Never shown to the agent. */
+  statement: string;
+  reason: string;
+  /** Code locations that enforce it once implemented, for the navigation family. */
+  symbols?: string[];
+  /** Hidden tests that verify it, as `<file>::<name>`; restored from `tests_commit`, or from the arc's own `tests/` directory when no commit is given, whenever a step checks the intent. */
+  tests?: string[];
+  tests_commit?: string;
+}
+
+export interface ArcStep {
+  id: string;
+  kind: StepKind;
+  prompt: string;
+  /** Git branch to work on; created from the current HEAD on first use. Default: the arc's base branch. */
+  branch?: string;
+  /** The real change this step mirrors (hidden task tests come from its commit). */
+  source?: { commit?: string; pull_request?: string };
+  /** A scripted step: no agent runs; this executable (relative to the arc directory) changes the workspace as a teammate's commit would. Not graded. */
+  script?: string;
+  /** Decision procedure; defaults by kind and family. */
+  decide?: StepDecision;
+  /** Judge question keys that must all be `yes` for `require` steps. */
+  require?: string[];
+  /** Whether the intent's hidden tests run on this step (default: every step after the intent step). */
+  check_intent?: boolean;
+  grading: {
+    accept: StepOutcome[];
+    task_tests?: string[];
+    regression_tests?: string[];
+    judge_notes?: string;
+  };
+}
+
+export interface Arc {
+  id: string;
+  project: string;
+  family: ArcFamily;
+  /** Where step 1 starts; the arc's own base. */
+  base_commit: string;
+  intent: ArcIntent;
+  steps: ArcStep[];
+  notes?: string;
+  /** Set by the loader: the arc's directory (hidden test files the benchmark owns live under `tests/`). */
+  _dir?: string;
+}
+
+export interface StepRecord {
+  id: string;
+  kind: StepKind;
+  branch: string;
+  start_commit: string;
+  end_commit?: string;
+  usage?: Usage;
+  terminal_reason?: string;
+  final_answer?: string;
+  first_lookup_turn?: number;
+  first_edit_turn?: number;
+  /** The arm's decision store changed during the step (files in the repo or the external store). */
+  record_written: boolean;
+  grade?: StepGrade;
+}
+
+export type StepGrade = Omit<Grade, 'outcome'> & { outcome: StepOutcome };
+
+export interface ArcRunRecord {
+  id: string;
+  spec: { project: string; arc: string; family: ArcFamily; arm: string; attempt: number; agent: AgentConfig };
+  started_at: string;
+  finished_at?: string;
+  steps: StepRecord[];
+  /** Every step's outcome is in its accept set. */
+  pass?: boolean;
+  invalid?: boolean;
+  cost_usd?: number;
 }

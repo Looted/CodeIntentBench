@@ -95,7 +95,7 @@ function pct(k: number, n: number): string {
 export function renderMarkdown(project: string, runs: RunRecord[]): string {
   const sums = summarize(runs);
   const L: string[] = [];
-  L.push(`# CodeRuleBench results: ${project}`);
+  L.push(`# CodeIntentBench results: ${project}`);
   L.push('');
   L.push(`${runs.length} graded runs. Rates show 95% Wilson intervals. pass^k counts tasks whose every attempt passed.`);
   L.push('');
