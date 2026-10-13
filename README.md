@@ -25,7 +25,7 @@ Per session the harness records the outcome class (surfaced and stopped, changed
 
 ## Arms
 
-Each arm is a way to keep intent between sessions. Every arm's agent gets the same words from the user and one sentence of project convention saying where decisions are recorded; the agent does the bookkeeping itself.
+Each arm is a way to keep intent between sessions. Every arm's agent gets the same words from the user and one sentence of project convention saying where decisions are recorded; the agent does the bookkeeping itself. The plain `kibi` arm is the exception: it is Kibi as shipped, with the plugin's own hooks and skills as the only instruction, and `kibi-conv` adds the sentence.
 
 | Arm | Substrate | Stands for |
 |---|---|---|
@@ -35,6 +35,7 @@ Each arm is a way to keep intent between sessions. Every arm's agent gets the sa
 | `memory` | a file-backed notes memory with keyword search over MCP | mem0, Zep, auto-memory, vector memory stores |
 | `agents-md` | one `AGENTS.md` the agent keeps updated | the always-in-context ceiling |
 | `kibi` | the [Kibi](https://github.com/Looted/kibi) knowledge base and plugin (hooks, skills, MCP) | Kibi |
+| `kibi-conv` | the same, plus the one convention sentence the other arms get | Kibi, told where decisions live |
 
 The tracker and memory arms are passive by construction: nothing fires when the agent reads or edits code. New tools join by adding an arm adapter (see [arms/README.md](arms/README.md)).
 
