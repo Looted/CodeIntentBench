@@ -4,13 +4,13 @@ import { ARMS_DIR, CACHE_DIR, PROJECTS_DIR, RUNS_DIR, loadRules } from './config
 import { must, sh } from './shell.ts';
 import type { ArmHost, ProjectConfig, Rule, RunSpec, Task } from './types.ts';
 
-export const BASE_BRANCH = 'crb-base';
+export const BASE_BRANCH = 'cib-base';
 
 export const GIT_IDENTITY = {
-  GIT_AUTHOR_NAME: 'CodeRuleBench',
-  GIT_AUTHOR_EMAIL: 'bench@coderulebench.invalid',
-  GIT_COMMITTER_NAME: 'CodeRuleBench',
-  GIT_COMMITTER_EMAIL: 'bench@coderulebench.invalid',
+  GIT_AUTHOR_NAME: 'CodeIntentBench',
+  GIT_AUTHOR_EMAIL: 'bench@codeintentbench.invalid',
+  GIT_COMMITTER_NAME: 'CodeIntentBench',
+  GIT_COMMITTER_EMAIL: 'bench@codeintentbench.invalid',
 };
 
 export function runDir(spec: RunSpec, id: string): string {
@@ -40,12 +40,19 @@ export function baseCommit(project: ProjectConfig, task: Task): string {
 
 /**
  * Create the agent's workspace: the project at the task's base commit, built,
- * with the arm applied and everything committed on `crb-base` so the agent's
- * own changes are exactly `git diff crb-base`.
+ * with the arm applied and everything committed on `cib-base` so the agent's
+ * own changes are exactly `git diff cib-base`.
  */
-export function prepareWorkspace(dir: string, project: ProjectConfig, task: Task, arm: string, log: (s: string) => void): { base: string; rules: Rule[] } {
+export interface PrepareOptions {
+  /** `applicable` (default): the project's rules whose scope exists at the commit. `none`: no rules (arcs). */
+  rules?: 'applicable' | 'none';
+  /** Append the arm's `convention.md` to CLAUDE.md (arcs: the one sentence that says where decisions live). */
+  convention?: boolean;
+}
+
+export function prepareWorkspace(dir: string, project: ProjectConfig, task: Pick<Task, 'base_commit' | 'source'>, arm: string, log: (s: string) => void, opts: PrepareOptions = {}): { base: string; rules: Rule[] } {
   const ws = workspaceDir(dir);
-  const base = baseCommit(project, task);
+  const base = task.base_commit ?? project.commit;
   const mirror = ensureMirror(project, [base, ...(task.source?.commit ? [task.source.commit] : [])]);
   if (existsSync(ws)) rmSync(ws, { recursive: true, force: true });
   mkdirSync(dir, { recursive: true });
@@ -72,14 +79,26 @@ export function prepareWorkspace(dir: string, project: ProjectConfig, task: Task
   // scope exists at that commit are part of the rule set the arm delivers; the same
   // subset is what grading uses. Every arm receives the same files.
   const rulesDir = join(dir, 'rules');
-  const rules = writeApplicableRules(ws, project, rulesDir, log);
+  let rules: Rule[] = [];
+  if (opts.rules === 'none') { rmSync(rulesDir, { recursive: true, force: true }); mkdirSync(rulesDir, { recursive: true }); }
+  else rules = writeApplicableRules(ws, project, rulesDir, log);
   const setup = join(ARMS_DIR, arm, 'setup');
   if (existsSync(setup)) {
     log(`arm setup: ${arm}`);
     must(`${JSON.stringify(setup)} ${JSON.stringify(ws)} ${JSON.stringify(rulesDir)} ${JSON.stringify(dir)}`, {
       cwd: ws,
-      env: { ...process.env, ...GIT_IDENTITY, CRB_RUN_DIR: dir, CRB_WORKSPACE: ws, CRB_RULES_DIR: rulesDir, CRB_PROJECT: project.name },
+      env: { ...process.env, ...GIT_IDENTITY, CIB_RUN_DIR: dir, CIB_WORKSPACE: ws, CIB_RULES_DIR: rulesDir, CIB_PROJECT: project.name },
     });
+  }
+
+  if (opts.convention) {
+    const conv = join(ARMS_DIR, arm, 'convention.md');
+    if (existsSync(conv)) {
+      const claude = join(ws, 'CLAUDE.md');
+      const existing = existsSync(claude) ? readFileSync(claude, 'utf8').trimEnd() + '\n\n' : '';
+      writeFileSync(claude, existing + readFileSync(conv, 'utf8').trim() + '\n');
+      log(`convention: ${arm}`);
+    }
   }
 
   // Lock files and generated artifacts the install produced are part of the base state.

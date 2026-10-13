@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/Looted/CodeRuleBench/schema/task.schema.json",
-  "title": "CodeRuleBench task",
+  "$id": "https://github.com/Looted/CodeIntentBench/schema/task.schema.json",
+  "title": "CodeIntentBench task",
   "type": "object",
   "required": ["id", "project", "kind", "prompt", "grading"],
   "additionalProperties": false,

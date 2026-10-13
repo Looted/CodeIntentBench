@@ -1,0 +1,4 @@
+{
+  "mcp_config": "${RUN_DIR}/mcp.json",
+  "allowed_tools": ["mcp__tracker__tracker_search", "mcp__tracker__tracker_get", "mcp__tracker__tracker_list", "mcp__tracker__tracker_create_issue", "mcp__tracker__tracker_update_issue"]
+}

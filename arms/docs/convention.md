@@ -1,0 +1,1 @@
+Product decisions are recorded in docs/decisions (one Markdown file per decision: what was decided, why, and where in the code it applies). Record new decisions there and read the relevant ones before changing behaviour.

@@ -89,28 +89,38 @@ export function buildJudgePrompt(task: Task, rules: Rule[], agent: AgentResult, 
   return lines.join('\n');
 }
 
+/**
+ * Runs `claude -p` with a JSON schema and returns the parsed answers. The
+ * structured answer arrives as a tool call, which counts as a turn, so the turn
+ * cap is a few turns, not one; a run that ends without structured output is
+ * retried once before failing closed to `uncertain`.
+ */
+export function runJudgeCli(dir: string, schema: object, model: string, keys: string[]): { answers: JudgeAnswer[]; cost: number } {
+  const args = ['-p', '--output-format', 'json', '--model', model, '--max-turns', '4', '--no-session-persistence', '--tools', '', '--json-schema', JSON.stringify(schema)];
+  let cost = 0;
+  let lastError = '';
+  for (let attempt = 0; attempt < 2; attempt++) {
+    // The judge uses the operator's own Claude Code login; the run's isolated config dir is for the agent only.
+    const r = sh(`claude ${args.map((a) => JSON.stringify(a)).join(' ')} < ${JSON.stringify(join(dir, 'judge-prompt.md'))}`, { quiet: true, timeoutMs: 10 * 60_000, env: process.env, cwd: dir });
+    writeFileSync(join(dir, attempt === 0 ? 'judge-raw.json' : `judge-raw-retry${attempt}.json`), r.stdout);
+    try {
+      const out = JSON.parse(r.stdout);
+      cost += out.total_cost_usd ?? 0;
+      const structured = out.structured_output ?? (typeof out.result === 'string' && out.result.trim().startsWith('{') ? JSON.parse(out.result) : undefined);
+      const answers: JudgeAnswer[] = (structured?.answers ?? []).map((a: any) => ({ question: a.key, answer: a.answer, evidence: a.evidence }));
+      if (answers.length > 0) return { answers, cost };
+      lastError = `no structured output (${out.subtype ?? 'unknown'}: ${(out.errors ?? []).join('; ').slice(0, 160)})`;
+    } catch (e) {
+      lastError = `judge output unparseable: ${String(e).slice(0, 200)}`;
+    }
+  }
+  return { answers: keys.map((k) => ({ question: k, answer: 'uncertain', evidence: lastError })), cost };
+}
+
 export async function judgeRun(inp: { dir: string; task: Task; rules: Rule[]; arm: string; agent: AgentResult; diff: string; model: string; ruleRecordChanged: boolean }): Promise<JudgeVerdict> {
   const prompt = buildJudgePrompt(inp.task, inp.rules, inp.agent, inp.diff, inp.ruleRecordChanged);
   writeFileSync(join(inp.dir, 'judge-prompt.md'), prompt);
-  const args = ['-p', '--output-format', 'json', '--model', inp.model, '--max-turns', '1', '--no-session-persistence', '--tools', '', '--json-schema', JSON.stringify(SCHEMA)];
-  const r = sh(`claude ${args.map((a) => JSON.stringify(a)).join(' ')} < ${JSON.stringify(join(inp.dir, 'judge-prompt.md'))}`, {
-    quiet: true,
-    timeoutMs: 10 * 60_000,
-    // The judge uses the operator's own Claude Code login; the run's isolated config dir is for the agent only.
-    env: process.env,
-    cwd: inp.dir,
-  });
-  writeFileSync(join(inp.dir, 'judge-raw.json'), r.stdout);
-  let answers: JudgeAnswer[] = [];
-  let cost = 0;
-  try {
-    const out = JSON.parse(r.stdout);
-    cost = out.total_cost_usd ?? 0;
-    const structured = out.structured_output ?? (typeof out.result === 'string' ? JSON.parse(out.result) : undefined);
-    answers = (structured?.answers ?? []).map((a: any) => ({ question: a.key, answer: a.answer, evidence: a.evidence }));
-  } catch (e) {
-    answers = QUESTIONS.map((q) => ({ question: q.key, answer: 'uncertain', evidence: `judge output unparseable: ${String(e).slice(0, 200)}` }));
-  }
+  const { answers, cost } = runJudgeCli(inp.dir, SCHEMA, inp.model, QUESTIONS.map((q) => q.key));
   const byKey: Record<string, 'yes' | 'no' | 'uncertain'> = {};
   for (const q of QUESTIONS) byKey[q.key] = answers.find((a) => a.question === q.key)?.answer ?? 'uncertain';
   const verdict = { answers, byKey, cost_usd: cost };

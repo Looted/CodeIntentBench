@@ -79,6 +79,7 @@ export function buildArgs(agent: AgentConfig, dir: string, arm: string, host: Ar
     const expanded = expandHostValue(p, dir, arm);
     args.push('--plugin-dir', isAbsolute(expanded) ? expanded : join(ARMS_DIR, arm, expanded));
   }
+  if (host.mcp_config) args.push('--mcp-config', expandHostValue(host.mcp_config, dir, arm), '--strict-mcp-config');
   args.push(prompt);
   return args;
 }
@@ -88,8 +89,8 @@ export async function runAgent(dir: string, arm: string, agent: AgentConfig, pro
   return runAgentWithHost(dir, arm, agent, prompt, host);
 }
 
-export async function runAgentWithHost(dir: string, arm: string, agent: AgentConfig, prompt: string, host: ArmHost): Promise<AgentResult> {
-  const ws = workspaceDir(dir);
+export async function runAgentWithHost(dir: string, arm: string, agent: AgentConfig, prompt: string, host: ArmHost, workspace?: string): Promise<AgentResult> {
+  const ws = workspace ?? workspaceDir(dir);
   const env = buildEnv(dir, arm, host);
   const args = buildArgs(agent, dir, arm, host, prompt);
   writeFileSync(join(dir, 'agent-command.json'), JSON.stringify({ cmd: 'claude', args, env_overrides: host.env ?? {} }, null, 2));
@@ -126,7 +127,9 @@ export function parseTranscript(text: string): Omit<AgentResult, 'code' | 'timed
           : typeof input.query === 'string' ? input.query.slice(0, 200)
           : JSON.stringify(input).slice(0, 200);
         out.tool_calls.push({ turn, name, input_summary: summary });
-        const isRuleLookup = /kb_|kibi/i.test(name) || (name === 'Bash' && /\bkibi\b/.test(String(input.command ?? '')));
+        // A lookup in any arm's decision store: Kibi tools, tracker or memory tools, or reading docs/decisions or AGENTS.md.
+        const target = String(input.command ?? input.file_path ?? input.path ?? '');
+        const isRuleLookup = /kb_|kibi|tracker_|memory_/i.test(name) || (/^(Bash|Read|Grep|Glob)$/.test(name) && /\bkibi\b|docs\/decisions|AGENTS\.md/.test(target));
         if (isRuleLookup && out.first_rule_lookup_turn === undefined) out.first_rule_lookup_turn = turn;
         const isEdit = EDIT_TOOLS.has(name) || (name === 'Bash' && BASH_WRITE.test(String(input.command ?? '')));
         if (isEdit && out.first_edit_turn === undefined) out.first_edit_turn = turn;
