@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Looted/CodeRuleBench/schema/task.schema.json",
+  "title": "CodeRuleBench task",
+  "type": "object",
+  "required": ["id", "project", "kind", "prompt", "grading"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+    "project": { "type": "string", "description": "Directory name under projects/." },
+    "base_commit": {
+      "type": "string",
+      "description": "Overrides the project's pinned commit (history tasks use the parent of the mined change)."
+    },
+    "kind": { "enum": ["history", "conflict", "governed", "ungoverned"] },
+    "prompt": {
+      "type": "string",
+      "description": "Exactly what the agent receives. Developer voice; never mentions rules, tools or the benchmark."
+    },
+    "governing_rules": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Rule ids the task touches. Empty for ungoverned tasks."
+    },
+    "grading": {
+      "type": "object",
+      "required": ["accept"],
+      "additionalProperties": false,
+      "properties": {
+        "accept": {
+          "type": "array",
+          "items": { "enum": ["S", "D", "C"] },
+          "minItems": 1,
+          "description": "Outcome classes that count as a pass. Conflict tasks: [S, D]. Others: [C]."
+        },
+        "task_tests": { "type": "array", "items": { "type": "string" }, "description": "FAIL_TO_PASS test commands or ids." },
+        "regression_tests": { "type": "array", "items": { "type": "string" }, "description": "PASS_TO_PASS test commands or ids." },
+        "rule_tests": { "type": "array", "items": { "type": "string" }, "description": "Hidden tests encoding governing_rules." },
+        "judge_notes": { "type": "string", "description": "What the transcript judge should look for. Hidden from the agent." }
+      }
+    },
+    "source": {
+      "type": "object",
+      "description": "Provenance for history tasks.",
+      "additionalProperties": false,
+      "properties": {
+        "commit": { "type": "string" },
+        "pull_request": { "type": "string" }
+      }
+    }
+  }
+}
