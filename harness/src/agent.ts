@@ -39,7 +39,8 @@ function isolatedConfigDir(dir: string): string {
   return cfg;
 }
 
-export function buildEnv(dir: string, arm: string, host: ArmHost): NodeJS.ProcessEnv {
+/** `dir` holds this session's config and transcript; `hostDir` is where the arm's setup put its files (`${RUN_DIR}`), the same as `dir` except in arcs, where one arm setup serves several sessions. */
+export function buildEnv(dir: string, arm: string, host: ArmHost, hostDir = dir): NodeJS.ProcessEnv {
   const env: NodeJS.ProcessEnv = { ...process.env };
   // The agent must not inherit the operator's session.
   for (const k of Object.keys(env)) {
@@ -47,15 +48,15 @@ export function buildEnv(dir: string, arm: string, host: ArmHost): NodeJS.Proces
   }
   env.CLAUDE_CONFIG_DIR = isolatedConfigDir(dir);
   const prepend = (host.path_prepend ?? []).map((p) => {
-    const abs = isAbsolute(p) ? p : join(dir, p);
+    const abs = isAbsolute(p) ? p : join(hostDir, p);
     return join(abs, 'node_modules', '.bin');
   });
   if (prepend.length > 0) env.PATH = [...prepend, env.PATH ?? ''].join(':');
-  for (const [k, v] of Object.entries(host.env ?? {})) env[k] = expandHostValue(v, dir, arm);
+  for (const [k, v] of Object.entries(host.env ?? {})) env[k] = expandHostValue(v, hostDir, arm);
   return env;
 }
 
-export function buildArgs(agent: AgentConfig, dir: string, arm: string, host: ArmHost, prompt: string): string[] {
+export function buildArgs(agent: AgentConfig, dir: string, arm: string, host: ArmHost, prompt: string, hostDir = dir): string[] {
   const args = [
     '-p',
     '--output-format', 'stream-json',
@@ -76,10 +77,10 @@ export function buildArgs(agent: AgentConfig, dir: string, arm: string, host: Ar
   if (agent.effort) args.push('--effort', agent.effort);
   if (agent.max_budget_usd) args.push('--max-budget-usd', String(agent.max_budget_usd));
   for (const p of host.plugin_dirs ?? []) {
-    const expanded = expandHostValue(p, dir, arm);
+    const expanded = expandHostValue(p, hostDir, arm);
     args.push('--plugin-dir', isAbsolute(expanded) ? expanded : join(ARMS_DIR, arm, expanded));
   }
-  if (host.mcp_config) args.push('--mcp-config', expandHostValue(host.mcp_config, dir, arm), '--strict-mcp-config');
+  if (host.mcp_config) args.push('--mcp-config', expandHostValue(host.mcp_config, hostDir, arm), '--strict-mcp-config');
   args.push(prompt);
   return args;
 }
@@ -89,10 +90,10 @@ export async function runAgent(dir: string, arm: string, agent: AgentConfig, pro
   return runAgentWithHost(dir, arm, agent, prompt, host);
 }
 
-export async function runAgentWithHost(dir: string, arm: string, agent: AgentConfig, prompt: string, host: ArmHost, workspace?: string): Promise<AgentResult> {
+export async function runAgentWithHost(dir: string, arm: string, agent: AgentConfig, prompt: string, host: ArmHost, workspace?: string, hostDir = dir): Promise<AgentResult> {
   const ws = workspace ?? workspaceDir(dir);
-  const env = buildEnv(dir, arm, host);
-  const args = buildArgs(agent, dir, arm, host, prompt);
+  const env = buildEnv(dir, arm, host, hostDir);
+  const args = buildArgs(agent, dir, arm, host, prompt, hostDir);
   writeFileSync(join(dir, 'agent-command.json'), JSON.stringify({ cmd: 'claude', args, env_overrides: host.env ?? {} }, null, 2));
   const r = await stream('claude', args, {
     cwd: ws,

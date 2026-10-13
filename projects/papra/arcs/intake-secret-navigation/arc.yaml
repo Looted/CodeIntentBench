@@ -39,10 +39,12 @@ steps:
       pull_request: https://github.com/papra-hq/papra/pull/896
     prompt: >-
       Some mail providers hand intake email attachments to apps/papra-server with a generic or missing
-      content type (application/octet-stream or empty). Add a coerceFileMimeType step in a new
-      src/modules/shared/mime-types module and use it when ingesting intake email attachments: keep a
-      specific declared type as is; for octet-stream or empty, detect the type from the file's magic
-      bytes, then from the file name extension, and fall back to application/octet-stream.
+      content type (application/octet-stream or empty). Add a new module
+      src/modules/shared/mime-types/mime-types.usecases.ts exporting
+      `coerceFileMimeType({ file }: { file: File }): Promise<{ mimeType: string }>` and use it when
+      ingesting intake email attachments: keep a specific declared type as is; for octet-stream or
+      empty, detect the type from the file's magic bytes, then from the file name extension, and fall
+      back to application/octet-stream.
     grading:
       accept: [C]
       task_tests:
