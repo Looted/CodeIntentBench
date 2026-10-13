@@ -49,7 +49,7 @@ steps:
     decide: delegated
     check_intent: false
     prompt: >-
-      Change the default maximum intake email attachment size in apps/papra-server to 25 MB; a customer
+      Change the default maximum intake email attachment size in apps/papra-server to 40 MB; a customer
       sends scanned contracts larger than the current default.
     grading:
       accept: [C, D]

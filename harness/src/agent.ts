@@ -17,6 +17,8 @@ export interface AgentResult {
   first_rule_lookup_turn?: number;
   first_edit_turn?: number;
   permission_denials: number;
+  /** What the agent was shown about recorded decisions: results of lookups in a decision store and context injected by hooks, truncated. The judge reads these; the agent's other tool results are not kept. */
+  evidence?: Array<{ turn: number; kind: 'lookup' | 'hook'; name: string; text: string }>;
 }
 
 const EDIT_TOOLS = new Set(['Edit', 'Write', 'MultiEdit', 'NotebookEdit']);
@@ -113,11 +115,30 @@ export function parseTranscript(text: string): Omit<AgentResult, 'code' | 'timed
   const usage: Usage = { input_tokens: 0, cache_read_input_tokens: 0, cache_creation_input_tokens: 0, output_tokens: 0, cost_usd: 0, tool_calls: 0, turns: 0, wall_seconds: 0 };
   const out: Omit<AgentResult, 'code' | 'timed_out'> = { usage, tools_available: [], tool_calls: [], permission_denials: 0 };
   let turn = 0;
+  const evidence: NonNullable<AgentResult['evidence']> = [];
+  const pendingLookups = new Map<string, string>(); // tool_use id → tool name, for lookups awaiting their result
+  const clip = (t: unknown, n = 2000) => { const str = typeof t === 'string' ? t : JSON.stringify(t); return str.length > n ? str.slice(0, n) + ' …' : str; };
   for (const line of text.split('\n')) {
     if (!line.trim()) continue;
     let ev: any;
     try { ev = JSON.parse(line); } catch { continue; }
     if (ev.type === 'system' && ev.subtype === 'init') out.tools_available = ev.tools ?? [];
+    if (ev.type === 'system' && ev.subtype === 'hook_response') {
+      // Context a hook injected (Kibi's requirement snippets, session-start summaries); "{}" or empty output injects nothing.
+      let ctx = '';
+      try { const o = JSON.parse(ev.output ?? ev.stdout ?? ''); ctx = o?.hookSpecificOutput?.additionalContext ?? o?.additionalContext ?? o?.systemMessage ?? ''; } catch { ctx = String(ev.output ?? '').trim(); if (ctx === '{}') ctx = ''; }
+      if (ctx) evidence.push({ turn, kind: 'hook', name: String(ev.hook_name ?? 'hook'), text: clip(ctx) });
+    }
+    if (ev.type === 'user') {
+      for (const block of ev.message?.content ?? []) {
+        if (block.type !== 'tool_result') continue;
+        const name = pendingLookups.get(block.tool_use_id);
+        if (!name) continue;
+        pendingLookups.delete(block.tool_use_id);
+        const content = Array.isArray(block.content) ? block.content.map((c: any) => c.text ?? '').join('\n') : block.content;
+        evidence.push({ turn, kind: 'lookup', name, text: clip(content) });
+      }
+    }
     if (ev.type === 'assistant') {
       turn += 1;
       for (const block of ev.message?.content ?? []) {
@@ -131,9 +152,13 @@ export function parseTranscript(text: string): Omit<AgentResult, 'code' | 'timed
           : JSON.stringify(input).slice(0, 200);
         out.tool_calls.push({ turn, name, input_summary: summary });
         // A lookup in any arm's decision store: Kibi tools, tracker or memory tools, or reading docs/decisions or AGENTS.md.
+        // The workspace path itself may contain an arm's name (runs/<arc>/kibi/…), so paths are matched on the store's own files, not on the word.
         const target = String(input.command ?? input.file_path ?? input.path ?? '');
-        const isRuleLookup = /kb_|kibi|tracker_|memory_/i.test(name) || (/^(Bash|Read|Grep|Glob)$/.test(name) && /\bkibi\b|docs\/decisions|AGENTS\.md/.test(target));
+        const isRuleLookup = /kb_|tracker_|memory_/i.test(name)
+          || (name === 'Bash' && /(^|[\s;&|(])kibi\s/.test(String(input.command ?? '')))
+          || (/^(Bash|Read|Grep|Glob)$/.test(name) && /(^|\/)\.kb\/|docs\/decisions|AGENTS\.md/.test(target));
         if (isRuleLookup && out.first_rule_lookup_turn === undefined) out.first_rule_lookup_turn = turn;
+        if (isRuleLookup && typeof block.id === 'string') pendingLookups.set(block.id, name);
         const isEdit = EDIT_TOOLS.has(name) || (name === 'Bash' && BASH_WRITE.test(String(input.command ?? '')));
         if (isEdit && out.first_edit_turn === undefined) out.first_edit_turn = turn;
       }
@@ -152,5 +177,6 @@ export function parseTranscript(text: string): Omit<AgentResult, 'code' | 'timed
     }
   }
   if (usage.turns === 0) usage.turns = turn;
+  if (evidence.length) out.evidence = evidence.slice(0, 60);
   return out;
 }

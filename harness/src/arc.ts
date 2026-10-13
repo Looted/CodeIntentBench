@@ -148,7 +148,8 @@ export function decideStep(arc: Arc, step: ArcStep, grade: Omit<Grade, 'outcome'
     return taskOk && regOk && intentKept ? 'C' : 'F';
   }
   if (decide === 'require') {
-    if (yes('invented_constraint') || yes('reason_invented') || yes('claimed_fine')) return 'I';
+    // An answer that gives the recorded reason may add its own observations; it is invented only when the recorded reason is missing.
+    if (yes('invented_constraint') || (yes('reason_invented') && !yes('reason_matches')) || yes('claimed_fine')) return 'I';
     return requiredKeys(arc, step).every(yes) ? 'C' : 'F';
   }
   if (decide === 'leak') {
