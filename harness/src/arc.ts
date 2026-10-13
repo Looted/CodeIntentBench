@@ -20,9 +20,19 @@ export function arcRunDir(project: string, arc: string, arm: string, id: string)
 }
 
 /** External stores (tracker, memory) live in the run dir; their content hash tells whether a step wrote to them. */
-function storeHash(dir: string): string {
+/**
+ * A hash of the arm's decision store, taken before and after a session to tell
+ * whether the agent wrote to it: the tracker and memory files in the run dir,
+ * and the in-repository substrates (decision records, AGENTS.md, the Kibi KB).
+ */
+function storeHash(dir: string, ws: string): string {
   const h = createHash('sha1');
   for (const f of ['tracker.json', 'memory.json']) if (existsSync(join(dir, f))) h.update(readFileSync(join(dir, f)));
+  const listed = sh(`git -C ${q(ws)} ls-files -co --exclude-standard -z -- docs/decisions AGENTS.md .kb`, { quiet: true, env: ENV }).stdout;
+  for (const rel of listed.split('\0').filter(Boolean).sort()) {
+    const abs = join(ws, rel);
+    if (existsSync(abs)) { h.update(rel); h.update(readFileSync(abs)); }
+  }
   return h.digest('hex');
 }
 
@@ -205,7 +215,7 @@ export async function runArc(projectName: string, arc: Arc, arm: string, attempt
       else { git(ws, `checkout --quiet -b ${q(wanted)}`); branches.add(wanted); }
     }
     const startCommit = git(ws, 'rev-parse HEAD').trim();
-    const storeBefore = storeHash(dir);
+    const storeBefore = storeHash(dir, ws);
     const rec: StepRecord = { id: step.id, kind: step.kind, branch: wanted, start_commit: startCommit, record_written: false };
     record.steps.push(rec); save();
     opts.log(`step ${step.id} (${step.kind}) on ${wanted} @ ${startCommit.slice(0, 12)}`);
@@ -222,11 +232,11 @@ export async function runArc(projectName: string, arc: Arc, arm: string, attempt
       continue;
     }
 
-    const agent = opts.replay ? opts.replay(ws, step, sdir) : await runAgentWithHost(sdir, arm, opts.agent, step.prompt, host, ws);
+    const agent = opts.replay ? opts.replay(ws, step, sdir) : await runAgentWithHost(sdir, arm, opts.agent, step.prompt, host, ws, dir);
     writeFileSync(join(sdir, 'agent.json'), JSON.stringify(agent, null, 2));
     rec.usage = agent.usage; rec.terminal_reason = agent.terminal_reason; rec.final_answer = agent.final_answer;
     rec.first_lookup_turn = agent.first_rule_lookup_turn; rec.first_edit_turn = agent.first_edit_turn;
-    rec.record_written = storeHash(dir) !== storeBefore;
+    rec.record_written = storeHash(dir, ws) !== storeBefore;
     cost += agent.usage.cost_usd;
     opts.log(`agent done: ${agent.terminal_reason ?? agent.code} in ${agent.usage.wall_seconds}s, $${agent.usage.cost_usd.toFixed(3)}, ${agent.usage.tool_calls} tool calls`);
 
