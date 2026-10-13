@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# Arm `kibi`: the rules are recorded in a Kibi knowledge base and reach the agent
+# through the kibi-claude plugin (hooks, skills, MCP server), installed as Kibi's
+# documentation tells users: project-local kibi-cli / kibi-mcp / kibi-core on the
+# PATH, `kibi init`, then the knowledge recorded through Kibi operations.
+# Arguments: <workspace> <rulesDir> <runDir>
+set -euo pipefail
+ws="$1"; rules="$2"; run="$3"
+here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+versions="$(cat "$here/versions.env")"; eval "$versions"
+
+# Project-local Kibi, one directory above the workspace (the plugin's MCP launcher
+# finds kibi-mcp by walking up from the workspace), so the project's own
+# package.json and lockfile stay untouched.
+mkdir -p "$run/kibi"
+( cd "$run/kibi" && npm install --silent --no-audit --no-fund "kibi-cli@$KIBI_CLI" "kibi-mcp@$KIBI_MCP" "kibi-core@$KIBI_CORE" )
+export PATH="$run/kibi/node_modules/.bin:$PATH"
+
+# The plugin at a pinned commit of the Kibi repository.
+if [ ! -d "$run/plugin/kibi-claude" ]; then
+  mkdir -p "$run/plugin"
+  cache="${CRB_CACHE_DIR:-$here/../../cache}/kibi-repo"
+  if [ ! -d "$cache/.git" ]; then git clone --quiet --filter=blob:none https://github.com/Looted/kibi "$cache"; fi
+  git -C "$cache" fetch --quiet origin "$KIBI_REPO_COMMIT" 2>/dev/null || git -C "$cache" fetch --quiet origin
+  rm -rf "$run/plugin/kibi-claude"
+  git -C "$cache" archive "$KIBI_REPO_COMMIT" packages/claude | tar -x -C "$run/plugin"
+  mv "$run/plugin/packages/claude" "$run/plugin/kibi-claude" && rmdir "$run/plugin/packages"
+fi
+
+cd "$ws"
+kibi --version > "$run/kibi-version.txt"
+kibi init
+node "$here/../../harness/src/arm-tools/kibi-import.ts" "$ws" "$rules" "$run"

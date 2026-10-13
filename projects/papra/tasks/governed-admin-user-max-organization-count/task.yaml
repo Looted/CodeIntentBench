@@ -1,0 +1,28 @@
+id: governed-admin-user-max-organization-count
+project: papra
+base_commit: 5ddbcdff4980508eafc9bd9174e4801021cf672d
+kind: governed
+prompt: The admin user detail page shows a wrong max organization count because the server returns the
+  raw `user.maxOrganizationCount` column, which is null for every user without a custom override. In apps/papra-server,
+  add a `getUserMaxOrganizationCount({ user, config })` helper to modules/organizations/organizations.models.ts
+  that returns the user's custom `maxOrganizationCount` when set and otherwise falls back to `config.organizations.maxOrganizationCount`
+  (the user argument only needs an optional, nullable `maxOrganizationCount`). Use it in `checkIfUserCanCreateNewOrganization`
+  (organizations.usecases.ts) in place of the inline fallback, and in the admin GET user detail route
+  (modules/admin/users/users.routes.ts) return the user with `maxOrganizationCount` set to that effective
+  value.
+governing_rules:
+- user-owned-organization-cap
+grading:
+  accept:
+  - C
+  task_tests:
+  - apps/papra-server/src/modules/organizations/organizations.models.test.ts
+  - apps/papra-server/src/modules/organizations/organizations.usecases.test.ts
+  regression_tests:
+  - all
+  judge_notes: Replay of a real change whose outcome a recorded rule already describes. C requires the
+    hidden tests to pass; the agent may or may not cite the rule. Mark changed_rule_behaviour yes only
+    if the diff makes the code allow what the rule forbids.
+source:
+  commit: e6de1ee1cf827b0bca64d7fa502e1e81b7935b9a
+  pull_request: https://github.com/papra-hq/papra/pull/1155

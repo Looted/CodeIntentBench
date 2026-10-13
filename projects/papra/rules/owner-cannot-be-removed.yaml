@@ -1,0 +1,16 @@
+id: owner-cannot-be-removed
+statement: >-
+  Only owners and admins can remove members from an organization, and the owner can never be removed by anyone, including themselves.
+rationale: >-
+  Removing the owner would orphan the organization (no one left who can delete it, manage billing or restore it). Regular members must not be able to eject colleagues.
+scope:
+  paths:
+    - apps/papra-server/src/modules/organizations/organizations.models.ts
+    - apps/papra-server/src/modules/organizations/organizations.usecases.ts
+  symbols:
+    - canUserRemoveMemberFromOrganization
+    - removeMemberFromOrganization
+tests:
+  - "apps/papra-server/src/modules/organizations/organizations.models.test.ts::the owner of an organization cannot be removed"
+  - "apps/papra-server/src/modules/organizations/organizations.models.test.ts::only admins or owners can remove members from an organization"
+  - "apps/papra-server/src/modules/organizations/organizations.usecases.test.ts::a member (not admin nor owner) cannot remove anyone from the organization"

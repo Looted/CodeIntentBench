@@ -1,0 +1,31 @@
+name: papra
+repository: https://github.com/papra-hq/papra
+commit: e7acb46f9bc6ca0890092a88505e083e8b516774
+license: AGPL-3.0-or-later
+description: >-
+  Document archiving platform with organizations, roles, invitations, plans and
+  share links. The benchmark scores the server package only (apps/papra-server);
+  the SolidJS client is present in the checkout but no task targets it.
+runtime:
+  node: "26"
+  package_manager: pnpm@12.4.2
+setup:
+  # Run at the repository root of the workspace after checkout.
+  install: pnpm install --frozen-lockfile
+  build: pnpm --filter "./packages/*" build
+tests:
+  # Directory, relative to the repository root, in which test commands run and
+  # to which test paths in tasks and rules are relative.
+  cwd: apps/papra-server
+  # Full unit suite (regression_tests default when a task lists none).
+  all: npx vitest run --exclude '**/*.int.test.ts'
+  # Subset: the harness appends test file paths; a JSON report is requested
+  # with `--reporter=json --outputFile=<path>`.
+  files: npx vitest run
+  # Measured here on 2026-10-13 with Node 26.11.1: install 17 s, build 7 s,
+  # unit suite 18 s, 1,231 tests.
+hidden:
+  # Test files named by a task or rule are restored from their pinned source
+  # before grading, so an agent's edits to existing tests never change the
+  # verdict. Files that are new in a history task come from its source commit.
+  restore_tests: true

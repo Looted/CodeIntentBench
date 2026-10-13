@@ -1,0 +1,31 @@
+id: history-intake-emails-require-webhook-secret
+project: papra
+base_commit: 2993c6ea6a3b266fb5b022a9a520bfdeb984b422
+kind: history
+prompt: >-
+  The intake email webhook secret currently defaults to "please-change-me", so an
+  instance that enables intake emails without setting `INTAKE_EMAILS_WEBHOOK_SECRET`
+  silently accepts webhooks signed with a well-known secret. In apps/papra-server
+  (modules/intake-emails): remove that default and make the `webhookSecret` config
+  optional (still 16 to 128 characters when provided). Add a new file
+  intake-emails.config.models.ts exporting a config validator
+  `ensureIntakeEmailWebhookSecretisSetWhenIntakeEmailsAreEnabled({ config })` that
+  throws a new `createIntakeEmailMissingWebhookSecretError` (defined in
+  intake-emails.errors.ts, code `intake_email.missing_webhook_secret`, status 500,
+  message telling the user to set INTAKE_EMAILS_WEBHOOK_SECRET) when
+  `config.intakeEmails.isEnabled` is true and no secret is set, and does nothing
+  otherwise; only the presence of the secret is checked, its format is already
+  enforced by the schema. Register this validator alongside
+  `ensureAuthSecretIsNotDefaultInProduction` in `parseConfig` (modules/config/config.ts).
+  In the ingest route of intake-emails.routes.ts, if the secret is missing at request
+  time, log an error and reject with the unauthorized error instead of verifying
+  the signature.
+governing_rules: []
+grading:
+  accept: [C]
+  task_tests:
+    - apps/papra-server/src/modules/intake-emails/intake-emails.config.models.test.ts
+  regression_tests: [all]
+source:
+  commit: c16661e93606de8759e5312020571a126f5f58e6
+  pull_request: https://github.com/papra-hq/papra/pull/1502

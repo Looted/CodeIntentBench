@@ -1,0 +1,18 @@
+id: plan-storage-and-file-size-limits
+statement: >-
+  Uploads are bounded by the organization's plan: a file larger than the plan's maximum file size is rejected, and a file that would push total stored bytes past the plan's storage quota is rejected. In both cases nothing is persisted (no database row, no stored file).
+rationale: >-
+  Storage is the main cost driver and the main differentiator between plans; enforcing both limits at upload time, with cleanup on failure, keeps quotas accurate and prevents orphaned files.
+scope:
+  paths:
+    - apps/papra-server/src/modules/documents/documents.usecases.ts
+    - apps/papra-server/src/modules/organizations/organizations.usecases.ts
+    - apps/papra-server/src/modules/plans/plans.repository.ts
+  symbols:
+    - createDocument
+    - createNewDocument
+    - getOrganizationStorageLimits
+    - getOrganizationPlansRecords
+tests:
+  - "apps/papra-server/src/modules/documents/documents.usecases.test.ts::if the document size exceeds the organization storage limit, an error is thrown and nothing is saved in the db"
+  - "apps/papra-server/src/modules/documents/documents.usecases.test.ts::when a document is created that exceeds the file size limit, an error is thrown and nothing is saved in the db"

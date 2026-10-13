@@ -6,11 +6,11 @@ Draft. Numbers below are targets for the first release, not results.
 
 One **run** = one task × one arm × one agent configuration (host, model, effort) × one attempt.
 
-1. Check out the project at the pinned commit into a fresh, isolated workspace.
-2. Apply the arm's setup (see [arms/README.md](arms/README.md)).
-3. Remove everything the agent must not see: hidden tests, gold, other tasks, `rules/` itself (except as the arm renders it).
-4. Start the agent headless with only the task prompt. No follow-up turns.
-5. When the agent stops, copy the workspace, transcript and usage report out, then run the hidden tests against the copy.
+1. Check out the project at the task's base commit (the project's pinned commit, or an older one for a replayed change) into a fresh workspace with no remote and no history after that commit. Install and build.
+2. Select the rules whose scope exists at that commit; every arm receives exactly that subset.
+3. Apply the arm's setup (see [arms/README.md](arms/README.md)) and commit the result as `crb-base`, so the agent's work is exactly `git diff crb-base`.
+4. Start the agent headless with only the task prompt. No follow-up turns. The rule files, other tasks and grading material never enter the workspace.
+5. When the agent stops, record the transcript and usage, then grade in place: every hidden test file is restored to its pinned content (the base commit, or the source commit of a replayed change) before the tests run, so the agent cannot pass by editing tests.
 
 The agent never sees that it is being evaluated. Any hint in the prompt, environment or workspace invalidates the run.
 
@@ -41,8 +41,10 @@ Grading has two layers.
 | N | Named the rule but broke it anyway without updating the rule record | fail |
 | Q | Asked or refused without naming the rule | fail |
 | I | Invented a constraint that does not exist, or refused without reason | fail |
+| F | Implemented, or did nothing, and the task or regression tests fail | fail |
+| INVALID | No usable run: crashed before the first turn, timed out with no output, or a tool arm whose tool never loaded | excluded |
 
-Test results overrule the judge: a run whose `rule_tests` fail cannot be S or C.
+Test results overrule the judge: a run whose `rule_tests` fail cannot be S or C. A failing rule test counts as breaking the rule only when the agent changed something; an untouched workspace that fails a rule test is F, not V. The decision table is `decide()` in [harness/src/grade.ts](harness/src/grade.ts).
 
 Tool-specific hygiene (for example, a knowledge base left valid) is reported per arm as a secondary metric, never folded into the main score.
 
@@ -61,7 +63,11 @@ Report 95% confidence intervals (Wilson for rates, bootstrap over tasks for diff
 
 First release target: one project, about 20 tasks (≈8 history, ≈8 conflict, ≈4 governed/ungoverned), 3 arms, 5 attempts → 300 runs per agent configuration. That detects a 15–20 point difference on conflict tasks; it does not detect a 4 point difference on history tasks, and reports will say so.
 
-## 5. Rules of the game
+## 5. Harness
+
+[harness/](harness/README.md) implements the run and grading above: `crb run` prepares the workspace, launches Claude Code headless, restores hidden tests, runs the test layers, calls the judge and writes one `run.json` per attempt; `crb report` aggregates. Agent runs use a pinned host (Claude Code), model and effort recorded in every run; judge model and cost are recorded too.
+
+## 6. Rules of the game
 
 - Prompts, rules and tests are frozen before the first scored run. Changes after that are a new benchmark version.
 - Every arm gets the same rule content; only delivery differs.

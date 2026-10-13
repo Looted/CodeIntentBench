@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Reports the state of the knowledge base after the agent stopped: violations and
+# diagnostics from `kibi check` (which exits non-zero when it finds violations),
+# and usage metrics from `.kb/usage.log`. Arguments: <workspace> <runDir>.
+# Prints one JSON object.
+set -uo pipefail
+ws="$1"; run="$2"
+export PATH="$run/kibi/node_modules/.bin:$PATH"
+cd "$ws"
+kibi check --format json > "$run/hygiene-check.out" 2>/dev/null
+kibi usage-metrics --format json > "$run/hygiene-usage.out" 2>/dev/null
+node -e '
+const fs = require("fs");
+const read = (f, what) => { const t = fs.readFileSync(f, "utf8").trim(); try { return JSON.parse(t); } catch { return { error: `${what} produced no JSON`, raw: t.slice(-2000) }; } };
+console.log(JSON.stringify({ check: read(process.argv[1], "kibi check"), usage: read(process.argv[2], "kibi usage-metrics") }));
+' "$run/hygiene-check.out" "$run/hygiene-usage.out"

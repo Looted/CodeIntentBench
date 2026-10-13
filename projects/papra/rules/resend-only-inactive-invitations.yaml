@@ -1,0 +1,14 @@
+id: resend-only-inactive-invitations
+statement: >-
+  An invitation can be resent only when it is expired, cancelled or rejected. Pending invitations cannot be resent, and accepted invitations are historical records that can never be resent.
+rationale: >-
+  Resending moves an invitation back to pending with a fresh expiry; doing that to an accepted invitation would re-open a membership that already exists, and re-sending pending ones would be a spam vector.
+scope:
+  paths:
+    - apps/papra-server/src/modules/organizations/organizations.usecases.ts
+    - apps/papra-server/src/modules/invitations/invitations.routes.ts
+  symbols:
+    - buildResendOrganizationInvitation
+tests:
+  - "apps/papra-server/src/modules/organizations/organizations.usecases.test.ts::accepted invitations remain historical and cannot be resent"
+  - "apps/papra-server/src/modules/organizations/organizations.usecases.test.ts::an old invitation cannot be resent to a current member"

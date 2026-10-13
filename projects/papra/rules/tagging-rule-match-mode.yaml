@@ -1,0 +1,14 @@
+id: tagging-rule-match-mode
+statement: >-
+  A tagging rule applies its tags only when its conditions match according to its match mode: "all" (the default) requires every condition to match, "any" requires at least one. A rule with no conditions always matches and tags every incoming document.
+rationale: >-
+  Users build rules as condition groups; defaulting to "all" is the conservative choice that avoids over-tagging, and a condition-less rule is the explicit way to say "tag everything".
+scope:
+  paths:
+    - apps/papra-server/src/modules/tagging-rules/tagging-rules.usecases.ts
+  symbols:
+    - applyTaggingRule
+tests:
+  - "apps/papra-server/src/modules/tagging-rules/tagging-rules.usecases.test.ts::when conditionMatchMode is \"all\" (default), tags are not applied when only some conditions match"
+  - "apps/papra-server/src/modules/tagging-rules/tagging-rules.usecases.test.ts::when conditionMatchMode is \"any\", tags are applied when at least one condition matches"
+  - "apps/papra-server/src/modules/tagging-rules/tagging-rules.usecases.test.ts::a rule without conditions will apply its tags to all imported documents"
