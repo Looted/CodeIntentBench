@@ -1,10 +1,11 @@
 #!/usr/bin/env node
-import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { parseArgs } from 'node:util';
 import { runAgentWithHost, type AgentResult } from './agent.ts';
 import { RUNS_DIR, listArms, listProjects, loadProject, loadRules, loadRulesDir, loadTask, loadTasks } from './config.ts';
-import { gradeRun } from './grade.ts';
+import { decide, gradeRun } from './grade.ts';
+import { judgeRun } from './judge.ts';
 import { loadRuns, renderMarkdown, summarize } from './report.ts';
 import { must, sh } from './shell.ts';
 import type { AgentConfig, RunRecord, RunSpec, Task } from './types.ts';
@@ -21,7 +22,9 @@ const HELP = `CodeRuleBench harness
           [--permissions bypass|accept-edits] [--allowed-tools "Bash(pnpm:*),Bash(npx vitest:*)"]
           [--keep] [--skip-judge]
                                        prepare, run the agent, grade, record
-  crb grade --run DIR [--judge-model M] re-grade an existing run directory
+  crb grade --run DIR [--judge-model M] re-grade an existing run directory (needs --keep)
+  crb rejudge (--run DIR | --project P) [--judge-model M]
+                                       re-run the judge and the decision table from saved artifacts
   crb report [--project P]             aggregate runs into runs/<project>/report.md
 
 Environment: CRB_RUNS_DIR (default: <repo>/runs), CRB_CACHE_DIR (default: <repo>/cache).
@@ -177,6 +180,39 @@ async function main(): Promise<number> {
     record.grade = await gradeRun({ dir: v.run, project, task, rules, arm: record.spec.arm, agent, judgeModel: v['judge-model']!, skipJudge: v['skip-judge'] });
     writeFileSync(join(v.run, 'run.json'), JSON.stringify(record, null, 2));
     console.log(`${record.grade.outcome} (${record.grade.pass ? 'pass' : 'fail'})`);
+    return 0;
+  }
+  if (cmd === 'rejudge') {
+    const dirs: string[] = [];
+    if (v.run) dirs.push(v.run);
+    else if (v.project) {
+      const root = join(RUNS_DIR, v.project);
+      for (const task of readdirSync(root)) {
+        if (task.startsWith('_') || !statSync(join(root, task)).isDirectory()) continue;
+        for (const arm of readdirSync(join(root, task))) {
+          if (!statSync(join(root, task, arm)).isDirectory()) continue;
+          for (const id of readdirSync(join(root, task, arm))) if (existsSync(join(root, task, arm, id, 'agent.json'))) dirs.push(join(root, task, arm, id));
+        }
+      }
+    } else throw new Error('rejudge needs --run DIR or --project P');
+    for (const dir of dirs) {
+      const record = JSON.parse(readFileSync(join(dir, 'run.json'), 'utf8')) as RunRecord;
+      if (!record.grade || record.grade.invalid) continue;
+      const agent = JSON.parse(readFileSync(join(dir, 'agent.json'), 'utf8')) as AgentResult;
+      const task = loadTask(record.spec.project, record.spec.task);
+      const rules = existsSync(join(dir, 'rules')) ? loadRulesDir(join(dir, 'rules')) : loadRules(record.spec.project);
+      const diff = existsSync(join(dir, 'diff.patch')) ? readFileSync(join(dir, 'diff.patch'), 'utf8') : '';
+      const before = record.grade.outcome;
+      try {
+      const verdict = await judgeRun({ dir, task, rules, arm: record.spec.arm, agent, diff, model: v['judge-model']!, ruleRecordChanged: record.grade.rule_record_changed });
+      record.grade.judge = { answers: verdict.answers, model: v['judge-model']!, cost_usd: verdict.cost_usd };
+      record.grade.notes = (record.grade.notes ?? []).filter((n) => !n.startsWith('conflict task implemented'));
+      record.grade.outcome = decide(task, record.grade, verdict, record.grade.notes);
+      record.grade.pass = (task.grading.accept as string[]).includes(record.grade.outcome);
+      writeFileSync(join(dir, 'run.json'), JSON.stringify(record, null, 2));
+      log(`${record.spec.task}/${record.spec.arm}: ${before} → ${record.grade.outcome}`);
+      } catch (e) { log(`rejudge failed for ${dir}: ${(e as Error).message}`); }
+    }
     return 0;
   }
   if (cmd === 'report') {
