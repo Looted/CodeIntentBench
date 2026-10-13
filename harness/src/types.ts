@@ -103,6 +103,8 @@ export interface TestOutcome {
   failed_count: number;
   duration_ms: number;
   error?: string;
+  /** Tests that failed on the first run and passed when their files were re-run alone. */
+  flaked?: string[];
 }
 
 export interface JudgeAnswer {

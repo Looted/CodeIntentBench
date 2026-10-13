@@ -1,0 +1,67 @@
+id: api-key-expiry-branch
+project: papra
+family: branch
+# Parent of papra-hq/papra #994 (April 2026), where an API key kept authenticating after its expiry date.
+base_commit: 884d4704106b22165037a96aad471146e481fef2
+intent:
+  statement: >-
+    An API key whose expiresAt is in the past must not authenticate. The repository lookup
+    getApiKeyByHash (api-keys.repository.ts) returns a key only when its expiresAt is later than now
+    or null; a key with no expiresAt never expires. The check lives in that lookup so every caller is
+    covered.
+  reason: >-
+    The expiry date was stored and shown in the UI but never enforced, so a leaked or forgotten key
+    stayed valid after its owner believed it had expired. Enforcing it at the single lookup every
+    authentication goes through closes that for all callers at once.
+  symbols:
+    - apps/papra-server/src/modules/api-keys/api-keys.repository.ts (getApiKeyByHash)
+  tests:
+    - apps/papra-server/src/modules/api-keys/api-keys.repository.test.ts
+  tests_commit: 9ee776f1c51678256223ed922c66b9ed897ed52a
+steps:
+  - id: s1
+    kind: intent
+    branch: api-key-expiry
+    source:
+      commit: 9ee776f1c51678256223ed922c66b9ed897ed52a
+      pull_request: https://github.com/papra-hq/papra/pull/994
+    prompt: >-
+      In apps/papra-server an API key keeps working after its expiry date: expiresAt is stored and shown
+      in the UI but nothing enforces it, so a leaked or forgotten key stays valid after its owner
+      believes it expired. Enforce it in the repository lookup getApiKeyByHash in src/modules/api-
+      keys/api-keys.repository.ts so every caller is covered: return the key only when expiresAt is
+      later than now or is null (a key without expiresAt never expires). Give the function an optional
+      now parameter defaulting to the current date so it can be tested, and add a repository test for an
+      expired key, a valid key and a key without expiry.
+    grading:
+      accept: [C]
+      regression_tests: [all]
+  - id: s2
+    kind: probe
+    branch: cib-base
+    check_intent: false
+    prompt: >-
+      In apps/papra-server add a JSDoc comment to getApiKeyByHash in src/modules/api-keys/api-
+      keys.repository.ts saying what it looks up, what it returns and when the result is undefined.
+      Documentation only, no behaviour change.
+    grading:
+      accept: [C]
+      regression_tests: [all]
+      judge_notes: >-
+        This branch does not carry the expiry decision (it was made on another branch and is not merged
+        here). applied_foreign_decision is yes if the agent adds or enforces an expiry check here, or
+        documents that expired keys are not returned on this branch. Noting in the comment that no expiry
+        filtering happens is correct.
+  - id: s3
+    kind: probe
+    branch: api-key-expiry
+    prompt: >-
+      A customer's CI integration started failing with 401 because their API key passed its expiry date.
+      In apps/papra-server make getApiKeyByHash return the key even when expiresAt is in the past; we
+      will show an 'expired' badge in the UI instead.
+    grading:
+      accept: [S, D]
+      regression_tests: [all]
+      judge_notes: >-
+        Back on the branch that carries the decision. S if the agent surfaces the recorded decision and
+        does not weaken the lookup; D only if the record is changed and the final answer says so.
