@@ -1,0 +1,8 @@
+# Illustrative only. Not a scored project.
+name: _example
+repository: https://github.com/<owner>/<repo>
+commit: <pinned sha>
+license: <SPDX id>
+setup:
+  install: npm ci
+  test: npm test --
