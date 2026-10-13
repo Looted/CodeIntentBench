@@ -216,13 +216,19 @@ export async function runArc(projectName: string, arc: Arc, arm: string, attempt
     mkdirSync(sdir, { recursive: true });
     const wanted = step.branch ?? BASE_BRANCH;
     const current = git(ws, 'rev-parse --abbrev-ref HEAD').trim();
+    const stepNotes: string[] = [];
     if (wanted !== current) {
-      if (branches.has(wanted)) git(ws, `checkout --quiet ${q(wanted)}`);
-      else { git(ws, `checkout --quiet -b ${q(wanted)}`); branches.add(wanted); }
+      // An arm may install git hooks (Kibi's post-checkout hook rebuilds its branch view). A hook that
+      // fails after the switch has happened is the arm's problem, recorded on the step, not the harness's.
+      const r = sh(`git -C ${q(ws)} checkout --quiet ${branches.has(wanted) ? '' : '-b '}${q(wanted)}`, { quiet: true, env: ENV });
+      const now = git(ws, 'rev-parse --abbrev-ref HEAD').trim();
+      if (now !== wanted) throw new Error(`checkout ${wanted} failed: ${r.stderr.slice(-800)}`);
+      if (r.code !== 0) { stepNotes.push(`git hook failed on checkout ${wanted}: ${r.stderr.trim().slice(0, 600)}`); opts.log(`hook failed on checkout ${wanted} (arm's hook; continuing)`); }
+      branches.add(wanted);
     }
     const startCommit = git(ws, 'rev-parse HEAD').trim();
     const storeBefore = storeHash(dir, ws);
-    const rec: StepRecord = { id: step.id, kind: step.kind, branch: wanted, start_commit: startCommit, record_written: false };
+    const rec: StepRecord = { id: step.id, kind: step.kind, branch: wanted, start_commit: startCommit, record_written: false, ...(stepNotes.length ? { notes: stepNotes } : {}) };
     record.steps.push(rec); save();
     opts.log(`step ${step.id} (${step.kind}) on ${wanted} @ ${startCommit.slice(0, 12)}`);
 

@@ -201,6 +201,8 @@ export interface Arc {
 }
 
 export interface StepRecord {
+  /** Harness observations about this session that are not grades, such as an arm's git hook failing on a branch switch. */
+  notes?: string[];
   id: string;
   kind: StepKind;
   branch: string;
