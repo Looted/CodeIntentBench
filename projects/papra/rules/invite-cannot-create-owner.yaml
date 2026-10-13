@@ -1,0 +1,15 @@
+id: invite-cannot-create-owner
+statement: >-
+  An organization has exactly one owner, the person who created it. Invitations and role changes can only grant the admin or member role; nobody can be invited or promoted as owner.
+rationale: >-
+  The owner is the single billing and accountability contact for an organization (Stripe customer, deletion and restore rights). Allowing a second owner would make ownership-based checks ambiguous.
+scope:
+  paths:
+    - apps/papra-server/src/modules/organizations/organizations.usecases.ts
+    - apps/papra-server/src/modules/organizations/organization.schemas.ts
+  symbols:
+    - buildInviteMemberToOrganization
+    - updateOrganizationMemberRole
+    - assignableOrganizationRoleSchema
+tests:
+  - "apps/papra-server/src/modules/organizations/organizations.usecases.test.ts::an invitation for the owner role cannot be created to prevent multiple owners in an organization"

@@ -1,0 +1,35 @@
+id: history-plans-resolve-subscription-price-ids
+project: papra
+base_commit: f764e3c5d4892eeb59454a23cae20b861d3f604d
+kind: history
+prompt: >-
+  Harden how the Stripe webhook handler resolves an organization plan from a
+  subscription in apps/papra-server. Today `handleStripeWebhookEvent`
+  (modules/subscriptions/subscriptions.usecases.ts) only looks at the first
+  subscription item and `plansRepository.getOrganizationPlanByPriceId` throws when
+  that price id matches no plan, which blocks the sync whenever a subscription
+  carries an add-on or an unknown price. Add a pure
+  `resolveOrganizationPlanFromPriceIds({ priceIds, organizationPlans })` function in
+  modules/plans/plans.models.ts that returns `{ organizationPlan, unknownPriceIds,
+  discardedPlanIds }`: every price id is matched against each plan's
+  `monthlyPriceId` or `annualPriceId` regardless of its position; price ids
+  matching no plan are collected in `unknownPriceIds` (in input order) instead of
+  being an error; the monthly and annual prices of the same plan are not
+  ambiguous; when the prices of several different plans are present, the most
+  generous one (highest `PLAN_PRIORITY`) is kept as `organizationPlan` and the other
+  plan ids are listed in `discardedPlanIds` (ordered by descending priority,
+  empty when a single plan matched); `organizationPlan` is undefined when nothing
+  matches or there are no items. Replace the repository method with
+  `getOrganizationPlanByPriceIds({ priceIds })` delegating to that function, and
+  update the webhook handler to pass all item price ids, log a warning for unknown
+  price ids and for discarded plans, and only throw the plan-not-found error when no
+  plan at all could be resolved.
+governing_rules: []
+grading:
+  accept: [C]
+  task_tests:
+    - apps/papra-server/src/modules/plans/plans.models.test.ts
+  regression_tests: [all]
+source:
+  commit: 18bde86c9c7de88b7cf756c04bce398d2cdcfcc0
+  pull_request: https://github.com/papra-hq/papra/pull/1405

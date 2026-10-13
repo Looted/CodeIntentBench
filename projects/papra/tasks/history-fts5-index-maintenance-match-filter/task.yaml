@@ -1,0 +1,33 @@
+id: history-fts5-index-maintenance-match-filter
+project: papra
+base_commit: 1ce778070878c74587d83945bf9020a2559938b5
+kind: history
+prompt: >-
+  Updating or deleting documents from the FTS5 search index is slow on large
+  collections (10k+ documents) because `updateDocuments` and `deleteDocuments` in
+  apps/papra-server/src/modules/documents/document-search/database-fts5/database-fts5.repository.ts
+  filter `documents_fts` only with a plain equality/IN on `document_id`, which makes
+  SQLite scan the whole virtual table. Add an FTS MATCH filter on the `document_id`
+  column to both statements (combined with `and` with the existing condition; for
+  deletes, OR the per-document terms into a single MATCH query). To build those
+  terms, create database-fts5.models.ts exporting
+  `buildFts5ColumnMatchTerm({ columnNames, value, isExactMatch })`: it trims the
+  value, replaces double/single/curly quotes with spaces so they do not break FTS5
+  syntax, wraps the value in double quotes and appends `*` for prefix matching unless
+  `isExactMatch` is true; with no column names it returns the bare quoted term, with
+  one column `name:"value"` (no curly braces), and with several `{name content}:"value"`.
+  Reuse this helper in the query builder's `formatFts5QueryValue`
+  (query-builder/query-builder.models.ts) for both the organization id term and the
+  matching-columns term, so a single matching column is now emitted as
+  `name:"foo"*` rather than `{name}:"foo"*`.
+governing_rules: []
+grading:
+  accept: [C]
+  task_tests:
+    - apps/papra-server/src/modules/documents/document-search/database-fts5/database-fts5.models.test.ts
+    - apps/papra-server/src/modules/documents/document-search/database-fts5/query-builder/query-builder.models.test.ts
+    - apps/papra-server/src/modules/documents/document-search/database-fts5/query-builder/query-builder.test.ts
+  regression_tests: [all]
+source:
+  commit: aded8322985b945b3e3776dd7031852be20cb093
+  pull_request: https://github.com/papra-hq/papra/pull/1312

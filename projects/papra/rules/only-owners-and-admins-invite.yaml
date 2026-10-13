@@ -1,0 +1,15 @@
+id: only-owners-and-admins-invite
+statement: >-
+  Only an organization's owner or admins can invite new members or resend an invitation. Regular members cannot send invitations, and non-members are rejected outright.
+rationale: >-
+  Membership changes expand who can see every document in the organization, so they are reserved to privileged roles.
+scope:
+  paths:
+    - apps/papra-server/src/modules/organizations/organizations.usecases.ts
+    - apps/papra-server/src/modules/organizations/organizations.routes.ts
+  symbols:
+    - buildInviteMemberToOrganization
+    - buildResendOrganizationInvitation
+tests:
+  - "apps/papra-server/src/modules/organizations/organizations.usecases.test.ts::only organization owners and admins can invite members, regular members cannot send invitations"
+  - "apps/papra-server/src/modules/organizations/organizations.usecases.test.ts::users who are not members of the organization cannot send invitations to prevent unauthorized access"

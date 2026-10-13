@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Arm `agents-md`: all rules rendered once into AGENTS.md (+ CLAUDE.md pointer) at the workspace root.
+# Arguments: <workspace> <rulesDir> <runDir>
+set -euo pipefail
+ws="$1"; rules="$2"
+here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+node "$here/../../harness/src/arm-tools/render-agents-md.ts" "$ws" "$rules" "${CRB_PROJECT:-project}"

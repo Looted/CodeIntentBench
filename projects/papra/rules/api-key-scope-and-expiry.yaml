@@ -1,0 +1,18 @@
+id: api-key-scope-and-expiry
+statement: >-
+  An API key can only call routes whose required permissions are all explicitly granted to the key; a key missing any one of them is unauthorized. A key past its expiry date is treated as if it did not exist, while a key with no expiry never expires.
+rationale: >-
+  API keys are long-lived credentials used by scripts and integrations; least-privilege scoping and hard expiry limit the blast radius of a leaked key.
+scope:
+  paths:
+    - apps/papra-server/src/modules/app/auth/auth.models.ts
+    - apps/papra-server/src/modules/app/auth/auth.middleware.ts
+    - apps/papra-server/src/modules/api-keys/api-keys.repository.ts
+  symbols:
+    - isAuthenticationValid
+    - requireAuthentication
+    - createApiKeysRepository
+tests:
+  - "apps/papra-server/src/modules/app/auth/auth.models.test.ts::when the auth type is api-key, all permissions must match"
+  - "apps/papra-server/src/modules/api-keys/e2e/create-custom-property-with-api-key.e2e.test.ts::without the custom-properties:create permission, creating a custom property definition with an api key should fail"
+  - "apps/papra-server/src/modules/api-keys/api-keys.repository.test.ts::when retrieving an api key by hash, it only returns the api key if it is not expired"
