@@ -51,7 +51,7 @@ Each project is a public repository pinned to a commit, plus a rule layer and ta
 - **SWE-bench** and successors: hidden-test grading, FAIL_TO_PASS / PASS_TO_PASS split.
 - **AGENTbench** ([arXiv 2602.11988](https://arxiv.org/abs/2602.11988)): context files vs none; finds small accuracy changes and over 20% higher cost. The `agents-md` arm is the comparison it motivates.
 - **OctoBench** ([arXiv 2601.10343](https://arxiv.org/abs/2601.10343)): scores task solving and rule compliance separately.
-- **RepoComplianceBench** ([arXiv 2607.26819](https://arxiv.org/abs/2607.26819)): agents vs repositories' AI contribution policies.
+- **RepoComplianceBench** ([arXiv 2607.26819](https://arxiv.org/abs/2607.26819)): agents vs repositories' AI contribution policies (bans, disclosure, verification, human hand-off). Closest neighbour, with a different rule kind: process rules about how to contribute, where CodeRuleBench tests business rules about what the code must do. Its untouched-repository condition found agents opened the policy file in 12 of 347 runs (3.5%), and its "quote the rule in AGENTS.md" condition is the counterpart of the `agents-md` arm here. CodeRuleBench adopts its evidence-bound judge design.
 - **τ-bench** (Yao et al., ICLR 2025): policy following in synthetic domains, the pass^k metric.
 - **SWE-Bench-CL** ([arXiv 2507.00014](https://arxiv.org/abs/2507.00014)): sequential tasks on one repository with memory.
 
