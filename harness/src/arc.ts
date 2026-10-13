@@ -5,7 +5,7 @@ import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node
 import { dirname, join } from 'node:path';
 import { runAgentWithHost, type AgentResult } from './agent.ts';
 import { ARMS_DIR, RUNS_DIR, loadProject } from './config.ts';
-import { NON_SOURCE, RULE_RECORD_PATHS, changedFiles, runVitest, splitTestRef, toRepoRel } from './grade.ts';
+import { NON_SOURCE, RULE_RECORD_PATHS, changedFiles, runRegression, runVitest, splitTestRef, toRepoRel } from './grade.ts';
 import { defaultDecision, judgeStep, requiredKeys } from './judge-arc.ts';
 import type { JudgeVerdict } from './judge.ts';
 import { must, sh } from './shell.ts';
@@ -112,7 +112,7 @@ export async function gradeStep(inp: StepGradeInputs): Promise<StepGrade> {
     if (step.grading.task_tests?.length) grade.task_tests = runVitest(ws, project, dir, 'task', step.grading.task_tests);
     const regression = step.grading.regression_tests;
     if (regression === undefined || regression.length > 0) {
-      grade.regression_tests = regression && regression.length > 0 && !regression.includes('all') ? runVitest(ws, project, dir, 'regression', regression) : runVitest(ws, project, dir, 'regression', 'all');
+      grade.regression_tests = regression && regression.length > 0 && !regression.includes('all') ? runRegression(ws, project, dir, regression) : runRegression(ws, project, dir, 'all');
     }
   });
 
