@@ -57,6 +57,10 @@ node src/cli.ts run --project papra --task conflict-admins-invite-owner --arm no
 node src/cli.ts report --project papra
 ```
 
+## Results
+
+- [Papra pilot, 13 October 2026](results/papra-pilot-2026-10-13.md): 32 tasks, three arms, one attempt, claude-sonnet-5-5.
+
 ## Related work
 
 - **SWE-bench** and successors: hidden-test grading, FAIL_TO_PASS / PASS_TO_PASS split.
