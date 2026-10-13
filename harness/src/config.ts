@@ -2,13 +2,13 @@ import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { join, resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import YAML from 'yaml';
-import type { ProjectConfig, Rule, Task } from './types.ts';
+import type { Arc, ProjectConfig, Rule, Task } from './types.ts';
 
 export const REPO_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..');
 export const PROJECTS_DIR = join(REPO_ROOT, 'projects');
 export const ARMS_DIR = join(REPO_ROOT, 'arms');
-export const RUNS_DIR = process.env.CRB_RUNS_DIR ? resolve(process.env.CRB_RUNS_DIR) : join(REPO_ROOT, 'runs');
-export const CACHE_DIR = process.env.CRB_CACHE_DIR ? resolve(process.env.CRB_CACHE_DIR) : join(REPO_ROOT, 'cache');
+export const RUNS_DIR = process.env.CIB_RUNS_DIR ? resolve(process.env.CIB_RUNS_DIR) : join(REPO_ROOT, 'runs');
+export const CACHE_DIR = process.env.CIB_CACHE_DIR ? resolve(process.env.CIB_CACHE_DIR) : join(REPO_ROOT, 'cache');
 
 function readYaml<T>(path: string): T {
   return YAML.parse(readFileSync(path, 'utf8')) as T;
@@ -54,4 +54,19 @@ export function listProjects(): string[] {
 
 export function listArms(): string[] {
   return readdirSync(ARMS_DIR).filter((f) => statSync(join(ARMS_DIR, f)).isDirectory());
+}
+
+export function loadArcs(project: string): Arc[] {
+  const dir = join(PROJECTS_DIR, project, 'arcs');
+  if (!existsSync(dir)) return [];
+  return readdirSync(dir)
+    .filter((f) => statSync(join(dir, f)).isDirectory() && existsSync(join(dir, f, 'arc.yaml')))
+    .sort()
+    .map((f) => ({ ...readYaml<Arc>(join(dir, f, 'arc.yaml')), _dir: join(dir, f) }));
+}
+
+export function loadArc(project: string, id: string): Arc {
+  const arc = loadArcs(project).find((a) => a.id === id);
+  if (!arc) throw new Error(`unknown arc '${id}' in project '${project}'`);
+  return arc;
 }

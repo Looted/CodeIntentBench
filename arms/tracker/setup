@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Arm `tracker`: decisions live in an issue tracker outside the repository, reached
+# over MCP (harness/src/arm-tools/tracker-mcp.ts, file-backed in the run directory).
+# Arguments: <workspace> <rulesDir> <runDir>
+set -euo pipefail
+ws="$1"; rules="$2"; run="$3"
+here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+harness="$(cd "$here/../../harness" && pwd)"
+node_bin="$(command -v node)"
+cat > "$run/mcp.json" <<JSON
+{ "mcpServers": { "tracker": { "command": "$node_bin", "args": ["$harness/src/arm-tools/tracker-mcp.ts", "--store", "$run/tracker.json"] } } }
+JSON
+if [ -n "$(ls -A "$rules" 2>/dev/null)" ]; then
+  node "$harness/src/arm-tools/seed-store.ts" tracker "$run/tracker.json" "$rules"
+fi

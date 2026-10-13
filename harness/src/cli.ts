@@ -1,37 +1,45 @@
 #!/usr/bin/env node
-import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { parseArgs } from 'node:util';
 import { runAgentWithHost, type AgentResult } from './agent.ts';
-import { RUNS_DIR, listArms, listProjects, loadProject, loadRules, loadRulesDir, loadTask, loadTasks } from './config.ts';
-import { gradeRun } from './grade.ts';
+import { RUNS_DIR, listArms, listProjects, loadArc, loadArcs, loadProject, loadRules, loadRulesDir, loadTask, loadTasks } from './config.ts';
+import { decideStep, runArc } from './arc.ts';
+import { judgeStep } from './judge-arc.ts';
+import { loadArcRuns, renderArcsMarkdown, summarizeArcs } from './report-arcs.ts';
+import { decide, gradeRun } from './grade.ts';
+import { judgeRun } from './judge.ts';
 import { loadRuns, renderMarkdown, summarize } from './report.ts';
 import { must, sh } from './shell.ts';
-import type { AgentConfig, RunRecord, RunSpec, Task } from './types.ts';
+import type { AgentConfig, Arc, ArcRunRecord, ArcStep, RunRecord, RunSpec, Task } from './types.ts';
 import { BASE_BRANCH, GIT_IDENTITY, loadArmHost, prepareWorkspace, runDir, workspaceDir } from './workspace.ts';
 
-const HELP = `CodeRuleBench harness
+const HELP = `CodeIntentBench harness
 
-  crb validate                         check projects, rules and tasks
-  crb list [--project P]               list tasks and arms
-  crb prepare --project P --task T --arm A [--out DIR]
+  cib validate                         check projects, rules and tasks
+  cib list [--project P]               list tasks and arms
+  cib prepare --project P --task T --arm A [--out DIR]
                                        build a workspace and stop (debugging arms)
-  crb run --project P --task T|all --arm A[,B] [--attempts N] [--model M] [--effort E]
+  cib run --project P --task T|all --arm A[,B] [--attempts N] [--model M] [--effort E]
           [--max-turns N] [--timeout MIN] [--budget USD] [--judge-model M] [--agent claude|replay]
           [--permissions bypass|accept-edits] [--allowed-tools "Bash(pnpm:*),Bash(npx vitest:*)"]
           [--keep] [--skip-judge]
                                        prepare, run the agent, grade, record
-  crb grade --run DIR [--judge-model M] re-grade an existing run directory
-  crb report [--project P]             aggregate runs into runs/<project>/report.md
+  cib grade --run DIR [--judge-model M] re-grade an existing run directory (needs --keep)
+  cib rejudge (--run DIR | --project P) [--judge-model M]
+                                       re-run the judge and the decision table from saved artifacts
+  cib report [--project P]             aggregate runs into runs/<project>/report.md (and report-arcs.md)
+  cib run-arc --project P --arc A|all --arm A[,B] [--family F] [--attempts N] [agent options as for run]
+                                       run a feature arc: fresh sessions on one carried workspace
 
-Environment: CRB_RUNS_DIR (default: <repo>/runs), CRB_CACHE_DIR (default: <repo>/cache).
+Environment: CIB_RUNS_DIR (default: <repo>/runs), CIB_CACHE_DIR (default: <repo>/cache).
 Node 26 (or the project's runtime) must be on PATH before the project installs.
 `;
 
 const { values: v, positionals } = parseArgs({
   allowPositionals: true,
   options: {
-    project: { type: 'string' }, task: { type: 'string' }, arm: { type: 'string' }, out: { type: 'string' }, run: { type: 'string' },
+    project: { type: 'string' }, task: { type: 'string' }, arc: { type: 'string' }, family: { type: 'string' }, arm: { type: 'string' }, out: { type: 'string' }, run: { type: 'string' },
     attempts: { type: 'string', default: '1' }, model: { type: 'string', default: 'claude-sonnet-5-5' }, effort: { type: 'string', default: 'low' },
     'max-turns': { type: 'string', default: '60' }, timeout: { type: 'string', default: '25' }, budget: { type: 'string' },
     'judge-model': { type: 'string', default: 'claude-sonnet-5-5' }, agent: { type: 'string', default: 'claude' },
@@ -40,7 +48,7 @@ const { values: v, positionals } = parseArgs({
   },
 });
 const cmd = positionals[0];
-const log = (s: string) => process.stderr.write(`[crb] ${s}\n`);
+const log = (s: string) => process.stderr.write(`[cib] ${s}\n`);
 
 function agentConfig(): AgentConfig {
   return {
@@ -80,7 +88,30 @@ function validate(): number {
       // "tagging rule" is a product term in some projects; a bare "rule" would hint at the rule layer.
       if (/\b(kibi|requirement|knowledge base|AGENTS\.md|CLAUDE\.md|benchmark)\b/i.test(t.prompt) || /\b(?<!tagging )rules?\b/i.test(t.prompt)) err(`${p}/tasks/${t.id}: prompt mentions rules, tools or the benchmark`);
     }
-    console.log(`${p}: ${rules.length} rules, ${tasks.length} tasks (${['history', 'conflict', 'governed', 'ungoverned'].map((k) => `${tasks.filter((t) => t.kind === k).length} ${k}`).join(', ')}), commit ${project.commit.slice(0, 12)}`);
+    const arcs = loadArcs(p);
+    const arcIds = new Set<string>();
+    for (const a of arcs) {
+      if (arcIds.has(a.id)) err(`${p}/arcs/${a.id}: duplicate id`);
+      arcIds.add(a.id);
+      if (a.project !== p) err(`${p}/arcs/${a.id}: project field is '${a.project}'`);
+      if (!a.base_commit) err(`${p}/arcs/${a.id}: no base_commit`);
+      if (!a.intent?.statement?.trim() || !a.intent?.reason?.trim()) err(`${p}/arcs/${a.id}: intent needs statement and reason`);
+      if (a.intent?.tests?.length && !a.intent.tests_commit && !existsSync(join(a._dir ?? '', 'tests'))) err(`${p}/arcs/${a.id}: intent.tests without tests_commit or a tests/ directory`);
+      if (!a.steps?.length || a.steps[0].kind !== 'intent') err(`${p}/arcs/${a.id}: first step must be the intent step`);
+      if (!a.steps?.some((st) => st.kind === 'probe')) err(`${p}/arcs/${a.id}: no probe step`);
+      const stepIds = new Set<string>();
+      for (const st of a.steps ?? []) {
+        if (stepIds.has(st.id)) err(`${p}/arcs/${a.id}/${st.id}: duplicate step id`);
+        stepIds.add(st.id);
+        if (st.script && !existsSync(join(a._dir ?? '', st.script))) err(`${p}/arcs/${a.id}/${st.id}: script ${st.script} not found`);
+        if (!st.script && !st.grading?.accept?.length) err(`${p}/arcs/${a.id}/${st.id}: no accept set`);
+        if (/\b(kibi|requirement|knowledge base|AGENTS\.md|CLAUDE\.md|benchmark|tracker|memory)\b/i.test(st.prompt) && st.kind !== 'intent') err(`${p}/arcs/${a.id}/${st.id}: prompt mentions tools or the benchmark`);
+        // Questions asked from the intent side (rationale, navigation) may name the decision; work requests must not.
+        const question = st.kind === 'probe' && (a.family === 'rationale' || a.family === 'navigation');
+        if (st.kind !== 'intent' && !question && /\b(decision|decided|recorded)\b/i.test(st.prompt)) err(`${p}/arcs/${a.id}/${st.id}: prompt hints that a decision exists`);
+      }
+    }
+    console.log(`${p}: ${rules.length} rules, ${tasks.length} tasks (${['history', 'conflict', 'governed', 'ungoverned'].map((k) => `${tasks.filter((t) => t.kind === k).length} ${k}`).join(', ')}), ${arcs.length} arcs, commit ${project.commit.slice(0, 12)}`);
   }
   console.log(`arms: ${arms.join(', ')}`);
   if (errors) console.error(`${errors} error(s)`);
@@ -102,7 +133,28 @@ function replayAgent(dir: string, task: Task): AgentResult {
     final = 'Nothing to do in replay mode.';
   }
   writeFileSync(join(dir, 'transcript.jsonl'), JSON.stringify({ type: 'result', result: final, num_turns: 1, total_cost_usd: 0, usage: {} }) + '\n');
-  return { code: 0, timed_out: false, usage: { input_tokens: 0, cache_read_input_tokens: 0, cache_creation_input_tokens: 0, output_tokens: 0, cost_usd: 0, tool_calls: 0, turns: 1, wall_seconds: 0 }, terminal_reason: 'replay', final_answer: final, tools_available: ['Edit', 'Bash', ...(process.env.CRB_REPLAY_KIBI ? ['mcp__kibi__kb_search'] : [])], tool_calls: [], permission_denials: 0 };
+  return { code: 0, timed_out: false, usage: { input_tokens: 0, cache_read_input_tokens: 0, cache_creation_input_tokens: 0, output_tokens: 0, cost_usd: 0, tool_calls: 0, turns: 1, wall_seconds: 0 }, terminal_reason: 'replay', final_answer: final, tools_available: ['Edit', 'Bash', ...(process.env.CIB_REPLAY_KIBI ? ['mcp__kibi__kb_search'] : [])], tool_calls: [], permission_denials: 0 };
+}
+
+/** Scripted stand-in for an arc session: cherry-picks the step's source commit when it has one. */
+function replayStep(ws: string, step: ArcStep, dir: string): AgentResult {
+  const env = { ...process.env, ...GIT_IDENTITY };
+  let final = 'Nothing to do in replay mode.';
+  if (step.source?.commit) {
+    must(`git -C ${JSON.stringify(ws)} cherry-pick --no-commit -X theirs ${step.source.commit}`, { env });
+    sh(`git -C ${JSON.stringify(ws)} reset -q`, { env, quiet: true });
+    // A picked change that adds dependencies needs them installed, as the agent would have done.
+    const touched = sh(`git -C ${JSON.stringify(ws)} diff --name-only HEAD`, { quiet: true }).stdout;
+    if (/(^|\n)(.*\/)?package\.json\n|pnpm-lock\.yaml|package-lock\.json|yarn\.lock/.test(touched + '\n') && v.project) {
+      const r = sh(loadProject(v.project).setup.install.replace('--frozen-lockfile', ''), { cwd: ws, quiet: true, timeoutMs: 10 * 60_000 });
+      if (r.code !== 0) sh(`echo "replay install failed: ${r.stderr.slice(-500).replace(/"/g, '')}" >&2`, { quiet: true });
+    }
+    final = 'Implemented the change as requested.';
+  } else if (step.kind === 'probe') {
+    final = 'I did not make this change: it conflicts with a recorded project decision. Please confirm whether the decision should change.';
+  }
+  writeFileSync(join(dir, 'transcript.jsonl'), JSON.stringify({ type: 'result', result: final, num_turns: 1, total_cost_usd: 0, usage: {} }) + '\n');
+  return { code: 0, timed_out: false, usage: { input_tokens: 0, cache_read_input_tokens: 0, cache_creation_input_tokens: 0, output_tokens: 0, cost_usd: 0, tool_calls: 0, turns: 1, wall_seconds: 0 }, terminal_reason: 'replay', final_answer: final, tools_available: ['Edit', 'Bash', ...(process.env.CIB_REPLAY_KIBI ? ['mcp__kibi__kb_search'] : []), ...(process.env.CIB_REPLAY_MCP ? [`mcp__${process.env.CIB_REPLAY_MCP}__x`] : [])], tool_calls: [], permission_denials: 0 };
 }
 
 async function runOne(projectName: string, task: Task, arm: string, attempt: number): Promise<RunRecord> {
@@ -139,7 +191,10 @@ async function main(): Promise<number> {
   if (!cmd || v.help) { console.log(HELP); return 0; }
   if (cmd === 'validate') return validate();
   if (cmd === 'list') {
-    for (const p of v.project ? [v.project] : listProjects()) for (const t of loadTasks(p)) console.log(`${p}\t${t.kind}\t${t.id}\t${t.governing_rules?.join(',') ?? ''}`);
+    for (const p of v.project ? [v.project] : listProjects()) {
+      for (const t of loadTasks(p)) console.log(`${p}\t${t.kind}\t${t.id}\t${t.governing_rules?.join(',') ?? ''}`);
+      for (const a of loadArcs(p)) console.log(`${p}\tarc:${a.family}\t${a.id}\t${a.steps.map((s) => `${s.id}(${s.kind})`).join(' ')}`);
+    }
     console.log(`arms: ${listArms().join(', ')}`);
     return 0;
   }
@@ -165,6 +220,19 @@ async function main(): Promise<number> {
     for (const s of summarize(results)) console.log(`${s.arm}: ${s.pass}/${s.runs - s.invalid} pass, $${s.cost_usd.toFixed(2)}`);
     return 0;
   }
+  if (cmd === 'run-arc') {
+    if (!v.project || !v.arc || !v.arm) throw new Error('run-arc needs --project, --arc, --arm');
+    let arcs = v.arc === 'all' ? loadArcs(v.project) : [loadArc(v.project, v.arc)];
+    if (v.family) arcs = arcs.filter((a) => a.family === v.family);
+    const arms = v.arm.split(',');
+    const results = [];
+    for (const arc of arcs) for (const arm of arms) for (let a = 1; a <= Number(v.attempts); a++) {
+      try { results.push(await runArc(v.project, arc, arm, a, { agent: agentConfig(), judgeModel: v['judge-model']!, skipJudge: v['skip-judge'], keep: v.keep, replay: v.agent === 'replay' ? replayStep : undefined, log })); }
+      catch (e) { log(`arc failed: ${arc.id}/${arm}/${a}: ${(e as Error).message}`); }
+    }
+    for (const [key, c] of summarizeArcs(results)) { const [fam, arm] = key.split('\u0000'); if (fam === 'all') console.log(`${arm}: ${c.pass}/${c.arcs - c.invalid} arcs pass, $${c.cost_usd.toFixed(2)}`); }
+    return 0;
+  }
   if (cmd === 'grade') {
     if (!v.run) throw new Error('grade needs --run DIR');
     const record = JSON.parse(readFileSync(join(v.run, 'run.json'), 'utf8')) as RunRecord;
@@ -179,14 +247,67 @@ async function main(): Promise<number> {
     console.log(`${record.grade.outcome} (${record.grade.pass ? 'pass' : 'fail'})`);
     return 0;
   }
+  if (cmd === 'rejudge') {
+    const dirs: string[] = [];
+    if (v.run) dirs.push(v.run);
+    else if (v.project) {
+      const root = join(RUNS_DIR, v.project);
+      for (const task of readdirSync(root)) {
+        if (task.startsWith('_') || !statSync(join(root, task)).isDirectory()) continue;
+        for (const arm of readdirSync(join(root, task))) {
+          if (!statSync(join(root, task, arm)).isDirectory()) continue;
+          for (const id of readdirSync(join(root, task, arm))) if (existsSync(join(root, task, arm, id, 'agent.json'))) dirs.push(join(root, task, arm, id));
+        }
+      }
+    } else throw new Error('rejudge needs --run DIR or --project P');
+    // Arc runs: `--run` pointing at an arc run dir (has arc.json), or every arc run of the project.
+    const arcDirs = dirs.filter((d) => existsSync(join(d, 'arc.json')));
+    if (v.project && existsSync(join(RUNS_DIR, v.project, '_arcs'))) {
+      const root = join(RUNS_DIR, v.project, '_arcs');
+      for (const arc of readdirSync(root)) for (const arm of readdirSync(join(root, arc))) {
+        if (!statSync(join(root, arc, arm)).isDirectory()) continue;
+        for (const id of readdirSync(join(root, arc, arm))) if (existsSync(join(root, arc, arm, id, 'arc.json'))) arcDirs.push(join(root, arc, arm, id));
+      }
+    }
+    for (const dir of arcDirs) await rejudgeArc(dir, v['judge-model']!);
+    for (const dir of dirs) {
+      if (existsSync(join(dir, 'arc.json'))) continue;
+      const record = JSON.parse(readFileSync(join(dir, 'run.json'), 'utf8')) as RunRecord;
+      if (!record.grade || record.grade.invalid) continue;
+      const agent = JSON.parse(readFileSync(join(dir, 'agent.json'), 'utf8')) as AgentResult;
+      const task = loadTask(record.spec.project, record.spec.task);
+      const rules = existsSync(join(dir, 'rules')) ? loadRulesDir(join(dir, 'rules')) : loadRules(record.spec.project);
+      const diff = existsSync(join(dir, 'diff.patch')) ? readFileSync(join(dir, 'diff.patch'), 'utf8') : '';
+      const before = record.grade.outcome;
+      try {
+      const verdict = await judgeRun({ dir, task, rules, arm: record.spec.arm, agent, diff, model: v['judge-model']!, ruleRecordChanged: record.grade.rule_record_changed });
+      record.grade.judge = { answers: verdict.answers, model: v['judge-model']!, cost_usd: verdict.cost_usd };
+      record.grade.notes = (record.grade.notes ?? []).filter((n) => !n.startsWith('conflict task implemented'));
+      record.grade.outcome = decide(task, record.grade, verdict, record.grade.notes);
+      record.grade.pass = (task.grading.accept as string[]).includes(record.grade.outcome);
+      writeFileSync(join(dir, 'run.json'), JSON.stringify(record, null, 2));
+      log(`${record.spec.task}/${record.spec.arm}: ${before} → ${record.grade.outcome}`);
+      } catch (e) { log(`rejudge failed for ${dir}: ${(e as Error).message}`); }
+    }
+    return 0;
+  }
   if (cmd === 'report') {
     for (const p of v.project ? [v.project] : listProjects()) {
       const runs = loadRuns(p);
-      if (runs.length === 0) { console.log(`${p}: no graded runs`); continue; }
+      if (runs.length === 0) { continue; }
       const md = renderMarkdown(p, runs);
       mkdirSync(join(RUNS_DIR, p), { recursive: true });
       writeFileSync(join(RUNS_DIR, p, 'report.md'), md);
       writeFileSync(join(RUNS_DIR, p, 'report.json'), JSON.stringify({ project: p, arms: summarize(runs), runs: runs.map((r) => ({ id: r.id, task: r.spec.task, arm: r.spec.arm, attempt: r.spec.attempt, outcome: r.grade!.outcome, pass: r.grade!.pass, usage: r.usage })) }, null, 2));
+      console.log(md);
+    }
+    for (const p of v.project ? [v.project] : listProjects()) {
+      const arcRuns = loadArcRuns(p);
+      if (arcRuns.length === 0) continue;
+      const md = renderArcsMarkdown(p, arcRuns);
+      mkdirSync(join(RUNS_DIR, p), { recursive: true });
+      writeFileSync(join(RUNS_DIR, p, 'report-arcs.md'), md);
+      writeFileSync(join(RUNS_DIR, p, 'report-arcs.json'), JSON.stringify({ project: p, runs: arcRuns.map((r) => ({ id: r.id, arc: r.spec.arc, family: r.spec.family, arm: r.spec.arm, attempt: r.spec.attempt, pass: r.pass, invalid: r.invalid, cost_usd: r.cost_usd, steps: r.steps.map((s) => ({ id: s.id, kind: s.kind, outcome: s.grade?.outcome, pass: s.grade?.pass, record_written: s.record_written, first_lookup_turn: s.first_lookup_turn, first_edit_turn: s.first_edit_turn, usage: s.usage })) })) }, null, 2));
       console.log(md);
     }
     return 0;
@@ -196,3 +317,29 @@ async function main(): Promise<number> {
 }
 
 main().then((code) => process.exit(code), (e) => { console.error(e instanceof Error ? e.message : e); process.exit(1); });
+
+/** Re-runs the judge on every graded step of a finished arc run and re-applies the decision table. */
+async function rejudgeArc(dir: string, judgeModel: string): Promise<void> {
+  const record = JSON.parse(readFileSync(join(dir, 'run.json'), 'utf8')) as ArcRunRecord;
+  const arc = JSON.parse(readFileSync(join(dir, 'arc.json'), 'utf8')) as Arc;
+  const firstBranch = arc.steps[0].branch ?? BASE_BRANCH;
+  for (const rec of record.steps) {
+    const step = arc.steps.find((s) => s.id === rec.id);
+    const sdir = join(dir, 'steps', rec.id);
+    if (!step || !rec.grade || rec.grade.invalid || !existsSync(join(sdir, 'agent.json'))) continue;
+    const agent = JSON.parse(readFileSync(join(sdir, 'agent.json'), 'utf8')) as AgentResult;
+    const diff = existsSync(join(sdir, 'diff.patch')) ? readFileSync(join(sdir, 'diff.patch'), 'utf8') : '';
+    const branchNote = arc.family === 'branch' && rec.branch !== firstBranch ? `This session runs on branch ${rec.branch}; the recorded decision was made on branch ${firstBranch} and has not been merged here, so it does not hold on this branch.` : undefined;
+    const before = rec.grade.outcome;
+    try {
+      const verdict = await judgeStep({ dir: sdir, arc, step, agent, diff, model: judgeModel, recordWritten: rec.record_written, branchNote });
+      rec.grade.judge = { answers: verdict.answers, model: judgeModel, cost_usd: verdict.cost_usd };
+      rec.grade.notes = (rec.grade.notes ?? []).filter((n) => !n.startsWith('probe implemented without'));
+      rec.grade.outcome = decideStep(arc, step, rec.grade, verdict, rec.grade.notes);
+      rec.grade.pass = (step.grading.accept as string[]).includes(rec.grade.outcome);
+      log(`${record.spec.arc}/${record.spec.arm}/${rec.id}: ${before} → ${rec.grade.outcome}`);
+    } catch (e) { log(`rejudge failed for ${sdir}: ${(e as Error).message}`); }
+  }
+  record.pass = !record.invalid && record.steps.length === arc.steps.length && record.steps.every((s) => s.grade?.pass || s.terminal_reason === 'scripted');
+  writeFileSync(join(dir, 'run.json'), JSON.stringify(record, null, 2));
+}

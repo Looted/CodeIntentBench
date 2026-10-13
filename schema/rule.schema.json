@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/Looted/CodeRuleBench/schema/rule.schema.json",
-  "title": "CodeRuleBench rule",
+  "$id": "https://github.com/Looted/CodeIntentBench/schema/rule.schema.json",
+  "title": "CodeIntentBench rule",
   "description": "One recorded project rule. The neutral source every arm renders from.",
   "type": "object",
   "required": ["id", "statement", "scope"],

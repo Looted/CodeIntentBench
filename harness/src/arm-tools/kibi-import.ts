@@ -72,7 +72,12 @@ for (const rule of rules) {
     properties: {
       title: titleOf(statement),
       status: 'active',
-      origin: { kind: 'import', ref: 'project rule record' },
+      // The rules are decisions the maintainers made and enforce; Kibi's `firm`
+      // firmness tells an agent to follow them and to ask before changing them
+      // (an unmarked requirement is a `default` decision an agent may supersede
+      // on its own).
+      firmness: 'firm',
+      origin: { kind: 'human', ref: 'project maintainers: documented product rule, enforced in the code and tests named in Context' },
       semantic_text: statement,
       semantic_inventory_version: contract.version,
       semantic_source_field: contract.source_field,
