@@ -4,4 +4,4 @@
 set -euo pipefail
 ws="$1"; rules="$2"
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-node "$here/../../harness/src/arm-tools/render-agents-md.ts" "$ws" "$rules" "${CRB_PROJECT:-project}"
+node "$here/../../harness/src/arm-tools/render-agents-md.ts" "$ws" "$rules" "${CIB_PROJECT:-project}"

@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Arm `docs`: decisions live in a docs/decisions folder inside the repository, one
+# Markdown file per decision, the way maintainers leave ADRs. Nothing reads the
+# folder for the agent; the convention in CLAUDE.md is the only pointer.
+# Arguments: <workspace> <rulesDir> <runDir>
+set -euo pipefail
+ws="$1"; rules="$2"
+mkdir -p "$ws/docs/decisions"
+cat > "$ws/docs/decisions/README.md" <<'MD'
+# Decisions
+
+One file per product decision, named `NNNN-short-title.md`, with sections
+**Decision**, **Why** and **Where** (the code paths or functions it applies to).
+MD
+# In rule mode (single-session tasks) the project's rules are rendered as decision files too.
+if [ -n "$(ls -A "$rules" 2>/dev/null)" ]; then
+  here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  node "$here/../../harness/src/arm-tools/render-docs.ts" "$ws" "$rules"
+fi

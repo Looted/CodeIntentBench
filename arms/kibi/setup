@@ -19,7 +19,7 @@ export PATH="$run/kibi/node_modules/.bin:$PATH"
 # The plugin at a pinned commit of the Kibi repository.
 if [ ! -d "$run/plugin/kibi-claude" ]; then
   mkdir -p "$run/plugin"
-  cache="${CRB_CACHE_DIR:-$here/../../cache}/kibi-repo"
+  cache="${CIB_CACHE_DIR:-$here/../../cache}/kibi-repo"
   if [ ! -d "$cache/.git" ]; then git clone --quiet --filter=blob:none https://github.com/Looted/kibi "$cache"; fi
   git -C "$cache" fetch --quiet origin "$KIBI_REPO_COMMIT" 2>/dev/null || git -C "$cache" fetch --quiet origin
   rm -rf "$run/plugin/kibi-claude"

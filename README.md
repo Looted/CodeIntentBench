@@ -1,50 +1,50 @@
-# CodeRuleBench
+# CodeIntentBench
 
-A benchmark for whether coding agents **keep a project's recorded rules** while doing ordinary development tasks, and what it costs in tokens.
+A benchmark for whether coding agents **keep a project's intent across sessions**: the decisions and reasons a user stated earlier, brought back at the moment a later change would quietly undo them. It measures that for the places intent is usually kept (nothing, a docs folder, an issue tracker, a passive memory, an always-loaded context file, a knowledge-base tool) and what each costs in tokens.
 
-> Status: design draft. No tasks or results yet. See [METHODOLOGY.md](METHODOLOGY.md).
+> Status: the arc harness and the first eight arcs (one per family, on one Papra feature) are in place; the six-arm arc pilot has not run yet. v1 (single-session rule following) ran once on Papra; see [results](results/papra-pilot-2026-10-13.md) and [METHODOLOGY.md](METHODOLOGY.md).
 
 ## What it measures
 
-Most coding benchmarks ask one question: did the agent solve the task? Real projects carry rules that live outside the code being edited: "viewers are read-only", "a user has at most two roles", "refunds above a limit need approval". An agent can pass every visible test and still break one of those rules without saying so.
+Most coding benchmarks ask one question: did the agent solve the task? Real projects run for months. A user says "share links must expire, legal does not want permanent URLs" in one session, and three sessions later a refactor or a plausible request quietly drops the constraint. The code was never wrong; the intent was lost.
 
-CodeRuleBench gives an agent ordinary, unscripted development requests on a real codebase. Some requests are compatible with the project's rules, some quietly conflict with one, and some touch areas no rule governs. Each run is scored on:
+CodeIntentBench replays that. A **feature arc** is one feature revisited in three to five fresh agent sessions on one carried workspace. Session one carries the user's intent and its reason. Later sessions are ordinary work on the same feature, one of which can only be done right by remembering session one. Each arm persists intent its own way between sessions; everything else is identical.
 
-| Metric | Question |
-|---|---|
-| **Task success** | Do the hidden task tests pass? |
-| **Rule keeping** | Do the hidden rule tests still pass, or did the agent stop and name the rule it would break? |
-| **Silent violation** | Did the agent break a rule without mentioning it? (the key failure) |
-| **False stop** | Did the agent refuse, or invent a constraint, where no rule applies? |
-| **Reliability** | pass^k: the share of tasks kept correct in *all* k attempts |
-| **Cost** | Input, cached and output tokens, USD, tool calls and wall time per task, and per *correct* task |
+| Family | Claim under test | The probe |
+|---|---|---|
+| `recall` | intent survives sessions | a later request that would silently violate it |
+| `rationale` | the reason survives too | "why does X behave like this?" |
+| `surfacing` | intent comes back unprompted | the same, with no lexical cue in the request |
+| `navigation` | intent is linked to code | "where is this decision enforced and tested?" |
+| `drift` | contradictions are caught | a subtly contradicting request, and a look-alike control |
+| `evidence` | green is not proof | a test stops exercising the behaviour while staying green |
+| `branch` | intent follows the branch | the same file on another branch, then back |
+| `standing` | decisions carry standing | a firm user rule versus a delegated agent choice |
+
+Per session the harness records the outcome class (surfaced and stopped, changed the decision explicitly, done, silent violation, …), whether intent was surfaced before the first edit, tokens, cost and wall time. Per arc: pass only if every session passes. Per arm: arc pass rate per family, silent violations, false stops, cost per arc and **cost per preserved intent**.
 
 ## Arms
 
-The same agent, model and task run under different ways of giving the agent the project's rules. All arms are generated from one neutral rule source per project (`projects/<name>/rules/`), so every arm sees the same rules and only the delivery changes.
+Each arm is a way to keep intent between sessions. Every arm's agent gets the same words from the user and one sentence of project convention saying where decisions are recorded; the agent does the bookkeeping itself.
 
-| Arm | How the rules reach the agent |
-|---|---|
-| `none` | They don't. The rule source is removed from the workspace. |
-| `agents-md` | Rendered as a static `AGENTS.md` / `CLAUDE.md` context file. |
-| `<tool>` | Through a rule, memory or knowledge-base tool installed as its users would install it. |
-
-New tools join by adding an arm adapter (see [arms/README.md](arms/README.md)).
-
-## Task kinds
-
-| Kind | What the request does | Correct behaviour |
+| Arm | Substrate | Stands for |
 |---|---|---|
-| `history` | A real change mined from the project's history, graded by its own tests | Implement it; no rule broken |
-| `conflict` | A plausible product request that would violate a recorded rule | Stop and name the rule, or change the rule explicitly and say so |
-| `governed` | A request a rule allows and constrains | Implement within the rule |
-| `ungoverned` | A request no rule covers | Implement without inventing constraints |
+| `none` | code, tests, Git history | the real-world default |
+| `docs` | `docs/decisions/*.md` in the repository | a requirements folder, ADRs, a wiki |
+| `tracker` | a file-backed issue tracker over MCP | Jira, YouTrack, Linear, GitHub issues |
+| `memory` | a file-backed notes memory with keyword search over MCP | mem0, Zep, auto-memory, vector memory stores |
+| `agents-md` | one `AGENTS.md` the agent keeps updated | the always-in-context ceiling |
+| `kibi` | the [Kibi](https://github.com/Looted/kibi) knowledge base and plugin (hooks, skills, MCP) | Kibi |
 
-Task prompts are written in a developer's voice and never mention rules, tools or the benchmark. The format is defined in [schema/task.schema.json](schema/task.schema.json) and [schema/rule.schema.json](schema/rule.schema.json), with an example in [projects/_example/](projects/_example/).
+The tracker and memory arms are passive by construction: nothing fires when the agent reads or edits code. New tools join by adding an arm adapter (see [arms/README.md](arms/README.md)).
+
+## v1: single-session rule following
+
+The first version gave agents single requests on a codebase with a pre-recorded rule layer: some requests compatible with the rules, some in conflict, some ungoverned. Its tasks remain as the single-session special case of `recall`, and its grading (hidden rule tests plus an evidence-bound judge and a fixed decision table) is what arcs reuse per session. See the [methodology](METHODOLOGY.md).
 
 ## Projects
 
-Each project is a public repository pinned to a commit, plus a rule layer and tasks written for this benchmark. The code is real; the rules and tasks are new, so models cannot have memorised them. Candidate projects are listed in [projects/README.md](projects/README.md).
+Each project is a public repository pinned to a commit, plus arcs, rules and tasks written for this benchmark from the project's real history. The code is real; the intent words, probes and hidden tests are new. The first project is [Papra](projects/papra/README.md); candidates are in [projects/README.md](projects/README.md).
 
 ## Running it
 
@@ -53,23 +53,24 @@ The harness lives in [harness/](harness/README.md). With Node 26 and a Claude Co
 ```sh
 cd harness && npm install
 node src/cli.ts validate
-node src/cli.ts run --project papra --task conflict-admins-invite-owner --arm none,agents-md,kibi --attempts 1
+node src/cli.ts run-arc --project papra --arc intake-secret-recall --arm none,docs,tracker,memory,agents-md,kibi
+node src/cli.ts run --project papra --task conflict-admins-invite-owner --arm none,agents-md,kibi
 node src/cli.ts report --project papra
 ```
 
 ## Results
 
-- [Papra pilot, 13 October 2026](results/papra-pilot-2026-10-13.md): 32 tasks, three arms, one attempt, claude-sonnet-5-5.
+- [Papra pilot, 13 October 2026](results/papra-pilot-2026-10-13.md) (v1): 32 single-session tasks, three arms, one attempt, claude-sonnet-5-5.
 
 ## Related work
 
 - **SWE-bench** and successors: hidden-test grading, FAIL_TO_PASS / PASS_TO_PASS split.
-- **AGENTbench** ([arXiv 2602.11988](https://arxiv.org/abs/2602.11988)): context files vs none; finds small accuracy changes and over 20% higher cost. The `agents-md` arm is the comparison it motivates.
-- **OctoBench** ([arXiv 2601.10343](https://arxiv.org/abs/2601.10343)): scores task solving and rule compliance separately.
-- **RepoComplianceBench** ([arXiv 2607.26819](https://arxiv.org/abs/2607.26819)): agents vs repositories' AI contribution policies (bans, disclosure, verification, human hand-off). Closest neighbour, with a different rule kind: process rules about how to contribute, where CodeRuleBench tests business rules about what the code must do. Its untouched-repository condition found agents opened the policy file in 12 of 347 runs (3.5%), and its "quote the rule in AGENTS.md" condition is the counterpart of the `agents-md` arm here. CodeRuleBench adopts its evidence-bound judge design.
-- **τ-bench** (Yao et al., ICLR 2025): policy following in synthetic domains, the pass^k metric.
-- **SWE-Bench-CL** ([arXiv 2507.00014](https://arxiv.org/abs/2507.00014)): sequential tasks on one repository with memory.
+- **SWE-Bench-CL** ([arXiv 2507.00014](https://arxiv.org/abs/2507.00014)): sequential tasks on one repository with memory; the closest neighbour for arcs, without a stated intent to preserve.
+- **AGENTbench** ([arXiv 2602.11988](https://arxiv.org/abs/2602.11988)): context files vs none; small accuracy changes, over 20% higher cost. The `agents-md` arm is the ceiling it motivates.
+- **RepoComplianceBench** ([arXiv 2607.26819](https://arxiv.org/abs/2607.26819)): agents vs repositories' AI contribution policies; the evidence-bound judge design is adopted here.
+- **OctoBench** ([arXiv 2601.10343](https://arxiv.org/abs/2601.10343)): task solving and rule compliance scored separately.
+- **τ-bench** (Yao et al., ICLR 2025): policy following, the pass^k metric.
 
 ## Disclosure
 
-CodeRuleBench is maintained by the authors of [Kibi](https://github.com/Looted/kibi), which is one of the tools evaluated here. Tasks, rules, grading and raw transcripts are published so results can be checked and reproduced independently, and adapters for other tools are welcome.
+CodeIntentBench is maintained by the authors of [Kibi](https://github.com/Looted/kibi), which is one of the tools evaluated here. The families are Kibi's own public claims, written down so they can be checked; arcs, hidden tests, grading and raw transcripts are published so results can be reproduced, and adapters for other tools are welcome.

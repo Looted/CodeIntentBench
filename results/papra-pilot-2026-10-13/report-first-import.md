@@ -1,4 +1,4 @@
-# CodeRuleBench results: papra
+# CodeIntentBench results: papra
 
 96 graded runs. Rates show 95% Wilson intervals. pass^k counts tasks whose every attempt passed.
 

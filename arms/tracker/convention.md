@@ -1,0 +1,1 @@
+Product decisions are tracked as issues in the project tracker (the tracker_* tools). Before changing behaviour, search the tracker for decisions about the area you touch; record new product decisions as issues with the decision, its reason and the code it applies to, and reference the issue id in your summary.
