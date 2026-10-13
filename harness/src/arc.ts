@@ -3,7 +3,7 @@
 import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
-import { runAgentWithHost, type AgentResult } from './agent.ts';
+import { hostPathPrepend, runAgentWithHost, type AgentResult } from './agent.ts';
 import { ARMS_DIR, RUNS_DIR, loadProject } from './config.ts';
 import { NON_SOURCE, RULE_RECORD_PATHS, changedFiles, runRegression, runVitest, splitTestRef, toRepoRel } from './grade.ts';
 import { defaultDecision, judgeStep, requiredKeys } from './judge-arc.ts';
@@ -13,7 +13,11 @@ import type { AgentConfig, Arc, ArcRunRecord, ArcStep, Grade, ProjectConfig, Ste
 import { BASE_BRANCH, GIT_IDENTITY, loadArmHost, prepareWorkspace, workspaceDir } from './workspace.ts';
 
 const q = (s: string) => JSON.stringify(s);
-const ENV = { ...process.env, ...GIT_IDENTITY };
+const BASE_ENV: NodeJS.ProcessEnv = { ...process.env, ...GIT_IDENTITY };
+// Per arc run: the arm's tools on PATH, because the arm may install git hooks
+// (Kibi's post-checkout hook calls the kibi CLI) that the harness's own git
+// commands trigger.
+let ENV: NodeJS.ProcessEnv = BASE_ENV;
 
 export function arcRunDir(project: string, arc: string, arm: string, id: string): string {
   return join(RUNS_DIR, project, '_arcs', arc, arm, id);
@@ -200,6 +204,7 @@ export async function runArc(projectName: string, arc: Arc, arm: string, attempt
   const ws = workspaceDir(dir);
   for (const c of [...sources, arc.intent.tests_commit].filter(Boolean)) sh(`git -C ${q(ws)} cat-file -e ${c}^{commit}`, { quiet: true });
   const host = loadArmHost(arm);
+  ENV = { ...BASE_ENV, PATH: [...hostPathPrepend(host, dir), BASE_ENV.PATH ?? ''].join(':') };
   writeFileSync(join(dir, 'arc.json'), JSON.stringify(arc, null, 2));
   let cost = 0;
   let invalid = false;

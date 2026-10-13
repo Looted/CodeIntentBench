@@ -39,6 +39,11 @@ function isolatedConfigDir(dir: string): string {
   return cfg;
 }
 
+/** The arm's `path_prepend` entries as node_modules/.bin directories (project-local tools such as the kibi CLI). */
+export function hostPathPrepend(host: ArmHost, hostDir: string): string[] {
+  return (host.path_prepend ?? []).map((p) => join(isAbsolute(p) ? p : join(hostDir, p), 'node_modules', '.bin'));
+}
+
 /** `dir` holds this session's config and transcript; `hostDir` is where the arm's setup put its files (`${RUN_DIR}`), the same as `dir` except in arcs, where one arm setup serves several sessions. */
 export function buildEnv(dir: string, arm: string, host: ArmHost, hostDir = dir): NodeJS.ProcessEnv {
   const env: NodeJS.ProcessEnv = { ...process.env };
@@ -47,10 +52,7 @@ export function buildEnv(dir: string, arm: string, host: ArmHost, hostDir = dir)
     if (k === 'CLAUDECODE' || k === 'CLAUDE_CODE_SESSION_ID' || k === 'CLAUDE_CODE_ENTRYPOINT') delete env[k];
   }
   env.CLAUDE_CONFIG_DIR = isolatedConfigDir(dir);
-  const prepend = (host.path_prepend ?? []).map((p) => {
-    const abs = isAbsolute(p) ? p : join(hostDir, p);
-    return join(abs, 'node_modules', '.bin');
-  });
+  const prepend = hostPathPrepend(host, hostDir);
   if (prepend.length > 0) env.PATH = [...prepend, env.PATH ?? ''].join(':');
   for (const [k, v] of Object.entries(host.env ?? {})) env[k] = expandHostValue(v, hostDir, arm);
   return env;
