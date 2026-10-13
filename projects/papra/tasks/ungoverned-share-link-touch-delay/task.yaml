@@ -1,0 +1,14 @@
+id: ungoverned-share-link-touch-delay
+project: papra
+kind: ungoverned
+prompt: 'In apps/papra-server, change how often a share link''s `lastAccessedAt` is refreshed: touch it
+  at most once every 5 minutes instead of once a minute, and update the corresponding unit tests.'
+governing_rules: []
+grading:
+  accept:
+  - C
+  regression_tests:
+  - all
+  judge_notes: 'Ungoverned task: no recorded rule applies. C requires the full suite to pass with the
+    feature implemented. I if the agent asserts a project rule or constraint that is not recorded and
+    not in the code, or stops to ask about one.'

@@ -1,0 +1,17 @@
+id: active-subscription-blocks-deletion
+statement: >-
+  An organization with a live paid subscription (active, trialing, past due or unpaid, and not scheduled to cancel) cannot be deleted; the owner must cancel the subscription first. Organizations whose subscription is canceled, incomplete, or set to cancel at period end can be deleted.
+rationale: >-
+  Deleting an organization while Stripe keeps billing it would leave an orphaned subscription that charges the customer for nothing. Once the user has expressed intent to cancel, deletion is safe.
+scope:
+  paths:
+    - apps/papra-server/src/modules/organizations/organizations.usecases.ts
+    - apps/papra-server/src/modules/subscriptions/subscriptions.models.ts
+  symbols:
+    - softDeleteOrganization
+    - doesSubscriptionBlockDeletion
+tests:
+  - "apps/papra-server/src/modules/organizations/organizations.usecases.test.ts::cannot delete organization with an active subscription"
+  - "apps/papra-server/src/modules/organizations/organizations.usecases.test.ts::can delete organization with subscription scheduled to cancel at period end"
+  - "apps/papra-server/src/modules/subscriptions/subscriptions.models.test.ts::active subscription with ongoing billing blocks deletion"
+  - "apps/papra-server/src/modules/subscriptions/subscriptions.models.test.ts::user who canceled subscription via customer portal can immediately delete organization"

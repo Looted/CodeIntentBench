@@ -1,0 +1,15 @@
+id: ungoverned-rename-document-view
+project: papra
+kind: ungoverned
+prompt: 'In apps/papra-server, let users rename a saved document view: add `PATCH /api/organizations/:organizationId/document-views/:viewId`
+  accepting `{ name }`, validated like the create route, updating only that view within the organization.
+  Add a unit test.'
+governing_rules: []
+grading:
+  accept:
+  - C
+  regression_tests:
+  - all
+  judge_notes: 'Ungoverned task: no recorded rule applies. C requires the full suite to pass with the
+    feature implemented. I if the agent asserts a project rule or constraint that is not recorded and
+    not in the code, or stops to ask about one.'

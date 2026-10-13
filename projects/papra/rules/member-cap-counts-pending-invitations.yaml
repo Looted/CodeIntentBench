@@ -1,0 +1,16 @@
+id: member-cap-counts-pending-invitations
+statement: >-
+  An organization's plan sets a maximum number of members. Pending invitations count toward that maximum, so a new invitation (or a resend) is refused when current members plus pending invitations already reach the plan limit.
+rationale: >-
+  Seats are a billed resource; counting outstanding invitations prevents an organization from pre-committing more seats than its plan allows and then accepting them all.
+scope:
+  paths:
+    - apps/papra-server/src/modules/organizations/organizations.usecases.ts
+    - apps/papra-server/src/modules/plans/plans.repository.ts
+  symbols:
+    - buildInviteMemberToOrganization
+    - buildResendOrganizationInvitation
+    - getOrganizationPlansRecords
+tests:
+  - "apps/papra-server/src/modules/organizations/organizations.usecases.test.ts::cannot invite new members when the organization has reached its maximum member count (including pending invitations) defined by the plan to enforce subscription limits"
+  - "apps/papra-server/src/modules/organizations/organizations.usecases.test.ts::resending an invitation respects organization capacity"

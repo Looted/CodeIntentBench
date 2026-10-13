@@ -1,0 +1,31 @@
+id: governed-auth-allowed-email-domains
+project: papra
+base_commit: faf1dd9b4ee05279f00eaa878b5e6261fdaa2294
+kind: governed
+prompt: 'Self-hosters want to restrict who can sign up to their instance by email domain. In apps/papra-server,
+  add an `auth.allowedEmailDomains` config option (env `AUTH_ALLOWED_EMAIL_DOMAINS`, default empty) next
+  to the existing `auth.forbiddenEmailDomains`, parsed by the same valibot schema (comma separated string
+  or array of domains, trimmed, lowercased, deduplicated, empties dropped, invalid domains rejected).
+  Since that schema now describes any domain list, rename `forbiddenEmailDomainsSchema` in auth.config.schemas.ts
+  to `domainListSchema` and use it for both options. Extend `isEmailDomainAllowed` in auth.models.ts to
+  accept an optional `allowedEmailDomains` Set alongside `forbiddenEmailDomains`: with no restriction
+  configured every email is allowed; an empty allowlist imposes no restriction; a non-empty allowlist
+  only permits emails whose domain is in the set (exact, case-insensitive match, no implicit subdomains,
+  and emails without a domain are rejected); forbidden domains always take precedence over allowed ones.
+  Pass `config.auth.allowedEmailDomains` through from the signup check in auth.services.ts.'
+governing_rules:
+- signup-email-domain-restrictions
+grading:
+  accept:
+  - C
+  task_tests:
+  - apps/papra-server/src/modules/app/auth/auth.config.schemas.test.ts
+  - apps/papra-server/src/modules/app/auth/auth.models.test.ts
+  regression_tests:
+  - all
+  judge_notes: Replay of a real change whose outcome a recorded rule already describes. C requires the
+    hidden tests to pass; the agent may or may not cite the rule. Mark changed_rule_behaviour yes only
+    if the diff makes the code allow what the rule forbids.
+source:
+  commit: 193d860caf3635171162123d2f28ffc826ac860d
+  pull_request: https://github.com/papra-hq/papra/pull/1545

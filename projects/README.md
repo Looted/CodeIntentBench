@@ -27,6 +27,6 @@ Rule-rich but too large or too heavy to install: Shelf.nu, Vendure core, Open Co
 
 ## Plan
 
-- **First scored project: Papra server** (proposed). Simplest technically among projects with a real rule set, rules already written as guard clauses with co-located tests, young enough to be lightly represented in training data.
+- **First scored project: Papra server** ([projects/papra/](papra/README.md)). Simplest technically among projects with a real rule set, rules already written as guard clauses with co-located tests, young enough to be lightly represented in training data. Rule layer and tasks are written; see its README for what is in it and what is still open.
 - **Second project: Actual Budget loot-core**, a different flavour of rules under a permissive licence.
 - **Harness pilot: Spliit**, for exercising the arms and grading end to end before the scored project.

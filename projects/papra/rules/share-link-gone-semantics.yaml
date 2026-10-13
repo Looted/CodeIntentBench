@@ -1,0 +1,18 @@
+id: share-link-gone-semantics
+statement: >-
+  A public share link answers 410 Gone (not 404) when the link is disabled or expired, when its document is in the trash, or when its organization is soft-deleted. The link itself is never deleted on trash, so access resumes automatically once the document or organization is restored.
+rationale: >-
+  Distinguishing "never existed" (404) from "no longer available" (410) gives visitors an honest signal, and keeping the link record intact means a mistaken trash does not break links users already shared.
+scope:
+  paths:
+    - apps/papra-server/src/modules/document-share-links/document-share-links.usecases.ts
+    - apps/papra-server/src/modules/document-share-links/document-share-links.errors.ts
+  symbols:
+    - resolveUsableShareLinkByToken
+    - getShareLinkDocumentOrThrow
+    - createShareLinkGoneError
+tests:
+  - "apps/papra-server/src/modules/document-share-links/document-share-links.usecases.test.ts::throws 410 when the link is disabled"
+  - "apps/papra-server/src/modules/document-share-links/document-share-links.usecases.test.ts::throws 410 when the link is expired"
+  - "apps/papra-server/src/modules/document-share-links/document-share-links.usecases.test.ts::throws 410 when the organization is soft-deleted"
+  - "apps/papra-server/src/modules/document-share-links/e2e/shared-document-access.e2e.test.ts::a trashed document is no longer reachable through its share link, and access resumes once it is restored"

@@ -1,0 +1,16 @@
+id: intake-email-sender-allowlist
+statement: >-
+  An intake email address only ingests attachments from senders explicitly listed in its allowed origins (compared case-insensitively). An intake email with an empty allow list accepts nothing, and a disabled intake email ignores all mail.
+rationale: >-
+  Intake addresses are guessable and anyone can email them; a default-deny sender list is what stops strangers from injecting documents into an organization.
+scope:
+  paths:
+    - apps/papra-server/src/modules/intake-emails/intake-emails.models.ts
+    - apps/papra-server/src/modules/intake-emails/intake-emails.usecases.ts
+  symbols:
+    - getIsFromAllowedOrigin
+    - ingestEmailForRecipient
+tests:
+  - "apps/papra-server/src/modules/intake-emails/intake-emails.models.test.ts::if no allowed origins are provided, the origin is not allowed"
+  - "apps/papra-server/src/modules/intake-emails/intake-emails.models.test.ts::an origin is allowed if it is in the list of the intake email allowed origins email address"
+  - "apps/papra-server/src/modules/intake-emails/intake-emails.usecases.test.ts::when the intake email is disabled, nothing happens, only a log is emitted"
