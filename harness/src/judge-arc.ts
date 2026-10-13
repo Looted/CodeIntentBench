@@ -96,6 +96,12 @@ export function buildArcJudgePrompt(arc: Arc, step: ArcStep, keys: string[], age
   for (const c of calls.slice(0, 400)) L.push(`${c.turn}: ${c.name} ${c.input_summary}`);
   if (calls.length > 400) L.push(`… ${calls.length - 400} more`);
   L.push('');
+  L.push('## What the agent was shown about recorded decisions (turn: source, text)');
+  L.push('Results of its lookups in the decision store and context injected by hooks, in order; empty if it looked nothing up and no hook spoke. Other tool results are not shown.');
+  const ev = agent.evidence ?? [];
+  if (ev.length === 0) L.push('(none)');
+  for (const e of ev.slice(0, 40)) L.push(`${e.turn}: ${e.kind} ${e.name}\n${e.text}`);
+  L.push('');
   L.push('## Final answer');
   L.push((agent.final_answer ?? '(no final answer)').slice(0, MAX_ANSWER));
   L.push('');
