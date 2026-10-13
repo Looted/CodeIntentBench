@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Looted/CodeRuleBench/schema/rule.schema.json",
+  "title": "CodeRuleBench rule",
+  "description": "One recorded project rule. The neutral source every arm renders from.",
+  "type": "object",
+  "required": ["id", "statement", "scope"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Stable kebab-case id, unique within the project."
+    },
+    "statement": {
+      "type": "string",
+      "description": "The rule in one or two plain sentences, as a product owner would write it."
+    },
+    "rationale": {
+      "type": "string",
+      "description": "Why the rule exists. Rendered to arms; never mentions the benchmark."
+    },
+    "scope": {
+      "type": "object",
+      "description": "Where the rule applies, so arms that link rules to code can do so.",
+      "required": ["paths"],
+      "additionalProperties": false,
+      "properties": {
+        "paths": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "symbols": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "tests": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Hidden rule-test ids that encode this rule. Never shown to the agent."
+    }
+  }
+}

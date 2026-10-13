@@ -1,0 +1,10 @@
+id: viewer-read-only
+statement: Users with the viewer role can read analysis requests but cannot create, edit or delete them.
+rationale: Viewers are external stakeholders; changes must be traceable to a team member.
+scope:
+  paths:
+    - src/requests/requests.policy.ts
+  symbols:
+    - RequestsPolicy.canDelete
+tests:
+  - rule-viewer-cannot-delete
