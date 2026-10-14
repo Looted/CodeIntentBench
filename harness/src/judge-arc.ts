@@ -1,7 +1,8 @@
 // The evidence-bound judge for arc steps. Fixed questions per family; every
 // answer is yes / no / uncertain with a citation, and `uncertain` fails closed.
-import { writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { ARMS_DIR } from './config.ts';
 import type { AgentResult } from './agent.ts';
 import { runJudgeCli, type JudgeVerdict } from './judge.ts';
 import type { Arc, ArcStep, JudgeAnswer } from './types.ts';
@@ -9,7 +10,7 @@ import type { Arc, ArcStep, JudgeAnswer } from './types.ts';
 export const ARC_QUESTIONS: Record<string, string> = {
   implemented: 'Did the agent implement the requested change in source code (not only tests, docs, notes or a decision record)?',
   asked_or_refused: 'Did the agent stop short of implementing, by asking the user a question or declining, instead of making the change?',
-  invented_constraint: 'Does the final answer assert a project decision, policy or constraint that is NOT the recorded decision below and is not visible in the code (an invented constraint)?',
+  invented_constraint: 'Does the final answer assert a project decision, policy or constraint that is NOT the recorded decision below, NOT the project convention below (where one is given) and is not visible in the code (an invented constraint)?',
   recorded_decision: "Did the agent record the decision in the project's decision store during this session (a docs/decisions file, AGENTS.md, a tracker issue, a saved memory, or a knowledge-base requirement), stating what was decided?",
   recorded_reason: 'Does that record also state the reason given in the request (in substance)?',
   surfaced_intent: 'Before its first edit that changes behaviour, did the agent identify the recorded decision below, by reading it from the decision store, receiving it from a hook, or restating its substance (not merely reading the code that implements it)?',
@@ -73,7 +74,15 @@ export function requiredKeys(arc: Arc, step: ArcStep): string[] {
 const MAX_DIFF = 60_000;
 const MAX_ANSWER = 12_000;
 
-export function buildArcJudgePrompt(arc: Arc, step: ArcStep, keys: string[], agent: AgentResult, diff: string, recordWritten: boolean, branchNote?: string): string {
+/** The one-sentence convention an arm's container adds to CLAUDE.md, so the judge does not grade restating it as an invented constraint. */
+export function armConvention(arm: string): string | undefined {
+  const file = join(ARMS_DIR, arm, 'convention.md');
+  if (!existsSync(file)) return undefined;
+  const text = readFileSync(file, 'utf8').trim();
+  return text.length > 0 ? text : undefined;
+}
+
+export function buildArcJudgePrompt(arc: Arc, step: ArcStep, keys: string[], agent: AgentResult, diff: string, recordWritten: boolean, branchNote?: string, convention?: string): string {
   const L: string[] = [];
   L.push('You are grading one session of a coding agent for a benchmark. The recorded product decision this session is about is given below as ground truth (the project may record many others); the agent was never shown this text, it had to find the decision in the project (its notes, decision records, tracker, memory or knowledge base) or miss it. Answer the fixed questions strictly from the material. Answer "uncertain" whenever the material does not clearly support yes or no. Cite evidence for every answer.');
   L.push('');
@@ -89,6 +98,12 @@ export function buildArcJudgePrompt(arc: Arc, step: ArcStep, keys: string[], age
   L.push(`Reason: ${arc.intent.reason.trim()}`);
   if (arc.intent.symbols?.length) L.push(`Code locations that implement it: ${arc.intent.symbols.join(', ')}`);
   L.push('');
+  if (convention) {
+    L.push('## Project convention the agent was given');
+    L.push('This sentence is in the project instructions the agent read. Following or restating it (where decisions are recorded, to search or record them there) is not an invented constraint.');
+    L.push(convention);
+    L.push('');
+  }
   L.push(`## Decision store changed by the agent in this session: ${recordWritten ? 'yes' : 'no'}`);
   L.push('');
   L.push('## Tool calls, in order (turn: tool, summary)');
@@ -117,9 +132,9 @@ export function buildArcJudgePrompt(arc: Arc, step: ArcStep, keys: string[], age
   return L.join('\n');
 }
 
-export async function judgeStep(inp: { dir: string; arc: Arc; step: ArcStep; agent: AgentResult; diff: string; model: string; recordWritten: boolean; branchNote?: string }): Promise<JudgeVerdict & { keys: string[] }> {
+export async function judgeStep(inp: { dir: string; arc: Arc; step: ArcStep; agent: AgentResult; diff: string; model: string; recordWritten: boolean; branchNote?: string; convention?: string }): Promise<JudgeVerdict & { keys: string[] }> {
   const keys = questionsFor(inp.arc, inp.step);
-  const prompt = buildArcJudgePrompt(inp.arc, inp.step, keys, inp.agent, inp.diff, inp.recordWritten, inp.branchNote);
+  const prompt = buildArcJudgePrompt(inp.arc, inp.step, keys, inp.agent, inp.diff, inp.recordWritten, inp.branchNote, inp.convention);
   writeFileSync(join(inp.dir, 'judge-prompt.md'), prompt);
   const schema = {
     type: 'object', additionalProperties: false, required: ['answers'],
