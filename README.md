@@ -2,7 +2,7 @@
 
 A benchmark for whether coding agents **keep a project's intent across sessions**: the decisions and reasons a user stated earlier, brought back at the moment a later change would quietly undo them. It measures that for the places intent is usually kept (nothing, a docs folder, an issue tracker, a passive memory, an always-loaded context file, a knowledge-base tool) and what each costs in tokens.
 
-> Status: the arc harness and the first eight arcs (one per family, on one Papra feature) are in place; the six-arm arc pilot has not run yet. v1 (single-session rule following) ran once on Papra; see [results](results/papra-pilot-2026-10-13.md) and [METHODOLOGY.md](METHODOLOGY.md).
+> Status: first arc pilot done, 16 arcs on two Papra features, seven arms, one attempt; see [results](results/papra-arcs-2026-10-14.md). v1 (single-session rule following) ran once on Papra; see [its results](results/papra-pilot-2026-10-13.md) and [METHODOLOGY.md](METHODOLOGY.md).
 
 ## What it measures
 
@@ -54,13 +54,14 @@ The harness lives in [harness/](harness/README.md). With Node 26 and a Claude Co
 ```sh
 cd harness && npm install
 node src/cli.ts validate
-node src/cli.ts run-arc --project papra --arc intake-secret-recall --arm none,docs,tracker,memory,agents-md,kibi
+node src/cli.ts run-arc --project papra --arc all --arm none,docs,tracker,memory,agents-md,kibi,kibi-conv
 node src/cli.ts run --project papra --task conflict-admins-invite-owner --arm none,agents-md,kibi
 node src/cli.ts report --project papra
 ```
 
 ## Results
 
+- [Papra arc pilot, 14 October 2026](results/papra-arcs-2026-10-14.md): 16 arcs, seven arms, one attempt, claude-sonnet-5-5. Tracker 94% and docs 88% arc pass; Kibi as shipped 31% (it records nothing), Kibi with the shared convention sentence 69%.
 - [Papra pilot, 13 October 2026](results/papra-pilot-2026-10-13.md) (v1): 32 single-session tasks, three arms, one attempt, claude-sonnet-5-5.
 
 ## Related work
