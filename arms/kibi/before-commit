@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Run by the harness in the workspace before it commits a session's work with hooks enabled.
+# Kibi's pre-commit hook refuses any edit to a file with linked symbols until the generated
+# symbol coordinates are refreshed and staged, and tells the user to run this command; a user
+# would do so before trying again. Refreshing first lets the gate's result reflect the
+# traceability and consistency checks rather than that mechanical step. Arguments: <workspace>
+set -uo pipefail
+cd "$1"
+kibi sync --refresh-symbol-coordinates >/dev/null 2>&1 || true

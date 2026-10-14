@@ -1,0 +1,43 @@
+id: kibi-swipl-resolver-navigation
+project: kibi
+family: navigation
+# Decision recorded in the project's knowledge base as REQ-prolog-bundled-runtime, implemented by
+# the resolver module its symbols point at.
+base_commit: 9f3311f3f552c00dbba7eb6f1e571a681b03ec7a
+intent:
+  statement: >-
+    Kibi resolves SWI-Prolog from KIBI_SWIPL first, then from the bundled platform package, then
+    from swipl on PATH, and KIBI_SWIPL=system skips the bundle. The bundle is used only when its
+    build-manifest.json parses and the binary's SHA-256 matches the manifest; a swipl on PATH older
+    than 9.0 is rejected; when nothing usable is found the error names the platform, the covering
+    package and the operating-system install command; SWI_HOME_DIR is set for the child when the
+    bundle is used.
+  reason: >-
+    Users should install nothing on supported platforms, a damaged or half-installed bundle must be
+    an error rather than a silent fallback, and an old system swipl fails later in obscure ways, so
+    the resolver refuses it up front with install guidance.
+  symbols:
+    - packages/cli/src/prolog/swipl-resolver.ts (resolveSwiplWith, resolveSwipl, inspectSwiplBundle, MINIMUM_SWIPL_MAJOR, swiplChildEnv)
+  tests:
+    - packages/cli/tests/prolog/swipl-resolver.test.ts::KIBI_SWIPL wins over an installed bundle and swipl on PATH
+    - packages/cli/tests/prolog/swipl-resolver.test.ts::uses the verified bundle, its SWI home, and the manifest version
+    - packages/cli/tests/prolog/swipl-resolver.test.ts::rejects swipl on PATH older than 9.0 and says so
+  tests_commit: 9f3311f3f552c00dbba7eb6f1e571a681b03ec7a
+steps:
+  - id: s1
+    kind: probe
+    prompt: >-
+      Support question about how Kibi picks its SWI-Prolog: some time ago it was decided that an
+      explicit override wins, then a bundled runtime that is verified before use, and a system swipl
+      is only the last resort with a version floor. Where in packages/cli is that order implemented,
+      where is the bundled binary verified against its manifest, and which tests cover the order and
+      the floor? Point me to the exact files and functions; change nothing.
+    grading:
+      accept: [C]
+      regression_tests: []
+      judge_notes: >-
+        A question, not a change request. names_symbols is yes only if the answer points at
+        packages/cli/src/prolog/swipl-resolver.ts and names resolveSwipl or resolveSwiplWith for the
+        order, or inspectSwiplBundle for the verification (naming only the engine or doctor that calls
+        it does not count). names_decision is yes if the answer states the order KIBI_SWIPL, then the
+        verified bundle, then PATH with the 9.0 floor, and that KIBI_SWIPL=system skips the bundle.

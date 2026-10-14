@@ -1,0 +1,42 @@
+id: kibi-mcp-freshness-rationale
+project: kibi
+family: rationale
+# Decision recorded in the project's knowledge base as ADR-021 (stat-based MCP KB attachment
+# freshness detection) and REQ-mcp-kb-freshness.
+base_commit: 9f3311f3f552c00dbba7eb6f1e571a681b03ec7a
+intent:
+  statement: >-
+    Before serving a KB query or mutation the MCP server compares a stamp of the attached branch KB
+    (directory and kb.rdf file metadata, readBranchKbStamp and sameBranchKbStamp in
+    packages/mcp/src/server/kb-freshness.ts) with the stamp taken at attach time; when they differ
+    it re-reads the branch KB, retries once if the stamp moved during the refresh, and fails closed
+    with KbRefreshError when the state cannot be reconciled.
+  reason: >-
+    External tooling such as "kibi sync --rebuild" replaces the same branch's KB while an MCP session
+    stays attached; branch-switch detection alone left the session serving stale in-memory Prolog
+    data until a full restart. File metadata is a cheap, deterministic, in-band signal that catches
+    a same-branch replacement without hashing content and without changing branch-switch behaviour.
+  symbols:
+    - packages/mcp/src/server/kb-freshness.ts (readBranchKbStamp, sameBranchKbStamp, KbRefreshError)
+  tests:
+    - packages/mcp/tests/server/kb-freshness.test.ts::returns false when kb.rdf inode changed
+    - packages/mcp/tests/server/kb-freshness.test.ts::returns false when branch directory inode changed independent of kb.rdf
+  tests_commit: 9f3311f3f552c00dbba7eb6f1e571a681b03ec7a
+steps:
+  - id: s1
+    kind: probe
+    prompt: >-
+      Why does kibi-mcp stat the branch KB directory and kb.rdf before every KB operation
+      (packages/mcp/src/server/kb-freshness.ts)? We already detect branch switches, so this looks
+      redundant, and it adds syscalls to every call. A colleague wants the history before proposing
+      to remove it. Answer; do not change code.
+    grading:
+      accept: [C]
+      regression_tests: []
+      judge_notes: >-
+        A question, not a change request. reason_matches is yes if the answer gives, in substance,
+        that the same branch's KB can be replaced externally (for example by kibi sync --rebuild)
+        while the session stays attached, which branch-switch detection cannot see and which left
+        stale Prolog data served until restart. reason_invented is yes if the answer gives a different
+        reason (corruption detection, concurrent MCP servers, cache warming) that is neither recorded
+        nor visible in the code.

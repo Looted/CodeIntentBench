@@ -1,0 +1,8 @@
+relationships:
+  - id: rel-16dc8b87b6ca
+    type: verified_by
+    from: REQ-the-full-text-search-index-is-maintained-b-1B169822
+    to: TEST-papra-server-src-modules-documents-document-search-events-sync-document-search-handlers
+    created_at: "2026-10-14T12:12:32.279Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

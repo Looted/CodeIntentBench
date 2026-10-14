@@ -1,0 +1,677 @@
+# symbol-coordinates.yaml
+# GENERATED coordinate artifact — do not edit manually.
+# Run `kibi sync --refresh-symbol-coordinates` to refresh.
+version: 2
+coordinates:
+  SYM-a-document-s-extracted-searchable-content--7CD26FB8-1:
+    identityHash: c4b46e8499d4a87dd71153ac841e054277a80f5cefaf9534d60c53c5d0856daf
+    sourceHash: 93c3f9428812bc8f60d0668a17a63b462d92b1373e2495f3c9158f811ba39b3d
+    sourceColumn: 22
+    sourceEndColumn: 1
+    sourceEndLine: 600
+    sourceFile: apps/papra-server/src/modules/documents/documents.usecases.ts
+    sourceLine: 573
+  SYM-a-document-s-extracted-searchable-content--7CD26FB8-2:
+    identityHash: ff4a8fa2b1a55a258d69fa99129b790f33dac216e0b1db55f1db462badf34b89
+    sourceHash: 35ffcb51961fe5f5a6d96eb898097e95e2090bbdd838b0d8f44679e4b9b5e365
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 34
+    sourceFile: apps/papra-server/src/modules/documents/documents.routes.ts
+    sourceLine: 21
+  SYM-a-document-s-extracted-searchable-content--7CD26FB8-3:
+    identityHash: 1527e3589bf919b6322826ed22537c9965f680ce4a2dbc0f91105b801d760fda
+    sourceHash: 0d9585e8d4c919a7fc84c4357b81a965117ac486c0e19542355f5949578f865f
+    sourceColumn: 13
+    sourceEndColumn: 1
+    sourceEndLine: 95
+    sourceFile: apps/papra-client/src/modules/documents/components/document-content-edition-panel.component.tsx
+    sourceLine: 13
+  SYM-a-pending-invitation-can-be-cancelled-by-a-FE4C0162-1:
+    identityHash: fb2d272ab0722258269bec239605caa168a7479edc1a1864baf97f6c061df34e
+    sourceHash: b7d4831bb9ecef3d1d285cf23e4e8b9799715027b821037de161a2832a790a6a
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 24
+    sourceFile: apps/papra-server/src/modules/invitations/invitations.routes.ts
+    sourceLine: 17
+  SYM-a-plain-search-term-matches-document-names-9B6CFF9C-1:
+    identityHash: 6b7a4a08088b8c9fedcf2eb28714737e958026a3601ca635bfbd789aca066c34
+    sourceHash: 0fd03cd5a7c177726eb1bc83865d92f58df7f7af09f9a8707514441264809762
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 92
+    sourceFile: apps/papra-server/src/modules/documents/document-search/database-fts5/query-builder/query-builder.ts
+    sourceLine: 74
+  SYM-a-plain-search-term-matches-document-names-9B6CFF9C-2:
+    identityHash: 7ed0779d80ea99aa12c3e415f985a01d26bf59fdf5be1db3d1dcda7e3c39ba61
+    sourceHash: 0fd03cd5a7c177726eb1bc83865d92f58df7f7af09f9a8707514441264809762
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 252
+    sourceFile: apps/papra-server/src/modules/documents/document-search/database-fts5/query-builder/query-builder.ts
+    sourceLine: 229
+  SYM-a-soft-deleted-organization-can-be-restore-09031B40-1:
+    identityHash: c83af7f91846ba10eee52a2b56022a26c0ca4b73a477965b07c4f0a8342cb65c
+    sourceHash: 84640b34e64d39efb7f39200018b2439c90c469b23c358813a3d511bce497c37
+    sourceColumn: 22
+    sourceEndColumn: 1
+    sourceEndLine: 526
+    sourceFile: apps/papra-server/src/modules/organizations/organizations.usecases.ts
+    sourceLine: 491
+  SYM-a-tagging-rule-applies-only-to-documents-u-C9F8BBF7-1:
+    identityHash: 4d1d622fe9c9aebbe33a42d833ecc84552c32208c15c3aad9f3ce45cb0f95c7b
+    sourceHash: a5b11e12594d9aaf3950b9cdb6832e948bd52905a9f278c0fdab744128a97195
+    sourceColumn: 22
+    sourceEndColumn: 1
+    sourceEndLine: 208
+    sourceFile: apps/papra-server/src/modules/tagging-rules/tagging-rules.usecases.ts
+    sourceLine: 168
+  SYM-a-tagging-rule-applies-only-to-documents-u-C9F8BBF7-2:
+    identityHash: e7b8a88af827a997ed40298e6dcdc16a9f59a4e1f9642da6af5d9c1e419e7ff1
+    sourceHash: a5b11e12594d9aaf3950b9cdb6832e948bd52905a9f278c0fdab744128a97195
+    sourceColumn: 22
+    sourceEndColumn: 1
+    sourceEndLine: 323
+    sourceFile: apps/papra-server/src/modules/tagging-rules/tagging-rules.usecases.ts
+    sourceLine: 261
+  SYM-an-invalid-date-in-a-created-filter-is-ign-800EF0B8-1:
+    identityHash: 164de0ec98f68fe52204b0b75eddf27b49403e4dcc1eabf5f27c18547850d07d
+    sourceHash: 0fd03cd5a7c177726eb1bc83865d92f58df7f7af09f9a8707514441264809762
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 203
+    sourceFile: apps/papra-server/src/modules/documents/document-search/database-fts5/query-builder/query-builder.ts
+    sourceLine: 180
+  SYM-applying-a-tagging-rule-to-existing-docume-C1D75FEF-1:
+    identityHash: 02fc2f7dcc504cc6726760a20e19ac16f12ae3a7b309722e9c3730e68a522ed9
+    sourceHash: 79fc46f02e2775d0a268c25639db133e24d62de28278e7cea47343404dd92af3
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 25
+    sourceFile: apps/papra-server/src/modules/tagging-rules/tagging-rules.routes.ts
+    sourceLine: 18
+  SYM-applying-a-tagging-rule-to-existing-docume-C1D75FEF-2:
+    identityHash: 68c91b9f7d35bbd0287f297a0f15d730a0dd0ca99e8914b048358750ac87529f
+    sourceHash: 5353167777b635afa04cbc811d021f1293fe24ce5dfa4c2310a86da81de73333
+    sourceColumn: 22
+    sourceEndColumn: 1
+    sourceEndLine: 46
+    sourceFile: apps/papra-server/src/modules/tagging-rules/tasks/apply-tagging-rule-to-documents.task.ts
+    sourceLine: 13
+  SYM-applying-a-tagging-rule-to-existing-docume-C1D75FEF-3:
+    identityHash: 6888b00a7eecdd6ea74eb4c87fa03c01b93000c7d00d3d11325f96857ef735cd
+    sourceHash: a5b11e12594d9aaf3950b9cdb6832e948bd52905a9f278c0fdab744128a97195
+    sourceColumn: 22
+    sourceEndColumn: 1
+    sourceEndLine: 323
+    sourceFile: apps/papra-server/src/modules/tagging-rules/tagging-rules.usecases.ts
+    sourceLine: 261
+  SYM-AUTO-198A6A47509791DF-1:
+    identityHash: 91a751906025889e1d1042d0a565c98101f7b2b0b92fc1d8acd53c0732d4009a
+    sourceHash: be2c73bc1d144d125d23c88e94e030492aebf01f648ed723a059798a9a811b85
+    sourceColumn: 13
+    sourceEndColumn: 37
+    sourceEndLine: 70
+    sourceFile: apps/papra-server/src/modules/ingestion-folders/ingestion-folders.config.ts
+    sourceLine: 8
+  SYM-AUTO-198A6A47509791DF-2:
+    identityHash: dd378d943535a6ccbf565b57ecf972f5682cdc52f63f857d88ceb64872c55012
+    sourceHash: 459a757fed1bc86eb7a502c323245771e891ea38aff6527c2b45a42b74a28e77
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 42
+    sourceFile: apps/papra-server/src/modules/ingestion-folders/ingestion-folder.models.ts
+    sourceLine: 38
+  SYM-AUTO-198A6A47509791DF-3:
+    identityHash: d632aab522ecd833b4a8c9b49cdaead37703381c9732f81464a21a70d22d7832
+    sourceHash: 459a757fed1bc86eb7a502c323245771e891ea38aff6527c2b45a42b74a28e77
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 48
+    sourceFile: apps/papra-server/src/modules/ingestion-folders/ingestion-folder.models.ts
+    sourceLine: 44
+  SYM-AUTO-E2E14D03456F8986-1:
+    identityHash: fccd48c61f56311c19d320458a27fd107b6f8608c6132099e4cca6806dffe67d
+    sourceHash: a5b11e12594d9aaf3950b9cdb6832e948bd52905a9f278c0fdab744128a97195
+    sourceColumn: 22
+    sourceEndColumn: 1
+    sourceEndLine: 162
+    sourceFile: apps/papra-server/src/modules/tagging-rules/tagging-rules.usecases.ts
+    sourceLine: 68
+  SYM-AUTO-E2E14D03456F8986-2:
+    identityHash: b04215a1cc17a8ffd3f084e9935bff1384f87a5bb1936b78ab85de1968aaf4d8
+    sourceHash: bb166b70bc2857741ca102c4ccae46d8a50e6d9acf26d955f132829119d6dfd7
+    sourceColumn: 13
+    sourceEndColumn: 102
+    sourceEndLine: 6
+    sourceFile: apps/papra-server/src/modules/tagging-rules/tagging-rules.schemas.ts
+    sourceLine: 6
+  SYM-AUTO-E2E14D03456F8986-3:
+    identityHash: 67b2f1caac959915f7080022b13cc5156c37542971e94f61ec51c2b00fa4f56e
+    sourceHash: a78271ccad0889872dc59379b4877a45d07921ecbdd80deefe2e80531f6b1967
+    sourceColumn: 13
+    sourceEndColumn: 1
+    sourceEndLine: 21
+    sourceFile: apps/papra-server/src/modules/tagging-rules/tagging-rules.tables.ts
+    sourceLine: 9
+  SYM-deleting-an-organization-is-a-soft-delete--58DE105C-1:
+    identityHash: 2181034026cc2d82ca9cdfa33456c3b51b387a6ccd606ced611e4c6e38769dd0
+    sourceHash: 84640b34e64d39efb7f39200018b2439c90c469b23c358813a3d511bce497c37
+    sourceColumn: 22
+    sourceEndColumn: 1
+    sourceEndLine: 489
+    sourceFile: apps/papra-server/src/modules/organizations/organizations.usecases.ts
+    sourceLine: 457
+  SYM-deleting-an-organization-is-a-soft-delete--58DE105C-2:
+    identityHash: 82929ed75b25e6a82e004dab766758f2701c05474b6d389d488955080828687b
+    sourceHash: 4b49e9d7caaf88a0bf7fe3dee506caeeaaa822245a86cbfd0d10bdfc0bfdf03c
+    sourceColumn: 13
+    sourceEndColumn: 37
+    sourceEndLine: 29
+    sourceFile: apps/papra-server/src/modules/organizations/organizations.config.ts
+    sourceLine: 4
+  SYM-deleting-an-organization-is-a-soft-delete--58DE105C-3:
+    identityHash: e9b00ad1c45e80c772886c57aa38a632a2a4c98dcac6b2f6b9aabc66d71786c4
+    sourceHash: 1726cd474e2376d16aa8e5e0486e6936c0176941274ccc44c43e920a2847aa9a
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 58
+    sourceFile: apps/papra-server/src/modules/organizations/organizations.repository.ts
+    sourceLine: 17
+  SYM-documents-are-deduplicated-per-organizatio-7DDB2737-1:
+    identityHash: 3d9c61caf990fc4b1e804db39fc32476bc9d96a16f3eb9879b3b3e776651b5aa
+    sourceHash: 93c3f9428812bc8f60d0668a17a63b462d92b1373e2495f3c9158f811ba39b3d
+    sourceColumn: 22
+    sourceEndColumn: 1
+    sourceEndLine: 169
+    sourceFile: apps/papra-server/src/modules/documents/documents.usecases.ts
+    sourceLine: 44
+  SYM-documents-are-deduplicated-per-organizatio-7DDB2737-2:
+    identityHash: 6fb21adbf688bcbffcb80c3c9d0558b3a1b05b067803b8cf7f941042d47ad489
+    sourceHash: 996a0e5c916aa3555ebbcf9c920c826d16b89fa4777f405e53a5a4ba08bc38a6
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 43
+    sourceFile: apps/papra-server/src/modules/documents/documents.repository.ts
+    sourceLine: 19
+  SYM-documents-are-deduplicated-per-organizatio-7DDB2737-3:
+    identityHash: 317504d6abbe78a217203b5187c6313cb6a840c553bbef4280a84b87a9ad4b8e
+    sourceHash: 49d022594a8366c9386fe1629ca4210acc58e575d0b0802bd0f2d2cd48c63265
+    sourceColumn: 13
+    sourceEndColumn: 2
+    sourceEndLine: 43
+    sourceFile: apps/papra-server/src/modules/documents/documents.table.ts
+    sourceLine: 7
+  SYM-documents-are-never-mutated-after-upload-n-409E8212-1:
+    identityHash: 53a0435a056797f095f5fd301afeb713d8521fb6fd5fd098a72b4907d472940a
+    sourceHash: 93c3f9428812bc8f60d0668a17a63b462d92b1373e2495f3c9158f811ba39b3d
+    sourceColumn: 22
+    sourceEndColumn: 1
+    sourceEndLine: 169
+    sourceFile: apps/papra-server/src/modules/documents/documents.usecases.ts
+    sourceLine: 44
+  SYM-documents-are-never-mutated-after-upload-n-409E8212-2:
+    identityHash: 33393659c8c17344d113ca3a4ca22c20bdc8db2bfb91194ac22c7c16bd790429
+    sourceHash: 93c3f9428812bc8f60d0668a17a63b462d92b1373e2495f3c9158f811ba39b3d
+    sourceColumn: 22
+    sourceEndColumn: 1
+    sourceEndLine: 529
+    sourceFile: apps/papra-server/src/modules/documents/documents.usecases.ts
+    sourceLine: 479
+  SYM-expired-cancelled-or-rejected-invitations--CDCCD352-1:
+    identityHash: 442b3b44dfd749bde1c2c7333733b296458a96375b09dda72f83e07baa1eef7d
+    sourceHash: 84640b34e64d39efb7f39200018b2439c90c469b23c358813a3d511bce497c37
+    sourceColumn: 22
+    sourceEndColumn: 1
+    sourceEndLine: 427
+    sourceFile: apps/papra-server/src/modules/organizations/organizations.usecases.ts
+    sourceLine: 368
+  SYM-file-uploads-are-handled-as-streams-end-to-F1A1D5B6-1:
+    identityHash: becb0cdfc02222476f4fe9980f6e6ebc5497d98e020c6c1f85f4951c04d090d4
+    sourceHash: 93c3f9428812bc8f60d0668a17a63b462d92b1373e2495f3c9158f811ba39b3d
+    sourceColumn: 22
+    sourceEndColumn: 1
+    sourceEndLine: 169
+    sourceFile: apps/papra-server/src/modules/documents/documents.usecases.ts
+    sourceLine: 44
+  SYM-file-uploads-are-handled-as-streams-end-to-F1A1D5B6-2:
+    identityHash: 2a193c626a1ad4e63e06e3a40bc2da4677d559b3e80ddd40e25c8f3019a87b7c
+    sourceHash: ed24f8dc5d1be2bfe73778a8b6c5b40d5bfd199b1a7785354b8d188e647b55a3
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 20
+    sourceFile: apps/papra-server/src/modules/shared/streams/byte-counter.ts
+    sourceLine: 3
+  SYM-file-uploads-are-handled-as-streams-end-to-F1A1D5B6-3:
+    identityHash: afa581b40cdaa26fdcaa75272ca25fe5d62679b122fefffe6550de6baa1e6384
+    sourceHash: 8910e97ecf3ed6e1e0806b46ff3cc817763d7b2a593bc3cc20da0c5e40868834
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 40
+    sourceFile: apps/papra-server/src/modules/shared/streams/stream-hash.ts
+    sourceLine: 16
+  SYM-files-matching-ingestion-folder-ignored-pa-9B49E534-1:
+    identityHash: 13b2a4420155f77f36c6019e9bfe505e8dd2507b623aefe3396bdd53c6cf25ab
+    sourceHash: be2c73bc1d144d125d23c88e94e030492aebf01f648ed723a059798a9a811b85
+    sourceColumn: 13
+    sourceEndColumn: 37
+    sourceEndLine: 70
+    sourceFile: apps/papra-server/src/modules/ingestion-folders/ingestion-folders.config.ts
+    sourceLine: 8
+  SYM-files-matching-ingestion-folder-ignored-pa-9B49E534-2:
+    identityHash: 582b3291aa928c9e4f11f1ab246dce3e44e3bf5e757322b4e6d5e6054c60a45d
+    sourceHash: ff818dcfb99c1d0ffb81a060713862954531c14d4339df2487752c79e153ecb9
+    sourceColumn: 13
+    sourceEndColumn: 1
+    sourceEndLine: 18
+    sourceFile: apps/papra-server/src/modules/ingestion-folders/ingestion-folders.constants.ts
+    sourceLine: 1
+  SYM-files-matching-ingestion-folder-ignored-pa-9B49E534-3:
+    identityHash: 396c50516fda4949a7f027b42e948b32aac74caf177b6dece98e5906d999c07e
+    sourceHash: 5dafcbd9a021802aafdedb4dd981895c88f9e1832cd169e7cc8a799ce5a6c952
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 95
+    sourceFile: apps/papra-server/src/modules/ingestion-folders/ingestion-folders.usecases.ts
+    sourceLine: 28
+  SYM-inbound-intake-email-webhooks-are-signed-w-27EFD88D-1:
+    identityHash: 5a5f9f947c4b6ec706ac36a730a5756cf55b7bb8e5e755c6957b8474ff33bbaa
+    sourceHash: dc752ab0d21dd18f382f6d54afd93454cdc05fc6e05f29095593cb5571125a48
+    sourceColumn: 13
+    sourceEndColumn: 37
+    sourceEndLine: 34
+    sourceFile: apps/papra-server/src/modules/intake-emails/intake-emails.config.ts
+    sourceLine: 10
+  SYM-inbound-intake-email-webhooks-are-signed-w-27EFD88D-2:
+    identityHash: 2c342e869b80a01567adc49d7769350b5a40b98592cd3f2f85c553947da1d558
+    sourceHash: 4d0c845574e556e9b71a5a2986c4ec1fbc957ad0dc8550490e3ba7046ace8b03
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 35
+    sourceFile: apps/papra-server/src/modules/intake-emails/intake-emails.routes.ts
+    sourceLine: 29
+  SYM-intake-email-addresses-can-follow-a-config-6227A38D-1:
+    identityHash: d0b968f96e970f508639952b69b2085f8323ac3e8fccf5328f341b77237cd0f9
+    sourceHash: d7d0f0c7f7cc69f7edff367b0e016786c7bec30f072e060b46894644eba871c8
+    sourceColumn: 13
+    sourceEndColumn: 37
+    sourceEndLine: 17
+    sourceFile: apps/papra-server/src/modules/intake-emails/username-drivers/intake-email-username.config.ts
+    sourceLine: 7
+  SYM-intake-email-addresses-can-follow-a-config-6227A38D-2:
+    identityHash: 3ebad7a788f230ffa3c62f142d0d5e6f8467554586899685ebfd23d14f5a8e5a
+    sourceHash: 4f50ce902333a5aeee67f61721be2562b10c430187a0ad4b5db181e8b0fea499
+    sourceColumn: 13
+    sourceEndColumn: 2
+    sourceEndLine: 52
+    sourceFile: apps/papra-server/src/modules/intake-emails/username-drivers/pattern/pattern.intake-email-username-driver.ts
+    sourceLine: 10
+  SYM-intake-email-addresses-can-follow-a-config-6227A38D-3:
+    identityHash: 17c3900d6f6d573c9a533743db0d4c7399a399c1f393fb6abf22ed06f2a8dff0
+    sourceHash: 809ddded97f7cd7f9b44cccd421a8270b52e0ffd203220e0073bc8588e5573ad
+    sourceColumn: 22
+    sourceEndColumn: 1
+    sourceEndLine: 46
+    sourceFile: apps/papra-server/src/modules/intake-emails/intake-emails.usecases.ts
+    sourceLine: 15
+  SYM-invitations-are-valid-for-7-days-configura-E15FD078-1:
+    identityHash: b6b4820c486df88b0350b6e615c7dfe4281c1604bb6d61824dfca557a644b0b5
+    sourceHash: 4b49e9d7caaf88a0bf7fe3dee506caeeaaa822245a86cbfd0d10bdfc0bfdf03c
+    sourceColumn: 13
+    sourceEndColumn: 37
+    sourceEndLine: 29
+    sourceFile: apps/papra-server/src/modules/organizations/organizations.config.ts
+    sourceLine: 4
+  SYM-invitations-are-valid-for-7-days-configura-E15FD078-2:
+    identityHash: 2b0edb8e28807019352db7ae67c5ebc86417f3f21e21e3e75cdb4fc8e038e111
+    sourceHash: 7181b4cf8775d21ff5ff41bc0bd1ad2bba393b6f66a96881f880b599b8c3031a
+    sourceColumn: 22
+    sourceEndColumn: 1
+    sourceEndLine: 32
+    sourceFile: apps/papra-server/src/modules/organizations/tasks/expire-invitations.task.ts
+    sourceLine: 9
+  SYM-ocr-text-extracted-from-scanned-pdfs-is-us-8C007452-1:
+    identityHash: 66fe4283c6cda7fe9febfe40b831d2ce70d15aed946bd1e6982e27a82ab67df1
+    sourceHash: 93c3f9428812bc8f60d0668a17a63b462d92b1373e2495f3c9158f811ba39b3d
+    sourceColumn: 22
+    sourceEndColumn: 1
+    sourceEndLine: 529
+    sourceFile: apps/papra-server/src/modules/documents/documents.usecases.ts
+    sourceLine: 479
+  SYM-ocr-text-extracted-from-scanned-pdfs-is-us-8C007452-2:
+    identityHash: bdbfca27ada90a51704fa88127a3b58a658c7f57abca191a5fa17e0b2ace273d
+    sourceHash: 06b82972a7f2393ee378624cc54797990a2734911c48e1eb38e3bd210c5bba0f
+    sourceColumn: 22
+    sourceEndColumn: 1
+    sourceEndLine: 32
+    sourceFile: apps/papra-server/src/modules/documents/documents.services.ts
+    sourceLine: 12
+  SYM-on-self-hosted-instances-the-first-registe-1C953705-1:
+    identityHash: d0e5da0aab25b78c56b922fbd26a36e1adf36fc1ad597ed373939d7f91aadb64
+    sourceHash: d3bcfc881e615e2af63cc896ae3c9ae00beb672ee05b668f2c1c7ba4d4515159
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 48
+    sourceFile: apps/papra-server/src/modules/roles/event-handlers/first-user-admin.user-created.ts
+    sourceLine: 10
+  SYM-on-self-hosted-instances-the-first-registe-1C953705-2:
+    identityHash: 8f87039471e4050c27f064310111d1207613eaf972958899fefbcc54fa401548
+    sourceHash: 2ebd38f36fbd1d277b4e4e69fc396b14d0560a7c39084d91973382dbdc84b307
+    sourceColumn: 13
+    sourceEndColumn: 37
+    sourceEndLine: 148
+    sourceFile: apps/papra-server/src/modules/app/auth/auth.config.ts
+    sourceLine: 28
+  SYM-only-privileged-members-of-an-organization-FCDD9696-1:
+    identityHash: 1fbba13f1f23e3d0c816684a3c5b7491e9ecd24f2d4e366388f7611a9300ecdf
+    sourceHash: 84640b34e64d39efb7f39200018b2439c90c469b23c358813a3d511bce497c37
+    sourceColumn: 22
+    sourceEndColumn: 1
+    sourceEndLine: 289
+    sourceFile: apps/papra-server/src/modules/organizations/organizations.usecases.ts
+    sourceLine: 195
+  SYM-only-the-file-content-is-hashed-for-dedupl-63EA565E-1:
+    identityHash: 84dbce75198dff9b90e06079e8883c4dcfa8e2e28afb3079934a83dd9d932f8b
+    sourceHash: 93c3f9428812bc8f60d0668a17a63b462d92b1373e2495f3c9158f811ba39b3d
+    sourceColumn: 22
+    sourceEndColumn: 1
+    sourceEndLine: 169
+    sourceFile: apps/papra-server/src/modules/documents/documents.usecases.ts
+    sourceLine: 44
+  SYM-only-the-file-content-is-hashed-for-dedupl-63EA565E-2:
+    identityHash: f91a68f31610e22d1ddd7862ff0893b69ca603692d257278cab611242ff73b62
+    sourceHash: 8910e97ecf3ed6e1e0806b46ff3cc817763d7b2a593bc3cc20da0c5e40868834
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 40
+    sourceFile: apps/papra-server/src/modules/shared/streams/stream-hash.ts
+    sourceLine: 16
+  SYM-only-the-organization-owner-can-delete-an--8207027D-1:
+    identityHash: 9b146a78f36d54240e9e5e1ba39ad857a848c2cf248347127f80fab6621b1058
+    sourceHash: 84640b34e64d39efb7f39200018b2439c90c469b23c358813a3d511bce497c37
+    sourceColumn: 22
+    sourceEndColumn: 1
+    sourceEndLine: 135
+    sourceFile: apps/papra-server/src/modules/organizations/organizations.usecases.ts
+    sourceLine: 121
+  SYM-only-the-organization-owner-can-delete-an--8207027D-2:
+    identityHash: f2ff6f035171825936aab4a180a78bbda8ec40c8c1dbedf237581cdaa49f30d8
+    sourceHash: 84640b34e64d39efb7f39200018b2439c90c469b23c358813a3d511bce497c37
+    sourceColumn: 22
+    sourceEndColumn: 1
+    sourceEndLine: 489
+    sourceFile: apps/papra-server/src/modules/organizations/organizations.usecases.ts
+    sourceLine: 457
+  SYM-search-queries-are-parsed-by-the-papra-sea-4463E6DB-1:
+    identityHash: dd1504656475da8b7d5c253f143de0dc6b3ba0ef6a486428fa7e3ba68941d4d6
+    sourceHash: 41f2c3031dabc40fd4d34ba46c89c8e04ef47ab58179f3e77445379cb1f7dfca
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 39
+    sourceFile: packages/search-parser/src/parser.ts
+    sourceLine: 7
+  SYM-search-queries-are-parsed-by-the-papra-sea-4463E6DB-2:
+    identityHash: f8b8b1821d9d07efae98b9242e0b0a1ab0bcff5f104ad4ea4d9e24644ca7539e
+    sourceHash: 32fc7f60ab8a0b28a1001ebaa2454669f47b37e5276d2e466b3b4ec19e438171
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 20
+    sourceFile: apps/papra-server/src/modules/documents/document-search/database-fts5/database-fts5.repository.models.ts
+    sourceLine: 7
+  SYM-search-queries-are-parsed-by-the-papra-sea-4463E6DB-3:
+    identityHash: 7485940c6547571a75b53af815ef0519629656f8fa3e1afcce7a91a6558aaa99
+    sourceHash: 0fd03cd5a7c177726eb1bc83865d92f58df7f7af09f9a8707514441264809762
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 252
+    sourceFile: apps/papra-server/src/modules/documents/document-search/database-fts5/query-builder/query-builder.ts
+    sourceLine: 229
+  SYM-stored-files-are-keyed-by-document-id-not--DCCF2C2E-1:
+    identityHash: 15def16ac28bc17b052dabee3fded1c0b5a33086c730cbe2c4a42c5bf0102dd0
+    sourceHash: 8ca372567ed2347c96c8603c2e76ffceb75ff6fbb5c71ce06501195e54c23936
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 21
+    sourceFile: apps/papra-server/src/modules/documents/documents.models.ts
+    sourceLine: 13
+  SYM-tag-name-and-colour-are-validated-server-s-1890EF60-1:
+    identityHash: 9d210651ed8bc80672db1f059e23a878b1522779b14ac66417cd121cfde6e3b8
+    sourceHash: 6fed7005e7e4544423ce31f179642961db6253b2245da87fbcbadb60bbffeac6
+    sourceColumn: 13
+    sourceEndColumn: 138
+    sourceEndLine: 5
+    sourceFile: apps/papra-server/src/modules/tags/tags.schemas.ts
+    sourceLine: 5
+  SYM-tag-name-and-colour-are-validated-server-s-1890EF60-2:
+    identityHash: b48d2a1dad5df2cf5406ac13199f74fc92dc16e9441e9f04286631cc5a2ecd1e
+    sourceHash: cb013eee423d61245becd8baf72803f035fed5b7bbca6aaf437aaf87c03928b7
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 29
+    sourceFile: apps/papra-server/src/modules/tags/tags.routes.ts
+    sourceLine: 22
+  SYM-tag-names-are-unique-per-organization-rega-7B5F6F2D-1:
+    identityHash: 36d6c63a504feca9b7bb64f8434ff44384d86bf10ad056001ae05df662a99977
+    sourceHash: 5f60edcbbc95b18f2160d0255bfdd0677905ef9c462ba9aff709a94a6bc48ae6
+    sourceColumn: 13
+    sourceEndColumn: 1
+    sourceEndLine: 23
+    sourceFile: apps/papra-server/src/modules/tags/tags.table.ts
+    sourceLine: 7
+  SYM-tag-names-are-unique-per-organization-rega-7B5F6F2D-2:
+    identityHash: ceb3a2bc3da40c1c1ea76537b26cd7fd81cb5a1201bdd57309ebcd54fe3c27ee
+    sourceHash: 0a96f9a6d653a30cce0b934badf4c03c158f8bcbcb24d352593171044c626b11
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 3
+    sourceFile: apps/papra-server/src/modules/tags/tags.repository.models.ts
+    sourceLine: 1
+  SYM-tag-names-are-unique-per-organization-rega-7B5F6F2D-3:
+    identityHash: 24bcc60d6545d0adaf74e101164b30b374dc53205dda97bc11154c6142d65a62
+    sourceHash: 75daf1cf2d7bba17ba8873ee5243a75c1a5e60586ebb7e23eb9eaabcbc0fcc49
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 29
+    sourceFile: apps/papra-server/src/modules/tags/tags.repository.ts
+    sourceLine: 14
+  SYM-the-documents-page-keeps-the-current-searc-F4067AA3-1:
+    identityHash: 8d7b65e95249d83589a339f3aaf5e4883c5819076ca1c1fd9f5d127422cb8b0f
+    sourceHash: a68cebdfc231c76ed88ff1e9cd5d5ad69c5c089827264c4dd4128b96ec866a68
+    sourceColumn: 13
+    sourceEndColumn: 1
+    sourceEndLine: 117
+    sourceFile: apps/papra-client/src/modules/documents/pages/documents.page.tsx
+    sourceLine: 16
+  SYM-the-documents-page-keeps-the-current-searc-F4067AA3-2:
+    identityHash: 1f80cf2a60ed5a2ba7ef324474c5398ece0217f28eda4cffa02f1a4543222948
+    sourceHash: 91d97d68e607c9ff56bbd6db5c8314d9ab8cd9b414e5fe2b6709db1c8d6a760e
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 40
+    sourceFile: apps/papra-client/src/modules/shared/signals/params.ts
+    sourceLine: 5
+  SYM-the-full-text-search-index-is-maintained-b-1B169822-1:
+    identityHash: 8a8ec7209e12705e9feffc0a9d89e54d8424c1ac2080028439cf76d858ec2a95
+    sourceHash: da60c0c80443774b426b4e22646838759d0e51eefe8b815132b63207b540691d
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 50
+    sourceFile: apps/papra-server/src/modules/documents/document-search/events/sync-document-search.handlers.ts
+    sourceLine: 7
+  SYM-the-has-tags-filter-selects-documents-with-7EF848DC-1:
+    identityHash: 2b09d3234610abfd8dd33bfa5cdddbe69cd50d03b5f725aa1dcef7e526184b4e
+    sourceHash: 0fd03cd5a7c177726eb1bc83865d92f58df7f7af09f9a8707514441264809762
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 178
+    sourceFile: apps/papra-server/src/modules/documents/document-search/database-fts5/query-builder/query-builder.ts
+    sourceLine: 158
+  SYM-the-has-tags-filter-selects-documents-with-7EF848DC-2:
+    identityHash: 1a3188f3c619754304994a79633450448de467482c0dd73489be92f0f6a6384a
+    sourceHash: 0fd03cd5a7c177726eb1bc83865d92f58df7f7af09f9a8707514441264809762
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 133
+    sourceFile: apps/papra-server/src/modules/documents/document-search/database-fts5/query-builder/query-builder.ts
+    sourceLine: 112
+  SYM-the-name-and-content-search-filters-use-co-30FF0726-1:
+    identityHash: 246284bf6f6d0c90eb753a0f5485ad01750f4386b5084aafbd7113a1e43ab999
+    sourceHash: 0fd03cd5a7c177726eb1bc83865d92f58df7f7af09f9a8707514441264809762
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 45
+    sourceFile: apps/papra-server/src/modules/documents/document-search/database-fts5/query-builder/query-builder.ts
+    sourceLine: 20
+  SYM-the-name-and-content-search-filters-use-co-30FF0726-2:
+    identityHash: 310ac7511198d9b43f04c2d165ff19d56f04eaed1325db166a8a21197403c2de
+    sourceHash: 0fd03cd5a7c177726eb1bc83865d92f58df7f7af09f9a8707514441264809762
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 72
+    sourceFile: apps/papra-server/src/modules/documents/document-search/database-fts5/query-builder/query-builder.ts
+    sourceLine: 47
+  SYM-the-name-and-content-search-filters-use-co-30FF0726-3:
+    identityHash: 3234c13763c01e3548865da17ae4053897128371fa481f38ab62b0071da55816
+    sourceHash: e61d0b950e2b57a7c17c59caea061f39ad4839a35c2d951db0450e2c181234b4
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 34
+    sourceFile: apps/papra-server/src/modules/documents/document-search/database-fts5/query-builder/query-builder.models.ts
+    sourceLine: 10
+  SYM-the-purge-task-deletes-an-expired-organiza-19AD72ED-1:
+    identityHash: deea8674387a4ab37763ed2ca1268c31d93ea830576eb899d2d0061933ffd4bf
+    sourceHash: 84640b34e64d39efb7f39200018b2439c90c469b23c358813a3d511bce497c37
+    sourceColumn: 22
+    sourceEndColumn: 1
+    sourceEndLine: 569
+    sourceFile: apps/papra-server/src/modules/organizations/organizations.usecases.ts
+    sourceLine: 528
+  SYM-the-purge-task-deletes-an-expired-organiza-19AD72ED-2:
+    identityHash: 5bc600138dabc93c625aa7dc0906de1c7a82d31fa3a71c7af7453b39f7dfb0ce
+    sourceHash: 84640b34e64d39efb7f39200018b2439c90c469b23c358813a3d511bce497c37
+    sourceColumn: 22
+    sourceEndColumn: 1
+    sourceEndLine: 606
+    sourceFile: apps/papra-server/src/modules/organizations/organizations.usecases.ts
+    sourceLine: 571
+  SYM-the-purge-task-deletes-an-expired-organiza-19AD72ED-3:
+    identityHash: 281312bdff550348df8c5a438da0d0bc0facb183885dfcad37655785e411d4ac
+    sourceHash: 9db7c80c939aad5d3e891c3b7c160bde2621bc5b4541d0a4af9784d159a97fb7
+    sourceColumn: 22
+    sourceEndColumn: 1
+    sourceEndLine: 41
+    sourceFile: apps/papra-server/src/modules/organizations/tasks/purge-expired-organizations.task.ts
+    sourceLine: 12
+  SYM-uploading-content-identical-to-a-trashed-d-F0111402-1:
+    identityHash: 941b599eb9393b6bac36ff51e6ebe4c764d9d1aae845e6f211d5ff2dfb999877
+    sourceHash: 93c3f9428812bc8f60d0668a17a63b462d92b1373e2495f3c9158f811ba39b3d
+    sourceColumn: 22
+    sourceEndColumn: 1
+    sourceEndLine: 169
+    sourceFile: apps/papra-server/src/modules/documents/documents.usecases.ts
+    sourceLine: 44
+  SYM-uploading-content-identical-to-a-trashed-d-F0111402-2:
+    identityHash: 7913ed307006b9141afef73fe4f2ed811e45206ba56588075859a668af756ca5
+    sourceHash: 996a0e5c916aa3555ebbcf9c920c826d16b89fa4777f405e53a5a4ba08bc38a6
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 43
+    sourceFile: apps/papra-server/src/modules/documents/documents.repository.ts
+    sourceLine: 19
+  SYM-webhooks-emit-document-updated-document-ta-FB361BD1-1:
+    identityHash: 0756607e141e3ced911b4068b06c38e95a6b35ad50f1837ee43a97f0ebaeb40c
+    sourceHash: 626350032e237e9c461c51956e46681880379fc222ee187c023ce86067d0cbca
+    sourceColumn: 13
+    sourceEndColumn: 10
+    sourceEndLine: 7
+    sourceFile: packages/webhooks/src/webhooks.constants.ts
+    sourceLine: 1
+  SYM-webhooks-emit-document-updated-document-ta-FB361BD1-2:
+    identityHash: 9d345d617bad541e19bc52329a5096f2b13030dd4c7672cda2ba4ebf210beced
+    sourceHash: c5c8f3baa3e9e69a2a3287137fe229e6529b38bd380911b7eede05d0358e43df
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 31
+    sourceFile: apps/papra-server/src/modules/documents/events/webhook.document-updated.ts
+    sourceLine: 6
+  SYM-webhooks-emit-document-updated-document-ta-FB361BD1-3:
+    identityHash: 859144a763d7e2914ba41fcc39a4410c964a5c0357421fc4924fc64d2c596810
+    sourceHash: 64e82f1fcb2900b09db90c8c6cd4e1e43573bb2147a3737f20384af8593edb53
+    sourceColumn: 22
+    sourceEndColumn: 1
+    sourceEndLine: 45
+    sourceFile: apps/papra-server/src/modules/tags/tags.usecases.ts
+    sourceLine: 8
+  SYM-when-a-trashed-document-is-restored-by-a-d-F5E2FEA1-1:
+    identityHash: 1fec4e0940b24b7710a311a35ca1821f23a3d026f8b24a2d83048f907414df1e
+    sourceHash: 93c3f9428812bc8f60d0668a17a63b462d92b1373e2495f3c9158f811ba39b3d
+    sourceColumn: 22
+    sourceEndColumn: 1
+    sourceEndLine: 169
+    sourceFile: apps/papra-server/src/modules/documents/documents.usecases.ts
+    sourceLine: 44
+  SYM-when-a-trashed-document-is-restored-by-a-d-F5E2FEA1-2:
+    identityHash: 1fd841a778a5d9730d667e4afa5da9b2543b9e8caea3439f2881004969390505
+    sourceHash: 996a0e5c916aa3555ebbcf9c920c826d16b89fa4777f405e53a5a4ba08bc38a6
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 43
+    sourceFile: apps/papra-server/src/modules/documents/documents.repository.ts
+    sourceLine: 19
+  SYM-when-a-trashed-document-is-restored-by-a-d-F5E2FEA1-3:
+    identityHash: fdf31a077cde6c281d984272a5d9959865f96ba9cf91d2aa787d0dc47ca816bd
+    sourceHash: a5b11e12594d9aaf3950b9cdb6832e948bd52905a9f278c0fdab744128a97195
+    sourceColumn: 22
+    sourceEndColumn: 1
+    sourceEndLine: 208
+    sourceFile: apps/papra-server/src/modules/tagging-rules/tagging-rules.usecases.ts
+    sourceLine: 168
+  SYM-when-several-versioned-key-encryption-keys-2FAB9215-1:
+    identityHash: 935a99ca9b7aa66929d719ff849ccabbf9c16e613ac6225bfd11cb9190ebc6ee
+    sourceHash: 23991e8b52569e616a614a16f13b879456293c4ee3580013d9a46dbb1fed4c4b
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 23
+    sourceFile: apps/papra-server/src/modules/documents/storage/encryption/document-encryption.models.ts
+    sourceLine: 14
+  SYM-when-several-versioned-key-encryption-keys-2FAB9215-2:
+    identityHash: b3a50c398aa5e37fc04f172bdde7f8e8ba983d230d771de136b4566c932b3b9c
+    sourceHash: 23991e8b52569e616a614a16f13b879456293c4ee3580013d9a46dbb1fed4c4b
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 33
+    sourceFile: apps/papra-server/src/modules/documents/storage/encryption/document-encryption.models.ts
+    sourceLine: 25
+  SYM-when-several-versioned-key-encryption-keys-2FAB9215-3:
+    identityHash: 8337409e2da88e38cd986ae700bcdfe9b94da7d85472e50244c4c5827b7bb805
+    sourceHash: 4bcf2dedb5c226ed1f7368cd8a298b00168f55127f27bf202cf366e0c4486d84
+    sourceColumn: 13
+    sourceEndColumn: 37
+    sourceEndLine: 28
+    sourceFile: apps/papra-server/src/modules/documents/storage/encryption/document-encryption.config.ts
+    sourceLine: 5
+  SYM-with-encryption-enabled-each-document-is-e-3A4DEA2F-1:
+    identityHash: 60fb7456f4f72227381d46f712aa3b6888450bfe41beed3cc74761c62eb955d1
+    sourceHash: 23991e8b52569e616a614a16f13b879456293c4ee3580013d9a46dbb1fed4c4b
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 37
+    sourceFile: apps/papra-server/src/modules/documents/storage/encryption/document-encryption.models.ts
+    sourceLine: 35
+  SYM-with-encryption-enabled-each-document-is-e-3A4DEA2F-2:
+    identityHash: 039455848bc3beabd8d8a93efbdfee4258a74af844b0e3f0ccb39ec2028b0635
+    sourceHash: 23991e8b52569e616a614a16f13b879456293c4ee3580013d9a46dbb1fed4c4b
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 51
+    sourceFile: apps/papra-server/src/modules/documents/storage/encryption/document-encryption.models.ts
+    sourceLine: 39
+  SYM-with-encryption-enabled-each-document-is-e-3A4DEA2F-3:
+    identityHash: bc898e19db152396faabb534a8ddb3c55c8eb67fdd1bd0bd844b7d463cfb67ef
+    sourceHash: b266bccaa7f928e205f2bffd45f62739416f02ef2dc6454b77cb90dd9ff4a33d
+    sourceColumn: 16
+    sourceEndColumn: 1
+    sourceEndLine: 62
+    sourceFile: apps/papra-server/src/modules/documents/storage/encryption/document-encryption.services.ts
+    sourceLine: 9

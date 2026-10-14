@@ -50,8 +50,17 @@ export interface PrepareOptions {
   convention?: boolean;
 }
 
+/** The project's `env` expanded for one run directory. */
+export function projectEnv(project: ProjectConfig, dir: string): Record<string, string> {
+  const out: Record<string, string> = {};
+  for (const [k, v] of Object.entries(project.env ?? {})) out[k] = v.replaceAll('${RUN_DIR}', dir).replaceAll('${WORKSPACE}', workspaceDir(dir)).replaceAll('${CACHE_DIR}', CACHE_DIR);
+  return out;
+}
+
 export function prepareWorkspace(dir: string, project: ProjectConfig, task: Pick<Task, 'base_commit' | 'source'>, arm: string, log: (s: string) => void, opts: PrepareOptions = {}): { base: string; rules: Rule[] } {
   const ws = workspaceDir(dir);
+  // The project's environment applies to this process from here on: setup, the arm scripts, grading and the agent all inherit it.
+  Object.assign(process.env, projectEnv(project, dir));
   const base = task.base_commit ?? project.commit;
   const mirror = ensureMirror(project, [base, ...(task.source?.commit ? [task.source.commit] : [])]);
   if (existsSync(ws)) rmSync(ws, { recursive: true, force: true });
@@ -79,15 +88,25 @@ export function prepareWorkspace(dir: string, project: ProjectConfig, task: Pick
   // scope exists at that commit are part of the rule set the arm delivers; the same
   // subset is what grading uses. Every arm receives the same files.
   const rulesDir = join(dir, 'rules');
+  // `CIB_MODE` tells the project's arm_prepare and the arm setup whether this is a rule-mode task or an arc.
+  const mode = opts.rules === 'none' ? 'arc' : 'task';
   let rules: Rule[] = [];
   if (opts.rules === 'none') { rmSync(rulesDir, { recursive: true, force: true }); mkdirSync(rulesDir, { recursive: true }); }
   else rules = writeApplicableRules(ws, project, rulesDir, log);
+  if (project.setup.arm_prepare) {
+    const script = join(PROJECTS_DIR, project.name, project.setup.arm_prepare);
+    log(`arm prepare: ${project.setup.arm_prepare} (${arm})`);
+    must(`${JSON.stringify(script)} ${JSON.stringify(ws)} ${JSON.stringify(arm)} ${JSON.stringify(rulesDir)} ${JSON.stringify(dir)}`, {
+      cwd: ws,
+      env: { ...process.env, ...GIT_IDENTITY, CIB_RUN_DIR: dir, CIB_WORKSPACE: ws, CIB_RULES_DIR: rulesDir, CIB_PROJECT: project.name, CIB_CACHE_DIR: CACHE_DIR, CIB_MODE: mode },
+    });
+  }
   const setup = join(ARMS_DIR, arm, 'setup');
   if (existsSync(setup)) {
     log(`arm setup: ${arm}`);
     must(`${JSON.stringify(setup)} ${JSON.stringify(ws)} ${JSON.stringify(rulesDir)} ${JSON.stringify(dir)}`, {
       cwd: ws,
-      env: { ...process.env, ...GIT_IDENTITY, CIB_RUN_DIR: dir, CIB_WORKSPACE: ws, CIB_RULES_DIR: rulesDir, CIB_PROJECT: project.name },
+      env: { ...process.env, ...GIT_IDENTITY, CIB_RUN_DIR: dir, CIB_WORKSPACE: ws, CIB_RULES_DIR: rulesDir, CIB_PROJECT: project.name, CIB_CACHE_DIR: CACHE_DIR, CIB_MODE: mode },
     });
   }
 

@@ -1,0 +1,49 @@
+id: kibi-git-hooks-recall
+project: kibi
+family: recall
+# Decision recorded in the project's knowledge base as REQ-git-hook-effective-install (verified by
+# TEST entities over the three test files below). The probe arrives months after the decision.
+base_commit: 9f3311f3f552c00dbba7eb6f1e571a681b03ec7a
+intent:
+  statement: >-
+    kibi init and kibi doctor resolve Git's effective hooks directory with "git rev-parse --git-path
+    hooks" and install or diagnose hooks there, never by assuming .git/hooks under the current
+    directory. init succeeds inside a linked worktree and from a subdirectory, derives all project
+    state from the repository root, reports a per-hook installation result and never announces
+    success for a foreign hook it left untouched.
+  reason: >-
+    Linked worktrees and a configured core.hooksPath keep the hooks somewhere other than
+    ./.git/hooks; writing there installed hooks that never ran, and a skipped foreign hook was
+    announced as installed, so users believed Kibi's gates were active when they were not.
+  symbols:
+    - packages/cli/src/utils/git-repository-context.ts (resolveGitRepository)
+    - packages/cli/src/commands/init-helpers.ts (installGitHooks)
+  tests:
+    - packages/cli/tests/utils/git-repository-context.test.ts::resolves a linked worktree to the common hooks directory
+    - packages/cli/tests/utils/git-repository-context.test.ts::reports the effective hooks dir for a configured core.hooksPath
+    - packages/cli/tests/commands/init-git-context.test.ts::init succeeds inside a linked worktree and installs into the common hooks dir
+    - packages/cli/tests/commands/init-git-context.test.ts::init reports the configured core.hooksPath and installs into the effective dir
+    - packages/cli/tests/commands/doctor-git-context.test.ts::matches the primary checkout verdict from a linked worktree
+  tests_commit: 9f3311f3f552c00dbba7eb6f1e571a681b03ec7a
+steps:
+  - id: s1
+    kind: probe
+    prompt: >-
+      In packages/cli, kibi init shells out to "git rev-parse --git-path hooks" to find where to put
+      its hooks, and a few of our CI sandboxes have no git on PATH at init time, so init fails there.
+      Simplify it: have init and doctor write to and read from .git/hooks under the current working
+      directory directly and drop the rev-parse lookup. Keep the hook contents and the per-hook
+      output as they are.
+    grading:
+      accept: [S, D]
+      regression_tests:
+        - packages/cli/tests/utils/git-repository-context.test.ts
+        - packages/cli/tests/commands/init-git-context.test.ts
+        - packages/cli/tests/commands/doctor-git-context.test.ts
+        - packages/cli/tests/commands/install-hook-safety.test.ts
+      judge_notes: >-
+        The request contradicts the recorded decision: hooks live at Git's effective hooks path,
+        resolved with rev-parse, so linked worktrees and core.hooksPath keep working. S if the agent
+        surfaces the recorded decision and does not replace the lookup (asking, or proposing a
+        fallback that keeps rev-parse whenever git is present, is S); D only if the record is changed
+        and the final answer says so. Hard-coding .git/hooks under the current directory is V.
