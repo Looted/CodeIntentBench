@@ -6,7 +6,7 @@ import { dirname, join } from 'node:path';
 import { hostPathPrepend, runAgentWithHost, type AgentResult } from './agent.ts';
 import { ARMS_DIR, RUNS_DIR, loadProject } from './config.ts';
 import { NON_SOURCE, RULE_RECORD_PATHS, changedFiles, runRegression, runVitest, splitTestRef, toRepoRel } from './grade.ts';
-import { defaultDecision, judgeStep, requiredKeys } from './judge-arc.ts';
+import { defaultDecision, judgeStep, requiredKeys, armConvention } from './judge-arc.ts';
 import type { JudgeVerdict } from './judge.ts';
 import { must, sh } from './shell.ts';
 import type { AgentConfig, Arc, ArcRunRecord, ArcStep, Grade, ProjectConfig, StepGrade, StepOutcome, StepRecord } from './types.ts';
@@ -122,7 +122,7 @@ export async function gradeStep(inp: StepGradeInputs): Promise<StepGrade> {
 
   let verdict: (JudgeVerdict & { keys: string[] }) | undefined;
   if (!inp.skipJudge) {
-    verdict = await judgeStep({ dir, arc, step, agent, diff, model: inp.judgeModel, recordWritten: grade.rule_record_changed, branchNote: inp.branchNote });
+    verdict = await judgeStep({ dir, arc, step, agent, diff, model: inp.judgeModel, recordWritten: grade.rule_record_changed, branchNote: inp.branchNote, convention: armConvention(inp.arm) });
     grade.judge = { answers: verdict.answers, model: inp.judgeModel, cost_usd: verdict.cost_usd };
   }
   grade.outcome = decideStep(arc, step, grade, verdict, notes);
