@@ -13,7 +13,20 @@ versions="$(cat "$here/versions.env")"; eval "$versions"
 # finds kibi-mcp by walking up from the workspace), so the project's own
 # package.json and lockfile stay untouched.
 mkdir -p "$run/kibi"
-( cd "$run/kibi" && npm install --silent --no-audit --no-fund "kibi-cli@$KIBI_CLI" "kibi-mcp@$KIBI_MCP" "kibi-core@$KIBI_CORE" )
+( cd "$run/kibi" && npm install --silent --no-audit --no-fund "kibi-cli@$KIBI_CLI" "kibi-mcp@$KIBI_MCP" "kibi-core@$KIBI_CORE" "kibi-runtime@$KIBI_RUNTIME" )
+# kibi-mcp loads its operations from kibi-runtime and declares it with a caret range, so without the
+# pin above a fresh install picks up whatever runtime npm has newest (a later release's operations
+# over the pinned kibi-core). Refuse a tree where any of the four resolves to more than one version.
+( cd "$run/kibi" && node -e '
+  const { execFileSync } = require("node:child_process");
+  const tree = JSON.parse(execFileSync("npm", ["ls", "--all", "--json"], { encoding: "utf8" }));
+  const want = { "kibi-cli": process.argv[1], "kibi-mcp": process.argv[2], "kibi-core": process.argv[3], "kibi-runtime": process.argv[4] };
+  const seen = {};
+  const walk = (deps) => { for (const [name, d] of Object.entries(deps ?? {})) { if (name in want) (seen[name] ??= new Set()).add(d.version); walk(d.dependencies); } };
+  walk(tree.dependencies);
+  const bad = Object.entries(want).filter(([n, v]) => !seen[n] || seen[n].size !== 1 || !seen[n].has(v));
+  if (bad.length) { console.error("kibi arm: unpinned Kibi packages: " + bad.map(([n, v]) => `${n} wanted ${v} got ${[...(seen[n] ?? ["none"])].join("+")}`).join(", ")); process.exit(1); }
+' "$KIBI_CLI" "$KIBI_MCP" "$KIBI_CORE" "$KIBI_RUNTIME" )
 export PATH="$run/kibi/node_modules/.bin:$PATH"
 
 # The plugin at a pinned commit of the Kibi repository.
