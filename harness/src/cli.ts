@@ -2,7 +2,7 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { parseArgs } from 'node:util';
-import { runAgentWithHost, type AgentResult } from './agent.ts';
+import { parseTranscript, runAgentWithHost, type AgentResult } from './agent.ts';
 import { RUNS_DIR, listArms, listProjects, loadArc, loadArcs, loadProject, loadRules, loadRulesDir, loadTask, loadTasks } from './config.ts';
 import { decideStep, runArc } from './arc.ts';
 import { judgeStep } from './judge-arc.ts';
@@ -328,6 +328,13 @@ async function rejudgeArc(dir: string, judgeModel: string): Promise<void> {
     const sdir = join(dir, 'steps', rec.id);
     if (!step || !rec.grade || rec.grade.invalid || !existsSync(join(sdir, 'agent.json'))) continue;
     const agent = JSON.parse(readFileSync(join(sdir, 'agent.json'), 'utf8')) as AgentResult;
+    // Older runs did not keep lookup results and hook context; take them from the transcript.
+    if (existsSync(join(sdir, 'transcript.jsonl'))) {
+      const parsed = parseTranscript(readFileSync(join(sdir, 'transcript.jsonl'), 'utf8'));
+      agent.tool_calls = parsed.tool_calls; agent.evidence = parsed.evidence; agent.first_rule_lookup_turn = parsed.first_rule_lookup_turn; agent.first_edit_turn = parsed.first_edit_turn;
+      rec.first_lookup_turn = parsed.first_rule_lookup_turn; rec.first_edit_turn = parsed.first_edit_turn;
+      writeFileSync(join(sdir, 'agent.json'), JSON.stringify(agent, null, 2));
+    }
     const diff = existsSync(join(sdir, 'diff.patch')) ? readFileSync(join(sdir, 'diff.patch'), 'utf8') : '';
     const branchNote = arc.family === 'branch' && rec.branch !== firstBranch ? `This session runs on branch ${rec.branch}; the recorded decision was made on branch ${firstBranch} and has not been merged here, so it does not hold on this branch.` : undefined;
     const before = rec.grade.outcome;

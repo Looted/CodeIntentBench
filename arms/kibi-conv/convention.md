@@ -1,0 +1,1 @@
+Product decisions are recorded as requirements in the Kibi knowledge base (the kb_* tools). Before changing behaviour, search it for decisions about the area you touch; record new product decisions as requirements with the decision, its reason and the code they apply to.

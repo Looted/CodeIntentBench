@@ -10,6 +10,7 @@ An arm decides how a project's rules (`projects/<name>/rules/*.yaml`) reach the 
 | `memory` | Rules seeded as notes in a file-backed keyword-search memory over MCP. | Empty memory; the convention says to search it and save decisions. | mem0, Zep, auto-memory, vector memory stores |
 | `agents-md` | All rules rendered into one `AGENTS.md`, plus a `CLAUDE.md` pointer. | Empty `AGENTS.md`; the convention says to record decisions there. | the always-in-context ceiling |
 | `kibi` | Rules imported as firm requirements with tests and symbol links; the kibi-claude plugin (hooks, skills, MCP) installed. | Empty knowledge base after `kibi init`; the plugin's own skill is the only instruction. | Kibi |
+| `kibi-conv` | (arc mode only) | As `kibi`, plus the same one-sentence convention the other arms get, saying decisions are recorded as Kibi requirements. | Kibi, told where decisions live |
 
 The tracker and memory stores (`harness/src/arm-tools/{tracker,memory}-mcp.ts`) are passive by construction: nothing fires when the agent reads or edits code, the agent has to ask. That is the property the arc families test.
 

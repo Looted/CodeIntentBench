@@ -3,9 +3,9 @@
 import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
-import { runAgentWithHost, type AgentResult } from './agent.ts';
+import { hostPathPrepend, runAgentWithHost, type AgentResult } from './agent.ts';
 import { ARMS_DIR, RUNS_DIR, loadProject } from './config.ts';
-import { NON_SOURCE, RULE_RECORD_PATHS, changedFiles, runVitest, splitTestRef, toRepoRel } from './grade.ts';
+import { NON_SOURCE, RULE_RECORD_PATHS, changedFiles, runRegression, runVitest, splitTestRef, toRepoRel } from './grade.ts';
 import { defaultDecision, judgeStep, requiredKeys } from './judge-arc.ts';
 import type { JudgeVerdict } from './judge.ts';
 import { must, sh } from './shell.ts';
@@ -13,7 +13,11 @@ import type { AgentConfig, Arc, ArcRunRecord, ArcStep, Grade, ProjectConfig, Ste
 import { BASE_BRANCH, GIT_IDENTITY, loadArmHost, prepareWorkspace, workspaceDir } from './workspace.ts';
 
 const q = (s: string) => JSON.stringify(s);
-const ENV = { ...process.env, ...GIT_IDENTITY };
+const BASE_ENV: NodeJS.ProcessEnv = { ...process.env, ...GIT_IDENTITY };
+// Per arc run: the arm's tools on PATH, because the arm may install git hooks
+// (Kibi's post-checkout hook calls the kibi CLI) that the harness's own git
+// commands trigger.
+let ENV: NodeJS.ProcessEnv = BASE_ENV;
 
 export function arcRunDir(project: string, arc: string, arm: string, id: string): string {
   return join(RUNS_DIR, project, '_arcs', arc, arm, id);
@@ -112,7 +116,7 @@ export async function gradeStep(inp: StepGradeInputs): Promise<StepGrade> {
     if (step.grading.task_tests?.length) grade.task_tests = runVitest(ws, project, dir, 'task', step.grading.task_tests);
     const regression = step.grading.regression_tests;
     if (regression === undefined || regression.length > 0) {
-      grade.regression_tests = regression && regression.length > 0 && !regression.includes('all') ? runVitest(ws, project, dir, 'regression', regression) : runVitest(ws, project, dir, 'regression', 'all');
+      grade.regression_tests = regression && regression.length > 0 && !regression.includes('all') ? runRegression(ws, project, dir, regression) : runRegression(ws, project, dir, 'all');
     }
   });
 
@@ -144,7 +148,8 @@ export function decideStep(arc: Arc, step: ArcStep, grade: Omit<Grade, 'outcome'
     return taskOk && regOk && intentKept ? 'C' : 'F';
   }
   if (decide === 'require') {
-    if (yes('invented_constraint') || yes('reason_invented') || yes('claimed_fine')) return 'I';
+    // An answer that gives the recorded reason may add its own observations; it is invented only when the recorded reason is missing.
+    if (yes('invented_constraint') || (yes('reason_invented') && !yes('reason_matches')) || yes('claimed_fine')) return 'I';
     return requiredKeys(arc, step).every(yes) ? 'C' : 'F';
   }
   if (decide === 'leak') {
@@ -200,6 +205,7 @@ export async function runArc(projectName: string, arc: Arc, arm: string, attempt
   const ws = workspaceDir(dir);
   for (const c of [...sources, arc.intent.tests_commit].filter(Boolean)) sh(`git -C ${q(ws)} cat-file -e ${c}^{commit}`, { quiet: true });
   const host = loadArmHost(arm);
+  ENV = { ...BASE_ENV, PATH: [...hostPathPrepend(host, dir), BASE_ENV.PATH ?? ''].join(':') };
   writeFileSync(join(dir, 'arc.json'), JSON.stringify(arc, null, 2));
   let cost = 0;
   let invalid = false;
@@ -210,13 +216,19 @@ export async function runArc(projectName: string, arc: Arc, arm: string, attempt
     mkdirSync(sdir, { recursive: true });
     const wanted = step.branch ?? BASE_BRANCH;
     const current = git(ws, 'rev-parse --abbrev-ref HEAD').trim();
+    const stepNotes: string[] = [];
     if (wanted !== current) {
-      if (branches.has(wanted)) git(ws, `checkout --quiet ${q(wanted)}`);
-      else { git(ws, `checkout --quiet -b ${q(wanted)}`); branches.add(wanted); }
+      // An arm may install git hooks (Kibi's post-checkout hook rebuilds its branch view). A hook that
+      // fails after the switch has happened is the arm's problem, recorded on the step, not the harness's.
+      const r = sh(`git -C ${q(ws)} checkout --quiet ${branches.has(wanted) ? '' : '-b '}${q(wanted)}`, { quiet: true, env: ENV });
+      const now = git(ws, 'rev-parse --abbrev-ref HEAD').trim();
+      if (now !== wanted) throw new Error(`checkout ${wanted} failed: ${r.stderr.slice(-800)}`);
+      if (r.code !== 0) { stepNotes.push(`git hook failed on checkout ${wanted}: ${r.stderr.trim().slice(0, 600)}`); opts.log(`hook failed on checkout ${wanted} (arm's hook; continuing)`); }
+      branches.add(wanted);
     }
     const startCommit = git(ws, 'rev-parse HEAD').trim();
     const storeBefore = storeHash(dir, ws);
-    const rec: StepRecord = { id: step.id, kind: step.kind, branch: wanted, start_commit: startCommit, record_written: false };
+    const rec: StepRecord = { id: step.id, kind: step.kind, branch: wanted, start_commit: startCommit, record_written: false, ...(stepNotes.length ? { notes: stepNotes } : {}) };
     record.steps.push(rec); save();
     opts.log(`step ${step.id} (${step.kind}) on ${wanted} @ ${startCommit.slice(0, 12)}`);
 
