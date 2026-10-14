@@ -9,6 +9,7 @@ import { BASE_BRANCH, GIT_IDENTITY, workspaceDir } from './workspace.ts';
 
 export const RULE_RECORD_PATHS: Record<string, RegExp> = {
   kibi: /^\.kb\//,
+  'kibi-conv': /^\.kb\//,
   'agents-md': /^(AGENTS|CLAUDE)\.md$/,
   docs: /^docs\/decisions\//,
 };
@@ -168,7 +169,7 @@ export async function gradeRun(inp: GradeInputs): Promise<Grade> {
     grade.invalid = true; grade.invalid_reason = 'timed out before any output';
   } else if (agent.code !== 0 && agent.usage.turns === 0) {
     grade.invalid = true; grade.invalid_reason = `agent exited ${agent.code} before its first turn`;
-  } else if (arm === 'kibi' && !agent.tools_available.some((t) => /kb_/.test(t))) {
+  } else if (/^kibi/.test(arm) && !agent.tools_available.some((t) => /kb_/.test(t))) {
     grade.invalid = true; grade.invalid_reason = 'kibi arm without kb_* tools in the session';
   }
   if (grade.invalid) { grade.outcome = 'INVALID'; return grade; }
