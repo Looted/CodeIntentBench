@@ -259,9 +259,21 @@ export async function runArc(projectName: string, arc: Arc, arm: string, attempt
     opts.log(`graded ${step.id}: ${rec.grade.outcome} (${rec.grade.pass ? 'pass' : 'fail'})`);
     if (rec.grade.invalid) { invalid = true; save(); break; }
 
-    // The session ends the way a user's would: the work is committed on the branch.
+    // The session ends the way a user's would: the work is committed on the branch, with the arm's git
+    // hooks enabled, so a commit gate the arm installs (Kibi's pre-commit `kibi check --staged`) gets
+    // its say. A refusal is recorded on the step, not graded; the work is then committed with
+    // --no-verify so the arc continues as the user would after reading the hook's message.
+    const beforeCommit = join(ARMS_DIR, arm, 'before-commit');
+    if (existsSync(beforeCommit)) sh(`${q(beforeCommit)} ${q(ws)}`, { quiet: true, env: ENV, timeoutMs: 10 * 60_000 });
     git(ws, 'add -A');
-    sh(`git -C ${q(ws)} commit --quiet --no-verify --allow-empty -m ${q(`session ${step.id}`)}`, { quiet: true, env: ENV });
+    const gate = sh(`git -C ${q(ws)} commit --quiet --allow-empty -m ${q(`session ${step.id}`)}`, { quiet: true, env: ENV, timeoutMs: 10 * 60_000 });
+    if (gate.code === 0) {
+      rec.commit_gate = { blocked: false };
+    } else {
+      rec.commit_gate = { blocked: true, output: `${gate.stdout}\n${gate.stderr}`.trim().slice(-4000) };
+      opts.log(`commit refused by the arm's pre-commit hook (recorded; committing with --no-verify)`);
+      sh(`git -C ${q(ws)} commit --quiet --no-verify --allow-empty -m ${q(`session ${step.id}`)}`, { quiet: true, env: ENV });
+    }
     rec.end_commit = git(ws, 'rev-parse HEAD').trim();
     save();
   }

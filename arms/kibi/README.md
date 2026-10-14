@@ -16,6 +16,10 @@ Pinned in [versions.env](versions.env): `kibi-cli`, `kibi-mcp`, `kibi-core` and 
 
 `host.json` adds the plugin directory, puts `<run>/kibi/node_modules/.bin` on PATH, sets `KIBI_DIAGNOSTIC_MODE=1`, and lists the `kb_*` tool names for `--permissions accept-edits`.
 
+## Commit gate
+
+`kibi init` installs Kibi's git hooks in the workspace. The pre-commit hook, which Kibi's own template calls its hard enforcement boundary, runs `kibi check-generated --staged --changed-only` and `kibi check --staged`. The harness runs [before-commit](before-commit) (`kibi sync --refresh-symbol-coordinates`, the step the hook tells the user to take before retrying), commits each session's work with hooks enabled and records a refusal on the step (`commit_gate.blocked`, with the hook's output) before committing with `--no-verify`, so the arc continues and the report can count how often the gate would have stopped the user. Observed with the pinned 2.23.0 on the Papra onboarded base: an edit to a file with no linked symbol passes ("No exported symbols or staged entities found"); an edit to a linked behavioural symbol is refused first for symbol-coordinate drift until `kibi sync --refresh-symbol-coordinates` is staged, then for traceability ("1/1 staged symbols unlinked") until the changed symbol carries an `implements` link, and a staged requirement document elsewhere or a `Kibi-Impact: none` trailer does not lift that. Agents are not asked to commit, so the gate measures what a user would meet when committing the session's work, not what the agent did about it.
+
 ## Hygiene
 
 After the agent stops, [hygiene](hygiene) reports `kibi check` (violations and quality diagnostics) and `kibi usage-metrics` (lookups, including whether a lookup preceded the first edit). Reported per run in `hygiene.json`, never part of the main score.

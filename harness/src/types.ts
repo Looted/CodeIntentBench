@@ -225,6 +225,13 @@ export interface StepRecord {
   first_edit_turn?: number;
   /** The arm's decision store changed during the step (files in the repo or the external store). */
   record_written: boolean;
+  /**
+   * The session's work is committed with git hooks enabled, so an arm that installs a commit gate
+   * (Kibi's pre-commit `kibi check --staged`) gets to refuse it. `blocked` records that refusal and
+   * the hook's output; the harness then commits with `--no-verify` so the arc continues. Absent on
+   * scripted steps and on records from before the gate was exercised.
+   */
+  commit_gate?: { blocked: boolean; output?: string };
   grade?: StepGrade;
 }
 
