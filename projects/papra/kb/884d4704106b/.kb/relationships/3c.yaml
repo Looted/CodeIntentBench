@@ -1,0 +1,8 @@
+relationships:
+  - id: rel-8faf6743a663
+    type: verified_by
+    from: REQ-when-several-versioned-key-encryption-keys-2FAB9215
+    to: TEST-papra-server-src-modules-documents-storage-encryption-document-encryption-models
+    created_at: "2026-10-14T12:10:05.856Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

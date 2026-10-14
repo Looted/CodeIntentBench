@@ -1,0 +1,8 @@
+relationships:
+  - id: rel-93c77dfa7acb
+    type: verified_by
+    from: REQ-stored-files-are-keyed-by-document-id-not--DCCF2C2E
+    to: TEST-papra-server-src-modules-documents-documents-models
+    created_at: "2026-10-14T12:12:15.414Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

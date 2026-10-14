@@ -1,0 +1,8 @@
+relationships:
+  - id: rel-4f812b3b5135
+    type: verified_by
+    from: REQ-a-document-s-extracted-searchable-content--7CD26FB8
+    to: TEST-papra-server-src-modules-documents-documents-usecases
+    created_at: "2026-10-14T12:12:16.437Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

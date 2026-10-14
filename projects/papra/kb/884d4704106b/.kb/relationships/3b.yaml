@@ -1,0 +1,22 @@
+relationships:
+  - id: rel-8ffe3f881669
+    type: verified_by
+    from: REQ-when-a-trashed-document-is-restored-by-a-d-F5E2FEA1
+    to: TEST-papra-server-src-modules-documents-documents-usecases
+    created_at: "2026-10-14T12:09:38.383Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: verified_by
+    from: REQ-when-a-trashed-document-is-restored-by-a-d-F5E2FEA1
+    to: TEST-papra-server-src-modules-documents-documents-repository
+    created_at: 2026-10-14T12:09:38.384Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6a127e5e44a3
+  - type: verified_by
+    from: REQ-when-a-trashed-document-is-restored-by-a-d-F5E2FEA1
+    to: TEST-papra-server-src-modules-tagging-rules-tagging-rules-usecases
+    created_at: 2026-10-14T12:09:38.393Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-fd56d9e70db7

@@ -1,0 +1,8 @@
+relationships:
+  - id: rel-423ba1ef6594
+    type: verified_by
+    from: REQ-the-has-tags-filter-selects-documents-with-7EF848DC
+    to: TEST-papra-server-src-modules-documents-document-search-database-fts5-query-builder-query-builder
+    created_at: "2026-10-14T12:09:58.943Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

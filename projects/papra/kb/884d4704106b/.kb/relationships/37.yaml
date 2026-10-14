@@ -1,0 +1,22 @@
+relationships:
+  - id: rel-9610189337c3
+    type: verified_by
+    from: REQ-tag-names-are-unique-per-organization-rega-7B5F6F2D
+    to: TEST-papra-server-src-modules-tags-tags-repository
+    created_at: "2026-10-14T12:09:54.734Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: verified_by
+    from: REQ-tag-names-are-unique-per-organization-rega-7B5F6F2D
+    to: TEST-papra-server-src-modules-tags-tags-repository-models
+    created_at: 2026-10-14T12:09:54.735Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-84c45423d6b5
+  - type: verified_by
+    from: REQ-tag-names-are-unique-per-organization-rega-7B5F6F2D
+    to: TEST-papra-server-src-modules-tags-tags-usecases
+    created_at: 2026-10-14T12:09:54.741Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-432d70589b54

@@ -1,0 +1,8 @@
+relationships:
+  - id: rel-06facf92afd2
+    type: verified_by
+    from: REQ-intake-email-addresses-can-follow-a-config-6227A38D
+    to: TEST-papra-server-src-modules-intake-emails-intake-emails-repository
+    created_at: "2026-10-14T12:10:02.846Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

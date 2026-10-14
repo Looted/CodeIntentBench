@@ -88,6 +88,8 @@ export function prepareWorkspace(dir: string, project: ProjectConfig, task: Pick
   // scope exists at that commit are part of the rule set the arm delivers; the same
   // subset is what grading uses. Every arm receives the same files.
   const rulesDir = join(dir, 'rules');
+  // `CIB_MODE` tells the project's arm_prepare and the arm setup whether this is a rule-mode task or an arc.
+  const mode = opts.rules === 'none' ? 'arc' : 'task';
   let rules: Rule[] = [];
   if (opts.rules === 'none') { rmSync(rulesDir, { recursive: true, force: true }); mkdirSync(rulesDir, { recursive: true }); }
   else rules = writeApplicableRules(ws, project, rulesDir, log);
@@ -96,7 +98,7 @@ export function prepareWorkspace(dir: string, project: ProjectConfig, task: Pick
     log(`arm prepare: ${project.setup.arm_prepare} (${arm})`);
     must(`${JSON.stringify(script)} ${JSON.stringify(ws)} ${JSON.stringify(arm)} ${JSON.stringify(rulesDir)} ${JSON.stringify(dir)}`, {
       cwd: ws,
-      env: { ...process.env, ...GIT_IDENTITY, CIB_RUN_DIR: dir, CIB_WORKSPACE: ws, CIB_RULES_DIR: rulesDir, CIB_PROJECT: project.name, CIB_CACHE_DIR: CACHE_DIR },
+      env: { ...process.env, ...GIT_IDENTITY, CIB_RUN_DIR: dir, CIB_WORKSPACE: ws, CIB_RULES_DIR: rulesDir, CIB_PROJECT: project.name, CIB_CACHE_DIR: CACHE_DIR, CIB_MODE: mode },
     });
   }
   const setup = join(ARMS_DIR, arm, 'setup');
@@ -104,7 +106,7 @@ export function prepareWorkspace(dir: string, project: ProjectConfig, task: Pick
     log(`arm setup: ${arm}`);
     must(`${JSON.stringify(setup)} ${JSON.stringify(ws)} ${JSON.stringify(rulesDir)} ${JSON.stringify(dir)}`, {
       cwd: ws,
-      env: { ...process.env, ...GIT_IDENTITY, CIB_RUN_DIR: dir, CIB_WORKSPACE: ws, CIB_RULES_DIR: rulesDir, CIB_PROJECT: project.name, CIB_CACHE_DIR: CACHE_DIR },
+      env: { ...process.env, ...GIT_IDENTITY, CIB_RUN_DIR: dir, CIB_WORKSPACE: ws, CIB_RULES_DIR: rulesDir, CIB_PROJECT: project.name, CIB_CACHE_DIR: CACHE_DIR, CIB_MODE: mode },
     });
   }
 

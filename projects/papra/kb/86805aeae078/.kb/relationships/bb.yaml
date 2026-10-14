@@ -1,0 +1,8 @@
+relationships:
+  - id: rel-7e235dbc88fa
+    type: verified_by
+    from: REQ-documents-are-never-mutated-after-upload-n-409E8212
+    to: TEST-papra-server-src-modules-documents-documents-usecases
+    created_at: "2026-10-14T12:12:13.440Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

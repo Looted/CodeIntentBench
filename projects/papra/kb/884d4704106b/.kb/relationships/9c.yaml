@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-7c15e300d518
+    type: verified_by
+    from: REQ-documents-are-deduplicated-per-organizatio-7DDB2737
+    to: TEST-papra-server-src-modules-documents-documents-usecases
+    created_at: "2026-10-14T12:09:36.424Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: verified_by
+    from: REQ-documents-are-deduplicated-per-organizatio-7DDB2737
+    to: TEST-papra-server-src-modules-documents-documents-repository
+    created_at: 2026-10-14T12:09:36.426Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c551b05556ef
