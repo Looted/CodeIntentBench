@@ -6,6 +6,9 @@ import type { Arc, ProjectConfig, Rule, Task } from './types.ts';
 
 export const REPO_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..');
 export const PROJECTS_DIR = join(REPO_ROOT, 'projects');
+export const HARNESS_DIR = join(REPO_ROOT, 'harness');
+// Project commands (tests, setup) may refer to harness tools as $CIB_HARNESS_DIR/src/...
+process.env.CIB_HARNESS_DIR = HARNESS_DIR;
 export const ARMS_DIR = join(REPO_ROOT, 'arms');
 export const RUNS_DIR = process.env.CIB_RUNS_DIR ? resolve(process.env.CIB_RUNS_DIR) : join(REPO_ROOT, 'runs');
 export const CACHE_DIR = process.env.CIB_CACHE_DIR ? resolve(process.env.CIB_CACHE_DIR) : join(REPO_ROOT, 'cache');

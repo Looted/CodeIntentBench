@@ -7,10 +7,16 @@ export interface ProjectConfig {
   commit: string;
   license: string;
   description?: string;
-  runtime?: { node?: string; package_manager?: string };
+  runtime?: { node?: string; package_manager?: string; bun?: string };
+  /** Environment for every command the harness runs on a workspace (setup, tests) and for the agent; values may use ${RUN_DIR} and ${WORKSPACE}. */
+  env?: Record<string, string>;
   setup: {
     install: string;
     build?: string;
+    /** Project-specific preparation per arm, run in the workspace after install and before the arm's setup, with
+     *  arguments <workspace> <arm> <rulesDir> <runDir>: strips the project's own tooling the arm must not have, or
+     *  exports the project's recorded knowledge into the rules directory the arm seeds from. Relative to the project dir. */
+    arm_prepare?: string;
   };
   tests: {
     /** Directory, relative to the repo root, in which the test commands run. */

@@ -75,7 +75,7 @@ const MAX_ANSWER = 12_000;
 
 export function buildArcJudgePrompt(arc: Arc, step: ArcStep, keys: string[], agent: AgentResult, diff: string, recordWritten: boolean, branchNote?: string): string {
   const L: string[] = [];
-  L.push('You are grading one session of a coding agent for a benchmark. The project has one recorded product decision, given below as ground truth; the agent was never shown this text, it had to find the decision in the project (its notes, decision records, tracker, memory or knowledge base) or miss it. Answer the fixed questions strictly from the material. Answer "uncertain" whenever the material does not clearly support yes or no. Cite evidence for every answer.');
+  L.push('You are grading one session of a coding agent for a benchmark. The recorded product decision this session is about is given below as ground truth (the project may record many others); the agent was never shown this text, it had to find the decision in the project (its notes, decision records, tracker, memory or knowledge base) or miss it. Answer the fixed questions strictly from the material. Answer "uncertain" whenever the material does not clearly support yes or no. Cite evidence for every answer.');
   L.push('');
   L.push('## The request the agent received in this session');
   L.push(step.prompt.trim());

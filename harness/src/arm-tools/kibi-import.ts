@@ -104,8 +104,11 @@ for (const rule of rules) {
     symbols.push({ id: symId(rule, i), title, sourceFile, status: 'active', symbol_role: 'behavioral', relationships });
   });
 }
-manifest.set('symbols', symbols);
-writeFileSync(manifestPath, manifest.toString());
+// A project that already keeps its own manifest (an existing knowledge base, no rules to import) is left byte for byte as it is.
+if (rules.length > 0) {
+  manifest.set('symbols', symbols);
+  writeFileSync(manifestPath, manifest.toString());
+}
 
 // 4. Compile and refresh symbol coordinates through the CLI. A symbol whose
 // declaration the AST extractor cannot locate (nested function, exported const)
