@@ -1,0 +1,5065 @@
+{
+  "project": "kibi",
+  "runs": [
+    {
+      "id": "2026-10-14T09-14-59-a1",
+      "arc": "kibi-claim-name-length-branch",
+      "family": "branch",
+      "arm": "agents-md",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 3.4337664,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "intent",
+          "outcome": "C",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 1,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 35,
+            "cache_read_input_tokens": 3708522,
+            "cache_creation_input_tokens": 213337,
+            "output_tokens": 9880,
+            "cost_usd": 1.3232165,
+            "tool_calls": 35,
+            "turns": 36,
+            "wall_seconds": 157
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 3,
+          "usage": {
+            "input_tokens": 8,
+            "cache_read_input_tokens": 629190,
+            "cache_creation_input_tokens": 187876,
+            "output_tokens": 1409,
+            "cost_usd": 0.8288094999999999,
+            "tool_calls": 3,
+            "turns": 4,
+            "wall_seconds": 18
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "D",
+          "pass": true,
+          "record_written": true,
+          "first_edit_turn": 3,
+          "usage": {
+            "input_tokens": 26,
+            "cache_read_input_tokens": 2583728,
+            "cache_creation_input_tokens": 205709,
+            "output_tokens": 8164,
+            "cost_usd": 1.1630371,
+            "tool_calls": 26,
+            "turns": 27,
+            "wall_seconds": 268
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T09-07-25-a1",
+      "arc": "kibi-claim-name-length-branch",
+      "family": "branch",
+      "arm": "docs",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 0.9680906999999999,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "intent",
+          "outcome": "F",
+          "pass": false,
+          "record_written": true,
+          "first_lookup_turn": 1,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 27,
+            "cache_read_input_tokens": 589124,
+            "cache_creation_input_tokens": 42023,
+            "output_tokens": 9302,
+            "cost_usd": 0.32022470000000003,
+            "tool_calls": 31,
+            "turns": 32,
+            "wall_seconds": 67
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 1,
+          "first_edit_turn": 3,
+          "usage": {
+            "input_tokens": 8,
+            "cache_read_input_tokens": 96805,
+            "cache_creation_input_tokens": 11629,
+            "output_tokens": 1520,
+            "cost_usd": 0.0715595,
+            "tool_calls": 3,
+            "turns": 4,
+            "wall_seconds": 15
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "D",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 1,
+          "first_edit_turn": 6,
+          "usage": {
+            "input_tokens": 51,
+            "cache_read_input_tokens": 1093522,
+            "cache_creation_input_tokens": 37806,
+            "output_tokens": 9595,
+            "cost_usd": 0.35676449999999993,
+            "tool_calls": 42,
+            "turns": 43,
+            "wall_seconds": 142
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T09-16-10-a1",
+      "arc": "kibi-claim-name-length-branch",
+      "family": "branch",
+      "arm": "kibi",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 2.0690267,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "intent",
+          "outcome": "C",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 8,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 97,
+            "cache_read_input_tokens": 4017261,
+            "cache_creation_input_tokens": 116597,
+            "output_tokens": 22145,
+            "cost_usd": 1.0899059,
+            "tool_calls": 78,
+            "turns": 79,
+            "wall_seconds": 428
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 9,
+          "first_edit_turn": 4,
+          "usage": {
+            "input_tokens": 16,
+            "cache_read_input_tokens": 215200,
+            "cache_creation_input_tokens": 27647,
+            "output_tokens": 2840,
+            "cost_usd": 0.16083,
+            "tool_calls": 6,
+            "turns": 7,
+            "wall_seconds": 53
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "N",
+          "pass": false,
+          "record_written": false,
+          "first_lookup_turn": 8,
+          "first_edit_turn": 3,
+          "usage": {
+            "input_tokens": 55,
+            "cache_read_input_tokens": 1323425,
+            "cache_creation_input_tokens": 61498,
+            "output_tokens": 11742,
+            "cost_usd": 0.4961028000000001,
+            "tool_calls": 42,
+            "turns": 43,
+            "wall_seconds": 128
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T09-22-07-a1",
+      "arc": "kibi-claim-name-length-branch",
+      "family": "branch",
+      "arm": "kibi-conv",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 1.6971933,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "intent",
+          "outcome": "C",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 2,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 65,
+            "cache_read_input_tokens": 1895221,
+            "cache_creation_input_tokens": 81379,
+            "output_tokens": 14642,
+            "cost_usd": 0.6617344000000002,
+            "tool_calls": 53,
+            "turns": 54,
+            "wall_seconds": 256
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 4,
+          "usage": {
+            "input_tokens": 11,
+            "cache_read_input_tokens": 132698,
+            "cache_creation_input_tokens": 14356,
+            "output_tokens": 1677,
+            "cost_usd": 0.0877893,
+            "tool_calls": 4,
+            "turns": 5,
+            "wall_seconds": 17
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "D",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 4,
+          "first_edit_turn": 9,
+          "usage": {
+            "input_tokens": 63,
+            "cache_read_input_tokens": 1941738,
+            "cache_creation_input_tokens": 89600,
+            "output_tokens": 14565,
+            "cost_usd": 0.6986271,
+            "tool_calls": 45,
+            "turns": 46,
+            "wall_seconds": 184
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T09-14-42-a1",
+      "arc": "kibi-claim-name-length-branch",
+      "family": "branch",
+      "arm": "memory",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 1.026255,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "intent",
+          "outcome": "C",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 4,
+          "first_edit_turn": 3,
+          "usage": {
+            "input_tokens": 69,
+            "cache_read_input_tokens": 1562553,
+            "cache_creation_input_tokens": 44622,
+            "output_tokens": 13704,
+            "cost_usd": 0.4720690999999999,
+            "tool_calls": 58,
+            "turns": 59,
+            "wall_seconds": 154
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 2,
+          "first_edit_turn": 6,
+          "usage": {
+            "input_tokens": 8,
+            "cache_read_input_tokens": 98003,
+            "cache_creation_input_tokens": 12313,
+            "output_tokens": 1628,
+            "cost_usd": 0.0754888,
+            "tool_calls": 5,
+            "turns": 6,
+            "wall_seconds": 15
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "V",
+          "pass": false,
+          "record_written": false,
+          "first_lookup_turn": 2,
+          "first_edit_turn": 5,
+          "usage": {
+            "input_tokens": 29,
+            "cache_read_input_tokens": 533067,
+            "cache_creation_input_tokens": 28563,
+            "output_tokens": 8074,
+            "cost_usd": 0.24849300000000002,
+            "tool_calls": 28,
+            "turns": 29,
+            "wall_seconds": 71
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T09-07-25-a1",
+      "arc": "kibi-claim-name-length-branch",
+      "family": "branch",
+      "arm": "none",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 1.2380532,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "intent",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 45,
+            "cache_read_input_tokens": 1193822,
+            "cache_creation_input_tokens": 61016,
+            "output_tokens": 15470,
+            "cost_usd": 0.5183825000000001,
+            "tool_calls": 55,
+            "turns": 56,
+            "wall_seconds": 168
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 4,
+          "usage": {
+            "input_tokens": 8,
+            "cache_read_input_tokens": 100886,
+            "cache_creation_input_tokens": 14004,
+            "output_tokens": 1627,
+            "cost_usd": 0.08270609999999999,
+            "tool_calls": 4,
+            "turns": 5,
+            "wall_seconds": 20
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "V",
+          "pass": false,
+          "record_written": false,
+          "first_edit_turn": 2,
+          "usage": {
+            "input_tokens": 38,
+            "cache_read_input_tokens": 789187,
+            "cache_creation_input_tokens": 43349,
+            "output_tokens": 9288,
+            "cost_usd": 0.34554199999999996,
+            "tool_calls": 35,
+            "turns": 36,
+            "wall_seconds": 116
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T09-07-25-a1",
+      "arc": "kibi-claim-name-length-branch",
+      "family": "branch",
+      "arm": "tracker",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 0.9819055000000001,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "intent",
+          "outcome": "F",
+          "pass": false,
+          "record_written": true,
+          "first_lookup_turn": 4,
+          "first_edit_turn": 3,
+          "usage": {
+            "input_tokens": 42,
+            "cache_read_input_tokens": 951944,
+            "cache_creation_input_tokens": 42522,
+            "output_tokens": 10943,
+            "cost_usd": 0.37494419999999995,
+            "tool_calls": 38,
+            "turns": 39,
+            "wall_seconds": 80
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 5,
+          "usage": {
+            "input_tokens": 10,
+            "cache_read_input_tokens": 121178,
+            "cache_creation_input_tokens": 11177,
+            "output_tokens": 1646,
+            "cost_usd": 0.0735653,
+            "tool_calls": 5,
+            "turns": 6,
+            "wall_seconds": 16
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "D",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 5,
+          "first_edit_turn": 10,
+          "usage": {
+            "input_tokens": 41,
+            "cache_read_input_tokens": 889174,
+            "cache_creation_input_tokens": 40331,
+            "output_tokens": 10576,
+            "cost_usd": 0.35634020000000005,
+            "tool_calls": 36,
+            "turns": 37,
+            "wall_seconds": 107
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T09-34-13-a1",
+      "arc": "kibi-cursor-stop-surfacing",
+      "family": "surfacing",
+      "arm": "agents-md",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 1.2259830000000003,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "D",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 26,
+          "first_edit_turn": 5,
+          "usage": {
+            "input_tokens": 24,
+            "cache_read_input_tokens": 2400563,
+            "cache_creation_input_tokens": 208690,
+            "output_tokens": 10811,
+            "cost_usd": 1.1832305000000003,
+            "tool_calls": 22,
+            "turns": 23,
+            "wall_seconds": 103
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T09-30-12-a1",
+      "arc": "kibi-cursor-stop-surfacing",
+      "family": "surfacing",
+      "arm": "docs",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 0.3207228,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "N",
+          "pass": false,
+          "record_written": false,
+          "first_lookup_turn": 1,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 26,
+            "cache_read_input_tokens": 528534,
+            "cache_creation_input_tokens": 36552,
+            "output_tokens": 7572,
+            "cost_usd": 0.2750931,
+            "tool_calls": 17,
+            "turns": 18,
+            "wall_seconds": 62
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T12-42-26-a1",
+      "arc": "kibi-cursor-stop-surfacing",
+      "family": "surfacing",
+      "arm": "kibi",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 0.38640719999999995,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "N",
+          "pass": false,
+          "record_written": false,
+          "first_lookup_turn": 29,
+          "first_edit_turn": 8,
+          "usage": {
+            "input_tokens": 42,
+            "cache_read_input_tokens": 890635,
+            "cache_creation_input_tokens": 45837,
+            "output_tokens": 6569,
+            "cost_usd": 0.3384927,
+            "tool_calls": 21,
+            "turns": 22,
+            "wall_seconds": 178
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T12-42-26-a1",
+      "arc": "kibi-cursor-stop-surfacing",
+      "family": "surfacing",
+      "arm": "kibi-conv",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.18552739999999998,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "S",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 4,
+          "first_edit_turn": 7,
+          "usage": {
+            "input_tokens": 9,
+            "cache_read_input_tokens": 171304,
+            "cache_creation_input_tokens": 29210,
+            "output_tokens": 1861,
+            "cost_usd": 0.15285559999999998,
+            "tool_calls": 6,
+            "turns": 7,
+            "wall_seconds": 31
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T09-33-19-a1",
+      "arc": "kibi-cursor-stop-surfacing",
+      "family": "surfacing",
+      "arm": "memory",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 0.7304150000000003,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "V",
+          "pass": false,
+          "record_written": false,
+          "first_lookup_turn": 2,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 60,
+            "cache_read_input_tokens": 1655481,
+            "cache_creation_input_tokens": 65466,
+            "output_tokens": 23233,
+            "cost_usd": 0.6600998000000002,
+            "tool_calls": 56,
+            "turns": 57,
+            "wall_seconds": 203
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T09-25-34-a1",
+      "arc": "kibi-cursor-stop-surfacing",
+      "family": "surfacing",
+      "arm": "none",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 0.4610785,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "V",
+          "pass": false,
+          "record_written": false,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 48,
+            "cache_read_input_tokens": 1086094,
+            "cache_creation_input_tokens": 42655,
+            "output_tokens": 12832,
+            "cost_usd": 0.4080091,
+            "tool_calls": 36,
+            "turns": 37,
+            "wall_seconds": 160
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T09-32-00-a1",
+      "arc": "kibi-cursor-stop-surfacing",
+      "family": "surfacing",
+      "arm": "tracker",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.13752250000000002,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "S",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 4,
+          "usage": {
+            "input_tokens": 8,
+            "cache_read_input_tokens": 110550,
+            "cache_creation_input_tokens": 20369,
+            "output_tokens": 1827,
+            "cost_usd": 0.11103770000000002,
+            "tool_calls": 6,
+            "turns": 7,
+            "wall_seconds": 21
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T09-45-39-a1",
+      "arc": "kibi-daemon-versions-standing",
+      "family": "standing",
+      "arm": "agents-md",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 2.9755111999999997,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "work",
+          "outcome": "C",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 9,
+          "first_edit_turn": 6,
+          "usage": {
+            "input_tokens": 16,
+            "cache_read_input_tokens": 1462637,
+            "cache_creation_input_tokens": 191866,
+            "output_tokens": 2178,
+            "cost_usd": 0.9357656999999997,
+            "tool_calls": 7,
+            "turns": 8,
+            "wall_seconds": 26
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 3,
+          "usage": {
+            "input_tokens": 8,
+            "cache_read_input_tokens": 630081,
+            "cache_creation_input_tokens": 188255,
+            "output_tokens": 1062,
+            "cost_usd": 0.8269073999999998,
+            "tool_calls": 3,
+            "turns": 4,
+            "wall_seconds": 22
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "D",
+          "pass": false,
+          "record_written": true,
+          "first_lookup_turn": 9,
+          "first_edit_turn": 5,
+          "usage": {
+            "input_tokens": 26,
+            "cache_read_input_tokens": 2541632,
+            "cache_creation_input_tokens": 199232,
+            "output_tokens": 7507,
+            "cost_usd": 1.126348,
+            "tool_calls": 19,
+            "turns": 20,
+            "wall_seconds": 70
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T09-39-02-a1",
+      "arc": "kibi-daemon-versions-standing",
+      "family": "standing",
+      "arm": "docs",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 0.5981023,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "work",
+          "outcome": "C",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 1,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 20,
+            "cache_read_input_tokens": 317837,
+            "cache_creation_input_tokens": 23673,
+            "output_tokens": 3703,
+            "cost_usd": 0.16382719999999998,
+            "tool_calls": 12,
+            "turns": 13,
+            "wall_seconds": 40
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 8,
+          "usage": {
+            "input_tokens": 14,
+            "cache_read_input_tokens": 181384,
+            "cache_creation_input_tokens": 12482,
+            "output_tokens": 1852,
+            "cost_usd": 0.08689519999999999,
+            "tool_calls": 6,
+            "turns": 7,
+            "wall_seconds": 19
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "D",
+          "pass": false,
+          "record_written": true,
+          "first_lookup_turn": 1,
+          "first_edit_turn": 5,
+          "usage": {
+            "input_tokens": 26,
+            "cache_read_input_tokens": 489149,
+            "cache_creation_input_tokens": 29752,
+            "output_tokens": 7051,
+            "cost_usd": 0.23861970000000002,
+            "tool_calls": 18,
+            "turns": 19,
+            "wall_seconds": 77
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T12-42-26-a1",
+      "arc": "kibi-daemon-versions-standing",
+      "family": "standing",
+      "arm": "kibi",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 1.4288444,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "work",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 14,
+          "first_edit_turn": 8,
+          "usage": {
+            "input_tokens": 22,
+            "cache_read_input_tokens": 343816,
+            "cache_creation_input_tokens": 41437,
+            "output_tokens": 3516,
+            "cost_usd": 0.23558309999999996,
+            "tool_calls": 10,
+            "turns": 11,
+            "wall_seconds": 83
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "N",
+          "pass": false,
+          "record_written": false,
+          "first_lookup_turn": 11,
+          "first_edit_turn": 8,
+          "usage": {
+            "input_tokens": 18,
+            "cache_read_input_tokens": 238798,
+            "cache_creation_input_tokens": 32375,
+            "output_tokens": 2264,
+            "cost_usd": 0.1763046,
+            "tool_calls": 7,
+            "turns": 8,
+            "wall_seconds": 63
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "D",
+          "pass": false,
+          "record_written": true,
+          "first_lookup_turn": 6,
+          "first_edit_turn": 7,
+          "usage": {
+            "input_tokens": 82,
+            "cache_read_input_tokens": 2426491,
+            "cache_creation_input_tokens": 82768,
+            "output_tokens": 22320,
+            "cost_usd": 0.7972199000000001,
+            "tool_calls": 60,
+            "turns": 61,
+            "wall_seconds": 352
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T12-47-09-a1",
+      "arc": "kibi-daemon-versions-standing",
+      "family": "standing",
+      "arm": "kibi-conv",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 1.0944919,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "work",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 3,
+          "first_edit_turn": 11,
+          "usage": {
+            "input_tokens": 22,
+            "cache_read_input_tokens": 363359,
+            "cache_creation_input_tokens": 42341,
+            "output_tokens": 3355,
+            "cost_usd": 0.2395429,
+            "tool_calls": 11,
+            "turns": 12,
+            "wall_seconds": 88
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 20,
+          "first_edit_turn": 13,
+          "usage": {
+            "input_tokens": 28,
+            "cache_read_input_tokens": 391731,
+            "cache_creation_input_tokens": 36805,
+            "output_tokens": 3957,
+            "cost_usd": 0.22629690000000002,
+            "tool_calls": 13,
+            "turns": 14,
+            "wall_seconds": 103
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "N",
+          "pass": false,
+          "record_written": true,
+          "first_lookup_turn": 2,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 40,
+            "cache_read_input_tokens": 1046830,
+            "cache_creation_input_tokens": 59952,
+            "output_tokens": 10272,
+            "cost_usd": 0.44742579999999993,
+            "tool_calls": 26,
+            "turns": 27,
+            "wall_seconds": 176
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T09-45-36-a1",
+      "arc": "kibi-daemon-versions-standing",
+      "family": "standing",
+      "arm": "memory",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 0.6027828000000001,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "work",
+          "outcome": "C",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 4,
+          "first_edit_turn": 7,
+          "usage": {
+            "input_tokens": 18,
+            "cache_read_input_tokens": 271550,
+            "cache_creation_input_tokens": 19551,
+            "output_tokens": 3274,
+            "cost_usd": 0.13838850000000003,
+            "tool_calls": 10,
+            "turns": 11,
+            "wall_seconds": 28
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 4,
+          "usage": {
+            "input_tokens": 12,
+            "cache_read_input_tokens": 152836,
+            "cache_creation_input_tokens": 13333,
+            "output_tokens": 2408,
+            "cost_usd": 0.0929694,
+            "tool_calls": 6,
+            "turns": 7,
+            "wall_seconds": 23
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "D",
+          "pass": false,
+          "record_written": true,
+          "first_lookup_turn": 4,
+          "first_edit_turn": 9,
+          "usage": {
+            "input_tokens": 21,
+            "cache_read_input_tokens": 479613,
+            "cache_creation_input_tokens": 39628,
+            "output_tokens": 7518,
+            "cost_usd": 0.28183010000000003,
+            "tool_calls": 19,
+            "turns": 20,
+            "wall_seconds": 74
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T09-39-02-a1",
+      "arc": "kibi-daemon-versions-standing",
+      "family": "standing",
+      "arm": "none",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 0.6136586999999999,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "work",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 18,
+            "cache_read_input_tokens": 257479,
+            "cache_creation_input_tokens": 16658,
+            "output_tokens": 2454,
+            "cost_usd": 0.1171924,
+            "tool_calls": 9,
+            "turns": 10,
+            "wall_seconds": 32
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 5,
+          "usage": {
+            "input_tokens": 14,
+            "cache_read_input_tokens": 186596,
+            "cache_creation_input_tokens": 13651,
+            "output_tokens": 2100,
+            "cost_usd": 0.09455239999999998,
+            "tool_calls": 7,
+            "turns": 8,
+            "wall_seconds": 19
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "V",
+          "pass": false,
+          "record_written": false,
+          "first_edit_turn": 6,
+          "usage": {
+            "input_tokens": 42,
+            "cache_read_input_tokens": 790040,
+            "cache_creation_input_tokens": 31718,
+            "output_tokens": 8953,
+            "cost_usd": 0.2956248,
+            "tool_calls": 27,
+            "turns": 28,
+            "wall_seconds": 88
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T09-41-40-a1",
+      "arc": "kibi-daemon-versions-standing",
+      "family": "standing",
+      "arm": "tracker",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 0.5223195,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "work",
+          "outcome": "C",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 4,
+          "first_edit_turn": 13,
+          "usage": {
+            "input_tokens": 16,
+            "cache_read_input_tokens": 232453,
+            "cache_creation_input_tokens": 17294,
+            "output_tokens": 3018,
+            "cost_usd": 0.12291880000000001,
+            "tool_calls": 12,
+            "turns": 13,
+            "wall_seconds": 35
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 9,
+          "usage": {
+            "input_tokens": 14,
+            "cache_read_input_tokens": 177328,
+            "cache_creation_input_tokens": 11079,
+            "output_tokens": 1863,
+            "cost_usd": 0.0809551,
+            "tool_calls": 6,
+            "turns": 7,
+            "wall_seconds": 19
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "D",
+          "pass": false,
+          "record_written": true,
+          "first_lookup_turn": 4,
+          "first_edit_turn": 12,
+          "usage": {
+            "input_tokens": 30,
+            "cache_read_input_tokens": 502040,
+            "cache_creation_input_tokens": 24926,
+            "output_tokens": 7903,
+            "cost_usd": 0.22913280000000003,
+            "tool_calls": 25,
+            "turns": 26,
+            "wall_seconds": 84
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T10-03-29-a1",
+      "arc": "kibi-docs-analytics-branch",
+      "family": "branch",
+      "arm": "agents-md",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 2.9434648999999995,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "intent",
+          "outcome": "C",
+          "pass": true,
+          "record_written": true,
+          "first_edit_turn": 3,
+          "usage": {
+            "input_tokens": 17,
+            "cache_read_input_tokens": 1700686,
+            "cache_creation_input_tokens": 198210,
+            "output_tokens": 4617,
+            "cost_usd": 1.0092519,
+            "tool_calls": 15,
+            "turns": 16,
+            "wall_seconds": 44
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 5,
+          "usage": {
+            "input_tokens": 8,
+            "cache_read_input_tokens": 632593,
+            "cache_creation_input_tokens": 190277,
+            "output_tokens": 1542,
+            "cost_usd": 0.839935,
+            "tool_calls": 3,
+            "turns": 4,
+            "wall_seconds": 18
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "D",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 7,
+          "first_edit_turn": 3,
+          "usage": {
+            "input_tokens": 18,
+            "cache_read_input_tokens": 1682967,
+            "cache_creation_input_tokens": 196608,
+            "output_tokens": 5457,
+            "cost_usd": 1.009467,
+            "tool_calls": 14,
+            "turns": 15,
+            "wall_seconds": 51
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T09-57-50-a1",
+      "arc": "kibi-docs-analytics-branch",
+      "family": "branch",
+      "arm": "docs",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.5907519999999999,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "intent",
+          "outcome": "C",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 1,
+          "first_edit_turn": 5,
+          "usage": {
+            "input_tokens": 21,
+            "cache_read_input_tokens": 342811,
+            "cache_creation_input_tokens": 21743,
+            "output_tokens": 4887,
+            "cost_usd": 0.1703044,
+            "tool_calls": 16,
+            "turns": 17,
+            "wall_seconds": 48
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 1,
+          "first_edit_turn": 7,
+          "usage": {
+            "input_tokens": 12,
+            "cache_read_input_tokens": 152459,
+            "cache_creation_input_tokens": 13279,
+            "output_tokens": 1887,
+            "cost_usd": 0.08738760000000001,
+            "tool_calls": 5,
+            "turns": 6,
+            "wall_seconds": 18
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "D",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 1,
+          "first_edit_turn": 7,
+          "usage": {
+            "input_tokens": 26,
+            "cache_read_input_tokens": 466287,
+            "cache_creation_input_tokens": 26125,
+            "output_tokens": 5646,
+            "cost_usd": 0.20777050000000002,
+            "tool_calls": 17,
+            "turns": 18,
+            "wall_seconds": 54
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T12-50-03-a1",
+      "arc": "kibi-docs-analytics-branch",
+      "family": "branch",
+      "arm": "kibi",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 1.1680316999999998,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "intent",
+          "outcome": "C",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 6,
+          "first_edit_turn": 4,
+          "usage": {
+            "input_tokens": 37,
+            "cache_read_input_tokens": 933341,
+            "cache_creation_input_tokens": 62358,
+            "output_tokens": 8146,
+            "cost_usd": 0.42443939999999997,
+            "tool_calls": 23,
+            "turns": 24,
+            "wall_seconds": 146
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 6,
+          "usage": {
+            "input_tokens": 10,
+            "cache_read_input_tokens": 145799,
+            "cache_creation_input_tokens": 17714,
+            "output_tokens": 1703,
+            "cost_usd": 0.10270860000000001,
+            "tool_calls": 4,
+            "turns": 5,
+            "wall_seconds": 24
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "D",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 20,
+          "first_edit_turn": 8,
+          "usage": {
+            "input_tokens": 42,
+            "cache_read_input_tokens": 1082358,
+            "cache_creation_input_tokens": 64600,
+            "output_tokens": 8687,
+            "cost_usd": 0.4537205999999999,
+            "tool_calls": 28,
+            "turns": 29,
+            "wall_seconds": 179
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T13-00-36-a1",
+      "arc": "kibi-docs-analytics-branch",
+      "family": "branch",
+      "arm": "kibi-conv",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.9475047,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "intent",
+          "outcome": "C",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 3,
+          "first_edit_turn": 12,
+          "usage": {
+            "input_tokens": 31,
+            "cache_read_input_tokens": 881761,
+            "cache_creation_input_tokens": 60574,
+            "output_tokens": 7221,
+            "cost_usd": 0.4028834,
+            "tool_calls": 23,
+            "turns": 24,
+            "wall_seconds": 125
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 9,
+          "usage": {
+            "input_tokens": 12,
+            "cache_read_input_tokens": 164404,
+            "cache_creation_input_tokens": 16091,
+            "output_tokens": 2199,
+            "cost_usd": 0.10295009999999999,
+            "tool_calls": 6,
+            "turns": 7,
+            "wall_seconds": 24
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "D",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 20,
+          "first_edit_turn": 8,
+          "usage": {
+            "input_tokens": 30,
+            "cache_read_input_tokens": 607258,
+            "cache_creation_input_tokens": 44418,
+            "output_tokens": 6051,
+            "cost_usd": 0.2990986,
+            "tool_calls": 20,
+            "turns": 21,
+            "wall_seconds": 106
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T10-02-33-a1",
+      "arc": "kibi-docs-analytics-branch",
+      "family": "branch",
+      "arm": "memory",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.5249311999999999,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "intent",
+          "outcome": "C",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 4,
+          "first_edit_turn": 7,
+          "usage": {
+            "input_tokens": 19,
+            "cache_read_input_tokens": 346124,
+            "cache_creation_input_tokens": 25129,
+            "output_tokens": 3667,
+            "cost_usd": 0.1719757,
+            "tool_calls": 15,
+            "turns": 16,
+            "wall_seconds": 32
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 2,
+          "usage": {
+            "input_tokens": 10,
+            "cache_read_input_tokens": 123127,
+            "cache_creation_input_tokens": 12128,
+            "output_tokens": 1937,
+            "cost_usd": 0.08045139999999999,
+            "tool_calls": 4,
+            "turns": 5,
+            "wall_seconds": 18
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "D",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 2,
+          "first_edit_turn": 6,
+          "usage": {
+            "input_tokens": 20,
+            "cache_read_input_tokens": 356716,
+            "cache_creation_input_tokens": 26098,
+            "output_tokens": 5195,
+            "cost_usd": 0.1921859,
+            "tool_calls": 15,
+            "turns": 16,
+            "wall_seconds": 40
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T09-52-34-a1",
+      "arc": "kibi-docs-analytics-branch",
+      "family": "branch",
+      "arm": "none",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 0.5437237,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "intent",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 2,
+          "usage": {
+            "input_tokens": 53,
+            "cache_read_input_tokens": 980165,
+            "cache_creation_input_tokens": 31125,
+            "output_tokens": 5953,
+            "cost_usd": 0.2822918,
+            "tool_calls": 32,
+            "turns": 33,
+            "wall_seconds": 68
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 6,
+          "usage": {
+            "input_tokens": 10,
+            "cache_read_input_tokens": 127784,
+            "cache_creation_input_tokens": 12725,
+            "output_tokens": 1712,
+            "cost_usd": 0.08104610000000001,
+            "tool_calls": 4,
+            "turns": 5,
+            "wall_seconds": 17
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "N",
+          "pass": false,
+          "record_written": false,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 16,
+            "cache_read_input_tokens": 219016,
+            "cache_creation_input_tokens": 14840,
+            "output_tokens": 2374,
+            "cost_usd": 0.1051659,
+            "tool_calls": 10,
+            "turns": 11,
+            "wall_seconds": 29
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T09-59-40-a1",
+      "arc": "kibi-docs-analytics-branch",
+      "family": "branch",
+      "arm": "tracker",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.39650640000000004,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "intent",
+          "outcome": "C",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 3,
+          "first_edit_turn": 7,
+          "usage": {
+            "input_tokens": 21,
+            "cache_read_input_tokens": 345965,
+            "cache_creation_input_tokens": 21480,
+            "output_tokens": 5223,
+            "cost_usd": 0.17313130000000002,
+            "tool_calls": 20,
+            "turns": 21,
+            "wall_seconds": 43
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 5,
+          "first_edit_turn": 10,
+          "usage": {
+            "input_tokens": 10,
+            "cache_read_input_tokens": 126009,
+            "cache_creation_input_tokens": 12573,
+            "output_tokens": 1885,
+            "cost_usd": 0.0818951,
+            "tool_calls": 7,
+            "turns": 8,
+            "wall_seconds": 18
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "S",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 5,
+          "usage": {
+            "input_tokens": 8,
+            "cache_read_input_tokens": 95885,
+            "cache_creation_input_tokens": 10393,
+            "output_tokens": 986,
+            "cost_usd": 0.061168799999999995,
+            "tool_calls": 5,
+            "turns": 6,
+            "wall_seconds": 13
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T10-18-19-a1",
+      "arc": "kibi-firmness-words-drift",
+      "family": "drift",
+      "arm": "agents-md",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 3.2490185999999994,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "intent",
+          "outcome": "C",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 1,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 25,
+            "cache_read_input_tokens": 2625960,
+            "cache_creation_input_tokens": 212627,
+            "output_tokens": 8429,
+            "cost_usd": 1.197593,
+            "tool_calls": 34,
+            "turns": 35,
+            "wall_seconds": 67
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "control",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 6,
+          "usage": {
+            "input_tokens": 11,
+            "cache_read_input_tokens": 1050331,
+            "cache_creation_input_tokens": 191457,
+            "output_tokens": 1330,
+            "cost_usd": 0.8843172,
+            "tool_calls": 5,
+            "turns": 6,
+            "wall_seconds": 20
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "D",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 5,
+          "first_edit_turn": 2,
+          "usage": {
+            "input_tokens": 18,
+            "cache_read_input_tokens": 1676417,
+            "cache_creation_input_tokens": 193852,
+            "output_tokens": 4454,
+            "cost_usd": 0.9877612999999998,
+            "tool_calls": 12,
+            "turns": 13,
+            "wall_seconds": 46
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T10-12-14-a1",
+      "arc": "kibi-firmness-words-drift",
+      "family": "drift",
+      "arm": "docs",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 0.6904207,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "intent",
+          "outcome": "C",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 2,
+          "first_edit_turn": 2,
+          "usage": {
+            "input_tokens": 33,
+            "cache_read_input_tokens": 656017,
+            "cache_creation_input_tokens": 35538,
+            "output_tokens": 11444,
+            "cost_usd": 0.32240870000000005,
+            "tool_calls": 33,
+            "turns": 34,
+            "wall_seconds": 95
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "control",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 1,
+          "first_edit_turn": 5,
+          "usage": {
+            "input_tokens": 13,
+            "cache_read_input_tokens": 177971,
+            "cache_creation_input_tokens": 12194,
+            "output_tokens": 1295,
+            "cost_usd": 0.0796832,
+            "tool_calls": 7,
+            "turns": 8,
+            "wall_seconds": 14
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "Q",
+          "pass": false,
+          "record_written": false,
+          "first_lookup_turn": 1,
+          "first_edit_turn": 3,
+          "usage": {
+            "input_tokens": 16,
+            "cache_read_input_tokens": 268428,
+            "cache_creation_input_tokens": 23785,
+            "output_tokens": 3328,
+            "cost_usd": 0.15543040000000002,
+            "tool_calls": 7,
+            "turns": 8,
+            "wall_seconds": 27
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T13-00-47-a1",
+      "arc": "kibi-firmness-words-drift",
+      "family": "drift",
+      "arm": "kibi",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 1.6723222000000002,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "intent",
+          "outcome": "C",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 47,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 53,
+            "cache_read_input_tokens": 1802873,
+            "cache_creation_input_tokens": 89998,
+            "output_tokens": 15556,
+            "cost_usd": 0.6960943,
+            "tool_calls": 49,
+            "turns": 50,
+            "wall_seconds": 186
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "control",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 15,
+          "first_edit_turn": 8,
+          "usage": {
+            "input_tokens": 25,
+            "cache_read_input_tokens": 399591,
+            "cache_creation_input_tokens": 27516,
+            "output_tokens": 2711,
+            "cost_usd": 0.1773172,
+            "tool_calls": 11,
+            "turns": 12,
+            "wall_seconds": 88
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "V",
+          "pass": false,
+          "record_written": false,
+          "first_lookup_turn": 47,
+          "first_edit_turn": 8,
+          "usage": {
+            "input_tokens": 6,
+            "cache_read_input_tokens": 150448,
+            "cache_creation_input_tokens": 1317,
+            "output_tokens": 764,
+            "cost_usd": 0.49086209999999997,
+            "tool_calls": 36,
+            "turns": 2,
+            "wall_seconds": 282
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T13-03-47-a1",
+      "arc": "kibi-firmness-words-drift",
+      "family": "drift",
+      "arm": "kibi-conv",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 1.6722359999999998,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "intent",
+          "outcome": "C",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 4,
+          "first_edit_turn": 2,
+          "usage": {
+            "input_tokens": 49,
+            "cache_read_input_tokens": 1779349,
+            "cache_creation_input_tokens": 82464,
+            "output_tokens": 15546,
+            "cost_usd": 0.6634978999999999,
+            "tool_calls": 56,
+            "turns": 57,
+            "wall_seconds": 188
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "control",
+          "outcome": "F",
+          "pass": false,
+          "record_written": false,
+          "first_lookup_turn": 2,
+          "first_edit_turn": 6,
+          "usage": {
+            "input_tokens": 17,
+            "cache_read_input_tokens": 321404,
+            "cache_creation_input_tokens": 39153,
+            "output_tokens": 1879,
+            "cost_usd": 0.20771050000000002,
+            "tool_calls": 8,
+            "turns": 9,
+            "wall_seconds": 84
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "D",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 5,
+          "first_edit_turn": 8,
+          "usage": {
+            "input_tokens": 39,
+            "cache_read_input_tokens": 1171830,
+            "cache_creation_input_tokens": 80835,
+            "output_tokens": 10415,
+            "cost_usd": 0.5448866000000001,
+            "tool_calls": 31,
+            "turns": 32,
+            "wall_seconds": 157
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T10-17-55-a1",
+      "arc": "kibi-firmness-words-drift",
+      "family": "drift",
+      "arm": "memory",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 1.0114439000000002,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "intent",
+          "outcome": "C",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 2,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 47,
+            "cache_read_input_tokens": 1117946,
+            "cache_creation_input_tokens": 43266,
+            "output_tokens": 11678,
+            "cost_usd": 0.4018816000000001,
+            "tool_calls": 41,
+            "turns": 42,
+            "wall_seconds": 88
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "control",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 5,
+          "usage": {
+            "input_tokens": 13,
+            "cache_read_input_tokens": 183305,
+            "cache_creation_input_tokens": 12484,
+            "output_tokens": 1721,
+            "cost_usd": 0.0856366,
+            "tool_calls": 6,
+            "turns": 7,
+            "wall_seconds": 17
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "N",
+          "pass": false,
+          "record_written": true,
+          "first_lookup_turn": 5,
+          "first_edit_turn": 8,
+          "usage": {
+            "input_tokens": 6,
+            "cache_read_input_tokens": 110446,
+            "cache_creation_input_tokens": 1602,
+            "output_tokens": 244,
+            "cost_usd": 0.321056,
+            "tool_calls": 30,
+            "turns": 2,
+            "wall_seconds": 219
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T10-09-10-a1",
+      "arc": "kibi-firmness-words-drift",
+      "family": "drift",
+      "arm": "none",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 0.9045062000000001,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "intent",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 31,
+            "cache_read_input_tokens": 739166,
+            "cache_creation_input_tokens": 39617,
+            "output_tokens": 8759,
+            "cost_usd": 0.3201856,
+            "tool_calls": 31,
+            "turns": 32,
+            "wall_seconds": 76
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "control",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 6,
+          "usage": {
+            "input_tokens": 17,
+            "cache_read_input_tokens": 253365,
+            "cache_creation_input_tokens": 18896,
+            "output_tokens": 1828,
+            "cost_usd": 0.1193686,
+            "tool_calls": 9,
+            "turns": 10,
+            "wall_seconds": 33
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "V",
+          "pass": false,
+          "record_written": false,
+          "first_edit_turn": 2,
+          "usage": {
+            "input_tokens": 6,
+            "cache_read_input_tokens": 100966,
+            "cache_creation_input_tokens": 1401,
+            "output_tokens": 284,
+            "cost_usd": 0.3253523,
+            "tool_calls": 31,
+            "turns": 2,
+            "wall_seconds": 225
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T10-15-08-a1",
+      "arc": "kibi-firmness-words-drift",
+      "family": "drift",
+      "arm": "tracker",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.9401701000000001,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "intent",
+          "outcome": "C",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 4,
+          "first_edit_turn": 3,
+          "usage": {
+            "input_tokens": 55,
+            "cache_read_input_tokens": 1227465,
+            "cache_creation_input_tokens": 44787,
+            "output_tokens": 15545,
+            "cost_usd": 0.45760350000000005,
+            "tool_calls": 62,
+            "turns": 63,
+            "wall_seconds": 135
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "control",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 4,
+          "first_edit_turn": 10,
+          "usage": {
+            "input_tokens": 9,
+            "cache_read_input_tokens": 127106,
+            "cache_creation_input_tokens": 14026,
+            "output_tokens": 2038,
+            "cost_usd": 0.0893467,
+            "tool_calls": 9,
+            "turns": 10,
+            "wall_seconds": 18
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "D",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 4,
+          "first_edit_turn": 7,
+          "usage": {
+            "input_tokens": 26,
+            "cache_read_input_tokens": 433185,
+            "cache_creation_input_tokens": 25368,
+            "output_tokens": 6154,
+            "cost_usd": 0.2065181,
+            "tool_calls": 22,
+            "turns": 23,
+            "wall_seconds": 54
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T10-32-17-a1",
+      "arc": "kibi-firmness-words-rationale",
+      "family": "rationale",
+      "arm": "agents-md",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.7739706,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "usage": {
+            "input_tokens": 2,
+            "cache_read_input_tokens": 17365,
+            "cache_creation_input_tokens": 185999,
+            "output_tokens": 945,
+            "cost_usd": 0.7554649,
+            "tool_calls": 0,
+            "turns": 1,
+            "wall_seconds": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T10-28-46-a1",
+      "arc": "kibi-firmness-words-rationale",
+      "family": "rationale",
+      "arm": "docs",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.10058360000000001,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 3,
+          "first_edit_turn": 5,
+          "usage": {
+            "input_tokens": 5,
+            "cache_read_input_tokens": 69532,
+            "cache_creation_input_tokens": 12419,
+            "output_tokens": 1263,
+            "cost_usd": 0.06951760000000001,
+            "tool_calls": 2,
+            "turns": 3,
+            "wall_seconds": 14
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T13-13-34-a1",
+      "arc": "kibi-firmness-words-rationale",
+      "family": "rationale",
+      "arm": "kibi",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.1339732,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 4,
+          "first_edit_turn": 3,
+          "usage": {
+            "input_tokens": 5,
+            "cache_read_input_tokens": 85663,
+            "cache_creation_input_tokens": 21214,
+            "output_tokens": 1446,
+            "cost_usd": 0.10817769999999999,
+            "tool_calls": 3,
+            "turns": 4,
+            "wall_seconds": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T13-17-59-a1",
+      "arc": "kibi-firmness-words-rationale",
+      "family": "rationale",
+      "arm": "kibi-conv",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.10139440000000001,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "usage": {
+            "input_tokens": 4,
+            "cache_read_input_tokens": 44700,
+            "cache_creation_input_tokens": 15929,
+            "output_tokens": 1072,
+            "cost_usd": 0.07915440000000001,
+            "tool_calls": 2,
+            "turns": 3,
+            "wall_seconds": 13
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T10-32-05-a1",
+      "arc": "kibi-firmness-words-rationale",
+      "family": "rationale",
+      "arm": "memory",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.1437921,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 7,
+          "first_edit_turn": 4,
+          "usage": {
+            "input_tokens": 5,
+            "cache_read_input_tokens": 77219,
+            "cache_creation_input_tokens": 24065,
+            "output_tokens": 1564,
+            "cost_usd": 0.1198758,
+            "tool_calls": 4,
+            "turns": 5,
+            "wall_seconds": 17
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T10-27-06-a1",
+      "arc": "kibi-firmness-words-rationale",
+      "family": "rationale",
+      "arm": "none",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.1763379,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 2,
+          "usage": {
+            "input_tokens": 7,
+            "cache_read_input_tokens": 110422,
+            "cache_creation_input_tokens": 25744,
+            "output_tokens": 2063,
+            "cost_usd": 0.1349091,
+            "tool_calls": 4,
+            "turns": 5,
+            "wall_seconds": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T10-30-25-a1",
+      "arc": "kibi-firmness-words-rationale",
+      "family": "rationale",
+      "arm": "tracker",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.1482865,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 6,
+          "usage": {
+            "input_tokens": 7,
+            "cache_read_input_tokens": 116974,
+            "cache_creation_input_tokens": 23105,
+            "output_tokens": 1529,
+            "cost_usd": 0.11964029999999999,
+            "tool_calls": 6,
+            "turns": 7,
+            "wall_seconds": 16
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T10-38-39-a1",
+      "arc": "kibi-foreign-hook-evidence",
+      "family": "evidence",
+      "arm": "agents-md",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.8826636999999999,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "work",
+          "record_written": false
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 8,
+            "cache_read_input_tokens": 638079,
+            "cache_creation_input_tokens": 194806,
+            "output_tokens": 1908,
+            "cost_usd": 0.862265,
+            "tool_calls": 3,
+            "turns": 4,
+            "wall_seconds": 22
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T10-37-03-a1",
+      "arc": "kibi-foreign-hook-evidence",
+      "family": "evidence",
+      "arm": "docs",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.2015879,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "work",
+          "record_written": false
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 1,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 16,
+            "cache_read_input_tokens": 302493,
+            "cache_creation_input_tokens": 30722,
+            "output_tokens": 2203,
+            "cost_usd": 0.1753364,
+            "tool_calls": 7,
+            "turns": 8,
+            "wall_seconds": 25
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T13-18-35-a1",
+      "arc": "kibi-foreign-hook-evidence",
+      "family": "evidence",
+      "arm": "kibi",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.1669772,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "work",
+          "record_written": false
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 2,
+          "usage": {
+            "input_tokens": 12,
+            "cache_read_input_tokens": 196310,
+            "cache_creation_input_tokens": 24455,
+            "output_tokens": 2338,
+            "cost_usd": 0.1409946,
+            "tool_calls": 5,
+            "turns": 6,
+            "wall_seconds": 35
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T13-18-58-a1",
+      "arc": "kibi-foreign-hook-evidence",
+      "family": "evidence",
+      "arm": "kibi-conv",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.1249519,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "work",
+          "record_written": false
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 2,
+          "usage": {
+            "input_tokens": 12,
+            "cache_read_input_tokens": 171861,
+            "cache_creation_input_tokens": 16735,
+            "output_tokens": 1617,
+            "cost_usd": 0.1004572,
+            "tool_calls": 5,
+            "turns": 6,
+            "wall_seconds": 21
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T10-37-17-a1",
+      "arc": "kibi-foreign-hook-evidence",
+      "family": "evidence",
+      "arm": "memory",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.23297800000000002,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "work",
+          "record_written": false
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 1,
+          "usage": {
+            "input_tokens": 10,
+            "cache_read_input_tokens": 203567,
+            "cache_creation_input_tokens": 41121,
+            "output_tokens": 2422,
+            "cost_usd": 0.20921830000000002,
+            "tool_calls": 6,
+            "turns": 7,
+            "wall_seconds": 22
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T10-35-38-a1",
+      "arc": "kibi-foreign-hook-evidence",
+      "family": "evidence",
+      "arm": "none",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.225155,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "work",
+          "record_written": false
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "usage": {
+            "input_tokens": 16,
+            "cache_read_input_tokens": 250100,
+            "cache_creation_input_tokens": 32555,
+            "output_tokens": 2786,
+            "cost_usd": 0.18325909999999998,
+            "tool_calls": 8,
+            "turns": 9,
+            "wall_seconds": 24
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T10-37-08-a1",
+      "arc": "kibi-foreign-hook-evidence",
+      "family": "evidence",
+      "arm": "tracker",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.15937180000000004,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "work",
+          "record_written": false
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 5,
+          "first_edit_turn": 10,
+          "usage": {
+            "input_tokens": 16,
+            "cache_read_input_tokens": 247071,
+            "cache_creation_input_tokens": 19950,
+            "output_tokens": 2934,
+            "cost_usd": 0.13401620000000003,
+            "tool_calls": 10,
+            "turns": 11,
+            "wall_seconds": 26
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T10-49-26-a1",
+      "arc": "kibi-foreign-hook-standing",
+      "family": "standing",
+      "arm": "agents-md",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 3.3512077000000007,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "work",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 8,
+          "usage": {
+            "input_tokens": 19,
+            "cache_read_input_tokens": 1908778,
+            "cache_creation_input_tokens": 203424,
+            "output_tokens": 4183,
+            "cost_usd": 1.0467136000000001,
+            "tool_calls": 13,
+            "turns": 14,
+            "wall_seconds": 50
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 12,
+          "first_edit_turn": 11,
+          "usage": {
+            "input_tokens": 24,
+            "cache_read_input_tokens": 2294033,
+            "cache_creation_input_tokens": 194072,
+            "output_tokens": 3701,
+            "cost_usd": 1.0428854,
+            "tool_calls": 13,
+            "turns": 14,
+            "wall_seconds": 40
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "D",
+          "pass": false,
+          "record_written": true,
+          "first_edit_turn": 6,
+          "usage": {
+            "input_tokens": 23,
+            "cache_read_input_tokens": 2389863,
+            "cache_creation_input_tokens": 210944,
+            "output_tokens": 8307,
+            "cost_usd": 1.1660153000000002,
+            "tool_calls": 19,
+            "turns": 20,
+            "wall_seconds": 74
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T10-41-59-a1",
+      "arc": "kibi-foreign-hook-standing",
+      "family": "standing",
+      "arm": "docs",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 1.0154805999999998,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "work",
+          "outcome": "C",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 1,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 19,
+            "cache_read_input_tokens": 328474,
+            "cache_creation_input_tokens": 29311,
+            "output_tokens": 4742,
+            "cost_usd": 0.1976882,
+            "tool_calls": 14,
+            "turns": 15,
+            "wall_seconds": 44
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 1,
+          "first_edit_turn": 8,
+          "usage": {
+            "input_tokens": 22,
+            "cache_read_input_tokens": 385813,
+            "cache_creation_input_tokens": 28875,
+            "output_tokens": 7280,
+            "cost_usd": 0.22706189999999998,
+            "tool_calls": 15,
+            "turns": 16,
+            "wall_seconds": 68
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "D",
+          "pass": false,
+          "record_written": true,
+          "first_lookup_turn": 1,
+          "first_edit_turn": 8,
+          "usage": {
+            "input_tokens": 49,
+            "cache_read_input_tokens": 1167832,
+            "cache_creation_input_tokens": 46703,
+            "output_tokens": 12952,
+            "cost_usd": 0.4333501999999999,
+            "tool_calls": 35,
+            "turns": 36,
+            "wall_seconds": 107
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T13-23-11-a1",
+      "arc": "kibi-foreign-hook-standing",
+      "family": "standing",
+      "arm": "kibi",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 1.4186592000000002,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "work",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 13,
+          "first_edit_turn": 2,
+          "usage": {
+            "input_tokens": 22,
+            "cache_read_input_tokens": 354458,
+            "cache_creation_input_tokens": 35403,
+            "output_tokens": 4046,
+            "cost_usd": 0.21770059999999997,
+            "tool_calls": 9,
+            "turns": 10,
+            "wall_seconds": 78
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 31,
+          "first_edit_turn": 2,
+          "usage": {
+            "input_tokens": 42,
+            "cache_read_input_tokens": 766550,
+            "cache_creation_input_tokens": 46592,
+            "output_tokens": 8182,
+            "cost_usd": 0.3450636,
+            "tool_calls": 23,
+            "turns": 24,
+            "wall_seconds": 112
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "N",
+          "pass": false,
+          "record_written": false,
+          "first_lookup_turn": 16,
+          "first_edit_turn": 3,
+          "usage": {
+            "input_tokens": 71,
+            "cache_read_input_tokens": 2034286,
+            "cache_creation_input_tokens": 77163,
+            "output_tokens": 17745,
+            "cost_usd": 0.6898096000000001,
+            "tool_calls": 53,
+            "turns": 54,
+            "wall_seconds": 342
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T13-23-31-a1",
+      "arc": "kibi-foreign-hook-standing",
+      "family": "standing",
+      "arm": "kibi-conv",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 1.3611019,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "work",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 2,
+          "first_edit_turn": 12,
+          "usage": {
+            "input_tokens": 26,
+            "cache_read_input_tokens": 543716,
+            "cache_creation_input_tokens": 51409,
+            "output_tokens": 6320,
+            "cost_usd": 0.3233984,
+            "tool_calls": 15,
+            "turns": 16,
+            "wall_seconds": 136
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 2,
+          "first_edit_turn": 3,
+          "usage": {
+            "input_tokens": 30,
+            "cache_read_input_tokens": 535970,
+            "cache_creation_input_tokens": 40214,
+            "output_tokens": 4824,
+            "cost_usd": 0.2628896,
+            "tool_calls": 16,
+            "turns": 17,
+            "wall_seconds": 103
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "N",
+          "pass": false,
+          "record_written": true,
+          "first_lookup_turn": 5,
+          "first_edit_turn": 10,
+          "usage": {
+            "input_tokens": 61,
+            "cache_read_input_tokens": 1999203,
+            "cache_creation_input_tokens": 67477,
+            "output_tokens": 13341,
+            "cost_usd": 0.6034973000000001,
+            "tool_calls": 45,
+            "turns": 46,
+            "wall_seconds": 214
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T10-47-20-a1",
+      "arc": "kibi-foreign-hook-standing",
+      "family": "standing",
+      "arm": "memory",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 1.2145014,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "work",
+          "outcome": "C",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 4,
+          "first_edit_turn": 12,
+          "usage": {
+            "input_tokens": 32,
+            "cache_read_input_tokens": 873782,
+            "cache_creation_input_tokens": 51840,
+            "output_tokens": 8147,
+            "cost_usd": 0.376411,
+            "tool_calls": 23,
+            "turns": 24,
+            "wall_seconds": 95
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 2,
+          "first_edit_turn": 4,
+          "usage": {
+            "input_tokens": 23,
+            "cache_read_input_tokens": 555718,
+            "cache_creation_input_tokens": 39588,
+            "output_tokens": 5085,
+            "cost_usd": 0.26495640000000004,
+            "tool_calls": 18,
+            "turns": 19,
+            "wall_seconds": 48
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "D",
+          "pass": false,
+          "record_written": true,
+          "first_lookup_turn": 2,
+          "first_edit_turn": 8,
+          "usage": {
+            "input_tokens": 35,
+            "cache_read_input_tokens": 950371,
+            "cache_creation_input_tokens": 51953,
+            "output_tokens": 13542,
+            "cost_usd": 0.4384760999999999,
+            "tool_calls": 34,
+            "turns": 35,
+            "wall_seconds": 113
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T10-40-12-a1",
+      "arc": "kibi-foreign-hook-standing",
+      "family": "standing",
+      "arm": "none",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 0.9348279,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "work",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 2,
+          "usage": {
+            "input_tokens": 24,
+            "cache_read_input_tokens": 396710,
+            "cache_creation_input_tokens": 24140,
+            "output_tokens": 5779,
+            "cost_usd": 0.1942078,
+            "tool_calls": 17,
+            "turns": 18,
+            "wall_seconds": 44
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 21,
+            "cache_read_input_tokens": 348756,
+            "cache_creation_input_tokens": 23200,
+            "output_tokens": 4147,
+            "cost_usd": 0.16932370000000002,
+            "tool_calls": 11,
+            "turns": 12,
+            "wall_seconds": 33
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "N",
+          "pass": false,
+          "record_written": false,
+          "first_lookup_turn": 17,
+          "first_edit_turn": 3,
+          "usage": {
+            "input_tokens": 51,
+            "cache_read_input_tokens": 1217956,
+            "cache_creation_input_tokens": 46359,
+            "output_tokens": 14221,
+            "cost_usd": 0.44968060000000004,
+            "tool_calls": 39,
+            "turns": 40,
+            "wall_seconds": 115
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T10-42-15-a1",
+      "arc": "kibi-foreign-hook-standing",
+      "family": "standing",
+      "arm": "tracker",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 0.648428,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "work",
+          "outcome": "C",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 4,
+          "first_edit_turn": 10,
+          "usage": {
+            "input_tokens": 16,
+            "cache_read_input_tokens": 234943,
+            "cache_creation_input_tokens": 20559,
+            "output_tokens": 4264,
+            "cost_usd": 0.1486151,
+            "tool_calls": 14,
+            "turns": 15,
+            "wall_seconds": 46
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 4,
+          "first_edit_turn": 3,
+          "usage": {
+            "input_tokens": 20,
+            "cache_read_input_tokens": 285439,
+            "cache_creation_input_tokens": 17582,
+            "output_tokens": 3646,
+            "cost_usd": 0.135508,
+            "tool_calls": 15,
+            "turns": 16,
+            "wall_seconds": 33
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "D",
+          "pass": false,
+          "record_written": true,
+          "first_lookup_turn": 4,
+          "first_edit_turn": 11,
+          "usage": {
+            "input_tokens": 31,
+            "cache_read_input_tokens": 603133,
+            "cache_creation_input_tokens": 32525,
+            "output_tokens": 7365,
+            "cost_usd": 0.2642623,
+            "tool_calls": 28,
+            "turns": 29,
+            "wall_seconds": 73
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T11-06-18-a1",
+      "arc": "kibi-git-hooks-recall",
+      "family": "recall",
+      "arm": "agents-md",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 1.7800880000000001,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "D",
+          "pass": true,
+          "record_written": true,
+          "first_edit_turn": 6,
+          "usage": {
+            "input_tokens": 60,
+            "cache_read_input_tokens": 6633940,
+            "cache_creation_input_tokens": 225193,
+            "output_tokens": 14820,
+            "cost_usd": 1.7126286000000002,
+            "tool_calls": 41,
+            "turns": 42,
+            "wall_seconds": 170
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T09-01-09-a1",
+      "arc": "kibi-git-hooks-recall",
+      "family": "recall",
+      "arm": "docs",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.8551921999999998,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "D",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 2,
+          "first_edit_turn": 9,
+          "usage": {
+            "input_tokens": 67,
+            "cache_read_input_tokens": 2229109,
+            "cache_creation_input_tokens": 77380,
+            "output_tokens": 24196,
+            "cost_usd": 0.7746669999999999,
+            "tool_calls": 51,
+            "turns": 52,
+            "wall_seconds": 220
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T08-57-11-a1",
+      "arc": "kibi-git-hooks-recall",
+      "family": "recall",
+      "arm": "kibi",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.1661172,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "S",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 5,
+          "first_edit_turn": 2,
+          "usage": {
+            "input_tokens": 7,
+            "cache_read_input_tokens": 107274,
+            "cache_creation_input_tokens": 23074,
+            "output_tokens": 1367,
+            "cost_usd": 0.11685,
+            "tool_calls": 4,
+            "turns": 5,
+            "wall_seconds": 17
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T13-23-37-a1",
+      "arc": "kibi-git-hooks-recall",
+      "family": "recall",
+      "arm": "kibi-conv",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.1602483,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "S",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 5,
+          "usage": {
+            "input_tokens": 5,
+            "cache_read_input_tokens": 78527,
+            "cache_creation_input_tokens": 26316,
+            "output_tokens": 1795,
+            "cost_usd": 0.1312193,
+            "tool_calls": 4,
+            "turns": 5,
+            "wall_seconds": 21
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T11-05-13-a1",
+      "arc": "kibi-git-hooks-recall",
+      "family": "recall",
+      "arm": "memory",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.1725814,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "S",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 5,
+          "usage": {
+            "input_tokens": 6,
+            "cache_read_input_tokens": 69835,
+            "cache_creation_input_tokens": 32057,
+            "output_tokens": 1444,
+            "cost_usd": 0.1498061,
+            "tool_calls": 4,
+            "turns": 5,
+            "wall_seconds": 16
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T10-56-14-a1",
+      "arc": "kibi-git-hooks-recall",
+      "family": "recall",
+      "arm": "none",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 0.7386153999999999,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "V",
+          "pass": false,
+          "record_written": false,
+          "first_edit_turn": 2,
+          "usage": {
+            "input_tokens": 74,
+            "cache_read_input_tokens": 1871968,
+            "cache_creation_input_tokens": 65195,
+            "output_tokens": 21494,
+            "cost_usd": 0.6633039,
+            "tool_calls": 55,
+            "turns": 56,
+            "wall_seconds": 251
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T11-02-58-a1",
+      "arc": "kibi-git-hooks-recall",
+      "family": "recall",
+      "arm": "tracker",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.15161200000000002,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "S",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 4,
+          "usage": {
+            "input_tokens": 14,
+            "cache_read_input_tokens": 196600,
+            "cache_creation_input_tokens": 20983,
+            "output_tokens": 2171,
+            "cost_usd": 0.12547260000000002,
+            "tool_calls": 8,
+            "turns": 9,
+            "wall_seconds": 22
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T11-12-59-a1",
+      "arc": "kibi-mcp-freshness-rationale",
+      "family": "rationale",
+      "arm": "agents-md",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.8141832999999999,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "usage": {
+            "input_tokens": 4,
+            "cache_read_input_tokens": 220765,
+            "cache_creation_input_tokens": 188909,
+            "output_tokens": 1502,
+            "cost_usd": 0.7928788999999999,
+            "tool_calls": 2,
+            "turns": 3,
+            "wall_seconds": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T11-10-52-a1",
+      "arc": "kibi-mcp-freshness-rationale",
+      "family": "rationale",
+      "arm": "docs",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.1343253,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 1,
+          "usage": {
+            "input_tokens": 8,
+            "cache_read_input_tokens": 112997,
+            "cache_creation_input_tokens": 19783,
+            "output_tokens": 1551,
+            "cost_usd": 0.10609660000000001,
+            "tool_calls": 3,
+            "turns": 4,
+            "wall_seconds": 16
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T13-30-05-a1",
+      "arc": "kibi-mcp-freshness-rationale",
+      "family": "rationale",
+      "arm": "kibi",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.1914022,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 5,
+          "first_edit_turn": 4,
+          "usage": {
+            "input_tokens": 10,
+            "cache_read_input_tokens": 154890,
+            "cache_creation_input_tokens": 28683,
+            "output_tokens": 2203,
+            "cost_usd": 0.1524124,
+            "tool_calls": 7,
+            "turns": 8,
+            "wall_seconds": 27
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T13-34-27-a1",
+      "arc": "kibi-mcp-freshness-rationale",
+      "family": "rationale",
+      "arm": "kibi-conv",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.18638939999999998,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 5,
+          "usage": {
+            "input_tokens": 8,
+            "cache_read_input_tokens": 124312,
+            "cache_creation_input_tokens": 29649,
+            "output_tokens": 1945,
+            "cost_usd": 0.15063459999999998,
+            "tool_calls": 6,
+            "turns": 7,
+            "wall_seconds": 24
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T11-12-24-a1",
+      "arc": "kibi-mcp-freshness-rationale",
+      "family": "rationale",
+      "arm": "memory",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.1510533,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 4,
+          "first_edit_turn": 10,
+          "usage": {
+            "input_tokens": 14,
+            "cache_read_input_tokens": 196504,
+            "cache_creation_input_tokens": 18117,
+            "output_tokens": 2971,
+            "cost_usd": 0.1219953,
+            "tool_calls": 11,
+            "turns": 12,
+            "wall_seconds": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T11-09-18-a1",
+      "arc": "kibi-mcp-freshness-rationale",
+      "family": "rationale",
+      "arm": "none",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.15432820000000003,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 4,
+          "first_edit_turn": 4,
+          "usage": {
+            "input_tokens": 14,
+            "cache_read_input_tokens": 198675,
+            "cache_creation_input_tokens": 18004,
+            "output_tokens": 2057,
+            "cost_usd": 0.11262040000000001,
+            "tool_calls": 7,
+            "turns": 8,
+            "wall_seconds": 22
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T11-11-26-a1",
+      "arc": "kibi-mcp-freshness-rationale",
+      "family": "rationale",
+      "arm": "tracker",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.12444179999999999,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 5,
+          "usage": {
+            "input_tokens": 8,
+            "cache_read_input_tokens": 99083,
+            "cache_creation_input_tokens": 15487,
+            "output_tokens": 2112,
+            "cost_usd": 0.0931337,
+            "tool_calls": 8,
+            "turns": 9,
+            "wall_seconds": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T11-18-50-a1",
+      "arc": "kibi-mcp-oneof-evidence",
+      "family": "evidence",
+      "arm": "agents-md",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.8940416999999999,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "work",
+          "record_written": false
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 10,
+            "cache_read_input_tokens": 841036,
+            "cache_creation_input_tokens": 191544,
+            "output_tokens": 2228,
+            "cost_usd": 0.8728566,
+            "tool_calls": 4,
+            "turns": 5,
+            "wall_seconds": 25
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T11-17-35-a1",
+      "arc": "kibi-mcp-oneof-evidence",
+      "family": "evidence",
+      "arm": "docs",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.1394842,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "work",
+          "record_written": false
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 1,
+          "first_edit_turn": 2,
+          "usage": {
+            "input_tokens": 10,
+            "cache_read_input_tokens": 134100,
+            "cache_creation_input_tokens": 19339,
+            "output_tokens": 2157,
+            "cost_usd": 0.11264650000000001,
+            "tool_calls": 4,
+            "turns": 5,
+            "wall_seconds": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T13-38-37-a1",
+      "arc": "kibi-mcp-oneof-evidence",
+      "family": "evidence",
+      "arm": "kibi",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.16176420000000002,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "work",
+          "record_written": false
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 17,
+            "cache_read_input_tokens": 293960,
+            "cache_creation_input_tokens": 19662,
+            "output_tokens": 2481,
+            "cost_usd": 0.13315600000000002,
+            "tool_calls": 9,
+            "turns": 10,
+            "wall_seconds": 35
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T13-41-07-a1",
+      "arc": "kibi-mcp-oneof-evidence",
+      "family": "evidence",
+      "arm": "kibi-conv",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.1169645,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "work",
+          "record_written": false
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 10,
+            "cache_read_input_tokens": 135520,
+            "cache_creation_input_tokens": 15027,
+            "output_tokens": 1761,
+            "cost_usd": 0.0915805,
+            "tool_calls": 4,
+            "turns": 5,
+            "wall_seconds": 28
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T11-18-31-a1",
+      "arc": "kibi-mcp-oneof-evidence",
+      "family": "evidence",
+      "arm": "memory",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.1114613,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "work",
+          "record_written": false
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 2,
+          "usage": {
+            "input_tokens": 14,
+            "cache_read_input_tokens": 178443,
+            "cache_creation_input_tokens": 12651,
+            "output_tokens": 2080,
+            "cost_usd": 0.0896698,
+            "tool_calls": 6,
+            "turns": 7,
+            "wall_seconds": 21
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T11-16-59-a1",
+      "arc": "kibi-mcp-oneof-evidence",
+      "family": "evidence",
+      "arm": "none",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.1707448,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "work",
+          "record_written": false
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 16,
+            "cache_read_input_tokens": 235150,
+            "cache_creation_input_tokens": 20608,
+            "output_tokens": 2633,
+            "cost_usd": 0.1325915,
+            "tool_calls": 9,
+            "turns": 10,
+            "wall_seconds": 35
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T11-18-07-a1",
+      "arc": "kibi-mcp-oneof-evidence",
+      "family": "evidence",
+      "arm": "tracker",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.1735965,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "work",
+          "record_written": false
+        },
+        {
+          "id": "s2",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 5,
+          "first_edit_turn": 6,
+          "usage": {
+            "input_tokens": 14,
+            "cache_read_input_tokens": 212401,
+            "cache_creation_input_tokens": 22339,
+            "output_tokens": 3574,
+            "cost_usd": 0.1466181,
+            "tool_calls": 11,
+            "turns": 12,
+            "wall_seconds": 29
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T11-28-39-a1",
+      "arc": "kibi-mcp-oneof-surfacing",
+      "family": "surfacing",
+      "arm": "agents-md",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 1.2899880000000001,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "D",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 18,
+          "first_edit_turn": 4,
+          "usage": {
+            "input_tokens": 31,
+            "cache_read_input_tokens": 3235853,
+            "cache_creation_input_tokens": 207631,
+            "output_tokens": 9024,
+            "cost_usd": 1.2445547000000001,
+            "tool_calls": 20,
+            "turns": 21,
+            "wall_seconds": 161
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T11-22-53-a1",
+      "arc": "kibi-mcp-oneof-surfacing",
+      "family": "surfacing",
+      "arm": "docs",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.27631009999999995,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "D",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 2,
+          "first_edit_turn": 10,
+          "usage": {
+            "input_tokens": 26,
+            "cache_read_input_tokens": 474413,
+            "cache_creation_input_tokens": 27843,
+            "output_tokens": 7125,
+            "cost_usd": 0.23025719999999997,
+            "tool_calls": 15,
+            "turns": 16,
+            "wall_seconds": 222
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T13-42-36-a1",
+      "arc": "kibi-mcp-oneof-surfacing",
+      "family": "surfacing",
+      "arm": "kibi",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 0.4701486,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "N",
+          "pass": false,
+          "record_written": false,
+          "first_lookup_turn": 6,
+          "first_edit_turn": 5,
+          "usage": {
+            "input_tokens": 50,
+            "cache_read_input_tokens": 1167944,
+            "cache_creation_input_tokens": 50751,
+            "output_tokens": 9723,
+            "cost_usd": 0.41727030000000004,
+            "tool_calls": 24,
+            "turns": 25,
+            "wall_seconds": 190
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T13-43-29-a1",
+      "arc": "kibi-mcp-oneof-surfacing",
+      "family": "surfacing",
+      "arm": "kibi-conv",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.7903432000000001,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "D",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 4,
+          "first_edit_turn": 6,
+          "usage": {
+            "input_tokens": 47,
+            "cache_read_input_tokens": 1667579,
+            "cache_creation_input_tokens": 95172,
+            "output_tokens": 13900,
+            "cost_usd": 0.6866818000000001,
+            "tool_calls": 33,
+            "turns": 34,
+            "wall_seconds": 273
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T11-25-40-a1",
+      "arc": "kibi-mcp-oneof-surfacing",
+      "family": "surfacing",
+      "arm": "memory",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 0.27660910000000005,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "N",
+          "pass": false,
+          "record_written": true,
+          "first_lookup_turn": 2,
+          "first_edit_turn": 4,
+          "usage": {
+            "input_tokens": 25,
+            "cache_read_input_tokens": 467257,
+            "cache_creation_input_tokens": 28194,
+            "output_tokens": 7558,
+            "cost_usd": 0.23527360000000003,
+            "tool_calls": 16,
+            "turns": 17,
+            "wall_seconds": 103
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T11-20-09-a1",
+      "arc": "kibi-mcp-oneof-surfacing",
+      "family": "surfacing",
+      "arm": "none",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 0.29562620000000006,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "V",
+          "pass": false,
+          "record_written": false,
+          "first_edit_turn": 6,
+          "usage": {
+            "input_tokens": 30,
+            "cache_read_input_tokens": 581061,
+            "cache_creation_input_tokens": 29694,
+            "output_tokens": 8142,
+            "cost_usd": 0.25850400000000007,
+            "tool_calls": 18,
+            "turns": 19,
+            "wall_seconds": 210
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T11-22-54-a1",
+      "arc": "kibi-mcp-oneof-surfacing",
+      "family": "surfacing",
+      "arm": "tracker",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 0.3180739,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "N",
+          "pass": false,
+          "record_written": true,
+          "first_lookup_turn": 5,
+          "first_edit_turn": 8,
+          "usage": {
+            "input_tokens": 8,
+            "cache_read_input_tokens": 140829,
+            "cache_creation_input_tokens": 1660,
+            "output_tokens": 499,
+            "cost_usd": 0.2804459,
+            "tool_calls": 23,
+            "turns": 3,
+            "wall_seconds": 302
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T11-36-56-a1",
+      "arc": "kibi-mcp-routing-navigation",
+      "family": "navigation",
+      "arm": "agents-md",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.9282483000000001,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "usage": {
+            "input_tokens": 10,
+            "cache_read_input_tokens": 858868,
+            "cache_creation_input_tokens": 198854,
+            "output_tokens": 2184,
+            "cost_usd": 0.9034028000000002,
+            "tool_calls": 4,
+            "turns": 5,
+            "wall_seconds": 28
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T11-34-56-a1",
+      "arc": "kibi-mcp-routing-navigation",
+      "family": "navigation",
+      "arm": "docs",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.2210491,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 1,
+          "first_edit_turn": 5,
+          "usage": {
+            "input_tokens": 14,
+            "cache_read_input_tokens": 225351,
+            "cache_creation_input_tokens": 30518,
+            "output_tokens": 3937,
+            "cost_usd": 0.1842656,
+            "tool_calls": 7,
+            "turns": 8,
+            "wall_seconds": 33
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T13-45-32-a1",
+      "arc": "kibi-mcp-routing-navigation",
+      "family": "navigation",
+      "arm": "kibi",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.1898878,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 2,
+          "usage": {
+            "input_tokens": 10,
+            "cache_read_input_tokens": 158310,
+            "cache_creation_input_tokens": 28126,
+            "output_tokens": 2849,
+            "cost_usd": 0.1571185,
+            "tool_calls": 5,
+            "turns": 6,
+            "wall_seconds": 27
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T13-50-05-a1",
+      "arc": "kibi-mcp-routing-navigation",
+      "family": "navigation",
+      "arm": "kibi-conv",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.18750030000000004,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 2,
+          "usage": {
+            "input_tokens": 12,
+            "cache_read_input_tokens": 199052,
+            "cache_creation_input_tokens": 25943,
+            "output_tokens": 3032,
+            "cost_usd": 0.15426470000000003,
+            "tool_calls": 6,
+            "turns": 7,
+            "wall_seconds": 29
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T11-36-54-a1",
+      "arc": "kibi-mcp-routing-navigation",
+      "family": "navigation",
+      "arm": "memory",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.19275219999999998,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 5,
+          "first_edit_turn": 3,
+          "usage": {
+            "input_tokens": 10,
+            "cache_read_input_tokens": 158236,
+            "cache_creation_input_tokens": 28060,
+            "output_tokens": 3334,
+            "cost_usd": 0.1616656,
+            "tool_calls": 7,
+            "turns": 8,
+            "wall_seconds": 28
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T11-33-19-a1",
+      "arc": "kibi-mcp-routing-navigation",
+      "family": "navigation",
+      "arm": "none",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.1870884,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 2,
+          "usage": {
+            "input_tokens": 12,
+            "cache_read_input_tokens": 167673,
+            "cache_creation_input_tokens": 21783,
+            "output_tokens": 3532,
+            "cost_usd": 0.13950579999999999,
+            "tool_calls": 5,
+            "turns": 6,
+            "wall_seconds": 29
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T11-36-47-a1",
+      "arc": "kibi-mcp-routing-navigation",
+      "family": "navigation",
+      "arm": "tracker",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.2022428,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 4,
+          "first_edit_turn": 3,
+          "usage": {
+            "input_tokens": 12,
+            "cache_read_input_tokens": 188823,
+            "cache_creation_input_tokens": 29696,
+            "output_tokens": 3196,
+            "cost_usd": 0.1698663,
+            "tool_calls": 10,
+            "turns": 11,
+            "wall_seconds": 26
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T11-51-05-a1",
+      "arc": "kibi-swipl-minimum-drift",
+      "family": "drift",
+      "arm": "agents-md",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 3.9661711000000004,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "intent",
+          "outcome": "C",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 3,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 55,
+            "cache_read_input_tokens": 6075278,
+            "cache_creation_input_tokens": 222517,
+            "output_tokens": 14207,
+            "cost_usd": 1.6399261000000003,
+            "tool_calls": 57,
+            "turns": 58,
+            "wall_seconds": 201
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "control",
+          "outcome": "F",
+          "pass": false,
+          "record_written": false,
+          "first_edit_turn": 6,
+          "usage": {
+            "input_tokens": 12,
+            "cache_read_input_tokens": 1050494,
+            "cache_creation_input_tokens": 196400,
+            "output_tokens": 2917,
+            "cost_usd": 0.9199770999999999,
+            "tool_calls": 9,
+            "turns": 10,
+            "wall_seconds": 28
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "D",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 9,
+          "first_edit_turn": 4,
+          "usage": {
+            "input_tokens": 31,
+            "cache_read_input_tokens": 3229055,
+            "cache_creation_input_tokens": 203749,
+            "output_tokens": 6563,
+            "cost_usd": 1.2038410000000002,
+            "tool_calls": 24,
+            "turns": 25,
+            "wall_seconds": 184
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T11-41-52-a1",
+      "arc": "kibi-swipl-minimum-drift",
+      "family": "drift",
+      "arm": "docs",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 1.4013826,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "intent",
+          "outcome": "C",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 1,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 57,
+            "cache_read_input_tokens": 1764844,
+            "cache_creation_input_tokens": 77701,
+            "output_tokens": 29079,
+            "cost_usd": 0.7783392000000001,
+            "tool_calls": 102,
+            "turns": 103,
+            "wall_seconds": 220
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "control",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 1,
+          "first_edit_turn": 8,
+          "usage": {
+            "input_tokens": 29,
+            "cache_read_input_tokens": 537706,
+            "cache_creation_input_tokens": 26025,
+            "output_tokens": 4335,
+            "cost_usd": 0.20141229999999996,
+            "tool_calls": 19,
+            "turns": 20,
+            "wall_seconds": 56
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "D",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 1,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 20,
+            "cache_read_input_tokens": 280482,
+            "cache_creation_input_tokens": 19601,
+            "output_tokens": 6069,
+            "cost_usd": 0.1673187,
+            "tool_calls": 19,
+            "turns": 20,
+            "wall_seconds": 41
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T13-51-40-a1",
+      "arc": "kibi-swipl-minimum-drift",
+      "family": "drift",
+      "arm": "kibi",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 2.317323,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "intent",
+          "outcome": "C",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 55,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 93,
+            "cache_read_input_tokens": 3962797,
+            "cache_creation_input_tokens": 124035,
+            "output_tokens": 22647,
+            "cost_usd": 1.1192225000000002,
+            "tool_calls": 74,
+            "turns": 75,
+            "wall_seconds": 428
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "control",
+          "outcome": "F",
+          "pass": false,
+          "record_written": false,
+          "first_lookup_turn": 18,
+          "first_edit_turn": 6,
+          "usage": {
+            "input_tokens": 25,
+            "cache_read_input_tokens": 435363,
+            "cache_creation_input_tokens": 34456,
+            "output_tokens": 4950,
+            "cost_usd": 0.2310435,
+            "tool_calls": 13,
+            "turns": 14,
+            "wall_seconds": 120
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "V",
+          "pass": false,
+          "record_written": false,
+          "first_lookup_turn": 70,
+          "first_edit_turn": 2,
+          "usage": {
+            "input_tokens": 55,
+            "cache_read_input_tokens": 1605448,
+            "cache_creation_input_tokens": 83289,
+            "output_tokens": 15956,
+            "cost_usd": 0.6535073,
+            "tool_calls": 53,
+            "turns": 54,
+            "wall_seconds": 203
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T13-54-12-a1",
+      "arc": "kibi-swipl-minimum-drift",
+      "family": "drift",
+      "arm": "kibi-conv",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 2.2614739000000004,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "intent",
+          "outcome": "C",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 2,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 8,
+            "cache_read_input_tokens": 455251,
+            "cache_creation_input_tokens": 2603,
+            "output_tokens": 851,
+            "cost_usd": 1.2984739,
+            "tool_calls": 102,
+            "turns": 3,
+            "wall_seconds": 718
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "control",
+          "outcome": "F",
+          "pass": false,
+          "record_written": false,
+          "first_lookup_turn": 18,
+          "first_edit_turn": 6,
+          "usage": {
+            "input_tokens": 25,
+            "cache_read_input_tokens": 393100,
+            "cache_creation_input_tokens": 30000,
+            "output_tokens": 3933,
+            "cost_usd": 0.1988237,
+            "tool_calls": 13,
+            "turns": 14,
+            "wall_seconds": 106
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "V",
+          "pass": false,
+          "record_written": false,
+          "first_lookup_turn": 2,
+          "first_edit_turn": 4,
+          "usage": {
+            "input_tokens": 45,
+            "cache_read_input_tokens": 1180000,
+            "cache_creation_input_tokens": 65907,
+            "output_tokens": 9961,
+            "cost_usd": 0.4814645,
+            "tool_calls": 33,
+            "turns": 34,
+            "wall_seconds": 125
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T11-47-34-a1",
+      "arc": "kibi-swipl-minimum-drift",
+      "family": "drift",
+      "arm": "memory",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 1.0400181,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "intent",
+          "outcome": "F",
+          "pass": false,
+          "record_written": false,
+          "first_lookup_turn": 5,
+          "first_edit_turn": 3,
+          "usage": {
+            "input_tokens": 29,
+            "cache_read_input_tokens": 643040,
+            "cache_creation_input_tokens": 42818,
+            "output_tokens": 16293,
+            "cost_usd": 0.3987113,
+            "tool_calls": 53,
+            "turns": 54,
+            "wall_seconds": 104
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "control",
+          "outcome": "F",
+          "pass": false,
+          "record_written": false,
+          "first_lookup_turn": 4,
+          "first_edit_turn": 11,
+          "usage": {
+            "input_tokens": 26,
+            "cache_read_input_tokens": 423648,
+            "cache_creation_input_tokens": 25320,
+            "output_tokens": 5561,
+            "cost_usd": 0.1994405,
+            "tool_calls": 17,
+            "turns": 18,
+            "wall_seconds": 42
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "V",
+          "pass": false,
+          "record_written": false,
+          "first_lookup_turn": 1,
+          "first_edit_turn": 2,
+          "usage": {
+            "input_tokens": 25,
+            "cache_read_input_tokens": 519094,
+            "cache_creation_input_tokens": 33733,
+            "output_tokens": 6683,
+            "cost_usd": 0.25396589999999997,
+            "tool_calls": 26,
+            "turns": 27,
+            "wall_seconds": 69
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T11-38-52-a1",
+      "arc": "kibi-swipl-minimum-drift",
+      "family": "drift",
+      "arm": "none",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 1.2866856999999998,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "intent",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 59,
+            "cache_read_input_tokens": 1296966,
+            "cache_creation_input_tokens": 39654,
+            "output_tokens": 12052,
+            "cost_usd": 0.4090963999999999,
+            "tool_calls": 44,
+            "turns": 45,
+            "wall_seconds": 115
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "control",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 8,
+          "usage": {
+            "input_tokens": 19,
+            "cache_read_input_tokens": 301017,
+            "cache_creation_input_tokens": 20339,
+            "output_tokens": 3743,
+            "cost_usd": 0.14905939999999998,
+            "tool_calls": 14,
+            "turns": 15,
+            "wall_seconds": 53
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "V",
+          "pass": false,
+          "record_written": false,
+          "first_edit_turn": 7,
+          "usage": {
+            "input_tokens": 61,
+            "cache_read_input_tokens": 1288445,
+            "cache_creation_input_tokens": 42761,
+            "output_tokens": 16463,
+            "cost_usd": 0.46478400000000003,
+            "tool_calls": 69,
+            "turns": 70,
+            "wall_seconds": 138
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T11-42-26-a1",
+      "arc": "kibi-swipl-minimum-drift",
+      "family": "drift",
+      "arm": "tracker",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 1.2176954000000002,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "intent",
+          "outcome": "C",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 4,
+          "first_edit_turn": 3,
+          "usage": {
+            "input_tokens": 47,
+            "cache_read_input_tokens": 1153455,
+            "cache_creation_input_tokens": 51437,
+            "output_tokens": 19170,
+            "cost_usd": 0.5130342999999999,
+            "tool_calls": 66,
+            "turns": 67,
+            "wall_seconds": 139
+          }
+        },
+        {
+          "id": "s2",
+          "kind": "control",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 4,
+          "first_edit_turn": 11,
+          "usage": {
+            "input_tokens": 29,
+            "cache_read_input_tokens": 479642,
+            "cache_creation_input_tokens": 21112,
+            "output_tokens": 3832,
+            "cost_usd": 0.17092440000000003,
+            "tool_calls": 18,
+            "turns": 19,
+            "wall_seconds": 60
+          }
+        },
+        {
+          "id": "s3",
+          "kind": "probe",
+          "outcome": "D",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 4,
+          "first_edit_turn": 5,
+          "usage": {
+            "input_tokens": 35,
+            "cache_read_input_tokens": 642172,
+            "cache_creation_input_tokens": 32821,
+            "output_tokens": 11073,
+            "cost_usd": 0.30643770000000004,
+            "tool_calls": 43,
+            "turns": 44,
+            "wall_seconds": 98
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T12-12-18-a1",
+      "arc": "kibi-swipl-minimum-recall",
+      "family": "recall",
+      "arm": "agents-md",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 1.3384236,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "D",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 39,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 29,
+            "cache_read_input_tokens": 3015744,
+            "cache_creation_input_tokens": 210928,
+            "output_tokens": 13132,
+            "cost_usd": 1.2768051,
+            "tool_calls": 38,
+            "turns": 39,
+            "wall_seconds": 96
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T12-06-51-a1",
+      "arc": "kibi-swipl-minimum-recall",
+      "family": "recall",
+      "arm": "docs",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.6152473999999999,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "D",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 1,
+          "first_edit_turn": 3,
+          "usage": {
+            "input_tokens": 45,
+            "cache_read_input_tokens": 998061,
+            "cache_creation_input_tokens": 49280,
+            "output_tokens": 20693,
+            "cost_usd": 0.5040867999999998,
+            "tool_calls": 61,
+            "turns": 62,
+            "wall_seconds": 147
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T13-55-33-a1",
+      "arc": "kibi-swipl-minimum-recall",
+      "family": "recall",
+      "arm": "kibi",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 0.7598632000000001,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "N",
+          "pass": false,
+          "record_written": false,
+          "first_lookup_turn": 6,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 55,
+            "cache_read_input_tokens": 1623520,
+            "cache_creation_input_tokens": 81096,
+            "output_tokens": 17899,
+            "cost_usd": 0.6659817000000001,
+            "tool_calls": 59,
+            "turns": 60,
+            "wall_seconds": 182
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T14-03-39-a1",
+      "arc": "kibi-swipl-minimum-recall",
+      "family": "recall",
+      "arm": "kibi-conv",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 1.0502468,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "N",
+          "pass": false,
+          "record_written": false,
+          "first_lookup_turn": 5,
+          "first_edit_turn": 9,
+          "usage": {
+            "input_tokens": 59,
+            "cache_read_input_tokens": 2350310,
+            "cache_creation_input_tokens": 122165,
+            "output_tokens": 21329,
+            "cost_usd": 0.9372397000000001,
+            "tool_calls": 72,
+            "turns": 73,
+            "wall_seconds": 252
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T12-12-06-a1",
+      "arc": "kibi-swipl-minimum-recall",
+      "family": "recall",
+      "arm": "memory",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.38797309999999996,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "D",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 2,
+          "first_edit_turn": 5,
+          "usage": {
+            "input_tokens": 30,
+            "cache_read_input_tokens": 627712,
+            "cache_creation_input_tokens": 38970,
+            "output_tokens": 11409,
+            "cost_usd": 0.33294689999999993,
+            "tool_calls": 33,
+            "turns": 34,
+            "wall_seconds": 82
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T12-02-48-a1",
+      "arc": "kibi-swipl-minimum-recall",
+      "family": "recall",
+      "arm": "none",
+      "attempt": 1,
+      "pass": false,
+      "invalid": false,
+      "cost_usd": 0.6460756000000001,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "V",
+          "pass": false,
+          "record_written": false,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 53,
+            "cache_read_input_tokens": 1248207,
+            "cache_creation_input_tokens": 54356,
+            "output_tokens": 20827,
+            "cost_usd": 0.5507614000000001,
+            "tool_calls": 68,
+            "turns": 69,
+            "wall_seconds": 179
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T12-08-31-a1",
+      "arc": "kibi-swipl-minimum-recall",
+      "family": "recall",
+      "arm": "tracker",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.3172118,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "D",
+          "pass": true,
+          "record_written": true,
+          "first_lookup_turn": 4,
+          "first_edit_turn": 10,
+          "usage": {
+            "input_tokens": 32,
+            "cache_read_input_tokens": 570178,
+            "cache_creation_input_tokens": 30042,
+            "output_tokens": 8996,
+            "cost_usd": 0.2673505,
+            "tool_calls": 26,
+            "turns": 27,
+            "wall_seconds": 68
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T12-26-33-a1",
+      "arc": "kibi-swipl-resolver-navigation",
+      "family": "navigation",
+      "arm": "agents-md",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.9174324,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 12,
+            "cache_read_input_tokens": 1042844,
+            "cache_creation_input_tokens": 191016,
+            "output_tokens": 2436,
+            "cost_usd": 0.892876,
+            "tool_calls": 7,
+            "turns": 8,
+            "wall_seconds": 29
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T12-23-58-a1",
+      "arc": "kibi-swipl-resolver-navigation",
+      "family": "navigation",
+      "arm": "docs",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.12587879999999999,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_lookup_turn": 1,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 12,
+            "cache_read_input_tokens": 153154,
+            "cache_creation_input_tokens": 13468,
+            "output_tokens": 2355,
+            "cost_usd": 0.09300599999999999,
+            "tool_calls": 5,
+            "turns": 6,
+            "wall_seconds": 24
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T14-13-37-a1",
+      "arc": "kibi-swipl-resolver-navigation",
+      "family": "navigation",
+      "arm": "kibi",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.1988119,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 22,
+            "cache_read_input_tokens": 373436,
+            "cache_creation_input_tokens": 23753,
+            "output_tokens": 3401,
+            "cost_usd": 0.1665532,
+            "tool_calls": 10,
+            "turns": 11,
+            "wall_seconds": 38
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T14-13-49-a1",
+      "arc": "kibi-swipl-resolver-navigation",
+      "family": "navigation",
+      "arm": "kibi-conv",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.159647,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 2,
+          "usage": {
+            "input_tokens": 14,
+            "cache_read_input_tokens": 205620,
+            "cache_creation_input_tokens": 17626,
+            "output_tokens": 3663,
+            "cost_usd": 0.12795510000000002,
+            "tool_calls": 7,
+            "turns": 8,
+            "wall_seconds": 33
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T12-26-05-a1",
+      "arc": "kibi-swipl-resolver-navigation",
+      "family": "navigation",
+      "arm": "memory",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.13872469999999998,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 2,
+          "usage": {
+            "input_tokens": 12,
+            "cache_read_input_tokens": 160180,
+            "cache_creation_input_tokens": 14042,
+            "output_tokens": 2499,
+            "cost_usd": 0.09734359999999999,
+            "tool_calls": 5,
+            "turns": 6,
+            "wall_seconds": 23
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T12-21-34-a1",
+      "arc": "kibi-swipl-resolver-navigation",
+      "family": "navigation",
+      "arm": "none",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.1439817,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 1,
+          "usage": {
+            "input_tokens": 12,
+            "cache_read_input_tokens": 162537,
+            "cache_creation_input_tokens": 15133,
+            "output_tokens": 2628,
+            "cost_usd": 0.10329479999999999,
+            "tool_calls": 5,
+            "turns": 6,
+            "wall_seconds": 24
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T12-24-31-a1",
+      "arc": "kibi-swipl-resolver-navigation",
+      "family": "navigation",
+      "arm": "tracker",
+      "attempt": 1,
+      "pass": true,
+      "invalid": false,
+      "cost_usd": 0.1224896,
+      "steps": [
+        {
+          "id": "s1",
+          "kind": "probe",
+          "outcome": "C",
+          "pass": true,
+          "record_written": false,
+          "first_edit_turn": 2,
+          "usage": {
+            "input_tokens": 14,
+            "cache_read_input_tokens": 185027,
+            "cache_creation_input_tokens": 13755,
+            "output_tokens": 2412,
+            "cost_usd": 0.0979173,
+            "tool_calls": 6,
+            "turns": 7,
+            "wall_seconds": 25
+          }
+        }
+      ]
+    }
+  ]
+}

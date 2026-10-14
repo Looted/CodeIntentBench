@@ -46,3 +46,7 @@ Sixteen arcs under `arcs/`, two per family, all on the same base commit (`develo
 In the recall, rationale, surfacing, navigation and standing arcs the decision is one the knowledge base already records, so the arc starts with the probe: there is no session in which the agent is told the decision, and every arm has to find it in its own container. The drift and branch arcs need a decision that is new on top of the recorded one, so their first session states it, as the Papra arcs did, and their hidden tests are the benchmark's own, under `arcs/<id>/tests/`. The evidence arcs run `teammate.sh` between sessions. Hidden intent tests for the recorded decisions are the repository's tests at the base commit, restored by the grader before they run; each step names the few test files that cover the code it touches as its regression suite, because the whole suite takes minutes per run.
 
 The benchmark container runs as root, which `chmod` does not stop; eight of the repository's tests make a directory unreadable and expect Git to refuse, and fail on an untouched checkout here. `project.yaml` lists them under `tests.ignore`, and the grader records their failures without counting them.
+
+## Results
+
+The first run of these arcs is written up in [results/kibi-arcs-2026-10-14.md](../../results/kibi-arcs-2026-10-14.md), with the raw tables in [results/kibi-arcs-2026-10-14/](../../results/kibi-arcs-2026-10-14/).
