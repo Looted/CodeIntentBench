@@ -61,6 +61,7 @@ node src/cli.ts report --project papra
 
 ## Results
 
+- [Kibi repository arcs, 14 October 2026](results/kibi-arcs-2026-10-14.md): 16 arcs on Kibi's own repository and its mature knowledge base, seven arms, one attempt, claude-sonnet-5-5. agents-md 81%, tracker 75%, docs and Kibi with the convention sentence 69%, Kibi as shipped 50%, none 38%; Kibi's agents surfaced the recorded decision as often as any arm and changed the code anyway.
 - [Papra arc pilot, 14 October 2026](results/papra-arcs-2026-10-14.md): 16 arcs, seven arms, one attempt, claude-sonnet-5-5. Tracker 94% and docs 88% arc pass; Kibi as shipped 31% (it records nothing), Kibi with the shared convention sentence 69%.
 - [Papra pilot, 13 October 2026](results/papra-pilot-2026-10-13.md) (v1): 32 single-session tasks, three arms, one attempt, claude-sonnet-5-5.
 
