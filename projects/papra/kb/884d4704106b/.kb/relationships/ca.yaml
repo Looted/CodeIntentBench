@@ -1,0 +1,22 @@
+relationships:
+  - id: rel-c061be07a088
+    type: verified_by
+    from: REQ-file-uploads-are-handled-as-streams-end-to-F1A1D5B6
+    to: TEST-papra-server-src-modules-documents-documents-usecases
+    created_at: "2026-10-14T12:09:47.276Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: verified_by
+    from: REQ-file-uploads-are-handled-as-streams-end-to-F1A1D5B6
+    to: TEST-papra-server-src-modules-shared-streams-byte-counter
+    created_at: 2026-10-14T12:09:47.277Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d09ac890a8d8
+  - type: verified_by
+    from: REQ-file-uploads-are-handled-as-streams-end-to-F1A1D5B6
+    to: TEST-papra-server-src-modules-shared-streams-stream-hash
+    created_at: 2026-10-14T12:09:47.285Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-e6df8f91fae0

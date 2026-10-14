@@ -1,0 +1,8 @@
+relationships:
+  - id: rel-64dac5ca8dec
+    type: verified_by
+    from: REQ-tag-name-and-colour-are-validated-server-s-1890EF60
+    to: TEST-papra-server-src-modules-tags-tags-schemas
+    created_at: "2026-10-14T12:12:26.856Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

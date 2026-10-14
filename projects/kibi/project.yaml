@@ -1,0 +1,41 @@
+name: kibi
+repository: https://github.com/Looted/kibi
+commit: 9f3311f3f552c00dbba7eb6f1e571a681b03ec7a
+license: AGPL-3.0-or-later
+description: >-
+  Kibi, an agent-native requirements compiler and enforcement layer, benchmarked
+  on its own repository: the project keeps a knowledge base of 259 requirements,
+  33 ADRs, 1,219 facts and 291 test entities in .kb/, built by its authors over
+  months. The kibi arm runs on that knowledge base as shipped; every other arm
+  receives the same requirements and ADRs rendered into its own container
+  (docs/decisions, tracker issues, memory notes, AGENTS.md) by arm-prepare.sh.
+runtime:
+  bun: ">=1.4.2"
+  node: "26"
+env:
+  # A source checkout's bundled SWI-Prolog package carries no runtime; arm-prepare.sh installs the
+  # released runtime once into the cache and Kibi (the project's own, under test) uses it.
+  KIBI_SWIPL: ${CACHE_DIR}/kibi-swipl/node_modules/kibi-swipl-linux-x64-gnu/bin/swipl
+setup:
+  install: bun install --frozen-lockfile
+  # The CLI the tests spawn runs from dist/; the whole stack is built once here (35 s) and the CLI
+  # stack again before each test run (below), so an agent's source change reaches the tests.
+  build: bun run --silent build
+  arm_prepare: arm-prepare.sh
+tests:
+  # Bun's test runner through an adapter that writes the Vitest-shaped JSON report the grader reads.
+  all: bun run --silent build:cli-stack && bun run --silent build:mcp && node "$CIB_HARNESS_DIR/src/arm-tools/bun-test-json.ts" packages/cli/tests packages/mcp/tests packages/agent-core/tests packages/claude/tests
+  files: bun run --silent build:cli-stack && bun run --silent build:mcp && node "$CIB_HARNESS_DIR/src/arm-tools/bun-test-json.ts"
+  # These tests make a directory unreadable with chmod and expect Git to refuse; the benchmark container
+  # runs as root, which chmod does not stop, so they fail on an untouched checkout. Recorded, not counted.
+  ignore:
+    - packages/cli/tests/utils/git-repository-context.test.ts::reports git-refused when the .git directory is unreadable
+    - packages/cli/tests/utils/git-repository-context.test.ts::reports git-refused for unreadable .git/objects from a subdirectory
+    - packages/cli/tests/commands/init-git-context.test.ts::init refuses an unreadable .git instead of standalone fallback (explicit branch)
+    - packages/cli/tests/commands/init-git-context.test.ts::init from a subdirectory refuses an unreadable .git identically
+    - packages/cli/tests/commands/init-git-context.test.ts::init refuses inaccessible .git/objects (from root, explicit branch)
+    - packages/cli/tests/commands/init-git-context.test.ts::init refuses inaccessible .git/objects (from sub, explicit branch)
+    - packages/cli/tests/commands/init-git-context.test.ts::init refuses inaccessible .git/refs (from root, explicit branch)
+    - packages/cli/tests/commands/init-git-context.test.ts::init refuses inaccessible .git/refs (from sub, explicit branch)
+hidden:
+  restore_tests: true

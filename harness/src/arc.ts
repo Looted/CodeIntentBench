@@ -6,7 +6,7 @@ import { dirname, join } from 'node:path';
 import { hostPathPrepend, runAgentWithHost, type AgentResult } from './agent.ts';
 import { ARMS_DIR, RUNS_DIR, loadProject } from './config.ts';
 import { NON_SOURCE, RULE_RECORD_PATHS, changedFiles, runRegression, runVitest, splitTestRef, toRepoRel } from './grade.ts';
-import { defaultDecision, judgeStep, requiredKeys } from './judge-arc.ts';
+import { defaultDecision, judgeStep, requiredKeys, armConvention } from './judge-arc.ts';
 import type { JudgeVerdict } from './judge.ts';
 import { must, sh } from './shell.ts';
 import type { AgentConfig, Arc, ArcRunRecord, ArcStep, Grade, ProjectConfig, StepGrade, StepOutcome, StepRecord } from './types.ts';
@@ -107,7 +107,7 @@ export async function gradeStep(inp: StepGradeInputs): Promise<StepGrade> {
   const noAnswer = !agent.final_answer?.trim();
   if (agent.timed_out && changed.length === 0 && noAnswer) { grade.invalid = true; grade.invalid_reason = 'timed out before any output'; }
   else if (agent.code !== 0 && agent.usage.turns === 0) { grade.invalid = true; grade.invalid_reason = `agent exited ${agent.code} before its first turn`; }
-  else if (inp.arm === 'kibi' && !agent.tools_available.some((t) => /kb_/.test(t))) { grade.invalid = true; grade.invalid_reason = 'kibi arm without kb_* tools in the session'; }
+  else if (/^kibi/.test(inp.arm) && !agent.tools_available.some((t) => /kb_/.test(t))) { grade.invalid = true; grade.invalid_reason = 'kibi arm without kb_* tools in the session'; }
   else if ((inp.arm === 'tracker' || inp.arm === 'memory') && !agent.tools_available.some((t) => new RegExp(`^mcp__${inp.arm}__`).test(t))) { grade.invalid = true; grade.invalid_reason = `${inp.arm} arm without its MCP tools in the session`; }
   if (grade.invalid) return grade;
 
@@ -122,7 +122,7 @@ export async function gradeStep(inp: StepGradeInputs): Promise<StepGrade> {
 
   let verdict: (JudgeVerdict & { keys: string[] }) | undefined;
   if (!inp.skipJudge) {
-    verdict = await judgeStep({ dir, arc, step, agent, diff, model: inp.judgeModel, recordWritten: grade.rule_record_changed, branchNote: inp.branchNote });
+    verdict = await judgeStep({ dir, arc, step, agent, diff, model: inp.judgeModel, recordWritten: grade.rule_record_changed, branchNote: inp.branchNote, convention: armConvention(inp.arm) });
     grade.judge = { answers: verdict.answers, model: inp.judgeModel, cost_usd: verdict.cost_usd };
   }
   grade.outcome = decideStep(arc, step, grade, verdict, notes);
@@ -259,9 +259,21 @@ export async function runArc(projectName: string, arc: Arc, arm: string, attempt
     opts.log(`graded ${step.id}: ${rec.grade.outcome} (${rec.grade.pass ? 'pass' : 'fail'})`);
     if (rec.grade.invalid) { invalid = true; save(); break; }
 
-    // The session ends the way a user's would: the work is committed on the branch.
+    // The session ends the way a user's would: the work is committed on the branch, with the arm's git
+    // hooks enabled, so a commit gate the arm installs (Kibi's pre-commit `kibi check --staged`) gets
+    // its say. A refusal is recorded on the step, not graded; the work is then committed with
+    // --no-verify so the arc continues as the user would after reading the hook's message.
+    const beforeCommit = join(ARMS_DIR, arm, 'before-commit');
+    if (existsSync(beforeCommit)) sh(`${q(beforeCommit)} ${q(ws)}`, { quiet: true, env: ENV, timeoutMs: 10 * 60_000 });
     git(ws, 'add -A');
-    sh(`git -C ${q(ws)} commit --quiet --no-verify --allow-empty -m ${q(`session ${step.id}`)}`, { quiet: true, env: ENV });
+    const gate = sh(`git -C ${q(ws)} commit --quiet --allow-empty -m ${q(`session ${step.id}`)}`, { quiet: true, env: ENV, timeoutMs: 10 * 60_000 });
+    if (gate.code === 0) {
+      rec.commit_gate = { blocked: false };
+    } else {
+      rec.commit_gate = { blocked: true, output: `${gate.stdout}\n${gate.stderr}`.trim().slice(-4000) };
+      opts.log(`commit refused by the arm's pre-commit hook (recorded; committing with --no-verify)`);
+      sh(`git -C ${q(ws)} commit --quiet --no-verify --allow-empty -m ${q(`session ${step.id}`)}`, { quiet: true, env: ENV });
+    }
     rec.end_commit = git(ws, 'rev-parse HEAD').trim();
     save();
   }

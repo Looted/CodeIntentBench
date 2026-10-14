@@ -19,6 +19,10 @@ Product decisions that are enforced as guard clauses and covered by existing tes
 
 Mining notes for the replayed changes, including candidates rejected and the verification protocol, are in [HISTORY-NOTES.md](HISTORY-NOTES.md).
 
+## Arcs (16) on an onboarded knowledge base
+
+Two real decisions, eight families each, in [arcs/](arcs/): `api-key-expiry-*` (base `884d4704`, April 2026) and `intake-secret-*` (base `86805aea`, February 2026). The arcs' first run (`results/papra-arcs-2026-10-14.md`) started every arm from an empty decision store, which made the Kibi arm invalid (nothing to surface). They now run on an onboarded knowledge base: Papra's product decisions harvested from its documentation, issue tracker, merged pull requests and in-repo spec, recorded with Kibi's bootstrap flow and stored under [kb/](kb/) per base commit ([kb/README.md](kb/README.md)). In arc mode [arm-prepare.sh](arm-prepare.sh) places that knowledge base in the Kibi arms' checkouts and exports it into rule files for the passive arms, so every arm starts with the same 39 (February) or 44 (April) recorded decisions, none of which is the decision the arc probes. Rule-mode tasks are unaffected. Results of that run: [results/papra-onboarded-2026-10-14.md](../../results/papra-onboarded-2026-10-14.md).
+
 ## Known limits
 
 - History tasks run at their own base commit, where the rule set is the subset whose scope exists; `kibi check` can flag a rule that names a not-yet-existing function.

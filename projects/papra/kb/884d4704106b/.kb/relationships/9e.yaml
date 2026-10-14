@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-c8e04354456e
+    type: verified_by
+    from: REQ-search-queries-are-parsed-by-the-papra-sea-4463E6DB
+    to: TEST-search-parser-src-parser
+    created_at: "2026-10-14T12:10:01.887Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: verified_by
+    from: REQ-search-queries-are-parsed-by-the-papra-sea-4463E6DB
+    to: TEST-papra-server-src-modules-documents-document-search-database-fts5-database-fts5-repository-models
+    created_at: 2026-10-14T12:10:01.887Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d029017279e5

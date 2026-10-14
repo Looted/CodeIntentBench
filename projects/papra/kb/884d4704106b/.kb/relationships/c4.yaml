@@ -1,0 +1,8 @@
+relationships:
+  - id: rel-080d18b62ab5
+    type: verified_by
+    from: REQ-ocr-text-extracted-from-scanned-pdfs-is-us-8C007452
+    to: TEST-papra-server-src-modules-documents-documents-usecases
+    created_at: "2026-10-14T12:09:41.472Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

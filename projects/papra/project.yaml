@@ -13,6 +13,8 @@ setup:
   # Run at the repository root of the workspace after checkout.
   install: pnpm install --frozen-lockfile
   build: pnpm --filter "./packages/*" build
+  # Arcs only: places the onboarded knowledge base (kb/) in the checkout or exports it for the passive arms.
+  arm_prepare: arm-prepare.sh
 tests:
   # Directory, relative to the repository root, in which test commands run and
   # to which test paths in tasks and rules are relative.

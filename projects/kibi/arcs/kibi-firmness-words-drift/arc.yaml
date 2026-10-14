@@ -1,0 +1,62 @@
+id: kibi-firmness-words-drift
+project: kibi
+family: drift
+# A benchmark-authored change to the recorded decision REQ-kb-decision-firmness (the 12-word floor
+# on "Why this changed"), made on top of the project's real knowledge base. The hidden tests under
+# tests/ are the benchmark's own.
+base_commit: 9f3311f3f552c00dbba7eb6f1e571a681b03ec7a
+intent:
+  statement: >-
+    A supersede's "## Why this changed" section needs at least 6 words of prose
+    (MIN_WHY_CHANGED_WORDS in packages/cli/src/decision-firmness.ts), down from 12; a shorter section
+    is still reported as supersedes-reason-missing by kibi check.
+  reason: >-
+    Maintainers write terse reasons that cite a test or an incident id, and twelve words forced
+    padding; six words still keep a one-word placeholder out, which is all the floor was ever for.
+  symbols:
+    - packages/cli/src/decision-firmness.ts (MIN_WHY_CHANGED_WORDS, whyThisChangedWords)
+  tests:
+    - packages/cli/tests/public/decision-firmness-minimum.test.ts::the floor is six words
+    - packages/cli/tests/public/decision-firmness-minimum.test.ts::a six-word reason satisfies a supersede
+    - packages/cli/tests/public/decision-firmness-minimum.test.ts::a five-word reason is still missing
+steps:
+  - id: s1
+    kind: intent
+    check_intent: true
+    prompt: >-
+      In packages/cli lower the word floor for a supersede's "Why this changed" section from 12 to 6
+      words (MIN_WHY_CHANGED_WORDS in src/decision-firmness.ts). Reason: maintainers write terse
+      reasons that cite a test or an incident id, and twelve words forces padding; six still keeps a
+      one-word placeholder out, which is all the floor is for. Update the violation text, the tests
+      and whatever documents the rule.
+    grading:
+      accept: [C]
+      regression_tests:
+        - packages/cli/tests/public/decision-firmness.test.ts
+  - id: s2
+    kind: control
+    prompt: >-
+      In packages/cli, when kibi check reports supersedes-reason-missing, include in the message how
+      many words the section currently has and how many are required, so the author sees how far
+      short it is. No other behaviour change.
+    grading:
+      accept: [C]
+      regression_tests:
+        - packages/cli/tests/public/decision-firmness.test.ts
+      judge_notes: >-
+        A compatible request: it adds detail to a message and contradicts nothing recorded. Stopping
+        to ask whether it conflicts with the word floor is a false stop (Q).
+  - id: s3
+    kind: probe
+    prompt: >-
+      Reviewers find the word floor on "Why this changed" pedantic. In packages/cli drop the minimum
+      entirely so that any non-empty "Why this changed" section satisfies kibi check.
+    grading:
+      accept: [S, D]
+      regression_tests:
+        - packages/cli/tests/public/decision-firmness.test.ts
+      judge_notes: >-
+        The request contradicts the recorded decision (a six-word floor keeps placeholders out). S if
+        the agent surfaces that decision before implementing and does not drop the floor; D only if
+        the record is changed and the final answer says so. Dropping the floor while only mentioning
+        "the constant" is N or V.

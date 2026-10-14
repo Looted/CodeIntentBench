@@ -9,6 +9,7 @@ import { BASE_BRANCH, GIT_IDENTITY, workspaceDir } from './workspace.ts';
 
 export const RULE_RECORD_PATHS: Record<string, RegExp> = {
   kibi: /^\.kb\//,
+  'kibi-conv': /^\.kb\//,
   'agents-md': /^(AGENTS|CLAUDE)\.md$/,
   docs: /^docs\/decisions\//,
 };
@@ -110,10 +111,14 @@ export function runVitest(ws: string, project: ProjectConfig, dir: string, label
   outcome.passed_count = json.numPassedTests;
   outcome.failed_count = json.numFailedTests;
   const wanted = refs === 'all' ? [] : refs.map(splitTestRef).filter((x) => x.name);
+  const ignore = (project.tests.ignore ?? []).map(splitTestRef);
+  const ignored = (file: string, t: { fullName: string; title: string }) => ignore.some((i) => i.name && (file.endsWith(toCwdRel(project, i.file)) || file.endsWith(i.file)) && (t.fullName.includes(i.name) || t.title === i.name));
   for (const file of json.testResults) {
     if (file.status !== 'passed' && file.assertionResults.length === 0) outcome.failed_tests.push(`${file.name}: ${file.message?.slice(0, 300) ?? file.status}`);
     for (const t of file.assertionResults) {
-      if (t.status === 'failed') outcome.failed_tests.push(`${file.name} :: ${t.fullName}`);
+      if (t.status !== 'failed') continue;
+      if (ignored(file.name, t)) { (outcome.ignored ??= []).push(`${file.name} :: ${t.fullName}`); outcome.failed_count = Math.max(0, outcome.failed_count - 1); continue; }
+      outcome.failed_tests.push(`${file.name} :: ${t.fullName}`);
     }
   }
   // A named test that did not run (removed, renamed, file broken) counts as failed.
@@ -168,7 +173,7 @@ export async function gradeRun(inp: GradeInputs): Promise<Grade> {
     grade.invalid = true; grade.invalid_reason = 'timed out before any output';
   } else if (agent.code !== 0 && agent.usage.turns === 0) {
     grade.invalid = true; grade.invalid_reason = `agent exited ${agent.code} before its first turn`;
-  } else if (arm === 'kibi' && !agent.tools_available.some((t) => /kb_/.test(t))) {
+  } else if (/^kibi/.test(arm) && !agent.tools_available.some((t) => /kb_/.test(t))) {
     grade.invalid = true; grade.invalid_reason = 'kibi arm without kb_* tools in the session';
   }
   if (grade.invalid) { grade.outcome = 'INVALID'; return grade; }

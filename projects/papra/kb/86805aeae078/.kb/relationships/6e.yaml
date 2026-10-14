@@ -1,0 +1,8 @@
+relationships:
+  - id: rel-b2a5bee39fb1
+    type: verified_by
+    from: REQ-a-plain-search-term-matches-document-names-9B6CFF9C
+    to: TEST-papra-server-src-modules-documents-document-search-database-fts5-query-builder-query-builder
+    created_at: "2026-10-14T12:12:28.004Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
