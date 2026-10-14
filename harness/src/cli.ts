@@ -307,7 +307,7 @@ async function main(): Promise<number> {
       const md = renderArcsMarkdown(p, arcRuns);
       mkdirSync(join(RUNS_DIR, p), { recursive: true });
       writeFileSync(join(RUNS_DIR, p, 'report-arcs.md'), md);
-      writeFileSync(join(RUNS_DIR, p, 'report-arcs.json'), JSON.stringify({ project: p, runs: arcRuns.map((r) => ({ id: r.id, arc: r.spec.arc, family: r.spec.family, arm: r.spec.arm, attempt: r.spec.attempt, pass: r.pass, invalid: r.invalid, cost_usd: r.cost_usd, steps: r.steps.map((s) => ({ id: s.id, kind: s.kind, outcome: s.grade?.outcome, pass: s.grade?.pass, record_written: s.record_written, first_lookup_turn: s.first_lookup_turn, first_edit_turn: s.first_edit_turn, usage: s.usage })) })) }, null, 2));
+      writeFileSync(join(RUNS_DIR, p, 'report-arcs.json'), JSON.stringify({ project: p, runs: arcRuns.map((r) => ({ id: r.id, arc: r.spec.arc, family: r.spec.family, arm: r.spec.arm, attempt: r.spec.attempt, pass: r.pass, invalid: r.invalid, cost_usd: r.cost_usd, steps: r.steps.map((s) => ({ id: s.id, kind: s.kind, outcome: s.grade?.outcome, pass: s.grade?.pass, record_written: s.record_written, first_lookup_turn: s.first_lookup_turn, first_edit_turn: s.first_edit_turn, commit_gate: s.commit_gate, usage: s.usage })) })) }, null, 2));
       console.log(md);
     }
     return 0;
