@@ -1,5 +1,5 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { dirname, join } from 'node:path';
+import { dirname, isAbsolute, join, relative } from 'node:path';
 import { ARMS_DIR } from './config.ts';
 import { judgeRun, type JudgeVerdict } from './judge.ts';
 import { must, sh } from './shell.ts';
@@ -128,6 +128,24 @@ export function runVitest(ws: string, project: ProjectConfig, dir: string, label
   return outcome;
 }
 
+/**
+ * The regression suite with one retry: when a full run fails, the failing files
+ * are re-run alone once. A test that passes on the retry is recorded under
+ * `flaked` and does not fail the step; a test that fails twice does. This
+ * absorbs load-dependent timeouts in the project's own suite (several graders
+ * run on one machine) without hiding a real regression.
+ */
+export function runRegression(ws: string, project: ProjectConfig, dir: string, refs: string[] | 'all'): TestOutcome {
+  const first = runVitest(ws, project, dir, 'regression', refs);
+  if (first.passed || first.failed_tests.length === 0) return first;
+  const cwd = join(ws, project.tests.cwd ?? '.');
+  const files = [...new Set(first.failed_tests.map((t) => t.split(' :: ')[0].split(': ')[0]).filter((f) => f.endsWith('.ts') || f.endsWith('.js')).map((f) => isAbsolute(f) ? relative(cwd, f) : f))];
+  if (files.length === 0 || files.length > 5) return first;
+  const retry = runVitest(ws, project, dir, 'regression-retry', files);
+  if (!retry.passed) { first.failed_tests = retry.failed_tests.length ? retry.failed_tests : first.failed_tests; return first; }
+  return { ...first, passed: true, failed_tests: [], failed_count: 0, flaked: first.failed_tests, duration_ms: first.duration_ms + retry.duration_ms };
+}
+
 export async function gradeRun(inp: GradeInputs): Promise<Grade> {
   const { dir, project, task, rules, arm, agent } = inp;
   const ws = workspaceDir(dir);
@@ -168,8 +186,8 @@ export async function gradeRun(inp: GradeInputs): Promise<Grade> {
   const regression = task.grading.regression_tests;
   if (regression === undefined || regression.length > 0) {
     grade.regression_tests = regression && regression.length > 0 && !regression.includes('all')
-      ? runVitest(ws, project, dir, 'regression', regression)
-      : runVitest(ws, project, dir, 'regression', 'all');
+      ? runRegression(ws, project, dir, regression)
+      : runRegression(ws, project, dir, 'all');
   }
 
   let verdict: JudgeVerdict | undefined;

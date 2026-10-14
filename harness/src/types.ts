@@ -103,6 +103,8 @@ export interface TestOutcome {
   failed_count: number;
   duration_ms: number;
   error?: string;
+  /** Tests that failed on the first run and passed when their files were re-run alone. */
+  flaked?: string[];
 }
 
 export interface JudgeAnswer {
@@ -199,6 +201,8 @@ export interface Arc {
 }
 
 export interface StepRecord {
+  /** Harness observations about this session that are not grades, such as an arm's git hook failing on a branch switch. */
+  notes?: string[];
   id: string;
   kind: StepKind;
   branch: string;

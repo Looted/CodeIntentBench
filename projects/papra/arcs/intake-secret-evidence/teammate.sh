@@ -13,6 +13,6 @@ s = s.replace(/(webhookSecret:\s*\{[\s\S]*?schema:\s*)([^,\n]+(?:\n\s*\.[^\n]+)*
 fs.writeFileSync(file, s);
 JS
 # Any test that covered the secret length goes with it.
-grep -rl --include='*.test.ts' -iE 'webhookSecret|WEBHOOK_SECRET' "$ws/apps/papra-server/src/modules/intake-emails" "$ws/apps/papra-server/src/modules/config" 2>/dev/null \
-  | grep -v '/e2e/' | while read -r f; do rm -f "$f"; done
+{ grep -rl --include='*.test.ts' -iE 'webhookSecret|WEBHOOK_SECRET' "$ws/apps/papra-server/src/modules/intake-emails" "$ws/apps/papra-server/src/modules/config" 2>/dev/null || true; } \
+  | { grep -v '/e2e/' || true; } | while read -r f; do rm -f "$f"; done
 echo "teammate: relaxed webhookSecret schema, removed its tests"

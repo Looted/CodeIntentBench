@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Arm `kibi-conv`: the Kibi arm plus the same one-sentence convention the other
+# arms get (convention.md), so the agent is told where decisions are recorded.
+# Everything else is the kibi arm's setup.
+exec "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../kibi/setup" "$@"
