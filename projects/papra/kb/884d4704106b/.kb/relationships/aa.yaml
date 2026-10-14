@@ -1,0 +1,22 @@
+relationships:
+  - id: rel-64c4c0c1f8f8
+    type: constrains
+    from: REQ-on-self-hosted-instances-the-first-registe-1C953705
+    to: FACT-SUBJECT-5a6a6d2e3e26
+    created_at: "2026-10-14T12:09:00.797Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: requires_property
+    from: REQ-on-self-hosted-instances-the-first-registe-1C953705
+    to: FACT-PROP-c3ea769e016b
+    created_at: 2026-10-14T12:09:00.798Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-dbe8fc3df25c
+  - type: verified_by
+    from: REQ-on-self-hosted-instances-the-first-registe-1C953705
+    to: TEST-papra-server-src-modules-roles-event-handlers-first-user-admin-user-created
+    created_at: 2026-10-14T12:10:06.919Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ccb560b33cc1

@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-c77c230e5d50
+    type: verified_by
+    from: REQ-the-name-and-content-search-filters-use-co-30FF0726
+    to: TEST-papra-server-src-modules-documents-document-search-database-fts5-query-builder-query-builder
+    created_at: "2026-10-14T12:09:57.984Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: verified_by
+    from: REQ-the-name-and-content-search-filters-use-co-30FF0726
+    to: TEST-papra-server-src-modules-documents-document-search-database-fts5-query-builder-query-builder-models
+    created_at: 2026-10-14T12:09:57.985Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b705f21dd097

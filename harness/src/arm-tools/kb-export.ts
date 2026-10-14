@@ -86,6 +86,7 @@ function testFilesOf(ids: string[]): string[] {
     for (const r of byTo.get(id) ?? []) if (r.type === 'executable_for') { const s = symbols.get(r.from); if (s?.sourceFile) files.add(s.sourceFile); }
     const t = tests.find((x) => x.id === id);
     for (const p of t?.front.test_files ?? t?.front.files ?? []) files.add(String(p));
+    if (t?.front.sourceFile) files.add(String(t.front.sourceFile));
   }
   // Helpers and fixtures reached through the same symbols are not tests.
   return [...files].filter((f) => /\.(test|spec)\.[cm]?[jt]sx?$/.test(f)).sort();

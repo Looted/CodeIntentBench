@@ -1,0 +1,8 @@
+relationships:
+  - id: rel-1f8faf7a4b31
+    type: verified_by
+    from: REQ-applying-a-tagging-rule-to-existing-docume-C1D75FEF
+    to: TEST-papra-server-src-modules-tagging-rules-tagging-rules-usecases
+    created_at: "2026-10-14T12:09:53.410Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

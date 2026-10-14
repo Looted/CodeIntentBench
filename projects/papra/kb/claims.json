@@ -1,0 +1,479 @@
+{
+  "projectSummary": "Papra is a self-hosted document archiving platform (Hono + Drizzle on SQLite, SolidJS client): organizations with owner/admin/member roles and invitations, document upload, deduplication and search, tagging rules, intake emails, folder ingestion, webhooks, optional encryption and storage key patterns. Decisions live in the maintainer's answers on GitHub issues and pull requests, the documentation site under apps/docs and one in-repo specification.",
+  "planOptions": {
+    "maxCandidates": 1
+  },
+  "context": {
+    "sourceOfTruthPaths": [
+      "apps/papra-server/src",
+      "apps/docs/src/content/docs",
+      "apps/papra-server/src/modules/invitations/invtations.specs.md"
+    ],
+    "sourceOfTruthNotes": [
+      "apps/papra-server is the product; the documentation site describes its behaviour and the invitations spec is the one in-repo specification.",
+      "Declared claims that the strict modeler cannot ground are authored after apply through compile-intent, keeping each claim statement, its reason and its cited excerpt."
+    ],
+    "priorityRoots": [
+      "apps/papra-server/src/modules"
+    ],
+    "verificationAnchors": [
+      "cd apps/papra-server && npx vitest run --exclude \"**/*.int.test.ts\""
+    ]
+  },
+  "knowledgeSources": [
+    {
+      "id": "papra-docs",
+      "kind": "repository_docs",
+      "title": "Papra documentation site (apps/docs)",
+      "locator": "apps/docs/src/content/docs",
+      "authority": "authoritative",
+      "notes": "Architecture pages and guides written by the maintainer; each page's git history dates the behaviour."
+    },
+    {
+      "id": "papra-issues",
+      "kind": "issue_tracker",
+      "title": "papra-hq/papra GitHub issues",
+      "locator": "https://github.com/papra-hq/papra/issues",
+      "authority": "authoritative",
+      "notes": "Only the maintainer's (CorentinTh) answers are cited as decisions; requests without an answer are open questions."
+    },
+    {
+      "id": "papra-prs",
+      "kind": "decision_log",
+      "title": "papra-hq/papra merged pull requests",
+      "locator": "https://github.com/papra-hq/papra/pulls",
+      "authority": "supporting",
+      "notes": "Most maintainer PRs carry no description; the PR title (the squash commit subject) and review comments are the citable text."
+    },
+    {
+      "id": "invitations-spec",
+      "kind": "specification",
+      "title": "Organization invitations specs",
+      "locator": "apps/papra-server/src/modules/invitations/invtations.specs.md",
+      "authority": "supporting",
+      "component": "invitations",
+      "notes": "Declared as supporting, not authoritative: the strict modeler grounds none of its four claims and an authoritative source with no planned claim blocks the bootstrap apply; the claims are authored after apply through compile-intent."
+    }
+  ],
+  "claims": [
+    {
+      "since": "2025-10-11",
+      "component": "documents",
+      "sourceId": "papra-docs",
+      "reference": "05-architecture/document-deduplication.mdx",
+      "statement": "Documents are deduplicated per organization by the SHA-256 hash of their content: uploading content that already exists in the organization is rejected.",
+      "excerpt": "If a document **with same content exists**, the upload is rejected",
+      "rationale": "Papra automatically detects and prevents duplicate documents per organization using content hashing. This ensures that if the same file is uploaded multiple times, only one copy is stored, saving storage space and reducing clutter."
+    },
+    {
+      "since": "2025-10-11",
+      "component": "documents",
+      "sourceId": "papra-docs",
+      "reference": "05-architecture/document-deduplication.mdx#restore",
+      "statement": "Uploading content identical to a trashed document restores that document instead of creating a new copy, and its metadata is updated to match the new upload.",
+      "excerpt": "If a document **with same content was previously deleted** (in trash), it is restored instead of creating a new copy, the metadata is updated to match the newly added document",
+      "rationale": "Maintainer on issue #142 (2025-04-11): the process needed to be automatic, prompting the user with what to do would not be possible in certain cases (intake emails, automated uploads through the public API, ingestion folders)."
+    },
+    {
+      "since": "2025-04-11",
+      "component": "documents",
+      "sourceId": "papra-issues",
+      "reference": "#142",
+      "statement": "When a trashed document is restored by a duplicate upload, its name is set to the new file's name, its pre-existing tags are removed and the tagging rules are applied to the restored document.",
+      "excerpt": "update the existing record, setting the name to the new file (same content does not mean same name)",
+      "rationale": "The process needed to be automatic, prompting the user with what to do would not be possible in certain cases (intake emails, automated uploads through the public API, ingestion folders)."
+    },
+    {
+      "since": "2025-10-11",
+      "component": "documents",
+      "sourceId": "papra-docs",
+      "reference": "05-architecture/document-deduplication.mdx#content-only",
+      "statement": "Only the file content is hashed for deduplication; file names, upload dates and metadata never affect whether two documents are duplicates.",
+      "excerpt": "Only the **file content** is hashed and used for deduplication, filenames, upload dates, and metadata don't affect deduplication."
+    },
+    {
+      "since": "2025-10-11",
+      "component": "documents",
+      "sourceId": "papra-docs",
+      "reference": "05-architecture/no-mutation-principle.mdx",
+      "statement": "Documents are never mutated after upload: no format conversion, no metadata injection into the file, no OCR overlay on scanned PDFs; a user retrieves exactly what was uploaded.",
+      "excerpt": "Papra follows a fundamental principle: **documents are never mutated after upload**. When you input a document, you can always retrieve it exactly as it was uploaded.",
+      "rationale": "When archiving important documents, users need absolute confidence that their files remain untouched. Whether it's a legal document, a medical record, or a personal photo, the original should be sacrosanct. This approach eliminates the mental overhead of wondering \"what happened to my file?\""
+    },
+    {
+      "since": "2025-06-13",
+      "component": "documents",
+      "sourceId": "papra-issues",
+      "reference": "#353",
+      "statement": "OCR text extracted from scanned PDFs is used for search indexing only; the original PDF is not modified to embed the transcript.",
+      "excerpt": "modifying the original document goes against that principle."
+    },
+    {
+      "since": "2025-06-13",
+      "component": "storage",
+      "sourceId": "papra-issues",
+      "reference": "#352",
+      "statement": "Stored files are keyed by document id, not by the document's file name; the default storage layout is {{organization.id}}/originals/{{document.id}}.",
+      "excerpt": "I think it's not worth it for now, but we might reevaluate this later.",
+      "rationale": "Filename collisions, invalid or special characters and consistency across storage backends; storing by id decouples the physical storage from user-facing metadata."
+    },
+    {
+      "since": "2026-03-01",
+      "component": "storage",
+      "sourceId": "papra-docs",
+      "reference": "03-guides/09-storage-key-patterns.mdx#legacy-default",
+      "statement": "Storage key patterns are opt-in: the legacy storage key system stays the default (DOCUMENT_STORAGE_USE_LEGACY_STORAGE_KEY_DEFINITION_SYSTEM=true) for backward compatibility.",
+      "excerpt": "At the moment, Papra uses the legacy storage key system for backward compatibility."
+    },
+    {
+      "since": "2026-03-01",
+      "component": "storage",
+      "sourceId": "papra-docs",
+      "reference": "03-guides/09-storage-key-patterns.mdx#persistence",
+      "statement": "A document's storage key is generated at upload time and persisted with the document; changing the pattern configuration never changes the storage key of an existing document.",
+      "excerpt": "This means that **changing the pattern configuration does not affect existing documents**, only newly uploaded documents will use the updated pattern.",
+      "rationale": "Existing documents retain their original storage keys and continue to be served from their original location."
+    },
+    {
+      "since": "2026-03-01",
+      "component": "storage",
+      "sourceId": "papra-issues",
+      "reference": "#440",
+      "statement": "When a generated storage key collides with an existing file, the new file gets a suffix on its name; existing files are never overwritten and existing documents keep their old paths when the pattern changes.",
+      "excerpt": "if you add or change the naming pattern, it'll continue to use the old path for existing documents"
+    },
+    {
+      "since": "2026-02-26",
+      "component": "storage",
+      "sourceId": "papra-issues",
+      "reference": "#440#write-once",
+      "statement": "Documents are stored as ingested, with no modifications and no overlaid data (write-once storage).",
+      "excerpt": "Which is currently the case, the documents are stored as-ingested, no modifications, nor overlaying data"
+    },
+    {
+      "since": "2026-02-28",
+      "component": "documents",
+      "sourceId": "papra-issues",
+      "reference": "#926",
+      "statement": "Built-in content extraction can be turned off with DOCUMENTS_CONTENT_EXTRACTION_ENABLED=false, for self-hosters who run an external extraction pipeline and write the content back through the API.",
+      "excerpt": "You will be able to set `DOCUMENTS_CONTENT_EXTRACTION_ENABLED=false` to disable content extraction."
+    },
+    {
+      "since": "2025-04-22",
+      "component": "documents",
+      "sourceId": "papra-prs",
+      "reference": "#230",
+      "statement": "A document's extracted searchable content is shown on the document page and can be viewed and edited by the user.",
+      "excerpt": "feat(documents): document searchable content view and edit (#230)"
+    },
+    {
+      "since": "2025-08-20",
+      "component": "documents",
+      "sourceId": "papra-prs",
+      "reference": "#472",
+      "statement": "File uploads are handled as streams end to end: the content hash and byte count are computed while streaming and size limits are enforced during the stream, never after buffering the whole file.",
+      "excerpt": "refactor(documents): use streaming for handling file upload (#472)"
+    },
+    {
+      "since": "2025-10-11",
+      "component": "organizations",
+      "sourceId": "papra-docs",
+      "reference": "05-architecture/organization-deletion-purge.mdx#who-can-delete",
+      "statement": "Only the organization owner can delete an organization; admins and members cannot.",
+      "excerpt": "Only the **organization owner** can delete an organization. Admins and members do not have this permission."
+    },
+    {
+      "since": "2025-10-11",
+      "component": "organizations",
+      "sourceId": "papra-docs",
+      "reference": "05-architecture/organization-deletion-purge.mdx#soft-delete",
+      "statement": "Deleting an organization is a soft delete: members and pending invitations are removed, deletedAt and deletedBy are recorded and a purge is scheduled 30 days later (scheduledPurgeAt); the organization row stays until the purge.",
+      "excerpt": "`scheduledPurgeAt`: Future date when hard deletion will occur (default: 30 days)",
+      "rationale": "This provides a grace period for recovery while ensuring eventual cleanup of resources."
+    },
+    {
+      "since": "2025-10-11",
+      "component": "organizations",
+      "sourceId": "papra-docs",
+      "reference": "05-architecture/organization-deletion-purge.mdx#recovery",
+      "statement": "A soft-deleted organization can be restored before scheduledPurgeAt, and only by the user who deleted it; after that date recovery is refused even if the purge has not run yet.",
+      "excerpt": "Organizations can be restored before the `scheduledPurgeAt` date is reached, but only by the user who deleted them (the previous owner). After this date, recovery is no longer possible, even if the purge has not yet occurred."
+    },
+    {
+      "since": "2025-10-11",
+      "component": "organizations",
+      "sourceId": "papra-docs",
+      "reference": "05-architecture/organization-deletion-purge.mdx#purge-task",
+      "statement": "The purge task deletes an expired organization's documents from storage in batches and continues past individual file deletion failures, logging them instead of aborting the purge.",
+      "excerpt": "The task continues even if individual file deletions fail, logging errors without blocking the entire purge operation."
+    },
+    {
+      "since": "2025-01-01",
+      "component": "invitations",
+      "sourceId": "invitations-spec",
+      "reference": "invtations.specs.md#who-invites",
+      "statement": "Only privileged members of an organization (owner or admin) can invite users to join it.",
+      "excerpt": "Privileged members of an organization (owner or admin) can invite other users to join the organization."
+    },
+    {
+      "since": "2025-01-01",
+      "component": "invitations",
+      "sourceId": "invitations-spec",
+      "reference": "invtations.specs.md#validity",
+      "statement": "Invitations are valid for 7 days (configurable) and then expire.",
+      "excerpt": "Invitations are valid for 7 days (configurable)"
+    },
+    {
+      "since": "2025-01-01",
+      "component": "invitations",
+      "sourceId": "invitations-spec",
+      "reference": "invtations.specs.md#resend",
+      "statement": "Expired, cancelled or rejected invitations can be resent by a privileged member, which returns them to pending; accepted invitations are final.",
+      "excerpt": "Invitations that are expired, cancelled or rejected can be resend by a privileged member of the organization."
+    },
+    {
+      "since": "2025-01-01",
+      "component": "invitations",
+      "sourceId": "invitations-spec",
+      "reference": "invtations.specs.md#cancel-reject",
+      "statement": "A pending invitation can be cancelled by a privileged member of the organization and accepted or rejected by its recipient.",
+      "excerpt": "Invitations can be cancelled by a privileged member of the organization."
+    },
+    {
+      "since": "2025-10-24",
+      "component": "tagging_rules",
+      "sourceId": "papra-docs",
+      "reference": "03-guides/06-tagging-rules.mdx#new-documents-only",
+      "statement": "A tagging rule applies only to documents uploaded after the rule is created; applying it to existing documents is a separate explicit action (\"Apply to existing documents\").",
+      "excerpt": "When you create a new tagging rule, it only applies to documents uploaded *after* the rule is created."
+    },
+    {
+      "since": "2025-10-24",
+      "component": "tagging_rules",
+      "sourceId": "papra-docs",
+      "reference": "03-guides/06-tagging-rules.mdx#api",
+      "statement": "Applying a tagging rule to existing documents enqueues a background task that processes the documents in batches; the API endpoint returns 202 Accepted with the task id immediately.",
+      "excerpt": "You can also apply tagging rules programmatically using the API. The endpoint enqueues a background task and returns immediately:",
+      "rationale": "Maintainer review on PR #540: loading all document records into memory will cause OOM issues with large datasets, and running the tagging reapplication synchronously in the route handler will cause timeouts."
+    },
+    {
+      "since": "2025-10-28",
+      "component": "tagging_rules",
+      "sourceId": "papra-issues",
+      "reference": "#597",
+      "statement": "Each tagging rule chooses whether all of its conditions must match (AND) or any condition may match (OR); nested condition groups are not supported.",
+      "excerpt": "But that's a lot of effort for something niche.",
+      "rationale": "Nested and/or rule groups were judged a lot of effort for something niche; a toggle between \"All conditions should match (AND)\" and \"Any condition should match (OR)\" covers the need."
+    },
+    {
+      "since": "2026-01-28",
+      "component": "tags",
+      "sourceId": "papra-prs",
+      "reference": "#822",
+      "statement": "Tag names are unique per organization regardless of letter case; a lowercase normalized name carries the unique constraint and a duplicate is reported as tag-already-exists.",
+      "excerpt": "feat(tags): enforce case-insensitive unique constraint for tag names (#822)"
+    },
+    {
+      "since": "2025-06-24",
+      "component": "tags",
+      "sourceId": "papra-issues",
+      "reference": "#222",
+      "statement": "Tag name and colour are validated server-side in the API schema; client-side form validation is a convenience, not the guard.",
+      "excerpt": "a stricter and complete validation is done server side in the api schema"
+    },
+    {
+      "since": "2026-01-18",
+      "component": "search",
+      "sourceId": "papra-docs",
+      "reference": "03-guides/08-advanced-search.mdx#full-text",
+      "statement": "A plain search term matches document names and content (name:term OR content:term); filters such as tag:, name:, content: and created: can be combined with it.",
+      "excerpt": "A simple search query like `foobar` will search across both document names and content:"
+    },
+    {
+      "since": "2026-01-18",
+      "component": "search",
+      "sourceId": "papra-docs",
+      "reference": "03-guides/08-advanced-search.mdx#contains",
+      "statement": "The name: and content: search filters use contains matching, not exact equality.",
+      "excerpt": "The `name:` and `content:` filters use **contains** matching, not exact equality. So `name:foo` will match documents named \"foo\", \"foobar\", \"my-foo-document\", etc."
+    },
+    {
+      "since": "2026-01-22",
+      "component": "search",
+      "sourceId": "papra-docs",
+      "reference": "03-guides/08-advanced-search.mdx#has-tags",
+      "statement": "The has:tags filter selects documents with at least one tag and its negation (-has:tags or NOT has:tags) selects untagged documents.",
+      "excerpt": "- `has:tags` - Check if documents have any tags, it can be negated with `-has:tags` or `NOT has:tags` to find untagged documents"
+    },
+    {
+      "since": "2026-01-18",
+      "component": "search",
+      "sourceId": "papra-docs",
+      "reference": "03-guides/08-advanced-search.mdx#invalid-dates",
+      "statement": "An invalid date in a created: filter is ignored rather than failing the whole search query.",
+      "excerpt": "Invalid date formats will be ignored in the search query."
+    },
+    {
+      "since": "2026-01-18",
+      "component": "search",
+      "sourceId": "papra-issues",
+      "reference": "#743",
+      "statement": "The documents page keeps the current search in the URL as the query parameter (/organizations/:orgId/documents?query=...), so searches can be bookmarked and shared.",
+      "excerpt": "The search is now auto included in url `/organizations/:orgId/documents?query=foobar`"
+    },
+    {
+      "since": "2025-12-11",
+      "component": "search",
+      "sourceId": "papra-prs",
+      "reference": "#683",
+      "statement": "The full-text search index is maintained by event handlers on document created, updated, trashed and restored events, not by database triggers.",
+      "excerpt": "refactor(search): removed database fts triggers (#683)"
+    },
+    {
+      "since": "2026-01-15",
+      "component": "search",
+      "sourceId": "papra-prs",
+      "reference": "#746",
+      "statement": "Search queries are parsed by the @papra/search-parser package into structured expressions (filters, AND/OR/NOT) that a query builder turns into SQL.",
+      "excerpt": "feat(search): integrate search-parser for enhanced query handling (#746)"
+    },
+    {
+      "since": "2025-01-01",
+      "component": "intake_emails",
+      "sourceId": "papra-docs",
+      "reference": "03-guides/01-intake-emails-with-owlrelay.mdx#webhook-secret",
+      "statement": "Inbound intake email webhooks are signed with INTAKE_EMAILS_WEBHOOK_SECRET so the server can authenticate that an email comes from the configured relay.",
+      "excerpt": "# Set a random key that will be transmitted to OwlRelay to sign the requests,\n   # this is to authenticate that the emails are coming from OwlRelay"
+    },
+    {
+      "since": "2025-09-19",
+      "component": "intake_emails",
+      "sourceId": "papra-issues",
+      "reference": "#486",
+      "statement": "Intake email addresses can follow a configured naming pattern instead of the randomly generated names (an instance-level setting, INTAKE_EMAILS_USERNAME_DRIVER=pattern).",
+      "excerpt": "it's planned to add support for this"
+    },
+    {
+      "since": "2026-02-09",
+      "component": "ingestion_folder",
+      "sourceId": "papra-issues",
+      "reference": "#881",
+      "statement": "Files matching INGESTION_FOLDER_IGNORED_PATTERNS are skipped by folder ingestion, and Synology metadata files (@SynoEAStream, @SynoResource) are in the default ignore list.",
+      "excerpt": "It's already possible to exclude files and folders using the `INGESTION_FOLDER_IGNORED_PATTERNS` env variable."
+    },
+    {
+      "since": "2025-09-08",
+      "component": "ingestion_folder",
+      "sourceId": "papra-issues",
+      "reference": "#482",
+      "statement": "The ingestion error folder and post-processing move folder accept absolute paths (INGESTION_FOLDER_ERROR_FOLDER_PATH, INGESTION_FOLDER_POST_PROCESSING_MOVE_FOLDER_PATH), and the watcher must not ingest files under such a folder.",
+      "excerpt": "You can already set an absolute path for those folder using those env variables"
+    },
+    {
+      "since": "2025-07-25",
+      "component": "webhooks",
+      "sourceId": "papra-issues",
+      "reference": "#428",
+      "statement": "Webhooks emit document:updated, document:tag:added and document:tag:removed events in addition to creation, so tag changes made after upload can trigger automations.",
+      "excerpt": "I've added `document:updated`, `document:tag:added`, `document:tag:removed`"
+    },
+    {
+      "since": "2025-01-01",
+      "component": "encryption",
+      "sourceId": "papra-docs",
+      "reference": "03-guides/05-setup-document-encryption.mdx#dek",
+      "statement": "With encryption enabled each document is encrypted with its own random 256-bit key (AES-256-GCM); that key is wrapped with the configured key encryption key and stored in the database, separately from the encrypted file.",
+      "excerpt": "Each document gets its own random 256-bit encryption key for maximum security",
+      "rationale": "This architecture means that even if someone gains access to your file storage, they cannot decrypt documents without access to both your document records and your KEK, in other words, without your database and your environment variables."
+    },
+    {
+      "since": "2025-01-01",
+      "component": "encryption",
+      "sourceId": "papra-docs",
+      "reference": "03-guides/05-setup-document-encryption.mdx#key-versions",
+      "statement": "When several versioned key encryption keys are configured, the highest version encrypts new documents and every configured key can still decrypt existing documents.",
+      "excerpt": "The highest version key encrypts new documents"
+    },
+    {
+      "since": "2026-01-03",
+      "component": "auth",
+      "sourceId": "papra-docs",
+      "reference": "03-guides/07-roles-and-permissions.mdx#first-user-admin",
+      "statement": "On self-hosted instances the first registered user receives the platform admin role (AUTH_FIRST_USER_AS_ADMIN, enabled by default), and at most one user receives it even when several register at the same time.",
+      "excerpt": "If multiple users register simultaneously, at most one will receive the admin role. The system checks `userCount === 1` and uses idempotent role assignment to prevent duplicate admin grants."
+    },
+    {
+      "since": "2026-01-03",
+      "component": "auth",
+      "sourceId": "papra-docs",
+      "reference": "03-guides/07-roles-and-permissions.mdx#admin-panel",
+      "kind": "observation",
+      "statement": "The admin panel is limited to read-only monitoring and analytics; user moderation and system configuration are not part of it yet.",
+      "excerpt": "At the moment, the admin panel is focused on read-only operations for monitoring and analytics."
+    },
+    {
+      "since": "2026-01-02",
+      "component": "auth",
+      "sourceId": "papra-issues",
+      "reference": "#695",
+      "statement": "Accounts can enable two-factor authentication.",
+      "excerpt": "Kinda duplicate of #652, but yes it's planned to add 2FA."
+    },
+    {
+      "since": "2026-01-26",
+      "component": "releases",
+      "sourceId": "papra-docs",
+      "reference": "04-resources/04-versioning-and-tagging.mdx",
+      "statement": "The application package is versioned with CalVer (YY.M.N) and library packages with SemVer; Docker image tags follow the application version.",
+      "excerpt": "Since **v0.9.6**, the app uses CalVer with the format `YY.M.N`:"
+    },
+    {
+      "since": "2026-03-07",
+      "component": "custom_properties",
+      "sourceId": "papra-issues",
+      "reference": "#413",
+      "statement": "Per-document expiry dates are not a separate feature; custom properties are the intended way to record such dates.",
+      "excerpt": "Closing the issue as it would be supported by custom properties."
+    },
+    {
+      "since": "2026-03-25",
+      "component": "custom_properties",
+      "sourceId": "papra-prs",
+      "reference": "#956",
+      "statement": "Organizations define custom properties (metadata fields, including select options) and documents carry per-document values for them; the number of properties per organization is limited by configuration.",
+      "excerpt": "feat(custom-properties): add custom properties (#956)"
+    },
+    {
+      "since": "2026-02-09",
+      "component": "search",
+      "sourceId": "papra-issues",
+      "reference": "#882",
+      "kind": "open_question",
+      "statement": "Whether named saved queries shared across an organization should be added to the sidebar (requested, not decided)."
+    },
+    {
+      "since": "2026-03-26",
+      "component": "storage",
+      "sourceId": "papra-issues",
+      "reference": "#976",
+      "kind": "open_question",
+      "statement": "Whether the organization name may appear in storage key patterns, given that organization names are not unique per instance."
+    }
+  ],
+  "conflicts": [
+    {
+      "since": "2026-03-01",
+      "claimReferences": [
+        {
+          "sourceId": "papra-issues",
+          "reference": "#352"
+        },
+        {
+          "sourceId": "papra-docs",
+          "reference": "03-guides/09-storage-key-patterns.mdx#legacy-default"
+        }
+      ],
+      "note": "Issue #352 declined storing files under their names; storage key patterns later made human-readable keys available as an opt-in while the id-keyed layout stays the default."
+    }
+  ]
+}

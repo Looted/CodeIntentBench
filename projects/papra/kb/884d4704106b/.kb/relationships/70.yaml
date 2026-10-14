@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-301082176790
+    type: verified_by
+    from: REQ-only-the-file-content-is-hashed-for-dedupl-63EA565E
+    to: TEST-papra-server-src-modules-documents-documents-usecases
+    created_at: "2026-10-14T12:09:39.329Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: verified_by
+    from: REQ-only-the-file-content-is-hashed-for-dedupl-63EA565E
+    to: TEST-papra-server-src-modules-shared-streams-stream-hash
+    created_at: 2026-10-14T12:09:39.330Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9f5c9cecec84

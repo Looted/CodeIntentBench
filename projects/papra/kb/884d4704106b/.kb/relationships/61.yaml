@@ -1,0 +1,8 @@
+relationships:
+  - id: rel-671ef5ba1675
+    type: verified_by
+    from: REQ-built-in-content-extraction-can-be-turned--66925D7B
+    to: TEST-papra-server-src-modules-documents-documents-usecases
+    created_at: "2026-10-14T12:09:45.376Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-b2088cdaee4a
+    type: verified_by
+    from: REQ-when-a-generated-storage-key-collides-with-D635AF56
+    to: TEST-papra-server-src-modules-documents-storage-document-storage-usecases
+    created_at: "2026-10-14T12:09:43.487Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: verified_by
+    from: REQ-when-a-generated-storage-key-collides-with-D635AF56
+    to: TEST-papra-server-src-modules-documents-storage-document-storage-models
+    created_at: 2026-10-14T12:09:43.488Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-562e26ce5545
