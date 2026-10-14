@@ -53,7 +53,7 @@ export interface PrepareOptions {
 /** The project's `env` expanded for one run directory. */
 export function projectEnv(project: ProjectConfig, dir: string): Record<string, string> {
   const out: Record<string, string> = {};
-  for (const [k, v] of Object.entries(project.env ?? {})) out[k] = v.replaceAll('${RUN_DIR}', dir).replaceAll('${WORKSPACE}', workspaceDir(dir));
+  for (const [k, v] of Object.entries(project.env ?? {})) out[k] = v.replaceAll('${RUN_DIR}', dir).replaceAll('${WORKSPACE}', workspaceDir(dir)).replaceAll('${CACHE_DIR}', CACHE_DIR);
   return out;
 }
 
@@ -96,7 +96,7 @@ export function prepareWorkspace(dir: string, project: ProjectConfig, task: Pick
     log(`arm prepare: ${project.setup.arm_prepare} (${arm})`);
     must(`${JSON.stringify(script)} ${JSON.stringify(ws)} ${JSON.stringify(arm)} ${JSON.stringify(rulesDir)} ${JSON.stringify(dir)}`, {
       cwd: ws,
-      env: { ...process.env, ...GIT_IDENTITY, CIB_RUN_DIR: dir, CIB_WORKSPACE: ws, CIB_RULES_DIR: rulesDir, CIB_PROJECT: project.name },
+      env: { ...process.env, ...GIT_IDENTITY, CIB_RUN_DIR: dir, CIB_WORKSPACE: ws, CIB_RULES_DIR: rulesDir, CIB_PROJECT: project.name, CIB_CACHE_DIR: CACHE_DIR },
     });
   }
   const setup = join(ARMS_DIR, arm, 'setup');
@@ -104,7 +104,7 @@ export function prepareWorkspace(dir: string, project: ProjectConfig, task: Pick
     log(`arm setup: ${arm}`);
     must(`${JSON.stringify(setup)} ${JSON.stringify(ws)} ${JSON.stringify(rulesDir)} ${JSON.stringify(dir)}`, {
       cwd: ws,
-      env: { ...process.env, ...GIT_IDENTITY, CIB_RUN_DIR: dir, CIB_WORKSPACE: ws, CIB_RULES_DIR: rulesDir, CIB_PROJECT: project.name },
+      env: { ...process.env, ...GIT_IDENTITY, CIB_RUN_DIR: dir, CIB_WORKSPACE: ws, CIB_RULES_DIR: rulesDir, CIB_PROJECT: project.name, CIB_CACHE_DIR: CACHE_DIR },
     });
   }
 

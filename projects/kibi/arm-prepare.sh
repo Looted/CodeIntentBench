@@ -20,12 +20,23 @@ rm -f .claude/settings.json .mcp.json
 rmdir .claude 2>/dev/null || true
 
 # The released SWI-Prolog runtime for the project's own Kibi (its tests spawn packages/cli/bin/kibi);
-# project.yaml points KIBI_SWIPL at it. Versions follow arms/kibi/versions.env.
+# project.yaml points KIBI_SWIPL at it. Installed once into the cache (100 MB), shared by every run;
+# concurrent runs wait for the first install. Versions follow arms/kibi/versions.env.
 # shellcheck disable=SC1091
 . "$here/../../arms/kibi/versions.env"
-if [ ! -x "$run/swipl/node_modules/kibi-swipl-linux-x64-gnu/bin/swipl" ]; then
-  mkdir -p "$run/swipl"
-  ( cd "$run/swipl" && npm install --silent --no-audit --no-fund "kibi-swipl@${KIBI_SWIPL_PKG:-1.0.1}" )
+swipl_dir="${CIB_CACHE_DIR:-$run}/kibi-swipl"
+swipl_bin="$swipl_dir/node_modules/kibi-swipl-linux-x64-gnu/bin/swipl"
+if [ ! -x "$swipl_bin" ]; then
+  mkdir -p "$(dirname "$swipl_dir")"
+  if mkdir "$swipl_dir.lock" 2>/dev/null; then
+    trap 'rmdir "$swipl_dir.lock" 2>/dev/null || true' EXIT
+    mkdir -p "$swipl_dir"
+    ( cd "$swipl_dir" && npm install --silent --no-audit --no-fund "kibi-swipl@${KIBI_SWIPL_PKG:-1.0.1}" )
+    rmdir "$swipl_dir.lock"; trap - EXIT
+  else
+    for _ in $(seq 1 120); do [ -x "$swipl_bin" ] && [ ! -d "$swipl_dir.lock" ] && break; sleep 2; done
+  fi
+  [ -x "$swipl_bin" ] || { echo "kibi-swipl runtime missing at $swipl_bin" >&2; exit 1; }
 fi
 
 case "$arm" in

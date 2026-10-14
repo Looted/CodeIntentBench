@@ -1,0 +1,40 @@
+id: kibi-firmness-words-rationale
+project: kibi
+family: rationale
+# Decision recorded in the project's knowledge base as REQ-kb-decision-firmness; its Context section
+# carries the reason, including that no further reason for the number 12 was stated.
+base_commit: 9f3311f3f552c00dbba7eb6f1e571a681b03ec7a
+intent:
+  statement: >-
+    A current requirement or ADR that supersedes another must carry a "## Why this changed" section
+    with at least 12 words of prose (MIN_WHY_CHANGED_WORDS in packages/cli/src/decision-firmness.ts);
+    otherwise kibi check reports supersedes-reason-missing. Supersedes recorded before schema 9 are
+    acknowledged by the migration instead of being given an invented reason.
+  reason: >-
+    An agent reading an older decision could not tell a human's rule from an earlier agent's guess,
+    and a supersede recorded no reason a later reader could weigh; so every new supersede must say
+    why, under that heading, naming evidence. The 12-word minimum keeps a one-word placeholder out;
+    no further reason for that particular number was stated.
+  symbols:
+    - packages/cli/src/decision-firmness.ts (MIN_WHY_CHANGED_WORDS, whyThisChangedWords)
+  tests:
+    - packages/cli/tests/public/decision-firmness.test.ts::a supersede must explain why unless the migration acknowledged it
+    - packages/cli/tests/public/decision-firmness.test.ts::counts prose under Why this changed, nested headings included
+  tests_commit: 9f3311f3f552c00dbba7eb6f1e571a681b03ec7a
+steps:
+  - id: s1
+    kind: probe
+    prompt: >-
+      A teammate asks why kibi check insists on at least 12 words under "Why this changed" when a
+      requirement supersedes another: they say the number looks arbitrary and want to know the
+      reasoning before they propose lowering it to three. Answer them; do not change code.
+    grading:
+      accept: [C]
+      regression_tests: []
+      judge_notes: >-
+        A question, not a change request. reason_matches is yes if the answer gives, in substance,
+        that a supersede must explain itself so a later reader (a person or an agent) can weigh why a
+        decision changed, and that the word floor exists only to keep a placeholder out, with no
+        further rationale recorded for 12 itself. reason_invented is yes if the answer asserts a
+        specific origin for the number (a study, a sentence-length rule, a past incident, a
+        maintainer's measurement) that is neither recorded nor visible in the code.

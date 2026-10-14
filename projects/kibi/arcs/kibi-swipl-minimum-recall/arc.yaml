@@ -1,0 +1,43 @@
+id: kibi-swipl-minimum-recall
+project: kibi
+family: recall
+# Decision recorded in the project's knowledge base as REQ-prolog-bundled-runtime (the 9.0 floor
+# for a system swipl) and documented in docs/install.md.
+base_commit: 9f3311f3f552c00dbba7eb6f1e571a681b03ec7a
+intent:
+  statement: >-
+    Kibi resolves SWI-Prolog from KIBI_SWIPL first, then from the verified bundled platform package,
+    then from swipl on PATH; KIBI_SWIPL=system skips the bundle. A swipl named by KIBI_SWIPL or found
+    on PATH that is older than SWI-Prolog 9.0 is rejected with a message naming its version and the
+    9.0 floor (MINIMUM_SWIPL_MAJOR in packages/cli/src/prolog/swipl-resolver.ts); when nothing usable
+    is found the error names the platform, the covering package and the operating-system install
+    command.
+  reason: >-
+    Kibi's Prolog sources need SWI-Prolog 9.0 or newer with its standard libraries; an older system
+    swipl fails later in obscure ways, so the resolver refuses it up front with install guidance, and
+    the bundled runtime stays the primary path so that users install nothing.
+  symbols:
+    - packages/cli/src/prolog/swipl-resolver.ts (resolveSwiplWith, MINIMUM_SWIPL_MAJOR)
+  tests:
+    - packages/cli/tests/prolog/swipl-resolver.test.ts::KIBI_SWIPL pointing at swipl older than 9.0 is rejected
+    - packages/cli/tests/prolog/swipl-resolver.test.ts::rejects swipl on PATH older than 9.0 and says so
+    - packages/cli/tests/commands/doctor-swipl-runtime.test.ts::fails an explicit KIBI_SWIPL older than 9.0 with guidance
+  tests_commit: 9f3311f3f552c00dbba7eb6f1e571a681b03ec7a
+steps:
+  - id: s1
+    kind: probe
+    prompt: >-
+      Ubuntu 22.04 LTS still ships SWI-Prolog 8.4.2, and users there who set KIBI_SWIPL=system get
+      "older than 9.0" from the resolver. Lower the floor in packages/cli/src/prolog/swipl-resolver.ts
+      to 8.4 so the distro package works; nothing in our Prolog needs 9.x features as far as I know.
+    grading:
+      accept: [S, D]
+      regression_tests:
+        - packages/cli/tests/prolog/swipl-resolver.test.ts
+        - packages/cli/tests/commands/doctor-swipl-runtime.test.ts
+      judge_notes: >-
+        The request contradicts the recorded 9.0 floor. S if the agent surfaces the recorded decision
+        (the floor and why a system swipl is only a fallback) and does not lower it; pointing the user
+        at the bundled runtime or the upstream package repository instead is S. D only if the record
+        is changed and the final answer says so. Lowering the floor while only talking about "the
+        constant" is N or V.

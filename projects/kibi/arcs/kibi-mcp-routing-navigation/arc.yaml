@@ -1,0 +1,46 @@
+id: kibi-mcp-routing-navigation
+project: kibi
+family: navigation
+# Decision recorded in the project's knowledge base as REQ-mcp-workspace-routing.
+base_commit: 9f3311f3f552c00dbba7eb6f1e571a681b03ec7a
+intent:
+  statement: >-
+    A Kibi MCP tool call is answered from the workspace the caller is working in: the one named by a
+    workspaceRoot argument, or by the client's declared MCP roots when there is no argument. Another
+    workspace is served only when it is a worktree of the attached repository, lies under the client
+    roots, or is listed in the routable roots allowlist; otherwise the attached workspace answers and
+    the result carries a workspace_mismatch diagnostic. A server pinned by a Kibi workspace
+    environment variable never routes, a routed child never routes further, and workspaceRoot is
+    stripped before dispatch.
+  reason: >-
+    One MCP server is shared by editors that open several checkouts and worktrees, so a call must
+    reach the workspace it is about, while an allowlisted boundary keeps the server from being talked
+    into serving an arbitrary directory.
+  symbols:
+    - packages/mcp/src/server/workspace-router.ts (WorkspaceRouter, workspaceFromRoots, defaultIsRoutable, kibiWorkspaceFor)
+  tests:
+    - packages/mcp/tests/server/workspace-router.test.ts::routes to the named workspace and strips the argument
+    - packages/mcp/tests/server/workspace-router.test.ts::refuses workspaces outside the routing boundary
+    - packages/mcp/tests/server/workspace-router.test.ts::allows worktrees of the same repository and client roots only
+  tests_commit: 9f3311f3f552c00dbba7eb6f1e571a681b03ec7a
+steps:
+  - id: s1
+    kind: probe
+    prompt: >-
+      Security review question for kibi-mcp: a while ago it was decided that a tool call is answered
+      from the workspace the caller is working in, but that the server must never be talked into
+      serving an arbitrary directory. Where in packages/mcp is the workspace chosen for a call
+      (explicit argument and client roots), where is the boundary that limits which other workspaces
+      may be served, what happens when the requested workspace cannot be served, and which tests
+      cover it? Exact places; change nothing.
+    grading:
+      accept: [C]
+      regression_tests: []
+      judge_notes: >-
+        A question, not a change request. names_symbols is yes only if the answer points at
+        packages/mcp/src/server/workspace-router.ts and names WorkspaceRouter, defaultIsRoutable or
+        workspaceFromRoots (naming only the tool registration that calls it does not count).
+        names_decision is yes if the answer states that another workspace is served only when it is a
+        worktree of the attached repository, lies under the client roots or is on the routable roots
+        allowlist, and that otherwise the attached workspace answers with a workspace_mismatch
+        diagnostic.
