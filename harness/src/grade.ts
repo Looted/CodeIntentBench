@@ -111,10 +111,14 @@ export function runVitest(ws: string, project: ProjectConfig, dir: string, label
   outcome.passed_count = json.numPassedTests;
   outcome.failed_count = json.numFailedTests;
   const wanted = refs === 'all' ? [] : refs.map(splitTestRef).filter((x) => x.name);
+  const ignore = (project.tests.ignore ?? []).map(splitTestRef);
+  const ignored = (file: string, t: { fullName: string; title: string }) => ignore.some((i) => i.name && (file.endsWith(toCwdRel(project, i.file)) || file.endsWith(i.file)) && (t.fullName.includes(i.name) || t.title === i.name));
   for (const file of json.testResults) {
     if (file.status !== 'passed' && file.assertionResults.length === 0) outcome.failed_tests.push(`${file.name}: ${file.message?.slice(0, 300) ?? file.status}`);
     for (const t of file.assertionResults) {
-      if (t.status === 'failed') outcome.failed_tests.push(`${file.name} :: ${t.fullName}`);
+      if (t.status !== 'failed') continue;
+      if (ignored(file.name, t)) { (outcome.ignored ??= []).push(`${file.name} :: ${t.fullName}`); outcome.failed_count = Math.max(0, outcome.failed_count - 1); continue; }
+      outcome.failed_tests.push(`${file.name} :: ${t.fullName}`);
     }
   }
   // A named test that did not run (removed, renamed, file broken) counts as failed.

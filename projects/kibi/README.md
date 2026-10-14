@@ -30,4 +30,19 @@ Kibi is a Bun workspace. `bun install --frozen-lockfile` takes about three minut
 
 ## Arcs
 
-See `arcs/`. Each arc starts from a real commit of the repository whose parent already records the decision the arc probes; the probe is a request that conflicts with, depends on, or asks about that decision, and the hidden intent tests are the repository's own tests for it at the base commit.
+Sixteen arcs under `arcs/`, two per family, all on the same base commit (`develop` at 9f3311f3, knowledge-base schema 10, the schema the pinned release reads). The families and the decisions they are about:
+
+| Family | Arcs | Recorded decision |
+|---|---|---|
+| recall | `kibi-git-hooks-recall`, `kibi-swipl-minimum-recall` | hooks go to Git's effective hooks path (REQ-git-hook-effective-install); a system swipl older than 9.0 is refused (REQ-prolog-bundled-runtime) |
+| rationale | `kibi-firmness-words-rationale`, `kibi-mcp-freshness-rationale` | the 12-word floor on "Why this changed" (REQ-kb-decision-firmness); stat-based KB freshness in the MCP server (ADR-021) |
+| surfacing | `kibi-cursor-stop-surfacing`, `kibi-mcp-oneof-surfacing` | plan delivery is not job completion in the Cursor stop hook (REQ-cursor-stop-job-vs-plan); oneOf guard branches are enforced at MCP input validation (REQ-mcp-oneof-guard-input-validation) |
+| navigation | `kibi-swipl-resolver-navigation`, `kibi-mcp-routing-navigation` | the SWI-Prolog resolution order; workspace routing and its boundary (REQ-mcp-workspace-routing) |
+| drift | `kibi-firmness-words-drift`, `kibi-swipl-minimum-drift` | a stated change to a recorded decision (floor 12 to 6 words; floor 9.0 to 10.0), then a request that contradicts the new one |
+| evidence | `kibi-foreign-hook-evidence`, `kibi-mcp-oneof-evidence` | a teammate's commit silently drops the behaviour and its tests (foreign hooks are no longer skipped; the oneOf guard is switched off); the probe asks for a release check |
+| branch | `kibi-claim-name-length-branch`, `kibi-docs-analytics-branch` | a decision made on a branch (aspects of three words and thirty characters; no github-click analytics event) must not leak to the base branch |
+| standing | `kibi-foreign-hook-standing`, `kibi-daemon-versions-standing` | a firm project rule (foreign hooks untouched; a daemon never serves other package versions) next to a choice the agent made itself |
+
+In the recall, rationale, surfacing, navigation and standing arcs the decision is one the knowledge base already records, so the arc starts with the probe: there is no session in which the agent is told the decision, and every arm has to find it in its own container. The drift and branch arcs need a decision that is new on top of the recorded one, so their first session states it, as the Papra arcs did, and their hidden tests are the benchmark's own, under `arcs/<id>/tests/`. The evidence arcs run `teammate.sh` between sessions. Hidden intent tests for the recorded decisions are the repository's tests at the base commit, restored by the grader before they run; each step names the few test files that cover the code it touches as its regression suite, because the whole suite takes minutes per run.
+
+The benchmark container runs as root, which `chmod` does not stop; eight of the repository's tests make a directory unreadable and expect Git to refuse, and fail on an untouched checkout here. `project.yaml` lists them under `tests.ignore`, and the grader records their failures without counting them.

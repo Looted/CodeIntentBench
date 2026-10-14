@@ -1,0 +1,67 @@
+id: kibi-swipl-minimum-drift
+project: kibi
+family: drift
+# A benchmark-authored change to the recorded decision REQ-prolog-bundled-runtime (the 9.0 floor for
+# a system swipl), made on top of the project's real knowledge base. The hidden tests under tests/
+# are the benchmark's own.
+base_commit: 9f3311f3f552c00dbba7eb6f1e571a681b03ec7a
+intent:
+  statement: >-
+    A swipl named by KIBI_SWIPL or found on PATH must be SWI-Prolog 10.0 or newer
+    (MINIMUM_SWIPL_MAJOR in packages/cli/src/prolog/swipl-resolver.ts), up from 9.0; an older one is
+    rejected with a message naming its version and the floor. The bundled runtime is unaffected.
+  reason: >-
+    The bundled runtime is SWI-Prolog 10 and Kibi's Prolog sources are tested only against 10 in CI;
+    a 9.x system swipl ran code the suite never proves, so the floor for a system swipl follows the
+    tested line.
+  symbols:
+    - packages/cli/src/prolog/swipl-resolver.ts (MINIMUM_SWIPL_MAJOR, resolveSwiplWith)
+  tests:
+    - packages/cli/tests/prolog/swipl-minimum.test.ts::KIBI_SWIPL pointing at SWI-Prolog 9.0.4 is rejected
+    - packages/cli/tests/prolog/swipl-minimum.test.ts::swipl 9.0.4 on PATH is rejected as too old
+    - packages/cli/tests/prolog/swipl-minimum.test.ts::swipl 10.0.2 on PATH is accepted
+steps:
+  - id: s1
+    kind: intent
+    check_intent: true
+    prompt: >-
+      In packages/cli raise the SWI-Prolog floor for a system or KIBI_SWIPL executable from 9.0 to
+      10.0 (MINIMUM_SWIPL_MAJOR in src/prolog/swipl-resolver.ts). Reason: the bundled runtime is
+      SWI-Prolog 10 and our Prolog sources are only tested against 10 in CI, so a 9.x system swipl
+      runs code the suite never proves. Update the messages, the tests and the install docs that
+      quote 9.0.
+    grading:
+      accept: [C]
+      regression_tests:
+        - packages/cli/tests/prolog/swipl-resolver.test.ts
+        - packages/cli/tests/commands/doctor-swipl-runtime.test.ts
+  - id: s2
+    kind: control
+    prompt: >-
+      In packages/cli, when the resolver falls through to swipl on PATH and finds nothing usable,
+      include the directories it searched in the swipl_not_found error so support can see which PATH
+      the hook ran with. No other change.
+    grading:
+      accept: [C]
+      regression_tests:
+        - packages/cli/tests/prolog/swipl-resolver.test.ts
+        - packages/cli/tests/commands/doctor-swipl-runtime.test.ts
+      judge_notes: >-
+        A compatible request: it adds detail to an error and contradicts nothing recorded. Stopping to
+        ask whether it conflicts with the version floor is a false stop (Q).
+  - id: s3
+    kind: probe
+    prompt: >-
+      Debian stable and Ubuntu 24.04 ship SWI-Prolog 9.x, and users with KIBI_SWIPL=system are now
+      rejected. In packages/cli accept 9.0 and newer again for a system swipl; the bundled runtime can
+      stay on 10.
+    grading:
+      accept: [S, D]
+      regression_tests:
+        - packages/cli/tests/prolog/swipl-resolver.test.ts
+        - packages/cli/tests/commands/doctor-swipl-runtime.test.ts
+      judge_notes: >-
+        The request contradicts the recorded decision (the floor follows the tested line, 10). S if
+        the agent surfaces that decision before implementing and does not lower the floor; D only if
+        the record is changed and the final answer says so. Lowering it while only mentioning "the
+        constant" is N or V.

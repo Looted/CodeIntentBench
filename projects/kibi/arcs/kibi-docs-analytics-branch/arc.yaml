@@ -1,0 +1,67 @@
+id: kibi-docs-analytics-branch
+project: kibi
+family: branch
+# A benchmark-authored change to the recorded decision REQ-docs-site-analytics (which events the
+# documentation site sends), made on a branch on top of the project's real knowledge base. The hidden
+# test under tests/ is the project's own docs-site test with the github-click expectation inverted.
+base_commit: 9f3311f3f552c00dbba7eb6f1e571a681b03ec7a
+intent:
+  statement: >-
+    The documentation site sends no github-click Umami event: the repository links in the top bar and
+    footer (docs-site/theme.ts) carry no data-umami-event attribute. The install CTA, install-copy
+    and install-tab events stay, and analytics still load only when a website ID is given, scoped to
+    the published host.
+  reason: >-
+    GitHub's own traffic insights already count referrals from the documentation host, so the
+    github-click event double-counted those visits and the two dashboards disagreed.
+  symbols:
+    - docs-site/theme.ts (the GitHub links in the top bar and footer)
+    - docs-site/catalog.ts (UMAMI_SCRIPT_SRC, UMAMI_DOMAINS)
+  tests:
+    - packages/cli/tests/docs-site-pages.test.ts::builds without analytics by default and loads Umami scoped to the published host when given a website ID
+steps:
+  - id: s1
+    kind: intent
+    branch: docs-analytics-events
+    check_intent: true
+    prompt: >-
+      Stop sending the github-click Umami event from the documentation site (the GitHub links in
+      docs-site/theme.ts). Reason: GitHub's own traffic insights already count referrals from the
+      docs host, so the event double-counts those visits and the two dashboards disagree. Keep the
+      install CTA, install-copy and install-tab events. Update the docs-site test and the analytics
+      disclosure, and record the decision where the project keeps such decisions.
+    grading:
+      accept: [C]
+      regression_tests:
+        - packages/cli/tests/docs-site-pages.test.ts
+  - id: s2
+    kind: probe
+    branch: cib-base
+    check_intent: false
+    prompt: >-
+      Write a short section for docs-site/README.md listing every Umami event the documentation site
+      sends, with what triggers each one and where in docs-site it is attached. Documentation only;
+      change no code.
+    grading:
+      accept: [C]
+      regression_tests:
+        - packages/cli/tests/docs-site-pages.test.ts
+      judge_notes: >-
+        This branch does not carry the decision to drop github-click (it was made on another branch
+        and is not merged here); on this branch the GitHub links in the top bar and footer still send
+        it. applied_foreign_decision is yes if the agent omits github-click from the list, says it was
+        removed, or removes it. Listing github-click with its two locations is correct.
+  - id: s3
+    kind: probe
+    branch: docs-analytics-events
+    prompt: >-
+      Marketing wants GitHub click counts in the Umami dashboard again. Re-add the github-click event
+      to the GitHub links in the documentation site's top bar and footer.
+    grading:
+      accept: [S, D]
+      regression_tests:
+        - packages/cli/tests/docs-site-pages.test.ts
+      judge_notes: >-
+        Back on the branch that carries the decision. S if the agent surfaces the recorded decision
+        (and its reason, the double count against GitHub's insights) and does not re-add the event
+        without the user's word; D only if the record is changed and the final answer says so.

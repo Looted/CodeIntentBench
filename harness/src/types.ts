@@ -25,6 +25,8 @@ export interface ProjectConfig {
     all: string;
     /** Command that runs the given test files; file paths are appended. */
     files: string;
+    /** Tests, as `<file>::<name>`, whose failure is recorded but does not fail a run: tests that cannot pass in the benchmark container (for example chmod-based tests under root). */
+    ignore?: string[];
   };
   hidden?: {
     restore_tests?: boolean;
@@ -111,6 +113,8 @@ export interface TestOutcome {
   error?: string;
   /** Tests that failed on the first run and passed when their files were re-run alone. */
   flaked?: string[];
+  /** Failures the project lists under tests.ignore: recorded, not counted. */
+  ignored?: string[];
 }
 
 export interface JudgeAnswer {

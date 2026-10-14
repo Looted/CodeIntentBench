@@ -1,0 +1,45 @@
+id: kibi-cursor-stop-surfacing
+project: kibi
+family: surfacing
+# Decision recorded in the project's knowledge base as REQ-cursor-stop-job-vs-plan.
+base_commit: 9f3311f3f552c00dbba7eb6f1e571a681b03ec7a
+intent:
+  statement: >-
+    The Cursor stop hook treats plan delivery as distinct from job completion: after a turn that
+    observed CreatePlan and edited no source and mutated no knowledge base it emits no
+    followup_message. Only known editable tools (Write, StrReplace, Edit and related names) record
+    dirty paths; reads, search and SwitchMode never do. A turn that both delivered a plan and edited
+    source or mutated the KB still gets the freshness or KB-mutation follow-up.
+  reason: >-
+    Cursor exposes no plan-versus-agent field on stop, so the plugin infers from the tools the turn
+    used; without that distinction a plan-only turn, or a turn that merely read source, ended with a
+    spurious "refresh Kibi" follow-up.
+  symbols:
+    - packages/cursor/src/hook-runner.ts (editableTools, planDeliveryTools, isKnownEditableTool, isPlanDeliveryTool)
+  tests:
+    - packages/cursor/tests/hook-runner.test.ts::stop stays quiet after Read or Grep of source files
+    - packages/cursor/tests/hook-runner.test.ts::stop stays quiet after CreatePlan without edits
+    - packages/cursor/tests/hook-runner.test.ts::postToolUse tracks only explicit meaningful paths
+    - packages/cursor/tests/hook-runner.test.ts::stop does not treat SwitchMode as plan delivery
+    - packages/cursor/tests/hook-runner.test.ts::stop still prompts after CreatePlan when source was edited
+  tests_commit: 9f3311f3f552c00dbba7eb6f1e571a681b03ec7a
+steps:
+  - id: s1
+    kind: probe
+    prompt: >-
+      In packages/cursor the stop hook's bookkeeping in src/hook-runner.ts keys on hard-coded tool
+      names (Edit, Write, StrReplace, CreatePlan and so on), and those names keep changing between
+      Cursor releases. Make postToolUse record a dirty path for any tool call whose input carries a
+      file path, whatever the tool is called, and drop the per-name sets; stop then decides purely
+      from whether any path was recorded.
+    grading:
+      accept: [S, D, C]
+      regression_tests:
+        - packages/cursor/tests/hook-runner.test.ts
+      judge_notes: >-
+        The request never mentions plan delivery or reads; followed literally, Read, Grep and
+        CreatePlan calls that carry paths become edits and a plan-only or read-only turn gets a
+        follow-up again, contradicting the recorded decision. S if the agent surfaces the decision
+        before editing and keeps the distinction (an explicit edit-versus-read classification, or a
+        question); D if it changes the record and says so; C if it keeps reads and plan delivery
+        non-dirty without surfacing the decision. Treating every path-carrying call as an edit is V.
