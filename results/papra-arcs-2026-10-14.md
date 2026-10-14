@@ -38,7 +38,7 @@ Arc pass by family (arcs passed out of 2):
 
 **Where kibi-conv still failed, the deterministic checks did not fire.** In the two surfacing probes and one drift probe the requirement existed but `kb_search` returned no result for the paraphrased request ("make the lookup a plain query by hash", "a 7-day grace period"), the pre-edit hook said no symbol in the file was linked to a requirement, and `kb_check` reported no violation. Agents recorded requirements without linking them to symbols, so the hook snippets and the conflict rules had nothing to work on. In the drift probe the agent then recorded a second requirement that contradicts the first, and the check accepted both. Kibi's claim that drift is caught deterministically holds only once requirements are linked to code, which the agents did not do unprompted.
 
-**Standing: only the agents-md and kibi-conv agents treated a firm user rule as something to ask about.** Given the user's own rule with a reason, docs, tracker and memory agents usually rewrote the record and said so (D); none and kibi removed the rule silently. Across all arms, 7 of 14 probes against a firm rule ended with the record rewritten in place rather than a question. This is the pattern the firmness work in Kibi targets; the benchmark accepts only S on that step.
+**Standing: only the agents-md and kibi-conv agents treated a firm user rule as something to ask about.** Given the user's own rule with a reason, docs, tracker and memory agents usually rewrote the record and said so (D); none and kibi removed the rule silently. Across all arms, 5 of 14 probes against a firm rule ended with the record rewritten in place (D) and 4 with a question (S); the rest removed the rule silently or named it and removed it anyway. This is the pattern the firmness work in Kibi targets; the benchmark accepts only S on that step.
 
 **Rationale and navigation are mostly answered from code.** When session one's agent writes the reason into a doc string or commit message, the none arm answers "why" and "where" as well as any store. These two families separate arms only when the reason is not in the code; in this pilot they did not.
 
@@ -50,9 +50,9 @@ Arc pass by family (arcs passed out of 2):
 
 1. No capture path. The plugin never prompts the agent to record a decision the user states; `kb_check` on an empty knowledge base reports success. (kibi-cli 2.22.1, plugin at the pinned commit in `arms/kibi/versions.env`.)
 2. Branch switch rejected. After the agent recorded a requirement on a feature branch, `git checkout` to the base branch failed in Kibi's post-checkout hook: "Pending source is missing: .kb/requirements/REQ-….md … run 'kibi branch recover --apply'". The harness records the failure on the session and continues (both kibi-conv branch arcs still passed).
-3. Search misses paraphrases. `kb_search` returned zero results for requests that contradicted the one recorded requirement when the words differed (3 of 20 probes).
+3. Search misses paraphrases. In 3 of the 13 kibi-conv conflict probes that searched, `kb_search` returned zero results for a request that contradicted the one recorded requirement, because the words differed ("grace period", "plain lookup by hash").
 4. Unlinked requirements are inert. Hooks and `kb_check` act on symbol links; agents created requirements without them, so no check fired on edits to the governed code.
-5. `kb_upsert` rejects the agent's first attempt. In 4 sessions the first upsert failed on `semantic_inventory_version` / `semantic_source_field` and the agent needed `kb_model` and a retry, which accounts for part of the extra cost.
+5. `kb_upsert` rejects the agent's first attempt. In 25 sessions the first upsert failed on `semantic_inventory_version` / `semantic_source_field` and the agent needed `kb_model` and a retry, which accounts for part of the extra cost and wall time.
 
 ## Benchmark notes and caveats
 
@@ -61,4 +61,4 @@ Arc pass by family (arcs passed out of 2):
 - Regression suite retries. 15 of 350 sessions had a failing test pass on a re-run of its file alone (the project's 500 MiB upload e2e test under load); these count as passed and are listed as `flaked` in the records.
 - Standing s3 was re-run for six arms after the first prompt asked for a value most agents had already picked as their default.
 - Intake-secret rationale and navigation prompts carry a hint that a decision exists, by design; surfacing probes carry no lexical cue.
-- All arms ran with `acceptEdits` permissions and an allow-list for read-only shell commands, because the cloud session that ran the pilot denies bypass mode. Six sessions hit a permission denial on a compound shell command; none were graded invalid.
+- All arms ran with `acceptEdits` permissions and an allow-list for read-only shell commands, because the cloud session that ran the pilot denies bypass mode. 241 of 350 sessions had at least one shell command denied, usually a compound command that mixed an allowed tool with `cd`; the agents reported it and went on, often without running tests. This touches every arm alike and is the main reason to repeat the run with bypass permissions on a trusted machine.
