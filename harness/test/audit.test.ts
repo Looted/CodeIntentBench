@@ -38,7 +38,7 @@ test('a container that lost a fact fails the audit', () => {
   strip(doc, /- Status: [^\n]*\n/);
   assert.deepEqual(failures('docs', c), ['status missing (expected "Status: open (current)")']);
   strip(doc, /- Firmness: [^\n]*\n/); strip(doc, /## Why[\s\S]*?(?=## Where)/); strip(doc, /packages\/codex\/src\/hook-runner\.ts/); strip(doc, /- Supersedes: [^\n]*\n/);
-  assert.deepEqual(failures('docs', c), ['reason missing', 'status missing (expected "Status: open (current)")', 'firmness missing (expected "Firmness: firm (ask before changing it)")', 'code paths missing: packages/codex/src/hook-runner.ts', '"supersedes REQ-hooks-v1" missing']);
+  assert.deepEqual(failures('docs', c), ['reason missing', 'status missing (expected "Status: open (current)")', 'firmness missing (expected "Firmness: firm (a person set it; follow it, and ask before changing it)")', 'code paths missing: packages/codex/src/hook-runner.ts', '"supersedes REQ-hooks-v1" missing']);
   rmSync(doc);
   assert.deepEqual(failures('docs', c), ['no entry for REQ-hooks-never-deny in the docs container']);
 
@@ -56,9 +56,9 @@ test('a container that lost a fact fails the audit', () => {
 
   c = writeContainers();
   const tr = JSON.parse(readFileSync(join(c.run, 'tracker.json'), 'utf8'));
-  for (const i of tr.issues) i.body = i.body.replace(/Firmness: firm[^\n]*/, 'Firmness: default (may be changed with a stated reason)');
+  for (const i of tr.issues) i.body = i.body.replace(/Firmness: firm[^\n]*/, 'Firmness: default (a delegated or agent choice; follow it, and supersede it only on evidence that it is wrong)');
   writeFileSync(join(c.run, 'tracker.json'), JSON.stringify(tr));
-  assert.deepEqual(failures('tracker', c), ['firmness missing (expected "Firmness: firm (ask before changing it)")']);
+  assert.deepEqual(failures('tracker', c), ['firmness missing (expected "Firmness: firm (a person set it; follow it, and ask before changing it)")']);
 
   c = writeContainers();
   rmSync(join(c.ws, '.kb', 'requirements', 'REQ-hooks-never-deny.md'));

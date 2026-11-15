@@ -25,7 +25,7 @@ export function writeKb(root: string): string {
   writeFileSync(join(kb, 'requirements', 'REQ-cursor-hooks.md'), entity({
     id: 'REQ-cursor-hooks', type: 'req', title: 'Cursor hooks never deny', status: 'open',
     semantic_text: 'Cursor hooks must never deny a tool call: they add reminders and notices.', rationale: 'Reason not stated',
-    origin: { kind: 'human', recorded_at: '2026-10-20T00:00:00.000Z' },
+    origin: { kind: 'agent', recorded_at: '2026-10-20T00:00:00.000Z' },
   }, 'Cursor hooks must never deny a tool call: they add reminders and notices.'));
   writeFileSync(join(kb, 'requirements', 'REQ-old-flag.md'), entity({
     id: 'REQ-old-flag', type: 'req', title: 'Old flag', status: 'retired', retired_reason: 'The flag was removed.', semantic_text: 'The --old flag prints a notice.',
