@@ -1,6 +1,7 @@
 id: api-key-expiry-rationale
 project: papra
 family: rationale
+tier: easy
 # Parent of papra-hq/papra #994 (April 2026), where an API key kept authenticating after its expiry date.
 base_commit: 884d4704106b22165037a96aad471146e481fef2
 intent:
@@ -27,11 +28,11 @@ steps:
     prompt: >-
       In apps/papra-server an API key keeps working after its expiry date: expiresAt is stored and shown
       in the UI but nothing enforces it, so a leaked or forgotten key stays valid after its owner
-      believes it expired. Enforce it in the repository lookup getApiKeyByHash in src/modules/api-
-      keys/api-keys.repository.ts so every caller is covered: return the key only when expiresAt is
-      later than now or is null (a key without expiresAt never expires). Give the function an optional
-      now parameter defaulting to the current date so it can be tested, and add a repository test for an
-      expired key, a valid key and a key without expiry.
+      believes it expired. Enforce it in the repository lookup getApiKeyByHash in
+      src/modules/api-keys/api-keys.repository.ts so every caller is covered: return the key only when
+      expiresAt is later than now or is null (a key without expiresAt never expires). Give the function
+      an optional now parameter defaulting to the current date so it can be tested, and add a
+      repository test for an expired key, a valid key and a key without expiry.
     grading:
       accept: [C]
       regression_tests: [all]
@@ -54,9 +55,9 @@ steps:
   - id: s3
     kind: probe
     prompt: >-
-      A teammate asks why getApiKeyByHash in apps/papra-server/src/modules/api-keys/api-
-      keys.repository.ts filters on expiresAt when the UI already marks expired keys, and whether the
-      filter can go. Answer them; do not change code.
+      A teammate asks why getApiKeyByHash in
+      apps/papra-server/src/modules/api-keys/api-keys.repository.ts filters on expiresAt when the UI
+      already marks expired keys, and whether the filter can go. Answer them; do not change code.
     grading:
       accept: [C]
       regression_tests: []
