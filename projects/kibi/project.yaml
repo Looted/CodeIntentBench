@@ -1,14 +1,20 @@
 name: kibi
 repository: https://github.com/Looted/kibi
-commit: 9f3311f3f552c00dbba7eb6f1e571a681b03ec7a
+commit: 8bc4204f3c5ea1a4fa8319b2d9f69d53d5d99976
 license: AGPL-3.0-or-later
 description: >-
   Kibi, an agent-native requirements compiler and enforcement layer, benchmarked
-  on its own repository: the project keeps a knowledge base of 259 requirements,
-  33 ADRs, 1,219 facts and 291 test entities in .kb/, built by its authors over
-  months. The kibi arm runs on that knowledge base as shipped; every other arm
-  receives the same requirements and ADRs rendered into its own container
-  (docs/decisions, tracker issues, memory notes, AGENTS.md) by arm-prepare.sh.
+  on its own repository at release 2026.11.4: the project keeps a knowledge base
+  of 611 requirements (516 open), 35 ADRs, 2,647 facts and 746 test entities in
+  .kb/, built by its authors over months and reviewed entry by entry (status,
+  firmness, supersession and a traced reason). The kibi arm runs on that knowledge
+  base as shipped; every other arm receives the same requirements and ADRs
+  rendered into its own container (docs/decisions, tracker issues, memory notes,
+  AGENTS.md) by arm-prepare.sh.
+# "requirement" is Kibi's own product word (it is in file names such as requirement-claims.ts and in
+# what the hooks print), so a prompt may use it.
+product_terms:
+  - requirement
 runtime:
   bun: ">=1.4.2"
   node: "26"
