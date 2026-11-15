@@ -109,16 +109,16 @@ export function renderArcsMarkdown(project: string, runs: ArcRunRecord[], unfini
   L.push('');
   L.push('## By arm, all families');
   L.push('');
-  L.push('| Arm | Arcs (invalid) | Arc pass | Probe pass | Intent surfaced at probe | Silent violations | False stops | Intent recorded | Commits refused by gate | Cost per arc | Cost per preserved intent | Wall s per session |');
-  L.push('|---|---|---|---|---|---|---|---|---|---|---|---|');
+  L.push('| Arm | Arcs (invalid) | Arc pass | Probe pass | Intent surfaced at probe | Silent violations | False stops | Intent recorded | Commits refused by gate | Cost per arc | Cost per preserved intent | Wall s per session | Wall min per arc | Wall min per passing arc |');
+  L.push('|---|---|---|---|---|---|---|---|---|---|---|---|---|---|');
   const money = (x: number) => `$${x.toFixed(2)}`;
   for (const arm of arms) {
     const c = cells.get(`all\u0000${arm}`); if (!c) continue;
     const valid = c.arcs - c.invalid;
-    L.push(`| ${arm} | ${c.arcs} (${c.invalid}) | ${pct(c.pass, valid)} | ${pct(c.probes_pass, c.probes)} | ${pct(c.surfaced, c.probes)} | ${pct(c.silent, c.probes)} | ${pct(c.false_stops, c.controls)} | ${pct(c.recorded, c.intents)} | ${c.gated ? pct(c.gate_blocked, c.gated) : 'not exercised'} | ${valid ? money(c.cost_usd / valid) : '–'} | ${c.pass ? money(c.cost_usd / c.pass) : '–'} | ${c.sessions ? Math.round(c.wall_seconds / c.sessions) : '–'} |`);
+    L.push(`| ${arm} | ${c.arcs} (${c.invalid}) | ${pct(c.pass, valid)} | ${pct(c.probes_pass, c.probes)} | ${pct(c.surfaced, c.probes)} | ${pct(c.silent, c.probes)} | ${pct(c.false_stops, c.controls)} | ${pct(c.recorded, c.intents)} | ${c.gated ? pct(c.gate_blocked, c.gated) : 'not exercised'} | ${valid ? money(c.cost_usd / valid) : '–'} | ${c.pass ? money(c.cost_usd / c.pass) : '–'} | ${c.sessions ? Math.round(c.wall_seconds / c.sessions) : '–'} | ${valid ? (c.wall_seconds / 60 / valid).toFixed(1) : '–'} | ${c.pass ? (c.wall_seconds / 60 / c.pass).toFixed(1) : '–'} |`);
   }
   L.push('');
-  L.push('Cost is the agent sessions only (Claude Code\'s reported cost, subagents included); the judge is in the next table. Cost per preserved intent is the agent cost of all valid arcs divided by the passing arcs. Agent spend on invalid or unfinished arcs is in neither and is listed below.');
+  L.push('Cost is the agent sessions only (Claude Code\'s reported cost, subagents included); the judge is in the next table. Cost per preserved intent is the agent cost of all valid arcs divided by the passing arcs: the expected spend to get one task done when a failed arc is rerun until it passes. Wall time is the time the agent sessions ran (setup, tests and judging excluded); per passing arc it is the same expected figure in minutes. Agent spend on invalid or unfinished arcs is in neither and is listed below.');
   L.push('');
   L.push('## Tokens and spend per arc, by arm');
   L.push('');
