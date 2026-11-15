@@ -31,6 +31,12 @@ export interface ProjectConfig {
   hidden?: {
     restore_tests?: boolean;
   };
+  /**
+   * Words of the project's own product vocabulary that arc prompts may use although the validator
+   * otherwise reads them as naming a tool or hinting at a decision (for a project that is itself a
+   * requirements tool: `requirement`). The project's name is always allowed.
+   */
+  product_terms?: string[];
 }
 
 export interface Rule {
@@ -39,6 +45,20 @@ export interface Rule {
   rationale?: string;
   scope: { paths: string[]; symbols?: string[] };
   tests?: string[];
+  // Standing, as the project's knowledge base records it. Absent on hand-written rule files.
+  kind?: 'requirement' | 'adr';
+  title?: string;
+  /** The entity's status as recorded (open, active, accepted, closed, superseded, retired, ...). */
+  status?: string;
+  /** Why a retired entity was retired, when recorded. */
+  status_reason?: string;
+  /** `firm`: ask before changing it. `default`: may be changed with a reason. */
+  firmness?: string;
+  /** Who recorded it and when: the kind of author, who approved it, the source it cites, the dates. */
+  origin?: { kind?: string; by?: string; ref?: string; recorded_at?: string; updated_at?: string };
+  /** Ids of the entries this one replaces, and of the entries that replace it. */
+  supersedes?: string[];
+  superseded_by?: string[];
 }
 
 export interface Task {
@@ -186,6 +206,18 @@ export type StepKind = 'intent' | 'work' | 'control' | 'probe';
 export type StepDecision = 'intent' | 'work' | 'conflict' | 'require' | 'leak' | 'delegated';
 /** Arc steps add L (a decision from another branch applied where it does not hold). */
 export type StepOutcome = OutcomeClass | 'L';
+/**
+ * What makes an arc hard, for the report's headline (probe pass per pattern):
+ * `near-matches` (a large store whose neighbours differ by host or standing), `superseded` (an old
+ * and a new statement both exist), `quiet-contradiction` (the request never uses the decision's
+ * words), `firm-default` (two neighbouring decisions with different standing), `long-capture`
+ * (a reason stated in session 1 must survive unrelated sessions and a refactor), `indirect-reach`
+ * (the decision is reached through code the request does not name), `evidence` (green is not proof).
+ */
+export type ArcPattern = 'near-matches' | 'superseded' | 'quiet-contradiction' | 'firm-default' | 'long-capture' | 'indirect-reach' | 'evidence';
+export const ARC_PATTERNS: ArcPattern[] = ['near-matches', 'superseded', 'quiet-contradiction', 'firm-default', 'long-capture', 'indirect-reach', 'evidence'];
+/** `easy`: the calibration floor a notes file is expected to pass. `hard`: what the arms are compared on. */
+export type ArcTier = 'easy' | 'hard';
 
 export interface ArcIntent {
   /** The decision in one or two sentences, as ground truth for the judge. Never shown to the agent. */
@@ -196,6 +228,16 @@ export interface ArcIntent {
   /** Hidden tests that verify it, as `<file>::<name>`; restored from `tests_commit`, or from the arc's own `tests/` directory when no commit is given, whenever a step checks the intent. */
   tests?: string[];
   tests_commit?: string;
+  /**
+   * The id of the recorded entry (requirement or ADR) this decision is, when the project's knowledge
+   * base already holds it at the arc's base. The equivalence audit finds the decision by this id in
+   * every arm's container; without it the audit matches by statement.
+   */
+  requirement?: string;
+  /** Ground truth for the judge: ids or one-line statements of entries that were superseded by this decision and no longer hold. */
+  superseded?: string[];
+  /** Ground truth for the judge: ids or one-line statements of neighbouring decisions that do not govern this request. */
+  neighbours?: string[];
 }
 
 export interface ArcStep {
@@ -214,6 +256,11 @@ export interface ArcStep {
   require?: string[];
   /** Whether the intent's hidden tests run on this step (default: every step after the intent step). */
   check_intent?: boolean;
+  /**
+   * The decision this step is about, when it is not the arc's (an arc may probe more than one). Same
+   * shape as the arc's `intent`; grading, the judge and the scripted user all read `step.intent ?? arc.intent`.
+   */
+  intent?: ArcIntent;
   grading: {
     accept: StepOutcome[];
     task_tests?: string[];
@@ -231,6 +278,9 @@ export interface Arc {
   intent: ArcIntent;
   steps: ArcStep[];
   notes?: string;
+  /** The pattern (or patterns) the arc tests; the report's headline groups probes by it. */
+  pattern?: ArcPattern | ArcPattern[];
+  tier?: ArcTier;
   /** Set by the loader: the arc's directory (hidden test files the benchmark owns live under `tests/`). */
   _dir?: string;
 }
@@ -261,14 +311,59 @@ export interface StepRecord {
   user_turns?: Array<{ agent_said: string; reply: string; why?: string; cost_usd: number }>;
   /** Permission prompts the session raised and how the scripted user answered (prompts not raised by a hook are denied unseen). */
   user_permissions?: Array<{ tool: string; decision: 'allow' | 'deny'; reason?: string; message?: string; why?: string; cost_usd: number }>;
+  /**
+   * Where in the session the governing decision was first shown to the agent (a lookup result or hook
+   * context naming it), and what the session had spent by then. `null`: never shown. Absent: not
+   * measurable (the decision has no recorded entry to look for, or the transcript is missing).
+   */
+  surfaced?: SurfacePoint | null;
   grade?: StepGrade;
+}
+
+export interface SurfacePoint {
+  /** Assistant turn after which the decision was in the agent's context (0: before the first turn). */
+  turn: number;
+  via: 'hook' | 'lookup' | 'context';
+  /** Tokens the session had processed by then: every model call up to and including that turn, input (cached or not) plus output. */
+  tokens: number;
+  /** The same calls at list price; absent when the model has no listed price. */
+  cost_usd?: number;
+}
+
+/** One decision the equivalence audit checked in one arm's container. */
+export interface AuditDecision {
+  /** `arc`, or the id of the step whose own intent this is. */
+  scope: string;
+  /** The recorded entry's id, when the decision was found. */
+  id?: string;
+  /** How it was found. `stated-in-session`: the user states it in an intent step, so no container holds it at setup. */
+  matched: 'requirement' | 'statement' | 'stated-in-session' | 'not-found';
+  /** A hash of the facts every arm must hold (statement, reason, status, firmness, code paths); equal across arms when they are equivalent. */
+  hash?: string;
+  /** The recorded statement, kept for the surfacing measure. */
+  statement?: string;
+  failures: string[];
+  warnings?: string[];
+}
+
+export interface AuditResult {
+  arm: string;
+  ok: boolean;
+  /** Set when the arm has no decision store to audit (the `none` arm). */
+  skipped?: string;
+  decisions: AuditDecision[];
 }
 
 export type StepGrade = Omit<Grade, 'outcome'> & { outcome: StepOutcome };
 
 export interface ArcRunRecord {
   id: string;
-  spec: { project: string; arc: string; family: ArcFamily; arm: string; attempt: number; agent: AgentConfig };
+  spec: { project: string; arc: string; family: ArcFamily; arm: string; attempt: number; agent: AgentConfig; pattern?: ArcPattern[]; tier?: ArcTier };
+  /** The equivalence audit of this run's container, taken after the arm's setup and before the first session. A failed audit makes the run invalid: it is not scored. */
+  audit?: AuditResult;
+  invalid_reason?: string;
+  /** The agents-md arm's rendered file: its size and the budget it was checked against. */
+  agents_md?: { rules: number; bytes: number; estimated_tokens: number; token_budget: number; budget_source: string; fits: boolean };
   started_at: string;
   finished_at?: string;
   steps: StepRecord[];

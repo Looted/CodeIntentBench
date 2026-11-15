@@ -13,6 +13,8 @@ versions="$(cat "$here/versions.env")"; eval "$versions"
 # finds kibi-mcp by walking up from the workspace), so the project's own
 # package.json and lockfile stay untouched.
 mkdir -p "$run/kibi"
+# Without a package.json here npm installs into the nearest ancestor that has one (or a node_modules), not into this directory.
+[ -f "$run/kibi/package.json" ] || echo '{ "private": true }' > "$run/kibi/package.json"
 ( cd "$run/kibi" && npm install --silent --no-audit --no-fund "kibi-cli@$KIBI_CLI" "kibi-mcp@$KIBI_MCP" "kibi-core@$KIBI_CORE" "kibi-runtime@$KIBI_RUNTIME" )
 # kibi-mcp loads its operations from kibi-runtime and declares it with a caret range, so without the
 # pin above a fresh install picks up whatever runtime npm has newest (a later release's operations

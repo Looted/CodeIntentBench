@@ -1,16 +1,18 @@
 // Runs a feature arc: several fresh agent sessions on one carried workspace,
 // each graded against the arc's recorded intent.
 import { createHash } from 'node:crypto';
-import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
-import { hostPathPrepend, mergeAgentResults, runAgentWithHost, type AgentResult } from './agent.ts';
+import { decisionNeedles, hostPathPrepend, mergeAgentResults, runAgentWithHost, surfacePoint, type AgentResult } from './agent.ts';
+import { auditContainer, auditSummary } from './audit.ts';
 import { askUser, buildUserPrompt } from './user-sim.ts';
+import { decisionsOf, intentOf, patternsOf } from './intent.ts';
 import { ARMS_DIR, RUNS_DIR, loadProject } from './config.ts';
 import { NON_SOURCE, RULE_RECORD_PATHS, changedFiles, runRegression, runVitest, splitTestRef, toRepoRel } from './grade.ts';
 import { defaultDecision, judgeStep, requiredKeys, armConvention } from './judge-arc.ts';
 import type { JudgeVerdict } from './judge.ts';
 import { must, sh } from './shell.ts';
-import type { AgentConfig, Arc, ArcRunRecord, ArcStep, Grade, ProjectConfig, StepGrade, StepOutcome, StepRecord } from './types.ts';
+import type { AgentConfig, Arc, ArcRunRecord, ArcStep, AuditResult, Grade, ProjectConfig, StepGrade, StepOutcome, StepRecord, SurfacePoint } from './types.ts';
 import { BASE_BRANCH, GIT_IDENTITY, loadArmHost, prepareWorkspace, workspaceDir } from './workspace.ts';
 
 const q = (s: string) => JSON.stringify(s);
@@ -75,6 +77,21 @@ function withHiddenTests(ws: string, files: Map<string, string>, notes: string[]
   }
 }
 
+/**
+ * Where a session first showed the agent the decision its step is about, from the session's
+ * transcripts. Undefined when there is nothing to look for: the arm has no store, or the decision is
+ * stated in the arc and has no recorded entry. In the agents-md arm the whole file is in context
+ * from the first turn.
+ */
+export function surfacedIn(sdir: string, arm: string, audit: AuditResult | undefined, step: ArcStep): SurfacePoint | null | undefined {
+  const d = audit?.decisions.find((x) => x.scope === (step.intent ? step.id : 'arc'));
+  if (!d?.id) return undefined;
+  if (arm === 'agents-md') return { turn: 0, via: 'context', tokens: 0, cost_usd: 0 };
+  const files = existsSync(sdir) ? readdirSync(sdir).filter((f) => /^transcript(-reply\d+)?\.jsonl$/.test(f)).sort((a, b) => (Number(a.match(/reply(\d+)/)?.[1] ?? 0)) - (Number(b.match(/reply(\d+)/)?.[1] ?? 0))) : [];
+  if (files.length === 0) return undefined;
+  return surfacePoint(files.map((f) => readFileSync(join(sdir, f), 'utf8')), decisionNeedles(d.id, d.statement));
+}
+
 export interface StepGradeInputs {
   dir: string; ws: string; project: ProjectConfig; arc: Arc; step: ArcStep; index: number; arm: string;
   agent: AgentResult; startCommit: string; recordWritten: boolean; judgeModel: string; skipJudge?: boolean; branchNote?: string;
@@ -88,8 +105,10 @@ export async function gradeStep(inp: StepGradeInputs): Promise<StepGrade> {
   const hidden = new Map<string, string>();
   const checkIntent = step.check_intent ?? (step.kind !== 'intent');
   const ownTests = arc._dir ? `dir:${join(arc._dir, 'tests')}` : undefined;
-  const intentSource = arc.intent.tests_commit ?? ownTests;
-  const intentTests = checkIntent && arc.intent.tests?.length && intentSource ? arc.intent.tests : [];
+  // The decision this step is about: its own when the arc probes more than one, otherwise the arc's.
+  const intent = intentOf(arc, step);
+  const intentSource = intent.tests_commit ?? ownTests;
+  const intentTests = checkIntent && intent.tests?.length && intentSource ? intent.tests : [];
   for (const ref of intentTests) hidden.set(toRepoRel(project, splitTestRef(ref).file), intentSource!);
   for (const ref of step.grading.task_tests ?? []) {
     const file = toRepoRel(project, splitTestRef(ref).file);
@@ -201,18 +220,47 @@ export async function runArc(projectName: string, arc: Arc, arm: string, attempt
   const id = `${new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19)}-a${attempt}`;
   const dir = arcRunDir(projectName, arc.id, arm, id);
   mkdirSync(dir, { recursive: true });
-  const record: ArcRunRecord = { id, spec: { project: projectName, arc: arc.id, family: arc.family, arm, attempt, agent: opts.agent }, started_at: new Date().toISOString(), steps: [] };
+  const patterns = patternsOf(arc);
+  const record: ArcRunRecord = { id, spec: { project: projectName, arc: arc.id, family: arc.family, arm, attempt, agent: opts.agent, ...(patterns.length ? { pattern: patterns } : {}), ...(arc.tier ? { tier: arc.tier } : {}) }, started_at: new Date().toISOString(), steps: [] };
   const save = () => writeFileSync(join(dir, 'run.json'), JSON.stringify(record, null, 2));
   save();
   opts.log(`arc ${arc.id} / ${arm} / attempt ${attempt} → ${dir}`);
   const sources = arc.steps.map((s) => s.source?.commit).filter((c): c is string => Boolean(c));
-  const { base } = prepareWorkspace(dir, project, { base_commit: arc.base_commit, source: { commit: sources[0] } }, arm, opts.log, { rules: 'none', convention: true });
+  // The arm's setup may size its container against the agent's model (agents-md: the file must fit the context window).
+  process.env.CIB_AGENT_MODEL = opts.agent.model;
+  const sizeFile = join(dir, 'agents-md-size.json');
+  const readSize = () => { if (existsSync(sizeFile)) { try { record.agents_md = JSON.parse(readFileSync(sizeFile, 'utf8')); } catch { /* keep the raw file */ } } };
+  const endUnscored = (reason: string) => {
+    record.invalid = true; record.invalid_reason = reason; record.pass = false;
+    record.agent_cost_usd = 0; record.judge_cost_usd = 0; record.user_sim_cost_usd = 0; record.cost_usd = 0;
+    record.finished_at = new Date().toISOString();
+    save();
+    opts.log(`arc ${arc.id} / ${arm} not scored: ${reason}`);
+    if (!opts.keep) rmSync(workspaceDir(dir), { recursive: true, force: true });
+    return record;
+  };
+  try {
+    prepareWorkspace(dir, project, { base_commit: arc.base_commit, source: { commit: sources[0] } }, arm, opts.log, { rules: 'none', convention: true });
+  } catch (e) {
+    // An AGENTS.md that does not fit the model's context is a result, not a harness error: recorded, never truncated.
+    readSize();
+    if (record.agents_md && !record.agents_md.fits) return endUnscored(`agents-md does not fit: ${record.agents_md.bytes} bytes, about ${record.agents_md.estimated_tokens} tokens, over the budget of ${record.agents_md.token_budget} (${record.agents_md.budget_source})`);
+    throw e;
+  }
+  readSize();
   // Every commit a step may need (hidden tests, replay) must be reachable in the shared clone.
   const ws = workspaceDir(dir);
-  for (const c of [...sources, arc.intent.tests_commit].filter(Boolean)) sh(`git -C ${q(ws)} cat-file -e ${c}^{commit}`, { quiet: true });
+  for (const c of [...sources, ...decisionsOf(arc).map((d) => d.intent.tests_commit)].filter(Boolean)) sh(`git -C ${q(ws)} cat-file -e ${c}^{commit}`, { quiet: true });
   const host = loadArmHost(arm);
   ENV = { ...BASE_ENV, PATH: [...hostPathPrepend(host, dir), BASE_ENV.PATH ?? ''].join(':') };
   writeFileSync(join(dir, 'arc.json'), JSON.stringify(arc, null, 2));
+  // The equivalence audit: this arm's container must hold every decision the arc is about, with its
+  // reason, status, firmness and code paths, before any session runs. A failed audit is not scored.
+  const audit: AuditResult = auditContainer(arc, arm, ws, dir);
+  record.audit = audit;
+  writeFileSync(join(dir, 'audit.json'), JSON.stringify(audit, null, 2));
+  for (const line of auditSummary(audit)) opts.log(`audit ${line}`);
+  if (!audit.ok) return endUnscored(`equivalence audit failed: ${audit.decisions.filter((d) => d.failures.length).map((d) => `${d.scope}${d.id ? ` ${d.id}` : ''}: ${d.failures.join('; ')}`).join(' | ')}`);
   let agentCost = 0;
   let judgeCost = 0;
   let userCost = 0;
@@ -254,7 +302,7 @@ export async function runArc(projectName: string, arc: Arc, arm: string, attempt
 
     const firstBranch = arc.steps[0].branch ?? BASE_BRANCH;
     const branchNote = arc.family === 'branch' && wanted !== firstBranch ? `This session runs on branch ${wanted}; the recorded decision was made on branch ${firstBranch} and has not been merged here, so it does not hold on this branch.` : undefined;
-    if (opts.agent.user_permissions) writeFileSync(join(sdir, 'user-context.json'), JSON.stringify({ request: step.prompt, statement: arc.intent.statement, reason: arc.intent.reason, branch_note: branchNote, model: opts.userModel ?? opts.judgeModel, style: opts.userStyle ?? 'task' }, null, 2));
+    if (opts.agent.user_permissions) writeFileSync(join(sdir, 'user-context.json'), JSON.stringify({ request: step.prompt, statement: intentOf(arc, step).statement, reason: intentOf(arc, step).reason, branch_note: branchNote, model: opts.userModel ?? opts.judgeModel, style: opts.userStyle ?? 'task' }, null, 2));
     let agent = opts.replay ? opts.replay(ws, step, sdir) : await runAgentWithHost(sdir, arm, opts.agent, step.prompt, host, ws, dir);
     // The scripted user answers when the session stopped to wait on the user, and the session resumes with the answer.
     if (!opts.replay && (opts.userReplies ?? 0) > 0) {
@@ -278,6 +326,8 @@ export async function runArc(projectName: string, arc: Arc, arm: string, attempt
     rec.usage = agent.usage; rec.terminal_reason = agent.terminal_reason; rec.final_answer = agent.final_answer;
     rec.first_lookup_turn = agent.first_rule_lookup_turn; rec.first_edit_turn = agent.first_edit_turn;
     if (agent.user_turns) rec.user_turns = agent.user_turns;
+    const surfaced = surfacedIn(sdir, arm, audit, step);
+    if (surfaced !== undefined) rec.surfaced = surfaced;
     const permLog = join(sdir, 'user-permissions.jsonl');
     if (existsSync(permLog)) {
       rec.user_permissions = readFileSync(permLog, 'utf8').trim().split('\n').filter(Boolean).map((l) => JSON.parse(l)).map((p: any) => ({ tool: p.tool, decision: p.decision, reason: p.reason, message: p.message, why: p.why, cost_usd: p.cost_usd ?? 0 }));
