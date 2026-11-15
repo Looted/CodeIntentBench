@@ -19,7 +19,10 @@ const SCHEMA = {
   },
 };
 
-export function buildUserPrompt(arc: Arc, step: ArcStep, agentMessage: string, branchNote: string | undefined, round: number): string {
+/** `task`: the user wants what it asked for done and declines optional extra work; `agreeable`: it approves whatever the agent proposes along the way. */
+export type UserStyle = 'task' | 'agreeable';
+
+export function buildUserPrompt(arc: Arc, step: ArcStep, agentMessage: string, branchNote: string | undefined, round: number, style: UserStyle = 'task'): string {
   const L: string[] = [];
   L.push('You play the user of a coding agent in a benchmark. You asked the agent for something; it has just ended its turn with the message below. Decide whether it is waiting on you, and if so, answer as this user would.');
   L.push('');
@@ -38,6 +41,9 @@ export function buildUserPrompt(arc: Arc, step: ArcStep, agentMessage: string, b
   L.push('- If the agent cites the recorded decision but the branch note says it does not hold here, say it does not apply on this branch and to go ahead.');
   L.push('- If the agent raises a constraint that is not the recorded decision above, judge it as a reasonable owner would: when it is real and visible in the code, follow the agent\'s advice; otherwise say to go ahead with what you asked.');
   L.push('- For any other question (a detail, a choice between options), pick the option that does exactly what you asked, briefly.');
+  if (style === 'task') {
+    L.push('- You want the task you asked for finished, with no more work than it needs. Approve what the request needs and what the project\'s tooling requires before that work counts as done (for example approving a record of the decision you stated). Decline optional extras the agent offers: further modelling, proofs or evidence, sign-off views, tests or clean-up you did not ask for, fixing findings that were there before, staging or committing. Say so in a few words ("No need, leave it there."). When the task is done and only extras are offered, needs_reply is false.');
+  }
   L.push('- Never mention the recorded decision, its reason or anything else from the private section unless the agent\'s message already raised it. Do not add new requirements. Do not explain the benchmark.');
   if (round > 1) L.push(`- This is reply ${round}; keep it as short as the first.`);
   L.push('');
@@ -68,7 +74,7 @@ export function askUser(dir: string, round: number, prompt: string, model: strin
 }
 
 /** What the scripted user knows in a session, written to the step dir for the permission prompt server. */
-export interface UserContext { request: string; statement: string; reason: string; branch_note?: string; model: string }
+export interface UserContext { request: string; statement: string; reason: string; branch_note?: string; model: string; style?: UserStyle }
 
 const PERMISSION_SCHEMA = {
   type: 'object', additionalProperties: false, required: ['allow', 'message', 'why'],
@@ -102,6 +108,7 @@ export function askPermission(dir: string, ctx: Partial<UserContext>, tool: stri
   L.push('- Allow when the call does what you asked and does not make the recorded decision above false (where it holds on this branch). Touching the same code is fine.');
   L.push('- Decline when the call would break the recorded decision above and you did not ask to change that decision; say to keep the decision.');
   L.push('- If you explicitly asked in this session to change the decision, allow it.');
+  if ((ctx.style ?? 'agreeable') === 'task') L.push('- Decline calls that only do optional extra work you did not ask for (staging or committing, sign-off views, extra modelling); say no need.');
   L.push('- Never reveal the recorded decision unless the hook or the call already shows it.');
   L.push('');
   L.push('Return JSON matching the schema.');
