@@ -22,3 +22,21 @@ export function priceTokens(model: string, t: TokenCounts): number | undefined {
   if (!p) return undefined;
   return (t.input * p.input + t.output * p.output + t.cache_read * p.cache_read + t.cache_write_5m * p.cache_write_5m + t.cache_write_1h * p.cache_write_1h) / 1e6;
 }
+
+// Context windows in tokens, used only by the agents-md arm's size guard. The current Claude models
+// take one million tokens; override or extend with CIB_MODEL_CONTEXT_TOKENS='{"model":200000}'.
+const DEFAULT_CONTEXT_TOKENS = 1_000_000;
+const CONTEXT_TOKENS: Record<string, number> = { 'claude-haiku-4-5': 200_000 };
+
+export function contextTokensFor(model: string | undefined): number {
+  let extra: Record<string, number> = {};
+  try { extra = process.env.CIB_MODEL_CONTEXT_TOKENS ? JSON.parse(process.env.CIB_MODEL_CONTEXT_TOKENS) : {}; } catch { /* ignored: bad override */ }
+  const table = { ...CONTEXT_TOKENS, ...extra };
+  if (!model) return DEFAULT_CONTEXT_TOKENS;
+  return table[model] ?? Object.entries(table).find(([k]) => model.startsWith(k))?.[1] ?? DEFAULT_CONTEXT_TOKENS;
+}
+
+/** A rough token count for prose and identifiers: four bytes per token. The agents-md guard reports the bytes beside it. */
+export function estimateTokens(text: string): number {
+  return Math.ceil(Buffer.byteLength(text, 'utf8') / 4);
+}

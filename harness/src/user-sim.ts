@@ -6,6 +6,7 @@
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { sh } from './shell.ts';
+import { intentOf } from './intent.ts';
 import type { Arc, ArcStep } from './types.ts';
 
 export interface UserTurn { agent_said: string; needs_reply: boolean; reply?: string; why?: string; cost_usd: number }
@@ -30,8 +31,9 @@ export function buildUserPrompt(arc: Arc, step: ArcStep, agentMessage: string, b
   L.push(step.prompt.trim());
   L.push('');
   L.push('## What you know as the project owner (private)');
-  L.push(`Recorded decision: ${arc.intent.statement.trim()}`);
-  L.push(`Its reason: ${arc.intent.reason.trim()}`);
+  const intent = intentOf(arc, step);
+  L.push(`Recorded decision: ${intent.statement.trim()}`);
+  L.push(`Its reason: ${intent.reason.trim()}`);
   if (branchNote) L.push(`Branch: ${branchNote}`);
   L.push('');
   L.push('## How you answer');
