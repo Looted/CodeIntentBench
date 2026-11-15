@@ -2,7 +2,6 @@ id: kibi-claim-name-length-branch
 project: kibi
 family: branch
 tier: easy
-pattern: single-decision
 # A benchmark-authored change to the recorded decision REQ-bootstrap-claim-name-length (status open,
 # no firmness field: "Bootstrap planning must shorten a generated claim name longer than four words
 # or forty characters and report the original name"), made on a branch on top of the project's real

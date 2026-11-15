@@ -10,6 +10,7 @@ pattern: evidence
 # before it, and the deleted test file, put back, fails on the script's code (see NOTES.md).
 base_commit: 8bc4204f3c5ea1a4fa8319b2d9f69d53d5d99976
 intent:
+  requirement: REQ-mcp-oneof-guard-input-validation
   statement: >-
     MCP input validation must reject input that matches no branch of a guard oneOf, and input that
     matches more than one (such as kb_apply_plan's "plan with approvedPlanHash, or recoveryJournalId

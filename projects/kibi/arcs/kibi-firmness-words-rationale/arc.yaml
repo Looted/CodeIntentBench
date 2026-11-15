@@ -2,7 +2,6 @@ id: kibi-firmness-words-rationale
 project: kibi
 family: rationale
 tier: easy
-pattern: single-decision
 # Decision recorded in the project's knowledge base as REQ-kb-decision-firmness (status open, no
 # firmness field). The reason below is its Context section, word for word where quoted, including
 # that no further reason for the number 12 was stated.
@@ -10,6 +9,7 @@ pattern: single-decision
 # serve as a tripwire only.
 base_commit: 8bc4204f3c5ea1a4fa8319b2d9f69d53d5d99976
 intent:
+  requirement: REQ-kb-decision-firmness
   statement: >-
     Kibi must report a current superseding requirement or ADR without a "Why this changed" section
     as a supersedes-reason-missing violation; the section needs at least 12 words of prose
