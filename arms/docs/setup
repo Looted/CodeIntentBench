@@ -11,8 +11,14 @@ cat > "$ws/docs/decisions/README.md" <<'MD'
 
 One file per product decision, named `NNNN-short-title.md`, with sections
 **Decision**, **Why** and **Where** (the code paths or functions it applies to).
+
+A file may open with the decision's standing: its **Status** (a decision marked
+"not current" was closed or replaced and no longer holds), its **Firmness** (ask
+before changing a firm decision; a default one may be changed with a stated
+reason), when and by whom it was **Recorded**, and the decisions it
+**Supersedes** or is **Superseded by**.
 MD
-# In rule mode (single-session tasks) the project's rules are rendered as decision files too.
+# The project's rules (rule mode, or a knowledge base exported for an arc) are rendered as decision files.
 if [ -n "$(ls -A "$rules" 2>/dev/null)" ]; then
   here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
   node "$here/../../harness/src/arm-tools/render-docs.ts" "$ws" "$rules"

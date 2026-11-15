@@ -4,7 +4,11 @@
   "title": "CodeIntentBench rule",
   "description": "One recorded project rule. The neutral source every arm renders from.",
   "type": "object",
-  "required": ["id", "statement", "scope"],
+  "required": [
+    "id",
+    "statement",
+    "scope"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -23,17 +27,90 @@
     "scope": {
       "type": "object",
       "description": "Where the rule applies, so arms that link rules to code can do so.",
-      "required": ["paths"],
+      "required": [
+        "paths"
+      ],
       "additionalProperties": false,
       "properties": {
-        "paths": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
-        "symbols": { "type": "array", "items": { "type": "string" } }
+        "paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "symbols": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       }
     },
     "tests": {
       "type": "array",
-      "items": { "type": "string" },
+      "items": {
+        "type": "string"
+      },
       "description": "Hidden rule-test ids that encode this rule. Never shown to the agent."
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "requirement",
+        "adr"
+      ],
+      "description": "Set on rules exported from a knowledge base."
+    },
+    "title": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "description": "The status the knowledge base records (open, active, accepted, closed, superseded, retired, ...). Closed, superseded and retired entries no longer hold."
+    },
+    "status_reason": {
+      "type": "string"
+    },
+    "firmness": {
+      "type": "string",
+      "description": "firm: ask before changing it. default: may be changed with a stated reason."
+    },
+    "origin": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Who recorded it and when.",
+      "properties": {
+        "kind": {
+          "type": "string"
+        },
+        "by": {
+          "type": "string"
+        },
+        "ref": {
+          "type": "string"
+        },
+        "recorded_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        }
+      }
+    },
+    "supersedes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Ids of the entries this one replaces."
+    },
+    "superseded_by": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Ids of the entries that replace this one."
     }
   }
 }

@@ -13,6 +13,7 @@
   "scripts": {
     "cib": "node src/cli.ts",
     "check": "node --check src/cli.ts && node src/cli.ts validate",
+    "test": "node --test test/*.test.ts",
     "typecheck": "tsc --noEmit -p tsconfig.json"
   },
   "dependencies": {
