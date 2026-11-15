@@ -4,7 +4,7 @@ import { join, isAbsolute } from 'node:path';
 import { ARMS_DIR, HARNESS_DIR } from './config.ts';
 import { stream } from './shell.ts';
 import { priceTokens } from './pricing.ts';
-import type { AgentConfig, ArmHost, ModelTokens, Usage } from './types.ts';
+import type { AgentConfig, ArmHost, ModelTokens, SurfacePoint, Usage } from './types.ts';
 import { expandHostValue, workspaceDir } from './workspace.ts';
 
 export interface AgentResult {
@@ -126,6 +126,80 @@ export async function runAgentWithHost(dir: string, arm: string, agent: AgentCon
   return { code: r.code, timed_out: r.timed_out, ...parsed };
 }
 
+/**
+ * A lookup in any arm's decision store: Kibi tools, tracker or memory tools, or reading docs/decisions or AGENTS.md.
+ * The workspace path itself may contain an arm's name (runs/<arc>/kibi/…), so paths are matched on the store's own files, not on the word.
+ */
+export function isDecisionLookup(name: string, input: Record<string, any>): boolean {
+  const target = String(input.command ?? input.file_path ?? input.path ?? '');
+  return /kb_|tracker_|memory_/i.test(name)
+    || (name === 'Bash' && /(^|[\s;&|(])kibi\s/.test(String(input.command ?? '')))
+    || (/^(Bash|Read|Grep|Glob)$/.test(name) && /(^|\/)\.kb\/|docs\/decisions|AGENTS\.md/.test(target));
+}
+
+/** How a recorded entry shows up in what an agent is shown: its id (as written, or with spaces as the tracker titles it) or the opening of its statement. */
+export function decisionNeedles(id: string | undefined, statement: string | undefined): string[] {
+  const out: string[] = [];
+  if (id) { out.push(id.toLowerCase()); if (id.includes('-')) out.push(id.replace(/-/g, ' ').toLowerCase()); }
+  const s = (statement ?? '').replace(/\s+/g, ' ').trim().toLowerCase();
+  if (s.length >= 30) out.push(s.slice(0, 60));
+  return out;
+}
+
+/**
+ * Where a session first showed the agent a given decision, and what the session had spent by then.
+ * `transcripts` are the session's stream-json transcripts in order (the first run, then each
+ * resumption). The decision counts as shown when a result of a lookup in the decision store, or
+ * context a hook injected, contains one of the needles. Reading the code that implements it does
+ * not count. Spend is every model call seen up to that point, subagents included: input (cached or
+ * not) plus output tokens, and the same at list price. Returns null when it was never shown.
+ */
+export function surfacePoint(transcripts: string[], needles: string[]): SurfacePoint | null {
+  if (needles.length === 0) return null;
+  const has = (t: unknown) => { const s = (typeof t === 'string' ? t : JSON.stringify(t ?? '')).replace(/\s+/g, ' ').toLowerCase(); return needles.some((n) => s.includes(n)); };
+  const messages = new Map<string, { model: string; u: any }>();
+  const pending = new Set<string>();
+  let turn = 0;
+  const spent = (via: SurfacePoint['via']): SurfacePoint => {
+    let tokens = 0; let cost = 0; let priced = true;
+    for (const { model, u } of messages.values()) {
+      const w = u.cache_creation_input_tokens ?? 0;
+      const w5 = u.cache_creation?.ephemeral_5m_input_tokens ?? 0, w1 = u.cache_creation?.ephemeral_1h_input_tokens ?? 0;
+      const t = { input: u.input_tokens ?? 0, output: u.output_tokens ?? 0, cache_read: u.cache_read_input_tokens ?? 0, cache_write_5m: w5, cache_write_1h: w5 + w1 > 0 ? w1 : w };
+      tokens += t.input + t.output + t.cache_read + t.cache_write_5m + t.cache_write_1h;
+      const c = priceTokens(model, t);
+      if (c === undefined) priced = false; else cost += c;
+    }
+    return { turn, via, tokens, ...(priced ? { cost_usd: cost } : {}) };
+  };
+  for (const text of transcripts) {
+    for (const line of text.split('\n')) {
+      if (!line.trim()) continue;
+      let ev: any;
+      try { ev = JSON.parse(line); } catch { continue; }
+      if (ev.type === 'system' && ev.subtype === 'hook_response') {
+        let ctx = '';
+        try { const o = JSON.parse(ev.output ?? ev.stdout ?? ''); ctx = o?.hookSpecificOutput?.additionalContext ?? o?.additionalContext ?? o?.systemMessage ?? o?.hookSpecificOutput?.permissionDecisionReason ?? ''; } catch { ctx = String(ev.output ?? ''); }
+        if (ctx && has(ctx)) return spent('hook');
+      }
+      if (ev.type === 'assistant' && ev.message?.usage && ev.message?.id) messages.set(ev.message.id, { model: String(ev.message.model ?? 'unknown'), u: ev.message.usage });
+      if (ev.type === 'assistant' && !ev.parent_tool_use_id) {
+        turn += 1;
+        for (const block of ev.message?.content ?? []) if (block.type === 'tool_use' && typeof block.id === 'string' && isDecisionLookup(String(block.name ?? ''), block.input ?? {})) pending.add(block.id);
+      }
+      if (ev.type === 'user') {
+        for (const block of ev.message?.content ?? []) {
+          if (block.type !== 'tool_result' || !pending.has(block.tool_use_id)) continue;
+          pending.delete(block.tool_use_id);
+          const content = Array.isArray(block.content) ? block.content.map((c: any) => c.text ?? '').join('\n') : block.content;
+          if (has(content)) return spent('lookup');
+        }
+      }
+    }
+  }
+  return null;
+}
+
 export function parseTranscript(text: string): Omit<AgentResult, 'code' | 'timed_out'> {
   const usage: Usage = { input_tokens: 0, cache_read_input_tokens: 0, cache_creation_input_tokens: 0, output_tokens: 0, cost_usd: 0, tool_calls: 0, turns: 0, wall_seconds: 0 };
   const out: Omit<AgentResult, 'code' | 'timed_out'> = { usage, tools_available: [], tool_calls: [], permission_denials: 0 };
@@ -171,12 +245,7 @@ export function parseTranscript(text: string): Omit<AgentResult, 'code' | 'timed
           : typeof input.query === 'string' ? input.query.slice(0, 200)
           : JSON.stringify(input).slice(0, 200);
         out.tool_calls.push({ turn, name, input_summary: summary });
-        // A lookup in any arm's decision store: Kibi tools, tracker or memory tools, or reading docs/decisions or AGENTS.md.
-        // The workspace path itself may contain an arm's name (runs/<arc>/kibi/…), so paths are matched on the store's own files, not on the word.
-        const target = String(input.command ?? input.file_path ?? input.path ?? '');
-        const isRuleLookup = /kb_|tracker_|memory_/i.test(name)
-          || (name === 'Bash' && /(^|[\s;&|(])kibi\s/.test(String(input.command ?? '')))
-          || (/^(Bash|Read|Grep|Glob)$/.test(name) && /(^|\/)\.kb\/|docs\/decisions|AGENTS\.md/.test(target));
+        const isRuleLookup = isDecisionLookup(name, input);
         if (isRuleLookup && out.first_rule_lookup_turn === undefined) out.first_rule_lookup_turn = turn;
         if (isRuleLookup && typeof block.id === 'string') pendingLookups.set(block.id, name);
         const isEdit = EDIT_TOOLS.has(name) || (name === 'Bash' && BASH_WRITE.test(String(input.command ?? '')));

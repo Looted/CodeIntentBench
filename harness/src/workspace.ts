@@ -48,6 +48,8 @@ export interface PrepareOptions {
   rules?: 'applicable' | 'none';
   /** Append the arm's `convention.md` to CLAUDE.md (arcs: the one sentence that says where decisions live). */
   convention?: boolean;
+  /** Skip the project's install and build: enough to inspect what an arm's setup puts in its container (the audit), not to run tests. */
+  skipInstall?: boolean;
 }
 
 /** The project's `env` expanded for one run directory. */
@@ -75,9 +77,11 @@ export function prepareWorkspace(dir: string, project: ProjectConfig, task: Pick
   // Hooks the project installs on `prepare` (husky, lefthook) would interfere with grading commits.
   sh(`git -C ${JSON.stringify(ws)} config core.hooksPath /dev/null`, { quiet: true });
 
-  log(`install: ${project.setup.install}`);
-  must(project.setup.install, { cwd: ws });
-  if (project.setup.build) {
+  if (!opts.skipInstall) {
+    log(`install: ${project.setup.install}`);
+    must(project.setup.install, { cwd: ws });
+  }
+  if (project.setup.build && !opts.skipInstall) {
     log(`build: ${project.setup.build}`);
     must(project.setup.build, { cwd: ws });
   }
