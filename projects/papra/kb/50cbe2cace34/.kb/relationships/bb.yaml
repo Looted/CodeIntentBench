@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-7e235dbc88fa
+    type: verified_by
+    from: REQ-documents-are-never-mutated-after-upload-n-409E8212
+    to: TEST-papra-server-src-modules-documents-documents-usecases
+    created_at: "2026-10-14T12:09:40.376Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: requires_property
+    from: REQ-documents-are-never-mutated-after-upload-n-409E8212
+    to: FACT-papra-document-stored-file-mutated-after-upload
+    created_at: 2026-11-15T21:42:26.799Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-8364985b4e4c
+  - type: constrains
+    from: REQ-documents-are-never-mutated-after-upload-n-409E8212
+    to: FACT-papra-subject-document-stored-file
+    created_at: 2026-11-15T21:42:26.804Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-758d8d35a66e
+  - type: requires_property
+    from: REQ-documents-are-never-mutated-after-upload-n-409E8212
+    to: FACT-papra-document-stored-file-retrieved-byte-identical
+    created_at: 2026-11-15T21:42:26.805Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-bf1debc03d40

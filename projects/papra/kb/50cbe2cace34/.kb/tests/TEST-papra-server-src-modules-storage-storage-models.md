@@ -1,0 +1,16 @@
+---
+title: storage.models.test.ts
+status: active
+sourceFile: apps/papra-server/src/modules/storage/storage.models.test.ts
+text_ref: apps/papra-server/src/modules/storage/storage.models.test.ts
+origin:
+  kind: agent
+  recorded_at: '2026-11-15T23:01:43.149Z'
+id: TEST-papra-server-src-modules-storage-storage-models
+type: test
+---
+Existing unit test file apps/papra-server/src/modules/storage/storage.models.test.ts from the project's own suite.
+
+## Context
+
+Linked at onboarding as the test evidence for the symbols it names (addSuffixToStorageKey and others in the same module); it exercises the module, not necessarily every clause of the requirements those symbols implement.

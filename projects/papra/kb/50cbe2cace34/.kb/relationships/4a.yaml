@@ -1,0 +1,43 @@
+relationships:
+  - id: rel-e934f10c7286
+    type: requires_property
+    from: REQ-papra-only-owners-and-admins-invite
+    to: FACT-papra-invitations-invitation-roles-allowed-to-invite-or-resend
+    created_at: "2026-11-15T23:01:00.287Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-only-owners-and-admins-invite
+    to: FACT-papra-subject-invitations-invitation
+    created_at: 2026-11-15T23:01:00.287Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b6c2868513d0
+  - type: requires_predicate
+    from: REQ-papra-only-owners-and-admins-invite
+    to: FACT-papra-perm-regular-member-send-invitation
+    created_at: 2026-11-15T23:01:00.297Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-e49366bbacd0
+  - type: requires_predicate
+    from: REQ-papra-only-owners-and-admins-invite
+    to: FACT-papra-perm-non-member-send-invitation
+    created_at: 2026-11-15T23:01:00.300Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-772562670e96
+  - type: restates
+    from: REQ-papra-only-owners-and-admins-invite
+    to: REQ-only-privileged-members-of-an-organization-FCDD9696
+    created_at: 2026-11-15T23:01:00.304Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-bac813bee0c5
+  - type: verified_by
+    from: REQ-papra-only-owners-and-admins-invite
+    to: TEST-papra-server-src-modules-organizations-organizations-usecases
+    created_at: 2026-11-15T23:02:12.008Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2467beecfba8

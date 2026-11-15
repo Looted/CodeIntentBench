@@ -1,0 +1,36 @@
+relationships:
+  - id: rel-f5b618d22334
+    type: requires_property
+    from: REQ-papra-plan-storage-and-file-size-limits
+    to: FACT-papra-plans-upload-limits-rejects-file-over-max-file-size
+    created_at: "2026-11-15T22:58:07.933Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-plan-storage-and-file-size-limits
+    to: FACT-papra-subject-plans-upload-limits
+    created_at: 2026-11-15T22:58:07.933Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-982abb6a4337
+  - type: requires_property
+    from: REQ-papra-plan-storage-and-file-size-limits
+    to: FACT-papra-plans-upload-limits-rejects-upload-over-storage-quota
+    created_at: 2026-11-15T22:58:07.942Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-173caf326e7b
+  - type: requires_property
+    from: REQ-papra-plan-storage-and-file-size-limits
+    to: FACT-papra-plans-upload-limits-persists-anything-on-rejection
+    created_at: 2026-11-15T22:58:07.945Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-097b8ec1064b
+  - type: verified_by
+    from: REQ-papra-plan-storage-and-file-size-limits
+    to: TEST-papra-server-src-modules-documents-documents-usecases
+    created_at: 2026-11-15T22:59:15.719Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-eb10be8bf51a
