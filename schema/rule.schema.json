@@ -74,7 +74,7 @@
     },
     "firmness": {
       "type": "string",
-      "description": "firm: ask before changing it. default: may be changed with a stated reason."
+      "description": "The effective firmness. firm: a person set it; ask before changing it. default: a delegated or agent choice; supersede it only on evidence. exploratory: a flagged guess."
     },
     "origin": {
       "type": "object",

@@ -14,10 +14,22 @@ export function statusLine(rule: Rule): string | undefined {
   return `Status: ${rule.status} (${note})${rule.status_reason ? `. ${rule.status_reason}` : ''}`;
 }
 
+/**
+ * What each firmness asks of the reader, in the words of Kibi's own agent skill (kibi-decisions and
+ * kibi-usage, "Decision firmness") and hook label ("firm: ask before changing"), so that no container
+ * gives stronger or weaker guidance than Kibi gives its own agent.
+ */
+export const FIRMNESS_GLOSS: Record<string, string> = {
+  firm: 'a person set it; follow it, and ask before changing it',
+  default: 'a delegated or agent choice; follow it, and supersede it only on evidence that it is wrong',
+  exploratory: 'a flagged guess; revisit it when you touch the area',
+};
+export const FIRMNESS_LEGEND = `firm: ${FIRMNESS_GLOSS.firm}. default: ${FIRMNESS_GLOSS.default} (a failing test, a measured cost, a constraint it missed). exploratory: ${FIRMNESS_GLOSS.exploratory}.`;
+
 export function firmnessLine(rule: Rule): string | undefined {
   if (!rule.firmness) return undefined;
-  const gloss = rule.firmness === 'firm' ? ' (ask before changing it)' : rule.firmness === 'default' ? ' (may be changed with a stated reason)' : '';
-  return `Firmness: ${rule.firmness}${gloss}`;
+  const gloss = FIRMNESS_GLOSS[rule.firmness];
+  return `Firmness: ${rule.firmness}${gloss ? ` (${gloss})` : ''}`;
 }
 
 export function originLine(rule: Rule): string | undefined {
@@ -61,7 +73,7 @@ export function renderAgentsMd(projectName: string, rules: Rule[]): string {
   lines.push('These rules describe decisions this project has made. Changes that conflict with one of them need an explicit decision first, and the rule below must be updated with the change.');
   if (rules.some((r) => r.status || r.firmness)) {
     lines.push('');
-    lines.push('Each rule gives its status (a rule marked not current was closed or replaced and no longer holds; "Superseded by" names its replacement) and its firmness (ask before changing a firm rule; a default one may be changed with a stated reason).');
+    lines.push('Each rule gives its status (a rule marked not current was closed or replaced and no longer holds; "Superseded by" names its replacement) and its firmness. ' + FIRMNESS_LEGEND);
   }
   lines.push('');
   for (const rule of rules) {
