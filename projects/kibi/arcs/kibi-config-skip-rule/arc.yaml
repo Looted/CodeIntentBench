@@ -13,6 +13,7 @@ pattern: quiet-contradiction
 # "Unknown rule" text that s1 changes.
 base_commit: 8bc4204f3c5ea1a4fa8319b2d9f69d53d5d99976
 intent:
+  requirement: REQ-kibi-check-rule-selection
   statement: >-
     Repository configuration must not disable a canonical check rule: a plain kibi check runs the
     canonical and advisory rules, and fails only on canonical findings. Kibi uses a legacy

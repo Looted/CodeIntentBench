@@ -2,7 +2,7 @@ id: kibi-hook-manager-standing
 project: kibi
 family: standing
 tier: hard
-pattern: firm-vs-default
+pattern: firm-default
 # K3 of the hard tier: two neighbouring decisions about `kibi init` and Git hooks with different
 # standing, verified at the base:
 #   REQ-git-hook-manager-integration  status open, firmness firm     (origin: "Maintainer request, 2026-10-29")
@@ -16,6 +16,9 @@ pattern: firm-vs-default
 # the hidden tests. NOTES.md records the checks.
 base_commit: 8bc4204f3c5ea1a4fa8319b2d9f69d53d5d99976
 intent:
+  requirement: REQ-git-hook-manager-integration
+  neighbours:
+    - REQ-git-hook-effective-install
   statement: >-
     `kibi init` must not install Git hooks when lefthook, husky or the pre-commit framework manages
     them, and must print that manager's configuration for Kibi's hook commands instead. It writes
@@ -37,6 +40,9 @@ steps:
     decide: delegated
     check_intent: false
     intent:
+      requirement: REQ-git-hook-effective-install
+      neighbours:
+        - REQ-git-hook-manager-integration
       statement: >-
         `kibi init` must report a per-hook installation result and must not announce success for a
         foreign hook that it left untouched. It installs hooks into Git's effective hooks directory
