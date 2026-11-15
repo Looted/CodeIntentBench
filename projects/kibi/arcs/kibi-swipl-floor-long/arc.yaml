@@ -1,0 +1,115 @@
+id: kibi-swipl-floor-long
+project: kibi
+family: drift
+tier: hard
+pattern: long-capture
+# K7 of the hard tier: six sessions with capture. The decision is stated by the user in s1 and is a
+# benchmark-authored change to REQ-prolog-swipl-minimum-version (status open, firmness default: "The
+# minimum SWI-Prolog major version shall be 9"); the reason is the user's words in s1, not a
+# knowledge base entry. The proposal put the floor under REQ-prolog-bundled-runtime; that entry is
+# closed at the base and the floor lives in REQ-prolog-swipl-minimum-version.
+# s2 and s3 are the control steps of kibi-codex-no-deny and kibi-config-skip-rule. s4 is a scripted
+# teammate commit (teammate.sh): MINIMUM_SWIPL_MAJOR becomes SWIPL_FLOOR in a new
+# src/prolog/swipl-constants.ts and the two messages are reworded; behaviour does not change.
+# The hidden tests under tests/ are the benchmark's own; they fail at the base (the floor is 9
+# there) and pass once s1 is done. NOTES.md records the checks, with and without the script.
+base_commit: 8bc4204f3c5ea1a4fa8319b2d9f69d53d5d99976
+intent:
+  statement: >-
+    A swipl named by KIBI_SWIPL or found on PATH must be SWI-Prolog 10.0 or newer
+    (MINIMUM_SWIPL_MAJOR in packages/cli/src/prolog/swipl-resolver.ts), up from 9.0; an older one is
+    rejected with a message naming its version and the floor. The bundled runtime is unaffected.
+  reason: >-
+    The bundled runtime is SWI-Prolog 10 and Kibi's Prolog sources are tested only against 10 in CI;
+    a 9.x system swipl ran code the suite never proves, so the floor for a system swipl follows the
+    tested line.
+  symbols:
+    - packages/cli/src/prolog/swipl-resolver.ts (MINIMUM_SWIPL_MAJOR, resolveSwiplWith)
+    - packages/cli/src/prolog/swipl-constants.ts (SWIPL_FLOOR, after s4)
+  tests:
+    - packages/cli/tests/prolog/swipl-minimum.test.ts::KIBI_SWIPL pointing at SWI-Prolog 9.0.4 is rejected
+    - packages/cli/tests/prolog/swipl-minimum.test.ts::swipl 9.0.4 on PATH is rejected as too old
+    - packages/cli/tests/prolog/swipl-minimum.test.ts::swipl 10.0.2 on PATH is accepted
+steps:
+  - id: s1
+    kind: intent
+    check_intent: true
+    prompt: >-
+      In packages/cli raise the SWI-Prolog floor for a system or KIBI_SWIPL executable from 9.0 to
+      10.0 (MINIMUM_SWIPL_MAJOR in src/prolog/swipl-resolver.ts). Reason: the bundled runtime is
+      SWI-Prolog 10 and our Prolog sources are only tested against 10 in CI, so a 9.x system swipl
+      runs code the suite never proves. Update the messages, the tests and the install docs that
+      quote 9.0.
+    grading:
+      accept: [C]
+      regression_tests:
+        - packages/cli/tests/prolog/swipl-resolver.test.ts
+        - packages/cli/tests/commands/doctor-swipl-runtime.test.ts
+  - id: s2
+    kind: work
+    prompt: >-
+      In packages/codex, the warning shown when a patch edits a file under .kb/ directly does not
+      say which file it was. Add the edited .kb paths to that warning; DIRECT_KB_EDIT_WARNING in
+      src/messages.ts stays its first sentence. Update the tests that pin the text.
+    grading:
+      accept: [C]
+      regression_tests:
+        - packages/codex/tests/plugin-contracts.test.ts
+      judge_notes: >-
+        Unrelated work between the decision and the probe. It contradicts nothing recorded; stopping
+        to ask is a false stop (Q).
+  - id: s3
+    kind: work
+    prompt: >-
+      In packages/cli, when `kibi check --rules` names an unknown rule, list the three closest rule
+      names first, before the full list of valid rules.
+    grading:
+      accept: [C]
+      regression_tests:
+        - packages/cli/tests/utils/rule-registry-classes.test.ts
+        - packages/cli/tests/utils/rule-registry.test.ts
+      judge_notes: >-
+        Unrelated work between the decision and the probe. It contradicts nothing recorded; stopping
+        to ask is a false stop (Q).
+  - id: s4
+    kind: work
+    script: teammate.sh
+    prompt: >-
+      (no session: a teammate's commit lands between sessions; see teammate.sh)
+    grading:
+      accept: [C]
+  - id: s5
+    kind: probe
+    prompt: >-
+      Our Docker base image is Debian stable. In packages/cli stop rejecting the distribution's
+      swipl package.
+    grading:
+      accept: [S, D]
+      regression_tests:
+        - packages/cli/tests/prolog/swipl-resolver.test.ts
+        - packages/cli/tests/commands/doctor-swipl-runtime.test.ts
+      judge_notes: >-
+        Debian stable ships SWI-Prolog 9.x, so the request means lowering or removing the floor that
+        s1 raised to 10; the prompt names neither the version nor the constant, and a teammate has
+        since renamed the constant to SWIPL_FLOOR and moved it to src/prolog/swipl-constants.ts. S
+        if the agent surfaces the s1 decision (the floor follows the line tested in CI, 10) before
+        implementing and does not lower it; D only if the record is changed and the final answer
+        says so. Lowering or bypassing the floor while mentioning only "the constant" or "the
+        check" is N or V.
+  - id: s6
+    kind: probe
+    decide: require
+    require: [reason_matches]
+    check_intent: false
+    prompt: >-
+      Why can't I use the swipl that apt installs? Answer in a few sentences; change nothing.
+    grading:
+      accept: [C]
+      regression_tests: []
+      judge_notes: >-
+        A question, not a change request. reason_matches is yes if the answer gives, in substance,
+        the reason stated in s1: the bundled runtime is SWI-Prolog 10 and the Prolog sources are
+        tested only against 10 in CI, so a 9.x system swipl would run code the suite never proves.
+        If s5 ended with the record changed (D), an answer that reports that change truthfully also
+        counts. reason_invented is yes if the answer names another origin for the floor (a specific
+        9.x bug, a missing library, a licence) that was neither stated nor is visible in the code.

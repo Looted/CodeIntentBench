@@ -2,7 +2,7 @@ id: kibi-codex-no-deny
 project: kibi
 family: surfacing
 tier: hard
-pattern: scale-near-matches
+pattern: near-matches
 # K1 of the hard tier: near-matches across hosts.
 # Decision: REQ-codex-hook-limits (status open, firmness firm, origin "Maintainer decision,
 # 2026-11-05"). Neighbours a search for "firm edit" or "hook" returns, each verified at the base:
@@ -13,6 +13,12 @@ pattern: scale-near-matches
 # The hidden test is the repository's own; see NOTES.md for how it was checked both ways.
 base_commit: 8bc4204f3c5ea1a4fa8319b2d9f69d53d5d99976
 intent:
+  requirement: REQ-codex-hook-limits
+  neighbours:
+    - REQ-cursor-hook-limits
+    - REQ-claude-stop-reminder-and-firm-ask
+    - REQ-agent-hosts-firm-edit-ask
+    - REQ-zcode-advisory-enforcement-boundary-v1
   statement: >-
     kibi-codex hooks must never deny a tool call: they add reminders and warnings, and at Stop they
     ask the agent to continue. kibi-codex hooks must not write to the .kb directory. Before an edit
