@@ -3,7 +3,7 @@ import { mkdtempSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { test } from 'node:test';
-import { exportKb, isCurrent } from '../src/kb-rules.ts';
+import { effectiveFirmness, exportKb, isCurrent } from '../src/kb-rules.ts';
 import { memoryNote, renderAgentsMd, renderDecisionDoc, trackerIssue } from '../src/render.ts';
 import { writeKb } from './fixtures.ts';
 
@@ -40,7 +40,11 @@ test('firmness, origin and reason are carried', () => {
   assert.equal(r.firmness, 'firm');
   assert.deepEqual(r.origin, { kind: 'agent', by: 'maintainer', ref: 'Maintainer decision, 2026-11-05', recorded_at: '2026-11-05T09:49:12.455Z' });
   assert.match(r.rationale ?? '', /Codex has no way to ask/);
-  assert.equal(byId('REQ-cursor-hooks').firmness, 'default', 'no firmness recorded reads as default');
+  assert.equal(byId('REQ-cursor-hooks').firmness, 'default', 'no firmness on an entry an agent wrote reads as default');
+  assert.equal(byId('REQ-hooks-v1').firmness, 'firm', 'no firmness on an entry no agent wrote reads as firm');
+  assert.equal(effectiveFirmness(undefined, undefined), 'firm');
+  assert.equal(effectiveFirmness('exploratory', { kind: 'human' }), 'exploratory');
+  assert.equal(effectiveFirmness('strong', { kind: 'agent' }), 'default', 'an unknown value is read from the origin');
   assert.equal(byId('REQ-cursor-hooks').rationale, 'Reason not stated');
   assert.equal(byId('REQ-hooks-v1').origin?.recorded_at, '2026-02-18T13:12:25.067Z', 'the creation date wins over a migration stamp');
   assert.equal(byId('REQ-old-flag').status_reason, 'The flag was removed.');
@@ -67,7 +71,7 @@ test('every passive container states the standing', () => {
     assert.match(b, /Superseded by: REQ-hooks-never-deny/, name);
   }
   assert.match(memoryNote(current, 0).text, /Id: REQ-hooks-never-deny\./);
-  assert.deepEqual(trackerIssue(old, 0).labels, ['decision', 'decision-status:closed', 'firmness:default']);
+  assert.deepEqual(trackerIssue(old, 0).labels, ['decision', 'decision-status:closed', 'firmness:firm']);
 });
 
 test('a hand-written rule without standing renders as before', () => {
