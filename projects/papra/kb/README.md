@@ -7,10 +7,19 @@ its own container (`../arm-prepare.sh`): the Kibi arms get the knowledge base it
 it exported into rule files (`harness/src/arm-tools/kb-export.ts`, one rule per requirement with its reason,
 its source citation, the code paths that implement it and the test files linked to them; 42 of the 44 April rules carry code paths).
 
-Two bases, because the arcs start from two commits of Papra: `884d4704106b` (2026-04-02, the api-key
-expiry arcs) and `86805aeae078` (2026-02-14, the intake-secret arcs). Each claim carries the date its
-behaviour and source existed, and a base only gets the claims dated on or before its commit, so the
-February base holds 39 requirements and the April base 44.
+Three bases, one per commit the arcs start from:
+
+| Base | Date | Arcs | Requirements |
+|---|---|---|---|
+| `884d4704106b` | 2026-04-02 | `api-key-expiry-*`, `api-key-cache-long` | 44, all active |
+| `50cbe2cace34` | 2026-09-18 | `member-cap-refactor` | 66, of which 3 closed |
+| `e7acb46f9bc6` | 2026-10-06, the project pin | `intake-secret-superseded`, `storage-key-org-rename`, `no-mutation-exif` | 70, of which 4 closed |
+
+Each claim carries the date its behaviour and source existed, and a base only gets the claims dated on
+or before its commit. The April snapshot comes from the bootstrap and the quality pass described below.
+The two later ones are built from it ([Later bases](#later-bases)). A February snapshot (`86805aeae078`,
+39 requirements) served the `intake-secret-*` arcs of October and was retired with them; it is in the
+repository history.
 
 ## Sources and claims
 
@@ -118,3 +127,75 @@ definitions, and `reasons.json` the traced reasons. `apply.py <workspace>` write
 `kibi model`/`kibi upsert`/`kibi delete`, `orphans.py` removes the bootstrap facts left without links,
 and `symfix.py` merges the duplicate symbols. Run them on a workspace made from the stored KB at schema
 18 with the pinned `kibi` on PATH, then run `kibi sync --refresh-symbol-coordinates` and `kibi check`.
+
+## Later bases
+
+`gold/snapshot.sh <base-sha> <workdir> [--store]` builds the snapshot of a later Papra commit from the
+April one, with the pinned `kibi` on PATH and a clone of Papra that has the commit:
+
+1. `apply.py <workspace> --base <sha>` adds the decisions of [gold/later.json](gold/later.json) that hold
+   at the base: a claim applies when its `since` date is not after the base commit's date and its
+   `commit` is an ancestor of the base. Clauses, facts and subjects come from `spec.py` as for the April
+   claims. A claim with `supersedes` gets the link and a "Why this changed" section, the entry it
+   replaces is set to `closed`, and a fact only closed entries still use is set to `deprecated`.
+2. `symbols.py <workspace>` re-reads [symbols-map.json](symbols-map.json) at the checkout and rewrites
+   `.kb/symbols.yaml`: a map entry lists every path and name a function has had, and only the ones
+   declared in this checkout are written. Closed entries get no `implements` link. Run on the April
+   checkout it reproduces the stored April `symbols.yaml` exactly.
+3. `kibi sync --refresh-symbol-coordinates`, then test entities whose file is gone and facts nothing
+   links to are deleted, then `kibi sync` and `kibi check`.
+
+### What later.json holds
+
+26 claims, each with its commit, the date from which it holds, a verbatim excerpt and, only where the
+source states one, a reason:
+
+- **Ten decisions that landed after April or were found while tracing the rules**: the intake webhook
+  secret's length rule and default (PR #892, February; closed at both later bases) and the removal of
+  the default (PR #1502, which supersedes it); storage keys persist unless synchronisation is enabled
+  (the docs after PR #1525, superseding the March entry); synchronisation on a document's name or date
+  change (PR #1525); `{{organization.name}}` in patterns (PR #1529, which answers the open question of
+  issue #976); an organisation rename moves nothing (docs); share links of deleted organisations
+  (PR #1348); former members can be reinvited (PR #1534); year-based versioning (the docs after PR
+  #1454, superseding the older versioning entry); and the plan's member limit counting pending
+  invitations (the test added in PR #536).
+- **The 16 rules of [../rules/](../rules/)**, with the rule's statement verbatim, its test titles as the
+  excerpt and the date from which every clause of the statement held. Three of them are therefore
+  absent at `50cbe2cace34`: the member cap (its "or a resend" clause holds from PR #1534), resending
+  only inactive invitations (PR #1534) and the sign-up domain restrictions (PR #1545). At that base the
+  member limit is the PR #536 entry; at the pin the rule supersedes it.
+
+Reasons: none of the pull requests read for these claims has a description. The reasons recorded come
+from changesets (#892, #1348, #1502, #1525, #1534), the docs, issue #976 and test titles; they are quoted
+and attributed. 10 of the 26 claims have no stated reason and say "Reason not stated", among them the
+organisation-rename boundary. The rule files' own `rationale` text was written for the benchmark and was
+not copied: where no Papra source gives the reason, the entry has none.
+
+### Result
+
+| | `50cbe2cace34` | `e7acb46f9bc6` |
+|---|---|---|
+| Requirements | 66 (63 active, 3 closed) | 70 (66 active, 4 closed) |
+| `supersedes` links | 3 | 4 |
+| Modeled clauses | 156, and 1 nonlogical | 170, and 1 nonlogical |
+| Subjects | 44 | 45 |
+| Symbols | 104, none implementing more than two requirements | 105, likewise |
+| Test entities | 39 | 39 |
+| `kibi check` violations | `symbol-coverage` 41 | `symbol-coverage` 40 |
+| `kibi check` diagnostics | `coverage_depth_review` 63 | `coverage_depth_review` 66 |
+
+Every requirement has an explicit `status` and `firmness: firm`. The export gives the passive arms each
+closed entry with its status and a "Superseded by" line.
+
+### Limits
+
+- For the 44 April claims only the documentation excerpts were re-read at the later bases (two had
+  changed and became superseded pairs: storage key persistence and versioning). The issue and pull
+  request claims were not re-read; their sources are closed threads.
+- `symbols-map.json` was extended by reading the code at `e7acb46f9bc6` and `50cbe2cace34`. A function
+  that moved and was not found again is dropped by `symbols.py` (it prints "no declared symbol for" the
+  requirement); 6 requirements at the pin have no code path for that reason or because they are closed.
+- The interview and authority calls remain the benchmark author's, as for the April snapshot.
+- The April snapshot was not rebuilt. It does not hold the February entry about the intake webhook
+  secret (PR #892), which `later.json` adds only at the two later bases; no arc at the April base is
+  about intake emails.
