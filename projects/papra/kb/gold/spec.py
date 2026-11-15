@@ -3,6 +3,8 @@
 #             ('perm', actor, action, resource, decision)  -> permission_rule predicate, subject for constrains given separately
 
 DOCS = 'Papra documentation site (apps/docs): '
+PRS = 'papra-hq/papra merged pull requests: '
+TESTS = 'Papra server test suite (apps/papra-server/src/modules): '
 
 SUBJECTS = {
  'organization.soft_delete': ("Organization soft delete", DOCS + '05-architecture/organization-deletion-purge.mdx#soft-delete',
@@ -71,6 +73,31 @@ SUBJECTS = {
    "A configured key (DOCUMENT_STORAGE_DOCUMENT_KEY_ENCRYPTION_KEYS, optionally versioned) that wraps the per-document encryption keys."),
  'webhook.events': ("Webhook events", 'papra-hq/papra GitHub issues: #428',
    "The document events an organization webhook can be called with."),
+ # Subjects of the later decisions (later.json).
+ 'intake_email.webhook_secret': ("Intake email webhook secret", PRS + '#892',
+   "The secret (INTAKE_EMAILS_WEBHOOK_SECRET) shared with the email relay and used to verify the signature of every request to the intake email webhook. It is a server setting, not a per-organization value."),
+ 'intake_email.allowed_origins': ("Intake email allowed origins", TESTS + 'intake-emails/intake-emails.models.test.ts',
+   "The list of sender email addresses an intake email address accepts mail from. It belongs to one intake email address of one organization."),
+ 'document.storage_key_sync': ("Storage key synchronization", DOCS + '03-guides/09-storage-key-patterns.mdx#synchronizing-storage-keys-on-document-updates',
+   "The optional behaviour (DOCUMENT_STORAGE_KEY_SYNC_ENABLED, pattern-based storage keys only) that re-evaluates the storage key pattern when a document changes and moves the stored file to the new key. It is not the storage migration script, which reprocesses existing documents in bulk."),
+ 'storage_pattern.organization_name': ("organization.name storage pattern expression", DOCS + '03-guides/09-storage-key-patterns.mdx#organization-names-and-renames',
+   "The {{organization.name}} expression of a storage key pattern: the organization's current name, sanitized for filesystem use. It is not {{organization.id}}, which is unique."),
+ 'invitations.member_limit': ("Organization member limit", TESTS + 'organizations/organizations.usecases.test.ts',
+   "The maximum number of members the organization's plan allows (maxOrganizationsMembersCount), as checked when an invitation is sent or resent. It is not the daily invitation limit of the inviting user."),
+ 'share_link.public_access': ("Public access through a share link", PRS + '#1348',
+   "Unauthenticated access to one document through its share link: the document metadata, the file download and the password verification. It is not access by organization members, which share links do not affect."),
+ 'api_keys.key': ("API key", TESTS + 'api-keys/api-keys.repository.test.ts',
+   "A long-lived credential a user creates for scripts and integrations, with an explicit set of granted permissions and an optional expiry date."),
+ 'organizations.member_removal': ("Removal of an organization member", TESTS + 'organizations/organizations.models.test.ts',
+   "Removing a member from an organization, by another member or by themselves. It is not the deletion of the organization."),
+ 'organizations.user_cap': ("Per-user organization cap", TESTS + 'organizations/organizations.usecases.test.ts',
+   "The maximum number of organizations one user may own (MAX_ORGANIZATION_COUNT_PER_USER, or the value set on the user). It is not the member limit of an organization."),
+ 'plans.upload_limits': ("Plan upload limits", TESTS + 'documents/documents.usecases.test.ts',
+   "The limits of an organization's plan that are checked when a document is added: the maximum size of one file and the total storage quota."),
+ 'auth.signup_email_domains': ("Sign-up email domain restrictions", PRS + '#1545',
+   "The instance settings that restrict which email domains may register: the allowed list (AUTH_ALLOWED_EMAIL_DOMAINS) and the forbidden list."),
+ 'webhook.url_ssrf_protection': ("Webhook URL SSRF protection", PRS + '#993',
+   "The validation of an organization webhook's URL against private, loopback and reserved addresses (WEBHOOK_SSRF_PROTECTION_ENABLED), with an instance allow list of trusted hostnames (WEBHOOK_URL_ALLOWED_HOSTNAMES)."),
 }
 
 S = 'search.query'
@@ -260,3 +287,142 @@ SPEC = {
    ('that key is wrapped with the configured key encryption key and stored in the database, separately from the encrypted file', ('b','encryption.document_key','wrapped_and_stored_in_database',True)),
  ],
 }
+
+# Later decisions (later.json), in the order they are written: a requirement that supersedes another comes after it.
+WS_, SK, SY, ON = 'intake_email.webhook_secret', 'document.storage_key', 'document.storage_key_sync', 'storage_pattern.organization_name'
+INV, ML, SL, RV = 'invitations.invitation', 'invitations.member_limit', 'share_link.public_access', 'release.versioning'
+ORG, DEL, AK, ED = 'organizations.organization', 'organization.soft_delete', 'api_keys.key', 'auth.signup_email_domains'
+SPEC.update({
+ 'REQ-papra-intake-webhook-secret-length': [
+   ('The intake email webhook secret (INTAKE_EMAILS_WEBHOOK_SECRET) must be between 16 and 128 characters', ('s',WS_,'length_range','16_to_128_characters')),
+   ('a default value, please-change-me, stays in place and itself satisfies the rule', ('b',WS_,'has_default_value',True)),
+ ],
+ 'REQ-papra-intake-webhook-secret-required': [
+   ('The intake email webhook secret (INTAKE_EMAILS_WEBHOOK_SECRET) has no default value', ('s',WS_,'default_value','none')),
+   ('when intake emails are enabled the server refuses to start without it', ('b',WS_,'required_at_startup_when_intake_emails_enabled',True)),
+   ('the ingest endpoint rejects a request when no secret is configured', ('b','intake_email.webhook','accepts_requests_without_configured_secret',False)),
+   ('a secret that is set must be between 16 and 128 characters', ('s',WS_,'length_range_when_set','16_to_128_characters')),
+ ],
+ 'REQ-papra-storage-key-persisted-sync-optional': [
+   ("A document's storage key is generated at upload time and persisted with the document", ('b',SK,'persisted_with_document',True)),
+   ('by default changing the pattern configuration only affects newly uploaded documents', ('s',SK,'pattern_change_scope_by_default','new_uploads_only')),
+   ('existing documents keep their storage keys unless synchronization is enabled or they are explicitly migrated', ('s',SK,'existing_key_changes_only_by','synchronization_or_explicit_migration')),
+ ],
+ 'REQ-papra-storage-key-sync-on-document-update': [
+   ('Storage key synchronization is optional and off by default (DOCUMENT_STORAGE_KEY_SYNC_ENABLED, with pattern-based storage keys)', ('b',SY,'enabled_by_default',False)),
+   ("when it is enabled, a change of a document's name or document date re-evaluates the pattern and moves the stored file to the new key", ('s',SY,'triggered_by','document_name_or_document_date_change')),
+   ('enabling it does not move existing files by itself', ('b',SY,'moves_existing_files_when_enabled',False)),
+   ('a failed copy or database update keeps the original file', ('b',SY,'failed_move_keeps_original_file',True)),
+ ],
+ 'REQ-papra-storage-pattern-organization-name': [
+   ('Storage key patterns support {{organization.name}}, the current organization name sanitized for safe filesystem use', ('b',ON,'available_as_expression',True)),
+   ('organization names are not unique, so a pattern that uses it should also include {{organization.id}} to keep folders distinct', ('b',ON,'unique_per_instance',False)),
+ ],
+ 'REQ-papra-organization-rename-keeps-storage-keys': [
+   ('Renaming an organization does not move its existing documents, even when storage-key synchronization is enabled', ('b',SK,'changes_when_organization_renamed',False)),
+   ('their persisted keys remain usable', ('b',SK,'usable_after_organization_rename',True)),
+   ('new uploads use the current organization name', ('s',ON,'value_for_new_uploads','current_name')),
+   ('with synchronization enabled a later document name or document date change re-evaluates the entire pattern and uses the current organization name too', ('s',SY,'organization_name_used_on_resync','current_name')),
+ ],
+ 'REQ-papra-former-members-can-be-reinvited': [
+   ('A user who left or was removed from an organization can be invited again', ('b',INV,'former_member_can_be_reinvited',True)),
+   ('only a current membership or a pending invitation blocks a new invitation', ('s',INV,'new_invitation_blocked_by','current_membership_or_pending_invitation')),
+   ('accepted, expired, cancelled and rejected invitations do not', ('b',INV,'closed_invitations_block_new_invitation',False)),
+   ('pending invitations past their expiry date are marked expired before the checks, so they stop consuming organization capacity', ('b',ML,'counts_stale_pending_invitations',False)),
+ ],
+ 'REQ-papra-share-links-of-deleted-organizations': [
+   ("Public access to a document share link (document metadata, file download and password verification) stops with 410 Gone as soon as the link's organization is soft-deleted", ('i',SL,'status_when_organization_soft_deleted',410)),
+   ('resumes automatically if the organization is restored during the grace period', ('b',SL,'resumes_when_organization_restored',True)),
+ ],
+ 'REQ-papra-application-versioning-year-based': [
+   ('The application package (@papra/app) is versioned YY.MINOR.PATCH along a single release line', ('s',RV,'application_format','yy_minor_patch')),
+   ('older YY.MINOR versions receive no maintenance or security patches', ('b',RV,'patches_older_minor_versions',False)),
+   ('library packages follow SemVer', ('s',RV,'library_versioning','semver')),
+   ('Docker images use the same version as the application package', ('b',RV,'docker_image_version_matches_application',True)),
+ ],
+ 'REQ-papra-member-limit-counts-pending-invitations': [
+   ("An organization's plan sets a maximum number of members", ('b',ML,'set_by_plan',True)),
+   ('pending invitations count toward it', ('b',ML,'counts_pending_invitations',True)),
+   ('a new invitation is refused when current members plus pending invitations already reach the plan limit', ('b',ML,'new_invitation_refused_at_limit',True)),
+ ],
+ # The 16 rules of the v1 rule layer, statements unchanged.
+ 'REQ-papra-active-subscription-blocks-deletion': [
+   ('An organization with a live paid subscription (active, trialing, past due or unpaid, and not scheduled to cancel) cannot be deleted', ('b',DEL,'allowed_with_live_subscription',False)),
+   ('the owner must cancel the subscription first', ('b',DEL,'requires_subscription_cancelled_first',True)),
+   ('Organizations whose subscription is canceled, incomplete, or set to cancel at period end can be deleted', ('b',DEL,'allowed_with_ended_or_ending_subscription',True)),
+ ],
+ 'REQ-papra-api-key-scope-and-expiry': [
+   ('An API key can only call routes whose required permissions are all explicitly granted to the key', ('s',AK,'route_access_requires','all_required_permissions_granted')),
+   ('a key missing any one of them is unauthorized', ('b',AK,'authorized_with_missing_permission',False)),
+   ('A key past its expiry date is treated as if it did not exist', ('b',AK,'authenticates_after_expiry',False)),
+   ('a key with no expiry never expires', ('b',AK,'expires_without_expiry_date',False)),
+ ],
+ 'REQ-papra-duplicate-upload-restores-trashed-document': [
+   ('Within an organization a file with identical content is stored only once', ('b','document.deduplication','identical_content_stored_once_per_organization',True)),
+   ('Uploading a duplicate of a live document is rejected with a conflict', ('s','document.deduplication','duplicate_of_live_document','rejected_with_conflict')),
+   ('uploading a duplicate of a document that sits in the trash restores that document in place (new name, previous tags cleared, tagging rules re-applied) instead of creating a second record', ('b','document.trash_restore','restores_in_place_with_new_name_cleared_tags_and_rules',True)),
+ ],
+ 'REQ-papra-intake-email-sender-allowlist': [
+   ('An intake email address only ingests attachments from senders explicitly listed in its allowed origins (compared case-insensitively)', ('s','intake_email.allowed_origins','accepted_senders','listed_origins_only_case_insensitive')),
+   ('An intake email with an empty allow list accepts nothing', ('b','intake_email.allowed_origins','empty_list_accepts_mail',False)),
+   ('a disabled intake email ignores all mail', ('b','intake_email.address','disabled_address_ingests_mail',False)),
+ ],
+ 'REQ-papra-invite-cannot-create-owner': [
+   ('An organization has exactly one owner, the person who created it', ('i',ORG,'owner_count',1)),
+   ('Invitations and role changes can only grant the admin or member role', ('s',ORG,'assignable_roles','admin_or_member')),
+   ('nobody can be invited or promoted as owner', ('perm','anyone','invite_or_promote_as_owner','organization_member','deny',ORG)),
+ ],
+ 'REQ-papra-member-cap-counts-pending-invitations': [
+   ("An organization's plan sets a maximum number of members", ('b',ML,'set_by_plan',True)),
+   ('Pending invitations count toward that maximum', ('b',ML,'pending_invitations_count_toward_maximum',True)),
+   ('a new invitation (or a resend) is refused when current members plus pending invitations already reach the plan limit', ('b',ML,'invitation_or_resend_refused_at_limit',True)),
+ ],
+ 'REQ-papra-only-owner-deletes-organization': [
+   ('Only the organization owner can delete an organization', ('perm','organization_owner','delete','organization','allow',ORG)),
+   ('Admins and members cannot, even though admins can manage everything else', ('perm','admins_and_members','delete','organization','deny',ORG)),
+ ],
+ 'REQ-papra-only-owners-and-admins-invite': [
+   ("Only an organization's owner or admins can invite new members or resend an invitation", ('s',INV,'roles_allowed_to_invite_or_resend','owner_or_admin')),
+   ('Regular members cannot send invitations', ('perm','regular_member','send','invitation','deny',INV)),
+   ('non-members are rejected outright', ('perm','non_member','send','invitation','deny',INV)),
+ ],
+ 'REQ-papra-owner-cannot-be-removed': [
+   ('Only owners and admins can remove members from an organization', ('s','organizations.member_removal','allowed_roles','owner_or_admin')),
+   ('the owner can never be removed by anyone, including themselves', ('b','organizations.member_removal','owner_removable',False)),
+ ],
+ 'REQ-papra-plan-storage-and-file-size-limits': [
+   ("Uploads are bounded by the organization's plan: a file larger than the plan's maximum file size is rejected", ('b','plans.upload_limits','rejects_file_over_max_file_size',True)),
+   ("a file that would push total stored bytes past the plan's storage quota is rejected", ('b','plans.upload_limits','rejects_upload_over_storage_quota',True)),
+   ('In both cases nothing is persisted (no database row, no stored file)', ('b','plans.upload_limits','persists_anything_on_rejection',False)),
+ ],
+ 'REQ-papra-resend-only-inactive-invitations': [
+   ('An invitation can be resent only when it is expired, cancelled or rejected', ('s',INV,'resendable_statuses','expired_cancelled_rejected')),
+   ('Pending invitations cannot be resent', ('b',INV,'pending_resendable',False)),
+   ('accepted invitations are historical records that can never be resent', ('b',INV,'accepted_resendable',False)),
+ ],
+ 'REQ-papra-share-link-gone-semantics': [
+   ('A public share link answers 410 Gone (not 404) when the link is disabled or expired, when its document is in the trash, or when its organization is soft-deleted', ('i',SL,'status_when_unavailable',410)),
+   ('The link itself is never deleted on trash', ('b',SL,'link_deleted_when_document_trashed',False)),
+   ('access resumes automatically once the document or organization is restored', ('b',SL,'resumes_when_document_or_organization_restored',True)),
+ ],
+ 'REQ-papra-signup-email-domain-restrictions': [
+   ('When an allowed-domain list is configured, only emails whose domain is exactly in the list may sign up', ('s',ED,'allowlist_match','exact_domain')),
+   ('subdomains are not implicitly allowed', ('b',ED,'allowlist_includes_subdomains',False)),
+   ('A domain on the forbidden list is always rejected, even if it also appears on the allowed list', ('s',ED,'precedence','forbidden_over_allowed')),
+   ('Matching ignores case', ('b',ED,'case_sensitive',False)),
+ ],
+ 'REQ-papra-tagging-rule-match-mode': [
+   ('A tagging rule applies its tags only when its conditions match according to its match mode: "all" (the default) requires every condition to match', ('s','tagging_rules.rule','default_condition_match_mode','all')),
+   ('"any" requires at least one', ('i','tagging_rules.rule','any_mode_min_matching_conditions',1)),
+   ('A rule with no conditions always matches and tags every incoming document', ('b','tagging_rules.rule','conditionless_rule_matches_every_document',True)),
+ ],
+ 'REQ-papra-user-owned-organization-cap': [
+   ('A user can own at most a configured number of organizations (default 10)', ('i','organizations.user_cap','default_max_owned_organizations',10)),
+   ('Only organizations the user owns count toward the cap', ('s','organizations.user_cap','counted_organizations','owned_only')),
+   ('an instance admin can raise or lower the cap for an individual user', ('b','organizations.user_cap','per_user_override_by_instance_admin',True)),
+ ],
+ 'REQ-papra-webhook-ssrf-protection': [
+   ('When SSRF protection is enabled, a webhook URL pointing at a private, loopback or otherwise unsafe address is rejected at creation and at update', ('b','webhook.url_ssrf_protection','rejects_unsafe_url_on_create_and_update',True)),
+   ("unless its hostname is on the instance's explicit allow list", ('b','webhook.url_ssrf_protection','allowlisted_hostnames_exempt',True)),
+ ],
+})

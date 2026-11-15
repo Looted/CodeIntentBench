@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-423ba1ef6594
+    type: verified_by
+    from: REQ-the-has-tags-filter-selects-documents-with-7EF848DC
+    to: TEST-papra-server-src-modules-documents-document-search-database-fts5-query-builder-query-builder
+    created_at: "2026-10-14T12:09:58.943Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: requires_property
+    from: REQ-the-has-tags-filter-selects-documents-with-7EF848DC
+    to: FACT-papra-search-filter-has-tags-min-tags-matched
+    created_at: 2026-11-15T21:43:26.803Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-a1e111b7fe4f
+  - type: constrains
+    from: REQ-the-has-tags-filter-selects-documents-with-7EF848DC
+    to: FACT-papra-subject-search-filter-has-tags
+    created_at: 2026-11-15T21:43:26.807Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-dc922e77bd74
+  - type: requires_property
+    from: REQ-the-has-tags-filter-selects-documents-with-7EF848DC
+    to: FACT-papra-search-filter-has-tags-negation-selects-untagged
+    created_at: 2026-11-15T21:43:26.809Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-fc0b60df3737

@@ -1,0 +1,29 @@
+relationships:
+  - type: requires_property
+    from: REQ-when-several-versioned-key-encryption-keys-2FAB9215
+    to: FACT-papra-encryption-key-encryption-key-key-for-new-documents
+    created_at: 2026-11-15T21:43:48.346Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-45f4caa2438f
+  - type: constrains
+    from: REQ-when-several-versioned-key-encryption-keys-2FAB9215
+    to: FACT-papra-subject-encryption-key-encryption-key
+    created_at: 2026-11-15T21:43:48.351Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-f9e49596ce04
+  - type: requires_property
+    from: REQ-when-several-versioned-key-encryption-keys-2FAB9215
+    to: FACT-papra-encryption-key-encryption-key-all-configured-keys-decrypt
+    created_at: 2026-11-15T21:43:48.353Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-8fea0927111d
+  - type: verified_by
+    from: REQ-when-several-versioned-key-encryption-keys-2FAB9215
+    to: TEST-papra-server-src-modules-storage-encryption-storage-encryption-models
+    created_at: 2026-11-15T23:02:33.481Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-e25458c1ae66

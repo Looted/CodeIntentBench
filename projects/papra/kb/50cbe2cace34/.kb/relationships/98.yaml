@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-60e173730c9e
+    type: requires_property
+    from: REQ-papra-share-links-of-deleted-organizations
+    to: FACT-papra-share-link-public-access-status-when-organization-soft-deleted
+    created_at: "2026-11-15T23:00:17.775Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-share-links-of-deleted-organizations
+    to: FACT-papra-subject-share-link-public-access
+    created_at: 2026-11-15T23:00:17.776Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-201279232101
+  - type: requires_property
+    from: REQ-papra-share-links-of-deleted-organizations
+    to: FACT-papra-share-link-public-access-resumes-when-organization-restored
+    created_at: 2026-11-15T23:00:17.786Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b2c15b95198c
+  - type: verified_by
+    from: REQ-papra-share-links-of-deleted-organizations
+    to: TEST-papra-server-src-modules-document-share-links-document-share-links-usecases
+    created_at: 2026-11-15T23:02:17.263Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4e6215f04b2c

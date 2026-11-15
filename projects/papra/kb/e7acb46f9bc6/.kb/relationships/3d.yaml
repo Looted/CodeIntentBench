@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-c836e079b890
+    type: requires_property
+    from: REQ-papra-storage-pattern-organization-name
+    to: FACT-papra-storage-pattern-organization-name-available-as-expression
+    created_at: "2026-11-15T22:57:04.429Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-storage-pattern-organization-name
+    to: FACT-papra-subject-storage-pattern-organization-name
+    created_at: 2026-11-15T22:57:04.429Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-09a4f080a3ac
+  - type: requires_property
+    from: REQ-papra-storage-pattern-organization-name
+    to: FACT-papra-storage-pattern-organization-name-unique-per-instance
+    created_at: 2026-11-15T22:57:04.438Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9e211131a5a5
+  - type: verified_by
+    from: REQ-papra-storage-pattern-organization-name
+    to: TEST-papra-server-src-modules-documents-storage-patterns-storage-pattern-usecases
+    created_at: 2026-11-15T22:59:21.029Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-518513d47961
