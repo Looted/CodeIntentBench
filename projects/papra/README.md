@@ -19,9 +19,21 @@ Product decisions that are enforced as guard clauses and covered by existing tes
 
 Mining notes for the replayed changes, including candidates rejected and the verification protocol, are in [HISTORY-NOTES.md](HISTORY-NOTES.md).
 
-## Arcs (16) on an onboarded knowledge base
+## Arcs (8) on an onboarded knowledge base
 
-Two real decisions, eight families each, in [arcs/](arcs/): `api-key-expiry-*` (base `884d4704`, April 2026) and `intake-secret-*` (base `86805aea`, February 2026). The arcs' first run (`results/papra-arcs-2026-10-14.md`) started every arm from an empty decision store, which made the Kibi arm invalid (nothing to surface). They now run on an onboarded knowledge base: Papra's product decisions harvested from its documentation, issue tracker, merged pull requests and in-repo spec, recorded with Kibi's bootstrap flow and stored under [kb/](kb/) per base commit ([kb/README.md](kb/README.md)). In arc mode [arm-prepare.sh](arm-prepare.sh) places that knowledge base in the Kibi arms' checkouts and exports it into rule files for the passive arms, so every arm starts with the same 39 (February) or 44 (April) recorded decisions, none of which is the decision the arc probes. Rule-mode tasks are unaffected. Results of that run: [results/papra-onboarded-2026-10-14.md](../../results/papra-onboarded-2026-10-14.md).
+Every arc runs on a knowledge base of Papra's product decisions, harvested from its documentation, issue tracker, merged pull requests, in-repo spec and tests, and stored under [kb/](kb/) per base commit ([kb/README.md](kb/README.md)). [arm-prepare.sh](arm-prepare.sh) places it in the Kibi arms' checkouts and exports it into rule files for the passive arms, so every arm starts with the same recorded decisions, closed and superseded ones included. Rule-mode tasks are unaffected.
+
+Hard tier, five arcs in [arcs/](arcs/), each with a `NOTES.md` that lists the sources verified, the hidden tests and how each was checked both ways:
+
+| Arc | Base | Pattern | What it probes |
+|---|---|---|---|
+| `intake-secret-superseded` | `e7acb46f` | superseded | A request to bring back the default webhook secret that PR #1502 removed; the February entry that kept a default is still in the store, closed. |
+| `storage-key-org-rename` | `e7acb46f` | superseded, near-matches | Moving an organisation's files when it is renamed; four entries are about storage keys, one of them closed, one of them reads like permission. No reason is recorded, so no rationale step. |
+| `no-mutation-exif` | `e7acb46f` | quiet-contradiction | Stripping location metadata from uploaded images, against the no-mutation principle. |
+| `member-cap-refactor` | `50cbe2ca` | indirect-reach | Counting only accepted members against the plan limit, after two real changes (#1533, #1534) moved the code. |
+| `api-key-cache-long` | `884d4704` | long-capture, quiet-contradiction, evidence | A decision the user states in the first of five sessions; a rename, a caching request that never says "expiry", and a release check after a teammate's cache. |
+
+Easy tier, three of the October arcs, unchanged apart from the `tier` field and a file path in two prompts that a line fold had split: `api-key-expiry-recall`, `api-key-expiry-rationale` and `api-key-expiry-evidence` (base `884d4704`). The other thirteen October arcs (`intake-secret-*` on the February base `86805aea`, and five more `api-key-expiry-*`) were retired; their results are in [results/papra-onboarded-2026-10-14.md](../../results/papra-onboarded-2026-10-14.md).
 
 ## Known limits
 
