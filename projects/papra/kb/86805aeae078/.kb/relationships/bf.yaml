@@ -6,3 +6,17 @@ relationships:
     created_at: "2026-10-14T12:12:31.275Z"
     created_by: kibi/upsert
     source: mcp://kibi/upsert
+  - type: requires_property
+    from: REQ-an-invalid-date-in-a-created-filter-is-ign-800EF0B8
+    to: FACT-papra-search-filter-created-invalid-date-handling
+    created_at: 2026-11-15T21:50:07.109Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-194b8cb30592
+  - type: constrains
+    from: REQ-an-invalid-date-in-a-created-filter-is-ign-800EF0B8
+    to: FACT-papra-subject-search-filter-created
+    created_at: 2026-11-15T21:50:07.113Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-95ccb68fbac5

@@ -15,17 +15,21 @@ semantic_inventory:
   - claim_key: CLAIM-C77DAD2ED57BBA88
     claim_text: With encryption enabled each document is encrypted with its own random 256-bit key (AES-256-GCM)
     role: descriptive
-    status: ontology_gap
+    status: modeled
     span:
       start: 0
       end: 96
+    subjects:
+      - encryption.document_key
   - claim_key: CLAIM-E785C1898DC34DC8
     claim_text: that key is wrapped with the configured key encryption key and stored in the database, separately from the encrypted file
     role: descriptive
-    status: ontology_gap
+    status: modeled
     span:
       start: 98
       end: 219
+    subjects:
+      - encryption.document_key
 firmness: firm
 origin:
   kind: import
@@ -38,6 +42,7 @@ tags:
   - component:encryption
 id: REQ-with-encryption-enabled-each-document-is-e-3A4DEA2F
 type: req
+required_evidence: asserted
 ---
 With encryption enabled each document is encrypted with its own random 256-bit key (AES-256-GCM); that key is wrapped with the configured key encryption key and stored in the database, separately from the encrypted file.
 

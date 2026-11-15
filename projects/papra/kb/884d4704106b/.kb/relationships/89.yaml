@@ -6,3 +6,24 @@ relationships:
     created_at: "2026-10-14T12:10:04.797Z"
     created_by: kibi/upsert
     source: mcp://kibi/upsert
+  - type: requires_property
+    from: REQ-webhooks-emit-document-updated-document-ta-FB361BD1
+    to: FACT-papra-webhook-events-post-creation-events
+    created_at: 2026-11-15T21:43:38.520Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b7b29246ec33
+  - type: constrains
+    from: REQ-webhooks-emit-document-updated-document-ta-FB361BD1
+    to: FACT-papra-subject-webhook-events
+    created_at: 2026-11-15T21:43:38.526Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d43a07b53f13
+  - type: requires_property
+    from: REQ-webhooks-emit-document-updated-document-ta-FB361BD1
+    to: FACT-papra-webhook-events-tag-changes-trigger-webhooks
+    created_at: 2026-11-15T21:43:38.528Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4016cef6d166

@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-bb09a8368e26
+    type: requires_property
+    from: REQ-the-application-package-is-versioned-with--B1FD7959
+    to: FACT-papra-release-versioning-application-scheme
+    created_at: "2026-11-15T21:51:08.910Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-the-application-package-is-versioned-with--B1FD7959
+    to: FACT-papra-subject-release-versioning
+    created_at: 2026-11-15T21:51:08.910Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-292175febed4
+  - type: requires_property
+    from: REQ-the-application-package-is-versioned-with--B1FD7959
+    to: FACT-papra-release-versioning-library-scheme
+    created_at: 2026-11-15T21:51:08.914Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-1ef13677f50d
+  - type: requires_property
+    from: REQ-the-application-package-is-versioned-with--B1FD7959
+    to: FACT-papra-release-versioning-docker-tag-matches-application-version
+    created_at: 2026-11-15T21:51:08.916Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c25e6fa05da8

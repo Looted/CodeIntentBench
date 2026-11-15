@@ -13,3 +13,38 @@ relationships:
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-8538b6a31668
+  - type: requires_property
+    from: REQ-deleting-an-organization-is-a-soft-delete--58DE105C
+    to: FACT-papra-organization-soft-delete-removes-members-and-pending-invitations
+    created_at: 2026-11-15T21:50:13.906Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-969fc6f05073
+  - type: constrains
+    from: REQ-deleting-an-organization-is-a-soft-delete--58DE105C
+    to: FACT-papra-subject-organization-soft-delete
+    created_at: 2026-11-15T21:50:13.911Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-818e3399449f
+  - type: requires_property
+    from: REQ-deleting-an-organization-is-a-soft-delete--58DE105C
+    to: FACT-papra-organization-soft-delete-records-deleted-at-and-deleted-by
+    created_at: 2026-11-15T21:50:13.914Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-098ebed6cf42
+  - type: requires_property
+    from: REQ-deleting-an-organization-is-a-soft-delete--58DE105C
+    to: FACT-papra-organization-soft-delete-purge-delay-days
+    created_at: 2026-11-15T21:50:13.918Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-689ef5925b0b
+  - type: requires_property
+    from: REQ-deleting-an-organization-is-a-soft-delete--58DE105C
+    to: FACT-papra-organization-soft-delete-keeps-organization-row
+    created_at: 2026-11-15T21:50:13.922Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-209b4d5efd42

@@ -6,3 +6,24 @@ relationships:
     created_at: "2026-10-14T12:09:55.889Z"
     created_by: kibi/upsert
     source: mcp://kibi/upsert
+  - type: requires_property
+    from: REQ-tag-name-and-colour-are-validated-server-s-1890EF60
+    to: FACT-papra-tags-tag-validated-by-api-schema
+    created_at: 2026-11-15T21:46:10.450Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-bd7fe5e2467c
+  - type: constrains
+    from: REQ-tag-name-and-colour-are-validated-server-s-1890EF60
+    to: FACT-papra-subject-tags-tag
+    created_at: 2026-11-15T21:46:10.455Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-fa43084737d3
+  - type: requires_property
+    from: REQ-tag-name-and-colour-are-validated-server-s-1890EF60
+    to: FACT-papra-tags-tag-client-validation-is-guard
+    created_at: 2026-11-15T21:46:10.457Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-e6e7a5010a24

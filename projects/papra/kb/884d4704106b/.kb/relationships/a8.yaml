@@ -6,3 +6,24 @@ relationships:
     created_at: "2026-10-14T12:09:46.341Z"
     created_by: kibi/upsert
     source: mcp://kibi/upsert
+  - type: requires_property
+    from: REQ-a-document-s-extracted-searchable-content--7CD26FB8
+    to: FACT-papra-document-extracted-content-shown-on-document-page
+    created_at: 2026-11-15T21:40:53.218Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4ea5a625a183
+  - type: constrains
+    from: REQ-a-document-s-extracted-searchable-content--7CD26FB8
+    to: FACT-papra-subject-document-extracted-content
+    created_at: 2026-11-15T21:40:53.223Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-857c3c8f36d1
+  - type: requires_property
+    from: REQ-a-document-s-extracted-searchable-content--7CD26FB8
+    to: FACT-papra-document-extracted-content-editable-by-user
+    created_at: 2026-11-15T21:40:53.225Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6f9beee6586a

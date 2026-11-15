@@ -15,17 +15,21 @@ semantic_inventory:
   - claim_key: CLAIM-6C79E522E8919EC7
     claim_text: 'Documents are never mutated after upload: no format conversion, no metadata injection into the file, no OCR overlay on scanned PDFs'
     role: descriptive
-    status: ontology_gap
+    status: modeled
     span:
       start: 0
       end: 131
+    subjects:
+      - document.stored_file
   - claim_key: CLAIM-7A1439A855E9305D
     claim_text: a user retrieves exactly what was uploaded
     role: descriptive
-    status: ontology_gap
+    status: modeled
     span:
       start: 133
       end: 175
+    subjects:
+      - document.stored_file
 firmness: firm
 origin:
   kind: import
@@ -38,6 +42,7 @@ tags:
   - component:documents
 id: REQ-documents-are-never-mutated-after-upload-n-409E8212
 type: req
+required_evidence: asserted
 ---
 Documents are never mutated after upload: no format conversion, no metadata injection into the file, no OCR overlay on scanned PDFs; a user retrieves exactly what was uploaded.
 

@@ -13,3 +13,24 @@ relationships:
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-87476476d316
+  - type: requires_property
+    from: REQ-uploading-content-identical-to-a-trashed-d-F0111402
+    to: FACT-papra-document-trash-restore-restores-instead-of-new-copy
+    created_at: 2026-11-15T21:51:27.384Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-fc5c46dfec1f
+  - type: constrains
+    from: REQ-uploading-content-identical-to-a-trashed-d-F0111402
+    to: FACT-papra-subject-document-trash-restore
+    created_at: 2026-11-15T21:51:27.389Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9f06fb8850d0
+  - type: requires_property
+    from: REQ-uploading-content-identical-to-a-trashed-d-F0111402
+    to: FACT-papra-document-trash-restore-metadata-updated-from-upload
+    created_at: 2026-11-15T21:51:27.391Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9228a1def105

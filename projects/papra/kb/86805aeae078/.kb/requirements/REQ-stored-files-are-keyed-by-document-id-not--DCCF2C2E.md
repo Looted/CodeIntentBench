@@ -15,17 +15,21 @@ semantic_inventory:
   - claim_key: CLAIM-D25F0B2A70217FF7
     claim_text: Stored files are keyed by document id, not by the document's file name
     role: descriptive
-    status: ontology_gap
+    status: modeled
     span:
       start: 0
       end: 70
+    subjects:
+      - document.storage_key
   - claim_key: CLAIM-8EA6CE6C47DE0081
     claim_text: the default storage layout is {{organization.id}}/originals/{{document.id}}
     role: descriptive
-    status: ontology_gap
+    status: modeled
     span:
       start: 72
       end: 147
+    subjects:
+      - document.storage_key
 firmness: firm
 origin:
   kind: import
@@ -38,6 +42,7 @@ tags:
   - component:storage
 id: REQ-stored-files-are-keyed-by-document-id-not--DCCF2C2E
 type: req
+required_evidence: asserted
 ---
 Stored files are keyed by document id, not by the document's file name; the default storage layout is {{organization.id}}/originals/{{document.id}}.
 

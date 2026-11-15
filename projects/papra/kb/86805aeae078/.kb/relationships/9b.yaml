@@ -1,0 +1,22 @@
+relationships:
+  - id: rel-f4330cbb27b9
+    type: requires_property
+    from: REQ-files-matching-ingestion-folder-ignored-pa-9B49E534
+    to: FACT-papra-ingestion-folder-watcher-skips-ignored-patterns
+    created_at: "2026-11-15T21:50:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-files-matching-ingestion-folder-ignored-pa-9B49E534
+    to: FACT-papra-subject-ingestion-folder-watcher
+    created_at: 2026-11-15T21:50:29.001Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-83b42fa44178
+  - type: requires_property
+    from: REQ-files-matching-ingestion-folder-ignored-pa-9B49E534
+    to: FACT-papra-ingestion-folder-watcher-ignores-synology-metadata-by-default
+    created_at: 2026-11-15T21:50:29.008Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-a768607c5a3d

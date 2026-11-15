@@ -13,3 +13,17 @@ relationships:
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-0f282e58bbd1
+  - type: requires_property
+    from: REQ-documents-are-stored-as-ingested-with-no-m-73A751A1
+    to: FACT-papra-document-stored-file-write-once
+    created_at: 2026-11-15T21:42:28.538Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-0b9be8a049cc
+  - type: constrains
+    from: REQ-documents-are-stored-as-ingested-with-no-m-73A751A1
+    to: FACT-papra-subject-document-stored-file
+    created_at: 2026-11-15T21:42:28.543Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-72b9055482fe

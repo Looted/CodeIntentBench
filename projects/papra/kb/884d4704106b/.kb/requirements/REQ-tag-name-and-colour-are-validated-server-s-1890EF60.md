@@ -15,17 +15,21 @@ semantic_inventory:
   - claim_key: CLAIM-B75F4DD0CBD741E7
     claim_text: Tag name and colour are validated server-side in the API schema
     role: descriptive
-    status: ontology_gap
+    status: modeled
     span:
       start: 0
       end: 63
+    subjects:
+      - tags.tag
   - claim_key: CLAIM-C3D9E73AA879B3B3
     claim_text: client-side form validation is a convenience, not the guard
     role: descriptive
-    status: ontology_gap
+    status: modeled
     span:
       start: 65
       end: 124
+    subjects:
+      - tags.tag
 firmness: firm
 origin:
   kind: import
@@ -37,12 +41,14 @@ tags:
   - component:tags
 id: REQ-tag-name-and-colour-are-validated-server-s-1890EF60
 type: req
+required_evidence: asserted
+rationale: 'Maintainer CorentinTh on issue #222 (2025-04-17): "a stricter and complete validation is done server side in the api schema". The issue author had found that any text was accepted as a colour in the form. Why the server schema rather than the form is the guard: reason not stated beyond that remark.'
 ---
 Tag name and colour are validated server-side in the API schema; client-side form validation is a convenience, not the guard.
 
 ## Context
 
-Reason not stated.
+Maintainer CorentinTh on issue #222 (2025-04-17): "a stricter and complete validation is done server side in the api schema". The issue author had found that any text was accepted as a colour in the form. Why the server schema rather than the form is the guard: reason not stated beyond that remark.
 
 ## Source
 

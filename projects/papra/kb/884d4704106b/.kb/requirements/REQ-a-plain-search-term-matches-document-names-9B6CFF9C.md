@@ -14,10 +14,12 @@ semantic_inventory:
   - claim_key: CLAIM-B556B68DE64E1B0B
     claim_text: A plain search term matches document names and content (name:term OR content:term)
     role: descriptive
-    status: ontology_gap
+    status: modeled
     span:
       start: 0
       end: 82
+    subjects:
+      - search.query
   - claim_key: CLAIM-9A0697BEFAC8CF2F
     claim_text: 'filters such as tag:, name:, content: and created: can be combined with it'
     role: example
@@ -36,6 +38,7 @@ tags:
   - component:search
 id: REQ-a-plain-search-term-matches-document-names-9B6CFF9C
 type: req
+required_evidence: asserted
 ---
 A plain search term matches document names and content (name:term OR content:term); filters such as tag:, name:, content: and created: can be combined with it.
 
