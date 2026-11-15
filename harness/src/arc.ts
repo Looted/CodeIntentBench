@@ -192,6 +192,7 @@ export interface ArcRunOptions {
   userReplies?: number;
   /** Model playing the user; defaults to the judge model. */
   userModel?: string;
+  userStyle?: import('./user-sim.ts').UserStyle;
   log: (s: string) => void;
 }
 
@@ -253,7 +254,7 @@ export async function runArc(projectName: string, arc: Arc, arm: string, attempt
 
     const firstBranch = arc.steps[0].branch ?? BASE_BRANCH;
     const branchNote = arc.family === 'branch' && wanted !== firstBranch ? `This session runs on branch ${wanted}; the recorded decision was made on branch ${firstBranch} and has not been merged here, so it does not hold on this branch.` : undefined;
-    if (opts.agent.user_permissions) writeFileSync(join(sdir, 'user-context.json'), JSON.stringify({ request: step.prompt, statement: arc.intent.statement, reason: arc.intent.reason, branch_note: branchNote, model: opts.userModel ?? opts.judgeModel }, null, 2));
+    if (opts.agent.user_permissions) writeFileSync(join(sdir, 'user-context.json'), JSON.stringify({ request: step.prompt, statement: arc.intent.statement, reason: arc.intent.reason, branch_note: branchNote, model: opts.userModel ?? opts.judgeModel, style: opts.userStyle ?? 'task' }, null, 2));
     let agent = opts.replay ? opts.replay(ws, step, sdir) : await runAgentWithHost(sdir, arm, opts.agent, step.prompt, host, ws, dir);
     // The scripted user answers when the session stopped to wait on the user, and the session resumes with the answer.
     if (!opts.replay && (opts.userReplies ?? 0) > 0) {
@@ -263,7 +264,7 @@ export async function runArc(projectName: string, arc: Arc, arm: string, attempt
         const lastPart = parts[parts.length - 1];
         if (!lastPart.session_id || lastPart.timed_out) break;
         const said = lastPart.final_answer ?? '';
-        const u = askUser(sdir, round, buildUserPrompt(arc, step, said, branchNote, round), opts.userModel ?? opts.judgeModel);
+        const u = askUser(sdir, round, buildUserPrompt(arc, step, said, branchNote, round, opts.userStyle), opts.userModel ?? opts.judgeModel);
         userCost += u.cost_usd;
         if (!u.needs_reply || !u.reply) { turns.push({ agent_said: said.slice(0, 4000), reply: '', why: u.why, cost_usd: u.cost_usd }); break; }
         turns.push({ agent_said: said.slice(0, 4000), reply: u.reply, why: u.why, cost_usd: u.cost_usd });
