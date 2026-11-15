@@ -2,7 +2,6 @@ id: kibi-swipl-resolver-navigation
 project: kibi
 family: navigation
 tier: easy
-pattern: single-decision
 # Recorded in the project's knowledge base as REQ-prolog-swipl-resolution-order (the order and the
 # failure message) and REQ-prolog-bundle-verification (manifest and checksum, SWI_HOME_DIR), both
 # status open and firmness default; they are the two children REQ-prolog-bundled-runtime (closed)
@@ -10,6 +9,10 @@ pattern: single-decision
 # Hidden tests: the three titles are present and pass at the base; the step changes no code.
 base_commit: 8bc4204f3c5ea1a4fa8319b2d9f69d53d5d99976
 intent:
+  requirement: REQ-prolog-swipl-resolution-order
+  neighbours:
+    - REQ-prolog-bundle-verification
+    - REQ-prolog-swipl-minimum-version
   statement: >-
     Kibi resolves SWI-Prolog from KIBI_SWIPL first, then from the verified bundled platform package,
     then from swipl on PATH, and KIBI_SWIPL=system skips the bundle. A bundled platform package
