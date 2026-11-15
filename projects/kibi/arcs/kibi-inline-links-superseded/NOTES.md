@@ -9,7 +9,7 @@ Base `8bc4204f` (release 2026.11.4), on a real checkout: `bun install --frozen-l
 | REQ-traceability-manifest-only-links | open | firm | origin "Maintainer decision, 2026-11-11, to hard-drop inline implements comments" |
 | ADR-traceability-manifest-only | accepted | firm | supersedes ADR-annotation-strategy-v2 |
 | ADR-annotation-strategy-v2 | superseded | default | supersedes ADR-annotation-strategy; superseded by ADR-traceability-manifest-only |
-| ADR-annotation-strategy | superseded | default | superseded by ADR-annotation-strategy-v2 |
+| ADR-annotation-strategy | superseded | firm (no firmness field, recorded by a person) | superseded by ADR-annotation-strategy-v2 |
 
 ## Hidden test
 

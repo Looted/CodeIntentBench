@@ -7,7 +7,7 @@ tier: easy
 # top-level oneOf is stated in the code comment above the guard and pinned by the fourth test; the
 # requirement itself does not say it.
 # Hidden tests checked at the base: the file passes untouched; with the guard switched off (the
-# evidence arc's teammate.sh) the first three titles fail (see NOTES.md).
+# evidence arc's teammate.sh) the first three titles fail (see ../kibi-mcp-oneof-evidence/NOTES.md).
 base_commit: 8bc4204f3c5ea1a4fa8319b2d9f69d53d5d99976
 intent:
   requirement: REQ-mcp-oneof-guard-input-validation

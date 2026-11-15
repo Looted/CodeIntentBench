@@ -1,6 +1,6 @@
 # Project `kibi`
 
-[Kibi](https://github.com/Looted/kibi) benchmarked on its own repository. The repository is the one public project with a mature Kibi knowledge base: at the pinned commit (release 2026.11.4, knowledge-base schema 18) `.kb/` holds 611 requirements (516 open, 93 closed, 2 retired), 35 ADRs (29 accepted, 1 proposed, 5 superseded), 2,647 facts, 857 scenarios and 746 test entities, written by its authors over months of development and reviewed entry by entry: each requirement and ADR carries a status, a firmness (106 are firm, the rest default), its supersession links and a reason traced to a source. Every arc in this project is about a decision that knowledge base already records.
+[Kibi](https://github.com/Looted/kibi) benchmarked on its own repository. The repository is the one public project with a mature Kibi knowledge base: at the pinned commit (release 2026.11.4, knowledge-base schema 18) `.kb/` holds 611 requirements (516 open, 93 closed, 2 retired), 35 ADRs (29 accepted, 1 proposed, 5 superseded), 2,647 facts, 857 scenarios and 746 test entities, written by its authors over months of development and reviewed entry by entry: each requirement and ADR carries a status, a firmness (204 count as firm: 106 are marked firm and 98 were recorded by a person with no firmness field; the other 442 are default), its supersession links and a reason traced to a source. Every arc in this project is about a decision that knowledge base already records.
 
 ## Why this project
 
