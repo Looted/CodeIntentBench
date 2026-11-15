@@ -15,7 +15,8 @@ cd harness && npm install
 ## Commands
 
 ```
-cib validate                         check rules, tasks and arms
+cib validate [--skip-audit]          check rules, tasks, arcs and arms, then run the equivalence audit
+cib audit [--project P] [--arc A[,B]] [--arm A[,B]] [--keep]
 cib list [--project P]               tasks and arms
 cib prepare --project P --task T --arm A [--out DIR]
 cib run --project P --task T|all --arm A[,B,...] [--attempts N] [--model M] [--effort E]
@@ -44,6 +45,14 @@ Each run directory holds `run.json` (spec, usage, grade), `agent.json`, `transcr
 ## What an arc run does
 
 `cib run-arc` ([src/arc.ts](src/arc.ts)) prepares one workspace per arc (no rules; the arm's `convention.md` appended to `CLAUDE.md`), then for each step: switches branch if the step names one, runs `claude -p` with the step prompt in the carried workspace, grades the step against its start commit (hidden tests restored only for the test run, so the carried workspace stays the agent's), judges it with the family's questions ([src/judge-arc.ts](src/judge-arc.ts)), and commits the session's work with git hooks enabled, so an arm that installs a commit gate (Kibi's pre-commit `kibi check --staged`) gets to refuse it (an arm's `before-commit` script runs first, for the mechanical step such a gate asks of the user before a retry, Kibi's `kibi sync --refresh-symbol-coordinates`); a refusal is recorded on the step as `commit_gate` with the hook's output, never graded, and the work is then committed with `--no-verify` so the arc continues. Teammate changes between sessions are committed by the benchmark without hooks. Arc runs live under `runs/<project>/_arcs/<arc>/<arm>/<id>/` with `run.json`, `arc.json`, one `steps/<step>/` directory per session (transcript, agent.json, diff.patch, tests, judge) and the external stores (`tracker.json`, `memory.json`, `mcp.json`) of the passive arms. `cib report` writes `report-arcs.md` and `report-arcs.json` next to the single-session report.
+
+Before the first session of an arc run the harness audits the arm's container ([src/audit.ts](src/audit.ts)): every decision the arc is about (the arc's `intent` and each step's own `intent`) must be there with its statement, reason, status, firmness and code paths. A decision is found by the id the arc names (`intent.requirement`), otherwise by its statement; one the user states in an intent step is in no container at setup and is not looked for. A run whose audit fails is marked invalid with the reason and no session runs, so it cannot be scored. `cib audit` runs the same check without a run, for every base commit the arcs start from and every arm (checkout, the project's arm preparation and the arm's setup; no install, no tests, no model), and also compares the arms with each other; `cib validate` calls it after its static checks. Results go to `runs/<project>/audit.json`.
+
+The knowledge a project keeps in a Kibi knowledge base reaches the passive arms through [src/kb-rules.ts](src/kb-rules.ts) (`arm-tools/kb-export.ts` on the command line): one rule file per requirement and ADR, whatever its status, with the statement, the recorded reason, the code and tests linked to it, and its standing (status, firmness, who recorded it and when, what it supersedes and what supersedes it). [src/render.ts](src/render.ts) writes those facts into each container (a decision file, an AGENTS.md section, a tracker issue, a memory note).
+
+The `agents-md` setup writes the whole file or nothing: when the rendered AGENTS.md is estimated (four bytes per token) to exceed the budget, the setup exits with "does not fit" and the arc run is recorded as not scored. The budget is `CIB_AGENTS_MD_TOKEN_BUDGET`, by default the context window of the agent's model (`contextTokensFor` in [src/pricing.ts](src/pricing.ts), override with `CIB_MODEL_CONTEXT_TOKENS`). The size is written to `agents-md-size.json` in the run directory and shown in the report.
+
+`npm test` runs the unit tests under `test/` (export, per-step decisions, audit, the surfacing measure, the report).
 
 The `tracker` and `memory` arms start a small stdio MCP server each ([src/arm-tools/tracker-mcp.ts](src/arm-tools/tracker-mcp.ts), [src/arm-tools/memory-mcp.ts](src/arm-tools/memory-mcp.ts), on [src/arm-tools/mcp-lite.ts](src/arm-tools/mcp-lite.ts)) through `--mcp-config`; both persist to a JSON file in the run directory.
 
