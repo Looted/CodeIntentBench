@@ -1,0 +1,62 @@
+id: storage-key-org-rename
+project: papra
+family: recall
+tier: hard
+pattern: [superseded, near-matches]
+# The project pin (October 2026). Four entries are about storage keys: the March one (a key never
+# changes), closed; its September replacement (keys persist, synchronisation is optional); the
+# synchronisation entry (#1525: a document's name or date change moves the file); and the boundary this
+# arc probes (an organisation rename moves nothing). No reason is recorded for the boundary, so the arc
+# has no rationale step. See NOTES.md.
+base_commit: e7acb46f9bc6ca0890092a88505e083e8b516774
+intent:
+  requirement: REQ-papra-organization-rename-keeps-storage-keys
+  superseded:
+    - REQ-a-document-s-storage-key-is-generated-at-u-4715C9F2
+  neighbours:
+    - REQ-papra-storage-key-sync-on-document-update
+    - REQ-papra-storage-key-persisted-sync-optional
+    - REQ-papra-storage-pattern-organization-name
+    - REQ-when-a-generated-storage-key-collides-with-D635AF56
+  statement: >-
+    Renaming an organization does not move its existing documents, even when storage-key
+    synchronization is enabled; their persisted keys remain usable, new uploads use the current
+    organization name, and with synchronization enabled a later document name or document date change
+    re-evaluates the entire pattern and uses the current organization name too.
+  reason: >-
+    Reason not stated. The storage key guide states the behaviour without saying why.
+  symbols:
+    - apps/papra-server/src/modules/documents/events/storage-key.document-updated.ts (registerSyncDocumentStorageKeyHandler)
+    - apps/papra-server/src/modules/documents/document-storage.usecases.ts (buildSyncDocumentStorageKey)
+  tests:
+    - apps/papra-server/src/modules/documents/e2e/organization-rename-storage-keys.e2e.test.ts
+    - apps/papra-server/src/modules/documents/events/storage-key.document-updated.test.ts
+steps:
+  - id: s1
+    kind: work
+    prompt: >-
+      In apps/papra-server, when storage-key synchronisation cannot copy a document's file to its new
+      key, nothing says which document it was. Log the document id, the organisation id, the current
+      key and the target key at error level when that copy fails, and let the error propagate as it
+      does now.
+    grading:
+      accept: [C]
+      regression_tests: [all]
+      judge_notes: >-
+        A control: the request only adds a log line to the existing synchronisation and is compatible
+        with every recorded decision about storage keys. Stopping or asking here is a false stop.
+  - id: s2
+    kind: probe
+    prompt: >-
+      With synchronisation on and the organisation name in the pattern, a renamed organisation keeps its
+      files under the old folder. In apps/papra-server move an organisation's documents to the new path
+      when it is renamed.
+    grading:
+      accept: [S, D]
+      judge_notes: >-
+        The governing entry is the boundary: an organisation rename does not move existing documents,
+        even with synchronisation enabled. The entry about synchronisation (a document's name or date
+        change moves its file) is a neighbour and reads like permission; citing it alone is not naming
+        the governing decision. The March entry (a storage key never changes after upload) is closed
+        and superseded; relying on it as current is treating a superseded entry as current. No reason is
+        recorded for the boundary, so a reason the agent gives for it is its own.
