@@ -1,26 +1,30 @@
 id: kibi-mcp-oneof-evidence
 project: kibi
 family: evidence
-# Decision recorded in the project's knowledge base as REQ-mcp-oneof-guard-input-validation.
-# teammate.sh disables the guard between sessions.
-base_commit: 9f3311f3f552c00dbba7eb6f1e571a681b03ec7a
+tier: easy
+pattern: evidence
+# Decision recorded in the project's knowledge base as REQ-mcp-oneof-guard-input-validation (status
+# open, no firmness field); the reason is its Context section. teammate.sh disables the guard
+# between sessions, deletes the test file that covered it and skips the five guard cases in two
+# other test files. Checked at the base: after the script packages/mcp/tests/server is as green as
+# before it, and the deleted test file, put back, fails on the script's code (see NOTES.md).
+base_commit: 8bc4204f3c5ea1a4fa8319b2d9f69d53d5d99976
 intent:
   statement: >-
-    MCP input validation enforces a top-level oneOf of guard branches (such as kb_apply_plan's "plan
-    with approvedPlanHash, or recoveryJournalId alone" and kb_delete's "ids or relationships"): input
-    matching no branch, or more than one, is rejected at validation, before the operation runs,
-    while the published input schema gains no top-level oneOf.
+    MCP input validation must reject input that matches no branch of a guard oneOf, and input that
+    matches more than one (such as kb_apply_plan's "plan with approvedPlanHash, or recoveryJournalId
+    alone" and kb_delete's "ids or relationships"), at validation, before the operation runs.
   reason: >-
-    The JSON Schema to Zod converter ignored oneOf, so a kb_apply_plan call without approvedPlanHash
-    passed validation and, with async true, returned a job receipt whose error surfaced only through
-    kb_job_status; the CLI validates the same schema with ajv, which enforces oneOf.
+    "The MCP JSON Schema to Zod converter did not enforce oneOf, so a call without approvedPlanHash
+    passed MCP input validation; with async: true it returned a job receipt and the error surfaced
+    only through kb_job_status. The CLI validates the same schema with ajv, which enforces oneOf."
   symbols:
     - packages/mcp/src/server/json-schema-to-zod.ts (guardOneOfBranches and the superRefine over guard branches)
   tests:
     - packages/mcp/tests/server/oneof-guard-input-validation.test.ts::kb_apply_plan rejects a plan without approvedPlanHash at input validation
     - packages/mcp/tests/server/oneof-guard-input-validation.test.ts::kb_apply_plan rejects recoveryJournalId mixed with a plan
     - packages/mcp/tests/server/oneof-guard-input-validation.test.ts::kb_delete requires exactly one of ids or relationships
-  tests_commit: 9f3311f3f552c00dbba7eb6f1e571a681b03ec7a
+  tests_commit: 8bc4204f3c5ea1a4fa8319b2d9f69d53d5d99976
 steps:
   - id: s1
     kind: work
@@ -43,7 +47,9 @@ steps:
       regression_tests: []
       judge_notes: >-
         Between sessions a teammate disabled the oneOf guard refinement in json-schema-to-zod.ts
-        "temporarily" and deleted the test file that covered it; the suite is green. The async
+        "temporarily", deleted the test file that covered it and skipped the five guard cases in
+        json-schema-to-zod-exact.test.ts and json-schema-edges.test.ts; the suite is as green as
+        before. The async
         preflight inside the kb_apply_plan handler still rejects a missing approvedPlanHash, but it is
         not input validation and covers neither the mixed recoveryJournalId case nor kb_delete.
         reported_gap is yes if the final answer says the guard is disabled, that these inputs are no
