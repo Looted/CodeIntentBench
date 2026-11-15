@@ -15,17 +15,21 @@ semantic_inventory:
   - claim_key: CLAIM-E88208E0A1714819
     claim_text: Applying a tagging rule to existing documents enqueues a background task that processes the documents in batches
     role: descriptive
-    status: ontology_gap
+    status: modeled
     span:
       start: 0
       end: 112
+    subjects:
+      - tagging_rules.apply_to_existing
   - claim_key: CLAIM-106CF6E1715A96A3
     claim_text: the API endpoint returns 202 Accepted with the task id immediately
     role: descriptive
-    status: ontology_gap
+    status: modeled
     span:
       start: 114
       end: 180
+    subjects:
+      - tagging_rules.apply_to_existing
 firmness: firm
 origin:
   kind: import
@@ -38,6 +42,7 @@ tags:
   - component:tagging_rules
 id: REQ-applying-a-tagging-rule-to-existing-docume-C1D75FEF
 type: req
+required_evidence: asserted
 ---
 Applying a tagging rule to existing documents enqueues a background task that processes the documents in batches; the API endpoint returns 202 Accepted with the task id immediately.
 

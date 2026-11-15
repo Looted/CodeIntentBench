@@ -13,10 +13,12 @@ semantic_inventory:
   - claim_key: CLAIM-6F639F67898E07A1
     claim_text: Only privileged members of an organization (owner or admin) can invite users to join it
     role: normative
-    status: ontology_gap
+    status: modeled
     span:
       start: 0
       end: 87
+    subjects:
+      - invitations.invitation
 firmness: firm
 origin:
   kind: import
@@ -28,6 +30,7 @@ tags:
   - component:invitations
 id: REQ-only-privileged-members-of-an-organization-FCDD9696
 type: req
+required_evidence: asserted
 ---
 Only privileged members of an organization (owner or admin) can invite users to join it.
 

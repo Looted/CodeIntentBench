@@ -13,10 +13,12 @@ semantic_inventory:
   - claim_key: CLAIM-86C7067477F49112
     claim_text: 'An invalid date in a created: filter is ignored rather than failing the whole search query'
     role: descriptive
-    status: ontology_gap
+    status: modeled
     span:
       start: 0
       end: 90
+    subjects:
+      - search.filter.created
 firmness: firm
 origin:
   kind: import
@@ -28,6 +30,7 @@ tags:
   - component:search
 id: REQ-an-invalid-date-in-a-created-filter-is-ign-800EF0B8
 type: req
+required_evidence: asserted
 ---
 An invalid date in a created: filter is ignored rather than failing the whole search query.
 

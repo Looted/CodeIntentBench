@@ -19,13 +19,17 @@ semantic_inventory:
     span:
       start: 0
       end: 54
+    subjects:
+      - organizations.organization
   - claim_key: CLAIM-EDE700438E1D8C87
     claim_text: admins and members cannot
     role: normative
-    status: ontology_gap
+    status: modeled
     span:
       start: 56
       end: 81
+    subjects:
+      - organizations.organization
 firmness: firm
 origin:
   kind: import
@@ -37,6 +41,7 @@ tags:
   - component:organizations
 id: REQ-only-the-organization-owner-can-delete-an--8207027D
 type: req
+required_evidence: asserted
 ---
 Only the organization owner can delete an organization; admins and members cannot.
 

@@ -13,10 +13,12 @@ semantic_inventory:
   - claim_key: CLAIM-4B20F6C274F78F44
     claim_text: Accounts can enable two-factor authentication
     role: descriptive
-    status: ontology_gap
+    status: modeled
     span:
       start: 0
       end: 45
+    subjects:
+      - auth.two_factor
 firmness: firm
 origin:
   kind: import
@@ -28,12 +30,14 @@ tags:
   - component:auth
 id: REQ-accounts-can-enable-two-factor-authenticat-63D00769
 type: req
+required_evidence: asserted
+rationale: 'Requested in issue #695 by elte0 (2025-12-20): "this is crucial for an app that stores highly sensitive documents." The maintainer stated no reason of his own; the issue was closed as a duplicate of #652.'
 ---
 Accounts can enable two-factor authentication.
 
 ## Context
 
-Reason not stated.
+Requested in issue #695 by elte0 (2025-12-20): "this is crucial for an app that stores highly sensitive documents." The maintainer stated no reason of his own; the issue was closed as a duplicate of #652.
 
 ## Source
 

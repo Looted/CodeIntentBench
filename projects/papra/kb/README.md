@@ -79,3 +79,42 @@ own; the route the diagnostics name for the rest (`kb_compile_intent`) returns p
 applied when a clause is an ontology gap, so the practical path is the `kb_upsert` fallback; and a
 `maxCandidates` default of 50 fills the plan with provenance stubs ("Source module: eslint.config")
 rather than knowledge.
+
+## Quality pass (Kibi 2.44, schema 18)
+
+Both snapshots were then migrated to KB schema 18 with `kibi migrate --yes` and raised to the quality bar
+of Kibi's bundled `kb-quality.md`, without touching code, tests or proofs. The stored `.kb/` is the
+result, so an arm's setup finds nothing to migrate.
+
+- **Every claim is modeled.** Each requirement's statement is split into its atomic clauses
+  (`semantic_clauses`, verbatim fragments; the statements themselves are unchanged). Each clause is
+  grounded by exactly one fact: a `property_value` fact on a named subject (`requires_property`), or a
+  `permission_rule` predicate fact for who may do what (`requires_predicate`). The one clause the
+  advisor classes as an example stays `nonlogical`. April base: 91 modeled clauses, 1 nonlogical.
+  February base: 80 modeled, 1 nonlogical.
+- **Subjects are defined.** 33 subject facts (31 in February), named `component.aspect`, each with a
+  definition taken from the cited source. These replace the bootstrap's generated subjects such as
+  `user.receives.it.even.when.several.register.at.the.same.time`. Claims carry their `subjects`.
+  Requirements that state the same property of the same subject share that subject, so a later change
+  that contradicts one of them is caught.
+- **Reasons are traced, never invented.** The bootstrap stated reasons for 9 requirements. The pass
+  read the remaining sources: the docs pages at each base, plus the 17 issues and pull requests,
+  read on 2026-11-15. It added reasons for 18 more, with each quote attributed to the maintainer, the
+  docs, or the person who asked. 27 of 44 requirements now carry a `rationale` (23 of 39 in
+  February). The rest still say "Reason not stated": their sources give none, and most of the pull
+  requests have no description.
+- **Ownership is precise.** Twelve functions were listed once per requirement and shared a coordinate
+  (`duplicate_symbol_coordinate_review`); they were merged into one symbol each. `createDocument`, the
+  upload orchestrator, had implemented nine requirements; it now implements only the two it decides,
+  the streaming pipeline and the hash lookup for deduplication. The others keep their deciding
+  functions. No symbol implements more than two requirements.
+- **Result.** `kibi check` reports no violation other than `symbol-coverage` (37 April, 32 February) and
+  no diagnostic other than `coverage_depth_review` (44, 39), which are both test evidence and out of
+  scope. Before the pass it also reported 9 and 7 `claim-subject-missing`, 12 and 10 duplicate
+  coordinates, and a `kb-consistency-unresolved` permission fact.
+
+The pass is reproducible from [gold/](gold/). `spec.py` holds the clauses, facts and subject
+definitions, and `reasons.json` the traced reasons. `apply.py <workspace>` writes them through
+`kibi model`/`kibi upsert`/`kibi delete`, `orphans.py` removes the bootstrap facts left without links,
+and `symfix.py` merges the duplicate symbols. Run them on a workspace made from the stored KB at schema
+18 with the pinned `kibi` on PATH, then run `kibi sync --refresh-symbol-coordinates` and `kibi check`.

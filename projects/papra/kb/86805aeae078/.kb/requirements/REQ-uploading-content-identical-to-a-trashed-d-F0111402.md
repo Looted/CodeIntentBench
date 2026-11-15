@@ -3,20 +3,33 @@ title: Uploading content identical to a trashed document restores that document 
 status: active
 semantic_text: Uploading content identical to a trashed document restores that document instead of creating a new copy, and its metadata is updated to match the new upload.
 logic_claims:
-  - CLAIM-466B3F61C57AECCC
+  - CLAIM-6D0931243FEE4085
+  - CLAIM-4594A0E97311C6EB
 semantic_clauses:
-  - Uploading content identical to a trashed document restores that document instead of creating a new copy, and its metadata is updated to match the new upload
+  - Uploading content identical to a trashed document restores that document instead of creating a new copy
+  - its metadata is updated to match the new upload
 semantic_inventory_version: kibi.semantic-inventory.v1
 semantic_source_field: semantic_text
 semantic_source_hash: d6e9b2c2ac26ba0b30a7928a1f090b05df6e34a5d427ad2e47a7313b81105da2
 semantic_inventory:
-  - claim_key: CLAIM-466B3F61C57AECCC
-    claim_text: Uploading content identical to a trashed document restores that document instead of creating a new copy, and its metadata is updated to match the new upload
+  - claim_key: CLAIM-6D0931243FEE4085
+    claim_text: Uploading content identical to a trashed document restores that document instead of creating a new copy
     role: descriptive
-    status: ontology_gap
+    status: modeled
     span:
       start: 0
+      end: 103
+    subjects:
+      - document.trash_restore
+  - claim_key: CLAIM-4594A0E97311C6EB
+    claim_text: its metadata is updated to match the new upload
+    role: descriptive
+    status: modeled
+    span:
+      start: 109
       end: 156
+    subjects:
+      - document.trash_restore
 firmness: firm
 origin:
   kind: import
@@ -29,6 +42,7 @@ tags:
   - component:documents
 id: REQ-uploading-content-identical-to-a-trashed-d-F0111402
 type: req
+required_evidence: asserted
 ---
 Uploading content identical to a trashed document restores that document instead of creating a new copy, and its metadata is updated to match the new upload.
 

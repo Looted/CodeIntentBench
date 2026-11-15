@@ -3,20 +3,33 @@ title: 'Documents are deduplicated per organization by the SHA-256 hash of their
 status: active
 semantic_text: 'Documents are deduplicated per organization by the SHA-256 hash of their content: uploading content that already exists in the organization is rejected.'
 logic_claims:
-  - CLAIM-73B1ECA2FA73884E
+  - CLAIM-D6ACCEBB0C235E2E
+  - CLAIM-09AC35DB7D1E391B
 semantic_clauses:
-  - 'Documents are deduplicated per organization by the SHA-256 hash of their content: uploading content that already exists in the organization is rejected'
+  - Documents are deduplicated per organization by the SHA-256 hash of their content
+  - uploading content that already exists in the organization is rejected
 semantic_inventory_version: kibi.semantic-inventory.v1
 semantic_source_field: semantic_text
 semantic_source_hash: 4d0c8abaa27f7806688accc0e25712e6ff3bd1d685df9d01cdabbebb4b8c7151
 semantic_inventory:
-  - claim_key: CLAIM-73B1ECA2FA73884E
-    claim_text: 'Documents are deduplicated per organization by the SHA-256 hash of their content: uploading content that already exists in the organization is rejected'
-    role: normative
-    status: ontology_gap
+  - claim_key: CLAIM-D6ACCEBB0C235E2E
+    claim_text: Documents are deduplicated per organization by the SHA-256 hash of their content
+    role: descriptive
+    status: modeled
     span:
       start: 0
+      end: 80
+    subjects:
+      - document.deduplication
+  - claim_key: CLAIM-09AC35DB7D1E391B
+    claim_text: uploading content that already exists in the organization is rejected
+    role: normative
+    status: modeled
+    span:
+      start: 82
       end: 151
+    subjects:
+      - document.deduplication
 firmness: firm
 origin:
   kind: import
@@ -29,6 +42,7 @@ tags:
   - component:documents
 id: REQ-documents-are-deduplicated-per-organizatio-7DDB2737
 type: req
+required_evidence: asserted
 ---
 Documents are deduplicated per organization by the SHA-256 hash of their content: uploading content that already exists in the organization is rejected.
 

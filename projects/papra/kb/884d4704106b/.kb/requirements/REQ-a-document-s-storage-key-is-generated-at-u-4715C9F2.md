@@ -15,17 +15,21 @@ semantic_inventory:
   - claim_key: CLAIM-0E5079ECE353734F
     claim_text: A document's storage key is generated at upload time and persisted with the document
     role: descriptive
-    status: ontology_gap
+    status: modeled
     span:
       start: 0
       end: 84
+    subjects:
+      - document.storage_key
   - claim_key: CLAIM-0BBEDCA31DDAAD31
     claim_text: changing the pattern configuration never changes the storage key of an existing document
     role: descriptive
-    status: ontology_gap
+    status: modeled
     span:
       start: 86
       end: 174
+    subjects:
+      - document.storage_key
 firmness: firm
 origin:
   kind: import
@@ -38,6 +42,7 @@ tags:
   - component:storage
 id: REQ-a-document-s-storage-key-is-generated-at-u-4715C9F2
 type: req
+required_evidence: asserted
 ---
 A document's storage key is generated at upload time and persisted with the document; changing the pattern configuration never changes the storage key of an existing document.
 

@@ -6,3 +6,24 @@ relationships:
     created_at: "2026-10-14T12:09:53.410Z"
     created_by: kibi/upsert
     source: mcp://kibi/upsert
+  - type: requires_property
+    from: REQ-applying-a-tagging-rule-to-existing-docume-C1D75FEF
+    to: FACT-papra-tagging-rules-apply-to-existing-execution
+    created_at: 2026-11-15T21:45:06.805Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-5aeb2ffe367e
+  - type: constrains
+    from: REQ-applying-a-tagging-rule-to-existing-docume-C1D75FEF
+    to: FACT-papra-subject-tagging-rules-apply-to-existing
+    created_at: 2026-11-15T21:45:06.809Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-1ac2776f7da2
+  - type: requires_property
+    from: REQ-applying-a-tagging-rule-to-existing-docume-C1D75FEF
+    to: FACT-papra-tagging-rules-apply-to-existing-api-response-status
+    created_at: 2026-11-15T21:45:06.812Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-eaa741479d6d

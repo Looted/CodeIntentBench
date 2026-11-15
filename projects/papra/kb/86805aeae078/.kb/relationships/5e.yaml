@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-4dfcf3ba5a21
+    type: requires_property
+    from: REQ-accounts-can-enable-two-factor-authenticat-63D00769
+    to: FACT-papra-auth-two-factor-available-to-accounts
+    created_at: "2026-11-15T21:50:04.592Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-accounts-can-enable-two-factor-authenticat-63D00769
+    to: FACT-papra-subject-auth-two-factor
+    created_at: 2026-11-15T21:50:04.592Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-5457bdfc8ff0

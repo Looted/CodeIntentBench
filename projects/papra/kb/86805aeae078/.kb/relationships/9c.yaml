@@ -13,3 +13,24 @@ relationships:
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-c551b05556ef
+  - type: requires_property
+    from: REQ-documents-are-deduplicated-per-organizatio-7DDB2737
+    to: FACT-papra-document-deduplication-scope-and-key
+    created_at: 2026-11-15T21:50:16.814Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-03e35695bf50
+  - type: constrains
+    from: REQ-documents-are-deduplicated-per-organizatio-7DDB2737
+    to: FACT-papra-subject-document-deduplication
+    created_at: 2026-11-15T21:50:16.818Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-8a1bbb1e1498
+  - type: requires_property
+    from: REQ-documents-are-deduplicated-per-organizatio-7DDB2737
+    to: FACT-papra-document-deduplication-rejects-existing-content
+    created_at: 2026-11-15T21:50:16.821Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-27535d0953d0

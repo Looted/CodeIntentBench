@@ -6,3 +6,24 @@ relationships:
     created_at: "2026-10-14T12:12:15.414Z"
     created_by: kibi/upsert
     source: mcp://kibi/upsert
+  - type: requires_property
+    from: REQ-stored-files-are-keyed-by-document-id-not--DCCF2C2E
+    to: FACT-papra-document-storage-key-default-key-basis
+    created_at: 2026-11-15T21:50:58.683Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d02472aa30e7
+  - type: constrains
+    from: REQ-stored-files-are-keyed-by-document-id-not--DCCF2C2E
+    to: FACT-papra-subject-document-storage-key
+    created_at: 2026-11-15T21:50:58.688Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-027b74724529
+  - type: requires_property
+    from: REQ-stored-files-are-keyed-by-document-id-not--DCCF2C2E
+    to: FACT-papra-document-storage-key-default-layout
+    created_at: 2026-11-15T21:50:58.690Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-14892ee9579a

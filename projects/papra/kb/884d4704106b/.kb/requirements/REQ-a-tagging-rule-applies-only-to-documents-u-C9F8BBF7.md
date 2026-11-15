@@ -15,17 +15,21 @@ semantic_inventory:
   - claim_key: CLAIM-26F0BBD2C89A2CD1
     claim_text: A tagging rule applies only to documents uploaded after the rule is created
     role: descriptive
-    status: ontology_gap
+    status: modeled
     span:
       start: 0
       end: 75
+    subjects:
+      - tagging_rules.rule
   - claim_key: CLAIM-71322B1B0124BBB7
     claim_text: applying it to existing documents is a separate explicit action ("Apply to existing documents")
     role: descriptive
-    status: ontology_gap
+    status: modeled
     span:
       start: 77
       end: 172
+    subjects:
+      - tagging_rules.apply_to_existing
 firmness: firm
 origin:
   kind: import
@@ -37,6 +41,7 @@ tags:
   - component:tagging_rules
 id: REQ-a-tagging-rule-applies-only-to-documents-u-C9F8BBF7
 type: req
+required_evidence: asserted
 ---
 A tagging rule applies only to documents uploaded after the rule is created; applying it to existing documents is a separate explicit action ("Apply to existing documents").
 

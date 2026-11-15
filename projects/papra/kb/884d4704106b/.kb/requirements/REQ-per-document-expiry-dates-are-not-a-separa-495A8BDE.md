@@ -15,17 +15,21 @@ semantic_inventory:
   - claim_key: CLAIM-4C32275ED95EFD59
     claim_text: Per-document expiry dates are not a separate feature
     role: descriptive
-    status: ontology_gap
+    status: modeled
     span:
       start: 0
       end: 52
+    subjects:
+      - custom_properties.property
   - claim_key: CLAIM-F017ED49D3E3083E
     claim_text: custom properties are the intended way to record such dates
     role: descriptive
-    status: ontology_gap
+    status: modeled
     span:
       start: 54
       end: 113
+    subjects:
+      - custom_properties.property
 firmness: firm
 origin:
   kind: import
@@ -37,12 +41,14 @@ tags:
   - component:custom_properties
 id: REQ-per-document-expiry-dates-are-not-a-separa-495A8BDE
 type: req
+required_evidence: asserted
+rationale: 'Maintainer CorentinTh on issue #413 (2026-03-07): "Closing the issue as it would be supported by custom properties". Why custom properties rather than a dedicated expiry feature: reason not stated beyond that.'
 ---
 Per-document expiry dates are not a separate feature; custom properties are the intended way to record such dates.
 
 ## Context
 
-Reason not stated.
+Maintainer CorentinTh on issue #413 (2026-03-07): "Closing the issue as it would be supported by custom properties". Why custom properties rather than a dedicated expiry feature: reason not stated beyond that.
 
 ## Source
 

@@ -15,17 +15,21 @@ semantic_inventory:
   - claim_key: CLAIM-BEE708F8DCA1F50D
     claim_text: Expired, cancelled or rejected invitations can be resent by a privileged member, which returns them to pending
     role: descriptive
-    status: ontology_gap
+    status: modeled
     span:
       start: 0
       end: 110
+    subjects:
+      - invitations.invitation
   - claim_key: CLAIM-C9FF37657241FA70
     claim_text: accepted invitations are final
     role: descriptive
-    status: ontology_gap
+    status: modeled
     span:
       start: 112
       end: 142
+    subjects:
+      - invitations.invitation
 firmness: firm
 origin:
   kind: import
@@ -37,6 +41,7 @@ tags:
   - component:invitations
 id: REQ-expired-cancelled-or-rejected-invitations--CDCCD352
 type: req
+required_evidence: asserted
 ---
 Expired, cancelled or rejected invitations can be resent by a privileged member, which returns them to pending; accepted invitations are final.
 

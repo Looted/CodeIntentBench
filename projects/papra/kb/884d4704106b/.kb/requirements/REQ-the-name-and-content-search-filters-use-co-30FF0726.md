@@ -13,10 +13,12 @@ semantic_inventory:
   - claim_key: CLAIM-C0BF9918F33E1AFF
     claim_text: 'The name: and content: search filters use contains matching, not exact equality'
     role: descriptive
-    status: ontology_gap
+    status: modeled
     span:
       start: 0
       end: 79
+    subjects:
+      - search.filter.name_content
 firmness: firm
 origin:
   kind: import
@@ -28,6 +30,7 @@ tags:
   - component:search
 id: REQ-the-name-and-content-search-filters-use-co-30FF0726
 type: req
+required_evidence: asserted
 ---
 The name: and content: search filters use contains matching, not exact equality.
 

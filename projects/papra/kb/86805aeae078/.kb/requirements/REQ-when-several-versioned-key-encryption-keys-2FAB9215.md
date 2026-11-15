@@ -3,20 +3,33 @@ title: When several versioned key encryption keys are configured, the highest ve
 status: active
 semantic_text: When several versioned key encryption keys are configured, the highest version encrypts new documents and every configured key can still decrypt existing documents.
 logic_claims:
-  - CLAIM-11AA6575E1106CBD
+  - CLAIM-71F96BD843A3D6E9
+  - CLAIM-2C3C2960AABB48F8
 semantic_clauses:
-  - When several versioned key encryption keys are configured, the highest version encrypts new documents and every configured key can still decrypt existing documents
+  - When several versioned key encryption keys are configured, the highest version encrypts new documents
+  - every configured key can still decrypt existing documents
 semantic_inventory_version: kibi.semantic-inventory.v1
 semantic_source_field: semantic_text
 semantic_source_hash: e69a988e8e9ddb09221776d387ec971ef9f87deef9de86c25d017efa19ccfcd5
 semantic_inventory:
-  - claim_key: CLAIM-11AA6575E1106CBD
-    claim_text: When several versioned key encryption keys are configured, the highest version encrypts new documents and every configured key can still decrypt existing documents
+  - claim_key: CLAIM-71F96BD843A3D6E9
+    claim_text: When several versioned key encryption keys are configured, the highest version encrypts new documents
     role: condition
-    status: ontology_gap
+    status: modeled
     span:
       start: 0
+      end: 101
+    subjects:
+      - encryption.key_encryption_key
+  - claim_key: CLAIM-2C3C2960AABB48F8
+    claim_text: every configured key can still decrypt existing documents
+    role: descriptive
+    status: modeled
+    span:
+      start: 106
       end: 163
+    subjects:
+      - encryption.key_encryption_key
 firmness: firm
 origin:
   kind: import
@@ -28,12 +41,14 @@ tags:
   - component:encryption
 id: REQ-when-several-versioned-key-encryption-keys-2FAB9215
 type: req
+required_evidence: asserted
+rationale: 'The encryption guide: versioned keys exist for key rotation, which "allows you to replace encryption keys without losing access to existing documents".'
 ---
 When several versioned key encryption keys are configured, the highest version encrypts new documents and every configured key can still decrypt existing documents.
 
 ## Context
 
-Reason not stated.
+The encryption guide: versioned keys exist for key rotation, which "allows you to replace encryption keys without losing access to existing documents".
 
 ## Source
 

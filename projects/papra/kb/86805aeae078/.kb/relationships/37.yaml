@@ -13,3 +13,31 @@ relationships:
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-84c45423d6b5
+  - type: requires_property
+    from: REQ-tag-names-are-unique-per-organization-rega-7B5F6F2D
+    to: FACT-papra-tags-tag-name-unique-case-insensitive-per-organization
+    created_at: 2026-11-15T21:51:05.321Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-30a1d0e59161
+  - type: constrains
+    from: REQ-tag-names-are-unique-per-organization-rega-7B5F6F2D
+    to: FACT-papra-subject-tags-tag
+    created_at: 2026-11-15T21:51:05.328Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-a8cc2d68ec88
+  - type: requires_property
+    from: REQ-tag-names-are-unique-per-organization-rega-7B5F6F2D
+    to: FACT-papra-tags-tag-unique-constraint-column
+    created_at: 2026-11-15T21:51:05.330Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-986421e26f12
+  - type: requires_property
+    from: REQ-tag-names-are-unique-per-organization-rega-7B5F6F2D
+    to: FACT-papra-tags-tag-duplicate-error-code
+    created_at: 2026-11-15T21:51:05.332Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-832ec767d238
