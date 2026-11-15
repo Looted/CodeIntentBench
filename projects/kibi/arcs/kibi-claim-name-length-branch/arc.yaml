@@ -1,10 +1,17 @@
 id: kibi-claim-name-length-branch
 project: kibi
 family: branch
-# A benchmark-authored change to the recorded decision REQ-bootstrap-claim-name-length (aspects of at
-# most four words and forty characters), made on a branch on top of the project's real knowledge
-# base. The hidden tests under tests/ are the benchmark's own.
-base_commit: 9f3311f3f552c00dbba7eb6f1e571a681b03ec7a
+tier: easy
+pattern: single-decision
+# A benchmark-authored change to the recorded decision REQ-bootstrap-claim-name-length (status open,
+# no firmness field: "Bootstrap planning must shorten a generated claim name longer than four words
+# or forty characters and report the original name"), made on a branch on top of the project's real
+# knowledge base. The decision and its reason are the user's words in s1, not a knowledge-base entry.
+# The hidden tests under tests/ are the benchmark's own, in a file the repository does not have
+# (bootstrap-claim-name-limits.test.ts), so the project's own bootstrap-claim-name-length.test.ts
+# stays the agent's to update. Checked at the base: three of the four fail untouched (limits four and
+# forty) and all four pass with the two constants set to 3 and 30 (see NOTES.md).
+base_commit: 8bc4204f3c5ea1a4fa8319b2d9f69d53d5d99976
 intent:
   statement: >-
     Bootstrap planning keeps a generated claim name's aspect to at most three words and thirty
@@ -18,9 +25,9 @@ intent:
   symbols:
     - packages/cli/src/operations/bootstrap/requirement-claims.ts (MAX_ASPECT_WORDS, MAX_ASPECT_CHARS, shortenSubjectAspect)
   tests:
-    - packages/cli/tests/operations/bootstrap-claim-name-length.test.ts::the limits are three words and thirty characters
-    - packages/cli/tests/operations/bootstrap-claim-name-length.test.ts::whole-sentence aspects are shortened within the limits
-    - packages/cli/tests/operations/bootstrap-claim-name-length.test.ts::the plan uses a shortened key and reports the original beside it
+    - packages/cli/tests/operations/bootstrap-claim-name-limits.test.ts::the limits are three words and thirty characters
+    - packages/cli/tests/operations/bootstrap-claim-name-limits.test.ts::whole-sentence aspects are shortened within the limits
+    - packages/cli/tests/operations/bootstrap-claim-name-limits.test.ts::the plan uses a shortened key and reports the original beside it
 steps:
   - id: s1
     kind: intent
