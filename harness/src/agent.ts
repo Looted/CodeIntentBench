@@ -3,7 +3,8 @@ import { homedir } from 'node:os';
 import { join, isAbsolute } from 'node:path';
 import { ARMS_DIR } from './config.ts';
 import { stream } from './shell.ts';
-import type { AgentConfig, ArmHost, Usage } from './types.ts';
+import { priceTokens } from './pricing.ts';
+import type { AgentConfig, ArmHost, ModelTokens, Usage } from './types.ts';
 import { expandHostValue, workspaceDir } from './workspace.ts';
 
 export interface AgentResult {
@@ -115,6 +116,9 @@ export function parseTranscript(text: string): Omit<AgentResult, 'code' | 'timed
   const usage: Usage = { input_tokens: 0, cache_read_input_tokens: 0, cache_creation_input_tokens: 0, output_tokens: 0, cost_usd: 0, tool_calls: 0, turns: 0, wall_seconds: 0 };
   const out: Omit<AgentResult, 'code' | 'timed_out'> = { usage, tools_available: [], tool_calls: [], permission_denials: 0 };
   let turn = 0;
+  // Per-message usage, last seen per message id (a message's content blocks arrive as separate events carrying the same usage).
+  const messages = new Map<string, { model: string; u: any }>();
+  let sawResult = false;
   const evidence: NonNullable<AgentResult['evidence']> = [];
   const pendingLookups = new Map<string, string>(); // tool_use id → tool name, for lookups awaiting their result
   const clip = (t: unknown, n = 2000) => { const str = typeof t === 'string' ? t : JSON.stringify(t); return str.length > n ? str.slice(0, n) + ' …' : str; };
@@ -139,7 +143,9 @@ export function parseTranscript(text: string): Omit<AgentResult, 'code' | 'timed
         evidence.push({ turn, kind: 'lookup', name, text: clip(content) });
       }
     }
-    if (ev.type === 'assistant') {
+    if (ev.type === 'assistant' && ev.message?.usage && ev.message?.id) messages.set(ev.message.id, { model: String(ev.message.model ?? 'unknown'), u: ev.message.usage });
+    // Subagent (sidechain) messages carry parent_tool_use_id; they are not turns of the session itself.
+    if (ev.type === 'assistant' && !ev.parent_tool_use_id) {
       turn += 1;
       for (const block of ev.message?.content ?? []) {
         if (block.type !== 'tool_use') continue;
@@ -164,11 +170,34 @@ export function parseTranscript(text: string): Omit<AgentResult, 'code' | 'timed
       }
     }
     if (ev.type === 'result') {
+      sawResult = true;
       const u = ev.usage ?? {};
-      usage.input_tokens = u.input_tokens ?? 0;
-      usage.cache_read_input_tokens = u.cache_read_input_tokens ?? 0;
-      usage.cache_creation_input_tokens = u.cache_creation_input_tokens ?? 0;
-      usage.output_tokens = u.output_tokens ?? 0;
+      const mu = ev.modelUsage && typeof ev.modelUsage === 'object' ? ev.modelUsage as Record<string, any> : undefined;
+      if (mu && Object.keys(mu).length > 0) {
+        // modelUsage covers the whole session, subagents included; the top-level usage covers the main thread's last segment only.
+        usage.by_model = {};
+        for (const [model, m] of Object.entries(mu)) {
+          const t: ModelTokens = {
+            input_tokens: m.inputTokens ?? 0, output_tokens: m.outputTokens ?? 0, cache_read_input_tokens: m.cacheReadInputTokens ?? 0,
+            cache_creation_input_tokens: m.cacheCreationInputTokens ?? 0,
+            cache_creation_5m_input_tokens: m.cacheCreationEphemeral5mInputTokens ?? 0, cache_creation_1h_input_tokens: m.cacheCreationEphemeral1hInputTokens ?? 0,
+            cost_usd: m.costUSD ?? 0,
+          };
+          // Older CLIs report only the total cache write; Claude Code writes with the 1-hour TTL by default.
+          if (t.cache_creation_5m_input_tokens + t.cache_creation_1h_input_tokens === 0) t.cache_creation_1h_input_tokens = t.cache_creation_input_tokens;
+          usage.by_model[model] = t;
+        }
+        sumModels(usage);
+        usage.source = 'model_usage';
+      } else {
+        usage.input_tokens = u.input_tokens ?? 0;
+        usage.cache_read_input_tokens = u.cache_read_input_tokens ?? 0;
+        usage.cache_creation_input_tokens = u.cache_creation_input_tokens ?? 0;
+        usage.cache_creation_5m_input_tokens = u.cache_creation?.ephemeral_5m_input_tokens;
+        usage.cache_creation_1h_input_tokens = u.cache_creation?.ephemeral_1h_input_tokens;
+        usage.output_tokens = u.output_tokens ?? 0;
+        usage.source = 'result_usage';
+      }
       usage.cost_usd = ev.total_cost_usd ?? 0;
       usage.turns = ev.num_turns ?? turn;
       out.terminal_reason = ev.terminal_reason ?? ev.subtype;
@@ -176,7 +205,46 @@ export function parseTranscript(text: string): Omit<AgentResult, 'code' | 'timed
       out.permission_denials = (ev.permission_denials ?? []).length;
     }
   }
+  if (!sawResult && messages.size > 0) {
+    // Killed before Claude Code wrote its result (timeout): rebuild the tokens from the messages seen and price them.
+    usage.by_model = {};
+    for (const { model, u } of messages.values()) {
+      const t = (usage.by_model[model] ??= { input_tokens: 0, output_tokens: 0, cache_read_input_tokens: 0, cache_creation_input_tokens: 0, cache_creation_5m_input_tokens: 0, cache_creation_1h_input_tokens: 0, cost_usd: 0 });
+      t.input_tokens += u.input_tokens ?? 0; t.output_tokens += u.output_tokens ?? 0; t.cache_read_input_tokens += u.cache_read_input_tokens ?? 0;
+      const w = u.cache_creation_input_tokens ?? 0; t.cache_creation_input_tokens += w;
+      const w5 = u.cache_creation?.ephemeral_5m_input_tokens ?? 0, w1 = u.cache_creation?.ephemeral_1h_input_tokens ?? 0;
+      if (w5 + w1 > 0) { t.cache_creation_5m_input_tokens += w5; t.cache_creation_1h_input_tokens += w1; } else t.cache_creation_1h_input_tokens += w;
+    }
+    for (const [model, t] of Object.entries(usage.by_model)) t.cost_usd = priceTokens(model, tokenCounts(t)) ?? 0;
+    sumModels(usage);
+    usage.cost_usd = Object.values(usage.by_model).reduce((a, t) => a + t.cost_usd, 0);
+    usage.source = 'messages';
+    usage.cost_estimated = true;
+    out.terminal_reason ??= 'killed_without_result';
+  }
+  if (usage.by_model && !usage.cost_estimated) {
+    const listed = Object.entries(usage.by_model).map(([m, t]) => priceTokens(m, tokenCounts(t)));
+    if (listed.every((x) => x !== undefined)) {
+      const sum = (listed as number[]).reduce((a, b) => a + b, 0);
+      if (sum > 0 && Math.abs(usage.cost_usd - sum) / sum > 0.02) usage.cost_mismatch = `${usage.cost_usd.toFixed(4)}/${sum.toFixed(4)}`;
+    }
+  }
   if (usage.turns === 0) usage.turns = turn;
   if (evidence.length) out.evidence = evidence.slice(0, 60);
   return out;
+}
+
+function tokenCounts(t: ModelTokens) {
+  return { input: t.input_tokens, output: t.output_tokens, cache_read: t.cache_read_input_tokens, cache_write_5m: t.cache_creation_5m_input_tokens, cache_write_1h: t.cache_creation_1h_input_tokens };
+}
+
+function sumModels(usage: Usage): void {
+  const ms = Object.values(usage.by_model ?? {});
+  const sum = (f: (t: ModelTokens) => number) => ms.reduce((a, t) => a + f(t), 0);
+  usage.input_tokens = sum((t) => t.input_tokens);
+  usage.output_tokens = sum((t) => t.output_tokens);
+  usage.cache_read_input_tokens = sum((t) => t.cache_read_input_tokens);
+  usage.cache_creation_input_tokens = sum((t) => t.cache_creation_input_tokens);
+  usage.cache_creation_5m_input_tokens = sum((t) => t.cache_creation_5m_input_tokens);
+  usage.cache_creation_1h_input_tokens = sum((t) => t.cache_creation_1h_input_tokens);
 }
