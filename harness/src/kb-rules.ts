@@ -18,6 +18,20 @@ interface Sym { id: string; title: string; sourceFile: string }
 
 /** Statuses that say an entity no longer holds. Anything else (open, active, accepted, proposed) is current. */
 export const NOT_CURRENT = /^(superseded|closed|retired|deprecated|rejected|archived)$/i;
+const FIRMNESS_VALUES = ['firm', 'default', 'exploratory'];
+
+/**
+ * The firmness Kibi's own lookups show (effectiveFirmness in Kibi's packages/cli/src/decision-firmness.ts):
+ * the authored value when it is one of firm, default, exploratory; otherwise `default` for an entry an
+ * agent wrote (`origin.kind: agent`) and `firm` for every other one (a person's, imported, migrated, or
+ * with no origin).
+ */
+export function effectiveFirmness(value: unknown, origin: unknown): string {
+  if (typeof value === 'string' && FIRMNESS_VALUES.includes(value)) return value;
+  const kind = origin && typeof origin === 'object' ? (origin as { kind?: unknown }).kind : undefined;
+  return kind === 'agent' ? 'default' : 'firm';
+}
+
 export function isCurrent(rule: Pick<Rule, 'status'>): boolean {
   return !rule.status || !NOT_CURRENT.test(rule.status);
 }
@@ -127,8 +141,7 @@ export function exportKb(kb: string, opts: { includeAdr?: boolean } = {}): KbExp
     const title = typeof e.front.title === 'string' ? e.front.title.trim() : '';
     if (title && title !== statement) rule.title = title;
     if (e.front.status !== undefined && e.front.status !== null && String(e.front.status).trim()) rule.status = String(e.front.status).trim();
-    // An entity without a firmness is `default` in Kibi: a decision that may be changed with a reason.
-    rule.firmness = e.front.firmness ? String(e.front.firmness).trim() : 'default';
+    rule.firmness = effectiveFirmness(e.front.firmness, e.front.origin);
     const o = e.front.origin && typeof e.front.origin === 'object' ? e.front.origin : {};
     const origin: NonNullable<Rule['origin']> = {};
     if (o.kind) origin.kind = String(o.kind);

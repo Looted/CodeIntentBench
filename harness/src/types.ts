@@ -52,7 +52,7 @@ export interface Rule {
   status?: string;
   /** Why a retired entity was retired, when recorded. */
   status_reason?: string;
-  /** `firm`: ask before changing it. `default`: may be changed with a reason. */
+  /** The firmness Kibi's lookups show: `firm` (a person's; ask before changing it), `default` (an agent's choice; superseded only on evidence), `exploratory` (a guess). */
   firmness?: string;
   /** Who recorded it and when: the kind of author, who approved it, the source it cites, the dates. */
   origin?: { kind?: string; by?: string; ref?: string; recorded_at?: string; updated_at?: string };
