@@ -29,8 +29,9 @@ const HELP = `CodeIntentBench harness
   cib rejudge (--run DIR | --project P) [--judge-model M]
                                        re-run the judge and the decision table from saved artifacts
   cib report [--project P]             aggregate runs into runs/<project>/report.md (and report-arcs.md)
-  cib run-arc --project P --arc A|all --arm A[,B] [--family F] [--attempts N] [agent options as for run]
-                                       run a feature arc: fresh sessions on one carried workspace
+  cib run-arc --project P --arc A|all --arm A[,B] [--family F] [--attempts N] [--user-replies N] [--user-model M] [agent options as for run]
+                                       run a feature arc: fresh sessions on one carried workspace; with --user-replies N a
+                                       scripted user answers up to N times when a session stops to wait on the user
 
 Environment: CIB_RUNS_DIR (default: <repo>/runs), CIB_CACHE_DIR (default: <repo>/cache).
 Node 26 (or the project's runtime) must be on PATH before the project installs.
@@ -44,7 +45,7 @@ const { values: v, positionals } = parseArgs({
     'max-turns': { type: 'string', default: '60' }, timeout: { type: 'string', default: '25' }, budget: { type: 'string' },
     'judge-model': { type: 'string', default: 'claude-sonnet-5-5' }, agent: { type: 'string', default: 'claude' },
     permissions: { type: 'string', default: 'bypass' }, 'allowed-tools': { type: 'string' },
-    keep: { type: 'boolean', default: false }, 'skip-judge': { type: 'boolean', default: false }, help: { type: 'boolean', default: false },
+    keep: { type: 'boolean', default: false }, 'user-replies': { type: 'string', default: '0' }, 'user-model': { type: 'string' }, 'skip-judge': { type: 'boolean', default: false }, help: { type: 'boolean', default: false },
   },
 });
 const cmd = positionals[0];
@@ -56,6 +57,7 @@ function agentConfig(): AgentConfig {
     max_budget_usd: v.budget ? Number(v.budget) : undefined,
     permissions: v.permissions === 'accept-edits' ? 'accept-edits' : 'bypass',
     allowed_tools: v['allowed-tools'] ? v['allowed-tools'].split(/\s*,\s*/).filter(Boolean) : undefined,
+    user_permissions: Number(v['user-replies'] ?? 0) > 0 ? true : undefined,
   };
 }
 
@@ -227,7 +229,7 @@ async function main(): Promise<number> {
     const arms = v.arm.split(',');
     const results = [];
     for (const arc of arcs) for (const arm of arms) for (let a = 1; a <= Number(v.attempts); a++) {
-      try { results.push(await runArc(v.project, arc, arm, a, { agent: agentConfig(), judgeModel: v['judge-model']!, skipJudge: v['skip-judge'], keep: v.keep, replay: v.agent === 'replay' ? replayStep : undefined, log })); }
+      try { results.push(await runArc(v.project, arc, arm, a, { agent: agentConfig(), judgeModel: v['judge-model']!, skipJudge: v['skip-judge'], keep: v.keep, userReplies: Number(v['user-replies']), userModel: v['user-model'], replay: v.agent === 'replay' ? replayStep : undefined, log })); }
       catch (e) { log(`arc failed: ${arc.id}/${arm}/${a}: ${(e as Error).message}`); }
     }
     for (const [key, c] of summarizeArcs(results)) { const [fam, arm] = key.split('\u0000'); if (fam === 'all') console.log(`${arm}: ${c.pass}/${c.arcs - c.invalid} arcs pass, $${c.cost_usd.toFixed(2)}`); }
