@@ -207,7 +207,8 @@ export async function runArc(projectName: string, arc: Arc, arm: string, attempt
   const host = loadArmHost(arm);
   ENV = { ...BASE_ENV, PATH: [...hostPathPrepend(host, dir), BASE_ENV.PATH ?? ''].join(':') };
   writeFileSync(join(dir, 'arc.json'), JSON.stringify(arc, null, 2));
-  let cost = 0;
+  let agentCost = 0;
+  let judgeCost = 0;
   let invalid = false;
   const branches = new Set<string>([BASE_BRANCH]);
 
@@ -249,13 +250,13 @@ export async function runArc(projectName: string, arc: Arc, arm: string, attempt
     rec.usage = agent.usage; rec.terminal_reason = agent.terminal_reason; rec.final_answer = agent.final_answer;
     rec.first_lookup_turn = agent.first_rule_lookup_turn; rec.first_edit_turn = agent.first_edit_turn;
     rec.record_written = storeHash(dir, ws) !== storeBefore;
-    cost += agent.usage.cost_usd;
+    agentCost += agent.usage.cost_usd;
     opts.log(`agent done: ${agent.terminal_reason ?? agent.code} in ${agent.usage.wall_seconds}s, $${agent.usage.cost_usd.toFixed(3)}, ${agent.usage.tool_calls} tool calls`);
 
     const firstBranch = arc.steps[0].branch ?? BASE_BRANCH;
     const branchNote = arc.family === 'branch' && wanted !== firstBranch ? `This session runs on branch ${wanted}; the recorded decision was made on branch ${firstBranch} and has not been merged here, so it does not hold on this branch.` : undefined;
     rec.grade = await gradeStep({ dir: sdir, ws, project, arc, step, index, arm, agent, startCommit, recordWritten: rec.record_written, judgeModel: opts.judgeModel, skipJudge: opts.skipJudge, branchNote });
-    if (rec.grade.judge) cost += rec.grade.judge.cost_usd;
+    if (rec.grade.judge) judgeCost += rec.grade.judge.cost_usd;
     opts.log(`graded ${step.id}: ${rec.grade.outcome} (${rec.grade.pass ? 'pass' : 'fail'})`);
     if (rec.grade.invalid) { invalid = true; save(); break; }
 
@@ -280,7 +281,9 @@ export async function runArc(projectName: string, arc: Arc, arm: string, attempt
 
   record.invalid = invalid;
   record.pass = !invalid && record.steps.length === arc.steps.length && record.steps.every((s) => s.grade?.pass || s.terminal_reason === 'scripted');
-  record.cost_usd = cost;
+  record.agent_cost_usd = agentCost;
+  record.judge_cost_usd = judgeCost;
+  record.cost_usd = agentCost + judgeCost;
   record.finished_at = new Date().toISOString();
   const hygiene = join(ARMS_DIR, arm, 'hygiene');
   if (existsSync(hygiene)) {

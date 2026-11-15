@@ -6,7 +6,7 @@ import { parseTranscript, runAgentWithHost, type AgentResult } from './agent.ts'
 import { RUNS_DIR, listArms, listProjects, loadArc, loadArcs, loadProject, loadRules, loadRulesDir, loadTask, loadTasks } from './config.ts';
 import { decideStep, runArc } from './arc.ts';
 import { judgeStep, armConvention } from './judge-arc.ts';
-import { loadArcRuns, renderArcsMarkdown, summarizeArcs } from './report-arcs.ts';
+import { agentCost, judgeCost, loadArcRuns, renderArcsMarkdown, summarizeArcs } from './report-arcs.ts';
 import { decide, gradeRun } from './grade.ts';
 import { judgeRun } from './judge.ts';
 import { loadRuns, renderMarkdown, summarize } from './report.ts';
@@ -304,10 +304,10 @@ async function main(): Promise<number> {
     for (const p of v.project ? [v.project] : listProjects()) {
       const arcRuns = loadArcRuns(p);
       if (arcRuns.length === 0) continue;
-      const md = renderArcsMarkdown(p, arcRuns);
+      const md = renderArcsMarkdown(p, arcRuns, loadArcRuns(p, { unfinished: true }));
       mkdirSync(join(RUNS_DIR, p), { recursive: true });
       writeFileSync(join(RUNS_DIR, p, 'report-arcs.md'), md);
-      writeFileSync(join(RUNS_DIR, p, 'report-arcs.json'), JSON.stringify({ project: p, runs: arcRuns.map((r) => ({ id: r.id, arc: r.spec.arc, family: r.spec.family, arm: r.spec.arm, attempt: r.spec.attempt, pass: r.pass, invalid: r.invalid, cost_usd: r.cost_usd, steps: r.steps.map((s) => ({ id: s.id, kind: s.kind, outcome: s.grade?.outcome, pass: s.grade?.pass, record_written: s.record_written, first_lookup_turn: s.first_lookup_turn, first_edit_turn: s.first_edit_turn, commit_gate: s.commit_gate, usage: s.usage })) })) }, null, 2));
+      writeFileSync(join(RUNS_DIR, p, 'report-arcs.json'), JSON.stringify({ project: p, runs: arcRuns.map((r) => ({ id: r.id, arc: r.spec.arc, family: r.spec.family, arm: r.spec.arm, attempt: r.spec.attempt, pass: r.pass, invalid: r.invalid, cost_usd: r.cost_usd, agent_cost_usd: agentCost(r), judge_cost_usd: judgeCost(r), steps: r.steps.map((s) => ({ id: s.id, kind: s.kind, outcome: s.grade?.outcome, pass: s.grade?.pass, record_written: s.record_written, first_lookup_turn: s.first_lookup_turn, first_edit_turn: s.first_edit_turn, commit_gate: s.commit_gate, usage: s.usage })) })) }, null, 2));
       console.log(md);
     }
     return 0;
@@ -340,7 +340,8 @@ async function rejudgeArc(dir: string, judgeModel: string): Promise<void> {
     const before = rec.grade.outcome;
     try {
       const verdict = await judgeStep({ dir: sdir, arc, step, agent, diff, model: judgeModel, recordWritten: rec.record_written, branchNote, convention: armConvention(record.spec.arm) });
-      rec.grade.judge = { answers: verdict.answers, model: judgeModel, cost_usd: verdict.cost_usd };
+      const prior = rec.grade.judge;
+      rec.grade.judge = { answers: verdict.answers, model: judgeModel, cost_usd: verdict.cost_usd, earlier_passes: prior ? [...(prior.earlier_passes ?? []), { model: prior.model, cost_usd: prior.cost_usd }] : undefined };
       rec.grade.notes = (rec.grade.notes ?? []).filter((n) => !n.startsWith('probe implemented without'));
       rec.grade.outcome = decideStep(arc, step, rec.grade, verdict, rec.grade.notes);
       rec.grade.pass = (step.grading.accept as string[]).includes(rec.grade.outcome);
@@ -348,5 +349,9 @@ async function rejudgeArc(dir: string, judgeModel: string): Promise<void> {
     } catch (e) { log(`rejudge failed for ${sdir}: ${(e as Error).message}`); }
   }
   record.pass = !record.invalid && record.steps.length === arc.steps.length && record.steps.every((s) => s.grade?.pass || s.terminal_reason === 'scripted');
+  // Costs follow the steps: the agent's never changes; the judge's is the current pass (earlier passes stay on each step).
+  record.agent_cost_usd = record.steps.reduce((a, s) => a + (s.usage?.cost_usd ?? 0), 0);
+  record.judge_cost_usd = record.steps.reduce((a, s) => a + (s.grade?.judge?.cost_usd ?? 0), 0);
+  record.cost_usd = record.agent_cost_usd + record.judge_cost_usd;
   writeFileSync(join(dir, 'run.json'), JSON.stringify(record, null, 2));
 }

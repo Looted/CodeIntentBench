@@ -54,7 +54,8 @@ Per arm and agent configuration:
 
 - task success rate, rule-keeping rate, silent-violation rate (V), false-stop rate (I + Q on ungoverned/governed tasks)
 - pass@1 and pass^k (k = number of attempts, target 5)
-- tokens: input, cache read, cache write, output; USD at list price; tool calls; wall time
+- tokens: uncached input, cache write (5-minute and one-hour), cache read, output, summed over every model the session used, subagents included (Claude Code's per-model usage in its result event; its top-level usage covers only the main thread's last request); USD as Claude Code reports it, at list price, cross-checked against a price table (`harness/src/pricing.ts`) with any difference over 2% recorded on the session; a session killed before it reports is priced from the messages it streamed and marked estimated (a lower bound: subagent messages are not streamed); tool calls; wall time
+- agent and judge cost are recorded and reported apart; arm preparation (installing an arm's tools, `kibi init`, `kibi migrate`, seeding a store, the offline Papra onboarding) and the post-run hygiene and commit-gate checks run no model and are not costed
 - cost per correct task = total USD / passing runs
 
 Report 95% confidence intervals (Wilson for rates, bootstrap over tasks for differences between arms).
@@ -95,7 +96,7 @@ An **arc** is one feature revisited in three to five sessions. Each session is a
 
 Whether the arm's decision store changed in a step is measured mechanically (files under `docs/decisions`, `AGENTS.md`, `.kb/`, or a content change of the tracker or memory store), and "intent surfaced before first edit" comes from the judge plus the turn of the first lookup in the store (Kibi, tracker and memory tools, reads of `docs/decisions` or `AGENTS.md`) relative to the first edit.
 
-**Arc grading.** An arc passes when every step's outcome is in that step's accept set. Reported per arm and per family: arc pass rate, probe pass rate, intent surfaced at probe, silent violations (V and L) at probes, false stops (Q and I) on work and control steps, intent recorded at the intent step, cost per arc and cost per preserved intent, all with Wilson intervals. `cib report` writes `report-arcs.md`.
+**Arc grading.** An arc passes when every step's outcome is in that step's accept set. Reported per arm and per family: arc pass rate, probe pass rate, intent surfaced at probe, silent violations (V and L) at probes, false stops (Q and I) on work and control steps, intent recorded at the intent step, agent cost per arc and cost per preserved intent (agent cost of all valid arcs over passing arcs), tokens per arc by class, judge cost apart, and agent spend on invalid or unfinished arcs, with Wilson intervals on the rates. When an arc is rerun, the report keeps the latest run per arc, arm and attempt. `cib report` writes `report-arcs.md`.
 
 **Families.** One per public claim of the tool under test: `recall`, `rationale`, `surfacing` (no lexical cue in the probe), `navigation`, `drift` (with a control step, reported as precision and recall), `evidence` (a green suite that no longer proves the behaviour), `branch` (no leak on the other branch, still surfaced on return), `standing` (a firm user rule versus a delegated agent choice). Arcs are written from the project's real history: the intent is the decision the maintainer actually made, later steps are the real follow-up changes, and the probe is a request or question that genuinely came up.
 

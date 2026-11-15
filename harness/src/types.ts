@@ -92,12 +92,35 @@ export interface RunSpec {
   agent: AgentConfig;
 }
 
-export interface Usage {
+export interface ModelTokens {
   input_tokens: number;
+  output_tokens: number;
   cache_read_input_tokens: number;
   cache_creation_input_tokens: number;
-  output_tokens: number;
+  cache_creation_5m_input_tokens: number;
+  cache_creation_1h_input_tokens: number;
   cost_usd: number;
+}
+
+export interface Usage {
+  /** Uncached input tokens. All token counts cover the whole session, subagents included (summed over the result's per-model usage). */
+  input_tokens: number;
+  cache_read_input_tokens: number;
+  /** Cache writes, both durations; split below when known. */
+  cache_creation_input_tokens: number;
+  cache_creation_5m_input_tokens?: number;
+  cache_creation_1h_input_tokens?: number;
+  output_tokens: number;
+  /** Claude Code's total_cost_usd, or a list-price estimate when `cost_estimated`. */
+  cost_usd: number;
+  /** Per model, from the result event's modelUsage. */
+  by_model?: Record<string, ModelTokens>;
+  /** Where the token counts come from: `model_usage` (result event, whole session), `result_usage` (result event top level, main thread only: older CLIs), `messages` (no result event: summed from assistant messages, cost estimated). */
+  source?: 'model_usage' | 'result_usage' | 'messages';
+  /** The session ended without a result event (killed on timeout); cost is the list price of the tokens seen. */
+  cost_estimated?: boolean;
+  /** Reported cost differs from tokens at list price by more than 2% (`reported/listed`). */
+  cost_mismatch?: string;
   tool_calls: number;
   turns: number;
   wall_seconds: number;
@@ -132,7 +155,7 @@ export interface Grade {
   rule_record_changed: boolean;
   files_changed: string[];
   source_files_changed: string[];
-  judge?: { answers: JudgeAnswer[]; model: string; cost_usd: number };
+  judge?: { answers: JudgeAnswer[]; model: string; cost_usd: number; tokens?: ModelTokens; earlier_passes?: Array<{ model: string; cost_usd: number }> };
   outcome: OutcomeClass;
   pass: boolean;
   notes: string[];
@@ -246,5 +269,8 @@ export interface ArcRunRecord {
   /** Every step's outcome is in its accept set. */
   pass?: boolean;
   invalid?: boolean;
+  /** Agent plus judge. Reports read agent_cost_usd and judge_cost_usd (or the steps) instead. */
   cost_usd?: number;
+  agent_cost_usd?: number;
+  judge_cost_usd?: number;
 }
