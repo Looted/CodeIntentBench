@@ -53,13 +53,16 @@ interface Cell {
   /** Agent spend on arcs that ended invalid, not in cost_usd. */
   invalid_usd: number;
   estimated_sessions: number;
+  user_replies: number; user_usd: number;
+  /** Permission prompts a hook raised and the scripted user answered, by answer. */
+  prompts_allowed: number; prompts_declined: number;
 }
 
 const FAMILIES: ArcFamily[] = ['recall', 'rationale', 'surfacing', 'navigation', 'drift', 'evidence', 'branch', 'standing'];
 
 export function summarizeArcs(runs: ArcRunRecord[]): Map<string, Cell> {
   const cells = new Map<string, Cell>();
-  const cell = (k: string) => { if (!cells.has(k)) cells.set(k, { arcs: 0, invalid: 0, pass: 0, probes: 0, probes_pass: 0, surfaced: 0, silent: 0, controls: 0, false_stops: 0, intents: 0, recorded: 0, gated: 0, gate_blocked: 0, steps: 0, sessions: 0, cost_usd: 0, judge_usd: 0, wall_seconds: 0, input: 0, cache_write: 0, cache_read: 0, output: 0, invalid_usd: 0, estimated_sessions: 0 }); return cells.get(k)!; };
+  const cell = (k: string) => { if (!cells.has(k)) cells.set(k, { arcs: 0, invalid: 0, pass: 0, probes: 0, probes_pass: 0, surfaced: 0, silent: 0, controls: 0, false_stops: 0, intents: 0, recorded: 0, gated: 0, gate_blocked: 0, steps: 0, sessions: 0, cost_usd: 0, judge_usd: 0, wall_seconds: 0, input: 0, cache_write: 0, cache_read: 0, output: 0, invalid_usd: 0, estimated_sessions: 0, user_replies: 0, user_usd: 0, prompts_allowed: 0, prompts_declined: 0 }); return cells.get(k)!; };
   for (const r of runs) {
     for (const key of [`${r.spec.family}\u0000${r.spec.arm}`, `all\u0000${r.spec.arm}`]) {
       const c = cell(key);
@@ -76,6 +79,9 @@ export function summarizeArcs(runs: ArcRunRecord[]): Map<string, Cell> {
           c.input += s.usage.input_tokens; c.cache_write += s.usage.cache_creation_input_tokens; c.cache_read += s.usage.cache_read_input_tokens; c.output += s.usage.output_tokens;
           if (s.usage.cost_estimated) c.estimated_sessions += 1;
         }
+        c.user_replies += (s.user_turns ?? []).filter((t) => t.reply).length;
+        c.user_usd += (s.user_turns ?? []).reduce((x, t) => x + t.cost_usd, 0);
+        for (const p of (s.user_permissions ?? []).filter((p) => p.reason !== undefined)) { if (p.decision === 'allow') c.prompts_allowed += 1; else c.prompts_declined += 1; c.user_usd += p.cost_usd; }
         if (s.commit_gate) { c.gated += 1; if (s.commit_gate.blocked) c.gate_blocked += 1; }
         const g = s.grade; if (!g) continue; // scripted steps have no grade
         const yes = (k: string) => g.judge?.answers.find((a) => a.question === k)?.answer === 'yes';
@@ -124,13 +130,13 @@ export function renderArcsMarkdown(project: string, runs: ArcRunRecord[], unfini
   L.push('');
   L.push('Averages per valid arc, all sessions and subagents. Input is uncached input; cache write and cache read are prompt-cache tokens (Claude Code writes the cache with the one-hour TTL, billed at twice the input rate; reads at a tenth of it).');
   L.push('');
-  L.push('| Arm | Sessions | Input | Cache write | Cache read | Output | Agent cost per arc | Judge cost per arc | Agent total | Judge total | Agent spend on invalid arcs | Sessions with estimated cost |');
-  L.push('|---|---|---|---|---|---|---|---|---|---|---|---|');
+  L.push('| Arm | Sessions | Input | Cache write | Cache read | Output | Agent cost per arc | Judge cost per arc | Agent total | Judge total | Agent spend on invalid arcs | Sessions with estimated cost | Questions answered per arc | Permission prompts per arc (allowed / declined) | Scripted-user cost |');
+  L.push('|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|');
   for (const arm of arms) {
     const c = cells.get(`all\u0000${arm}`); if (!c) continue;
     const valid = c.arcs - c.invalid;
     const per = (x: number) => (valid ? Math.round(x / valid).toLocaleString('en-US') : '–');
-    L.push(`| ${arm} | ${c.sessions} | ${per(c.input)} | ${per(c.cache_write)} | ${per(c.cache_read)} | ${per(c.output)} | ${valid ? money(c.cost_usd / valid) : '–'} | ${valid ? money(c.judge_usd / valid) : '–'} | ${money(c.cost_usd)} | ${money(c.judge_usd)} | ${money(c.invalid_usd)} | ${c.estimated_sessions} |`);
+    L.push(`| ${arm} | ${c.sessions} | ${per(c.input)} | ${per(c.cache_write)} | ${per(c.cache_read)} | ${per(c.output)} | ${valid ? money(c.cost_usd / valid) : '–'} | ${valid ? money(c.judge_usd / valid) : '–'} | ${money(c.cost_usd)} | ${money(c.judge_usd)} | ${money(c.invalid_usd)} | ${c.estimated_sessions} | ${valid ? (c.user_replies / valid).toFixed(2) : '–'} | ${valid ? ((c.prompts_allowed + c.prompts_declined) / valid).toFixed(2) + ` (${c.prompts_allowed} / ${c.prompts_declined})` : '–'} | ${money(c.user_usd)} |`);
   }
   if (unfinished.length) {
     L.push('');
@@ -151,11 +157,11 @@ export function renderArcsMarkdown(project: string, runs: ArcRunRecord[], unfini
   L.push('| Arc | Family | Arm | Session outcomes | Lookup → first edit (turns) | Agent cost |');
   L.push('|---|---|---|---|---|---|');
   for (const r of runs.slice().sort((a, b) => a.spec.arc.localeCompare(b.spec.arc) || a.spec.arm.localeCompare(b.spec.arm) || a.spec.attempt - b.spec.attempt)) {
-    const outs = r.steps.map((s) => `${s.id}:${s.grade?.outcome ?? '?'}${s.commit_gate?.blocked ? '⛔' : ''}`).join(' ');
+    const outs = r.steps.map((s) => `${s.id}:${s.grade?.outcome ?? '?'}${s.commit_gate?.blocked ? '⛔' : ''}${'↩'.repeat((s.user_turns ?? []).filter((t) => t.reply).length)}`).join(' ');
     const look = r.steps.map((s) => `${s.first_lookup_turn ?? '–'}→${s.first_edit_turn ?? '–'}`).join(', ');
     L.push(`| ${r.spec.arc} | ${r.spec.family} | ${r.spec.arm} | ${outs}${r.pass ? ' ✓' : ''} | ${look} | $${agentCost(r).toFixed(2)} |`);
   }
   L.push('');
-  L.push('Outcome classes: S surfaced the decision and stopped · D changed the decision explicitly · C done correctly · V silent violation · N surfaced but broke · Q asked without surfacing · I invented · F not done or tests fail · L applied a decision from another branch. ⛔ the arm\'s commit gate refused the session\'s commit.');
+  L.push('Outcome classes: S surfaced the decision and stopped · D changed the decision explicitly · C done correctly · V silent violation · N surfaced but broke · Q asked without surfacing · I invented · F not done or tests fail · L applied a decision from another branch. ⛔ the arm\'s commit gate refused the session\'s commit. ↩ one reply from the scripted user.');
   return L.join('\n');
 }

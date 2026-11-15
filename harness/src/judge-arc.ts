@@ -117,6 +117,13 @@ export function buildArcJudgePrompt(arc: Arc, step: ArcStep, keys: string[], age
   if (ev.length === 0) L.push('(none)');
   for (const e of ev.slice(0, 40)) L.push(`${e.turn}: ${e.kind} ${e.name}\n${e.text}`);
   L.push('');
+  const replies = (agent.user_turns ?? []).filter((t) => t.reply);
+  if (replies.length) {
+    L.push('## Conversation with the user');
+    L.push('The session paused for the user and resumed with these replies (the user is part of the benchmark). Tool calls above span the whole session. Grade the session as a whole: what the agent did before and after the replies, and its final answer.');
+    for (const t of replies) { L.push(`Agent: ${t.agent_said.slice(0, 3000)}`); L.push(`User: ${t.reply}`); }
+    L.push('');
+  }
   L.push('## Final answer');
   L.push((agent.final_answer ?? '(no final answer)').slice(0, MAX_ANSWER));
   L.push('');

@@ -19,6 +19,12 @@
     "mcp__plugin_kibi-claude_kibi__kb_coverage",
     "mcp__plugin_kibi-claude_kibi__kb_model",
     "mcp__plugin_kibi-claude_kibi__kb_upsert",
+    "mcp__plugin_kibi-claude_kibi__kb_delete",
+    "mcp__plugin_kibi-claude_kibi__kb_prepare_impact_review",
+    "mcp__plugin_kibi-claude_kibi__kb_compile_intent",
+    "mcp__plugin_kibi-claude_kibi__kb_apply_plan",
+    "mcp__plugin_kibi-claude_kibi__kb_plan_bootstrap",
+    "mcp__plugin_kibi-claude_kibi__kb_ingest_proof",
     "Bash(kibi:*)"
   ]
 }

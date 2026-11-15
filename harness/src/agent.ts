@@ -1,7 +1,7 @@
 import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { homedir } from 'node:os';
 import { join, isAbsolute } from 'node:path';
-import { ARMS_DIR } from './config.ts';
+import { ARMS_DIR, HARNESS_DIR } from './config.ts';
 import { stream } from './shell.ts';
 import { priceTokens } from './pricing.ts';
 import type { AgentConfig, ArmHost, ModelTokens, Usage } from './types.ts';
@@ -18,6 +18,10 @@ export interface AgentResult {
   first_rule_lookup_turn?: number;
   first_edit_turn?: number;
   permission_denials: number;
+  /** Claude Code's session id, used to resume the session with the scripted user's reply. */
+  session_id?: string;
+  /** The scripted user's replies, in order, with the agent message each answered. */
+  user_turns?: Array<{ agent_said: string; reply: string; why?: string; cost_usd: number }>;
   /** What the agent was shown about recorded decisions: results of lookups in a decision store and context injected by hooks, truncated. The judge reads these; the agent's other tool results are not kept. */
   evidence?: Array<{ turn: number; kind: 'lookup' | 'hook'; name: string; text: string }>;
 }
@@ -48,28 +52,29 @@ export function hostPathPrepend(host: ArmHost, hostDir: string): string[] {
 }
 
 /** `dir` holds this session's config and transcript; `hostDir` is where the arm's setup put its files (`${RUN_DIR}`), the same as `dir` except in arcs, where one arm setup serves several sessions. */
-export function buildEnv(dir: string, arm: string, host: ArmHost, hostDir = dir): NodeJS.ProcessEnv {
+export function buildEnv(dir: string, arm: string, host: ArmHost, hostDir = dir, keepConfig = false): NodeJS.ProcessEnv {
   const env: NodeJS.ProcessEnv = { ...process.env };
   // The agent must not inherit the operator's session.
   for (const k of Object.keys(env)) {
     if (k === 'CLAUDECODE' || k === 'CLAUDE_CODE_SESSION_ID' || k === 'CLAUDE_CODE_ENTRYPOINT') delete env[k];
   }
-  env.CLAUDE_CONFIG_DIR = isolatedConfigDir(dir);
+  env.CLAUDE_CONFIG_DIR = keepConfig ? join(dir, 'claude-config') : isolatedConfigDir(dir);
   const prepend = hostPathPrepend(host, hostDir);
   if (prepend.length > 0) env.PATH = [...prepend, env.PATH ?? ''].join(':');
   for (const [k, v] of Object.entries(host.env ?? {})) env[k] = expandHostValue(v, hostDir, arm);
   return env;
 }
 
-export function buildArgs(agent: AgentConfig, dir: string, arm: string, host: ArmHost, prompt: string, hostDir = dir): string[] {
+export function buildArgs(agent: AgentConfig, dir: string, arm: string, host: ArmHost, prompt: string, hostDir = dir, resume?: string): string[] {
   const args = [
     '-p',
     '--output-format', 'stream-json',
     '--verbose',
     '--model', agent.model,
     '--max-turns', String(agent.max_turns),
-    '--no-session-persistence',
   ];
+  // Sessions persist (in the run's isolated config dir) so the scripted user's reply can resume them.
+  if (resume) args.push('--resume', resume);
   if (agent.permissions === 'accept-edits') {
     // Edits are auto-accepted; other tools run only if allow-listed, denials are recorded.
     args.push('--permission-mode', 'acceptEdits');
@@ -85,7 +90,12 @@ export function buildArgs(agent: AgentConfig, dir: string, arm: string, host: Ar
     const expanded = expandHostValue(p, hostDir, arm);
     args.push('--plugin-dir', isAbsolute(expanded) ? expanded : join(ARMS_DIR, arm, expanded));
   }
-  if (host.mcp_config) args.push('--mcp-config', expandHostValue(host.mcp_config, hostDir, arm), '--strict-mcp-config');
+  const mcp = host.mcp_config ? [expandHostValue(host.mcp_config, hostDir, arm)] : [];
+  if (agent.user_permissions) mcp.push(join(dir, 'user-mcp.json'));
+  // --mcp-config takes several files; a flag after it ends the list before the prompt.
+  if (mcp.length) args.push('--mcp-config', ...mcp);
+  if (host.mcp_config) args.push('--strict-mcp-config');
+  if (agent.user_permissions) args.push('--permission-prompt-tool', 'mcp__cib_user__permission');
   args.push(prompt);
   return args;
 }
@@ -95,19 +105,23 @@ export async function runAgent(dir: string, arm: string, agent: AgentConfig, pro
   return runAgentWithHost(dir, arm, agent, prompt, host);
 }
 
-export async function runAgentWithHost(dir: string, arm: string, agent: AgentConfig, prompt: string, host: ArmHost, workspace?: string, hostDir = dir): Promise<AgentResult> {
+export async function runAgentWithHost(dir: string, arm: string, agent: AgentConfig, prompt: string, host: ArmHost, workspace?: string, hostDir = dir, resume?: { session: string; round: number }): Promise<AgentResult> {
   const ws = workspace ?? workspaceDir(dir);
-  const env = buildEnv(dir, arm, host, hostDir);
-  const args = buildArgs(agent, dir, arm, host, prompt, hostDir);
-  writeFileSync(join(dir, 'agent-command.json'), JSON.stringify({ cmd: 'claude', args, env_overrides: host.env ?? {} }, null, 2));
+  const env = buildEnv(dir, arm, host, hostDir, Boolean(resume));
+  const args = buildArgs(agent, dir, arm, host, prompt, hostDir, resume?.session);
+  const sfx = resume ? `-reply${resume.round}` : '';
+  if (agent.user_permissions) {
+    writeFileSync(join(dir, 'user-mcp.json'), JSON.stringify({ mcpServers: { cib_user: { command: process.execPath, args: [join(HARNESS_DIR, 'src', 'arm-tools', 'user-approver.ts'), '--dir', dir] } } }, null, 2));
+  }
+  writeFileSync(join(dir, `agent-command${sfx}.json`), JSON.stringify({ cmd: 'claude', args, env_overrides: host.env ?? {} }, null, 2));
   const r = await stream('claude', args, {
     cwd: ws,
     env,
-    stdoutFile: join(dir, 'transcript.jsonl'),
-    stderrFile: join(dir, 'agent-stderr.log'),
+    stdoutFile: join(dir, `transcript${sfx}.jsonl`),
+    stderrFile: join(dir, `agent-stderr${sfx}.log`),
     timeoutMs: agent.timeout_minutes * 60_000,
   });
-  const parsed = parseTranscript(readFileSync(join(dir, 'transcript.jsonl'), 'utf8'));
+  const parsed = parseTranscript(readFileSync(join(dir, `transcript${sfx}.jsonl`), 'utf8'));
   parsed.usage.wall_seconds = Math.round(r.duration_ms / 1000);
   return { code: r.code, timed_out: r.timed_out, ...parsed };
 }
@@ -126,7 +140,7 @@ export function parseTranscript(text: string): Omit<AgentResult, 'code' | 'timed
     if (!line.trim()) continue;
     let ev: any;
     try { ev = JSON.parse(line); } catch { continue; }
-    if (ev.type === 'system' && ev.subtype === 'init') out.tools_available = ev.tools ?? [];
+    if (ev.type === 'system' && ev.subtype === 'init') { out.tools_available = ev.tools ?? []; if (ev.session_id) out.session_id = ev.session_id; }
     if (ev.type === 'system' && ev.subtype === 'hook_response') {
       // Context a hook injected (Kibi's requirement snippets, session-start summaries); "{}" or empty output injects nothing.
       let ctx = '';
@@ -247,4 +261,40 @@ function sumModels(usage: Usage): void {
   usage.cache_creation_input_tokens = sum((t) => t.cache_creation_input_tokens);
   usage.cache_creation_5m_input_tokens = sum((t) => t.cache_creation_5m_input_tokens);
   usage.cache_creation_1h_input_tokens = sum((t) => t.cache_creation_1h_input_tokens);
+}
+
+/** One session made of the first run and its resumptions: usage summed, tool calls and evidence in order, the last answer. */
+export function mergeAgentResults(parts: AgentResult[]): AgentResult {
+  if (parts.length === 1) return parts[0];
+  const [first] = parts;
+  const out: AgentResult = { ...first, usage: { ...first.usage, by_model: undefined }, tool_calls: [], evidence: [] };
+  const byModel: Record<string, ModelTokens> = {};
+  let offset = 0;
+  const u = out.usage;
+  u.input_tokens = u.output_tokens = u.cache_read_input_tokens = u.cache_creation_input_tokens = u.cost_usd = u.tool_calls = u.turns = u.wall_seconds = 0;
+  u.cache_creation_5m_input_tokens = u.cache_creation_1h_input_tokens = 0;
+  for (const p of parts) {
+    for (const [m, t] of Object.entries(p.usage.by_model ?? {})) {
+      const acc = (byModel[m] ??= { input_tokens: 0, output_tokens: 0, cache_read_input_tokens: 0, cache_creation_input_tokens: 0, cache_creation_5m_input_tokens: 0, cache_creation_1h_input_tokens: 0, cost_usd: 0 });
+      for (const k of Object.keys(acc) as (keyof ModelTokens)[]) acc[k] += t[k];
+    }
+    u.input_tokens += p.usage.input_tokens; u.output_tokens += p.usage.output_tokens;
+    u.cache_read_input_tokens += p.usage.cache_read_input_tokens; u.cache_creation_input_tokens += p.usage.cache_creation_input_tokens;
+    u.cache_creation_5m_input_tokens += p.usage.cache_creation_5m_input_tokens ?? 0; u.cache_creation_1h_input_tokens += p.usage.cache_creation_1h_input_tokens ?? 0;
+    u.cost_usd += p.usage.cost_usd; u.tool_calls += p.usage.tool_calls; u.wall_seconds += p.usage.wall_seconds; u.turns += p.usage.turns;
+    if (p.usage.cost_estimated) u.cost_estimated = true;
+    if (p.usage.cost_mismatch) u.cost_mismatch = [u.cost_mismatch, p.usage.cost_mismatch].filter(Boolean).join('; ');
+    out.tool_calls.push(...p.tool_calls.map((c) => ({ ...c, turn: c.turn + offset })));
+    out.evidence!.push(...(p.evidence ?? []).map((e) => ({ ...e, turn: e.turn + offset })));
+    if (out.first_rule_lookup_turn === undefined && p.first_rule_lookup_turn !== undefined) out.first_rule_lookup_turn = p.first_rule_lookup_turn + offset;
+    if (out.first_edit_turn === undefined && p.first_edit_turn !== undefined) out.first_edit_turn = p.first_edit_turn + offset;
+    offset += p.usage.turns;
+  }
+  const last = parts[parts.length - 1];
+  u.by_model = byModel;
+  out.permission_denials = parts.reduce((a, p) => a + p.permission_denials, 0);
+  out.timed_out = parts.some((p) => p.timed_out);
+  out.code = last.code; out.terminal_reason = last.terminal_reason; out.final_answer = last.final_answer;
+  out.evidence = out.evidence!.slice(0, 60);
+  return out;
 }

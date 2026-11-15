@@ -82,6 +82,8 @@ export interface AgentConfig {
   permissions?: 'bypass' | 'accept-edits';
   /** Tool patterns for `--allowedTools` when permissions is `accept-edits`. */
   allowed_tools?: string[];
+  /** Permission prompts (a hook asking for confirmation) go to the scripted user through --permission-prompt-tool. */
+  user_permissions?: boolean;
 }
 
 export interface RunSpec {
@@ -255,6 +257,10 @@ export interface StepRecord {
    * scripted steps and on records from before the gate was exercised.
    */
   commit_gate?: { blocked: boolean; output?: string };
+  /** The scripted user's turns in this session: the agent message answered, the reply (empty when none was needed). */
+  user_turns?: Array<{ agent_said: string; reply: string; why?: string; cost_usd: number }>;
+  /** Permission prompts the session raised and how the scripted user answered (prompts not raised by a hook are denied unseen). */
+  user_permissions?: Array<{ tool: string; decision: 'allow' | 'deny'; reason?: string; message?: string; why?: string; cost_usd: number }>;
   grade?: StepGrade;
 }
 
@@ -273,4 +279,6 @@ export interface ArcRunRecord {
   cost_usd?: number;
   agent_cost_usd?: number;
   judge_cost_usd?: number;
+  /** The scripted user's model calls (benchmark overhead, like the judge). */
+  user_sim_cost_usd?: number;
 }

@@ -3,7 +3,8 @@
 import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
-import { hostPathPrepend, runAgentWithHost, type AgentResult } from './agent.ts';
+import { hostPathPrepend, mergeAgentResults, runAgentWithHost, type AgentResult } from './agent.ts';
+import { askUser, buildUserPrompt } from './user-sim.ts';
 import { ARMS_DIR, RUNS_DIR, loadProject } from './config.ts';
 import { NON_SOURCE, RULE_RECORD_PATHS, changedFiles, runRegression, runVitest, splitTestRef, toRepoRel } from './grade.ts';
 import { defaultDecision, judgeStep, requiredKeys, armConvention } from './judge-arc.ts';
@@ -187,6 +188,10 @@ export interface ArcRunOptions {
   skipJudge?: boolean;
   keep?: boolean;
   replay?: (ws: string, step: ArcStep, dir: string) => AgentResult;
+  /** Replies the scripted user may give per session (0 disables it: the session ends at the agent's first stop). */
+  userReplies?: number;
+  /** Model playing the user; defaults to the judge model. */
+  userModel?: string;
   log: (s: string) => void;
 }
 
@@ -209,6 +214,7 @@ export async function runArc(projectName: string, arc: Arc, arm: string, attempt
   writeFileSync(join(dir, 'arc.json'), JSON.stringify(arc, null, 2));
   let agentCost = 0;
   let judgeCost = 0;
+  let userCost = 0;
   let invalid = false;
   const branches = new Set<string>([BASE_BRANCH]);
 
@@ -245,16 +251,41 @@ export async function runArc(projectName: string, arc: Arc, arm: string, attempt
       continue;
     }
 
-    const agent = opts.replay ? opts.replay(ws, step, sdir) : await runAgentWithHost(sdir, arm, opts.agent, step.prompt, host, ws, dir);
+    const firstBranch = arc.steps[0].branch ?? BASE_BRANCH;
+    const branchNote = arc.family === 'branch' && wanted !== firstBranch ? `This session runs on branch ${wanted}; the recorded decision was made on branch ${firstBranch} and has not been merged here, so it does not hold on this branch.` : undefined;
+    if (opts.agent.user_permissions) writeFileSync(join(sdir, 'user-context.json'), JSON.stringify({ request: step.prompt, statement: arc.intent.statement, reason: arc.intent.reason, branch_note: branchNote, model: opts.userModel ?? opts.judgeModel }, null, 2));
+    let agent = opts.replay ? opts.replay(ws, step, sdir) : await runAgentWithHost(sdir, arm, opts.agent, step.prompt, host, ws, dir);
+    // The scripted user answers when the session stopped to wait on the user, and the session resumes with the answer.
+    if (!opts.replay && (opts.userReplies ?? 0) > 0) {
+      const parts = [agent];
+      const turns: NonNullable<AgentResult['user_turns']> = [];
+      for (let round = 1; round <= (opts.userReplies ?? 0); round++) {
+        const lastPart = parts[parts.length - 1];
+        if (!lastPart.session_id || lastPart.timed_out) break;
+        const said = lastPart.final_answer ?? '';
+        const u = askUser(sdir, round, buildUserPrompt(arc, step, said, branchNote, round), opts.userModel ?? opts.judgeModel);
+        userCost += u.cost_usd;
+        if (!u.needs_reply || !u.reply) { turns.push({ agent_said: said.slice(0, 4000), reply: '', why: u.why, cost_usd: u.cost_usd }); break; }
+        turns.push({ agent_said: said.slice(0, 4000), reply: u.reply, why: u.why, cost_usd: u.cost_usd });
+        opts.log(`scripted user replies (round ${round}): ${u.reply.slice(0, 120)}`);
+        parts.push(await runAgentWithHost(sdir, arm, opts.agent, u.reply, host, ws, dir, { session: lastPart.session_id, round }));
+      }
+      agent = mergeAgentResults(parts);
+      agent.user_turns = turns;
+    }
     writeFileSync(join(sdir, 'agent.json'), JSON.stringify(agent, null, 2));
     rec.usage = agent.usage; rec.terminal_reason = agent.terminal_reason; rec.final_answer = agent.final_answer;
     rec.first_lookup_turn = agent.first_rule_lookup_turn; rec.first_edit_turn = agent.first_edit_turn;
+    if (agent.user_turns) rec.user_turns = agent.user_turns;
+    const permLog = join(sdir, 'user-permissions.jsonl');
+    if (existsSync(permLog)) {
+      rec.user_permissions = readFileSync(permLog, 'utf8').trim().split('\n').filter(Boolean).map((l) => JSON.parse(l)).map((p: any) => ({ tool: p.tool, decision: p.decision, reason: p.reason, message: p.message, why: p.why, cost_usd: p.cost_usd ?? 0 }));
+      userCost += rec.user_permissions.reduce((a, p) => a + p.cost_usd, 0);
+    }
     rec.record_written = storeHash(dir, ws) !== storeBefore;
     agentCost += agent.usage.cost_usd;
     opts.log(`agent done: ${agent.terminal_reason ?? agent.code} in ${agent.usage.wall_seconds}s, $${agent.usage.cost_usd.toFixed(3)}, ${agent.usage.tool_calls} tool calls`);
 
-    const firstBranch = arc.steps[0].branch ?? BASE_BRANCH;
-    const branchNote = arc.family === 'branch' && wanted !== firstBranch ? `This session runs on branch ${wanted}; the recorded decision was made on branch ${firstBranch} and has not been merged here, so it does not hold on this branch.` : undefined;
     rec.grade = await gradeStep({ dir: sdir, ws, project, arc, step, index, arm, agent, startCommit, recordWritten: rec.record_written, judgeModel: opts.judgeModel, skipJudge: opts.skipJudge, branchNote });
     if (rec.grade.judge) judgeCost += rec.grade.judge.cost_usd;
     opts.log(`graded ${step.id}: ${rec.grade.outcome} (${rec.grade.pass ? 'pass' : 'fail'})`);
@@ -283,6 +314,7 @@ export async function runArc(projectName: string, arc: Arc, arm: string, attempt
   record.pass = !invalid && record.steps.length === arc.steps.length && record.steps.every((s) => s.grade?.pass || s.terminal_reason === 'scripted');
   record.agent_cost_usd = agentCost;
   record.judge_cost_usd = judgeCost;
+  record.user_sim_cost_usd = userCost;
   record.cost_usd = agentCost + judgeCost;
   record.finished_at = new Date().toISOString();
   const hygiene = join(ARMS_DIR, arm, 'hygiene');

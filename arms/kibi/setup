@@ -43,4 +43,8 @@ fi
 cd "$ws"
 kibi --version > "$run/kibi-version.txt"
 kibi init
+# A knowledge base written by an older Kibi (the onboarded Papra KB, Kibi's own KB at the arcs' base commit) is
+# upgraded the way Kibi tells a user to after an upgrade: `kibi migrate --yes` applies the deterministic schema
+# migration and leaves the review work it lists to people. A no-op on a current KB.
+if [ -f .kb/manifest.json ]; then kibi migrate --yes > "$run/kibi-migrate.log" 2>&1 || { tail -40 "$run/kibi-migrate.log" >&2; exit 1; }; fi
 node "$here/../../harness/src/arm-tools/kibi-import.ts" "$ws" "$rules" "$run"
