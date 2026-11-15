@@ -5,6 +5,8 @@ import { parseArgs } from 'node:util';
 import { parseTranscript, runAgentWithHost, type AgentResult } from './agent.ts';
 import { RUNS_DIR, listArms, listProjects, loadArc, loadArcs, loadProject, loadRules, loadRulesDir, loadTask, loadTasks } from './config.ts';
 import { decideStep, runArc } from './arc.ts';
+import { renderAudit, runAudit } from './audit-run.ts';
+import { validateArc } from './validate-arc.ts';
 import { judgeStep, armConvention } from './judge-arc.ts';
 import { agentCost, judgeCost, loadArcRuns, renderArcsMarkdown, summarizeArcs } from './report-arcs.ts';
 import { decide, gradeRun } from './grade.ts';
@@ -16,7 +18,11 @@ import { BASE_BRANCH, GIT_IDENTITY, loadArmHost, prepareWorkspace, runDir, works
 
 const HELP = `CodeIntentBench harness
 
-  cib validate                         check projects, rules and tasks
+  cib validate [--skip-audit]          check projects, rules, tasks and arcs, then run the equivalence audit
+  cib audit [--project P] [--arc A[,B]] [--arm A[,B]] [--keep]
+                                       the equivalence audit alone: after each arm's setup, every decision an
+                                       arc is about must be in the arm's container with its reason, status,
+                                       firmness and code paths. No model is called. An arc that fails is not scored.
   cib list [--project P]               list tasks and arms
   cib prepare --project P --task T --arm A [--out DIR]
                                        build a workspace and stop (debugging arms)
@@ -45,7 +51,7 @@ const { values: v, positionals } = parseArgs({
     'max-turns': { type: 'string', default: '60' }, timeout: { type: 'string', default: '25' }, budget: { type: 'string' },
     'judge-model': { type: 'string', default: 'claude-sonnet-5-5' }, agent: { type: 'string', default: 'claude' },
     permissions: { type: 'string', default: 'bypass' }, 'allowed-tools': { type: 'string' },
-    keep: { type: 'boolean', default: false }, 'user-replies': { type: 'string', default: '0' }, 'user-model': { type: 'string' }, 'user-style': { type: 'string', default: 'task' }, 'skip-judge': { type: 'boolean', default: false }, help: { type: 'boolean', default: false },
+    keep: { type: 'boolean', default: false }, 'user-replies': { type: 'string', default: '0' }, 'user-model': { type: 'string' }, 'user-style': { type: 'string', default: 'task' }, 'skip-judge': { type: 'boolean', default: false }, 'skip-audit': { type: 'boolean', default: false }, help: { type: 'boolean', default: false },
   },
 });
 const cmd = positionals[0];
@@ -62,6 +68,19 @@ function agentConfig(): AgentConfig {
 }
 
 function validate(): number {
+  const code = validateStatic();
+  if (code !== 0 || v['skip-audit']) { if (v['skip-audit']) console.log('equivalence audit skipped (--skip-audit): arcs are not cleared for scoring'); return code; }
+  return audit();
+}
+
+/** The equivalence audit (audit.ts) over the arcs' bases and the arms: exit 1 when an arc cannot be scored. */
+function audit(): number {
+  const results = runAudit({ projects: v.project ? [v.project] : listProjects(), arcs: v.arc && v.arc !== 'all' ? v.arc.split(',') : undefined, arms: v.arm ? v.arm.split(',') : undefined, keep: v.keep, log });
+  console.log(renderAudit(results));
+  return results.every((r) => r.ok) ? 0 : 1;
+}
+
+function validateStatic(): number {
   let errors = 0;
   const err = (s: string) => { errors += 1; console.error(`error: ${s}`); };
   const arms = listArms();
@@ -95,23 +114,7 @@ function validate(): number {
     for (const a of arcs) {
       if (arcIds.has(a.id)) err(`${p}/arcs/${a.id}: duplicate id`);
       arcIds.add(a.id);
-      if (a.project !== p) err(`${p}/arcs/${a.id}: project field is '${a.project}'`);
-      if (!a.base_commit) err(`${p}/arcs/${a.id}: no base_commit`);
-      if (!a.intent?.statement?.trim() || !a.intent?.reason?.trim()) err(`${p}/arcs/${a.id}: intent needs statement and reason`);
-      if (a.intent?.tests?.length && !a.intent.tests_commit && !existsSync(join(a._dir ?? '', 'tests'))) err(`${p}/arcs/${a.id}: intent.tests without tests_commit or a tests/ directory`);
-      if (!a.steps?.length || a.steps[0].kind !== 'intent') err(`${p}/arcs/${a.id}: first step must be the intent step`);
-      if (!a.steps?.some((st) => st.kind === 'probe')) err(`${p}/arcs/${a.id}: no probe step`);
-      const stepIds = new Set<string>();
-      for (const st of a.steps ?? []) {
-        if (stepIds.has(st.id)) err(`${p}/arcs/${a.id}/${st.id}: duplicate step id`);
-        stepIds.add(st.id);
-        if (st.script && !existsSync(join(a._dir ?? '', st.script))) err(`${p}/arcs/${a.id}/${st.id}: script ${st.script} not found`);
-        if (!st.script && !st.grading?.accept?.length) err(`${p}/arcs/${a.id}/${st.id}: no accept set`);
-        if (/\b(kibi|requirement|knowledge base|AGENTS\.md|CLAUDE\.md|benchmark|tracker|memory)\b/i.test(st.prompt) && st.kind !== 'intent') err(`${p}/arcs/${a.id}/${st.id}: prompt mentions tools or the benchmark`);
-        // Questions asked from the intent side (rationale, navigation) may name the decision; work requests must not.
-        const question = st.kind === 'probe' && (a.family === 'rationale' || a.family === 'navigation');
-        if (st.kind !== 'intent' && !question && /\b(decision|decided|recorded)\b/i.test(st.prompt)) err(`${p}/arcs/${a.id}/${st.id}: prompt hints that a decision exists`);
-      }
+      for (const e of validateArc(a, project)) err(e);
     }
     console.log(`${p}: ${rules.length} rules, ${tasks.length} tasks (${['history', 'conflict', 'governed', 'ungoverned'].map((k) => `${tasks.filter((t) => t.kind === k).length} ${k}`).join(', ')}), ${arcs.length} arcs, commit ${project.commit.slice(0, 12)}`);
   }
@@ -192,6 +195,7 @@ async function runOne(projectName: string, task: Task, arm: string, attempt: num
 async function main(): Promise<number> {
   if (!cmd || v.help) { console.log(HELP); return 0; }
   if (cmd === 'validate') return validate();
+  if (cmd === 'audit') return audit();
   if (cmd === 'list') {
     for (const p of v.project ? [v.project] : listProjects()) {
       for (const t of loadTasks(p)) console.log(`${p}\t${t.kind}\t${t.id}\t${t.governing_rules?.join(',') ?? ''}`);
@@ -309,7 +313,7 @@ async function main(): Promise<number> {
       const md = renderArcsMarkdown(p, arcRuns, loadArcRuns(p, { unfinished: true }));
       mkdirSync(join(RUNS_DIR, p), { recursive: true });
       writeFileSync(join(RUNS_DIR, p, 'report-arcs.md'), md);
-      writeFileSync(join(RUNS_DIR, p, 'report-arcs.json'), JSON.stringify({ project: p, runs: arcRuns.map((r) => ({ id: r.id, arc: r.spec.arc, family: r.spec.family, arm: r.spec.arm, attempt: r.spec.attempt, pass: r.pass, invalid: r.invalid, cost_usd: r.cost_usd, agent_cost_usd: agentCost(r), judge_cost_usd: judgeCost(r), steps: r.steps.map((s) => ({ id: s.id, kind: s.kind, outcome: s.grade?.outcome, pass: s.grade?.pass, record_written: s.record_written, first_lookup_turn: s.first_lookup_turn, first_edit_turn: s.first_edit_turn, commit_gate: s.commit_gate, usage: s.usage })) })) }, null, 2));
+      writeFileSync(join(RUNS_DIR, p, 'report-arcs.json'), JSON.stringify({ project: p, runs: arcRuns.map((r) => ({ id: r.id, arc: r.spec.arc, family: r.spec.family, tier: r.spec.tier, pattern: r.spec.pattern, audit: r.audit, invalid_reason: r.invalid_reason, agents_md: r.agents_md, arm: r.spec.arm, attempt: r.spec.attempt, pass: r.pass, invalid: r.invalid, cost_usd: r.cost_usd, agent_cost_usd: agentCost(r), judge_cost_usd: judgeCost(r), steps: r.steps.map((s) => ({ id: s.id, kind: s.kind, outcome: s.grade?.outcome, pass: s.grade?.pass, record_written: s.record_written, first_lookup_turn: s.first_lookup_turn, first_edit_turn: s.first_edit_turn, surfaced: s.surfaced, named_governing_decision: s.grade?.judge?.answers.find((a) => a.question === 'named_governing_decision')?.answer, treated_superseded_as_current: s.grade?.judge?.answers.find((a) => a.question === 'treated_superseded_as_current')?.answer, commit_gate: s.commit_gate, usage: s.usage })) })) }, null, 2));
       console.log(md);
     }
     return 0;

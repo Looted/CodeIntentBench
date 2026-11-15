@@ -8,7 +8,7 @@ An arm decides how a project's rules (`projects/<name>/rules/*.yaml`) reach the 
 | `docs` | One decision file per rule under `docs/decisions/`. | Empty `docs/decisions/` folder; the convention says to record decisions there. | a requirements folder, ADRs, a wiki in the repo |
 | `tracker` | Rules seeded as closed issues in a file-backed issue tracker over MCP. | Empty tracker; the convention says to search it and file decisions as issues. | Jira, YouTrack, Linear, GitHub issues |
 | `memory` | Rules seeded as notes in a file-backed keyword-search memory over MCP. | Empty memory; the convention says to search it and save decisions. | mem0, Zep, auto-memory, vector memory stores |
-| `agents-md` | All rules rendered into one `AGENTS.md`, plus a `CLAUDE.md` pointer. | Empty `AGENTS.md`; the convention says to record decisions there. | the always-in-context ceiling |
+| `agents-md` | All rules rendered into one `AGENTS.md`, plus a `CLAUDE.md` pointer. The file is written whole or the setup fails with "does not fit" (budget: the model's context window, or `CIB_AGENTS_MD_TOKEN_BUDGET`); its size is reported. | Empty `AGENTS.md`; the convention says to record decisions there. | the always-in-context ceiling |
 | `kibi` | Rules imported as firm requirements with tests and symbol links; the kibi-claude plugin (hooks, skills, MCP) installed. | Empty knowledge base after `kibi init`; the plugin's own skill is the only instruction. | Kibi |
 | `kibi-conv` | (arc mode only) | As `kibi`, plus the same one-sentence convention the other arms get, saying decisions are recorded as Kibi requirements. | Kibi, told where decisions live |
 
