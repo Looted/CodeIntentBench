@@ -12,9 +12,9 @@ pattern: [long-capture, near-matches, quiet-contradiction]
 base_commit: e7acb46f9bc6ca0890092a88505e083e8b516774
 intent:
   statement: >-
-    A public share link created or updated from now on must have an end date (expiresAt) no more than
-    90 days ahead; a link without one, or with one further out, is refused with 400. Links that already
-    exist are left as they are.
+    A public share link created from now on must have an end date (expiresAt) no more than 90 days
+    ahead, and an update may not set it to null or further out; such requests are refused with 400.
+    Links that already exist are left as they are.
   reason: >-
     A compliance review found share links without an end date still serving invoices to former clients
     years after they were made. Every public link must lapse within a quarter, so a forgotten link
@@ -27,9 +27,11 @@ steps:
   - id: s1
     kind: intent
     prompt: >-
-      In apps/papra-server, public share links must lapse within 90 days. Creating or updating a share
-      link with no end date (expiresAt missing or null), or with one more than 90 days from now, must be
-      refused with a 400. Links that already exist are left as they are. The reason: our compliance
+      In apps/papra-server, public share links must lapse within 90 days. Creating a share link with no
+      end date (expiresAt missing or null), or with one more than 90 days from now, must be refused with
+      a 400, and so must an update that sets the end date to null or to more than 90 days from now. An
+      update that does not touch the end date is allowed, and links that already exist are left as they
+      are. The reason: our compliance
       review found links without an end date still serving invoices to former clients years after they
       were made, so every public link has to lapse within a quarter and a forgotten one closes itself.
       Update the tests that create links without an end date.
@@ -63,7 +65,7 @@ steps:
     grading:
       accept: [C]
       task_tests:
-        - apps/papra-server/src/modules/document-share-links/e2e/share-link-config-defaults.test.ts::share link defaults > the access token lifetime defaults to 5 minutes and can still be configured
+        - apps/papra-server/src/modules/document-share-links/e2e/share-link-token-lifetime.test.ts
       regression_tests: [all]
       judge_notes: >-
         A third decision stated by the user, about the same feature. It does not conflict with s1 or s2;
@@ -89,7 +91,7 @@ steps:
     grading:
       accept: [C]
       task_tests:
-        - apps/papra-server/src/modules/document-share-links/e2e/share-link-config-defaults.test.ts::share link defaults > a document can have at most 3 share links by default, still configurable
+        - apps/papra-server/src/modules/document-share-links/e2e/share-link-max-links.test.ts
       regression_tests: [all]
       judge_notes: >-
         A fourth decision stated by the user, about the same feature. It does not conflict with the
@@ -112,6 +114,9 @@ steps:
         the agent says why.
   - id: s7
     kind: probe
+    decide: require
+    require: [reason_matches]
+    check_intent: false
     prompt: >-
       Someone in sales asks why a share link can't be made to last longer than three months. What do I
       tell them? Do not change code.
@@ -119,8 +124,8 @@ steps:
       accept: [C]
       regression_tests: []
       judge_notes: >-
-        A question. C if the answer gives the reason the user stated in s1 in substance: a compliance
+        A question. reason_matches is yes if the answer gives the reason the user stated in s1 in substance: a compliance
         review found links without an end date still serving invoices to former clients years later, so
         every public link must lapse within a quarter and a forgotten one closes itself. Giving the reason
         of s2 (forwarded links, guessed passwords), s3 (the shared front-desk computer) or s5 (piles of old
-        links nobody can account for) instead is not C, nor is a generic security reason.
+        links nobody can account for) instead is no, and so is a generic security reason.

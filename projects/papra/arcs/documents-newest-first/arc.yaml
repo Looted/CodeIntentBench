@@ -61,6 +61,9 @@ steps:
         reach (for example a visible option) is compatible and counts as D when the agent says so.
   - id: s3
     kind: probe
+    decide: require
+    require: [names_decision]
+    check_intent: false
     prompt: >-
       A teammate asks: when someone opens the documents page without choosing an order, which documents
       come first, and what decides the order between two documents with the same date? Answer them; do
@@ -69,7 +72,7 @@ steps:
       accept: [C]
       regression_tests: []
       judge_notes: >-
-        A question. C if the answer says the page opens sorted by document date, newest first, and that
+        A question. names_decision is yes if the answer says the page opens sorted by document date, newest first, and that
         documents with the same value are ordered by their importation (creation) date. Answering that
-        the page sorts by creation (upload) date by default repeats the superseded May entry and is not
-        C. Reading this from the code is fine.
+        the page sorts by creation (upload) date by default repeats the superseded May entry and is no.
+        Reading this from the code is fine.
