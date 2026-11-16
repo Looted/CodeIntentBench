@@ -33,6 +33,15 @@ python3 "$here/orphans.py" "$ws" --delete
 $G add -A .kb
 kibi sync --refresh-symbol-coordinates > "$work/sync-$short.log" 2>&1 || { tail -30 "$work/sync-$short.log"; exit 1; }
 grep -E '^\s*failed ' "$work/sync-$short.log" || true
+# 4. every declaration of a linked file gets its own symbol entry (the staged gate asks for one), and symbols
+#    without test evidence are linked to the existing test files that run them (V8 coverage at this commit)
+python3 "$here/declarations.py" "$ws"
+$G add -A .kb
+kibi sync --refresh-symbol-coordinates > "$work/sync-$short.log" 2>&1 || { tail -30 "$work/sync-$short.log"; exit 1; }
+[ -d "$work/cov-$short" ] || "$here/coverage.sh" "$ws" "$work/cov-$short"
+python3 "$here/coverage.py" "$ws" "$work/cov-$short"
+$G add -A .kb
+kibi sync --refresh-symbol-coordinates > "$work/sync-$short.log" 2>&1 || { tail -30 "$work/sync-$short.log"; exit 1; }
 kibi check --format json > "$work/check-$short.json" 2>/dev/null || true
 python3 - "$work/check-$short.json" <<'PY'
 import collections, json, sys

@@ -128,6 +128,33 @@ definitions, and `reasons.json` the traced reasons. `apply.py <workspace>` write
 and `symfix.py` merges the duplicate symbols. Run them on a workspace made from the stored KB at schema
 18 with the pinned `kibi` on PATH, then run `kibi sync --refresh-symbol-coordinates` and `kibi check`.
 
+## Declarations and test evidence (gate health)
+
+Kibi's commit gate (`kibi check --staged`) refuses a behaviour change to a linked source file unless every
+declaration Kibi's extractor finds in that file has its own symbol entry, and every changed symbol has test
+evidence that verifies a requirement it implements. The bootstrap recorded only the functions that decide a
+claim, so in the first hard-tier runs the gate refused correct changes over sibling declarations (an error
+factory, a repository type) the knowledge base had never listed. Kibi's own knowledge base links nearly all
+of its declarations this way, so the stored snapshots now do too. Code and tests are unchanged.
+
+- `gold/declarations.py <workspace>` finds the uncovered declarations the way the gate does (a throwaway
+  export in each linked file, `kibi check --staged`, files restored) and records each with a `symbol_role`
+  (type-shape, structural, config, behavioral), one `implements` link to the requirement of its directory
+  whose title shares the most words with its name (never past Kibi's broad-fanout threshold of 8
+  implementing symbols), and `covered_by` the tests in its directory that name it. April: 63 declarations
+  in 21 files; February and the later base: 115 and 114 in 36 files.
+- `gold/coverage.sh <workspace> <dir>` runs each server unit test file on its own with V8 coverage at the
+  base commit; `gold/coverage.py <workspace> <dir>` links each symbol still without test evidence to the
+  test files that ran it (a called function; for a span without functions, an executed statement, counted
+  only from tests of the same module, since module code runs on import), adds missing TEST entities, and
+  makes the requirement the symbol implements `verified_by` those tests. April: 23 symbols linked;
+  February and later: 37 each.
+- `gold/snapshot.sh` runs both as its step 4.
+- **Result.** `kibi check` reports only `symbol-coverage` for the symbols no existing test runs (21 April,
+  20 February, 19 later: task registrations, a few configs and tables, the client components) and
+  `coverage_depth_review`. With a behaviour change staged in every linked file, the gate reports nothing
+  but those untested symbols; touching one of them asks for a test, which is the gate working as meant.
+
 ## Later bases
 
 `gold/snapshot.sh <base-sha> <workdir> [--store]` builds the snapshot of a later Papra commit from the
@@ -143,7 +170,8 @@ April one, with the pinned `kibi` on PATH and a clone of Papra that has the comm
    declared in this checkout are written. Closed entries get no `implements` link. Run on the April
    checkout it reproduces the stored April `symbols.yaml` exactly.
 3. `kibi sync --refresh-symbol-coordinates`, then test entities whose file is gone and facts nothing
-   links to are deleted, then `kibi sync` and `kibi check`.
+   links to are deleted, then `kibi sync`.
+4. `declarations.py` and `coverage.py` (see above), then `kibi sync` and `kibi check`.
 
 ### What later.json holds
 

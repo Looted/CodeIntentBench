@@ -34,3 +34,17 @@ relationships:
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-ca4d2e941e9f
+  - type: verified_by
+    from: REQ-search-queries-are-parsed-by-the-papra-sea-4463E6DB
+    to: TEST-papra-server-src-modules-documents-document-search-database-fts5-query-builder-query-builder
+    created_at: 2026-11-16T04:52:09.969Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-360c3f0052c1
+  - type: verified_by
+    from: REQ-search-queries-are-parsed-by-the-papra-sea-4463E6DB
+    to: TEST-papra-server-src-modules-documents-document-search-database-fts5-query-builder-query-builder-models
+    created_at: 2026-11-16T04:52:09.977Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9fa163d57b95
