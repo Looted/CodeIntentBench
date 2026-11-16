@@ -34,3 +34,24 @@ relationships:
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-36a3ef94263a
+  - type: verified_by
+    from: REQ-a-document-s-extracted-searchable-content--7CD26FB8
+    to: TEST-papra-server-src-modules-documents-e2e-batch-trash-e2e
+    created_at: 2026-11-16T04:51:21.977Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-949a7a78bb74
+  - type: verified_by
+    from: REQ-a-document-s-extracted-searchable-content--7CD26FB8
+    to: TEST-papra-server-src-modules-documents-e2e-list-documents-sorting-e2e
+    created_at: 2026-11-16T04:51:21.988Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-a578cb7fc920
+  - type: verified_by
+    from: REQ-a-document-s-extracted-searchable-content--7CD26FB8
+    to: TEST-papra-server-src-modules-documents-e2e-upload-documents-e2e
+    created_at: 2026-11-16T04:51:21.994Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-f4162924d4df

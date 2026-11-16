@@ -133,6 +133,12 @@ symbols:
         target: REQ-papra-storage-key-sync-on-document-update
       - type: implements
         target: REQ-when-a-generated-storage-key-collides-with-D635AF56
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-document-encryption-usecases
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-documents-usecases
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-e2e-batch-tags-e2e
   - id: SYM-built-in-content-extraction-can-be-turned--66925D7B-1
     title: documentsConfig
     sourceFile: apps/papra-server/src/modules/documents/documents.config.ts
@@ -141,6 +147,10 @@ symbols:
     relationships:
       - type: implements
         target: REQ-built-in-content-extraction-can-be-turned--66925D7B
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-document-encryption-usecases
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-documents-usecases
   - id: SYM-a-document-s-extracted-searchable-content--7CD26FB8-1
     title: updateDocument
     sourceFile: apps/papra-server/src/modules/documents/documents.usecases.ts
@@ -161,6 +171,12 @@ symbols:
     relationships:
       - type: implements
         target: REQ-a-document-s-extracted-searchable-content--7CD26FB8
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-e2e-upload-documents-e2e
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-e2e-list-documents-sorting-e2e
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-e2e-batch-trash-e2e
   - id: SYM-a-document-s-extracted-searchable-content--7CD26FB8-3
     title: DocumentContentEditionPanel
     sourceFile: apps/papra-client/src/modules/documents/components/document-content-edition-panel.component.tsx
@@ -215,6 +231,8 @@ symbols:
         target: REQ-deleting-an-organization-is-a-soft-delete--58DE105C
       - type: implements
         target: REQ-invitations-are-valid-for-7-days-configura-E15FD078
+      - type: covered_by
+        target: TEST-papra-server-src-modules-organizations-organizations-usecases
   - id: SYM-papra-organizations.repository-createOrganizationsRepository
     title: createOrganizationsRepository
     sourceFile: apps/papra-server/src/modules/organizations/organizations.repository.ts
@@ -237,6 +255,8 @@ symbols:
     relationships:
       - type: implements
         target: REQ-a-soft-deleted-organization-can-be-restore-09031B40
+      - type: covered_by
+        target: TEST-papra-server-src-modules-document-share-links-e2e-shared-document-access-e2e
   - id: SYM-the-purge-task-deletes-an-expired-organiza-19AD72ED-1
     title: purgeExpiredSoftDeletedOrganization
     sourceFile: apps/papra-server/src/modules/organizations/organizations.usecases.ts
@@ -307,6 +327,8 @@ symbols:
         target: REQ-a-pending-invitation-can-be-cancelled-by-a-FE4C0162
       - type: implements
         target: REQ-papra-resend-only-inactive-invitations
+      - type: covered_by
+        target: TEST-papra-server-src-modules-admin-organizations-e2e-organizations-e2e
   - id: SYM-papra-tagging-rules.usecases-applyTaggingRuleToExistingDocuments
     title: applyTaggingRuleToExistingDocuments
     sourceFile: apps/papra-server/src/modules/tagging-rules/tagging-rules.usecases.ts
@@ -327,6 +349,8 @@ symbols:
     relationships:
       - type: implements
         target: REQ-applying-a-tagging-rule-to-existing-docume-C1D75FEF
+      - type: covered_by
+        target: TEST-papra-server-src-modules-admin-organizations-e2e-organizations-e2e
   - id: SYM-applying-a-tagging-rule-to-existing-docume-C1D75FEF-2
     title: registerApplyTaggingRuleToDocumentsTask
     sourceFile: apps/papra-server/src/modules/tagging-rules/tasks/apply-tagging-rule-to-documents.task.ts
@@ -345,6 +369,8 @@ symbols:
         target: REQ-AUTO-E2E14D03456F8986
       - type: implements
         target: REQ-papra-tagging-rule-match-mode
+      - type: covered_by
+        target: TEST-papra-server-src-modules-tagging-rules-tagging-rules-usecases
   - id: SYM-AUTO-E2E14D03456F8986-2
     title: taggingRulesTable
     sourceFile: apps/papra-server/src/modules/tagging-rules/tagging-rules.tables.ts
@@ -403,6 +429,8 @@ symbols:
     relationships:
       - type: implements
         target: REQ-tag-name-and-colour-are-validated-server-s-1890EF60
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-e2e-batch-tags-e2e
   - id: SYM-a-plain-search-term-matches-document-names-9B6CFF9C-1
     title: handleTextExpression
     sourceFile: apps/papra-server/src/modules/documents/document-search/database-fts5/query-builder/query-builder.ts
@@ -423,6 +451,8 @@ symbols:
         target: REQ-a-plain-search-term-matches-document-names-9B6CFF9C
       - type: implements
         target: REQ-search-queries-are-parsed-by-the-papra-sea-4463E6DB
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-document-search-database-fts5-query-builder-query-builder
   - id: SYM-the-name-and-content-search-filters-use-co-30FF0726-1
     title: handleNameFilter
     sourceFile: apps/papra-server/src/modules/documents/document-search/database-fts5/query-builder/query-builder.ts
@@ -539,6 +569,10 @@ symbols:
         target: REQ-inbound-intake-email-webhooks-are-signed-w-27EFD88D
       - type: implements
         target: REQ-papra-intake-webhook-secret-required
+      - type: covered_by
+        target: TEST-papra-server-src-modules-intake-emails-intake-emails-services
+      - type: covered_by
+        target: TEST-papra-server-src-modules-intake-emails-intake-emails-usecases
   - id: SYM-papra-intake-emails.routes-registerIntakeEmailsRoutes
     title: registerIntakeEmailsRoutes
     sourceFile: apps/papra-server/src/modules/intake-emails/intake-emails.routes.ts
@@ -549,6 +583,8 @@ symbols:
         target: REQ-inbound-intake-email-webhooks-are-signed-w-27EFD88D
       - type: implements
         target: REQ-papra-intake-webhook-secret-required
+      - type: covered_by
+        target: TEST-papra-server-src-modules-intake-emails-e2e-ingest-intake-emails-e2e
   - id: SYM-intake-email-addresses-can-follow-a-config-6227A38D-1
     title: intakeEmailUsernameConfig
     sourceFile: apps/papra-server/src/modules/intake-emails/username-drivers/intake-email-username.config.ts
@@ -557,6 +593,12 @@ symbols:
     relationships:
       - type: implements
         target: REQ-intake-email-addresses-can-follow-a-config-6227A38D
+      - type: covered_by
+        target: TEST-papra-server-src-modules-intake-emails-e2e-ingest-intake-emails-e2e
+      - type: covered_by
+        target: TEST-papra-server-src-modules-intake-emails-intake-emails-services
+      - type: covered_by
+        target: TEST-papra-server-src-modules-intake-emails-intake-emails-usecases
   - id: SYM-intake-email-addresses-can-follow-a-config-6227A38D-2
     title: patternIntakeEmailUsernameDriverFactory
     sourceFile: apps/papra-server/src/modules/intake-emails/username-drivers/pattern/pattern.intake-email-username-driver.ts
@@ -593,6 +635,8 @@ symbols:
     relationships:
       - type: implements
         target: REQ-files-matching-ingestion-folder-ignored-pa-9B49E534
+      - type: covered_by
+        target: TEST-papra-server-src-modules-ingestion-folders-ingestion-folders-usecases
   - id: SYM-files-matching-ingestion-folder-ignored-pa-9B49E534-3
     title: createIngestionFolderWatcher
     sourceFile: apps/papra-server/src/modules/ingestion-folders/ingestion-folders.usecases.ts
@@ -647,6 +691,12 @@ symbols:
     relationships:
       - type: implements
         target: REQ-webhooks-emit-document-updated-document-ta-FB361BD1
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-e2e-upload-documents-e2e
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-e2e-list-documents-sorting-e2e
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-e2e-batch-trash-e2e
   - id: SYM-with-encryption-enabled-each-document-is-e-3A4DEA2F-1
     title: createNewEncryptionKey
     sourceFile: apps/papra-server/src/modules/storage/encryption/storage-encryption.models.ts
@@ -655,6 +705,8 @@ symbols:
     relationships:
       - type: implements
         target: REQ-with-encryption-enabled-each-document-is-e-3A4DEA2F
+      - type: covered_by
+        target: TEST-papra-server-src-modules-storage-encryption-storage-encryption-services
   - id: SYM-with-encryption-enabled-each-document-is-e-3A4DEA2F-2
     title: wrapEncryptionKey
     sourceFile: apps/papra-server/src/modules/storage/encryption/storage-encryption.models.ts
@@ -663,6 +715,8 @@ symbols:
     relationships:
       - type: implements
         target: REQ-with-encryption-enabled-each-document-is-e-3A4DEA2F
+      - type: covered_by
+        target: TEST-papra-server-src-modules-storage-encryption-storage-encryption-services
   - id: SYM-with-encryption-enabled-each-document-is-e-3A4DEA2F-3
     title: wrapWithEncryptionLayer
     sourceFile: apps/papra-server/src/modules/storage/encryption/storage-encryption.services.ts
@@ -701,6 +755,10 @@ symbols:
     relationships:
       - type: implements
         target: REQ-when-several-versioned-key-encryption-keys-2FAB9215
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-document-encryption-usecases
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-documents-usecases
   - id: SYM-on-self-hosted-instances-the-first-registe-1C953705-1
     title: registerFirstUserAdminEventHandler
     sourceFile: apps/papra-server/src/modules/roles/event-handlers/first-user-admin.user-created.ts
@@ -737,6 +795,8 @@ symbols:
     relationships:
       - type: implements
         target: REQ-organizations-define-custom-properties-met-1471E51F
+      - type: covered_by
+        target: TEST-papra-server-src-modules-custom-properties-custom-properties-usecases
   - id: SYM-organizations-define-custom-properties-met-1471E51F-2
     title: createPropertyDefinition
     sourceFile: apps/papra-server/src/modules/custom-properties/custom-properties.usecases.ts
@@ -821,6 +881,12 @@ symbols:
     relationships:
       - type: implements
         target: REQ-papra-storage-pattern-organization-name
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-storage-patterns-storage-pattern-usecases
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-storage-patterns-storage-pattern-schemas
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-storage-patterns-storage-pattern-models
   - id: SYM-papra-storage-pattern-organization-name-2
     title: buildResolveStoragePatternContext
     sourceFile: apps/papra-server/src/modules/documents/storage-patterns/storage-pattern.usecases.ts
@@ -851,6 +917,8 @@ symbols:
     relationships:
       - type: implements
         target: REQ-papra-share-links-of-deleted-organizations
+      - type: covered_by
+        target: TEST-papra-server-src-modules-document-share-links-document-share-links-usecases
   - id: SYM-papra-active-subscription-blocks-deletion-1
     title: doesSubscriptionBlockDeletion
     sourceFile: apps/papra-server/src/modules/subscriptions/subscriptions.models.ts
@@ -933,6 +1001,8 @@ symbols:
     relationships:
       - type: implements
         target: REQ-papra-invite-cannot-create-owner
+      - type: covered_by
+        target: TEST-papra-server-src-modules-admin-organizations-e2e-organizations-e2e
   - id: SYM-papra-invite-cannot-create-owner-2
     title: updateOrganizationMemberRole
     sourceFile: apps/papra-server/src/modules/organizations/organizations.usecases.ts
@@ -979,6 +1049,8 @@ symbols:
     relationships:
       - type: implements
         target: REQ-papra-plan-storage-and-file-size-limits
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-documents-usecases
   - id: SYM-papra-plan-storage-and-file-size-limits-2
     title: createDocumentSizeTooLargeError
     sourceFile: apps/papra-server/src/modules/documents/documents.errors.ts
@@ -997,6 +1069,8 @@ symbols:
     relationships:
       - type: implements
         target: REQ-papra-share-link-gone-semantics
+      - type: covered_by
+        target: TEST-papra-server-src-modules-document-share-links-document-share-links-usecases
   - id: SYM-papra-signup-email-domain-restrictions-1
     title: isEmailDomainAllowed
     sourceFile: apps/papra-server/src/modules/app/auth/auth.models.ts
@@ -1055,3 +1129,1189 @@ symbols:
     relationships:
       - type: implements
         target: REQ-papra-webhook-ssrf-protection
+      - type: covered_by
+        target: TEST-papra-server-src-modules-webhooks-webhooks-usecases
+  - id: SYM-papra-api-keys.repository-ApiKeysRepository
+    title: ApiKeysRepository
+    sourceFile: apps/papra-server/src/modules/api-keys/api-keys.repository.ts
+    status: active
+    symbol_role: type-shape
+    relationships:
+      - type: implements
+        target: REQ-papra-api-key-scope-and-expiry
+      - type: covered_by
+        target: TEST-papra-server-src-modules-api-keys-api-keys-repository
+      - type: covered_by
+        target: TEST-papra-server-src-modules-api-keys-api-keys-usecases
+  - id: SYM-papra-auth.models-getSession
+    title: getSession
+    sourceFile: apps/papra-server/src/modules/app/auth/auth.models.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-api-key-scope-and-expiry
+      - type: covered_by
+        target: TEST-papra-server-src-modules-app-auth-auth-models
+  - id: SYM-papra-auth.models-getTrustedOrigins
+    title: getTrustedOrigins
+    sourceFile: apps/papra-server/src/modules/app/auth/auth.models.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-api-key-scope-and-expiry
+      - type: covered_by
+        target: TEST-papra-server-src-modules-app-auth-auth-models
+  - id: SYM-papra-auth.models-getUser
+    title: getUser
+    sourceFile: apps/papra-server/src/modules/app/auth/auth.models.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-on-self-hosted-instances-the-first-registe-1C953705
+      - type: covered_by
+        target: TEST-papra-server-src-modules-app-auth-auth-models
+  - id: SYM-papra-custom-properties.usecases-deleteDocumentCustomPropertyValue
+    title: deleteDocumentCustomPropertyValue
+    sourceFile: apps/papra-server/src/modules/custom-properties/custom-properties.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-organizations-define-custom-properties-met-1471E51F
+      - type: covered_by
+        target: TEST-papra-server-src-modules-custom-properties-custom-properties-usecases
+  - id: SYM-papra-custom-properties.usecases-deletePropertyDefinition
+    title: deletePropertyDefinition
+    sourceFile: apps/papra-server/src/modules/custom-properties/custom-properties.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-organizations-define-custom-properties-met-1471E51F
+      - type: covered_by
+        target: TEST-papra-server-src-modules-custom-properties-custom-properties-repository
+      - type: covered_by
+        target: TEST-papra-server-src-modules-custom-properties-custom-properties-usecases
+  - id: SYM-papra-custom-properties.usecases-ensurePropertyDefinitionExists
+    title: ensurePropertyDefinitionExists
+    sourceFile: apps/papra-server/src/modules/custom-properties/custom-properties.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-organizations-define-custom-properties-met-1471E51F
+      - type: covered_by
+        target: TEST-papra-server-src-modules-custom-properties-custom-properties-usecases
+  - id: SYM-papra-custom-properties.usecases-updatePropertyDefinition
+    title: updatePropertyDefinition
+    sourceFile: apps/papra-server/src/modules/custom-properties/custom-properties.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-organizations-define-custom-properties-met-1471E51F
+      - type: covered_by
+        target: TEST-papra-server-src-modules-custom-properties-custom-properties-repository
+      - type: covered_by
+        target: TEST-papra-server-src-modules-custom-properties-custom-properties-usecases
+  - id: SYM-papra-document-share-links.errors-createShareLinkInvalidPasswordError
+    title: createShareLinkInvalidPasswordError
+    sourceFile: apps/papra-server/src/modules/document-share-links/document-share-links.errors.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-share-links-of-deleted-organizations
+      - type: covered_by
+        target: TEST-papra-server-src-modules-document-share-links-document-share-links-usecases
+  - id: SYM-papra-document-share-links.errors-createShareLinkLimitReachedError
+    title: createShareLinkLimitReachedError
+    sourceFile: apps/papra-server/src/modules/document-share-links/document-share-links.errors.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-share-link-gone-semantics
+      - type: covered_by
+        target: TEST-papra-server-src-modules-document-share-links-document-share-links-usecases
+  - id: SYM-papra-document-share-links.errors-createShareLinkNotFoundError
+    title: createShareLinkNotFoundError
+    sourceFile: apps/papra-server/src/modules/document-share-links/document-share-links.errors.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-share-link-gone-semantics
+      - type: covered_by
+        target: TEST-papra-server-src-modules-document-share-links-document-share-links-usecases
+  - id: SYM-papra-document-share-links.errors-createShareLinkNotPasswordProtectedError
+    title: createShareLinkNotPasswordProtectedError
+    sourceFile: apps/papra-server/src/modules/document-share-links/document-share-links.errors.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-share-link-gone-semantics
+      - type: covered_by
+        target: TEST-papra-server-src-modules-document-share-links-document-share-links-usecases
+  - id: SYM-papra-document-share-links.errors-createShareLinkPasswordRequiredError
+    title: createShareLinkPasswordRequiredError
+    sourceFile: apps/papra-server/src/modules/document-share-links/document-share-links.errors.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-share-links-of-deleted-organizations
+      - type: covered_by
+        target: TEST-papra-server-src-modules-document-share-links-document-share-links-usecases
+  - id: SYM-papra-document-share-links.usecases-createShareLink
+    title: createShareLink
+    sourceFile: apps/papra-server/src/modules/document-share-links/document-share-links.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-share-links-of-deleted-organizations
+      - type: covered_by
+        target: TEST-papra-server-src-modules-document-share-links-document-share-links-usecases
+  - id: SYM-papra-document-share-links.usecases-ensureShareLinkAccessGranted
+    title: ensureShareLinkAccessGranted
+    sourceFile: apps/papra-server/src/modules/document-share-links/document-share-links.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-share-links-of-deleted-organizations
+      - type: covered_by
+        target: TEST-papra-server-src-modules-document-share-links-document-share-links-usecases
+  - id: SYM-papra-document-share-links.usecases-getSharedDocument
+    title: getSharedDocument
+    sourceFile: apps/papra-server/src/modules/document-share-links/document-share-links.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-share-links-of-deleted-organizations
+      - type: covered_by
+        target: TEST-papra-server-src-modules-document-share-links-document-share-links-usecases
+  - id: SYM-papra-document-share-links.usecases-touchShareLinkLastAccessedAt
+    title: touchShareLinkLastAccessedAt
+    sourceFile: apps/papra-server/src/modules/document-share-links/document-share-links.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-share-links-of-deleted-organizations
+      - type: covered_by
+        target: TEST-papra-server-src-modules-document-share-links-document-share-links-usecases
+  - id: SYM-papra-document-share-links.usecases-updateShareLink
+    title: updateShareLink
+    sourceFile: apps/papra-server/src/modules/document-share-links/document-share-links.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-share-link-gone-semantics
+      - type: covered_by
+        target: TEST-papra-server-src-modules-document-share-links-document-share-links-usecases
+  - id: SYM-papra-document-share-links.usecases-verifySharePassword
+    title: verifySharePassword
+    sourceFile: apps/papra-server/src/modules/document-share-links/document-share-links.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-share-link-gone-semantics
+      - type: covered_by
+        target: TEST-papra-server-src-modules-document-share-links-document-share-links-usecases
+  - id: SYM-papra-content-extraction.usecases-ExtractDocumentTextUsecase
+    title: ExtractDocumentTextUsecase
+    sourceFile: apps/papra-server/src/modules/documents/content-extraction/content-extraction.usecases.ts
+    status: active
+    symbol_role: type-shape
+    relationships:
+      - type: implements
+        target: REQ-ocr-text-extracted-from-scanned-pdfs-is-us-8C007452
+  - id: SYM-papra-database-fts5.repository.models-makeSearchOrderByClauses
+    title: makeSearchOrderByClauses
+    sourceFile: apps/papra-server/src/modules/documents/document-search/database-fts5/database-fts5.repository.models.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-search-queries-are-parsed-by-the-papra-sea-4463E6DB
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-document-search-database-fts5-database-fts5-repository-models
+  - id: SYM-papra-query-builder.models-createInvalidDateFormatQueryResult
+    title: createInvalidDateFormatQueryResult
+    sourceFile: apps/papra-server/src/modules/documents/document-search/database-fts5/query-builder/query-builder.models.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-an-invalid-date-in-a-created-filter-is-ign-800EF0B8
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-document-search-database-fts5-query-builder-query-builder-models
+  - id: SYM-papra-query-builder.models-createInvalidQueryResult
+    title: createInvalidQueryResult
+    sourceFile: apps/papra-server/src/modules/documents/document-search/database-fts5/query-builder/query-builder.models.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-an-invalid-date-in-a-created-filter-is-ign-800EF0B8
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-document-search-database-fts5-query-builder-query-builder-models
+  - id: SYM-papra-query-builder.models-createUnsupportedOperatorQueryResult
+    title: createUnsupportedOperatorQueryResult
+    sourceFile: apps/papra-server/src/modules/documents/document-search/database-fts5/query-builder/query-builder.models.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-an-invalid-date-in-a-created-filter-is-ign-800EF0B8
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-document-search-database-fts5-query-builder-query-builder-models
+  - id: SYM-papra-query-builder.models-getSqlOperator
+    title: getSqlOperator
+    sourceFile: apps/papra-server/src/modules/documents/document-search/database-fts5/query-builder/query-builder.models.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-search-queries-are-parsed-by-the-papra-sea-4463E6DB
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-document-search-database-fts5-query-builder-query-builder-models
+  - id: SYM-papra-query-builder-handleAndExpression
+    title: handleAndExpression
+    sourceFile: apps/papra-server/src/modules/documents/document-search/database-fts5/query-builder/query-builder.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-search-queries-are-parsed-by-the-papra-sea-4463E6DB
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-document-search-database-fts5-query-builder-query-builder
+  - id: SYM-papra-query-builder-handleDocumentDateFilter
+    title: handleDocumentDateFilter
+    sourceFile: apps/papra-server/src/modules/documents/document-search/database-fts5/query-builder/query-builder.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-an-invalid-date-in-a-created-filter-is-ign-800EF0B8
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-document-search-database-fts5-query-builder-query-builder
+  - id: SYM-papra-query-builder-handleDocumentHasDateFilter
+    title: handleDocumentHasDateFilter
+    sourceFile: apps/papra-server/src/modules/documents/document-search/database-fts5/query-builder/query-builder.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-the-has-tags-filter-selects-documents-with-7EF848DC
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-document-search-database-fts5-query-builder-query-builder
+  - id: SYM-papra-query-builder-handleEmptyExpression
+    title: handleEmptyExpression
+    sourceFile: apps/papra-server/src/modules/documents/document-search/database-fts5/query-builder/query-builder.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-search-queries-are-parsed-by-the-papra-sea-4463E6DB
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-document-search-database-fts5-query-builder-query-builder
+  - id: SYM-papra-query-builder-handleInvalidHasValue
+    title: handleInvalidHasValue
+    sourceFile: apps/papra-server/src/modules/documents/document-search/database-fts5/query-builder/query-builder.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-the-has-tags-filter-selects-documents-with-7EF848DC
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-document-search-database-fts5-query-builder-query-builder
+  - id: SYM-papra-query-builder-handleOrExpression
+    title: handleOrExpression
+    sourceFile: apps/papra-server/src/modules/documents/document-search/database-fts5/query-builder/query-builder.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-search-queries-are-parsed-by-the-papra-sea-4463E6DB
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-document-search-database-fts5-query-builder-query-builder
+  - id: SYM-papra-query-builder-handleTagFilter
+    title: handleTagFilter
+    sourceFile: apps/papra-server/src/modules/documents/document-search/database-fts5/query-builder/query-builder.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-a-plain-search-term-matches-document-names-9B6CFF9C
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-document-search-database-fts5-query-builder-query-builder
+  - id: SYM-papra-query-builder-handleUnsupportedExpression
+    title: handleUnsupportedExpression
+    sourceFile: apps/papra-server/src/modules/documents/document-search/database-fts5/query-builder/query-builder.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-a-plain-search-term-matches-document-names-9B6CFF9C
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-document-search-database-fts5-query-builder-query-builder
+  - id: SYM-papra-document-storage.usecases-CreateDocumentStorageKey
+    title: CreateDocumentStorageKey
+    sourceFile: apps/papra-server/src/modules/documents/document-storage.usecases.ts
+    status: active
+    symbol_role: type-shape
+    relationships:
+      - type: implements
+        target: REQ-papra-organization-rename-keeps-storage-keys
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-document-storage-usecases
+  - id: SYM-papra-document-storage.usecases-SyncDocumentStorageKey
+    title: SyncDocumentStorageKey
+    sourceFile: apps/papra-server/src/modules/documents/document-storage.usecases.ts
+    status: active
+    symbol_role: type-shape
+    relationships:
+      - type: implements
+        target: REQ-papra-storage-key-persisted-sync-optional
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-document-storage-usecases
+  - id: SYM-papra-documents.errors-createDocumentIsNotDeletedError
+    title: createDocumentIsNotDeletedError
+    sourceFile: apps/papra-server/src/modules/documents/documents.errors.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-ocr-text-extracted-from-scanned-pdfs-is-us-8C007452
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-documents-repository
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-documents-usecases
+  - id: SYM-papra-documents.errors-createDocumentNotDeletedError
+    title: createDocumentNotDeletedError
+    sourceFile: apps/papra-server/src/modules/documents/documents.errors.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-ocr-text-extracted-from-scanned-pdfs-is-us-8C007452
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-documents-repository
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-documents-usecases
+  - id: SYM-papra-documents.errors-createDocumentNotFoundError
+    title: createDocumentNotFoundError
+    sourceFile: apps/papra-server/src/modules/documents/documents.errors.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-ocr-text-extracted-from-scanned-pdfs-is-us-8C007452
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-documents-repository
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-documents-usecases
+  - id: SYM-papra-documents.errors-createDocumentReprocessingDisabledError
+    title: createDocumentReprocessingDisabledError
+    sourceFile: apps/papra-server/src/modules/documents/documents.errors.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-duplicate-upload-restores-trashed-document
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-documents-repository
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-documents-usecases
+  - id: SYM-papra-documents.errors-DOCUMENT_ALREADY_EXISTS_ERROR_CODE
+    title: DOCUMENT_ALREADY_EXISTS_ERROR_CODE
+    sourceFile: apps/papra-server/src/modules/documents/documents.errors.ts
+    status: active
+    symbol_role: config
+    relationships:
+      - type: implements
+        target: REQ-documents-are-deduplicated-per-organizatio-7DDB2737
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-documents-repository
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-documents-usecases
+  - id: SYM-papra-documents.repository-areAllDocumentsInOrganization
+    title: areAllDocumentsInOrganization
+    sourceFile: apps/papra-server/src/modules/documents/documents.repository.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-uploading-content-identical-to-a-trashed-d-F0111402
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-documents-repository
+  - id: SYM-papra-documents.repository-DocumentsRepository
+    title: DocumentsRepository
+    sourceFile: apps/papra-server/src/modules/documents/documents.repository.ts
+    status: active
+    symbol_role: type-shape
+    relationships:
+      - type: implements
+        target: REQ-uploading-content-identical-to-a-trashed-d-F0111402
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-document-storage-usecases
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-documents-repository
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-documents-usecases
+  - id: SYM-papra-documents.usecases-createDocumentCreationUsecase
+    title: createDocumentCreationUsecase
+    sourceFile: apps/papra-server/src/modules/documents/documents.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-a-document-s-extracted-searchable-content--7CD26FB8
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-document-encryption-usecases
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-documents-usecases
+  - id: SYM-papra-documents.usecases-CreateDocumentUsecase
+    title: CreateDocumentUsecase
+    sourceFile: apps/papra-server/src/modules/documents/documents.usecases.ts
+    status: active
+    symbol_role: type-shape
+    relationships:
+      - type: implements
+        target: REQ-a-document-s-extracted-searchable-content--7CD26FB8
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-document-storage-usecases
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-documents-usecases
+  - id: SYM-papra-documents.usecases-deleteAllTrashDocuments
+    title: deleteAllTrashDocuments
+    sourceFile: apps/papra-server/src/modules/documents/documents.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-a-document-s-extracted-searchable-content--7CD26FB8
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-document-storage-usecases
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-documents-usecases
+  - id: SYM-papra-documents.usecases-deleteExpiredDocuments
+    title: deleteExpiredDocuments
+    sourceFile: apps/papra-server/src/modules/documents/documents.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-a-document-s-extracted-searchable-content--7CD26FB8
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-document-storage-usecases
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-documents-usecases
+  - id: SYM-papra-documents.usecases-deleteTrashDocument
+    title: deleteTrashDocument
+    sourceFile: apps/papra-server/src/modules/documents/documents.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-a-document-s-extracted-searchable-content--7CD26FB8
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-document-storage-usecases
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-documents-usecases
+  - id: SYM-papra-documents.usecases-DocumentUsecaseDependencies
+    title: DocumentUsecaseDependencies
+    sourceFile: apps/papra-server/src/modules/documents/documents.usecases.ts
+    status: active
+    symbol_role: type-shape
+    relationships:
+      - type: implements
+        target: REQ-documents-are-deduplicated-per-organizatio-7DDB2737
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-document-storage-usecases
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-documents-usecases
+  - id: SYM-papra-documents.usecases-enrichAndFormatDocumentForApi
+    title: enrichAndFormatDocumentForApi
+    sourceFile: apps/papra-server/src/modules/documents/documents.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-documents-are-never-mutated-after-upload-n-409E8212
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-document-storage-usecases
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-documents-usecases
+  - id: SYM-papra-documents.usecases-enrichAndFormatDocumentsForApi
+    title: enrichAndFormatDocumentsForApi
+    sourceFile: apps/papra-server/src/modules/documents/documents.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-documents-are-never-mutated-after-upload-n-409E8212
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-documents-usecases
+  - id: SYM-papra-documents.usecases-ensureDocumentExists
+    title: ensureDocumentExists
+    sourceFile: apps/papra-server/src/modules/documents/documents.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-documents-are-deduplicated-per-organizatio-7DDB2737
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-document-storage-usecases
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-documents-usecases
+  - id: SYM-papra-documents.usecases-getDocumentOrThrow
+    title: getDocumentOrThrow
+    sourceFile: apps/papra-server/src/modules/documents/documents.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-documents-are-deduplicated-per-organizatio-7DDB2737
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-document-storage-usecases
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-documents-usecases
+  - id: SYM-papra-documents.usecases-hardDeleteDocument
+    title: hardDeleteDocument
+    sourceFile: apps/papra-server/src/modules/documents/documents.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-documents-are-deduplicated-per-organizatio-7DDB2737
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-document-storage-usecases
+  - id: SYM-papra-documents.usecases-restoreDocument
+    title: restoreDocument
+    sourceFile: apps/papra-server/src/modules/documents/documents.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-duplicate-upload-restores-trashed-document
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-documents-usecases
+  - id: SYM-papra-documents.usecases-trashDocument
+    title: trashDocument
+    sourceFile: apps/papra-server/src/modules/documents/documents.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-documents-are-deduplicated-per-organizatio-7DDB2737
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-documents-usecases
+  - id: SYM-papra-storage-pattern.definitions-expressionTransformers
+    title: expressionTransformers
+    sourceFile: apps/papra-server/src/modules/documents/storage-patterns/storage-pattern.definitions.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-storage-pattern-organization-name
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-storage-patterns-storage-pattern-usecases
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-storage-patterns-storage-pattern-models
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-storage-patterns-storage-pattern-schemas
+  - id: SYM-papra-storage-pattern.usecases-buildStorageKey
+    title: buildStorageKey
+    sourceFile: apps/papra-server/src/modules/documents/storage-patterns/storage-pattern.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-storage-pattern-organization-name
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-storage-patterns-storage-pattern-usecases
+  - id: SYM-papra-storage-pattern.usecases-isStoragePatternValid
+    title: isStoragePatternValid
+    sourceFile: apps/papra-server/src/modules/documents/storage-patterns/storage-pattern.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-storage-pattern-organization-name
+      - type: covered_by
+        target: TEST-papra-server-src-modules-documents-storage-patterns-storage-pattern-usecases
+  - id: SYM-papra-ingestion-folder.models-addTimestampToFilename
+    title: addTimestampToFilename
+    sourceFile: apps/papra-server/src/modules/ingestion-folders/ingestion-folder.models.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-AUTO-198A6A47509791DF
+      - type: covered_by
+        target: TEST-papra-server-src-modules-ingestion-folders-ingestion-folder-models
+  - id: SYM-papra-ingestion-folder.models-getAbsolutePathFromFolderRelativeToOrganizationIngestionFolder
+    title: getAbsolutePathFromFolderRelativeToOrganizationIngestionFolder
+    sourceFile: apps/papra-server/src/modules/ingestion-folders/ingestion-folder.models.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-AUTO-198A6A47509791DF
+      - type: covered_by
+        target: TEST-papra-server-src-modules-ingestion-folders-ingestion-folder-models
+  - id: SYM-papra-ingestion-folder.models-getOrganizationIdFromFilePath
+    title: getOrganizationIdFromFilePath
+    sourceFile: apps/papra-server/src/modules/ingestion-folders/ingestion-folder.models.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-AUTO-198A6A47509791DF
+      - type: covered_by
+        target: TEST-papra-server-src-modules-ingestion-folders-ingestion-folder-models
+  - id: SYM-papra-ingestion-folder.models-normalizeFilePathToIngestionFolder
+    title: normalizeFilePathToIngestionFolder
+    sourceFile: apps/papra-server/src/modules/ingestion-folders/ingestion-folder.models.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-AUTO-198A6A47509791DF
+      - type: covered_by
+        target: TEST-papra-server-src-modules-ingestion-folders-ingestion-folder-models
+  - id: SYM-papra-ingestion-folders.usecases-moveIngestionFile
+    title: moveIngestionFile
+    sourceFile: apps/papra-server/src/modules/ingestion-folders/ingestion-folders.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-AUTO-198A6A47509791DF
+      - type: covered_by
+        target: TEST-papra-server-src-modules-ingestion-folders-ingestion-folders-usecases
+  - id: SYM-papra-ingestion-folders.usecases-processFile
+    title: processFile
+    sourceFile: apps/papra-server/src/modules/ingestion-folders/ingestion-folders.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-files-matching-ingestion-folder-ignored-pa-9B49E534
+      - type: covered_by
+        target: TEST-papra-server-src-modules-ingestion-folders-ingestion-folders-usecases
+  - id: SYM-papra-intake-emails.errors-createIntakeEmailAlreadyExistsError
+    title: createIntakeEmailAlreadyExistsError
+    sourceFile: apps/papra-server/src/modules/intake-emails/intake-emails.errors.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-intake-webhook-secret-required
+      - type: covered_by
+        target: TEST-papra-server-src-modules-intake-emails-intake-emails-config-models
+  - id: SYM-papra-intake-emails.errors-createIntakeEmailLimitReachedError
+    title: createIntakeEmailLimitReachedError
+    sourceFile: apps/papra-server/src/modules/intake-emails/intake-emails.errors.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-intake-webhook-secret-required
+      - type: covered_by
+        target: TEST-papra-server-src-modules-intake-emails-intake-emails-usecases
+  - id: SYM-papra-intake-emails.errors-createIntakeEmailNotFoundError
+    title: createIntakeEmailNotFoundError
+    sourceFile: apps/papra-server/src/modules/intake-emails/intake-emails.errors.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-intake-webhook-secret-required
+      - type: covered_by
+        target: TEST-papra-server-src-modules-intake-emails-intake-emails-config-models
+  - id: SYM-papra-intake-emails.models-buildEmailAddress
+    title: buildEmailAddress
+    sourceFile: apps/papra-server/src/modules/intake-emails/intake-emails.models.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-intake-email-sender-allowlist
+      - type: covered_by
+        target: TEST-papra-server-src-modules-intake-emails-intake-emails-models
+  - id: SYM-papra-intake-emails.models-getEmailUsername
+    title: getEmailUsername
+    sourceFile: apps/papra-server/src/modules/intake-emails/intake-emails.models.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-intake-email-addresses-can-follow-a-config-6227A38D
+      - type: covered_by
+        target: TEST-papra-server-src-modules-intake-emails-intake-emails-models
+  - id: SYM-papra-intake-emails.models-getRecipientAddresses
+    title: getRecipientAddresses
+    sourceFile: apps/papra-server/src/modules/intake-emails/intake-emails.models.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-intake-email-addresses-can-follow-a-config-6227A38D
+      - type: covered_by
+        target: TEST-papra-server-src-modules-intake-emails-intake-emails-models
+  - id: SYM-papra-intake-emails.models-parseEmailAddress
+    title: parseEmailAddress
+    sourceFile: apps/papra-server/src/modules/intake-emails/intake-emails.models.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-intake-email-sender-allowlist
+      - type: covered_by
+        target: TEST-papra-server-src-modules-intake-emails-intake-emails-models
+  - id: SYM-papra-intake-emails.usecases-checkIfOrganizationCanCreateNewIntakeEmail
+    title: checkIfOrganizationCanCreateNewIntakeEmail
+    sourceFile: apps/papra-server/src/modules/intake-emails/intake-emails.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-intake-email-addresses-can-follow-a-config-6227A38D
+      - type: covered_by
+        target: TEST-papra-server-src-modules-intake-emails-intake-emails-usecases
+  - id: SYM-papra-intake-emails.usecases-deleteIntakeEmail
+    title: deleteIntakeEmail
+    sourceFile: apps/papra-server/src/modules/intake-emails/intake-emails.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-intake-email-addresses-can-follow-a-config-6227A38D
+      - type: covered_by
+        target: TEST-papra-server-src-modules-intake-emails-intake-emails-repository
+  - id: SYM-papra-intake-emails.usecases-processIntakeEmailIngestion
+    title: processIntakeEmailIngestion
+    sourceFile: apps/papra-server/src/modules/intake-emails/intake-emails.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-intake-email-addresses-can-follow-a-config-6227A38D
+      - type: covered_by
+        target: TEST-papra-server-src-modules-intake-emails-intake-emails-usecases
+  - id: SYM-papra-organization.schemas-invitationIdSchema
+    title: invitationIdSchema
+    sourceFile: apps/papra-server/src/modules/organizations/organization.schemas.ts
+    status: active
+    symbol_role: structural
+    relationships:
+      - type: implements
+        target: REQ-deleting-an-organization-is-a-soft-delete--58DE105C
+      - type: covered_by
+        target: TEST-papra-server-src-modules-admin-organizations-e2e-organizations-e2e
+  - id: SYM-papra-organization.schemas-memberIdSchema
+    title: memberIdSchema
+    sourceFile: apps/papra-server/src/modules/organizations/organization.schemas.ts
+    status: active
+    symbol_role: structural
+    relationships:
+      - type: implements
+        target: REQ-deleting-an-organization-is-a-soft-delete--58DE105C
+      - type: covered_by
+        target: TEST-papra-server-src-modules-admin-organizations-e2e-organizations-e2e
+  - id: SYM-papra-organization.schemas-organizationIdSchema
+    title: organizationIdSchema
+    sourceFile: apps/papra-server/src/modules/organizations/organization.schemas.ts
+    status: active
+    symbol_role: structural
+    relationships:
+      - type: implements
+        target: REQ-papra-invite-cannot-create-owner
+      - type: covered_by
+        target: TEST-papra-server-src-modules-admin-organizations-e2e-organizations-e2e
+  - id: SYM-papra-organization.schemas-organizationNameSchema
+    title: organizationNameSchema
+    sourceFile: apps/papra-server/src/modules/organizations/organization.schemas.ts
+    status: active
+    symbol_role: structural
+    relationships:
+      - type: implements
+        target: REQ-papra-invite-cannot-create-owner
+      - type: covered_by
+        target: TEST-papra-server-src-modules-admin-organizations-e2e-organizations-e2e
+  - id: SYM-papra-organizations.errors-createMaxOrganizationMembersCountReachedError
+    title: createMaxOrganizationMembersCountReachedError
+    sourceFile: apps/papra-server/src/modules/organizations/organizations.errors.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-member-cap-counts-pending-invitations
+      - type: covered_by
+        target: TEST-papra-server-src-modules-organizations-organizations-usecases
+  - id: SYM-papra-organizations.errors-createOnlyPreviousOwnerCanRestoreError
+    title: createOnlyPreviousOwnerCanRestoreError
+    sourceFile: apps/papra-server/src/modules/organizations/organizations.errors.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-a-soft-deleted-organization-can-be-restore-09031B40
+      - type: covered_by
+        target: TEST-papra-server-src-modules-organizations-organizations-usecases
+  - id: SYM-papra-organizations.errors-createOrganizationDocumentStorageLimitReachedError
+    title: createOrganizationDocumentStorageLimitReachedError
+    sourceFile: apps/papra-server/src/modules/organizations/organizations.errors.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-plan-storage-and-file-size-limits
+      - type: covered_by
+        target: TEST-papra-server-src-modules-organizations-organizations-usecases
+  - id: SYM-papra-organizations.errors-createOrganizationInvitationAlreadyExistsError
+    title: createOrganizationInvitationAlreadyExistsError
+    sourceFile: apps/papra-server/src/modules/organizations/organizations.errors.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-deleting-an-organization-is-a-soft-delete--58DE105C
+      - type: covered_by
+        target: TEST-papra-server-src-modules-organizations-organizations-repository
+      - type: covered_by
+        target: TEST-papra-server-src-modules-organizations-organizations-usecases
+  - id: SYM-papra-organizations.errors-createOrganizationNotDeletedError
+    title: createOrganizationNotDeletedError
+    sourceFile: apps/papra-server/src/modules/organizations/organizations.errors.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-active-subscription-blocks-deletion
+      - type: covered_by
+        target: TEST-papra-server-src-modules-organizations-organizations-usecases
+  - id: SYM-papra-organizations.errors-createOrganizationNotFoundError
+    title: createOrganizationNotFoundError
+    sourceFile: apps/papra-server/src/modules/organizations/organizations.errors.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-active-subscription-blocks-deletion
+      - type: covered_by
+        target: TEST-papra-server-src-modules-organizations-organizations-usecases
+  - id: SYM-papra-organizations.errors-createUserAlreadyInOrganizationError
+    title: createUserAlreadyInOrganizationError
+    sourceFile: apps/papra-server/src/modules/organizations/organizations.errors.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-a-soft-deleted-organization-can-be-restore-09031B40
+      - type: covered_by
+        target: TEST-papra-server-src-modules-organizations-organizations-usecases
+  - id: SYM-papra-organizations.errors-createUserMaxOrganizationCountReachedError
+    title: createUserMaxOrganizationCountReachedError
+    sourceFile: apps/papra-server/src/modules/organizations/organizations.errors.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-a-soft-deleted-organization-can-be-restore-09031B40
+      - type: covered_by
+        target: TEST-papra-server-src-modules-organizations-organizations-usecases
+  - id: SYM-papra-organizations.errors-createUserNotInOrganizationError
+    title: createUserNotInOrganizationError
+    sourceFile: apps/papra-server/src/modules/organizations/organizations.errors.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-active-subscription-blocks-deletion
+      - type: covered_by
+        target: TEST-papra-server-src-modules-organizations-organizations-usecases
+  - id: SYM-papra-organizations.errors-createUserNotOrganizationOwnerError
+    title: createUserNotOrganizationOwnerError
+    sourceFile: apps/papra-server/src/modules/organizations/organizations.errors.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-active-subscription-blocks-deletion
+      - type: covered_by
+        target: TEST-papra-server-src-modules-organizations-organizations-usecases
+  - id: SYM-papra-organizations.errors-createUserOrganizationInvitationLimitReachedError
+    title: createUserOrganizationInvitationLimitReachedError
+    sourceFile: apps/papra-server/src/modules/organizations/organizations.errors.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-former-members-can-be-reinvited
+      - type: covered_by
+        target: TEST-papra-server-src-modules-organizations-organizations-usecases
+  - id: SYM-papra-organizations.models-generateOrganizationId
+    title: generateOrganizationId
+    sourceFile: apps/papra-server/src/modules/organizations/organizations.models.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-owner-cannot-be-removed
+      - type: covered_by
+        target: TEST-papra-server-src-modules-organizations-organizations-models
+  - id: SYM-papra-organizations.repository-OrganizationsRepository
+    title: OrganizationsRepository
+    sourceFile: apps/papra-server/src/modules/organizations/organizations.repository.ts
+    status: active
+    symbol_role: type-shape
+    relationships:
+      - type: implements
+        target: REQ-deleting-an-organization-is-a-soft-delete--58DE105C
+      - type: covered_by
+        target: TEST-papra-server-src-modules-organizations-organizations-repository
+      - type: covered_by
+        target: TEST-papra-server-src-modules-organizations-organizations-usecases
+  - id: SYM-papra-organizations.usecases-checkIfUserHasReachedOrganizationInvitationLimit
+    title: checkIfUserHasReachedOrganizationInvitationLimit
+    sourceFile: apps/papra-server/src/modules/organizations/organizations.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-former-members-can-be-reinvited
+      - type: covered_by
+        target: TEST-papra-server-src-modules-organizations-organizations-usecases
+  - id: SYM-papra-organizations.usecases-createOrganization
+    title: createOrganization
+    sourceFile: apps/papra-server/src/modules/organizations/organizations.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-only-the-organization-owner-can-delete-an--8207027D
+      - type: covered_by
+        target: TEST-papra-server-src-modules-organizations-organizations-repository
+      - type: covered_by
+        target: TEST-papra-server-src-modules-organizations-organizations-usecases
+  - id: SYM-papra-organizations.usecases-getOrCreateOrganizationCustomerId
+    title: getOrCreateOrganizationCustomerId
+    sourceFile: apps/papra-server/src/modules/organizations/organizations.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-only-the-organization-owner-can-delete-an--8207027D
+      - type: covered_by
+        target: TEST-papra-server-src-modules-organizations-organizations-usecases
+  - id: SYM-papra-organizations.usecases-sendOrganizationInvitationEmail
+    title: sendOrganizationInvitationEmail
+    sourceFile: apps/papra-server/src/modules/organizations/organizations.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-member-cap-counts-pending-invitations
+      - type: covered_by
+        target: TEST-papra-server-src-modules-organizations-organizations-usecases
+  - id: SYM-papra-stream-hash-getStreamSha256Hash
+    title: getStreamSha256Hash
+    sourceFile: apps/papra-server/src/modules/shared/streams/stream-hash.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-file-uploads-are-handled-as-streams-end-to-F1A1D5B6
+      - type: covered_by
+        target: TEST-papra-server-src-modules-shared-streams-stream-hash
+  - id: SYM-papra-storage-encryption.models-unwrapEncryptionKey
+    title: unwrapEncryptionKey
+    sourceFile: apps/papra-server/src/modules/storage/encryption/storage-encryption.models.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-when-several-versioned-key-encryption-keys-2FAB9215
+      - type: covered_by
+        target: TEST-papra-server-src-modules-storage-encryption-storage-encryption-models
+  - id: SYM-papra-subscriptions.models-coerceStripeTimestampToDate
+    title: coerceStripeTimestampToDate
+    sourceFile: apps/papra-server/src/modules/subscriptions/subscriptions.models.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-active-subscription-blocks-deletion
+      - type: covered_by
+        target: TEST-papra-server-src-modules-subscriptions-subscriptions-models
+  - id: SYM-papra-subscriptions.models-isSignatureHeaderFormatValid
+    title: isSignatureHeaderFormatValid
+    sourceFile: apps/papra-server/src/modules/subscriptions/subscriptions.models.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-active-subscription-blocks-deletion
+      - type: covered_by
+        target: TEST-papra-server-src-modules-subscriptions-subscriptions-models
+  - id: SYM-papra-tagging-rules.tables-taggingRuleActionsTable
+    title: taggingRuleActionsTable
+    sourceFile: apps/papra-server/src/modules/tagging-rules/tagging-rules.tables.ts
+    status: active
+    symbol_role: structural
+    relationships:
+      - type: implements
+        target: REQ-a-tagging-rule-applies-only-to-documents-u-C9F8BBF7
+  - id: SYM-papra-tagging-rules.tables-taggingRuleConditionsTable
+    title: taggingRuleConditionsTable
+    sourceFile: apps/papra-server/src/modules/tagging-rules/tagging-rules.tables.ts
+    status: active
+    symbol_role: structural
+    relationships:
+      - type: implements
+        target: REQ-AUTO-E2E14D03456F8986
+  - id: SYM-papra-tagging-rules.usecases-createTaggingRule
+    title: createTaggingRule
+    sourceFile: apps/papra-server/src/modules/tagging-rules/tagging-rules.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-a-tagging-rule-applies-only-to-documents-u-C9F8BBF7
+      - type: covered_by
+        target: TEST-papra-server-src-modules-tagging-rules-tagging-rules-usecases
+  - id: SYM-papra-tags.repository-TagsRepository
+    title: TagsRepository
+    sourceFile: apps/papra-server/src/modules/tags/tags.repository.ts
+    status: active
+    symbol_role: type-shape
+    relationships:
+      - type: implements
+        target: REQ-tag-names-are-unique-per-organization-rega-7B5F6F2D
+      - type: covered_by
+        target: TEST-papra-server-src-modules-tags-tags-repository
+      - type: covered_by
+        target: TEST-papra-server-src-modules-tags-tags-usecases
+  - id: SYM-papra-tags.schemas-tagDescriptionSchema
+    title: tagDescriptionSchema
+    sourceFile: apps/papra-server/src/modules/tags/tags.schemas.ts
+    status: active
+    symbol_role: structural
+    relationships:
+      - type: implements
+        target: REQ-tag-name-and-colour-are-validated-server-s-1890EF60
+      - type: covered_by
+        target: TEST-papra-server-src-modules-tags-tags-schemas
+  - id: SYM-papra-tags.schemas-tagIdSchema
+    title: tagIdSchema
+    sourceFile: apps/papra-server/src/modules/tags/tags.schemas.ts
+    status: active
+    symbol_role: structural
+    relationships:
+      - type: implements
+        target: REQ-tag-name-and-colour-are-validated-server-s-1890EF60
+      - type: covered_by
+        target: TEST-papra-server-src-modules-tags-tags-schemas
+  - id: SYM-papra-tags.schemas-tagNameSchema
+    title: tagNameSchema
+    sourceFile: apps/papra-server/src/modules/tags/tags.schemas.ts
+    status: active
+    symbol_role: structural
+    relationships:
+      - type: implements
+        target: REQ-tag-name-and-colour-are-validated-server-s-1890EF60
+      - type: covered_by
+        target: TEST-papra-server-src-modules-tags-tags-schemas
+  - id: SYM-papra-tags.table-documentsTagsTable
+    title: documentsTagsTable
+    sourceFile: apps/papra-server/src/modules/tags/tags.table.ts
+    status: active
+    symbol_role: structural
+    relationships:
+      - type: implements
+        target: REQ-tag-names-are-unique-per-organization-rega-7B5F6F2D
+      - type: covered_by
+        target: TEST-papra-server-src-modules-tags-tags-repository
+  - id: SYM-papra-tags.usecases-applyTagsToDocuments
+    title: applyTagsToDocuments
+    sourceFile: apps/papra-server/src/modules/tags/tags.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-webhooks-emit-document-updated-document-ta-FB361BD1
+      - type: covered_by
+        target: TEST-papra-server-src-modules-tags-tags-repository
+  - id: SYM-papra-tags.usecases-checkIfOrganizationCanCreateNewTag
+    title: checkIfOrganizationCanCreateNewTag
+    sourceFile: apps/papra-server/src/modules/tags/tags.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-webhooks-emit-document-updated-document-ta-FB361BD1
+      - type: covered_by
+        target: TEST-papra-server-src-modules-tags-tags-usecases
+  - id: SYM-papra-tags.usecases-createTag
+    title: createTag
+    sourceFile: apps/papra-server/src/modules/tags/tags.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-webhooks-emit-document-updated-document-ta-FB361BD1
+      - type: covered_by
+        target: TEST-papra-server-src-modules-tags-tags-repository
+      - type: covered_by
+        target: TEST-papra-server-src-modules-tags-tags-usecases
+  - id: SYM-papra-tags.usecases-DocumentTagPair
+    title: DocumentTagPair
+    sourceFile: apps/papra-server/src/modules/tags/tags.usecases.ts
+    status: active
+    symbol_role: type-shape
+    relationships:
+      - type: implements
+        target: REQ-webhooks-emit-document-updated-document-ta-FB361BD1
+      - type: covered_by
+        target: TEST-papra-server-src-modules-tags-tags-repository
+  - id: SYM-papra-webhooks.usecases-deferTriggerWebhooks
+    title: deferTriggerWebhooks
+    sourceFile: apps/papra-server/src/modules/webhooks/webhooks.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-webhook-ssrf-protection
+      - type: covered_by
+        target: TEST-papra-server-src-modules-webhooks-webhooks-usecases
+  - id: SYM-papra-webhooks.usecases-triggerWebhooks
+    title: triggerWebhooks
+    sourceFile: apps/papra-server/src/modules/webhooks/webhooks.usecases.ts
+    status: active
+    symbol_role: behavioral
+    relationships:
+      - type: implements
+        target: REQ-papra-webhook-ssrf-protection
+      - type: covered_by
+        target: TEST-papra-server-src-modules-webhooks-webhooks-usecases
+  - id: SYM-papra-webhooks.constants-EventName
+    title: EventName
+    sourceFile: packages/webhooks/src/webhooks.constants.ts
+    status: active
+    symbol_role: type-shape
+    relationships:
+      - type: implements
+        target: REQ-webhooks-emit-document-updated-document-ta-FB361BD1

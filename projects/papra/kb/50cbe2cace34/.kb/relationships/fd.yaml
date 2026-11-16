@@ -26,5 +26,14 @@ relationships:
         created_by: kibi/upsert,
         source: mcp://kibi/upsert,
         id: rel-8e5016629fc2
+      },
+    {
+        type: verified_by,
+        from: REQ-AUTO-E2E14D03456F8986,
+        to: TEST-papra-server-src-modules-tagging-rules-tagging-rules-usecases,
+        created_at: 2026-11-16T04:51:20.922Z,
+        created_by: kibi/upsert,
+        source: mcp://kibi/upsert,
+        id: rel-b73769c40a09
       }
   ]

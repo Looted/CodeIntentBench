@@ -27,3 +27,31 @@ relationships:
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-4016cef6d166
+  - type: verified_by
+    from: REQ-webhooks-emit-document-updated-document-ta-FB361BD1
+    to: TEST-papra-server-src-modules-documents-e2e-batch-trash-e2e
+    created_at: 2026-11-16T04:51:39.250Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-98c80599b1c6
+  - type: verified_by
+    from: REQ-webhooks-emit-document-updated-document-ta-FB361BD1
+    to: TEST-papra-server-src-modules-documents-e2e-list-documents-sorting-e2e
+    created_at: 2026-11-16T04:51:39.260Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-f58f15635a82
+  - type: verified_by
+    from: REQ-webhooks-emit-document-updated-document-ta-FB361BD1
+    to: TEST-papra-server-src-modules-documents-e2e-upload-documents-e2e
+    created_at: 2026-11-16T04:51:39.263Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-8afcde75de6e
+  - type: verified_by
+    from: REQ-webhooks-emit-document-updated-document-ta-FB361BD1
+    to: TEST-papra-server-src-modules-tags-tags-usecases
+    created_at: 2026-11-16T04:51:39.266Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-3276816c6182

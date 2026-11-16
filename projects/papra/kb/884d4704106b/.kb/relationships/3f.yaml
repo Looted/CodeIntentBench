@@ -27,3 +27,17 @@ relationships:
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-04dacf83f498
+  - type: verified_by
+    from: REQ-a-soft-deleted-organization-can-be-restore-09031B40
+    to: TEST-papra-server-src-modules-organizations-organizations-repository
+    created_at: 2026-11-16T04:52:04.790Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9ecce8db8c95
+  - type: verified_by
+    from: REQ-a-soft-deleted-organization-can-be-restore-09031B40
+    to: TEST-papra-server-src-modules-organizations-organizations-usecases
+    created_at: 2026-11-16T04:52:04.796Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-a2ccb66dd280

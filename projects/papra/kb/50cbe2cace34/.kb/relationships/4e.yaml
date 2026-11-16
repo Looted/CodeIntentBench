@@ -34,3 +34,10 @@ relationships:
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-5c16f3d6de39
+  - type: verified_by
+    from: REQ-AUTO-198A6A47509791DF
+    to: TEST-papra-server-src-modules-ingestion-folders-ingestion-folders-usecases
+    created_at: 2026-11-16T04:51:19.785Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9c4cad2bd7e1
