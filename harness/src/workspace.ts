@@ -29,7 +29,10 @@ export function workspaceDir(dir: string): string {
   const abs = resolve(dir);
   const rel = relative(RUNS_DIR, abs);
   const project = rel && !rel.startsWith('..') && !isAbsolute(rel) ? rel.split(sep)[0] : 'project';
-  return join(RUNS_DIR, '_w', createHash('sha1').update(abs).digest('hex').slice(0, 12), project);
+  // CIB_WORK_ROOT puts workspaces under a short root: Kibi's first sync crashes SWI-Prolog when the
+  // workspace path is long (about 118 characters), which deep runs directories reach.
+  const root = process.env.CIB_WORK_ROOT ? resolve(process.env.CIB_WORK_ROOT) : join(RUNS_DIR, '_w');
+  return join(root, createHash('sha1').update(abs).digest('hex').slice(0, 12), project);
 }
 
 /** A bare mirror of the project repository, fetched once and reused by every run. */
