@@ -250,3 +250,30 @@ closed entry with its status and a "Superseded by" line.
 applied (see `patches/README.md`), built with `BASE_PATCH=patches/hide-why.patch gold/snapshot.sh
 e7acb46f9bc6... <workdir> --store`. The harness names a patched base `<sha12>-<patch name>` and
 `arm-prepare.sh` picks the snapshot by that name.
+
+## Link corrections
+
+Two links were changed by hand in `symbols-map.json` and in the stored `symbols.yaml` of `50cbe2cace34`,
+`e7acb46f9bc6` and `e7acb46f9bc6-hide-why`. The snapshots were not rebuilt; requirements, facts and
+relationships are unchanged.
+
+- **Who can invite.** `REQ-papra-only-owners-and-admins-invite` was linked to `ensureUserIsInOrganization`,
+  the membership guard of the routes, which decides nothing about roles. It now links to the invite and
+  resend use cases, where the role check is (`buildInviteMemberToOrganization` and
+  `buildResendOrganizationInvitation` at the pin, `inviteMemberToOrganization` and
+  `resendOrganizationInvitation` at `50cbe2cace34`). Those two symbols now implement three requirements
+  each, so `kibi check` adds two `multi_requirement_symbol_review` diagnostics, and the sentence above that
+  no symbol implements more than two no longer holds for them. `ensureUserIsInOrganization` keeps a symbol
+  entry and implements `REQ-papra-tag-listing-requires-membership` (#893), the membership check the tag and
+  webhook routes call it for.
+- **Which subscriptions block a deletion.** `REQ-papra-active-subscription-blocks-deletion` also links to
+  `createSubscriptionsRepository` and `SubscriptionsRepository` (`subscriptions/subscriptions.repository.ts`),
+  at the pin and its patched base only. The repository's `getActiveOrganizationSubscription` query selects
+  the subscription the deletion check sees, so its status list decides which organizations can be deleted.
+  The query is not exported, and Kibi tracks exported declarations (an entry for the query itself is a
+  `symbol-granularity` violation), so the factory carries the link, as `createOrganizationsRepository` does
+  for the queries of its file. The requirement now has ten implementing symbols and `kibi check` adds one
+  `broad_requirement_review` diagnostic. The arc `overdue-plan-limits` needs this link.
+
+`kibi check` at the patched pin after both changes: the same 37 `symbol-coverage` violations as before and
+no other violation.

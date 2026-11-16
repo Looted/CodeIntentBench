@@ -293,6 +293,8 @@ symbols:
         target: REQ-only-privileged-members-of-an-organization-FCDD9696
       - type: implements
         target: REQ-papra-member-limit-counts-pending-invitations
+      - type: implements
+        target: REQ-papra-only-owners-and-admins-invite
       - type: covered_by
         target: TEST-papra-server-src-modules-organizations-organizations-usecases
   - id: SYM-invitations-are-valid-for-7-days-configura-E15FD078-2
@@ -311,6 +313,8 @@ symbols:
     relationships:
       - type: implements
         target: REQ-expired-cancelled-or-rejected-invitations--CDCCD352
+      - type: implements
+        target: REQ-papra-only-owners-and-admins-invite
   - id: SYM-a-pending-invitation-can-be-cancelled-by-a-FE4C0162-1
     title: registerInvitationsRoutes
     sourceFile: apps/papra-server/src/modules/invitations/invitations.routes.ts
@@ -1001,14 +1005,14 @@ symbols:
     relationships:
       - type: implements
         target: REQ-papra-invite-cannot-create-owner
-  - id: SYM-papra-only-owners-and-admins-invite-1
+  - id: SYM-papra-organizations.usecases-ensureUserIsInOrganization
     title: ensureUserIsInOrganization
     sourceFile: apps/papra-server/src/modules/organizations/organizations.usecases.ts
     status: active
     symbol_role: behavioral
     relationships:
       - type: implements
-        target: REQ-papra-only-owners-and-admins-invite
+        target: REQ-papra-tag-listing-requires-membership
       - type: covered_by
         target: TEST-papra-server-src-modules-organizations-organizations-usecases
   - id: SYM-papra-owner-cannot-be-removed-1
