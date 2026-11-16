@@ -24,7 +24,7 @@ const SCHEMA = {
 /** `task`: the user wants what it asked for done and declines optional extra work; `agreeable`: it approves whatever the agent proposes along the way. */
 export type UserStyle = 'task' | 'agreeable';
 
-export function buildUserPrompt(arc: Arc, step: ArcStep, agentMessage: string, branchNote: string | undefined, round: number, style: UserStyle = 'task'): string {
+export function buildUserPrompt(arc: Arc, step: ArcStep, agentMessage: string, branchNote: string | undefined, round: number, style: UserStyle = 'task', earlier: Array<{ agent_said: string; reply: string }> = []): string {
   const L: string[] = [];
   L.push('You play the user of a coding agent in a benchmark. You asked the agent for something; it has just ended its turn with the message below. Decide whether it is waiting on you, and if so, answer as this user would.');
   L.push('');
@@ -43,8 +43,13 @@ export function buildUserPrompt(arc: Arc, step: ArcStep, agentMessage: string, b
     L.push('- You want the task you asked for finished, with no more work than it needs. Approve what the request needs and what the project\'s tooling requires before that work counts as done (for example approving a record of the decision you stated). Decline optional extras the agent offers: further modelling, proofs or evidence, sign-off views, tests or clean-up you did not ask for, fixing findings that were there before, staging or committing. Say so in a few words ("No need, leave it there."). When the task is done and only extras are offered, needs_reply is false.');
   }
   L.push('- Do not bring up decisions, rules or records yourself. Do not add new requirements. Do not explain the benchmark.');
-  if (round > 1) L.push(`- This is reply ${round}; keep it as short as the first.`);
+  if (round > 1) L.push(`- This is reply ${round}; keep it as short as the first. Stay consistent with your earlier replies below: what you settled there still holds (if you told the agent to keep a recorded decision, it stays kept).`);
   L.push('');
+  const said = earlier.filter((t) => t.reply);
+  if (said.length) {
+    L.push('## The conversation so far in this session');
+    for (const t of said) { L.push(`Agent: ${t.agent_said.slice(0, 3000)}`); L.push(`You: ${t.reply}`); L.push(''); }
+  }
   L.push('## The agent\'s message');
   L.push(agentMessage.slice(0, 12_000) || '(empty)');
   L.push('');

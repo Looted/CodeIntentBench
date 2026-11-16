@@ -362,7 +362,7 @@ export async function runArc(projectName: string, arc: Arc, arm: string, attempt
         const lastPart = parts[parts.length - 1];
         if (!lastPart.session_id || lastPart.timed_out) break;
         const said = lastPart.final_answer ?? '';
-        const u = askUser(sdir, round, buildUserPrompt(arc, step, said, branchNote, round, opts.userStyle), opts.userModel ?? opts.judgeModel);
+        const u = askUser(sdir, round, buildUserPrompt(arc, step, said, branchNote, round, opts.userStyle, turns), opts.userModel ?? opts.judgeModel);
         userCost += u.cost_usd;
         if (!u.needs_reply || !u.reply) { turns.push({ agent_said: said.slice(0, 4000), reply: '', why: u.why, cost_usd: u.cost_usd }); break; }
         turns.push({ agent_said: said.slice(0, 4000), reply: u.reply, why: u.why, cost_usd: u.cost_usd });
