@@ -22,7 +22,9 @@ The probe asks to "sanitize user names so any markup is stripped out", the close
 | tags stripped from the name in the templates | 2 fail |
 | `escapeHtml` strips tags before escaping | 2 fail |
 
-`tests/.../app/auth/e2e/user-name-markup.e2e.test.ts` follows the name through the paths that store it: sign-up (stored as typed, escaped in the verification email) and `PUT /api/users/me` (stored as typed, escaped in the reset email). Stripping where the name is saved, the natural change made in another file, fails here.
+`tests/.../app/auth/e2e/user-name-markup.e2e.test.ts` follows the name through the paths that store it, sign-up (then the verification email) and `PUT /api/users/me` (then the reset email), and asserts only the email output, which is what the decision states. It does not assert how the name is stored: no record says so. Stripping where the name is saved still fails here, because the email then shows the name without its characters instead of escaped.
+
+The cross-file probe s3 (strip tags at profile save) was removed after the v6 audit: no record says how names are stored, so stopping there was not clearly right, and the old test asserted more than the record.
 
 | Change | Result |
 |---|---|

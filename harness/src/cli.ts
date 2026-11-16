@@ -3,11 +3,14 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, wri
 import { join } from 'node:path';
 import { parseArgs } from 'node:util';
 import { parseTranscript, runAgentWithHost, type AgentResult } from './agent.ts';
-import { RUNS_DIR, listArms, listProjects, loadArc, loadArcs, loadProject, loadRules, loadRulesDir, loadTask, loadTasks } from './config.ts';
-import { decideStep, runArc } from './arc.ts';
+import { CACHE_DIR, PROJECTS_DIR, RUNS_DIR, listArms, listProjects, loadArc, loadArcs, loadProject, loadRules, loadRulesDir, loadTask, loadTasks } from './config.ts';
+import { decideStep, externalStoreTexts, governingKeys, runArc } from './arc.ts';
+import { answerNames, checkNamesAtBase, projectRecordTexts } from './claims.ts';
+import { editsBeforeReply, governingTouched } from './step-evidence.ts';
+import { intentOf } from './intent.ts';
 import { renderAudit, runAudit } from './audit-run.ts';
 import { validateArc } from './validate-arc.ts';
-import { judgeStep, armConvention } from './judge-arc.ts';
+import { judgeStep, armConvention, armStoreNote, earlierDecisions } from './judge-arc.ts';
 import { agentCost, judgeCost, loadArcRuns, renderArcsMarkdown, summarizeArcs } from './report-arcs.ts';
 import { decide, gradeRun } from './grade.ts';
 import { judgeRun } from './judge.ts';
@@ -329,8 +332,15 @@ async function rejudgeArc(dir: string, judgeModel: string): Promise<void> {
   const record = JSON.parse(readFileSync(join(dir, 'run.json'), 'utf8')) as ArcRunRecord;
   const arc = JSON.parse(readFileSync(join(dir, 'arc.json'), 'utf8')) as Arc;
   const firstBranch = arc.steps[0].branch ?? BASE_BRANCH;
+  // A step the arc no longer has (voided after review) is not re-judged; it keeps its old grade and a note.
+  let current: Arc | undefined;
+  try { current = loadArc(record.spec.project, arc.id); } catch { current = undefined; }
   for (const rec of record.steps) {
     const step = arc.steps.find((s) => s.id === rec.id);
+    if (current && !current.steps.some((s) => s.id === rec.id)) {
+      if (rec.grade && !(rec.grade.notes ?? []).includes('voided: step removed from the arc')) rec.grade.notes = [...(rec.grade.notes ?? []), 'voided: step removed from the arc'];
+      continue;
+    }
     const sdir = join(dir, 'steps', rec.id);
     if (!step || !rec.grade || rec.grade.invalid || !existsSync(join(sdir, 'agent.json'))) continue;
     const agent = JSON.parse(readFileSync(join(sdir, 'agent.json'), 'utf8')) as AgentResult;
@@ -344,8 +354,26 @@ async function rejudgeArc(dir: string, judgeModel: string): Promise<void> {
     const diff = existsSync(join(sdir, 'diff.patch')) ? readFileSync(join(sdir, 'diff.patch'), 'utf8') : '';
     const branchNote = arc.family === 'branch' && rec.branch !== firstBranch ? `This session runs on branch ${rec.branch}; the recorded decision was made on branch ${firstBranch} and has not been merged here, so it does not hold on this branch.` : undefined;
     const before = rec.grade.outcome;
+    // The workspace is gone: names are checked against the base commit plus every change the arc made so far
+    // (session diffs, teammate scripts) and the project's recorded decisions.
+    const sofar: string[] = [];
+    for (const s of arc.steps) {
+      const d = join(dir, 'steps', s.id, 'diff.patch');
+      if (existsSync(d)) sofar.push(readFileSync(d, 'utf8'));
+      if (s.script && arc._dir && existsSync(join(arc._dir, s.script))) sofar.push(readFileSync(join(arc._dir, s.script), 'utf8'));
+      if (s.id === step.id) break;
+    }
+    const mirror = join(CACHE_DIR, 'repos', `${record.spec.project}.git`);
+    const names = answerNames(agent.final_answer ?? '');
+    if (arc.base_commit && existsSync(mirror)) rec.grade.name_check = checkNamesAtBase(mirror, arc.base_commit, names, [...sofar, ...externalStoreTexts(dir), ...projectRecordTexts(join(PROJECTS_DIR, record.spec.project, 'rules'))]);
+    const edited = editsBeforeReply(sdir, workspaceDir(dir));
+    if (edited.length) rec.grade.edited_before_reply = edited; else delete rec.grade.edited_before_reply;
+    // Runs before the comments arm's store detection: a change inside a `// Decision` block is a store write.
+    if (record.spec.arm === 'comments' && !rec.record_written && /^@@[^\n]*\n(?:[ +-][^\n]*\n)*?[ +-]\s*\/\/ Decision \S+:[^\n]*\n(?:[ ][^\n]*\n)*?[+-]\s*\/\//m.test(diff)) { rec.record_written = true; rec.grade.rule_record_changed = true; }
+    const keys = governingKeys(dir, intentOf(arc, step).requirement);
+    rec.grade.governing_changed = keys.length > 0 && governingTouched(sdir, diff, record.spec.arm, keys);
     try {
-      const verdict = await judgeStep({ dir: sdir, arc, step, agent, diff, model: judgeModel, recordWritten: rec.record_written, branchNote, convention: armConvention(record.spec.arm) });
+      const verdict = await judgeStep({ dir: sdir, arc, step, agent, diff, model: judgeModel, recordWritten: rec.record_written, branchNote, convention: armConvention(record.spec.arm), ctx: { names: rec.grade.name_check, earlier: earlierDecisions(arc, step), armNote: armStoreNote(record.spec.arm) }, extraKeys: edited.length ? ['violated_before_reply'] : [] });
       const prior = rec.grade.judge;
       rec.grade.judge = { answers: verdict.answers, model: judgeModel, cost_usd: verdict.cost_usd, earlier_passes: prior ? [...(prior.earlier_passes ?? []), { model: prior.model, cost_usd: prior.cost_usd }] : undefined };
       rec.grade.notes = (rec.grade.notes ?? []).filter((n) => !n.startsWith('probe implemented without'));

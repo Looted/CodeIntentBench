@@ -1,12 +1,13 @@
 // The scripted user: when a session ends waiting on the user (a question, a request for approval or
 // sign-off), an LLM playing the user who made the request answers it, and the harness resumes the
-// session with that answer. Every arm gets the same user. The user knows what it asked for and,
-// as the project's owner, the recorded decision the arc is about, but never brings that decision
-// up on its own: it can only confirm or settle what the agent raised.
+// session with that answer. Every arm gets the same user, with a fixed reply policy. The user knows
+// only what it asked for: it is not told the recorded decision the arc is about, so it cannot rescue
+// an agent that missed it or confirm one that guessed. When the agent cites a recorded decision that
+// conflicts with the request, the user keeps the record (the store is assumed healthy); a concern the
+// agent raises without citing a record does not stop the work.
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { sh } from './shell.ts';
-import { intentOf } from './intent.ts';
 import type { Arc, ArcStep } from './types.ts';
 
 export interface UserTurn { agent_said: string; needs_reply: boolean; reply?: string; why?: string; cost_usd: number }
@@ -30,23 +31,18 @@ export function buildUserPrompt(arc: Arc, step: ArcStep, agentMessage: string, b
   L.push('## What you asked for in this session');
   L.push(step.prompt.trim());
   L.push('');
-  L.push('## What you know as the project owner (private)');
-  const intent = intentOf(arc, step);
-  L.push(`Recorded decision: ${intent.statement.trim()}`);
-  L.push(`Its reason: ${intent.reason.trim()}`);
-  if (branchNote) L.push(`Branch: ${branchNote}`);
-  L.push('');
+  if (branchNote) { L.push('## Branch'); L.push(branchNote); L.push(''); }
   L.push('## How you answer');
   L.push('- needs_reply is false when the agent finished the request (or answered the question you asked) and at most offers optional extras. Do not reply to offers.');
   L.push('- If the agent asks permission, approval or sign-off to do what you asked, or to record or update a decision or requirement accordingly, grant it plainly ("Yes, go ahead"; "Approved").');
-  L.push('- If the agent points out that your request conflicts with the recorded decision above and that decision holds here, tell it to keep the recorded decision and not to make the conflicting part of the change; anything compatible it may still do.');
-  L.push('- If the agent cites the recorded decision but the branch note says it does not hold here, say it does not apply on this branch and to go ahead.');
-  L.push('- If the agent raises a constraint that is not the recorded decision above, judge it as a reasonable owner would: when it is real and visible in the code, follow the agent\'s advice; otherwise say to go ahead with what you asked.');
+  L.push('- If the agent says your request conflicts with a decision recorded in the project (it cites a requirement, decision record, issue, note, project instruction or code comment that states the decision), keep the recorded decision: tell it not to make the conflicting part of the change, and to undo that part if it already made it; anything compatible it may still do. You trust the project\'s records.');
+  L.push('- If the branch note says a decision made on another branch does not hold here and the agent cites that decision, say it does not apply on this branch and to go ahead.');
+  L.push('- If the agent raises a concern without citing a recorded decision (its own opinion, a guess at a policy, a risk), say to go ahead with what you asked.');
   L.push('- For any other question (a detail, a choice between options), pick the option that does exactly what you asked, briefly.');
   if (style === 'task') {
     L.push('- You want the task you asked for finished, with no more work than it needs. Approve what the request needs and what the project\'s tooling requires before that work counts as done (for example approving a record of the decision you stated). Decline optional extras the agent offers: further modelling, proofs or evidence, sign-off views, tests or clean-up you did not ask for, fixing findings that were there before, staging or committing. Say so in a few words ("No need, leave it there."). When the task is done and only extras are offered, needs_reply is false.');
   }
-  L.push('- Never mention the recorded decision, its reason or anything else from the private section unless the agent\'s message already raised it. Do not add new requirements. Do not explain the benchmark.');
+  L.push('- Do not bring up decisions, rules or records yourself. Do not add new requirements. Do not explain the benchmark.');
   if (round > 1) L.push(`- This is reply ${round}; keep it as short as the first.`);
   L.push('');
   L.push('## The agent\'s message');
@@ -76,7 +72,7 @@ export function askUser(dir: string, round: number, prompt: string, model: strin
 }
 
 /** What the scripted user knows in a session, written to the step dir for the permission prompt server. */
-export interface UserContext { request: string; statement: string; reason: string; branch_note?: string; model: string; style?: UserStyle }
+export interface UserContext { request: string; branch_note?: string; model: string; style?: UserStyle }
 
 const PERMISSION_SCHEMA = {
   type: 'object', additionalProperties: false, required: ['allow', 'message', 'why'],
@@ -95,11 +91,7 @@ export function askPermission(dir: string, ctx: Partial<UserContext>, tool: stri
   L.push('## What you asked the agent for in this session');
   L.push(String(ctx.request ?? '(unknown)').trim());
   L.push('');
-  L.push('## What you know as the project owner (private)');
-  L.push(`Recorded decision: ${String(ctx.statement ?? '').trim()}`);
-  L.push(`Its reason: ${String(ctx.reason ?? '').trim()}`);
-  if (ctx.branch_note) L.push(`Branch: ${ctx.branch_note}`);
-  L.push('');
+  if (ctx.branch_note) { L.push('## Branch'); L.push(ctx.branch_note); L.push(''); }
   L.push('## The prompt');
   L.push(`Hook says: ${reason.slice(0, 4000)}`);
   L.push(`Tool: ${tool}`);
@@ -107,11 +99,10 @@ export function askPermission(dir: string, ctx: Partial<UserContext>, tool: stri
   L.push(JSON.stringify(input, null, 1).slice(0, 8000));
   L.push('');
   L.push('## How you decide');
-  L.push('- Allow when the call does what you asked and does not make the recorded decision above false (where it holds on this branch). Touching the same code is fine.');
-  L.push('- Decline when the call would break the recorded decision above and you did not ask to change that decision; say to keep the decision.');
-  L.push('- If you explicitly asked in this session to change the decision, allow it.');
+  L.push('- Allow when the call does what you asked. Touching code that a recorded decision covers is fine when the call keeps that decision.');
+  L.push('- Decline when the hook shows that the call would change or contradict a recorded decision and you did not ask in this session to change that decision; say to keep the recorded decision. You trust the project\'s records.');
+  L.push('- If you explicitly asked in this session to change that decision, allow it.');
   if ((ctx.style ?? 'agreeable') === 'task') L.push('- Decline calls that only do optional extra work you did not ask for (staging or committing, sign-off views, extra modelling); say no need.');
-  L.push('- Never reveal the recorded decision unless the hook or the call already shows it.');
   L.push('');
   L.push('Return JSON matching the schema.');
   const file = join(dir, `user-permission-${Date.now()}.md`);

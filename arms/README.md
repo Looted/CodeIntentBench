@@ -8,10 +8,12 @@ An arm decides how a project's rules (`projects/<name>/rules/*.yaml`) reach the 
 | `docs` | One decision file per rule under `docs/decisions/`. | Empty `docs/decisions/` folder; the convention says to record decisions there. | a requirements folder, ADRs, a wiki in the repo |
 | `tracker` | Rules seeded as closed issues in a file-backed issue tracker over MCP. | Empty tracker; the convention says to search it and file decisions as issues. | Jira, YouTrack, Linear, GitHub issues |
 | `memory` | Rules seeded as notes in a file-backed keyword-search memory over MCP. | Empty memory; the convention says to search it and save decisions. | mem0, Zep, auto-memory, vector memory stores |
+| `memory-embed` | As `memory`, searched by keywords and by meaning (potion-base-8M from Kibi's search-hints package, fused by reciprocal rank). | As `memory`. | vector memory stores with hybrid search; the counterpart of `kibi-hints` |
 | `comments` | Rules written as comment blocks above the linked declaration in each linked code file (`render-comments.ts`); a rule with no code path goes beside the rule it supersedes or that supersedes it, otherwise it is not delivered (counted in `comments-report.json`). | As rule mode, from the onboarded knowledge base; the convention says decisions are comments beside the code they govern. | reasons written in code comments |
 | `agents-md` | All rules rendered into one `AGENTS.md`, plus a `CLAUDE.md` pointer. The file is written whole or the setup fails with "does not fit" (budget: the model's context window, or `CIB_AGENTS_MD_TOKEN_BUDGET`); its size is reported. | Empty `AGENTS.md`; the convention says to record decisions there. | the always-in-context ceiling |
 | `kibi` | Rules imported as firm requirements with tests and symbol links; the kibi-claude plugin (hooks, skills, MCP) installed. | Empty knowledge base after `kibi init`; the plugin's own skill is the only instruction. | Kibi |
 | `kibi-conv` | (arc mode only) | As `kibi`, plus the same one-sentence convention the other arms get, saying decisions are recorded as Kibi requirements. | Kibi, told where decisions live |
+| `kibi-hints` | (arc mode only) | As `kibi`, plus Kibi's search-hints plugin (the same embedding model as `memory-embed`). The `kibi` arm runs without it. | Kibi with its embedding hints |
 
 The tracker and memory stores (`harness/src/arm-tools/{tracker,memory}-mcp.ts`) are passive by construction: nothing fires when the agent reads or edits code, the agent has to ask. That is the property the arc families test.
 

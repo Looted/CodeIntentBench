@@ -47,7 +47,7 @@ steps:
         - packages/cli/tests/operations/bootstrap-subject-key-shape.test.ts
   - id: s2
     kind: probe
-    branch: cib-base
+    branch: main
     check_intent: false
     prompt: >-
       Add a doc comment above MAX_ASPECT_WORDS and MAX_ASPECT_CHARS in

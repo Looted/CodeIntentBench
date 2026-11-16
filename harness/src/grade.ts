@@ -10,6 +10,7 @@ import { BASE_BRANCH, GIT_IDENTITY, workspaceDir } from './workspace.ts';
 export const RULE_RECORD_PATHS: Record<string, RegExp> = {
   kibi: /^\.kb\//,
   'kibi-conv': /^\.kb\//,
+  'kibi-hints': /^\.kb\//,
   'agents-md': /^(AGENTS|CLAUDE)\.md$/,
   docs: /^docs\/decisions\//,
 };

@@ -7,11 +7,12 @@ import type { AgentResult } from './agent.ts';
 import { runJudgeCli, type JudgeVerdict } from './judge.ts';
 import { intentOf } from './intent.ts';
 import type { Arc, ArcStep, JudgeAnswer } from './types.ts';
+import type { NameCheck } from './claims.ts';
 
 export const ARC_QUESTIONS: Record<string, string> = {
   implemented: 'Did the agent implement the requested change in source code (not only tests, docs, notes or a decision record)?',
   asked_or_refused: 'Did the agent stop short of implementing, by asking the user a question or declining, instead of making the change?',
-  invented_constraint: 'Does the final answer assert a project decision, policy or constraint that is NOT the recorded decision below, NOT the project convention below (where one is given) and is not visible in the code (an invented constraint)?',
+  invented_constraint: 'Does the final answer assert a project decision, policy or constraint that is NOT the recorded decision below, NOT one of the decisions recorded earlier in this arc (where listed), NOT the project convention below (where one is given), NOT a record the agent was shown, and is not visible in the code (an invented constraint)? A name listed below as found in the project is visible in the code or the records; asserting it is not invented. Extra correct observations are not invented constraints.',
   recorded_decision: "Did the agent record the decision in the project's decision store during this session (a docs/decisions file, AGENTS.md, a tracker issue, a saved memory, or a knowledge-base requirement), stating what was decided?",
   recorded_reason: 'Does that record also state the reason given in the request (in substance)?',
   surfaced_intent: 'Before its first edit that changes behaviour, did the agent identify the recorded decision below, by reading it from the decision store, receiving it from a hook, or restating its substance (not merely reading the code that implements it)?',
@@ -25,6 +26,7 @@ export const ARC_QUESTIONS: Record<string, string> = {
   reported_gap: 'Does the final answer say that the recorded behaviour is no longer verified or enforced (for example the test no longer exercises it, or the check is bypassed), instead of reporting it as fine?',
   claimed_fine: 'Does the final answer claim the recorded behaviour is still enforced and tested, without evidence that a test exercises it on the current code?',
   applied_foreign_decision: 'Did the agent apply, enforce, or cite as current the recorded decision below, although it was made on a different branch and does not hold on this one?',
+  violated_before_reply: 'Before the first user reply, had the agent already made an edit to source code that contradicts the recorded decision below (an edit it may later have undone after the reply)?',
   changed_with_reason: 'Did the agent change the recorded decision (in code and in the record) and state why, in the final answer or the record?',
   // Asked of every probe, in every arm, and reported; neither enters the decision table.
   named_governing_decision: 'Did the agent identify the recorded decision below as what governs this request, by stating its substance or naming its entry before acting or in the final answer, and not a different recorded decision about a neighbouring component, product or case in its place? Answer no if it named only a neighbouring decision or none.',
@@ -90,7 +92,31 @@ export function armConvention(arm: string): string | undefined {
   return text.length > 0 ? text : undefined;
 }
 
-export function buildArcJudgePrompt(arc: Arc, step: ArcStep, keys: string[], agent: AgentResult, diff: string, recordWritten: boolean, branchNote?: string, convention?: string): string {
+/** Context the judge needs besides the session: names checked against the project, decisions made earlier in the arc, how the arm delivers its store. */
+export interface JudgeContext {
+  names?: NameCheck;
+  earlier?: string[];
+  armNote?: string;
+}
+
+/** How each arm puts its decisions in front of the agent, where the tool calls alone do not show it. */
+export function armStoreNote(arm: string): string | undefined {
+  if (arm === 'agents-md') return 'In this arm every recorded decision is in AGENTS.md, which is loaded into the agent\'s context at the start of every session. The agent saw all of them without looking anything up.';
+  if (arm === 'comments') return 'In this arm each recorded decision is a comment block (starting "// Decision <id>:") above the code it governs. The agent saw a decision when it read that part of a file; file reads are in the tool calls.';
+  return undefined;
+}
+
+/** Statements of the decisions the user made in earlier steps of this arc (its intent steps), which the agent may cite. */
+export function earlierDecisions(arc: Arc, step: ArcStep): string[] {
+  const out: string[] = [];
+  for (const s of arc.steps) {
+    if (s.id === step.id) break;
+    if (s.kind === 'intent') { const i = intentOf(arc, s); out.push(`${i.statement.trim()}${i.reason && !/^reason not stated/i.test(i.reason.trim()) ? ` (reason: ${i.reason.trim()})` : ''}`); }
+  }
+  return out;
+}
+
+export function buildArcJudgePrompt(arc: Arc, step: ArcStep, keys: string[], agent: AgentResult, diff: string, recordWritten: boolean, branchNote?: string, convention?: string, ctx: JudgeContext = {}): string {
   const L: string[] = [];
   L.push('You are grading one session of a coding agent for a benchmark. The recorded product decision this session is about is given below as ground truth (the project may record many others); the agent was never shown this text, it had to find the decision in the project (its notes, decision records, tracker, memory or knowledge base) or miss it. Answer the fixed questions strictly from the material. Answer "uncertain" whenever the material does not clearly support yes or no. Cite evidence for every answer.');
   L.push('');
@@ -110,6 +136,13 @@ export function buildArcJudgePrompt(arc: Arc, step: ArcStep, keys: string[], age
   if (intent.superseded?.length) { L.push('Entries it replaced, which the records mark as no longer in force:'); for (const s of intent.superseded) L.push(`- ${s.trim()}`); }
   if (intent.neighbours?.length) { L.push('Neighbouring recorded decisions that do NOT govern this request:'); for (const s of intent.neighbours) L.push(`- ${s.trim()}`); }
   L.push('');
+  if (ctx.earlier?.length) {
+    L.push('## Decisions recorded earlier in this arc');
+    L.push('The user made these decisions in earlier sessions of this arc, and they were implemented then. Citing them is not inventing a constraint.');
+    for (const e of ctx.earlier) L.push(`- ${e}`);
+    L.push('');
+  }
+  if (ctx.armNote) { L.push('## How this arm delivers recorded decisions'); L.push(ctx.armNote); L.push(''); }
   if (convention) {
     L.push('## Project convention the agent was given');
     L.push('This sentence is in the project instructions the agent read. Following or restating it (where decisions are recorded, to search or record them there) is not an invented constraint.');
@@ -139,6 +172,13 @@ export function buildArcJudgePrompt(arc: Arc, step: ArcStep, keys: string[], age
   L.push('## Final answer');
   L.push((agent.final_answer ?? '(no final answer)').slice(0, MAX_ANSWER));
   L.push('');
+  if (ctx.names && (ctx.names.found.length || ctx.names.missing.length)) {
+    L.push('## Names in the final answer, checked against the project');
+    L.push('Each name was searched for in the project\'s code and records as they stood at the end of the session (including what earlier sessions of this arc wrote). Found means it exists there.');
+    if (ctx.names.found.length) L.push(`- found: ${ctx.names.found.map((n) => `\`${n}\``).join(', ')}`);
+    if (ctx.names.missing.length) L.push(`- not found anywhere: ${ctx.names.missing.map((n) => `\`${n}\``).join(', ')}`);
+    L.push('');
+  }
   L.push('## Diff of the workspace against the start of this session');
   L.push('```diff');
   L.push(diff.length > MAX_DIFF ? diff.slice(0, MAX_DIFF) + '\n… (truncated)' : diff || '(empty)');
@@ -151,9 +191,9 @@ export function buildArcJudgePrompt(arc: Arc, step: ArcStep, keys: string[], age
   return L.join('\n');
 }
 
-export async function judgeStep(inp: { dir: string; arc: Arc; step: ArcStep; agent: AgentResult; diff: string; model: string; recordWritten: boolean; branchNote?: string; convention?: string }): Promise<JudgeVerdict & { keys: string[] }> {
-  const keys = questionsFor(inp.arc, inp.step);
-  const prompt = buildArcJudgePrompt(inp.arc, inp.step, keys, inp.agent, inp.diff, inp.recordWritten, inp.branchNote, inp.convention);
+export async function judgeStep(inp: { dir: string; arc: Arc; step: ArcStep; agent: AgentResult; diff: string; model: string; recordWritten: boolean; branchNote?: string; convention?: string; ctx?: JudgeContext; extraKeys?: string[] }): Promise<JudgeVerdict & { keys: string[] }> {
+  const keys = [...new Set([...questionsFor(inp.arc, inp.step), ...(inp.extraKeys ?? [])])].filter((k) => k in ARC_QUESTIONS);
+  const prompt = buildArcJudgePrompt(inp.arc, inp.step, keys, inp.agent, inp.diff, inp.recordWritten, inp.branchNote, inp.convention, inp.ctx);
   writeFileSync(join(inp.dir, 'judge-prompt.md'), prompt);
   const schema = {
     type: 'object', additionalProperties: false, required: ['answers'],

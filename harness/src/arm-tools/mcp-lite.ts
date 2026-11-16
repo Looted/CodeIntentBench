@@ -48,9 +48,20 @@ export function serve(name: string, version: string, tools: ToolDef[]): void {
   });
 }
 
-/** Lower-case alphanumeric tokens, for keyword ranking. */
+/** A light English suffix stemmer (plurals, -ing, -ed), as a search engine's default analyser applies: "redirects" finds "redirect". */
+export function stem(t: string): string {
+  if (t.length <= 4 || /\d/.test(t)) return t;
+  if (t.endsWith('ies')) return `${t.slice(0, -3)}y`;
+  if (t.endsWith('ing') && t.length > 5) return t.slice(0, -3);
+  if (t.endsWith('ed') && t.length > 4) return t.slice(0, -2);
+  if (t.endsWith('es') && /(ss|sh|ch|x|z)es$/.test(t)) return t.slice(0, -2);
+  if (t.endsWith('s') && !t.endsWith('ss') && !t.endsWith('us') && !t.endsWith('is')) return t.slice(0, -1);
+  return t;
+}
+
+/** Lower-case alphanumeric tokens, stemmed, for keyword ranking. */
 export function tokens(s: string): string[] {
-  return (s.toLowerCase().match(/[a-z0-9_]+/g) ?? []).filter((t) => t.length > 1);
+  return (s.toLowerCase().match(/[a-z0-9_]+/g) ?? []).filter((t) => t.length > 1).map(stem);
 }
 
 /** TF-IDF style score of a query against documents; returns indices with score > 0, best first. */

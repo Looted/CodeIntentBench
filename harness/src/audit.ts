@@ -114,7 +114,7 @@ export function containerEntry(arm: string, ws: string, runDir: string, rule: Ru
     }
     return undefined;
   }
-  if (arm === 'memory') {
+  if (arm === 'memory' || arm === 'memory-embed') {
     const file = join(runDir, 'memory.json');
     if (!existsSync(file)) return undefined;
     const notes: any[] = JSON.parse(readFileSync(file, 'utf8')).notes ?? [];

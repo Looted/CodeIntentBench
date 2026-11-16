@@ -1,24 +1,35 @@
 import { existsSync, mkdirSync, rmSync, writeFileSync, readFileSync, copyFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { createHash } from 'node:crypto';
+import { isAbsolute, join, relative, resolve, sep } from 'node:path';
 import { ARMS_DIR, CACHE_DIR, PROJECTS_DIR, RUNS_DIR, loadRules } from './config.ts';
 import { must, sh } from './shell.ts';
 import type { ArmHost, ProjectConfig, Rule, RunSpec, Task } from './types.ts';
 
-export const BASE_BRANCH = 'cib-base';
+export const BASE_BRANCH = 'main';
 
+/** A neutral developer identity: the agent can read `git log`, and the name must not say it is in a benchmark. */
 export const GIT_IDENTITY = {
-  GIT_AUTHOR_NAME: 'CodeIntentBench',
-  GIT_AUTHOR_EMAIL: 'bench@codeintentbench.invalid',
-  GIT_COMMITTER_NAME: 'CodeIntentBench',
-  GIT_COMMITTER_EMAIL: 'bench@codeintentbench.invalid',
+  GIT_AUTHOR_NAME: 'Alex Morgan',
+  GIT_AUTHOR_EMAIL: 'alex.morgan@example.com',
+  GIT_COMMITTER_NAME: 'Alex Morgan',
+  GIT_COMMITTER_EMAIL: 'alex.morgan@example.com',
 };
 
 export function runDir(spec: RunSpec, id: string): string {
   return join(RUNS_DIR, spec.project, spec.task, spec.arm, id);
 }
 
+/**
+ * Where a run's workspace lives. Not inside the run dir: that path names the arc and the arm
+ * (runs/<project>/_arcs/<arc>/<arm>/<id>), and the agent sees its working directory. The workspace is
+ * `<runs>/_w/<hash of the run dir>/<project>`, the way a checkout of the project would be named.
+ * The run dir's `workspace.txt` points at it.
+ */
 export function workspaceDir(dir: string): string {
-  return join(dir, 'workspace');
+  const abs = resolve(dir);
+  const rel = relative(RUNS_DIR, abs);
+  const project = rel && !rel.startsWith('..') && !isAbsolute(rel) ? rel.split(sep)[0] : 'project';
+  return join(RUNS_DIR, '_w', createHash('sha1').update(abs).digest('hex').slice(0, 12), project);
 }
 
 /** A bare mirror of the project repository, fetched once and reused by every run. */
@@ -47,8 +58,8 @@ export function baseCommit(project: ProjectConfig, task: Task): string {
 
 /**
  * Create the agent's workspace: the project at the task's base commit, built,
- * with the arm applied and everything committed on `cib-base` so the agent's
- * own changes are exactly `git diff cib-base`.
+ * with the arm applied and everything committed on `main` (BASE_BRANCH) so the agent's
+ * own changes are exactly `git diff main`.
  */
 export interface PrepareOptions {
   /** `applicable` (default): the project's rules whose scope exists at the commit. `none`: no rules (arcs). */
@@ -86,10 +97,10 @@ export function prepareWorkspace(dir: string, project: ProjectConfig, task: Pick
     log(`base patch: ${task.base_patch}`);
     git(`apply --whitespace=nowarn ${JSON.stringify(patch)}`);
     // One commit with the patched tree and nothing else: no project history, branches or tags to read the patch or the decisions back from.
-    git('checkout --quiet --orphan cib-orphan');
+    git('checkout --quiet --orphan scratch-orphan');
     git('add -A');
-    git(`commit --quiet --no-verify -m ${JSON.stringify(`project at ${base.slice(0, 12)}`)}`);
-    git(`branch --quiet -M cib-orphan ${BASE_BRANCH}`);
+    git('commit --quiet --no-verify -m "Initial commit"');
+    git(`branch --quiet -M scratch-orphan ${BASE_BRANCH}`);
     const refs = git(`for-each-ref '--format=%(refname)'`).split('\n').map((r) => r.trim()).filter((r) => r && r !== `refs/heads/${BASE_BRANCH}`);
     for (const r of refs) git(`update-ref -d ${JSON.stringify(r)}`);
     git('reflog expire --expire=now --all');
@@ -147,7 +158,7 @@ export function prepareWorkspace(dir: string, project: ProjectConfig, task: Pick
   // Lock files and generated artifacts the install produced are part of the base state.
   git('add -A');
   const dirty = sh(`git -C ${JSON.stringify(ws)} diff --cached --quiet`, { quiet: true }).code !== 0;
-  if (dirty) git(`commit --quiet --no-verify -m "benchmark base"`);
+  if (dirty) git(`commit --quiet --no-verify -m "Set up project tooling"`);
   const sha = git('rev-parse HEAD').trim();
   writeFileSync(join(dir, 'base.txt'), sha + '\n');
   return { base: sha, rules };

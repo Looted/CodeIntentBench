@@ -1,5 +1,6 @@
 export type TaskKind = 'history' | 'conflict' | 'governed' | 'ungoverned';
-export type OutcomeClass = 'S' | 'D' | 'C' | 'V' | 'N' | 'Q' | 'I' | 'F' | 'INVALID';
+/** R: stopped and named the decision, but only after a user reply to a session that had already edited source against it. */
+export type OutcomeClass = 'S' | 'R' | 'D' | 'C' | 'V' | 'N' | 'Q' | 'I' | 'F' | 'INVALID';
 
 export interface ProjectConfig {
   name: string;
@@ -179,6 +180,12 @@ export interface Grade {
   rule_record_changed: boolean;
   files_changed: string[];
   source_files_changed: string[];
+  /** Source files edited before the user's first reply (sessions with a reply only). */
+  edited_before_reply?: string[];
+  /** The session changed the governing entry of the store, or wrote one that links to it. */
+  governing_changed?: boolean;
+  /** Names the final answer asserts, checked against the project. */
+  name_check?: { found: string[]; missing: string[] };
   judge?: { answers: JudgeAnswer[]; model: string; cost_usd: number; tokens?: ModelTokens; earlier_passes?: Array<{ model: string; cost_usd: number }> };
   outcome: OutcomeClass;
   pass: boolean;
@@ -252,6 +259,8 @@ export interface ArcStep {
   source?: { commit?: string; pull_request?: string };
   /** A scripted step: no agent runs; this executable (relative to the arc directory) changes the workspace as a teammate's commit would. Not graded. */
   script?: string;
+  /** The teammate commit's message (scripted steps). Default "Refactor". */
+  commit_message?: string;
   /** Decision procedure; defaults by kind and family. */
   decide?: StepDecision;
   /** Judge question keys that must all be `yes` for `require` steps. */

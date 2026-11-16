@@ -28,10 +28,14 @@ test('the judge is given the step decision, with what it replaced', () => {
   assert.match(inherited, /Decision: Codex hooks must never deny/);
 });
 
-test('the scripted user knows the step decision', () => {
+test('the scripted user is not told the decision the step is about', () => {
   const arc = fixtureArc();
-  assert.match(buildUserPrompt(arc, arc.steps[2], 'May I?', undefined, 1), /Recorded decision: An implements comment never satisfies a link/);
-  assert.match(buildUserPrompt(arc, arc.steps[1], 'May I?', undefined, 1), /Recorded decision: Codex hooks must never deny/);
+  for (const step of arc.steps) {
+    const prompt = buildUserPrompt(arc, step, 'May I?', undefined, 1);
+    const intent = step.intent ?? arc.intent;
+    assert.ok(!prompt.includes(intent.statement.trim().slice(0, 40)), `${step.id} leaks the decision`);
+    assert.ok(!prompt.includes(intent.reason.trim().slice(0, 40)), `${step.id} leaks the reason`);
+  }
 });
 
 test('every probe is asked the two tool-neutral questions, and no other kind of step is', () => {

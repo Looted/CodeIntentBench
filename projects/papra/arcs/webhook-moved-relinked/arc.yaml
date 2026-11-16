@@ -33,6 +33,7 @@ steps:
   - id: s1
     kind: work
     script: teammate.sh
+    commit_message: Move webhook delivery client into delivery/
     prompt: >-
       (no session: a teammate's commit lands before the first session; see teammate.sh)
     grading:

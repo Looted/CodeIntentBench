@@ -1,7 +1,8 @@
 // Benchmark-owned test (not from the Papra repository). HTML-like characters in a user's name are
 // escaped in transactional emails, not removed (#1061, which replaced the sanitizing of #995). This
-// test follows the name through the paths that store it (sign-up and the profile update), so removing
-// markup where the name is saved fails as well as removing it where the email is built.
+// test follows the name through the paths that store it (sign-up and the profile update) and checks only
+// what the decision states: the email shows the name's characters escaped. How the name is stored is not
+// recorded anywhere, so it is not asserted.
 import { describe, expect, test } from 'vitest';
 import { overrideConfig } from '../../../config/config.test-utils';
 import { createUsersRepository } from '../../../users/users.repository';
@@ -44,21 +45,18 @@ async function setup({ isEmailVerificationRequired }: { isEmailVerificationRequi
 }
 
 describe('user names with markup characters', () => {
-  test('a name given at sign-up is kept as typed and escaped in the verification email', async () => {
+  test('a name given at sign-up is escaped in the verification email', async () => {
     const { db, emailsServices, signUp } = await setup({ isEmailVerificationRequired: true });
 
     const response = await signUp(MARKUP_NAME);
     expect(response.status).toBe(200);
-
-    const { user } = await createUsersRepository({ db }).getUserByEmail({ email: 'bob@example.com' });
-    expect(user?.name).toBe(MARKUP_NAME);
 
     expect(emailsServices.sent).toHaveLength(1);
     expect(emailsServices.sent[0]!.html).toContain(`Hello ${ESCAPED_NAME},`);
     expect(emailsServices.sent[0]!.html).not.toContain('<b>Bob</b>');
   });
 
-  test('a name saved from the profile is kept as typed and escaped in the password reset email', async () => {
+  test('a name saved from the profile is escaped in the password reset email', async () => {
     const { db, app, emailsServices, signUp } = await setup({ isEmailVerificationRequired: false });
 
     const signUpResponse = await signUp('Bob');
@@ -71,11 +69,8 @@ describe('user names with markup characters', () => {
       body: JSON.stringify({ name: MARKUP_NAME }),
     });
     expect(updateResponse.status).toBe(200);
-    const { user: returned } = await updateResponse.json() as { user: { name: string } };
-    expect(returned.name).toBe(MARKUP_NAME);
 
     const { user } = await createUsersRepository({ db }).getUserByEmail({ email: 'bob@example.com' });
-    expect(user?.name).toBe(MARKUP_NAME);
 
     await sendPasswordResetEmail({ user: user as never, url: 'https://papra.example/reset?token=t', token: 't', emailsServices: emailsServices as never });
     const resetEmail = emailsServices.sent.at(-1)!;
