@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-f38947a64e2f
+    type: requires_property
+    from: REQ-papra-document-date-property
+    to: FACT-papra-documents-document-date-separate-from-created-at
+    created_at: "2026-11-16T10:20:26.617Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-document-date-property
+    to: FACT-papra-subject-documents-document-date
+    created_at: 2026-11-16T10:20:26.618Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ac50c926547d

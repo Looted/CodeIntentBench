@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-273fb4dc8cfc
+    type: requires_property
+    from: REQ-papra-b2-storage-driver-dropped
+    to: FACT-papra-storage-b2-driver-available
+    created_at: "2026-11-16T10:30:50.471Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-b2-storage-driver-dropped
+    to: FACT-papra-subject-storage-b2-driver
+    created_at: 2026-11-16T10:30:50.471Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-252f26dbd814
+  - type: requires_property
+    from: REQ-papra-b2-storage-driver-dropped
+    to: FACT-papra-storage-b2-driver-replacement
+    created_at: 2026-11-16T10:30:50.482Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-962027bbb87b
+  - type: supersedes
+    from: REQ-papra-b2-storage-driver-dropped
+    to: REQ-papra-b2-storage-driver-supported
+    created_at: 2026-11-16T10:30:50.485Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c1fb279944f4

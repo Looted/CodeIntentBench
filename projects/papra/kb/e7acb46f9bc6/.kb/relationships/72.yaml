@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-145764a7113e
+    type: requires_property
+    from: REQ-papra-document-activity-log
+    to: FACT-papra-activity-log-document-available
+    created_at: "2026-11-16T10:20:36.461Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-document-activity-log
+    to: FACT-papra-subject-activity-log-document
+    created_at: 2026-11-16T10:20:36.462Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-087d6b98fe61

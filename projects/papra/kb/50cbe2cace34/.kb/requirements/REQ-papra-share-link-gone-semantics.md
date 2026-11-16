@@ -46,7 +46,7 @@ required_evidence: asserted
 origin:
   kind: import
   ref: 'Papra server test suite (apps/papra-server/src/modules): document-share-links/document-share-links.usecases.test.ts#share-link-gone-semantics'
-  recorded_at: '2026-11-15T23:01:12.303Z'
+  recorded_at: '2026-11-16T10:30:27.044Z'
 tags:
   - bootstrap
   - knowledge-source:papra-tests

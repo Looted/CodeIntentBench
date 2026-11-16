@@ -16,7 +16,7 @@ tags:
 origin:
   kind: agent
   ref: 'Papra server test suite (apps/papra-server/src/modules): organizations/organizations.usecases.test.ts#member-cap-counts-pending-invitations'
-  recorded_at: '2026-11-15T22:57:51.701Z'
+  recorded_at: '2026-11-16T10:18:48.779Z'
 id: FACT-papra-invitations-member-limit-pending-invitations-count-toward-maximum
 type: fact
 ---

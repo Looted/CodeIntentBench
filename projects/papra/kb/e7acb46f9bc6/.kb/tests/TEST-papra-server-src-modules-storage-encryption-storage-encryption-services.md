@@ -5,7 +5,7 @@ sourceFile: apps/papra-server/src/modules/storage/encryption/storage-encryption.
 text_ref: apps/papra-server/src/modules/storage/encryption/storage-encryption.services.test.ts
 origin:
   kind: agent
-  recorded_at: '2026-11-15T22:58:46.318Z'
+  recorded_at: '2026-11-16T10:26:20.223Z'
 id: TEST-papra-server-src-modules-storage-encryption-storage-encryption-services
 type: test
 ---

@@ -57,7 +57,7 @@ required_evidence: asserted
 origin:
   kind: import
   ref: 'papra-hq/papra merged pull requests: #1534'
-  recorded_at: '2026-11-15T22:57:14.653Z'
+  recorded_at: '2026-11-16T10:18:05.840Z'
 tags:
   - bootstrap
   - knowledge-source:papra-prs

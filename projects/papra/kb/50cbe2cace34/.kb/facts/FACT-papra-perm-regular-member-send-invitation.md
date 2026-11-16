@@ -19,7 +19,7 @@ tags:
 origin:
   kind: agent
   ref: 'Papra server test suite (apps/papra-server/src/modules): organizations/organizations.usecases.test.ts#only-owners-and-admins-invite'
-  recorded_at: '2026-11-15T23:00:58.781Z'
+  recorded_at: '2026-11-16T10:30:13.546Z'
 id: FACT-papra-perm-regular-member-send-invitation
 type: fact
 ---

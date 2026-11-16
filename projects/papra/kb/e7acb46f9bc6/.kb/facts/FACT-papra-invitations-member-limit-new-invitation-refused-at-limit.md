@@ -16,7 +16,7 @@ tags:
 origin:
   kind: agent
   ref: 'Papra server test suite (apps/papra-server/src/modules): organizations/organizations.usecases.test.ts#member-limit'
-  recorded_at: '2026-11-15T22:57:26.253Z'
+  recorded_at: '2026-11-16T10:18:19.844Z'
 id: FACT-papra-invitations-member-limit-new-invitation-refused-at-limit
 type: fact
 ---

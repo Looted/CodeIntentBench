@@ -3,55 +3,55 @@ relationships:
     type: requires_property
     from: REQ-papra-api-key-scope-and-expiry
     to: FACT-papra-api-keys-key-route-access-requires
-    created_at: "2026-11-15T22:57:35.594Z"
+    created_at: "2026-11-16T10:18:30.977Z"
     created_by: kibi/upsert
     source: mcp://kibi/upsert
   - type: constrains
     from: REQ-papra-api-key-scope-and-expiry
     to: FACT-papra-subject-api-keys-key
-    created_at: 2026-11-15T22:57:35.595Z
+    created_at: 2026-11-16T10:18:30.978Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-1b1e11a19d1e
   - type: requires_property
     from: REQ-papra-api-key-scope-and-expiry
     to: FACT-papra-api-keys-key-authorized-with-missing-permission
-    created_at: 2026-11-15T22:57:35.603Z
+    created_at: 2026-11-16T10:18:30.989Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-ce11eb8b7df3
   - type: requires_property
     from: REQ-papra-api-key-scope-and-expiry
     to: FACT-papra-api-keys-key-authenticates-after-expiry
-    created_at: 2026-11-15T22:57:35.606Z
+    created_at: 2026-11-16T10:18:30.993Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-1db2641b9534
   - type: requires_property
     from: REQ-papra-api-key-scope-and-expiry
     to: FACT-papra-api-keys-key-expires-without-expiry-date
-    created_at: 2026-11-15T22:57:35.608Z
+    created_at: 2026-11-16T10:18:30.996Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-3de0e5bc1461
   - type: verified_by
     from: REQ-papra-api-key-scope-and-expiry
     to: TEST-papra-server-src-modules-api-keys-api-keys-repository
-    created_at: 2026-11-15T22:59:06.527Z
+    created_at: 2026-11-16T10:26:46.132Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-4b663d6800c3
   - type: verified_by
     from: REQ-papra-api-key-scope-and-expiry
     to: TEST-papra-server-src-modules-api-keys-api-keys-usecases
-    created_at: 2026-11-15T22:59:06.532Z
+    created_at: 2026-11-16T10:26:46.139Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-c1c961e63233
   - type: verified_by
     from: REQ-papra-api-key-scope-and-expiry
     to: TEST-papra-server-src-modules-app-auth-auth-models
-    created_at: 2026-11-15T22:59:06.537Z
+    created_at: 2026-11-16T10:26:46.142Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-2b28169ec1e1

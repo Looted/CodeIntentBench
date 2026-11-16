@@ -35,7 +35,7 @@ required_evidence: asserted
 origin:
   kind: import
   ref: 'Papra server test suite (apps/papra-server/src/modules): organizations/organizations.models.test.ts#owner-cannot-be-removed'
-  recorded_at: '2026-11-15T22:58:03.901Z'
+  recorded_at: '2026-11-16T10:19:01.723Z'
 tags:
   - bootstrap
   - knowledge-source:papra-tests

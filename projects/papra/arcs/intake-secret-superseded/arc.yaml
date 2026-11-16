@@ -1,7 +1,8 @@
 id: intake-secret-superseded
 project: papra
 family: recall
-tier: hard
+tier: easy
+# Tier: easy since November 2026. Every store arm passed it in v4b (one search finds the decision); the hard tier now holds the arcs whose decision a search alone does not reach.
 pattern: superseded
 # The project pin (October 2026). The store holds two entries about this secret: the February one
 # (#892: 16 to 128 characters, a default stays), closed, and the September one (#1502: no default) that

@@ -10,7 +10,7 @@ tags:
 origin:
   kind: agent
   ref: 'Papra server test suite (apps/papra-server/src/modules): organizations/organizations.usecases.test.ts'
-  recorded_at: '2026-11-15T22:57:13.232Z'
+  recorded_at: '2026-11-16T10:18:04.191Z'
 id: FACT-papra-subject-invitations-member-limit
 type: fact
 ---

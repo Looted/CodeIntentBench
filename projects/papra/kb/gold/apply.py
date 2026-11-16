@@ -11,6 +11,8 @@ BASE = _rest[_rest.index('--base') + 1] if '--base' in _rest else None
 only = {a for i, a in enumerate(_rest) if a != '--base' and (i == 0 or _rest[i - 1] != '--base')}
 HERE = os.path.dirname(os.path.abspath(__file__))
 LATER = json.load(open(os.path.join(HERE, 'later.json')))
+from bulk import BULK_CLAIMS
+LATER['claims'] += BULK_CLAIMS
 SOURCES = {s['id']: s for s in json.load(open(os.path.join(HERE, '..', 'claims.json')))['knowledgeSources'] + LATER['knowledgeSources']}
 REASONS = json.load(open(os.path.join(os.path.dirname(__file__), 'reasons.json')))
 KB = os.path.join(WS, '.kb')
@@ -59,8 +61,8 @@ def fact_payload(rid, ref, claim, model):
         props = {'title': f'{actor} {action} {resource}: {decision}', 'status': 'active', 'fact_kind': 'predicate', 'predicate_name': 'permission_rule',
                  'predicate_args': [actor, action, resource, decision], 'polarity': 'assert', 'canonical_key': f'permission_rule({actor},{action},{resource},{decision})'}
         return fid, 'requires_predicate', subj, props
-    _, subj, prop, val = model
-    fid = f'FACT-papra-{slug(subj)}-{slug(prop)}'
+    _, subj, prop, val = model[:4]
+    fid = f'FACT-papra-{slug(subj)}-{slug(prop)}' + (f'-{model[4]}' if len(model) > 4 else '')
     props = {'title': f'{subj} {prop} = {val}', 'status': 'active', 'fact_kind': 'property_value', 'subject_key': subj, 'property_key': prop, 'operator': 'eq'}
     if kind == 'b': props.update(value_type='bool', value_bool=val)
     elif kind == 'i': props.update(value_type='int', value_int=val)

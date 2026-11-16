@@ -10,7 +10,7 @@ tags:
 origin:
   kind: agent
   ref: 'Papra documentation site (apps/docs): 05-architecture/document-deduplication.mdx'
-  recorded_at: '2026-11-15T23:00:39.371Z'
+  recorded_at: '2026-11-16T10:29:54.491Z'
 id: FACT-papra-subject-document-deduplication
 type: fact
 ---

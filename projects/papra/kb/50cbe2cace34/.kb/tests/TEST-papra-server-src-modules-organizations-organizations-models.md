@@ -5,7 +5,7 @@ sourceFile: apps/papra-server/src/modules/organizations/organizations.models.tes
 text_ref: apps/papra-server/src/modules/organizations/organizations.models.test.ts
 origin:
   kind: agent
-  recorded_at: '2026-11-15T23:01:40.913Z'
+  recorded_at: '2026-11-16T10:37:01.404Z'
 id: TEST-papra-server-src-modules-organizations-organizations-models
 type: test
 ---

@@ -35,7 +35,7 @@ required_evidence: asserted
 origin:
   kind: import
   ref: 'Papra server test suite (apps/papra-server/src/modules): organizations/organizations.usecases.test.ts#only-owner-deletes-organization'
-  recorded_at: '2026-11-15T22:57:56.832Z'
+  recorded_at: '2026-11-16T10:18:54.065Z'
 tags:
   - bootstrap
   - knowledge-source:papra-tests

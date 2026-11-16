@@ -57,7 +57,7 @@ required_evidence: asserted
 origin:
   kind: import
   ref: 'Papra documentation site (apps/docs): 04-resources/04-versioning-and-tagging.mdx#application-versioning'
-  recorded_at: '2026-11-15T22:57:22.839Z'
+  recorded_at: '2026-11-16T10:18:15.943Z'
 tags:
   - bootstrap
   - knowledge-source:papra-docs

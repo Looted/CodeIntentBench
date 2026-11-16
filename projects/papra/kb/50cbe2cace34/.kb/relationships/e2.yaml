@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-a01156ff91ea
+    type: requires_property
+    from: REQ-papra-tag-rename-duplicate-error
+    to: FACT-papra-tags-duplicate-update-explicit-error
+    created_at: "2026-11-16T10:32:31.732Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-tag-rename-duplicate-error
+    to: FACT-papra-subject-tags-duplicate-update
+    created_at: 2026-11-16T10:32:31.733Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-aa3e0d4ff911

@@ -46,7 +46,7 @@ required_evidence: asserted
 origin:
   kind: import
   ref: 'Papra server test suite (apps/papra-server/src/modules): organizations/organizations.usecases.test.ts#member-cap-counts-pending-invitations'
-  recorded_at: '2026-11-15T22:57:52.999Z'
+  recorded_at: '2026-11-16T10:18:50.285Z'
 tags:
   - bootstrap
   - knowledge-source:papra-tests

@@ -1,0 +1,22 @@
+relationships:
+  - id: rel-b09b9f0c6b97
+    type: requires_property
+    from: REQ-papra-external-extraction-providers
+    to: FACT-papra-content-extraction-external-providers-available
+    created_at: "2026-11-16T10:33:37.858Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-external-extraction-providers
+    to: FACT-papra-subject-content-extraction-external-providers
+    created_at: 2026-11-16T10:33:37.858Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d17bac971c05
+  - type: requires_property
+    from: REQ-papra-external-extraction-providers
+    to: FACT-papra-content-extraction-external-providers-default-provider
+    created_at: 2026-11-16T10:33:37.869Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-20f7553e692a

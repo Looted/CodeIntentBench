@@ -10,7 +10,7 @@ tags:
 origin:
   kind: agent
   ref: 'papra-hq/papra merged pull requests: #993'
-  recorded_at: '2026-11-15T23:01:23.734Z'
+  recorded_at: '2026-11-16T10:30:36.689Z'
 id: FACT-papra-subject-webhook-url-ssrf-protection
 type: fact
 ---

@@ -426,3 +426,8 @@ SPEC.update({
    ("unless its hostname is on the instance's explicit allow list", ('b','webhook.url_ssrf_protection','allowlisted_hostnames_exempt',True)),
  ],
 })
+
+# Decisions harvested from the release changelogs (bulk.py), applied after the ones above.
+from bulk import BULK_SPEC, BULK_SUBJECTS
+SUBJECTS.update(BULK_SUBJECTS)
+SPEC.update(BULK_SPEC)

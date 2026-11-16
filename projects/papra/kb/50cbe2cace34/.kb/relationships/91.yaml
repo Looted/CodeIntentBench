@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-00a5da3bfabe
+    type: requires_property
+    from: REQ-papra-date-search-filter
+    to: FACT-papra-search-date-filter-available
+    created_at: "2026-11-16T10:32:19.535Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-date-search-filter
+    to: FACT-papra-subject-search-date-filter
+    created_at: 2026-11-16T10:32:19.535Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-0b99dc7f44d1

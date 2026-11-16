@@ -10,7 +10,7 @@ tags:
 origin:
   kind: agent
   ref: 'Papra server test suite (apps/papra-server/src/modules): api-keys/api-keys.repository.test.ts'
-  recorded_at: '2026-11-15T23:00:34.198Z'
+  recorded_at: '2026-11-16T10:29:49.993Z'
 id: FACT-papra-subject-api-keys-key
 type: fact
 ---

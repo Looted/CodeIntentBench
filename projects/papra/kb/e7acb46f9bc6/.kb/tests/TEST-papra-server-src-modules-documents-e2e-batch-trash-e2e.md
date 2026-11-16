@@ -5,7 +5,7 @@ sourceFile: apps/papra-server/src/modules/documents/e2e/batch-trash.e2e.test.ts
 text_ref: apps/papra-server/src/modules/documents/e2e/batch-trash.e2e.test.ts
 origin:
   kind: agent
-  recorded_at: '2026-11-16T04:37:42.000Z'
+  recorded_at: '2026-11-16T10:28:28.653Z'
 id: TEST-papra-server-src-modules-documents-e2e-batch-trash-e2e
 type: test
 ---

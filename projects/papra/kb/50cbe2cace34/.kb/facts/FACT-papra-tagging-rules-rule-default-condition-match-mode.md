@@ -16,7 +16,7 @@ tags:
 origin:
   kind: agent
   ref: 'Papra server test suite (apps/papra-server/src/modules): tagging-rules/tagging-rules.usecases.test.ts#tagging-rule-match-mode'
-  recorded_at: '2026-11-15T23:01:14.559Z'
+  recorded_at: '2026-11-16T10:30:29.213Z'
 id: FACT-papra-tagging-rules-rule-default-condition-match-mode
 type: fact
 ---

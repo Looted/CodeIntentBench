@@ -5,7 +5,7 @@ sourceFile: apps/papra-server/src/modules/document-share-links/document-share-li
 text_ref: apps/papra-server/src/modules/document-share-links/document-share-links.usecases.test.ts
 origin:
   kind: agent
-  recorded_at: '2026-11-15T23:01:34.611Z'
+  recorded_at: '2026-11-16T10:36:56.634Z'
 id: TEST-papra-server-src-modules-document-share-links-document-share-links-usecases
 type: test
 ---

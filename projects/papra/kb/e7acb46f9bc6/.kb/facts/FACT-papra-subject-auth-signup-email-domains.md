@@ -10,7 +10,7 @@ tags:
 origin:
   kind: agent
   ref: 'papra-hq/papra merged pull requests: #1545'
-  recorded_at: '2026-11-15T22:58:16.052Z'
+  recorded_at: '2026-11-16T10:19:14.380Z'
 id: FACT-papra-subject-auth-signup-email-domains
 type: fact
 ---

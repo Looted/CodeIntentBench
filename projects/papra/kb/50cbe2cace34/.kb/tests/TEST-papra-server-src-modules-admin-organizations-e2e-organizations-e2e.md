@@ -5,7 +5,7 @@ sourceFile: apps/papra-server/src/modules/admin/organizations/e2e/organizations.
 text_ref: apps/papra-server/src/modules/admin/organizations/e2e/organizations.e2e.test.ts
 origin:
   kind: agent
-  recorded_at: '2026-11-16T04:51:10.828Z'
+  recorded_at: '2026-11-16T04:51:55.476Z'
 id: TEST-papra-server-src-modules-admin-organizations-e2e-organizations-e2e
 type: test
 ---
@@ -13,4 +13,4 @@ Existing unit test file apps/papra-server/src/modules/admin/organizations/e2e/or
 
 ## Context
 
-Linked as the test evidence for the symbols it runs, measured with V8 coverage at the base commit (assignableOrganizationRoleSchema, invitationIdSchema, memberIdSchema, organizationIdSchema and others); it exercises that code, not necessarily every clause of the requirements those symbols implement.
+Linked as the test evidence for the symbols it runs, measured with V8 coverage at the base commit (registerInvitationsRoutes, registerTaggingRulesRoutes, registerTagsRoutes); it exercises that code, not necessarily every clause of the requirements those symbols implement.

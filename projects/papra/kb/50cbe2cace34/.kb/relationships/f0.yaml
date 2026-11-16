@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-7354b153fb4d
+    type: requires_property
+    from: REQ-papra-tag-filter-case-insensitive
+    to: FACT-papra-search-tag-name-matching-case-insensitive
+    created_at: "2026-11-16T10:32:11.289Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-tag-filter-case-insensitive
+    to: FACT-papra-subject-search-tag-name-matching
+    created_at: 2026-11-16T10:32:11.289Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d35aff82b250

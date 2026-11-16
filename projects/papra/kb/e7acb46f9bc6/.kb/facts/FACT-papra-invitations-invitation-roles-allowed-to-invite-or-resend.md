@@ -16,7 +16,7 @@ tags:
 origin:
   kind: agent
   ref: 'Papra server test suite (apps/papra-server/src/modules): organizations/organizations.usecases.test.ts#only-owners-and-admins-invite'
-  recorded_at: '2026-11-15T22:57:58.106Z'
+  recorded_at: '2026-11-16T10:18:55.400Z'
 id: FACT-papra-invitations-invitation-roles-allowed-to-invite-or-resend
 type: fact
 ---

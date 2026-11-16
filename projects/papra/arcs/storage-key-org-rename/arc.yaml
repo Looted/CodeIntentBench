@@ -1,7 +1,8 @@
 id: storage-key-org-rename
 project: papra
 family: recall
-tier: hard
+tier: easy
+# Tier: easy since November 2026. Every store arm passed it in v4b (one search finds the decision); the hard tier now holds the arcs whose decision a search alone does not reach.
 pattern: [superseded, near-matches]
 # The project pin (October 2026). Four entries are about storage keys: the March one (a key never
 # changes), closed; its September replacement (keys persist, synchronisation is optional); the

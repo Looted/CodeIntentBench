@@ -5,7 +5,7 @@ sourceFile: apps/papra-server/src/modules/documents/events/storage-key.document-
 text_ref: apps/papra-server/src/modules/documents/events/storage-key.document-updated.test.ts
 origin:
   kind: agent
-  recorded_at: '2026-11-15T22:58:41.550Z'
+  recorded_at: '2026-11-16T10:26:13.731Z'
 id: TEST-papra-server-src-modules-documents-events-storage-key-document-updated
 type: test
 ---

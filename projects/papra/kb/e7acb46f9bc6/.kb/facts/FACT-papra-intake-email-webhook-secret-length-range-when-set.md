@@ -16,7 +16,7 @@ tags:
 origin:
   kind: agent
   ref: 'papra-hq/papra merged pull requests: #1502'
-  recorded_at: '2026-11-15T22:56:50.905Z'
+  recorded_at: '2026-11-16T10:17:37.028Z'
 id: FACT-papra-intake-email-webhook-secret-length-range-when-set
 type: fact
 ---

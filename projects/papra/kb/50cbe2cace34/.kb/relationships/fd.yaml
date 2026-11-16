@@ -31,9 +31,72 @@ relationships:
         type: verified_by,
         from: REQ-AUTO-E2E14D03456F8986,
         to: TEST-papra-server-src-modules-tagging-rules-tagging-rules-usecases,
-        created_at: 2026-11-16T04:51:20.922Z,
+        created_at: 2026-11-16T04:52:02.158Z,
         created_by: kibi/upsert,
         source: mcp://kibi/upsert,
         id: rel-b73769c40a09
+      },
+    {
+        type: requires_property,
+        from: REQ-papra-s3-driver-uses-s3mini,
+        to: FACT-papra-storage-s3-client-library,
+        created_at: 2026-11-16T10:30:59.755Z,
+        created_by: kibi/upsert,
+        source: mcp://kibi/upsert,
+        id: rel-4be424ae1c62
+      },
+    {
+        type: constrains,
+        from: REQ-papra-s3-driver-uses-s3mini,
+        to: FACT-papra-subject-storage-s3-client,
+        created_at: 2026-11-16T10:30:59.772Z,
+        created_by: kibi/upsert,
+        source: mcp://kibi/upsert,
+        id: rel-12769a552907
+      },
+    {
+        type: requires_property,
+        from: REQ-papra-tag-names-trimmed,
+        to: FACT-papra-tags-name-normalization-trimmed,
+        created_at: 2026-11-16T10:32:28.896Z,
+        created_by: kibi/upsert,
+        source: mcp://kibi/upsert,
+        id: rel-5fff4b5def43
+      },
+    {
+        type: constrains,
+        from: REQ-papra-tag-names-trimmed,
+        to: FACT-papra-subject-tags-name-normalization,
+        created_at: 2026-11-16T10:32:28.916Z,
+        created_by: kibi/upsert,
+        source: mcp://kibi/upsert,
+        id: rel-0fa9db0501e7
+      },
+    {
+        type: requires_property,
+        from: REQ-papra-ocr-languages-configurable,
+        to: FACT-papra-ocr-languages-setting,
+        created_at: 2026-11-16T10:33:31.224Z,
+        created_by: kibi/upsert,
+        source: mcp://kibi/upsert,
+        id: rel-ab836d7e6317
+      },
+    {
+        type: constrains,
+        from: REQ-papra-ocr-languages-configurable,
+        to: FACT-papra-subject-ocr-languages,
+        created_at: 2026-11-16T10:33:31.241Z,
+        created_by: kibi/upsert,
+        source: mcp://kibi/upsert,
+        id: rel-081504f2087a
+      },
+    {
+        type: verified_by,
+        from: REQ-papra-tag-names-trimmed,
+        to: TEST-papra-server-src-modules-tags-tags-schemas,
+        created_at: 2026-11-16T10:39:23.917Z,
+        created_by: kibi/upsert,
+        source: mcp://kibi/upsert,
+        id: rel-ff2d36791ccd
       }
   ]

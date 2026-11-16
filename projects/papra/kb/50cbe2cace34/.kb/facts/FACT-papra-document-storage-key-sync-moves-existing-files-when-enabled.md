@@ -16,7 +16,7 @@ tags:
 origin:
   kind: agent
   ref: 'papra-hq/papra merged pull requests: #1525'
-  recorded_at: '2026-11-15T23:00:04.421Z'
+  recorded_at: '2026-11-16T10:29:21.590Z'
 id: FACT-papra-document-storage-key-sync-moves-existing-files-when-enabled
 type: fact
 ---

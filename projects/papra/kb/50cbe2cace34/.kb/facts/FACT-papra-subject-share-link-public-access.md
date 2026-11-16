@@ -10,7 +10,7 @@ tags:
 origin:
   kind: agent
   ref: 'papra-hq/papra merged pull requests: #1348'
-  recorded_at: '2026-11-15T23:00:15.652Z'
+  recorded_at: '2026-11-16T10:29:32.881Z'
 id: FACT-papra-subject-share-link-public-access
 type: fact
 ---

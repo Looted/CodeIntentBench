@@ -16,7 +16,7 @@ tags:
 origin:
   kind: agent
   ref: 'Papra server test suite (apps/papra-server/src/modules): document-share-links/document-share-links.usecases.test.ts#share-link-gone-semantics'
-  recorded_at: '2026-11-15T23:01:09.887Z'
+  recorded_at: '2026-11-16T10:30:24.281Z'
 id: FACT-papra-share-link-public-access-status-when-unavailable
 type: fact
 ---

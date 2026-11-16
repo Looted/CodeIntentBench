@@ -16,7 +16,7 @@ tags:
 origin:
   kind: agent
   ref: 'papra-hq/papra merged pull requests: #1525'
-  recorded_at: '2026-11-15T23:00:04.978Z'
+  recorded_at: '2026-11-16T10:29:22.219Z'
 id: FACT-papra-document-storage-key-sync-failed-move-keeps-original-file
 type: fact
 ---

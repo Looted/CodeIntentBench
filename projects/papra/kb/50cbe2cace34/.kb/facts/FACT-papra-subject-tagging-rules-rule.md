@@ -10,7 +10,7 @@ tags:
 origin:
   kind: agent
   ref: 'Papra documentation site (apps/docs): 03-guides/06-tagging-rules.mdx'
-  recorded_at: '2026-11-15T23:01:13.805Z'
+  recorded_at: '2026-11-16T10:30:28.447Z'
 id: FACT-papra-subject-tagging-rules-rule
 type: fact
 ---

@@ -46,7 +46,7 @@ required_evidence: asserted
 origin:
   kind: import
   ref: 'Papra server test suite (apps/papra-server/src/modules): intake-emails/intake-emails.models.test.ts#intake-email-sender-allowlist'
-  recorded_at: '2026-11-15T23:00:48.337Z'
+  recorded_at: '2026-11-16T10:30:03.335Z'
 tags:
   - bootstrap
   - knowledge-source:papra-tests

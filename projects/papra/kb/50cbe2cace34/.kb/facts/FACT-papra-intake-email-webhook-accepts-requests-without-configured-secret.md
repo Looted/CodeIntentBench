@@ -16,7 +16,7 @@ tags:
 origin:
   kind: agent
   ref: 'papra-hq/papra merged pull requests: #1502'
-  recorded_at: '2026-11-15T22:59:53.803Z'
+  recorded_at: '2026-11-16T10:29:10.434Z'
 id: FACT-papra-intake-email-webhook-accepts-requests-without-configured-secret
 type: fact
 ---

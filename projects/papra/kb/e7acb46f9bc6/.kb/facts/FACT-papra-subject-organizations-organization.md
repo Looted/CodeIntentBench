@@ -10,7 +10,7 @@ tags:
 origin:
   kind: agent
   ref: 'Papra documentation site (apps/docs): 03-guides/07-roles-and-permissions.mdx#overview'
-  recorded_at: '2026-11-15T22:57:46.503Z'
+  recorded_at: '2026-11-16T10:18:43.206Z'
 id: FACT-papra-subject-organizations-organization
 type: fact
 ---

@@ -5,7 +5,7 @@ sourceFile: apps/papra-server/src/modules/intake-emails/intake-emails.usecases.t
 text_ref: apps/papra-server/src/modules/intake-emails/intake-emails.usecases.test.ts
 origin:
   kind: agent
-  recorded_at: '2026-11-15T23:01:40.124Z'
+  recorded_at: '2026-11-16T04:51:59.790Z'
 id: TEST-papra-server-src-modules-intake-emails-intake-emails-usecases
 type: test
 ---
@@ -13,4 +13,4 @@ Existing unit test file apps/papra-server/src/modules/intake-emails/intake-email
 
 ## Context
 
-Linked at onboarding as the test evidence for the symbols it names (ingestEmailForRecipient and others in the same module); it exercises the module, not necessarily every clause of the requirements those symbols implement.
+Linked as the test evidence for the symbols it runs, measured with V8 coverage at the base commit (intakeEmailUsernameConfig, intakeEmailsConfig); it exercises that code, not necessarily every clause of the requirements those symbols implement.

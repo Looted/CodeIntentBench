@@ -20,6 +20,8 @@ git remote remove origin
 cp -R "$here/../$from/.kb" .kb
 $G add -A .kb && $G commit -q --no-verify -m "kb: April snapshot"
 kibi init > "$work/init-$short.log" 2>&1 || true
+# kibi init edits tracked files (.gitignore, package.json); commit them so later steps see a clean source tree
+$G commit -qa --no-verify -m "kibi init" || true
 
 # 1. the later decisions that hold at this base, modeled; what they replace is closed
 python3 "$here/apply.py" "$ws" --base "$full"

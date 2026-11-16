@@ -15,7 +15,7 @@ the files. Each uncovered declaration then gets an entry:
   implements    one requirement that symbols in the same directory implement: the one whose title shares
                 the most words with the declaration's name, then the one most of the file's symbols
                 implement, skipping requirements that already have Kibi's broad-fanout threshold of
-                implementing symbols;
+                implementing symbols (when all of them have, the requirements of the same module);
   covered_by    the tests in the same directory that name the declaration, else the file's existing
                 test links.
 Source files (outside .kb) must have no uncommitted changes. Run `kibi sync --refresh-symbol-coordinates` afterwards."""
@@ -67,6 +67,9 @@ def role(path, name, ln):
     if re.fullmatch(r'[A-Z][A-Z0-9_]+', name) or re.search(r'(Config|Definition|Definitions)$', name): return 'config'
     return 'behavioral'
 
+def module_root(path):
+    m = re.match(r'(.*?/modules/[^/]+)/', path); return m.group(1) if m else os.path.dirname(path)
+
 def tests_naming(path, name):
     d = os.path.dirname(path); out = []
     for f in sorted(os.listdir(os.path.join(WS, d))):
@@ -95,6 +98,11 @@ for path, decls in sorted(missing.items()):
         w = words(name)
         score = lambda r: len(w & words(req_text.get(r, r)))
         order = sorted(near, key=lambda r: (-score(r), -reqs[r], r))
+        if all(load[r] >= FANOUT for r in order):
+            # every requirement of the directory is full: widen to the requirements of the same module
+            mod = module_root(path)
+            wide = {r['target'] for f, ss in by_file.items() if module_root(f) == mod for s in ss for r in s['relationships'] if r['type'] == 'implements'}
+            order = sorted(wide, key=lambda r: (-score(r), -reqs[r], r)) or order
         pick = [next((r for r in order if load[r] < FANOUT), order[0])]
         load[pick[0]] += 1
         tests = [t for t in dict.fromkeys(test_id(x) for x in tests_naming(path, name)) if t in have_tests] or peer_tests

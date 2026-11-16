@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-0b812d5292dc
+    type: requires_property
+    from: REQ-papra-office-document-extraction
+    to: FACT-papra-content-extraction-formats-office-formats-supported
+    created_at: "2026-11-16T10:22:27.209Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-office-document-extraction
+    to: FACT-papra-subject-content-extraction-formats
+    created_at: 2026-11-16T10:22:27.209Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c02705ca1f33
+  - type: requires_property
+    from: REQ-papra-webhook-ssrf-at-delivery
+    to: FACT-papra-webhook-ssrf-at-delivery-enforced
+    created_at: 2026-11-16T10:23:13.084Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-e114aca06d26
+  - type: constrains
+    from: REQ-papra-webhook-ssrf-at-delivery
+    to: FACT-papra-subject-webhook-ssrf-at-delivery
+    created_at: 2026-11-16T10:23:13.096Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-913c783cc904
+  - type: requires_property
+    from: REQ-papra-browser-upload-concurrency-limited
+    to: FACT-papra-upload-concurrency-limited
+    created_at: 2026-11-16T10:23:24.407Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-731cfedb165c
+  - type: constrains
+    from: REQ-papra-browser-upload-concurrency-limited
+    to: FACT-papra-subject-upload-concurrency
+    created_at: 2026-11-16T10:23:24.420Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c3d2695e0bfa
+  - type: verified_by
+    from: REQ-papra-webhook-ssrf-at-delivery
+    to: TEST-papra-server-src-modules-admin-organizations-e2e-organizations-e2e
+    created_at: 2026-11-16T10:28:46.585Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-27477066cf62
+  - type: verified_by
+    from: REQ-papra-webhook-ssrf-at-delivery
+    to: TEST-papra-server-src-modules-webhooks-webhooks-usecases
+    created_at: 2026-11-16T10:28:46.594Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c031a0214335

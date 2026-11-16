@@ -27,3 +27,17 @@ relationships:
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-fa7d984d9d90
+  - type: requires_property
+    from: REQ-papra-stricter-boolean-env
+    to: FACT-papra-config-boolean-env-invalid-value-reads-false
+    created_at: 2026-11-16T10:24:05.199Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-58973432c9f2
+  - type: constrains
+    from: REQ-papra-stricter-boolean-env
+    to: FACT-papra-subject-config-boolean-env
+    created_at: 2026-11-16T10:24:05.212Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-caa4806c07c0

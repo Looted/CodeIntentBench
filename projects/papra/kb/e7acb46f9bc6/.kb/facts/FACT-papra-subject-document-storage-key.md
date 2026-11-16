@@ -10,7 +10,7 @@ tags:
 origin:
   kind: agent
   ref: 'Papra documentation site (apps/docs): 03-guides/09-storage-key-patterns.mdx'
-  recorded_at: '2026-11-15T22:56:53.505Z'
+  recorded_at: '2026-11-16T10:17:40.370Z'
 id: FACT-papra-subject-document-storage-key
 type: fact
 ---

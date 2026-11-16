@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-e20602fc60e6
+    type: requires_property
+    from: REQ-papra-current-api-key-endpoint
+    to: FACT-papra-api-keys-current-available
+    created_at: "2026-11-16T10:25:34.685Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-current-api-key-endpoint
+    to: FACT-papra-subject-api-keys-current
+    created_at: 2026-11-16T10:25:34.686Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-7912ebbc5ad1

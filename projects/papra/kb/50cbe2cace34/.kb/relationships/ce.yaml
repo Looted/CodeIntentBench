@@ -1,0 +1,50 @@
+relationships:
+  - id: rel-83282bfac438
+    type: requires_property
+    from: REQ-papra-tag-duplicates-return-409
+    to: FACT-papra-tags-duplicate-status-create-duplicate-status
+    created_at: "2026-11-16T10:32:35.455Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-tag-duplicates-return-409
+    to: FACT-papra-subject-tags-duplicate-status
+    created_at: 2026-11-16T10:32:35.456Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2f8b803e779d
+  - type: requires_property
+    from: REQ-papra-tag-duplicates-return-409
+    to: FACT-papra-tags-duplicate-status-add-existing-tag-status
+    created_at: 2026-11-16T10:32:35.469Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4aac17c50a14
+  - type: requires_property
+    from: REQ-papra-api-key-custom-property-permissions
+    to: FACT-papra-api-keys-custom-property-permissions-available
+    created_at: 2026-11-16T10:36:28.087Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-3ec014ffb64a
+  - type: constrains
+    from: REQ-papra-api-key-custom-property-permissions
+    to: FACT-papra-subject-api-keys-custom-property-permissions
+    created_at: 2026-11-16T10:36:28.106Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9cfc3490fa60
+  - type: verified_by
+    from: REQ-papra-tag-duplicates-return-409
+    to: TEST-papra-server-src-modules-tags-tags-repository
+    created_at: 2026-11-16T10:37:48.099Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c0ab9a5f2edf
+  - type: verified_by
+    from: REQ-papra-tag-duplicates-return-409
+    to: TEST-papra-server-src-modules-tags-tags-usecases
+    created_at: 2026-11-16T10:39:22.955Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6612582a8205

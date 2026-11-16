@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-3e22d25d23c3
+    type: requires_property
+    from: REQ-papra-register-link-hidden
+    to: FACT-papra-auth-register-link-shown-when-registration-disabled
+    created_at: "2026-11-16T10:35:45.531Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-register-link-hidden
+    to: FACT-papra-subject-auth-register-link
+    created_at: 2026-11-16T10:35:45.532Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-cd682f43b66e

@@ -5,7 +5,7 @@ sourceFile: apps/papra-server/src/modules/document-share-links/e2e/shared-docume
 text_ref: apps/papra-server/src/modules/document-share-links/e2e/shared-document-access.e2e.test.ts
 origin:
   kind: agent
-  recorded_at: '2026-11-16T04:37:42.000Z'
+  recorded_at: '2026-11-16T10:28:26.613Z'
 id: TEST-papra-server-src-modules-document-share-links-e2e-shared-document-access-e2e
 type: test
 ---

@@ -1,0 +1,50 @@
+relationships:
+  - id: rel-a0b9197acab3
+    type: requires_property
+    from: REQ-papra-orphan-file-cleanup-on-trashed-duplicate
+    to: FACT-papra-documents-orphan-cleanup-orphan-file-deleted
+    created_at: "2026-11-16T10:20:23.596Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-orphan-file-cleanup-on-trashed-duplicate
+    to: FACT-papra-subject-documents-orphan-cleanup
+    created_at: 2026-11-16T10:20:23.597Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-e10464721a54
+  - type: requires_property
+    from: REQ-papra-tag-listing-requires-membership
+    to: FACT-papra-webhook-listing-non-member-can-list
+    created_at: 2026-11-16T10:21:44.488Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4e5aa699de94
+  - type: constrains
+    from: REQ-papra-tag-listing-requires-membership
+    to: FACT-papra-subject-webhook-listing
+    created_at: 2026-11-16T10:21:44.500Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-aeec86a93908
+  - type: requires_property
+    from: REQ-papra-auto-tagging-owner-settings
+    to: FACT-papra-auto-tagging-organization-settings-managed-by
+    created_at: 2026-11-16T10:22:17.770Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-63a07d406fc7
+  - type: constrains
+    from: REQ-papra-auto-tagging-owner-settings
+    to: FACT-papra-subject-auto-tagging-organization-settings
+    created_at: 2026-11-16T10:22:17.790Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ab5172cdc1b8
+  - type: requires_property
+    from: REQ-papra-auto-tagging-owner-settings
+    to: FACT-papra-auto-tagging-organization-settings-settings
+    created_at: 2026-11-16T10:22:17.795Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d14b178cdd19

@@ -1,7 +1,8 @@
 id: member-cap-refactor
 project: papra
 family: drift
-tier: hard
+tier: easy
+# Tier: easy since November 2026. Every store arm passed it in v4b (one search finds the decision); the hard tier now holds the arcs whose decision a search alone does not reach.
 pattern: indirect-reach
 # Parent of papra-hq/papra #1533 (merged 2026-09-20). Two real changes move the code under the decision before
 # the probe: the invitation use case becomes a factory (#1533, replayed by the agent in s1), then

@@ -3,41 +3,55 @@ relationships:
     type: requires_property
     from: REQ-papra-plan-storage-and-file-size-limits
     to: FACT-papra-plans-upload-limits-rejects-file-over-max-file-size
-    created_at: "2026-11-15T23:01:08.516Z"
+    created_at: "2026-11-16T10:30:23.012Z"
     created_by: kibi/upsert
     source: mcp://kibi/upsert
   - type: constrains
     from: REQ-papra-plan-storage-and-file-size-limits
     to: FACT-papra-subject-plans-upload-limits
-    created_at: 2026-11-15T23:01:08.516Z
+    created_at: 2026-11-16T10:30:23.012Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-982abb6a4337
   - type: requires_property
     from: REQ-papra-plan-storage-and-file-size-limits
     to: FACT-papra-plans-upload-limits-rejects-upload-over-storage-quota
-    created_at: 2026-11-15T23:01:08.531Z
+    created_at: 2026-11-16T10:30:23.023Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-173caf326e7b
   - type: requires_property
     from: REQ-papra-plan-storage-and-file-size-limits
     to: FACT-papra-plans-upload-limits-persists-anything-on-rejection
-    created_at: 2026-11-15T23:01:08.534Z
+    created_at: 2026-11-16T10:30:23.026Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-097b8ec1064b
+  - type: requires_property
+    from: REQ-papra-email-login-can-be-disabled
+    to: FACT-papra-auth-email-login-can-be-disabled
+    created_at: 2026-11-16T10:35:42.068Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-fe13afed27c4
+  - type: constrains
+    from: REQ-papra-email-login-can-be-disabled
+    to: FACT-papra-subject-auth-email-login
+    created_at: 2026-11-16T10:35:42.082Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-a1d29d953ddd
   - type: verified_by
     from: REQ-papra-plan-storage-and-file-size-limits
     to: TEST-papra-server-src-modules-documents-documents-usecases
-    created_at: 2026-11-15T23:02:15.426Z
+    created_at: 2026-11-16T10:37:41.641Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-eb10be8bf51a
   - type: verified_by
     from: REQ-papra-plan-storage-and-file-size-limits
     to: TEST-papra-server-src-modules-organizations-organizations-usecases
-    created_at: 2026-11-16T04:51:35.112Z
+    created_at: 2026-11-16T10:39:19.203Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-985a02466853

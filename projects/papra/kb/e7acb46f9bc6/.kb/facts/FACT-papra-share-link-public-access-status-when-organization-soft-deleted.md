@@ -16,7 +16,7 @@ tags:
 origin:
   kind: agent
   ref: 'papra-hq/papra merged pull requests: #1348'
-  recorded_at: '2026-11-15T22:57:16.473Z'
+  recorded_at: '2026-11-16T10:18:08.145Z'
 id: FACT-papra-share-link-public-access-status-when-organization-soft-deleted
 type: fact
 ---
