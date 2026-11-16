@@ -342,15 +342,25 @@ export function mergeAgentResults(parts: AgentResult[]): AgentResult {
   const u = out.usage;
   u.input_tokens = u.output_tokens = u.cache_read_input_tokens = u.cache_creation_input_tokens = u.cost_usd = u.tool_calls = u.turns = u.wall_seconds = 0;
   u.cache_creation_5m_input_tokens = u.cache_creation_1h_input_tokens = 0;
+  // A resumed session's result event reports the session's cumulative tokens and cost so far (its turn
+  // count is its own). Each resumption therefore adds only what it spent beyond the part before it in the
+  // same session; summing the parts as they are counts every earlier part again.
+  let prev: AgentResult | undefined;
   for (const p of parts) {
+    const resumed = prev !== undefined && p.session_id !== undefined && p.session_id === prev.session_id;
+    const base = resumed ? prev!.usage : undefined;
+    const delta = (now: number | undefined, before: number | undefined) => Math.max(0, (now ?? 0) - (resumed ? (before ?? 0) : 0));
     for (const [m, t] of Object.entries(p.usage.by_model ?? {})) {
       const acc = (byModel[m] ??= { input_tokens: 0, output_tokens: 0, cache_read_input_tokens: 0, cache_creation_input_tokens: 0, cache_creation_5m_input_tokens: 0, cache_creation_1h_input_tokens: 0, cost_usd: 0 });
-      for (const k of Object.keys(acc) as (keyof ModelTokens)[]) acc[k] += t[k];
+      const was = base?.by_model?.[m];
+      for (const k of Object.keys(acc) as (keyof ModelTokens)[]) acc[k] += delta(t[k], was?.[k]);
     }
-    u.input_tokens += p.usage.input_tokens; u.output_tokens += p.usage.output_tokens;
-    u.cache_read_input_tokens += p.usage.cache_read_input_tokens; u.cache_creation_input_tokens += p.usage.cache_creation_input_tokens;
-    u.cache_creation_5m_input_tokens += p.usage.cache_creation_5m_input_tokens ?? 0; u.cache_creation_1h_input_tokens += p.usage.cache_creation_1h_input_tokens ?? 0;
-    u.cost_usd += p.usage.cost_usd; u.tool_calls += p.usage.tool_calls; u.wall_seconds += p.usage.wall_seconds; u.turns += p.usage.turns;
+    u.input_tokens += delta(p.usage.input_tokens, base?.input_tokens); u.output_tokens += delta(p.usage.output_tokens, base?.output_tokens);
+    u.cache_read_input_tokens += delta(p.usage.cache_read_input_tokens, base?.cache_read_input_tokens); u.cache_creation_input_tokens += delta(p.usage.cache_creation_input_tokens, base?.cache_creation_input_tokens);
+    u.cache_creation_5m_input_tokens += delta(p.usage.cache_creation_5m_input_tokens, base?.cache_creation_5m_input_tokens); u.cache_creation_1h_input_tokens += delta(p.usage.cache_creation_1h_input_tokens, base?.cache_creation_1h_input_tokens);
+    u.cost_usd += delta(p.usage.cost_usd, base?.cost_usd);
+    prev = p;
+    u.tool_calls += p.usage.tool_calls; u.wall_seconds += p.usage.wall_seconds; u.turns += p.usage.turns;
     if (p.usage.cost_estimated) u.cost_estimated = true;
     if (p.usage.cost_mismatch) u.cost_mismatch = [u.cost_mismatch, p.usage.cost_mismatch].filter(Boolean).join('; ');
     out.tool_calls.push(...p.tool_calls.map((c) => ({ ...c, turn: c.turn + offset })));

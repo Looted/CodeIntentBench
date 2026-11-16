@@ -30,3 +30,9 @@ After the agent stops, [hygiene](hygiene) reports `kibi check` (violations and q
 - For tasks whose base commit is older than the project's pin, a rule can name a function that does not exist yet; `kibi check` then reports a `symbol-granularity` violation in the baseline, which the agent can read.
 - Several rules are enforced in the same function, which Kibi reports as `duplicate_symbol_coordinate_review` diagnostics.
 - The plugin installs its hooks and skills as it does for any user; nothing is tuned for the benchmark.
+
+Search hints: when the knowledge base holds 50 or more requirements (the threshold at which `kibi bootstrap`
+offers it), the setup installs `kibi-plugin-search-hints` (`KIBI_SEARCH_HINTS` in versions.env) as a dev
+dependency with the project's package manager and activates it in `package.json#kibi.plugins` (mode
+`replace`), as the plugin's README says. `kb_search` then shows embedding-based hints when its lexical answer
+is weak or abstains. The run directory's `search-hints.txt` records it. Off before v7 (November 2026).
