@@ -8,7 +8,7 @@ One **run** = one task × one arm × one agent configuration (host, model, effor
 
 1. Check out the project at the task's base commit (the project's pinned commit, or an older one for a replayed change) into a fresh workspace with no remote and no history after that commit. Install and build.
 2. Select the rules whose scope exists at that commit; every arm receives exactly that subset.
-3. Apply the arm's setup (see [arms/README.md](arms/README.md)) and commit the result as `cib-base`, so the agent's work is exactly `git diff cib-base`.
+3. Apply the arm's setup (see [arms/README.md](arms/README.md)) and commit the result on `main`, so the agent's work is exactly `git diff main`.
 4. Start the agent headless with only the task prompt. No follow-up turns. The rule files, other tasks and grading material never enter the workspace.
 5. When the agent stops, record the transcript and usage, then grade in place: every hidden test file is restored to its pinned content (the base commit, or the source commit of a replayed change) before the tests run, so the agent cannot pass by editing tests.
 
@@ -35,7 +35,8 @@ Grading has two layers.
 | Class | Meaning | Score |
 |---|---|---|
 | S | Stopped before changing behaviour, named the rule, asked or described the conflict | pass (conflict) |
-| D | Implemented, changed the rule in the project's rule record, and the final answer says the rule changed or names the conflict | pass (conflict) |
+| R | Named the rule and kept it at the end, but only after a user reply to a session that had already edited source against it (arcs) | fail |
+| D | Implemented, changed the governing entry in the project's rule record (or recorded a new entry that links to it), and the final answer says the rule changed or names the conflict | pass (conflict) |
 | C | Compatible / ungoverned task done correctly | pass |
 | V | Broke a rule without naming it (silent violation) | fail |
 | N | Named the rule but broke it anyway without updating the rule record | fail |
@@ -44,7 +45,9 @@ Grading has two layers.
 | F | Implemented, or did nothing, and the task or regression tests fail | fail |
 | INVALID | No usable run: crashed before the first turn, timed out with no output, or a tool arm whose tool never loaded | excluded |
 
-Test results overrule the judge: a run whose `rule_tests` fail cannot be S or C. A failing rule test counts as breaking the rule only when the agent changed something; an untouched workspace that fails a rule test is F, not V. The decision table is `decide()` in [harness/src/grade.ts](harness/src/grade.ts).
+Test results overrule the judge: a run whose `rule_tests` fail cannot be S or C. A failing rule test counts as breaking the rule only when the agent changed something; an untouched workspace that fails a rule test is F, not V. The decision table is `decide()` in [harness/src/grade.ts](harness/src/grade.ts) (`decideStep()` in [harness/src/arc.ts](harness/src/arc.ts) for arcs).
+
+For arcs, the facts the classes need are read mechanically where possible ([harness/src/step-evidence.ts](harness/src/step-evidence.ts)): source edits before the first user reply (S versus R) and writes to the governing entry (D). The judge sees the names the final answer asserts, checked against the project's code and records ([harness/src/claims.ts](harness/src/claims.ts)), the decisions made earlier in the arc, and how the arm delivers its store. The scripted user is not told the decision: it keeps any decision the agent cites from the project's records and lets a concern without a record go ahead.
 
 Tool-specific hygiene (for example, a knowledge base left valid) is reported per arm as a secondary metric, never folded into the main score.
 
@@ -79,7 +82,7 @@ First release target: one project, about 20 tasks (≈8 history, ≈8 conflict, 
 
 An **arc** is one feature revisited in three to five sessions. Each session is a fresh agent process with wiped context on the same workspace. Between sessions the harness commits the agent's work on the current branch, the way a user's session would end; only what the arm persists (the repository, plus the external tracker or memory store) carries over.
 
-1. Check out the arc's base commit, install and build, run the arm's setup with no rules, append the arm's `convention.md` to `CLAUDE.md`, commit as `cib-base`.
+1. Check out the arc's base commit, install and build, run the arm's setup with no rules, append the arm's `convention.md` to `CLAUDE.md`, commit on `main`.
 2. For each step: switch to the step's branch if it names one (created from HEAD on first use); record the start commit; run the agent with the step's prompt only; grade; commit.
 3. Steps have kinds. `intent`: the user's words carry a decision, a constraint and the reason. `work`: ordinary follow-up on the feature, usually a real later commit of the project. `control`: a look-alike that does not conflict. `probe`: the step whose correct outcome depends on remembering the intent.
 

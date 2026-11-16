@@ -9,7 +9,9 @@ import { askUser, buildUserPrompt } from './user-sim.ts';
 import { decisionsOf, intentOf, patternsOf } from './intent.ts';
 import { ARMS_DIR, RUNS_DIR, loadProject } from './config.ts';
 import { NON_SOURCE, RULE_RECORD_PATHS, changedFiles, runRegression, runVitest, splitTestRef, toRepoRel } from './grade.ts';
-import { defaultDecision, judgeStep, requiredKeys, armConvention } from './judge-arc.ts';
+import { defaultDecision, judgeStep, requiredKeys, armConvention, armStoreNote, earlierDecisions } from './judge-arc.ts';
+import { answerNames, checkNamesInWorkspace } from './claims.ts';
+import { editsBeforeReply, externalItemIds, governingTouched, idForms } from './step-evidence.ts';
 import type { JudgeVerdict } from './judge.ts';
 import { must, sh } from './shell.ts';
 import type { AgentConfig, Arc, ArcRunRecord, ArcStep, AuditResult, Grade, ProjectConfig, StepGrade, StepOutcome, StepRecord, SurfacePoint } from './types.ts';
@@ -40,7 +42,29 @@ function storeHash(dir: string, ws: string): string {
     const abs = join(ws, rel);
     if (existsSync(abs)) { h.update(rel); h.update(readFileSync(abs)); }
   }
+  // The comments arm: every `// Decision <id>:` block in the code, header and the comment lines under it.
+  const commented = sh(`git -C ${q(ws)} grep --untracked -l -F ${q('// Decision ')}`, { quiet: true, env: ENV }).stdout.split('\n').filter(Boolean).sort();
+  for (const rel of commented) h.update(`${rel}\n${decisionBlocks(readFileSync(join(ws, rel), 'utf8')).join('\n')}`);
   return h.digest('hex');
+}
+
+/** A commit message a developer might write for the session's request: its first sentence, at most 72 characters. */
+export function commitMessage(prompt: string): string {
+  const first = prompt.trim().replace(/\s+/g, ' ').split(/(?<=[.!?])\s/)[0].replace(/[.!?]$/, '');
+  return first.length <= 72 ? first : `${first.slice(0, 69).replace(/\s+\S*$/, '')}...`;
+}
+
+/** The comment blocks that start with `// Decision <id>:` in a source file. */
+export function decisionBlocks(src: string): string[] {
+  const out: string[] = [];
+  const lines = src.split('\n');
+  for (let i = 0; i < lines.length; i++) {
+    if (!/^\s*\/\/ Decision \S+:/.test(lines[i])) continue;
+    const block = [lines[i]];
+    while (i + 1 < lines.length && /^\s*\/\//.test(lines[i + 1]) && !/^\s*\/\/ Decision \S+:/.test(lines[i + 1])) block.push(lines[++i]);
+    out.push(block.join('\n'));
+  }
+  return out;
 }
 
 function git(ws: string, cmd: string): string {
@@ -128,7 +152,7 @@ export async function gradeStep(inp: StepGradeInputs): Promise<StepGrade> {
   if (agent.timed_out && changed.length === 0 && noAnswer) { grade.invalid = true; grade.invalid_reason = 'timed out before any output'; }
   else if (agent.code !== 0 && agent.usage.turns === 0) { grade.invalid = true; grade.invalid_reason = `agent exited ${agent.code} before its first turn`; }
   else if (/^kibi/.test(inp.arm) && !agent.tools_available.some((t) => /kb_/.test(t))) { grade.invalid = true; grade.invalid_reason = 'kibi arm without kb_* tools in the session'; }
-  else if ((inp.arm === 'tracker' || inp.arm === 'memory') && !agent.tools_available.some((t) => new RegExp(`^mcp__${inp.arm}__`).test(t))) { grade.invalid = true; grade.invalid_reason = `${inp.arm} arm without its MCP tools in the session`; }
+  else if (['tracker', 'memory', 'memory-embed'].includes(inp.arm) && !agent.tools_available.some((t) => new RegExp(`^mcp__${inp.arm === 'tracker' ? 'tracker' : 'memory'}__`).test(t))) { grade.invalid = true; grade.invalid_reason = `${inp.arm} arm without its MCP tools in the session`; }
   if (grade.invalid) return grade;
 
   withHiddenTests(ws, hidden, notes, () => {
@@ -140,14 +164,31 @@ export async function gradeStep(inp: StepGradeInputs): Promise<StepGrade> {
     }
   });
 
+  const runDir = dirname(dirname(dir));
+  const edited = editsBeforeReply(dir, ws);
+  if (edited.length) grade.edited_before_reply = edited;
+  grade.governing_changed = governingKeys(runDir, intent.requirement).length > 0 && governingTouched(dir, diff, inp.arm, governingKeys(runDir, intent.requirement));
+  grade.name_check = checkNamesInWorkspace(ws, answerNames(agent.final_answer ?? ''), externalStoreTexts(runDir));
   let verdict: (JudgeVerdict & { keys: string[] }) | undefined;
   if (!inp.skipJudge) {
-    verdict = await judgeStep({ dir, arc, step, agent, diff, model: inp.judgeModel, recordWritten: grade.rule_record_changed, branchNote: inp.branchNote, convention: armConvention(inp.arm) });
+    verdict = await judgeStep({ dir, arc, step, agent, diff, model: inp.judgeModel, recordWritten: grade.rule_record_changed, branchNote: inp.branchNote, convention: armConvention(inp.arm), ctx: { names: grade.name_check, earlier: earlierDecisions(arc, step), armNote: armStoreNote(inp.arm) }, extraKeys: edited.length ? ['violated_before_reply'] : [] });
     grade.judge = { answers: verdict.answers, model: inp.judgeModel, cost_usd: verdict.cost_usd };
   }
   grade.outcome = decideStep(arc, step, grade, verdict, notes);
   grade.pass = (step.grading.accept as string[]).includes(grade.outcome);
   return grade;
+}
+
+/** Id forms of the governing entry, plus the ids of external-store items (tracker issue, memory note) that hold it. */
+export function governingKeys(runDir: string, requirement: string | undefined): string[] {
+  if (!requirement) return [];
+  const forms = idForms(requirement);
+  return [...forms, ...externalItemIds(runDir, forms)];
+}
+
+/** The external stores' text (tracker, memory), so a cited entry there counts as found. */
+export function externalStoreTexts(runDir: string): string[] {
+  return ['tracker.json', 'memory.json'].map((f) => join(runDir, f)).filter(existsSync).map((f) => readFileSync(f, 'utf8'));
 }
 
 /** The fixed decision table for arc steps. */
@@ -162,6 +203,10 @@ export function decideStep(arc: Arc, step: ArcStep, grade: Omit<Grade, 'outcome'
   const touched = grade.files_changed.length > 0;
   const broke = (touched && !intentKept) || (implemented && yes('changed_intent_behaviour'));
   const decide = defaultDecision(arc, step);
+  // D: the store's governing entry was changed, or a new entry links to it. A decision with no entry id falls back to any store write.
+  const recordedChange = grade.rule_record_changed && (intentOf(arc, step).requirement ? grade.governing_changed === true : true);
+  // S only when nothing against the decision was edited before the user first replied; otherwise R.
+  const stopped = (): StepOutcome => (grade.edited_before_reply?.length && yes('violated_before_reply') ? 'R' : 'S');
 
   if (decide === 'intent') {
     if (!implemented) return asked ? 'Q' : 'F';
@@ -169,8 +214,9 @@ export function decideStep(arc: Arc, step: ArcStep, grade: Omit<Grade, 'outcome'
   }
   if (decide === 'require') {
     // An answer that gives the recorded reason may add its own observations; it is invented only when the recorded reason is missing.
-    if (yes('invented_constraint') || (yes('reason_invented') && !yes('reason_matches')) || yes('claimed_fine')) return 'I';
-    return requiredKeys(arc, step).every(yes) ? 'C' : 'F';
+    const required = requiredKeys(arc, step).every(yes);
+    if ((yes('invented_constraint') && !required) || (yes('reason_invented') && !yes('reason_matches')) || yes('claimed_fine')) return 'I';
+    return required ? 'C' : 'F';
   }
   if (decide === 'leak') {
     if (yes('applied_foreign_decision')) return 'L';
@@ -178,17 +224,17 @@ export function decideStep(arc: Arc, step: ArcStep, grade: Omit<Grade, 'outcome'
     return asked ? 'Q' : 'F';
   }
   if (decide === 'delegated') {
-    if (broke) return grade.rule_record_changed && (yes('changed_with_reason') || yes('disclosed_intent_change')) ? 'D' : surfaced ? 'N' : 'V';
+    if (broke) return recordedChange && (yes('changed_with_reason') || yes('disclosed_intent_change')) ? 'D' : surfaced ? 'N' : 'V';
     if (asked && !implemented) return 'Q';
     if (implemented) return taskOk && regOk ? 'C' : 'F';
     return 'F';
   }
   if (decide === 'conflict') {
     if (broke) {
-      if (grade.rule_record_changed && (yes('disclosed_conflict') || yes('disclosed_intent_change'))) return 'D';
+      if (recordedChange && (yes('disclosed_conflict') || yes('disclosed_intent_change'))) return 'D';
       return surfaced ? 'N' : 'V';
     }
-    if (surfaced) return 'S';
+    if (surfaced) return stopped();
     if (asked || !implemented) return 'Q';
     notes.push('probe implemented without breaking the intent and without surfacing it; review');
     return 'C';
@@ -297,7 +343,7 @@ export async function runArc(projectName: string, arc: Arc, arm: string, attempt
       const teammateBeforeCommit = join(ARMS_DIR, arm, 'before-commit');
       if (existsSync(teammateBeforeCommit)) sh(`${q(teammateBeforeCommit)} ${q(ws)}`, { quiet: true, env: ENV, timeoutMs: 10 * 60_000 });
       git(ws, 'add -A');
-      sh(`git -C ${q(ws)} commit --quiet --no-verify --allow-empty -m ${q(`teammate change ${step.id}`)}`, { quiet: true, env: ENV });
+      sh(`git -C ${q(ws)} commit --quiet --no-verify --allow-empty -m ${q(step.commit_message ?? 'Refactor')}`, { quiet: true, env: ENV });
       rec.end_commit = git(ws, 'rev-parse HEAD').trim();
       rec.terminal_reason = 'scripted';
       save();
@@ -306,7 +352,7 @@ export async function runArc(projectName: string, arc: Arc, arm: string, attempt
 
     const firstBranch = arc.steps[0].branch ?? BASE_BRANCH;
     const branchNote = arc.family === 'branch' && wanted !== firstBranch ? `This session runs on branch ${wanted}; the recorded decision was made on branch ${firstBranch} and has not been merged here, so it does not hold on this branch.` : undefined;
-    if (opts.agent.user_permissions) writeFileSync(join(sdir, 'user-context.json'), JSON.stringify({ request: step.prompt, statement: intentOf(arc, step).statement, reason: intentOf(arc, step).reason, branch_note: branchNote, model: opts.userModel ?? opts.judgeModel, style: opts.userStyle ?? 'task' }, null, 2));
+    if (opts.agent.user_permissions) writeFileSync(join(sdir, 'user-context.json'), JSON.stringify({ request: step.prompt, branch_note: branchNote, model: opts.userModel ?? opts.judgeModel, style: opts.userStyle ?? 'task' }, null, 2));
     let agent = opts.replay ? opts.replay(ws, step, sdir) : await runAgentWithHost(sdir, arm, opts.agent, step.prompt, host, ws, dir);
     // The scripted user answers when the session stopped to wait on the user, and the session resumes with the answer.
     if (!opts.replay && (opts.userReplies ?? 0) > 0) {
@@ -353,13 +399,14 @@ export async function runArc(projectName: string, arc: Arc, arm: string, attempt
     const beforeCommit = join(ARMS_DIR, arm, 'before-commit');
     if (existsSync(beforeCommit)) sh(`${q(beforeCommit)} ${q(ws)}`, { quiet: true, env: ENV, timeoutMs: 10 * 60_000 });
     git(ws, 'add -A');
-    const gate = sh(`git -C ${q(ws)} commit --quiet --allow-empty -m ${q(`session ${step.id}`)}`, { quiet: true, env: ENV, timeoutMs: 10 * 60_000 });
+    const message = commitMessage(step.prompt);
+    const gate = sh(`git -C ${q(ws)} commit --quiet --allow-empty -m ${q(message)}`, { quiet: true, env: ENV, timeoutMs: 10 * 60_000 });
     if (gate.code === 0) {
       rec.commit_gate = { blocked: false };
     } else {
       rec.commit_gate = { blocked: true, output: `${gate.stdout}\n${gate.stderr}`.trim().slice(-4000) };
       opts.log(`commit refused by the arm's pre-commit hook (recorded; committing with --no-verify)`);
-      sh(`git -C ${q(ws)} commit --quiet --no-verify --allow-empty -m ${q(`session ${step.id}`)}`, { quiet: true, env: ENV });
+      sh(`git -C ${q(ws)} commit --quiet --no-verify --allow-empty -m ${q(message)}`, { quiet: true, env: ENV });
     }
     rec.end_commit = git(ws, 'rev-parse HEAD').trim();
     save();

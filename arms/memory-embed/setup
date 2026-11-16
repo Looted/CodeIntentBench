@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Arm `memory-embed`: the `memory` arm's notes store, searched by meaning as well as by keywords, with the
+# embedding model Kibi's search-hints plugin bundles (potion-base-8M, from the same package and version),
+# so that `kibi-hints` and this arm get the same embeddings.
+# Arguments: <workspace> <rulesDir> <runDir>
+set -euo pipefail
+ws="$1"; rules="$2"; run="$3"
+here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+harness="$(cd "$here/../../harness" && pwd)"
+node_bin="$(command -v node)"
+. "$here/../kibi/versions.env"
+cache="${CIB_CACHE_DIR:-$here/../../cache}/memory-embed/$KIBI_SEARCH_HINTS"
+module="$cache/node_modules/kibi-plugin-search-hints/dist/index.js"
+if [ ! -f "$module" ]; then
+  mkdir -p "$cache"
+  [ -f "$cache/package.json" ] || echo '{"private":true}' > "$cache/package.json"
+  (cd "$cache" && npm install --no-audit --no-fund "kibi-plugin-search-hints@$KIBI_SEARCH_HINTS" > "$run/memory-embed-install.log" 2>&1) || { tail -20 "$run/memory-embed-install.log" >&2; exit 1; }
+fi
+cat > "$run/mcp.json" <<JSON
+{ "mcpServers": { "memory": { "command": "$node_bin", "args": ["$harness/src/arm-tools/memory-mcp.ts", "--store", "$run/memory.json", "--embed-module", "$module"] } } }
+JSON
+if [ -n "$(ls -A "$rules" 2>/dev/null)" ]; then
+  node "$harness/src/arm-tools/seed-store.ts" memory "$run/memory.json" "$rules"
+fi

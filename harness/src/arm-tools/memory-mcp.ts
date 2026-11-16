@@ -3,7 +3,10 @@
 // notes and searches them; ranking is keyword-based (TF-IDF), deterministic and
 // offline, which is weaker than an embedding store at paraphrase but identical
 // in what matters here: nothing fires on its own, the agent must ask.
-// Usage: node memory-mcp.ts --store FILE
+// With --embed-module, the `memory-embed` arm: the same store searched by meaning as well, with the static
+// embedding model Kibi's search-hints plugin bundles (potion-base-8M), so the two arms that get embeddings
+// get the same ones. Keyword and embedding rankings are fused by reciprocal rank.
+// Usage: node memory-mcp.ts --store FILE [--embed-module PATH_TO_kibi-plugin-search-hints/dist/index.js]
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { rank, serve, storePath } from './mcp-lite.ts';
 
@@ -11,6 +14,24 @@ interface Note { id: string; text: string; tags: string[]; created_at: string }
 interface Store { next: number; notes: Note[] }
 
 const file = storePath();
+const embedAt = process.argv.indexOf('--embed-module');
+type Model = { encode(text: string): Float32Array };
+const model: Model | undefined = embedAt >= 0 ? (await import(process.argv[embedAt + 1])).loadStaticModel() : undefined;
+const vectors = new Map<string, Float32Array>(); // note text -> vector
+
+function cosine(a: Float32Array, b: Float32Array): number { let d = 0; for (let i = 0; i < a.length; i++) d += a[i] * b[i]; return d; }
+
+/** Keyword ranking, or with a model the reciprocal-rank fusion of keyword and embedding rankings. */
+function search(query: string, docs: string[], limit: number): number[] {
+  const lexical = rank(query, docs, docs.length).map((h) => h.index);
+  if (!model) return lexical.slice(0, limit);
+  const qv = model.encode(query);
+  const semantic = docs.map((d, i) => { let v = vectors.get(d); if (!v) { v = model.encode(d); vectors.set(d, v); } return { i, s: cosine(qv, v) }; }).sort((a, b) => b.s - a.s || a.i - b.i).map((x) => x.i);
+  const score = new Map<number, number>();
+  lexical.forEach((i, r) => score.set(i, (score.get(i) ?? 0) + 1 / (60 + r)));
+  semantic.forEach((i, r) => score.set(i, (score.get(i) ?? 0) + 1 / (60 + r)));
+  return [...score.entries()].sort((a, b) => b[1] - a[1] || a[0] - b[0]).slice(0, limit).map(([i]) => i);
+}
 const load = (): Store => (existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : { next: 1, notes: [] });
 const save = (s: Store) => writeFileSync(file, JSON.stringify(s, null, 2));
 const render = (n: Note) => `${n.id} (${n.created_at.slice(0, 10)}${n.tags.length ? `, ${n.tags.join(', ')}` : ''}): ${n.text}`;
@@ -22,9 +43,9 @@ serve('memory', '0.1.0', [
     inputSchema: { type: 'object', properties: { query: { type: 'string' }, limit: { type: 'number', default: 8 } }, required: ['query'] },
     handler: ({ query, limit }) => {
       const s = load();
-      const hits = rank(String(query), s.notes.map((n) => `${n.text}\n${n.tags.join(' ')}`), Number(limit ?? 8));
+      const hits = search(String(query), s.notes.map((n) => `${n.text}\n${n.tags.join(' ')}`), Number(limit ?? 8));
       if (hits.length === 0) return `No memories match "${query}" (${s.notes.length} saved).`;
-      return hits.map((h) => render(s.notes[h.index])).join('\n');
+      return hits.map((i) => render(s.notes[i])).join('\n');
     },
   },
   {

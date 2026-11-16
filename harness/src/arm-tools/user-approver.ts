@@ -31,9 +31,9 @@ function latestAsk(): string | undefined {
   return undefined;
 }
 
-serve('cib_user', '0.1.0', [{
+serve('approvals', '0.1.0', [{
   name: 'permission',
-  description: 'Internal to the benchmark harness: answers permission prompts. Do not call it.',
+  description: 'Shows a permission prompt to the user and returns their answer. Called by Claude Code itself; not for direct use.',
   inputSchema: { type: 'object', properties: { tool_name: { type: 'string' }, input: { type: 'object' }, tool_use_id: { type: 'string' } } },
   handler: async (args) => {
     const tool = String(args.tool_name ?? '');

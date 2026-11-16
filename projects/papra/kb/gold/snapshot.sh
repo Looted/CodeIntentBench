@@ -19,7 +19,7 @@ ws="$work/ws-$short"
 rm -rf "$ws" "$work/apply-ws-$short.log"
 git clone --quiet --shared --no-checkout "$mirror" "$ws"
 cd "$ws"
-git checkout --quiet -B cib-base "$full"
+git checkout --quiet -B main "$full"
 git remote remove origin
 if [ -n "${BASE_PATCH:-}" ]; then git apply --whitespace=nowarn "$here/../../$BASE_PATCH" && $G commit -qa --no-verify -m "teammate patch"; fi
 cp -R "$here/../$from/.kb" .kb

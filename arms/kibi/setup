@@ -64,8 +64,9 @@ node "$here/../../harness/src/arm-tools/kibi-import.ts" "$ws" "$rules" "$run"
 # Kibi's bootstrap offers its search-hints plugin (offline embeddings that suggest requirements when a lexical
 # search is weak) once a knowledge base holds 50 or more requirements; a team with a store this size has
 # accepted it. Installed as its README says: a dev dependency of the project, activated in package.json#kibi.
+# Only in the kibi-hints arm (CIB_KIBI_HINTS=1): embeddings are a separate arm, against memory-embed.
 reqs="$(find .kb -path '*requirements*' -name '*.md' 2>/dev/null | wc -l)"
-if [ -n "${KIBI_SEARCH_HINTS:-}" ] && [ "$reqs" -ge 50 ] && ! grep -q '"kibi-plugin-search-hints"' package.json; then
+if [ -n "${CIB_KIBI_HINTS:-}" ] && [ -n "${KIBI_SEARCH_HINTS:-}" ] && [ "$reqs" -ge 50 ] && ! grep -q '"kibi-plugin-search-hints"' package.json; then
   if [ -f pnpm-lock.yaml ]; then pnpm add -D -w "kibi-plugin-search-hints@$KIBI_SEARCH_HINTS" > "$run/search-hints-install.log" 2>&1
   elif [ -f bun.lock ] || [ -f bun.lockb ]; then bun add -d "kibi-plugin-search-hints@$KIBI_SEARCH_HINTS" > "$run/search-hints-install.log" 2>&1
   else npm install --save-dev --no-audit --no-fund "kibi-plugin-search-hints@$KIBI_SEARCH_HINTS" > "$run/search-hints-install.log" 2>&1

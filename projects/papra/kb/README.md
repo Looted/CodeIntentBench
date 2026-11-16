@@ -51,7 +51,7 @@ and possibly none under concurrent sign-ups).
 ## Build
 
 `harness/src/arm-tools/kibi-bootstrap.ts` runs the flow on a checkout of a base commit (branch
-`cib-base`, as the arcs' workspaces), the pinned `kibi` on PATH:
+`main`, as the arcs' workspaces), the pinned `kibi` on PATH:
 
 1. `kibi init`, then a read-only `kibi plan-bootstrap` of the declared context (`maxCandidates: 1`, so
    the plan holds the declared claims and not the provenance stubs Kibi discovers for every source

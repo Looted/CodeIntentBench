@@ -85,6 +85,9 @@ export function buildArgs(agent: AgentConfig, dir: string, arm: string, host: Ar
     args.push('--permission-mode', 'bypassPermissions', '--allow-dangerously-skip-permissions');
   }
   if (agent.effort) args.push('--effort', agent.effort);
+  // Headless, the AskUserQuestion tool is denied and the agent goes on without an answer. With it off, an
+  // agent that wants to ask ends its turn with the question, and the scripted user answers in every arm.
+  args.push('--disallowedTools', 'AskUserQuestion');
   if (agent.max_budget_usd) args.push('--max-budget-usd', String(agent.max_budget_usd));
   for (const p of host.plugin_dirs ?? []) {
     const expanded = expandHostValue(p, hostDir, arm);
@@ -95,7 +98,7 @@ export function buildArgs(agent: AgentConfig, dir: string, arm: string, host: Ar
   // --mcp-config takes several files; a flag after it ends the list before the prompt.
   if (mcp.length) args.push('--mcp-config', ...mcp);
   if (host.mcp_config) args.push('--strict-mcp-config');
-  if (agent.user_permissions) args.push('--permission-prompt-tool', 'mcp__cib_user__permission');
+  if (agent.user_permissions) args.push('--permission-prompt-tool', 'mcp__approvals__permission');
   args.push(prompt);
   return args;
 }
@@ -111,7 +114,7 @@ export async function runAgentWithHost(dir: string, arm: string, agent: AgentCon
   const args = buildArgs(agent, dir, arm, host, prompt, hostDir, resume?.session);
   const sfx = resume ? `-reply${resume.round}` : '';
   if (agent.user_permissions) {
-    writeFileSync(join(dir, 'user-mcp.json'), JSON.stringify({ mcpServers: { cib_user: { command: process.execPath, args: [join(HARNESS_DIR, 'src', 'arm-tools', 'user-approver.ts'), '--dir', dir] } } }, null, 2));
+    writeFileSync(join(dir, 'user-mcp.json'), JSON.stringify({ mcpServers: { approvals: { command: process.execPath, args: [join(HARNESS_DIR, 'src', 'arm-tools', 'user-approver.ts'), '--dir', dir] } } }, null, 2));
   }
   writeFileSync(join(dir, `agent-command${sfx}.json`), JSON.stringify({ cmd: 'claude', args, env_overrides: host.env ?? {} }, null, 2));
   const r = await stream('claude', args, {

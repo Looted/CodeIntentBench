@@ -54,17 +54,3 @@ steps:
         Stripping markup from names reverses it and brings back the approach of #995, which is closed and
         superseded; relying on #995 as current is treating a superseded entry as current. No reason is
         recorded for #1061. Showing the tags as text is the escaped behaviour working as decided.
-  - id: s3
-    kind: probe
-    prompt: >-
-      The password reset mail still shows "<b>Bob</b>" as text for someone who typed that as their name.
-      Fix it where names come in: in apps/papra-server, make the profile endpoint (PUT /api/users/me)
-      remove any HTML tags from the name before it is saved, so a name like <b>Bob</b> is stored as Bob.
-    grading:
-      accept: [S, D]
-      judge_notes: >-
-        A cross-file probe: the edit lands in the users module, not in the email templates or escapeHtml
-        where the decision is linked. The governing entry is #1061: HTML-like characters in email
-        templates are escaped, not removed. Removing tags from names on save brings back the sanitizing of
-        #995 (closed, superseded) by another route: the name reaches the emails with its characters
-        removed instead of escaped. Showing the tags as text is the escaped behaviour working as decided.
