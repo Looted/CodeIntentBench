@@ -1,14 +1,20 @@
 name: kibi
 repository: https://github.com/Looted/kibi
-commit: 9f3311f3f552c00dbba7eb6f1e571a681b03ec7a
+commit: 8bc4204f3c5ea1a4fa8319b2d9f69d53d5d99976
 license: AGPL-3.0-or-later
 description: >-
   Kibi, an agent-native requirements compiler and enforcement layer, benchmarked
-  on its own repository: the project keeps a knowledge base of 259 requirements,
-  33 ADRs, 1,219 facts and 291 test entities in .kb/, built by its authors over
-  months. The kibi arm runs on that knowledge base as shipped; every other arm
-  receives the same requirements and ADRs rendered into its own container
-  (docs/decisions, tracker issues, memory notes, AGENTS.md) by arm-prepare.sh.
+  on its own repository at release 2026.11.4: the project keeps a knowledge base
+  of 611 requirements (516 open), 35 ADRs, 2,647 facts and 746 test entities in
+  .kb/, built by its authors over months and reviewed entry by entry (status,
+  firmness, supersession and a traced reason). The kibi arm runs on that knowledge
+  base as shipped; every other arm receives the same requirements and ADRs
+  rendered into its own container (docs/decisions, tracker issues, memory notes,
+  AGENTS.md) by arm-prepare.sh.
+# "requirement" is Kibi's own product word (it is in file names such as requirement-claims.ts and in
+# what the hooks print), so a prompt may use it.
+product_terms:
+  - requirement
 runtime:
   bun: ">=1.4.2"
   node: "26"
@@ -18,24 +24,25 @@ env:
   KIBI_SWIPL: ${CACHE_DIR}/kibi-swipl/node_modules/kibi-swipl-linux-x64-gnu/bin/swipl
 setup:
   install: bun install --frozen-lockfile
-  # The CLI the tests spawn runs from dist/; the whole stack is built once here (35 s) and the CLI
+  # The CLI the tests spawn runs from dist/; the whole stack is built once here (26 s) and the CLI
   # stack again before each test run (below), so an agent's source change reaches the tests.
   build: bun run --silent build
   arm_prepare: arm-prepare.sh
 tests:
   # Bun's test runner through an adapter that writes the Vitest-shaped JSON report the grader reads.
-  all: bun run --silent build:cli-stack && bun run --silent build:mcp && node "$CIB_HARNESS_DIR/src/arm-tools/bun-test-json.ts" packages/cli/tests packages/mcp/tests packages/agent-core/tests packages/claude/tests
-  files: bun run --silent build:cli-stack && bun run --silent build:mcp && node "$CIB_HARNESS_DIR/src/arm-tools/bun-test-json.ts"
-  # These tests make a directory unreadable with chmod and expect Git to refuse; the benchmark container
-  # runs as root, which chmod does not stop, so they fail on an untouched checkout. Recorded, not counted.
+  # The released swipl is put on PATH as well: some of the repository's tests set KIBI_SWIPL=system
+  # for the whole process, and without a swipl on PATH every later file in the same run that starts
+  # the engine fails (292 tests of the full suite on an untouched checkout; 4 with it on PATH).
+  all: export PATH="${KIBI_SWIPL%/*}:$PATH" && bun run --silent build:cli-stack && bun run --silent build:mcp && node "$CIB_HARNESS_DIR/src/arm-tools/bun-test-json.ts" packages/cli/tests packages/mcp/tests packages/agent-core/tests packages/claude/tests packages/codex/tests scripts/tests
+  files: export PATH="${KIBI_SWIPL%/*}:$PATH" && bun run --silent build:cli-stack && bun run --silent build:mcp && node "$CIB_HARNESS_DIR/src/arm-tools/bun-test-json.ts"
+  # On an untouched checkout the full suite (22,873 tests in 1,455 files; 28 minutes on four cores
+  # with other work running) fails these four, each on the test's own timeout: three also when their files run alone,
+  # the happy-path one when the machine is busy. Recorded, not counted. The eight tests listed here
+  # for the October base (unreadable .git as root) pass at this base.
   ignore:
-    - packages/cli/tests/utils/git-repository-context.test.ts::reports git-refused when the .git directory is unreadable
-    - packages/cli/tests/utils/git-repository-context.test.ts::reports git-refused for unreadable .git/objects from a subdirectory
-    - packages/cli/tests/commands/init-git-context.test.ts::init refuses an unreadable .git instead of standalone fallback (explicit branch)
-    - packages/cli/tests/commands/init-git-context.test.ts::init from a subdirectory refuses an unreadable .git identically
-    - packages/cli/tests/commands/init-git-context.test.ts::init refuses inaccessible .git/objects (from root, explicit branch)
-    - packages/cli/tests/commands/init-git-context.test.ts::init refuses inaccessible .git/objects (from sub, explicit branch)
-    - packages/cli/tests/commands/init-git-context.test.ts::init refuses inaccessible .git/refs (from root, explicit branch)
-    - packages/cli/tests/commands/init-git-context.test.ts::init refuses inaccessible .git/refs (from sub, explicit branch)
+    - packages/cli/tests/consumer/case-coverage.test.ts::the value past a bound needs a rejection scenario that assumes it
+    - packages/cli/tests/consumer/domain-subjects.test.ts::requirements that name one subject meet in its domain view, and unanchored or undefined subjects block
+    - packages/cli/tests/consumer/happy-path-gap.test.ts::a happy-path-only requirement gets the gap until a rejection scenario assumes a forbidden value
+    - packages/mcp/tests/server/tools-runtime.coverage.test.ts::adaptProlog forwards AbortSignal to underlying PrologPort methods
 hidden:
   restore_tests: true
