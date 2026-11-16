@@ -223,8 +223,8 @@ export type StepOutcome = OutcomeClass | 'L';
  * (a reason stated in session 1 must survive unrelated sessions and a refactor), `indirect-reach`
  * (the decision is reached through code the request does not name), `evidence` (green is not proof).
  */
-export type ArcPattern = 'near-matches' | 'superseded' | 'quiet-contradiction' | 'firm-default' | 'long-capture' | 'indirect-reach' | 'evidence';
-export const ARC_PATTERNS: ArcPattern[] = ['near-matches', 'superseded', 'quiet-contradiction', 'firm-default', 'long-capture', 'indirect-reach', 'evidence'];
+export type ArcPattern = 'near-matches' | 'superseded' | 'quiet-contradiction' | 'firm-default' | 'long-capture' | 'indirect-reach' | 'evidence' | 'search-gap' | 'unlinked-control';
+export const ARC_PATTERNS: ArcPattern[] = ['near-matches', 'superseded', 'quiet-contradiction', 'firm-default', 'long-capture', 'indirect-reach', 'evidence', 'search-gap', 'unlinked-control'];
 /** `easy`: the calibration floor a notes file is expected to pass. `hard`: what the arms are compared on. */
 export type ArcTier = 'easy' | 'hard';
 
