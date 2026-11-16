@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-2eff1130ad4c
+    type: requires_property
+    from: REQ-papra-file-names-decoded-as-utf8
+    to: FACT-papra-documents-filename-encoding-encoding
+    created_at: "2026-11-16T13:17:19.899Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-file-names-decoded-as-utf8
+    to: FACT-papra-subject-documents-filename-encoding
+    created_at: 2026-11-16T13:17:19.900Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-dc368ba93877

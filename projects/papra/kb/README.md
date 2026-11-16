@@ -243,3 +243,10 @@ closed entry with its status and a "Superseded by" line.
 - The April snapshot was not rebuilt. It does not hold the February entry about the intake webhook
   secret (PR #892), which `later.json` adds only at the two later bases; no arc at the April base is
   about intake emails.
+
+## Snapshots of a patched base
+
+`kb/e7acb46f9bc6-hide-why/.kb` is the snapshot of the pin with the teammate patch `patches/hide-why.patch`
+applied (see `patches/README.md`), built with `BASE_PATCH=patches/hide-why.patch gold/snapshot.sh
+e7acb46f9bc6... <workdir> --store`. The harness names a patched base `<sha12>-<patch name>` and
+`arm-prepare.sh` picks the snapshot by that name.

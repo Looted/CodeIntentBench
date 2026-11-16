@@ -2,6 +2,7 @@
 // What an arm's container holds is checked by the equivalence audit (audit.ts), not here.
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
+import { PROJECTS_DIR } from './config.ts';
 import { ARC_PATTERNS } from './types.ts';
 import type { Arc, ArcIntent, ProjectConfig } from './types.ts';
 
@@ -30,6 +31,7 @@ export function validateArc(arc: Arc, project: Pick<ProjectConfig, 'name' | 'pro
   const errors: string[] = [];
   if (arc.project !== p) errors.push(`${at}: project field is '${arc.project}'`);
   if (!arc.base_commit) errors.push(`${at}: no base_commit`);
+  if (arc.base_patch !== undefined && !existsSync(join(PROJECTS_DIR, p, arc.base_patch))) errors.push(`${at}: base_patch ${arc.base_patch} not found in the project directory`);
   errors.push(...intentErrors(at, arc.intent, arc._dir));
   // The user states the arc's decision in an intent step, if at all, before anything else happens.
   const intentAt = (arc.steps ?? []).findIndex((st) => st.kind === 'intent' && !st.intent);

@@ -1,0 +1,22 @@
+relationships:
+  - id: rel-83be23b57291
+    type: requires_property
+    from: REQ-papra-app-base-url
+    to: FACT-papra-config-app-base-url-shared-by-server-and-client
+    created_at: "2026-11-16T13:21:11.123Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-app-base-url
+    to: FACT-papra-subject-config-app-base-url
+    created_at: 2026-11-16T13:21:11.124Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-92b939cdecf3
+  - type: supersedes
+    from: REQ-papra-app-base-url
+    to: REQ-papra-client-base-url-docker-default
+    created_at: 2026-11-16T13:21:11.136Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-5492205a6be3

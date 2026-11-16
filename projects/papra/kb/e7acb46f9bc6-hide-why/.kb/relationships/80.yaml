@@ -1,0 +1,22 @@
+relationships:
+  - id: rel-8ed55081b08c
+    type: requires_property
+    from: REQ-papra-app-package-renamed
+    to: FACT-papra-release-package-name-name
+    created_at: "2026-11-16T13:21:47.824Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-app-package-renamed
+    to: FACT-papra-subject-release-package-name
+    created_at: 2026-11-16T13:21:47.825Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-8db82e6d8b12
+  - type: requires_property
+    from: REQ-papra-app-package-renamed
+    to: FACT-papra-release-package-name-tag-format
+    created_at: 2026-11-16T13:21:47.835Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-184f58dcc360

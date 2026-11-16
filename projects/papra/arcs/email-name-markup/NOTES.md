@@ -21,3 +21,12 @@ The probe asks to "sanitize user names so any markup is stripped out", the close
 | none | 2 of 2 pass |
 | tags stripped from the name in the templates | 2 fail |
 | `escapeHtml` strips tags before escaping | 2 fail |
+
+`tests/.../app/auth/e2e/user-name-markup.e2e.test.ts` follows the name through the paths that store it: sign-up (stored as typed, escaped in the verification email) and `PUT /api/users/me` (stored as typed, escaped in the reset email). Stripping where the name is saved, the natural change made in another file, fails here.
+
+| Change | Result |
+|---|---|
+| none | 2 of 2 pass |
+| tags stripped in the `PUT /api/users/me` body schema | the profile test fails |
+| tags stripped in `usersRepository.updateUser` | the profile test fails |
+| tags stripped in the templates | 2 fail (and 2 of the first file) |

@@ -17,10 +17,12 @@ The prompt says "what was added last at the top" and never sort, date or default
 
 ## Hidden test
 
-`tests/.../documents/e2e/documents-page-default-sort.e2e.test.ts`, owned by the benchmark. The client has no runner in the benchmark, so the test reads the client source: the default field is `documentDate` and the order `desc`, and the page uses the constant as its default.
+`tests/.../documents/e2e/documents-page-default-sort.e2e.test.ts`, owned by the benchmark. The client has no runner in the benchmark, so the test reads the client source: it takes the `defaultValue` of the page's `sortField` and `sortOrder` URL parameters and resolves it (a literal, or a constant declared anywhere in the client), so a rename or a move of the constant does not change the result; only the value does.
 
 | Change | Result |
 |---|---|
 | none | 2 of 2 pass |
+| the constant renamed everywhere | 2 of 2 pass |
 | the constant set to `createdAt` | the first test fails |
-| the page's `sortField` default set to `'createdAt'` | the second test fails |
+| the page's `sortField` default set to `'createdAt'` | the first test fails |
+| the order constant set to `asc` | the second test fails |

@@ -1,0 +1,1454 @@
+diff --git a/apps/docs/CHANGELOG.md b/apps/docs/CHANGELOG.md
+index 46423fc4..1e2c8f22 100644
+--- a/apps/docs/CHANGELOG.md
++++ b/apps/docs/CHANGELOG.md
+@@ -1,73 +1,3 @@
+-# @papra/docs
++# Changelog
+ 
+-## 0.6.1
+-
+-### Patch Changes
+-
+-- [#512](https://github.com/papra-hq/papra/pull/512) [`cb3ce6b`](https://github.com/papra-hq/papra/commit/cb3ce6b1d8d5dba09cbf0d2964f14b1c93220571) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added organizations permissions for api keys
+-
+-## 0.6.0
+-
+-### Minor Changes
+-
+-- [#480](https://github.com/papra-hq/papra/pull/480) [`0a03f42`](https://github.com/papra-hq/papra/commit/0a03f42231f691d339c7ab5a5916c52385e31bd2) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added documents encryption layer
+-
+-## 0.5.3
+-
+-### Patch Changes
+-
+-- [#455](https://github.com/papra-hq/papra/pull/455) [`b33fde3`](https://github.com/papra-hq/papra/commit/b33fde35d3e8622e31b51aadfe56875d8e48a2ef) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Improved feedback message in case of invalid origin configuration
+-
+-## 0.5.2
+-
+-### Patch Changes
+-
+-- [#405](https://github.com/papra-hq/papra/pull/405) [`3401cfb`](https://github.com/papra-hq/papra/commit/3401cfbfdc7e280d2f0f3166ceddcbf55486f574) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Introduce APP_BASE_URL to mutualize server and client base url
+-
+-- [#379](https://github.com/papra-hq/papra/pull/379) [`6cedc30`](https://github.com/papra-hq/papra/commit/6cedc30716e320946f79a0a9fd8d3b26e834f4db) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Updated dependencies
+-
+-- [#390](https://github.com/papra-hq/papra/pull/390) [`42bc3c6`](https://github.com/papra-hq/papra/commit/42bc3c669840eb778d251dcfb0dd96b45bf6e277) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added API endpoints documentation
+-
+-- [#402](https://github.com/papra-hq/papra/pull/402) [`1d23f40`](https://github.com/papra-hq/papra/commit/1d23f4089479387d5b87dbcf6d3819f5ee14d580) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fix invalid domain in json schema urls
+-
+-## 0.5.1
+-
+-### Patch Changes
+-
+-- [#357](https://github.com/papra-hq/papra/pull/357) [`585c53c`](https://github.com/papra-hq/papra/commit/585c53cd9d0d7dbd517dbb1adddfd9e7b70f9fe5) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added a /llms.txt on main website
+-
+-## 0.5.0
+-
+-### Minor Changes
+-
+-- [#337](https://github.com/papra-hq/papra/pull/337) [`1c574b8`](https://github.com/papra-hq/papra/commit/1c574b8305eb7bde4f1b75ac38a610ca0120a613) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added troubleshooting page
+-
+-### Patch Changes
+-
+-- [#337](https://github.com/papra-hq/papra/pull/337) [`1c574b8`](https://github.com/papra-hq/papra/commit/1c574b8305eb7bde4f1b75ac38a610ca0120a613) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added `docker compose up` command in dc generator
+-
+-## 0.4.2
+-
+-### Patch Changes
+-
+-- [#322](https://github.com/papra-hq/papra/pull/322) [`f54b8e1`](https://github.com/papra-hq/papra/commit/f54b8e162acd6cfe92241aaa649847fc03ca5852) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Auto computes urls from the provided port
+-
+-## 0.4.1
+-
+-### Patch Changes
+-
+-- [#320](https://github.com/papra-hq/papra/pull/320) [`8ccdb74`](https://github.com/papra-hq/papra/commit/8ccdb748349a3cacf38f032fd4d3beebce202487) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added base url configuration in docker compose generator
+-
+-## 0.4.0
+-
+-### Minor Changes
+-
+-- [#295](https://github.com/papra-hq/papra/pull/295) [`438a311`](https://github.com/papra-hq/papra/commit/438a31171c606138c4b7fa299fdd58dcbeaaf298) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added support for custom oauth2 providers
+-
+-- [#293](https://github.com/papra-hq/papra/pull/293) [`53bf93f`](https://github.com/papra-hq/papra/commit/53bf93f128b54ad1d3553e18680c87ab23155f8d) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added a papra docker-compose.yml generator
+-
+-## 0.3.1
+-
+-### Patch Changes
+-
+-- [#280](https://github.com/papra-hq/papra/pull/280) [`85fa5c4`](https://github.com/papra-hq/papra/commit/85fa5c43424d139f5c2752a3ad644082e61d3d67) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fix broken lint and added auto link check
++Release notes are published outside this repository.
+diff --git a/apps/mobile/CHANGELOG.md b/apps/mobile/CHANGELOG.md
+index 33219705..1e2c8f22 100644
+--- a/apps/mobile/CHANGELOG.md
++++ b/apps/mobile/CHANGELOG.md
+@@ -1,25 +1,3 @@
+-# @papra/mobile
++# Changelog
+ 
+-## 1.1.0
+-
+-### Minor Changes
+-
+-- [#1491](https://github.com/papra-hq/papra/pull/1491) [`a6ac457`](https://github.com/papra-hq/papra/commit/a6ac457245b56aa73b7af4047145f6179cd8ab69) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Manage document tags from the document details or the document list.
+-
+-- [#1486](https://github.com/papra-hq/papra/pull/1486) [`f3d36aa`](https://github.com/papra-hq/papra/commit/f3d36aac0d4477823ef30d020171ed7c1ece745a) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Format date according to the user's locale in the mobile app.
+-
+-- [#1482](https://github.com/papra-hq/papra/pull/1482) [`cde1bf0`](https://github.com/papra-hq/papra/commit/cde1bf034dee89f2c6812947b832834b648b0df5) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added multi-lang support. Currently, the supported languages are English, French, German, and Spanish. You can now switch between these languages in the app settings, it automatically detects your device's language, and you can also set a preferred language.
+-
+-### Patch Changes
+-
+-- [#1489](https://github.com/papra-hq/papra/pull/1489) [`ff74b80`](https://github.com/papra-hq/papra/commit/ff74b8020086af22db9b3f5dfb27d74289afe1da) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added app version and commit short hash in the app settings screen.
+-
+-- [#1485](https://github.com/papra-hq/papra/pull/1485) [`588a1a1`](https://github.com/papra-hq/papra/commit/588a1a1c12c86ff51f29b2b1ee79661ab1f1c484) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fixed select and multi-select custom properties to display option names correctly (previously displayed as JSON).
+-
+-- [#1480](https://github.com/papra-hq/papra/pull/1480) [`f81bee7`](https://github.com/papra-hq/papra/commit/f81bee753e10d65b31cec58204931fdef5d7c7ef) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Stack the alert dialog buttons vertically to avoid line breaks in long button labels on small screens.
+-
+-- [#1459](https://github.com/papra-hq/papra/pull/1459) [`9b8d9d7`](https://github.com/papra-hq/papra/commit/9b8d9d70e8d82d2fd907d4f41e00cb5a20c59337) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Verify server initial ping response body to avoid interpreting 2xx responses that may be an auth proxy redirection.
+-
+-- [#1490](https://github.com/papra-hq/papra/pull/1490) [`e3317d2`](https://github.com/papra-hq/papra/commit/e3317d2ce1f541190c4aadaa40770ce2ce894668) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added a pull-to-refresh to the document details screen.
+-
+-- [#1488](https://github.com/papra-hq/papra/pull/1488) [`9cc1cfb`](https://github.com/papra-hq/papra/commit/9cc1cfb9c2d070348527092d9d2ba09f2cad0f5f) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Automatically load more documents as you scroll through the document list and search results, instead of showing only the first 20.
++Release notes are published outside this repository.
+diff --git a/apps/papra-server/src/modules/document-share-links/document-share-links.errors.ts b/apps/papra-server/src/modules/document-share-links/document-share-links.errors.ts
+index 5998ff47..50b467f7 100644
+--- a/apps/papra-server/src/modules/document-share-links/document-share-links.errors.ts
++++ b/apps/papra-server/src/modules/document-share-links/document-share-links.errors.ts
+@@ -6,7 +6,6 @@ export const createShareLinkNotFoundError = createErrorFactory({
+   statusCode: 404,
+ });
+ 
+-// 410 Gone: the link exists but is no longer usable (expired or disabled).
+ export const createShareLinkGoneError = createErrorFactory({
+   message: 'Share link is no longer available.',
+   code: 'share_link.gone',
+diff --git a/apps/papra-server/src/modules/document-share-links/document-share-links.routes.ts b/apps/papra-server/src/modules/document-share-links/document-share-links.routes.ts
+index 41d30bd1..36860960 100644
+--- a/apps/papra-server/src/modules/document-share-links/document-share-links.routes.ts
++++ b/apps/papra-server/src/modules/document-share-links/document-share-links.routes.ts
+@@ -308,7 +308,6 @@ function setupGetSharedDocumentFileRoute({
+       await touchShareLinkLastAccessedAt({ shareLink, shareLinksRepository });
+ 
+       return context.body(Readable.toWeb(fileStream), 200, {
+-        // Serve as an opaque attachment to prevent the browser from rendering potentially dangerous files.
+         'Content-Type': 'application/octet-stream',
+         'Content-Disposition': `attachment; filename*=UTF-8''${encodeURIComponent(document.name)}`,
+         'Content-Length': String(document.originalSize),
+diff --git a/apps/papra-server/src/modules/document-share-links/document-share-links.usecases.ts b/apps/papra-server/src/modules/document-share-links/document-share-links.usecases.ts
+index 94bfe19d..d0de4446 100644
+--- a/apps/papra-server/src/modules/document-share-links/document-share-links.usecases.ts
++++ b/apps/papra-server/src/modules/document-share-links/document-share-links.usecases.ts
+@@ -127,9 +127,7 @@ export async function updateShareLink({
+   return { shareLink };
+ }
+ 
+-// Resolves the document backing a share link for public access. A trashed (soft-deleted)
+-// document is treated as gone (410): the link is not removed on trash so it resumes on restore,
+-// but public access must stop immediately.
++// Resolves the document backing a share link for public access.
+ export async function getShareLinkDocumentOrThrow({
+   shareLink,
+   documentsRepository,
+diff --git a/apps/papra-server/src/modules/webhooks/webhooks.http-client.ts b/apps/papra-server/src/modules/webhooks/webhooks.http-client.ts
+index e91a70c1..f70d871b 100644
+--- a/apps/papra-server/src/modules/webhooks/webhooks.http-client.ts
++++ b/apps/papra-server/src/modules/webhooks/webhooks.http-client.ts
+@@ -25,7 +25,7 @@ export function createWebhookHttpClient({
+       ...options,
+       dispatcher,
+       ignoreResponseError: true,
+-      redirect: 'manual', // don't follow redirects, just return the 3xx response
++      redirect: 'manual',
+     });
+ 
+     return {
+diff --git a/packages/api-sdk/CHANGELOG.md b/packages/api-sdk/CHANGELOG.md
+index ac5f97d1..1e2c8f22 100644
+--- a/packages/api-sdk/CHANGELOG.md
++++ b/packages/api-sdk/CHANGELOG.md
+@@ -1,55 +1,3 @@
+-# @papra/api-sdk
++# Changelog
+ 
+-## 1.3.1
+-
+-### Patch Changes
+-
+-- [#1276](https://github.com/papra-hq/papra/pull/1276) [`95cfbb0`](https://github.com/papra-hq/papra/commit/95cfbb0639ba263bfc21a64729eb1e87d0a6b89a) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Excluded sourcemaps from package bundle
+-
+-## 1.3.0
+-
+-### Minor Changes
+-
+-- [#1074](https://github.com/papra-hq/papra/pull/1074) [`e2e7fd4`](https://github.com/papra-hq/papra/commit/e2e7fd4f1d2ca102dc4a81257834ee582fa4c412) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Add batch document trash API endpoint.
+-
+-## 1.2.0
+-
+-### Minor Changes
+-
+-- [#741](https://github.com/papra-hq/papra/pull/741) [`ae03c76`](https://github.com/papra-hq/papra/commit/ae03c765bf495c63db53d5b60f429f3881887f5a) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added `getCurrentApiKey` method in client
+-
+-## 1.1.3
+-
+-### Patch Changes
+-
+-- [#698](https://github.com/papra-hq/papra/pull/698) [`815f6f9`](https://github.com/papra-hq/papra/commit/815f6f94f84478fef049f9baea9b0b30b56906a2) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fixed prepublishing assets
+-
+-## 1.1.2
+-
+-### Patch Changes
+-
+-- [#622](https://github.com/papra-hq/papra/pull/622) [`432a192`](https://github.com/papra-hq/papra/commit/432a192b94d06c663a7f345046e20fcff41dbf53) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added listOrganizations, listTags, createTag, addTagToDocument method in papra sdk
+-
+-## 1.1.1
+-
+-### Patch Changes
+-
+-- [#604](https://github.com/papra-hq/papra/pull/604) [`c70d7e4`](https://github.com/papra-hq/papra/commit/c70d7e419aa84eb63c18b72d529951761de75e33) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Use provenance for releases
+-
+-## 1.1.0
+-
+-### Minor Changes
+-
+-- [#464](https://github.com/papra-hq/papra/pull/464) [`14bc2b8`](https://github.com/papra-hq/papra/commit/14bc2b8f8d0d6605062f37188e7c57bbc61b2c1a) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Ditched CommonJs build for packages
+-
+-## 1.0.2
+-
+-### Patch Changes
+-
+-- [#379](https://github.com/papra-hq/papra/pull/379) [`6cedc30`](https://github.com/papra-hq/papra/commit/6cedc30716e320946f79a0a9fd8d3b26e834f4db) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Updated dependencies
+-
+-## 1.0.1
+-
+-### Patch Changes
+-
+-- [#280](https://github.com/papra-hq/papra/pull/280) [`85fa5c4`](https://github.com/papra-hq/papra/commit/85fa5c43424d139f5c2752a3ad644082e61d3d67) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Created a JS/TS api sdk package
++Release notes are published outside this repository.
+diff --git a/packages/app/CHANGELOG.md b/packages/app/CHANGELOG.md
+index 11acfad7..1e2c8f22 100644
+--- a/packages/app/CHANGELOG.md
++++ b/packages/app/CHANGELOG.md
+@@ -1,962 +1,3 @@
+-# @papra/app
++# Changelog
+ 
+-## 26.7.0
+-
+-### Minor Changes
+-
+-- [#1474](https://github.com/papra-hq/papra/pull/1474) [`aa26524`](https://github.com/papra-hq/papra/commit/aa26524ef3806bd9769eb48b180528b9edd1f767) Thanks [@CorentinTh](https://github.com/CorentinTh)! - API breaking change: The route to trash a document `DELETE /api/organizations/:organizationId/documents/:documentId` now returns a 204 No Content status code instead of `{ success: true }` JSON body.
+-
+-- [#1513](https://github.com/papra-hq/papra/pull/1513) [`1f1a9ad`](https://github.com/papra-hq/papra/commit/1f1a9aded5db559b0bf67f252d007585ea329854) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added an API endpoint to reprocess existing documents `POST /api/organizations/:organizationId/documents/:documentId/reprocess`. This endpoint allows re-running content extraction + auto tagging and tagging rules on existing documents.
+-
+-### Patch Changes
+-
+-- [#1531](https://github.com/papra-hq/papra/pull/1531) [`4ac1d68`](https://github.com/papra-hq/papra/commit/4ac1d68e472b115a21bfd3316946a1170076a762) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added Hungarian translation
+-
+-- [#1468](https://github.com/papra-hq/papra/pull/1468) [`4fef955`](https://github.com/papra-hq/papra/commit/4fef955ce7c13063448f4afd7c1e9a00cc93406b) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fonts are now bundled with the app, so that it can be used offline, and no longer depends on Bunny Fonts. A step towards making Papra fully air-gapped.
+-
+-- [#1461](https://github.com/papra-hq/papra/pull/1461) [`5d3063b`](https://github.com/papra-hq/papra/commit/5d3063b397020e5b301d0c788d2bcae42fc51561) Thanks [@bartdenhoed](https://github.com/bartdenhoed)! - Fixed missing refresh of the updatedAt db attribute.
+-
+-- [#1529](https://github.com/papra-hq/papra/pull/1529) [`1c993e4`](https://github.com/papra-hq/papra/commit/1c993e43105869e5256317ea2041099b0daf08b3) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Add support for `{{organization.name}}` in document storage key patterns to organize files into folders named after your organizations.
+-
+-- [#1469](https://github.com/papra-hq/papra/pull/1469) [`347029d`](https://github.com/papra-hq/papra/commit/347029dbd1ae997dcf537a9d04ab003b06021090) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fixed OCR extraction for images whose rotation is stored in EXIF metadata.
+-
+-- [#1525](https://github.com/papra-hq/papra/pull/1525) [`7c9a96f`](https://github.com/papra-hq/papra/commit/7c9a96fc350a73c0f53465643b6fcf6c56099ed0) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added optional storage key synchronization so document renames are reflected in the underlying storage. Enable it with `DOCUMENT_STORAGE_KEY_SYNC_ENABLED=true` when using pattern-based storage keys.
+-
+-- [#1519](https://github.com/papra-hq/papra/pull/1519) [`82778df`](https://github.com/papra-hq/papra/commit/82778df8350f6e5dd152efd4504a22474a67ee91) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fixed document action menus wrapping longer translations by allowing the menu to expand.
+-
+-- [#1532](https://github.com/papra-hq/papra/pull/1532) [`50cbe2c`](https://github.com/papra-hq/papra/commit/50cbe2cace34fa222ff0568f32a5b084f31889f4) Thanks [@CorentinTh](https://github.com/CorentinTh)! - You can now configure Docling OCR languages and other conversion options with `DOCLING_OPTIONS`, using a JSON object such as `{"ocr_lang":["en","fr"]}`.
+-
+-- [#1503](https://github.com/papra-hq/papra/pull/1503) [`2993c6e`](https://github.com/papra-hq/papra/commit/2993c6ea6a3b266fb5b022a9a520bfdeb984b422) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Security fix: Prevent custom OAuth providers from creating new accounts when registration is disabled, while allowing existing users to sign in.
+-
+-  Thanks to [白墨](https://github.com/5255fgh) for the responsible disclosure of this issue.
+-
+-- [#1528](https://github.com/papra-hq/papra/pull/1528) [`13a6d4a`](https://github.com/papra-hq/papra/commit/13a6d4a7b0d620e8fd94979a05672648ee307fdc) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added `document.date` and `document.createdAt` to storage key patterns, so you can organize files by document date or creation date. Documents without a date use `no-date` (and can be configured with the `default` transformer).
+-
+-- [#1517](https://github.com/papra-hq/papra/pull/1517) [`956684c`](https://github.com/papra-hq/papra/commit/956684c53c62686775e1c90195d39ac82fd62c0f) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added a button to reprocess a document in the documents content tab.
+-
+-- [#1428](https://github.com/papra-hq/papra/pull/1428) [`76c4501`](https://github.com/papra-hq/papra/commit/76c450187533f80bae0e33734a2769fd3c181d16) Thanks [@jakubM817](https://github.com/jakubM817)! - Add Slovak (sk) translation for the app.
+-
+-- [#1511](https://github.com/papra-hq/papra/pull/1511) [`71fdd27`](https://github.com/papra-hq/papra/commit/71fdd274a0187677ded3a522e200df272cbef9dc) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fully disabled AI credit accounting by default for self-hosted instances to silence "Failed to register AI credit usage" logs.
+-
+-- [#1470](https://github.com/papra-hq/papra/pull/1470) [`a58b4f0`](https://github.com/papra-hq/papra/commit/a58b4f0e349662218ce3a0a24321d352f3ff199d) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Silenced the content extraction warning about DPI.
+-
+-- [#1534](https://github.com/papra-hq/papra/pull/1534) [`a03dc5a`](https://github.com/papra-hq/papra/commit/a03dc5ab240607040bfe2058fe5a56e96a7b0c3b) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fix an issue that prevented reinviting users who left or were removed from an organisation.
+-
+-- [#1545](https://github.com/papra-hq/papra/pull/1545) [`193d860`](https://github.com/papra-hq/papra/commit/193d860caf3635171162123d2f28ffc826ac860d) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added an option to restrict registration to specific email domains using `AUTH_ALLOWED_EMAIL_DOMAINS`. Forbidden domains still take precedence.
+-
+-- [#1502](https://github.com/papra-hq/papra/pull/1502) [`c16661e`](https://github.com/papra-hq/papra/commit/c16661e93606de8759e5312020571a126f5f58e6) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Removed the default value for the intake email webhook validation secret to prevent ingestion of documents from untrusted sources when no secret is provided. Users must now explicitly set a secret using `INTAKE_EMAILS_WEBHOOK_SECRET`.
+-
+-  Thanks to [白墨](https://github.com/5255fgh) for the responsible disclosure of this issue.
+-
+-## 26.6.2
+-
+-### Patch Changes
+-
+-- [#1324](https://github.com/papra-hq/papra/pull/1324) [`8a3653c`](https://github.com/papra-hq/papra/commit/8a3653c6542ae44468b7889fbfda6fab4b1a3654) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Collapse the mobile menu sheet when navigating to a new page.
+-
+-- [#1453](https://github.com/papra-hq/papra/pull/1453) [`a64cbba`](https://github.com/papra-hq/papra/commit/a64cbba4c8280786cb7405f9c13738eeb1da4e51) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fixed an issue where setting `AUTH_IS_REGISTRATION_ENABLED=false` hid the sign-up interface but did not block email and password registrations made directly through the authentication API.
+-
+-- [#1442](https://github.com/papra-hq/papra/pull/1442) [`03f4ad4`](https://github.com/papra-hq/papra/commit/03f4ad495e839bbf44629f51f85ad07f69a5aed2) Thanks [@sp71](https://github.com/sp71)! - Include the tag name in the tag deletion confirmation message.
+-
+-- [#1407](https://github.com/papra-hq/papra/pull/1407) [`30760f5`](https://github.com/papra-hq/papra/commit/30760f53f116c7c8b70734f176af0a2007b180f6) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added a deletion confirmation modal when deleting a tagging rule, to prevent accidental deletion of tagging rules.
+-
+-- [#1326](https://github.com/papra-hq/papra/pull/1326) [`0247a7a`](https://github.com/papra-hq/papra/commit/0247a7a6dd55da5f27572ac31d3515962a568308) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added some database indexes for better performances.
+-
+-- [#1416](https://github.com/papra-hq/papra/pull/1416) [`5d43402`](https://github.com/papra-hq/papra/commit/5d43402ed2896ee6f3947bcd3314e134455d2813) Thanks [@ybizeul](https://github.com/ybizeul)! - Fix PDF content preview rendering issue after navigation
+-
+-- [#1420](https://github.com/papra-hq/papra/pull/1420) [`510c162`](https://github.com/papra-hq/papra/commit/510c162b241ca2cbad5e07492fb638aba73bafa2) Thanks [@qmarlats](https://github.com/qmarlats)! - Fixed the batch document selection remaining in "select all matching documents" mode after unselecting documents.
+-
+-- [#1365](https://github.com/papra-hq/papra/pull/1365) [`881796e`](https://github.com/papra-hq/papra/commit/881796edd4e3bcb7c1f3cae8977630d2bb09a905) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Increased and made configurable the timeout of content extraction external service.
+-  Docling, Mistral OCR, and Azure DI can now take up to 5 minutes to process a document, instead of the previous 30 seconds, configurable via `DOCLING_REQUEST_TIMEOUT_MS`, `MISTRAL_OCR_REQUEST_TIMEOUT_MS` and `AZURE_DI_REQUEST_TIMEOUT_MS` respectively.
+-
+-- [#1432](https://github.com/papra-hq/papra/pull/1432) [`a0ce312`](https://github.com/papra-hq/papra/commit/a0ce3126ba0cbe4d9412b2f80c845e0ad7be7f05) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Prevent stripe webhook forgery for apps with unconfigured webhooks secrets.
+-
+-  Thank you to [Andrew Gonzalez](https://www.linkedin.com/in/andrew-gonzalez-6b8b68257/) ([@bruhdev1290](https://github.com/bruhdev1290)) for the responsible disclosure of this issue.
+-
+-- [#1362](https://github.com/papra-hq/papra/pull/1362) [`8adb16d`](https://github.com/papra-hq/papra/commit/8adb16de44f0905b2021b5a421bbcbb8731e1107) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fix mistral ocr replacing tables with external references, no more `[tbl-0.md](tbl-0.md)` in extracted content, the tables are now properly extracted and included in the content.
+-
+-- [#1357](https://github.com/papra-hq/papra/pull/1357) [`bad01b7`](https://github.com/papra-hq/papra/commit/bad01b7fa2164a754c2db10245a74608edbd1ffd) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added a skeleton loader in the sidenav organization picker when fetching organizations
+-
+-- [#1375](https://github.com/papra-hq/papra/pull/1375) [`88f1d86`](https://github.com/papra-hq/papra/commit/88f1d86a970bf2ab924419d3192ff0cca95fce08) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added Catalan language
+-
+-- [#1348](https://github.com/papra-hq/papra/pull/1348) [`12e1d4b`](https://github.com/papra-hq/papra/commit/12e1d4b6db352e1725318d8b6f82a604f3282ef0) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Security fix: document share links belonging to a soft-deleted organization were still publicly accessible. Public access (document metadata, file download, and password verification) now stops with a 410 Gone as soon as the organization is deleted, and resumes automatically if the organization is restored during the grace period.
+-
+-  Thank you to [Thammachart Sittharod](https://github.com/penthammachat-creator) for the responsible disclosure of this issue.
+-
+-- [#1406](https://github.com/papra-hq/papra/pull/1406) [`d178643`](https://github.com/papra-hq/papra/commit/d178643ea399a5043561fa89c44d720634e29ac5) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Security fix: revoke all user sessions on password reset.
+-
+-  Thank you to [MMartinez](https://github.com/murillomr) for the responsible disclosure of this issue.
+-
+-## 26.6.1
+-
+-### Patch Changes
+-
+-- [#1312](https://github.com/papra-hq/papra/pull/1312) [`aded832`](https://github.com/papra-hq/papra/commit/aded8322985b945b3e3776dd7031852be20cb093) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Greatly improved the performances when updating and deleting document from the sezarch index, avoiding unnecessary table scans. Noticeable improvement on large document collections (10k+ documents).
+-
+-- [#1313](https://github.com/papra-hq/papra/pull/1313) [`94f2a68`](https://github.com/papra-hq/papra/commit/94f2a683c1fdb543dd84d8541a4ea70b291471f5) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added visual loading state to the rename document modal.
+-
+-- [#1317](https://github.com/papra-hq/papra/pull/1317) [`35ce235`](https://github.com/papra-hq/papra/commit/35ce235c23a0eef488a05cc747fc7f60eebcf301) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fix the coercion of `AUTO_TAGGING_DEFAULT_MAX_TAGS` that caused a validation error when the value is a string instead of a number. Now correctly converts the string to a number, preventing the validation error.
+-
+-- [#1320](https://github.com/papra-hq/papra/pull/1320) [`2ef3148`](https://github.com/papra-hq/papra/commit/2ef314835ee380869dd28d9924737ae86eaf8602) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fix auto tagging schema definition for some ai providers (notably OpenAI and Anthropic), as they do not support all JSON schema features. It's really nice to have a common spec, if only all providers respected it...
+-
+-- [#1323](https://github.com/papra-hq/papra/pull/1323) [`74d98b2`](https://github.com/papra-hq/papra/commit/74d98b2317e88c3d52389d472279c7fb049927df) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added better logging when an error occurs during the structured data generation.
+-
+-## 26.6.0
+-
+-### Minor Changes
+-
+-- [#1200](https://github.com/papra-hq/papra/pull/1200) [`68fbacb`](https://github.com/papra-hq/papra/commit/68fbacbdef675dae0bd38520f475ce4d9d7550fe) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added AI auto-tagging. When document content is extracted, it can now be automatically tagged using AI. The system uses tag names and descriptions to determine the most relevant tags for the document, and can optionally create new tags if they don't already exist.
+-
+-- [#1283](https://github.com/papra-hq/papra/pull/1283) [`62ae3a0`](https://github.com/papra-hq/papra/commit/62ae3a066a0d132065129ea65b32efb8dbb9fda8) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Add support for external document content extraction/ocr, with multiple provider, and support for combining providers using document type filtering and fallback. Currently supported providers are:
+-  - Mistral OCR
+-  - Azure Document Intelligence
+-  - Docling server
+-  - Custom HTTP endpoint (configurable)
+-  - Internal Papra extraction engine (default)
+-
+-### Patch Changes
+-
+-- [#1179](https://github.com/papra-hq/papra/pull/1179) [`63ec093`](https://github.com/papra-hq/papra/commit/63ec0930487697b430c0816d592b16e272f1076d) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Replace the AWS S3 SDK (`@aws-sdk/client-s3` + `@aws-sdk/lib-storage`) with the zero-dependency `s3mini` for document S3 storage. This removes 97 transitive packages (~23 MB unpacked) from the server, replacing them with a single more performant and dependency-free package.
+-
+-- [#1246](https://github.com/papra-hq/papra/pull/1246) [`677f81e`](https://github.com/papra-hq/papra/commit/677f81ed4086249be6b05eee516a4e7d6f70199d) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Extracted and translated remaining hard coded texts, improving localization for non-English languages.
+-
+-- [#1240](https://github.com/papra-hq/papra/pull/1240) [`874354f`](https://github.com/papra-hq/papra/commit/874354ffa93587cb18e3f67261a9744ab8e55cbd) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added mobile friendly hamburger menu in account settings.
+-
+-- [#1172](https://github.com/papra-hq/papra/pull/1172) [`0e970aa`](https://github.com/papra-hq/papra/commit/0e970aad33d57b4613fea10b2a95fe3fe4b032c9) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Set S3 checksum verification headers to "when required" to fix Backblaze B2 storage issues.
+-
+-- [#1219](https://github.com/papra-hq/papra/pull/1219) [`aef57ce`](https://github.com/papra-hq/papra/commit/aef57cefc1f988d73df26718e743e34b61d34d77) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Pined the Dockerfile node version sha to reduce supply chain attack surface.
+-
+-- [#1152](https://github.com/papra-hq/papra/pull/1152) [`632ac0f`](https://github.com/papra-hq/papra/commit/632ac0f16f194c0a752b5b4c613f68cc51dc47a4) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fix the document preview being shrunk by very long document name not containing common break characters (spaces, dashes, ...)
+-
+-- [#1184](https://github.com/papra-hq/papra/pull/1184) [`e2c3aa6`](https://github.com/papra-hq/papra/commit/e2c3aa61fca6bff8c73ce0cc83b3c59390f5088d) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Updated tesseract.js to v7 which should increase extraction performance by 15 to 35% on images, [source](https://github.com/naptha/tesseract.js/releases/tag/v7.0.0).
+-
+-- [#1235](https://github.com/papra-hq/papra/pull/1235) [`ae42102`](https://github.com/papra-hq/papra/commit/ae421028a034fc1e74d3590996c069a99b264680) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added mobile friendly hamburger menu in organization settings.
+-
+-- [#1196](https://github.com/papra-hq/papra/pull/1196) [`4250141`](https://github.com/papra-hq/papra/commit/4250141cc96c6919b3c05b788da71fff3f23ad01) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added missing translations in all non-English languages.
+-
+-- [#1201](https://github.com/papra-hq/papra/pull/1201) [`167fb8c`](https://github.com/papra-hq/papra/commit/167fb8ca2535f383c7b0984ef1dfdfb599a06fe9) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Auto tagging can be configured per organization, with a dedicated page in organization settings. Owners can manage the following settings:
+-  - Enable or disable auto tagging for their organization.
+-  - Enable the creation of new tags if relevant tags do not exist.
+-  - Configure the maximum number of tags that can be automatically added to a document.
+-
+-- [#1173](https://github.com/papra-hq/papra/pull/1173) [`c541b1f`](https://github.com/papra-hq/papra/commit/c541b1f670ba2e5a9860e0ea09c2a0e13ed18efb) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added the possibility to configure the file size polling interval for ingestion folder watchers.
+-  - `INGESTION_FOLDER_WATCHER_FILE_STABILITY_THRESHOLD_MS`: The amount of time in milliseconds for a file size to remain constant before being consumed. This helps to avoid processing files that are still being written to (e.g., scanners, cameras, network shares, etc.).
+-  - `INGESTION_FOLDER_WATCHER_FILE_STABILITY_POLL_INTERVAL_MS`: The interval in milliseconds at which the file size is polled while waiting for write to finish.
+-
+-- [#1292](https://github.com/papra-hq/papra/pull/1292) [`923e27a`](https://github.com/papra-hq/papra/commit/923e27ae6cec8b767622ca106af0eeeee34b45a8) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Document sort order fallback to the importation date when the sort order is set to other sort orders.
+-
+-- [#1192](https://github.com/papra-hq/papra/pull/1192) [`edbd368`](https://github.com/papra-hq/papra/commit/edbd368d82235165b494cc1311a68be4200f2609) Thanks [@Pallavikumarimdb](https://github.com/Pallavikumarimdb)! - Sort documents by document date instead of the created date.
+-
+-- [#1296](https://github.com/papra-hq/papra/pull/1296) [`df9f6c6`](https://github.com/papra-hq/papra/commit/df9f6c671616e424b4eff750b75fc7da0d618d50) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fixed the inline tag picker lowercasing the typed name when suggesting a new tag, so newly created tags now keep their original casing (e.g. typing "Invoices" no longer suggests "invoices").
+-
+-- [#1232](https://github.com/papra-hq/papra/pull/1232) [`e853d09`](https://github.com/papra-hq/papra/commit/e853d09182f3de2b5b86adfb4e8019c454c526cd) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Make the top navigation bar mobile-friendly: the search, import, and admin buttons now collapse to icon-only on small screens, and the user settings dropdown is now available on mobile devices.
+-
+-- [#1155](https://github.com/papra-hq/papra/pull/1155) [`e6de1ee`](https://github.com/papra-hq/papra/commit/e6de1ee1cf827b0bca64d7fa502e1e81b7935b9a) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fix the displayed max organization count on the user admin page
+-
+-## 26.5.0
+-
+-### Minor Changes
+-
+-- [#960](https://github.com/papra-hq/papra/pull/960) [`f4b361e`](https://github.com/papra-hq/papra/commit/f4b361ed79e58a862e5a8b34eb1c7b3a8d61fd3d) Thanks [@anbraten](https://github.com/anbraten)! - Added the ability to save search queries as views, allowing quick access to frequently used searches. Saved views can be accessed from the sidebar.
+-
+-- [#1130](https://github.com/papra-hq/papra/pull/1130) [`4fc4f68`](https://github.com/papra-hq/papra/commit/4fc4f686bd6288a736d19e7ebdb04884c65cf8f0) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added document sharing by link: generate a public link to share a document with anyone, without requiring a Papra account. Links can optionally be password-protected and given an expiration date, can be disabled/re-enabled, and are all manageable from a new organization-level "Share links" page.
+-
+-### Patch Changes
+-
+-- [#1111](https://github.com/papra-hq/papra/pull/1111) [`1ecd2c8`](https://github.com/papra-hq/papra/commit/1ecd2c8a0ef668a166941a797d241d605f1ae0b7) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fix admin layout pushing the sidenav out of view when page content is long.
+-
+-- [#1130](https://github.com/papra-hq/papra/pull/1130) [`4fc4f68`](https://github.com/papra-hq/papra/commit/4fc4f686bd6288a736d19e7ebdb04884c65cf8f0) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Laid out the base for the rate limit system.
+-
+-- [#1121](https://github.com/papra-hq/papra/pull/1121) [`3a67507`](https://github.com/papra-hq/papra/commit/3a675076877ea6c22feb06267ba7e68201947e60) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added the possibility to disable the initial startup execution of all scheduled tasks by setting the `RUN_SCHEDULED_TASKS_ON_STARTUP_DEFAULT=false` environment variable, mainly usefull for instance that reboot often, dev environments or fast startup requirements (few ms gained). Each task startup configuration remain individually configurable with their dedicated environment variable.
+-
+-- [#1135](https://github.com/papra-hq/papra/pull/1135) [`d73933a`](https://github.com/papra-hq/papra/commit/d73933a8ee14edc6b09ce79f64be99e31c6ac90b) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added api-key permissions for managing custom properties
+-
+-- [#1141](https://github.com/papra-hq/papra/pull/1141) [`f93d6e1`](https://github.com/papra-hq/papra/commit/f93d6e17936f61095414bab9fd0339b3562f4377) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Custom property definition deletion endpoint (`DELETE /api/organizations/:organizationId/custom-properties/:propertyDefinitionId`) now returns a 204 with no body instead of a 200 with an empty object.
+-
+-- [#1133](https://github.com/papra-hq/papra/pull/1133) [`a0f2455`](https://github.com/papra-hq/papra/commit/a0f24554d5495d06d0ad04c494f475e3f47378cb) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added the possibility to add notes to documents, which can be used to add additional information or context to a document.
+-
+-- [#1109](https://github.com/papra-hq/papra/pull/1109) [`d9bc129`](https://github.com/papra-hq/papra/commit/d9bc129b7c74aff9b07682ec67cd6e148b50e138) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added the possibility to delete a user in the admin user details page.
+-
+-- [#996](https://github.com/papra-hq/papra/pull/996) [`2a8bdec`](https://github.com/papra-hq/papra/commit/2a8bdec2ae3c9e42c36777901264e47ceede00cc) Thanks [@magic0whi](https://github.com/magic0whi)! - Fix preview of pdfs without embedded fonts by packaging cmaps and custom fonts in the app assets. Increasing the bundle size by ~2mb, but it's worth it for the improved UX and compatibility with a wider range of pdfs.
+-
+-## 26.4.2
+-
+-### Patch Changes
+-
+-- [#1105](https://github.com/papra-hq/papra/pull/1105) [`afb5fe3`](https://github.com/papra-hq/papra/commit/afb5fe3392988265e47834fa443936287277a398) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fixed a regression issue breaking the two factor authentication after updating `better-auth`.
+-
+-## 26.4.1
+-
+-### Patch Changes
+-
+-- [#1080](https://github.com/papra-hq/papra/pull/1080) [`47d44e0`](https://github.com/papra-hq/papra/commit/47d44e0681bf59da0638b140d1c5ef5b970f6b67) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fixed an authorization issue where tag updates and deletions were not scoped to the organization in the URL. Tag mutation endpoints are now correctly scoped to the requested organization.
+-
+-  Addressing [GHSA-wrx4-3vff-jm94](https://github.com/papra-hq/papra/security/advisories/GHSA-wrx4-3vff-jm94), credit to [@TinkAnet](https://github.com/TinkAnet) for the responsible disclosure.
+-
+-- [#1074](https://github.com/papra-hq/papra/pull/1074) [`e2e7fd4`](https://github.com/papra-hq/papra/commit/e2e7fd4f1d2ca102dc4a81257834ee582fa4c412) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Limited search query to 1024 characters
+-
+-- [#1099](https://github.com/papra-hq/papra/pull/1099) [`086dccb`](https://github.com/papra-hq/papra/commit/086dccbfda18c850bee50b94c48f5f110be6935c) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Webhooks no longer follow http redirects (3xx responses) when sending requests.
+-
+-  Addressing [GHSA-5g86-85rp-f9hx](https://github.com/papra-hq/papra/security/advisories/GHSA-5g86-85rp-f9hx), credit to [@FredrikEV](https://github.com/FredrikEV) for the responsible disclosure.
+-
+-- [#1061](https://github.com/papra-hq/papra/pull/1061) [`93c369d`](https://github.com/papra-hq/papra/commit/93c369d3e57da9bc0a7c825320ae535cc5e18263) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Html-ish characters in email templates are now escaped instead of sanitized-out
+-
+-- [#1067](https://github.com/papra-hq/papra/pull/1067) [`79d4cac`](https://github.com/papra-hq/papra/commit/79d4cac11fa4c0c8a3a6b234874e42f4c6d5ee3f) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Increased default max file size from 10MB to 25MB (can still be customized using `DOCUMENT_STORAGE_MAX_UPLOAD_SIZE`, disable by setting it to 0).
+-
+-- [#1010](https://github.com/papra-hq/papra/pull/1010) [`927c7d6`](https://github.com/papra-hq/papra/commit/927c7d6b314bf1ee998d141989a69be6b71ad927) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Removed logging of a polluting empty error cause (with stack trace) when an error is thrown without a cause.
+-
+-- [#1082](https://github.com/papra-hq/papra/pull/1082) [`e8d19af`](https://github.com/papra-hq/papra/commit/e8d19af79b97884157a299a7ed476e823d6d7860) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added batch selection in the document page, allowing to select multiple documents (or all matching the current search) and either manage tags or delete them in one go.
+-
+-- [#1080](https://github.com/papra-hq/papra/pull/1080) [`47d44e0`](https://github.com/papra-hq/papra/commit/47d44e0681bf59da0638b140d1c5ef5b970f6b67) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Tag deletion endpoint now returns a `204 No Content` status code instead of `200 OK` with an empty JSON object, and a `404 Not Found` status code is returned when trying to delete a tag that does not exists for the organization.
+-
+-- [#1015](https://github.com/papra-hq/papra/pull/1015) [`5bdf0da`](https://github.com/papra-hq/papra/commit/5bdf0dab1f90de300c2a5b86849e99bf924ffc1b) Thanks [@JohnCuba](https://github.com/JohnCuba)! - Synchronized the document pagination of the home page in query params to permit sharing and navigation.
+-
+-- [#1096](https://github.com/papra-hq/papra/pull/1096) [`2bb75ce`](https://github.com/papra-hq/papra/commit/2bb75cea1a0c6818a1a022fd140c263714decaa0) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Updated some critical dependencies (better-auth, drizzle-orm, hono, ...) to fix transitive vulnerabilities. Please do not hesitate to report any regression you may encounter, especially if it is related to authentication or database access. Thanks!
+-
+-- [#1034](https://github.com/papra-hq/papra/pull/1034) [`c5ccac5`](https://github.com/papra-hq/papra/commit/c5ccac53c2897c49024ca7d9eb38b94fa6a15310) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added content preview for yaml files
+-
+-- [#1027](https://github.com/papra-hq/papra/pull/1027) [`b154d2f`](https://github.com/papra-hq/papra/commit/b154d2f363e8d0a421ee476ff43da3d48093f3f3) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Removed weird shadows on ui components in light mode
+-
+-- [#1091](https://github.com/papra-hq/papra/pull/1091) [`4ab0f32`](https://github.com/papra-hq/papra/commit/4ab0f3218834bff55883159276df976cf05ec803) Thanks [@CorentinTh](https://github.com/CorentinTh)! - The documents page content now uses the whole width of the page
+-
+-- [#1082](https://github.com/papra-hq/papra/pull/1082) [`e8d19af`](https://github.com/papra-hq/papra/commit/e8d19af79b97884157a299a7ed476e823d6d7860) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added a batch document tag management API endpoint.
+-
+-- [#1097](https://github.com/papra-hq/papra/pull/1097) [`928ffc3`](https://github.com/papra-hq/papra/commit/928ffc37c77e7edfec1a42caed25e7557f2d7f7b) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Switched docker image pnpm installation from corepack to npm global installation, as Node.js 26 image no longer ships corepack.
+-
+-- [#1090](https://github.com/papra-hq/papra/pull/1090) [`5ea8ca3`](https://github.com/papra-hq/papra/commit/5ea8ca3e87203aeedcc17d827c1cb5289229f9e3) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added sorting option in the documents list, allowing to sort documents by name, or creation date, in ascending or descending order.
+-
+-- [#1098](https://github.com/papra-hq/papra/pull/1098) [`7acca43`](https://github.com/papra-hq/papra/commit/7acca43b520d942d5544a7327888ad11852cc11e) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Updated pnpm to v11
+-
+-- [#1020](https://github.com/papra-hq/papra/pull/1020) [`015bb53`](https://github.com/papra-hq/papra/commit/015bb5349825f413d0578cd733641380b6f3fe71) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added some size limits on the webhooks creation and update API endpoints parameters.
+-  - Names are limited to 128 characters.
+-  - Secret keys are limited to 256 characters.
+-  - URLs are limited to 2048 characters.
+-
+-- [#1025](https://github.com/papra-hq/papra/pull/1025) [`9c6985b`](https://github.com/papra-hq/papra/commit/9c6985b51f5961b750f7bd52eead13b05b2504c2) Thanks [@CorentinTh](https://github.com/CorentinTh)! - When reopening the quick search modal with existing query, the input content is automatically selected to allow easy replacement or editing.
+-
+-- [#1033](https://github.com/papra-hq/papra/pull/1033) [`5d55e41`](https://github.com/papra-hq/papra/commit/5d55e41c3be6e747f657e4f8f0c8dbe21285034b) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Changed the server endpoint validation library from `zod` to `valibot`, and improved some validation schemas in the process.
+-
+-- [#1097](https://github.com/papra-hq/papra/pull/1097) [`928ffc3`](https://github.com/papra-hq/papra/commit/928ffc37c77e7edfec1a42caed25e7557f2d7f7b) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Updated to Node.js 26
+-
+-- [#1016](https://github.com/papra-hq/papra/pull/1016) [`07d7109`](https://github.com/papra-hq/papra/commit/07d7109a46121b792ea45a7102d7c934d3ff060c) Thanks [@JohnCuba](https://github.com/JohnCuba)! - Removed native clear button of search bar in safari.
+-
+-- [#1072](https://github.com/papra-hq/papra/pull/1072) [`71d093f`](https://github.com/papra-hq/papra/commit/71d093f644a3fcaa7e4d675eac5b365acb8ba1b8) Thanks [@mvlanga](https://github.com/mvlanga)! - Added a download file option in document list action menu
+-
+-- [#1089](https://github.com/papra-hq/papra/pull/1089) [`aef3ef2`](https://github.com/papra-hq/papra/commit/aef3ef276c98a6d287f7afba97d997f61ebf1184) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added `sortField` and `sortOrder` query parameters to the document list/search endpoint (`GET /api/organizations/:organizationId/documents`), allowing documents to be sorted by `createdAt`, `updatedAt`, `name`, or `documentDate` in ascending or descending order.
+-
+-- [#1074](https://github.com/papra-hq/papra/pull/1074) [`e2e7fd4`](https://github.com/papra-hq/papra/commit/e2e7fd4f1d2ca102dc4a81257834ee582fa4c412) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Add batch document trash API endpoint.
+-
+-- [#1099](https://github.com/papra-hq/papra/pull/1099) [`086dccb`](https://github.com/papra-hq/papra/commit/086dccbfda18c850bee50b94c48f5f110be6935c) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Webhooks ssrf validation is now enforced when sending webhook requests, preventing potential TOCTOU dns rebinding attacks (the exploitation window was very small and only theoretical though).
+-
+-- [#1003](https://github.com/papra-hq/papra/pull/1003) [`ad5e42d`](https://github.com/papra-hq/papra/commit/ad5e42d4458e4f39046cba227a47dd149410dac4) Thanks [@JohnCuba](https://github.com/JohnCuba)! - Increased the sidebar collapsing breakpoint to improve the UX on tablets and small laptops.
+-
+-- [#1016](https://github.com/papra-hq/papra/pull/1016) [`07d7109`](https://github.com/papra-hq/papra/commit/07d7109a46121b792ea45a7102d7c934d3ff060c) Thanks [@JohnCuba](https://github.com/JohnCuba)! - Removed useless close button in the small-screen sidebar sheet.
+-
+-- [#1003](https://github.com/papra-hq/papra/pull/1003) [`ad5e42d`](https://github.com/papra-hq/papra/commit/ad5e42d4458e4f39046cba227a47dd149410dac4) Thanks [@JohnCuba](https://github.com/JohnCuba)! - Prevented the users and organizations tables from forcing horizontal scrolling in the admin panels.
+-
+-- [#1021](https://github.com/papra-hq/papra/pull/1021) [`133d235`](https://github.com/papra-hq/papra/commit/133d235ccda42c126c4ee15bde1b207b2a573a1e) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Prevented long documents name from pushing the right columns out of the container.
+-
+-## 26.4.0
+-
+-### Minor Changes
+-
+-- [#993](https://github.com/papra-hq/papra/pull/993) [`17b501a`](https://github.com/papra-hq/papra/commit/17b501a9968591db5ca7f36c850c1662ee3c2fdf) Thanks [@CorentinTh](https://github.com/CorentinTh)! - **Breaking change regarding webhook URLs**
+-
+-  Added SSRF protection for webhook URLs. Webhook URLs are now validated to ensure they do not point to private or reserved IP addresses, preventing potential server-side request forgery attacks.
+-  So webhooks pointing to private IPs (e.g. `http://192.168.0.1/some/stuff`), or with domains resolving to private IPs (e.g. `http://myservice.local/some/stuff`) will be blocked unless explicitly allowed.
+-
+-  Two new configuration options are available:
+-  - `WEBHOOK_SSRF_PROTECTION_ENABLED` Set to `false` to fully disable SSRF protection. This is not recommended, prefer using the allowlist below instead.
+-  - `WEBHOOK_URL_ALLOWED_HOSTNAMES` A comma-separated list of hostnames (IP addresses or domain names) that are explicitly trusted and exempt from SSRF checks (e.g. internal services you control).
+-
+-  Addressing [GHSA-cjw7-qg95-58mq](https://github.com/papra-hq/papra/security/advisories/GHSA-cjw7-qg95-58mq), credit to [@Toothless5143](https://github.com/Toothless5143) for the responsible disclosure.
+-
+-### Patch Changes
+-
+-- [#986](https://github.com/papra-hq/papra/pull/986) [`884d470`](https://github.com/papra-hq/papra/commit/884d4704106b22165037a96aad471146e481fef2) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Removed currently unused `expiresAt` placeholder fields in the internal API key creation endpoint to avoid confusions, as non-ui (so non-standard) creation of API keys can set an expiration date, which is not currently enforced by the system.
+-
+-  Addressing [GHSA-866c-mc22-wvv5](https://github.com/papra-hq/papra/security/advisories/GHSA-866c-mc22-wvv5), credit to [@Toothless5143](https://github.com/Toothless5143) for the responsible disclosure.
+-
+-- [#992](https://github.com/papra-hq/papra/pull/992) [`9039b48`](https://github.com/papra-hq/papra/commit/9039b4806eba7212360e3efcb67cc4758c611798) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Properly return a "document already has tag" error when trying to add a tag to a document that already has it, instead of a generic 500 error when using an hosted Turso db.
+-
+-- [#992](https://github.com/papra-hq/papra/pull/992) [`9039b48`](https://github.com/papra-hq/papra/commit/9039b4806eba7212360e3efcb67cc4758c611798) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Api now returns a 409 status code instead of a 400 when either creating a tag that already exists or adding a tag to a document that already has it.
+-
+-- [#995](https://github.com/papra-hq/papra/pull/995) [`327eda0`](https://github.com/papra-hq/papra/commit/327eda00013559fc28993ea03274e6dd948e995c) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Properly sanitize user name before including it in the email content to prevent potential XSS or html injection attacks.
+-
+-  Addressing [GHSA-6f8x-2rc9-vgh4](https://github.com/papra-hq/papra/security/advisories/GHSA-6f8x-2rc9-vgh4), credit to [@Toothless5143](https://github.com/Toothless5143) for the responsible disclosure.
+-
+-- [#981](https://github.com/papra-hq/papra/pull/981) [`f336b84`](https://github.com/papra-hq/papra/commit/f336b842c645744eb95ed0cf297739c2abc98800) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Moved the theme picker to the user settings dropdown
+-
+-- [#984](https://github.com/papra-hq/papra/pull/984) [`8fe222b`](https://github.com/papra-hq/papra/commit/8fe222bb8f99a9f1fd0b3cb6c970b9e80e79f8e9) Thanks [@CorentinTh](https://github.com/CorentinTh)! - App environment configuration validation is now a bit stricter, with slightly different error messages. And the following specific changes:
+-  - Boolean env variables previously considered non-truthy values as `false`. Now they will throw a validation error if the value is not a valid boolean-ish value
+-  - `AUTH_PROVIDERS_CUSTOMS` json parsing now accepts only valid boolean values for the `pkce` property, while before it accepted any non-true value as `false`
+-  - Stricter `AUTH_FORBIDDEN_EMAIL_DOMAINS` domain validation
+-
+-## 26.3.0
+-
+-### Minor Changes
+-
+-- [#956](https://github.com/papra-hq/papra/pull/956) [`7c2b2d2`](https://github.com/papra-hq/papra/commit/7c2b2d27cd43bcd4f0f67bb3627cfc298cdaaaad) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Introduced custom properties! Define custom properties on your organization and set them on documents. Custom properties can be of different types, including text, number, select, multi-select and document or organization members relations.
+-
+-- [#948](https://github.com/papra-hq/papra/pull/948) [`725eaff`](https://github.com/papra-hq/papra/commit/725eaff4b0339ce974b91e9eeb4482f716cfa279) Thanks [@CorentinTh](https://github.com/CorentinTh)! - When extracting text from PDF documents, if neither text nor images suitable for OCR are found, the pages are rendered as images and processed with OCR. Adding support for vectorized text.
+-
+-### Patch Changes
+-
+-- [#970](https://github.com/papra-hq/papra/pull/970) [`5900674`](https://github.com/papra-hq/papra/commit/5900674083f4f55733c843b438516c8fdfff687c) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added support for quoted search filters, like `"warranty date":>2026`
+-
+-- [#969](https://github.com/papra-hq/papra/pull/969) [`812e7c3`](https://github.com/papra-hq/papra/commit/812e7c317e3a45a35c318b8c54372168a746a7b3) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added sort actions in the tags list page
+-
+-- [#939](https://github.com/papra-hq/papra/pull/939) [`87a94ab`](https://github.com/papra-hq/papra/commit/87a94ab5671ff71760edf1851b7ea95cdf0d39bf) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Removed useless corepack installation in Dockerfiles
+-
+-- [#949](https://github.com/papra-hq/papra/pull/949) [`ec740ed`](https://github.com/papra-hq/papra/commit/ec740ed168496a458a3da6a9c71d31e1d8bf2746) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added document content extraction support for .xlsx and .ods files.
+-
+-- [#916](https://github.com/papra-hq/papra/pull/916) [`65c2bea`](https://github.com/papra-hq/papra/commit/65c2bea4c34bf2aeb65819a3ee78d8a08890d64c) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added low-level safeguards in the document storage service to prevent overwriting existing files
+-
+-- [#943](https://github.com/papra-hq/papra/pull/943) [`a7b18ce`](https://github.com/papra-hq/papra/commit/a7b18cec6b0c3396b6bd9e2144dcc8f5ce9a9dfd) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Add the document date property.
+-
+-- [#921](https://github.com/papra-hq/papra/pull/921) [`6be6bea`](https://github.com/papra-hq/papra/commit/6be6beae905674b7a7db8f070f811c59ee28e9e0) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added the possibility to customize the document storage path
+-
+-- [#935](https://github.com/papra-hq/papra/pull/935) [`62e9e66`](https://github.com/papra-hq/papra/commit/62e9e6663896fe249b45bb2cebc52cdba7c86606) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Add a document storage migration script to migrate documents from one storage service to another or update storage key or configuration.
+-
+-- [#930](https://github.com/papra-hq/papra/pull/930) [`41e9f33`](https://github.com/papra-hq/papra/commit/41e9f33b06de15977e4f348184c1772fd85feddb) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added an option to fully disable the content extraction feature.
+-
+-- [#968](https://github.com/papra-hq/papra/pull/968) [`74828e8`](https://github.com/papra-hq/papra/commit/74828e8ad671e3d05319f343e1b6e44df0baf406) Thanks [@AntonPalmqvist](https://github.com/AntonPalmqvist)! - Added Swedish language support
+-
+-- [#945](https://github.com/papra-hq/papra/pull/945) [`31e27d5`](https://github.com/papra-hq/papra/commit/31e27d5e1e00e623e02edfce7055c26c392fb6a8) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added the `date` search filter, allowing to filter by document dates, like `date:>2026`, and `has:date`.
+-
+-- [#953](https://github.com/papra-hq/papra/pull/953) [`db6badb`](https://github.com/papra-hq/papra/commit/db6badbc3cc15d5d2b91b79602eccc3926e564eb) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added content extraction support for scanned PDFs images in 1-bit-per-pixel grayscale format.
+-
+-- [#965](https://github.com/papra-hq/papra/pull/965) [`87d80af`](https://github.com/papra-hq/papra/commit/87d80af2ac1ea5aeadb35a86575af55450234d1e) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added support for searching by custom properties. For example, given a custom property `status` of type `select` with options `todo`, `in progress` and `done`, you could search for `status:todo` to find all documents with the status set to todo, or `has:status` to find all documents with a status set (and `-has:status` for documents without a status).
+-
+-## 26.2.2
+-
+-### Patch Changes
+-
+-- [#911](https://github.com/papra-hq/papra/pull/911) [`548608b`](https://github.com/papra-hq/papra/commit/548608be39bdf9fff9d212a151552ecbf2c3f50c) Thanks [@CorentinTh](https://github.com/CorentinTh)! - In the advanced PDF viewer, added empty placeholders for thumbnails to prevent layout shifts.
+-
+-- [#911](https://github.com/papra-hq/papra/pull/911) [`548608b`](https://github.com/papra-hq/papra/commit/548608be39bdf9fff9d212a151552ecbf2c3f50c) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fix an issue in the advanced PDF that caused the outline panel to appear empty
+-
+-## 26.2.1
+-
+-### Patch Changes
+-
+-- [#908](https://github.com/papra-hq/papra/pull/908) [`2143728`](https://github.com/papra-hq/papra/commit/2143728157d9070de85f35a8c68b9e13d81abae4) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fixed an issue preventing the "about Papra" dialog from opening.
+-
+-## 26.2.0
+-
+-### Minor Changes
+-
+-- [#894](https://github.com/papra-hq/papra/pull/894) [`77186da`](https://github.com/papra-hq/papra/commit/77186da42cff7fff1d13fcb706aa96b17e2c6a23) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added a "Open with..." button for documents along with a complete PDF viewer page with standard features such as thumbnails, outline, attachments, and document properties.
+-
+-- [#820](https://github.com/papra-hq/papra/pull/820) [`3fa398c`](https://github.com/papra-hq/papra/commit/3fa398c92851e6f0c767bd66e8cc2f0e523577ef) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Replaced `date-fns` functions with in-house implementations to avoid pulling the 30MB lib (mainly due to locale data).
+-
+-- [#852](https://github.com/papra-hq/papra/pull/852) [`71872db`](https://github.com/papra-hq/papra/commit/71872db3678307de6e1b15a9b63653bd949e0202) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added explicit error when trying to update a tag with a name that already exists
+-
+-- [#827](https://github.com/papra-hq/papra/pull/827) [`ca2ef28`](https://github.com/papra-hq/papra/commit/ca2ef2866bfb54abaed26c4c748b4ec5fadf6170) Thanks [@CorentinTh](https://github.com/CorentinTh)! - In the search queries, tag filters are now case-insensitive, so `tag:Important` and `tag:important` will match the same tag (as tags names are case-insensitive).
+-
+-- [#883](https://github.com/papra-hq/papra/pull/883) [`63ddecf`](https://github.com/papra-hq/papra/commit/63ddecf4899d582db1f8a2dbe623346499a5677a) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Synchronized pagination state in the URL on the documents list page.
+-
+-- [#826](https://github.com/papra-hq/papra/pull/826) [`494aa5b`](https://github.com/papra-hq/papra/commit/494aa5b882315fb55ab84f78259d899e5e2d5355) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Trim tag names and descriptions on creation and update to avoid leading/trailing spaces.
+-
+-- [#829](https://github.com/papra-hq/papra/pull/829) [`393a155`](https://github.com/papra-hq/papra/commit/393a15593fdc60ebd11dcf82c29ae95159122f25) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added a button to generate a random color in the tag creation/edition modal.
+-
+-- [#810](https://github.com/papra-hq/papra/pull/810) [`1d5ada8`](https://github.com/papra-hq/papra/commit/1d5ada85223f4227f3e42220db85faaa943f3c11) Thanks [@What-is-water93](https://github.com/What-is-water93)! - Significantly reduced the size of the rootless docker image by preventing file duplications due to `chown` operations, gaining ~230MB, more than 30% reduction in size.
+-
+-- [#900](https://github.com/papra-hq/papra/pull/900) [`9058f9e`](https://github.com/papra-hq/papra/commit/9058f9e08c8321c7d03b4525fec7c2701f01bec5) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added an option to limit the number of tags that can be created in an organization, defaulting to 200. Configurable via the `MAX_TAGS_PER_ORGANIZATION` environment variable.
+-
+-- [#884](https://github.com/papra-hq/papra/pull/884) [`4c7da4b`](https://github.com/papra-hq/papra/commit/4c7da4b6747ed1d8631812aa8aad69d0fa9a97ca) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Excluded Synology specific files for the ingestion folder
+-
+-- [#896](https://github.com/papra-hq/papra/pull/896) [`fdd955e`](https://github.com/papra-hq/papra/commit/fdd955e20c7bf7732ee39aad216636bc1a88fd6b) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Coerce MIME type of intake email attachments when declared as `application/octet-stream` or empty, using magic bytes detection with extension-based fallback.
+-
+-- [#859](https://github.com/papra-hq/papra/pull/859) [`afcfcf7`](https://github.com/papra-hq/papra/commit/afcfcf75cb69661f0e9df0cbbd139b00441d92d3) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fixed a race condition that could incorrectly show the "Email verified" page after successful login, even when email verification had not been completed or was not required.
+-
+-- [#870](https://github.com/papra-hq/papra/pull/870) [`69633fb`](https://github.com/papra-hq/papra/commit/69633fb9ea3c0ef82abf5b1d5903058e66895bbe) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Improved the document tag picker UI and UX, allowing tags to be managed from the document list.
+-
+-- [#855](https://github.com/papra-hq/papra/pull/855) [`3f4ca07`](https://github.com/papra-hq/papra/commit/3f4ca07a5d339542d80100d172f27590341f4469) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added tagging rules creation/update loading states
+-
+-- [#880](https://github.com/papra-hq/papra/pull/880) [`4f5b29b`](https://github.com/papra-hq/papra/commit/4f5b29b7edc108f0793b09f94bdb248fcba2ddba) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Removed misleading "git missing" error log on app startup when git isn't available, like in Docker env.
+-
+-- [#822](https://github.com/papra-hq/papra/pull/822) [`b6951ea`](https://github.com/papra-hq/papra/commit/b6951ea05a01820095a8caf83ba1c35b215eafe6) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Tag names uniqueness enforced with case insensitivity per organization. Migration will ensure deduplication by appending prefixes in case of existing collisions.
+-
+-- [#811](https://github.com/papra-hq/papra/pull/811) [`1eeb3df`](https://github.com/papra-hq/papra/commit/1eeb3df4a282d93bb71c8f34cf086fa0babfb40e) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added small header in organization creation page to quickly access the invitations when first organization is being created
+-
+-- [#903](https://github.com/papra-hq/papra/pull/903) [`d13c74f`](https://github.com/papra-hq/papra/commit/d13c74f0dbe564b7afe4a8da1c653ad84565ab78) Thanks [@CorentinTh](https://github.com/CorentinTh)! - The command palette state no longer resets when opening it, allowing to keep the search query and results when closing and reopening it.
+-
+-- [#851](https://github.com/papra-hq/papra/pull/851) [`316a8c2`](https://github.com/papra-hq/papra/commit/316a8c2f9c326695c5a943556c2b97e99a58c0a4) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added tag creation/update button loading state
+-
+-- [#892](https://github.com/papra-hq/papra/pull/892) [`1c1d273`](https://github.com/papra-hq/papra/commit/1c1d273fbdd7dc433ff18fcb7ae546e4c2197cf9) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Enforced the length of the intake email webhook secret (`INTAKE_EMAILS_WEBHOOK_SECRET`) to be between 16 and 128 characters to match the OwlRelay API validation requirements.
+-
+-- [#855](https://github.com/papra-hq/papra/pull/855) [`3f4ca07`](https://github.com/papra-hq/papra/commit/3f4ca07a5d339542d80100d172f27590341f4469) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Prevented multiple tagging-rules creation attempts when clicking the create button quickly.
+-
+-- [#851](https://github.com/papra-hq/papra/pull/851) [`316a8c2`](https://github.com/papra-hq/papra/commit/316a8c2f9c326695c5a943556c2b97e99a58c0a4) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Prevented multiple tag creation attempts when clicking the create button quickly.
+-
+-- [#899](https://github.com/papra-hq/papra/pull/899) [`d1eae05`](https://github.com/papra-hq/papra/commit/d1eae05dd3cade1f30ec947982a21f87f0ccffb0) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Api breaking change: removed the `/api/organizations/:organizationId/documents/search` endpoint in favor of the existing `/api/organizations/:organizationId/documents` with an optional `searchQuery` query parameter.
+-  The new `/api/organizations/:organizationId/documents` endpoint now behave as the old `/search` endpoint, with all documents being returned when `searchQuery` is empty. Note that the response field `totalCount` of the old `/search` endpoint has been renamed to `documentsCount` in the new endpoint.
+-
+-  Before:
+-
+-  ```
+-  GET /api/organizations/:organizationId/documents/search?searchQuery=invoice&pageIndex=1&pageSize=20
+-  Response: {
+-    documents: Document[];
+-    totalCount: number;
+-  }
+-
+-  GET /api/organizations/:organizationId/documents?pageIndex=1&pageSize=20
+-  Response: {
+-    documents: Document[];
+-    documentsCount: number;
+-  }
+-  ```
+-
+-  After:
+-
+-  ```
+-  GET /api/organizations/:organizationId/documents?searchQuery=invoice&pageIndex=1&pageSize=20
+-  Response: {
+-    documents: Document[];
+-    documentsCount: number;
+-  }
+-  ```
+-
+-- [#893](https://github.com/papra-hq/papra/pull/893) [`0c62716`](https://github.com/papra-hq/papra/commit/0c62716e5d67f67e1f76ccaab6385fb932894325) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Security fix: prevented unauthorized listing to organization tags and webhooks. An authenticated user could list the tags and webhooks of an organization they are not a member of by sending requests to the corresponding endpoints by knowing the organization ID. Credit to [Sergio Cabrera](https://www.linkedin.com/in/sergio-cabrera-878766239), security researcher, for responsibly disclosing this vulnerability.
+-
+-## 26.1.0
+-
+-### Minor Changes
+-
+-- [#796](https://github.com/papra-hq/papra/pull/796) [`aaa05a8`](https://github.com/papra-hq/papra/commit/aaa05a86076af06792965bd00dde096965bb244e) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Renamed the internal distribution package from `@papra/docker` to `@papra/app`. New release tags will use the format `@papra/app@26.0.0` instead of `@papra/docker@26.0.0`.
+-
+-### Patch Changes
+-
+-- [#784](https://github.com/papra-hq/papra/pull/784) [`2c078e2`](https://github.com/papra-hq/papra/commit/2c078e20f5341dfc185f427b02c166256f3e22f8) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Tag list: order tags by creation date descending (newest on top)
+-
+-- [#781](https://github.com/papra-hq/papra/pull/781) [`7c5e68f`](https://github.com/papra-hq/papra/commit/7c5e68fbfcf91aa75e429f44ad645fc00b96d22e) Thanks [@CorentinTh](https://github.com/CorentinTh)! - When navigating to / and having only one organization, get redirected to that organization
+-
+-- [#783](https://github.com/papra-hq/papra/pull/783) [`ad575bf`](https://github.com/papra-hq/papra/commit/ad575bfc62096f44dab9e25915c6a1e0f30d9ceb) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fix tag automatic search link issue when tags have spaces, before `tag:my tag` would not work, now generate `tag:"my tag"` to fix it.
+-
+-- [#795](https://github.com/papra-hq/papra/pull/795) [`3a41531`](https://github.com/papra-hq/papra/commit/3a4153116c6111f82d5cb2417f9874ebb5450d17) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Hide the "Don't have an account? Register" link on the login page when new account registration is disabled.
+-
+-- [#785](https://github.com/papra-hq/papra/pull/785) [`45534a0`](https://github.com/papra-hq/papra/commit/45534a0ce7292ed723d56efd4796390a62e0f3e3) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added the `has:tags` search filter to check for the presence or absence (`-has:tags` or `NOT has:tags`) of tags on documents.
+-
+-- [#777](https://github.com/papra-hq/papra/pull/777) [`42e401c`](https://github.com/papra-hq/papra/commit/42e401c7dd73b98dc575c3876d0888c98b9a0350) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Properly tree-shake all demo assets to reduce the size of production non-demo build. Reducing the bundle assets by ~70kB (~55kB on main chunk + removed demo chunk of ~15kB).
+-
+-- [#794](https://github.com/papra-hq/papra/pull/794) [`0485701`](https://github.com/papra-hq/papra/commit/0485701c6614d652dfd5b8286c92a1c0e7cf367e) Thanks [@ktsourdinis](https://github.com/ktsourdinis)! - Added Greek language support
+-
+-- [#798](https://github.com/papra-hq/papra/pull/798) [`c27d85f`](https://github.com/papra-hq/papra/commit/c27d85fea41eaf6ba0d87890d4952e502aeec864) Thanks [@cergmin](https://github.com/cergmin)! - Added Russian language support
+-
+-## 26.0.0
+-
+-### Major Changes
+-
+-- [#758](https://github.com/papra-hq/papra/pull/758) [`a2a2061`](https://github.com/papra-hq/papra/commit/a2a2061a63bd6c8c2b865ab9c31de2cca438a3cb) Thanks [@CorentinTh](https://github.com/CorentinTh)! - API Breaking Change:
+-  Document search endpoint now returns complete documents along with total count matching the search query, and no longer nests results under `searchResults`.
+-
+-  Before:
+-
+-  ```ts
+-  // GET /api/organizations/:organizationId/documents/search?searchQuery=foobar
+-  {
+-    searchResults: {
+-      documents: [
+-        { id: 'doc_1', name: 'Document 1.pdf' },
+-        { id: 'doc_2', name: 'Document 2.pdf' },
+-      ],
+-    },
+-  }
+-  ```
+-
+-  After:
+-
+-  ```ts
+-  // GET /api/organizations/:organizationId/documents/search?searchQuery=foobar
+-  {
+-    documents: [
+-      { id: 'doc_1', name: 'Document 1.pdf', mimeType: 'application/pdf' /* ...otherProps */ },
+-      { id: 'doc_2', name: 'Document 2.pdf', mimeType: 'application/pdf' /* ...otherProps */ },
+-    ],
+-    totalCount: 42,
+-  }
+-  ```
+-
+-### Patch Changes
+-
+-- [#761](https://github.com/papra-hq/papra/pull/761) [`2e46c08`](https://github.com/papra-hq/papra/commit/2e46c08de330ec61fbd7f106bc39d533b87220a7) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added a "Show more results" option in quick search when there is more document not displayed
+-
+-- [#733](https://github.com/papra-hq/papra/pull/733) [`848671b`](https://github.com/papra-hq/papra/commit/848671b982379ef6ebe26aeb7b1b8ccde89f3b8d) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Improved search speed by using document and organization ids in index
+-  The first restart after updating may take up to few minutes as the search index is rebuilt
+-
+-- [#758](https://github.com/papra-hq/papra/pull/758) [`a2a2061`](https://github.com/papra-hq/papra/commit/a2a2061a63bd6c8c2b865ab9c31de2cca438a3cb) Thanks [@CorentinTh](https://github.com/CorentinTh)! - The documents page can now be used with advanced search queries
+-
+-- [#723](https://github.com/papra-hq/papra/pull/723) [`68d848e`](https://github.com/papra-hq/papra/commit/68d848e622f862ced34ff055819b4af7d171d727) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Auto assign admin role to the first user registering
+-
+-- [#726](https://github.com/papra-hq/papra/pull/726) [`e8f6217`](https://github.com/papra-hq/papra/commit/e8f6217e351a6b3c5197dae41ea0f12b3d8534b3) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added about page and modal with version informations
+-
+-- [#707](https://github.com/papra-hq/papra/pull/707) [`a213f06`](https://github.com/papra-hq/papra/commit/a213f0683baebd6546bf38ba9e719c31b60064ed) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added a dedicated increased timeout for the document upload route
+-
+-- [#712](https://github.com/papra-hq/papra/pull/712) [`b8c14d0`](https://github.com/papra-hq/papra/commit/b8c14d0f44628843c7a682f84f7215fecc50f426) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added a feedback message upon request timeout
+-
+-- [#717](https://github.com/papra-hq/papra/pull/717) [`f3fb5ff`](https://github.com/papra-hq/papra/commit/f3fb5ff46a02d9ded9baaa0161d96fdb3ab5649d) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added support for two factor authentication
+-
+-- [#702](https://github.com/papra-hq/papra/pull/702) [`ec34cf1`](https://github.com/papra-hq/papra/commit/ec34cf17880682369d1ecf2957c2d7e0eed9f499) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Organizations listing and details in the admin dashboard
+-
+-- [#746](https://github.com/papra-hq/papra/pull/746) [`685f03c`](https://github.com/papra-hq/papra/commit/685f03c2fcbba134f108fb0b536f32b0597c60c6) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added advanced search syntax support
+-
+-- [#715](https://github.com/papra-hq/papra/pull/715) [`7448a17`](https://github.com/papra-hq/papra/commit/7448a170afc9f0038a7b8ac086d4d14aac3b0c3a) Thanks [@kirarpit](https://github.com/kirarpit)! - Properly cleanup orphan file when the same document exists in trash
+-
+-- [#758](https://github.com/papra-hq/papra/pull/758) [`a2a2061`](https://github.com/papra-hq/papra/commit/a2a2061a63bd6c8c2b865ab9c31de2cca438a3cb) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added query params sync for the search query in the documents search page for deep linking and browser state navigation
+-
+-- [#758](https://github.com/papra-hq/papra/pull/758) [`a2a2061`](https://github.com/papra-hq/papra/commit/a2a2061a63bd6c8c2b865ab9c31de2cca438a3cb) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Removed the possibility to filter by tag in the `/api/organizations/:organizationId/documents` route, use the `/api/organizations/:organizationId/documents/search` route instead.
+-
+-  ```bash
+-  # Before:
+-  GET /api/organizations/:organizationId/documents?tags=yourTagId
+-
+-  # After:
+-  GET /api/organizations/:organizationId/documents/search?query=tag:yourTagNameOrId
+-  ```
+-
+-- [#707](https://github.com/papra-hq/papra/pull/707) [`a213f06`](https://github.com/papra-hq/papra/commit/a213f0683baebd6546bf38ba9e719c31b60064ed) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Changed config key `config.server.routeTimeoutMs` to `config.server.defaultRouteTimeoutMs` (env variable remains the same)
+-
+-- [#718](https://github.com/papra-hq/papra/pull/718) [`8d70a7b`](https://github.com/papra-hq/papra/commit/8d70a7b3c36bcf3f49a27e2c4e92d3b974b552c2) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added api endpoint to check current API key (GET /api/api-keys/current)
+-
+-## 25.12.0
+-
+-### Minor Changes
+-
+-- [#685](https://github.com/papra-hq/papra/pull/685) [`cf91515`](https://github.com/papra-hq/papra/commit/cf91515cfe448176ac2f2c54f781495725678515) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Document search indexing and synchronization is now asynchronous, and no longer relies on database triggers.
+-  This significantly improves the responsiveness of the application when adding, updating, trashing, restoring, or deleting documents. It's even more noticeable when dealing with a large number of documents or on low-end hardware.
+-
+-- [#686](https://github.com/papra-hq/papra/pull/686) [`95662d0`](https://github.com/papra-hq/papra/commit/95662d025f535bf0f4f48683c1f7cb1fffeff0a7) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Enforcing the auth secret to be at least 32 characters long for security reasons
+-
+-- [#686](https://github.com/papra-hq/papra/pull/686) [`95662d0`](https://github.com/papra-hq/papra/commit/95662d025f535bf0f4f48683c1f7cb1fffeff0a7) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Now throw an error if AUTH_SECRET is not set in production mode
+-
+-- [#689](https://github.com/papra-hq/papra/pull/689) [`d795798`](https://github.com/papra-hq/papra/commit/d7957989310693934fd6e30f6ce540d76f10c9a2) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added a platform administration dashboard
+-
+-- [#675](https://github.com/papra-hq/papra/pull/675) [`17d6e9a`](https://github.com/papra-hq/papra/commit/17d6e9aa6a7152f3ceac3e829884cbd511166b99) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added support for Simplified Chinese language
+-
+-- [#679](https://github.com/papra-hq/papra/pull/679) [`6f38659`](https://github.com/papra-hq/papra/commit/6f38659638f5b84cd3ca330e5c44cb3b452921ae) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fixed an issue where the document icon didn't load for unknown file types
+-
+-## 25.11.0
+-
+-### Minor Changes
+-
+-- [#638](https://github.com/papra-hq/papra/pull/638) [`ae3abe9`](https://github.com/papra-hq/papra/commit/ae3abe9ec71bee5749a18190ef05228338ad1573) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added the possibility to filter out some email domain names for new registration
+-
+-- [#633](https://github.com/papra-hq/papra/pull/633) [`d267605`](https://github.com/papra-hq/papra/commit/d2676052c372ddf81c653cec699879cc2af212f9) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Lazy load some demo-mode specific code to reduce production client bundle
+-
+-- [#618](https://github.com/papra-hq/papra/pull/618) [`868281b`](https://github.com/papra-hq/papra/commit/868281bcffeef5adcf949c68721a90b7d5dd8e8f) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added translations for document table headers
+-
+-- [#653](https://github.com/papra-hq/papra/pull/653) [`ca80806`](https://github.com/papra-hq/papra/commit/ca808064fa82c4827eb0b3038ceb840291fe637b) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added some logging context when an intake email is received
+-
+-- [#650](https://github.com/papra-hq/papra/pull/650) [`dc6ee5b`](https://github.com/papra-hq/papra/commit/dc6ee5b22877e1d679aeec7d42e3894e6de54ff7) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Api breaking change: the document search endpoint return format changed, impacting any custom clients consuming it.
+-
+-  Before
+-
+-  ```ts
+-  // Get /api/organizations/:organizationId/documents/search
+-  {
+-    documents: {
+-      id: string;
+-      name: string;
+-      mimeType: string;
+-      // ... other document fields
+-    }
+-    [];
+-  }
+-  ```
+-
+-  After
+-
+-  ```ts
+-  // Get /api/organizations/:organizationId/documents/search
+-  {
+-    searchResults: {
+-      documents: {
+-        id: string;
+-        name: string;
+-      }
+-      [];
+-    }
+-  }
+-  ```
+-
+-- [#619](https://github.com/papra-hq/papra/pull/619) [`5b5ce85`](https://github.com/papra-hq/papra/commit/5b5ce85061b0aff3edb947db131d7149adc01605) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Limit concurrent browser upload to avoid network crashes
+-
+-- [#609](https://github.com/papra-hq/papra/pull/609) [`cb1f1b5`](https://github.com/papra-hq/papra/commit/cb1f1b5b019069e1119db015cc8ff55a1bed1d1c) Thanks [@dbarenholz](https://github.com/dbarenholz)! - Made the tags clickable in the tag list
+-
+-- [#655](https://github.com/papra-hq/papra/pull/655) [`08f4a1c`](https://github.com/papra-hq/papra/commit/08f4a1cd058277a63e4966ce1bdf73e94df22d39) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Intake email edge case: use original destination addresses when available for intake emails when forwarded
+-
+-- [#660](https://github.com/papra-hq/papra/pull/660) [`9b43baf`](https://github.com/papra-hq/papra/commit/9b43bafe333717de254c88fbfae2497538c0eaf9) Thanks [@bkwi](https://github.com/bkwi)! - Removed the possibility for unauthorized upload to another organization you're not member of
+-
+-- [#616](https://github.com/papra-hq/papra/pull/616) [`1922f24`](https://github.com/papra-hq/papra/commit/1922f24c0ad2acbe3a54559c30cfbaff3e1ccf5b) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Upgraded to node v24
+-
+-- [#607](https://github.com/papra-hq/papra/pull/607) [`abc463f`](https://github.com/papra-hq/papra/commit/abc463f75192ca0812466ea874ad2c6d363bd25a) Thanks [@dbarenholz](https://github.com/dbarenholz)! - Added Dutch translation
+-
+-- [#625](https://github.com/papra-hq/papra/pull/625) [`ee9eff4`](https://github.com/papra-hq/papra/commit/ee9eff491428020ec95ed0af7ac64de64c70f21a) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Improved server authentication logging
+-
+-- [#623](https://github.com/papra-hq/papra/pull/623) [`b087764`](https://github.com/papra-hq/papra/commit/b0877645a868998cae2b022e94f20c63946c9bae) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Improved unique constraints error when dealing with hosted libsql db
+-
+-- [#637](https://github.com/papra-hq/papra/pull/637) [`479a603`](https://github.com/papra-hq/papra/commit/479a6030015d9df437d4bcb16078a4daf3fe9b60) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fix tags table overflow for long tag descriptions: added some text wrapping for the description
+-
+-- [#657](https://github.com/papra-hq/papra/pull/657) [`96403c0`](https://github.com/papra-hq/papra/commit/96403c00473763dabc47745556b3a135ff4db3aa) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fix environment variable `DOCUMENT_STORAGE_S3_FORCE_PATH_STYLE` validation schema to account for boolean string
+-
+-## 25.10.2
+-
+-### Patch Changes
+-
+-- [#602](https://github.com/papra-hq/papra/pull/602) [`79e9bb1`](https://github.com/papra-hq/papra/commit/79e9bb1b6169c12dd0aa6bf75aa9929a9120d947) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added an email verification confirmation/expiration page
+-
+-- [#577](https://github.com/papra-hq/papra/pull/577) [`bd3e321`](https://github.com/papra-hq/papra/commit/bd3e321eb7216306faf3c0e1f3d2a7072f162d1f) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Improved graceful shutdown
+-
+-- [#584](https://github.com/papra-hq/papra/pull/584) [`f4740ba`](https://github.com/papra-hq/papra/commit/f4740ba59a63a84978e49d0073f0057c69b2a65f) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Reduced client bundle size by removing date-fns
+-
+-- [#598](https://github.com/papra-hq/papra/pull/598) [`377c11c`](https://github.com/papra-hq/papra/commit/377c11c185f56e197d4973a1e28866598dd553e0) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fix client redirection issue on non-existent organization
+-
+-- [#580](https://github.com/papra-hq/papra/pull/580) [`1228486`](https://github.com/papra-hq/papra/commit/1228486f28ec28a100665e08cb62ab65e883f952) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added text extraction support for `.docx`, `.odt`, `.rtf`, `.pptx` and `.odp`
+-
+-- [#591](https://github.com/papra-hq/papra/pull/591) [`0aad884`](https://github.com/papra-hq/papra/commit/0aad88471bc813255b82163ba0b223bc326b9cd6) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Updated pnpm version
+-
+-- [#575](https://github.com/papra-hq/papra/pull/575) [`be25de7`](https://github.com/papra-hq/papra/commit/be25de77215c87614a7387dc8dc02d86535d0510) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added global errors handlers
+-
+-- [#601](https://github.com/papra-hq/papra/pull/601) [`16ae461`](https://github.com/papra-hq/papra/commit/16ae4617df26d6c2c03e3a9268d7d9fe6f14215f) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added missing translations in the tagging rule form
+-
+-- [#601](https://github.com/papra-hq/papra/pull/601) [`16ae461`](https://github.com/papra-hq/papra/commit/16ae4617df26d6c2c03e3a9268d7d9fe6f14215f) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Choose between `All conditions must match` and `Any condition must match` in tagging rules
+-
+-- [#582](https://github.com/papra-hq/papra/pull/582) [`182ccbb`](https://github.com/papra-hq/papra/commit/182ccbb30bdaed33ee565465fd2d79cdbc881d8b) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fixed the webhook last triggered date always showing "never" in the webhook list.
+-
+-- [#583](https://github.com/papra-hq/papra/pull/583) [`b0abf7f`](https://github.com/papra-hq/papra/commit/b0abf7f78a851fccb4a5d9fce1400d0dc1020c02) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Improved the translation of dates and relative time
+-
+-- [#577](https://github.com/papra-hq/papra/pull/577) [`bd3e321`](https://github.com/papra-hq/papra/commit/bd3e321eb7216306faf3c0e1f3d2a7072f162d1f) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added the possibility to start either just the api, just the workers, or both (default)
+-
+-- [#585](https://github.com/papra-hq/papra/pull/585) [`a857370`](https://github.com/papra-hq/papra/commit/a857370343214566f22120dfeb2cb73e70561166) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fix webhook creation form preventing to create webhooks without secrets
+-
+-- [#540](https://github.com/papra-hq/papra/pull/540) [`75340f0`](https://github.com/papra-hq/papra/commit/75340f0ce7b1cec7b2599a80599dcab7f3013e23) Thanks [@jodli](https://github.com/jodli)! - Added button to reapply a tagging rule
+-
+-- [#589](https://github.com/papra-hq/papra/pull/589) [`e9a719d`](https://github.com/papra-hq/papra/commit/e9a719d06a93e8f79f1bacad01e30d9764606117) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fixed wrongly formatted [object Object] feedback message in auth pages
+-
+-## 25.10.1
+-
+-### Patch Changes
+-
+-- [#567](https://github.com/papra-hq/papra/pull/567) [`d7df2f0`](https://github.com/papra-hq/papra/commit/d7df2f095b8cdcdf5ac068a7e1ff6ead12a874c6) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Removed unnecessary left icon navbar
+-
+-- [#556](https://github.com/papra-hq/papra/pull/556) [`f66a9f5`](https://github.com/papra-hq/papra/commit/f66a9f5d1b3fe7a918802f9d6d1a90b073bd50c8) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added deleted and total document counts and sizes in the `/api/organizations/:organizationId/documents/statistics` route
+-
+-- [#570](https://github.com/papra-hq/papra/pull/570) [`c3ffa83`](https://github.com/papra-hq/papra/commit/c3ffa8387e2e757098d5344023363897e7e0a416) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added server hostname configuration
+-
+-- [#552](https://github.com/papra-hq/papra/pull/552) [`8aabd28`](https://github.com/papra-hq/papra/commit/8aabd28168fe7e77f5186ae7dd79e1f5d0bb7288) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Lighten the client bundle by removing lodash dep
+-
+-- [#550](https://github.com/papra-hq/papra/pull/550) [`1a7a14b`](https://github.com/papra-hq/papra/commit/1a7a14b3ed4caf1d9fec86a034249f3f7267d4e8) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fix weird navigation freeze when direct navigation to organizations
+-
+-- [#548](https://github.com/papra-hq/papra/pull/548) [`17cebde`](https://github.com/papra-hq/papra/commit/17cebde051eb2a09b9ac7bfc32674afc15e60ad2) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Made the validation more permissive for incoming intake email webhook addresses, allowing RFC 5322 compliant email addresses instead of just simple emails.
+-
+-- [#565](https://github.com/papra-hq/papra/pull/565) [`e4295e1`](https://github.com/papra-hq/papra/commit/e4295e14abf3a0bce9db10f41d46fd86c4bb4cb5) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Prevent small flash of wrong theme on initial load for slower connections
+-
+-- [#566](https://github.com/papra-hq/papra/pull/566) [`92daaa3`](https://github.com/papra-hq/papra/commit/92daaa35bb5e3b515b7eeda837f0a9e7dc0005f1) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Redacted webhook signing secret in api update response
+-
+-- [#560](https://github.com/papra-hq/papra/pull/560) [`54cc140`](https://github.com/papra-hq/papra/commit/54cc14052c5c6bc5e0b29a8feb92604d13e0fd52) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Reduced the client bundle size by switching to posthog-lite
+-
+-- [#555](https://github.com/papra-hq/papra/pull/555) [`c5b337f`](https://github.com/papra-hq/papra/commit/c5b337f3bb63fb0fc700dae08bacf0095f9b98e0) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Use organization max file size limit for pre-upload validation
+-
+-- [#567](https://github.com/papra-hq/papra/pull/567) [`d7df2f0`](https://github.com/papra-hq/papra/commit/d7df2f095b8cdcdf5ac068a7e1ff6ead12a874c6) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Redesigned the organization picker in the sidenav
+-
+-## 25.10.0
+-
+-### Minor Changes
+-
+-- [#544](https://github.com/papra-hq/papra/pull/544) [`9c6f14f`](https://github.com/papra-hq/papra/commit/9c6f14fc1316c972092cb29bb94ae7b53edeef02) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Use calendar based versioning for docker images
+-
+-### Patch Changes
+-
+-- [#532](https://github.com/papra-hq/papra/pull/532) [`9a6e822`](https://github.com/papra-hq/papra/commit/9a6e822e7145c41707c86126eb8241df798d2c0b) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Drop docker armv7 support
+-
+-- [#542](https://github.com/papra-hq/papra/pull/542) [`c434d87`](https://github.com/papra-hq/papra/commit/c434d873bc2da79664f8581bc802131beb95e490) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added soft deletion with grace period for organizations
+-
+-- [#534](https://github.com/papra-hq/papra/pull/534) [`624ad62`](https://github.com/papra-hq/papra/commit/624ad62c53a94a0b5722712957457cb9751a56d9) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added a page to view organization usage
+-
+-- [#538](https://github.com/papra-hq/papra/pull/538) [`73ab9e8`](https://github.com/papra-hq/papra/commit/73ab9e8ab58a96035182f9630977c17178f32405) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Save document activity log when auto tagging rule is applied
+-
+-- [#538](https://github.com/papra-hq/papra/pull/538) [`73ab9e8`](https://github.com/papra-hq/papra/commit/73ab9e8ab58a96035182f9630977c17178f32405) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Trigger tag-added webhooks when auto tagging rule is applied
+-
+-## 0.9.6
+-
+-### Patch Changes
+-
+-- [#531](https://github.com/papra-hq/papra/pull/531) [`2e2bb6f`](https://github.com/papra-hq/papra/commit/2e2bb6fbbdd02f6b8352ef2653bef0447948c1f0) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added env variable to configure ip header for rate limit
+-
+-- [#524](https://github.com/papra-hq/papra/pull/524) [`c84a921`](https://github.com/papra-hq/papra/commit/c84a9219886ecb2a77c67d904cf8c8d15b50747b) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fixed the api validation of tag colors to make it case incensitive
+-
+-## 0.9.5
+-
+-### Patch Changes
+-
+-- [#521](https://github.com/papra-hq/papra/pull/521) [`b287723`](https://github.com/papra-hq/papra/commit/b28772317c3662555e598755b85597d6cd5aeea1) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Properly handle file names encoding (utf8 instead of latin1) to support non-ASCII characters.
+-
+-- [#517](https://github.com/papra-hq/papra/pull/517) [`a3f9f05`](https://github.com/papra-hq/papra/commit/a3f9f05c664b4995b62db59f2e9eda8a3bfef0de) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Prevented organization deletion by non-organization owner
+-
+-## 0.9.4
+-
+-### Patch Changes
+-
+-- [#508](https://github.com/papra-hq/papra/pull/508) [`782f70f`](https://github.com/papra-hq/papra/commit/782f70ff663634bf9ff7218edabb9885a7c6f965) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added an option to disable PRAGMA statements from sqlite task service migrations
+-
+-- [#510](https://github.com/papra-hq/papra/pull/510) [`ab6fd6a`](https://github.com/papra-hq/papra/commit/ab6fd6ad10387f1dcd626936efc195d9d58d40ec) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added fallbacks env variables for the task worker id
+-
+-- [#512](https://github.com/papra-hq/papra/pull/512) [`cb3ce6b`](https://github.com/papra-hq/papra/commit/cb3ce6b1d8d5dba09cbf0d2964f14b1c93220571) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added organizations permissions for api keys
+-
+-## 0.9.3
+-
+-### Patch Changes
+-
+-- [#506](https://github.com/papra-hq/papra/pull/506) [`6bcb2a7`](https://github.com/papra-hq/papra/commit/6bcb2a71e990d534dd12d84e64a38f2b2baea25a) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added the possibility to define patterns for email intake username generation
+-
+-- [#504](https://github.com/papra-hq/papra/pull/504) [`936bc2b`](https://github.com/papra-hq/papra/commit/936bc2bd0a788e4fb0bceb6d14810f9f8734097b) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Split the intake-email username generation from the email address creation, some changes regarding the configuration when using the `random` driver.
+-
+-  ```env
+-  # Old configuration
+-  INTAKE_EMAILS_DRIVER=random-username
+-  INTAKE_EMAILS_EMAIL_GENERATION_DOMAIN=mydomain.com
+-
+-  # New configuration
+-  INTAKE_EMAILS_DRIVER=catch-all
+-  INTAKE_EMAILS_CATCH_ALL_DOMAIN=mydomain.com
+-  INTAKE_EMAILS_USERNAME_DRIVER=random
+-  ```
+-
+-- [#504](https://github.com/papra-hq/papra/pull/504) [`936bc2b`](https://github.com/papra-hq/papra/commit/936bc2bd0a788e4fb0bceb6d14810f9f8734097b) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added the possibility to configure OwlRelay domain
+-
+-## 0.9.2
+-
+-### Patch Changes
+-
+-- [#493](https://github.com/papra-hq/papra/pull/493) [`ed4d7e4`](https://github.com/papra-hq/papra/commit/ed4d7e4a00b2ca2c7fe808201c322f957d6ed990) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fix to allow cross docker volume file moving when consumption is done
+-
+-- [#500](https://github.com/papra-hq/papra/pull/500) [`208a561`](https://github.com/papra-hq/papra/commit/208a561668ed2d1019430a9f4f5c5d3fd4cde603) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added the possibility to define a Libsql/Sqlite driver for the tasks service
+-
+-- [#499](https://github.com/papra-hq/papra/pull/499) [`40cb1d7`](https://github.com/papra-hq/papra/commit/40cb1d71d5e52c40aab7ea2c6bc222cea6d55b70) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Enhanced security by serving files as attachement and with an octet-stream content type
+-
+-- [#501](https://github.com/papra-hq/papra/pull/501) [`b5bf0cc`](https://github.com/papra-hq/papra/commit/b5bf0cca4b571495329cb553da06e0d334ee8968) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fix an issue preventing to disable the max upload size
+-
+-- [#498](https://github.com/papra-hq/papra/pull/498) [`3da13f7`](https://github.com/papra-hq/papra/commit/3da13f759155df5d7c532160a7ea582385db63b6) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Removed the "open in new tab" button for security improvement (xss prevention)
+-
+-## 0.9.1
+-
+-### Patch Changes
+-
+-- [#491](https://github.com/papra-hq/papra/pull/491) [`bb9d555`](https://github.com/papra-hq/papra/commit/bb9d5556d3f16225ae40ca4d39600999e819b2c4) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fix cleanup state when a too-big-file is uploaded
+-
+-- [#492](https://github.com/papra-hq/papra/pull/492) [`54514e1`](https://github.com/papra-hq/papra/commit/54514e15db5deaffc59dcba34929b5e2e74282e1) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added a client side guard for rejecting too-big files
+-
+-- [#488](https://github.com/papra-hq/papra/pull/488) [`83e943c`](https://github.com/papra-hq/papra/commit/83e943c5b46432e55b6dfbaa587019a95ffab466) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fix favicons display issues on firefox
+-
+-- [#492](https://github.com/papra-hq/papra/pull/492) [`54514e1`](https://github.com/papra-hq/papra/commit/54514e15db5deaffc59dcba34929b5e2e74282e1) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fix i18n messages when a file-too-big error happens
+-
+-- [#492](https://github.com/papra-hq/papra/pull/492) [`54514e1`](https://github.com/papra-hq/papra/commit/54514e15db5deaffc59dcba34929b5e2e74282e1) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Clean all upload method to happen through the import status modal
+-
+-## 0.9.0
+-
+-### Minor Changes
+-
+-- [#472](https://github.com/papra-hq/papra/pull/472) [`b08241f`](https://github.com/papra-hq/papra/commit/b08241f20fc326a65a8de0551a7bfa91d9e4c71d) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Dropped support for the dedicated backblaze b2 storage driver as b2 now fully support s3 client
+-
+-- [#480](https://github.com/papra-hq/papra/pull/480) [`0a03f42`](https://github.com/papra-hq/papra/commit/0a03f42231f691d339c7ab5a5916c52385e31bd2) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added documents encryption layer
+-
+-- [#472](https://github.com/papra-hq/papra/pull/472) [`b08241f`](https://github.com/papra-hq/papra/commit/b08241f20fc326a65a8de0551a7bfa91d9e4c71d) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Stream file upload instead of full in-memory loading
+-
+-### Patch Changes
+-
+-- [#483](https://github.com/papra-hq/papra/pull/483) [`ec0a437`](https://github.com/papra-hq/papra/commit/ec0a437d86b4c8c0979ba9d0c2ff7b39f054cec0) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fix a bug where the ingestion folder was not working when the done or error destination folder path (`INGESTION_FOLDER_POST_PROCESSING_MOVE_FOLDER_PATH` and `INGESTION_FOLDER_ERROR_FOLDER_PATH`) were absolute.
+-
+-- [#475](https://github.com/papra-hq/papra/pull/475) [`ea9d90d`](https://github.com/papra-hq/papra/commit/ea9d90d6cff6954297152b3ad16f99170e8cd0dc) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Use node file streams in ingestion folder for smaller RAM footprint
+-
+-- [#477](https://github.com/papra-hq/papra/pull/477) [`a62d376`](https://github.com/papra-hq/papra/commit/a62d3767729ab02ae203a1ac7b7fd6eb6e011d98) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fixed an issue where tags assigned to only deleted documents won't show up in the tag list
+-
+-- [#472](https://github.com/papra-hq/papra/pull/472) [`b08241f`](https://github.com/papra-hq/papra/commit/b08241f20fc326a65a8de0551a7bfa91d9e4c71d) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Properly handle missing files errors in storage drivers
+-
+-- [#471](https://github.com/papra-hq/papra/pull/471) [`e77a42f`](https://github.com/papra-hq/papra/commit/e77a42fbf14da011cd396426aa0bbea56c889740) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Lazy load the PDF viewer to reduce the main chunk size
+-
+-- [#481](https://github.com/papra-hq/papra/pull/481) [`1606310`](https://github.com/papra-hq/papra/commit/1606310745e8edf405b527127078143481419e8c) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Allow for more complex intake-email origin adresses
+-
+-- [#470](https://github.com/papra-hq/papra/pull/470) [`d488efe`](https://github.com/papra-hq/papra/commit/d488efe2cc4aa4f433cec4e9b8cc909b091eccc4) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Simplified i18n tooling + improved performances
+-
+-- [#468](https://github.com/papra-hq/papra/pull/468) [`14c3587`](https://github.com/papra-hq/papra/commit/14c3587de07a605ec586bdc428d9e76956bf1c67) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Prevent infinit loading in search modal when an error occure
+-
+-- [#468](https://github.com/papra-hq/papra/pull/468) [`14c3587`](https://github.com/papra-hq/papra/commit/14c3587de07a605ec586bdc428d9e76956bf1c67) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Improved the UX of the document content edition panel
+-
+-- [#468](https://github.com/papra-hq/papra/pull/468) [`14c3587`](https://github.com/papra-hq/papra/commit/14c3587de07a605ec586bdc428d9e76956bf1c67) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added content edition support in demo mode
+-
+-## 0.8.2
+-
+-### Patch Changes
+-
+-- [#461](https://github.com/papra-hq/papra/pull/461) [`c085b9d`](https://github.com/papra-hq/papra/commit/c085b9d6766297943112601d3c634c716c4be440) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fix a regression bug that executed tagging rules before the file content was extracted
+-
+-## 0.8.1
+-
+-### Patch Changes
+-
+-- [#459](https://github.com/papra-hq/papra/pull/459) [`f20559e`](https://github.com/papra-hq/papra/commit/f20559e95d1dc7d7a099dfd9a9df42bf5ce1b0b2) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Removed dev-dependency needed in production build
+-
+-## 0.8.0
+-
+-### Minor Changes
+-
+-- [#452](https://github.com/papra-hq/papra/pull/452) [`7f7e5bf`](https://github.com/papra-hq/papra/commit/7f7e5bffcbcfb843f3b2458400dfb44409a44867) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Completely rewrote the migration mechanism
+-
+-- [#447](https://github.com/papra-hq/papra/pull/447) [`b5ccc13`](https://github.com/papra-hq/papra/commit/b5ccc135ba7f4359eaf85221bcb40ee63ba7d6c7) Thanks [@CorentinTh](https://github.com/CorentinTh)! - The file content extraction (like OCR) is now done asynchronously by the task runner
+-
+-- [#448](https://github.com/papra-hq/papra/pull/448) [`5868800`](https://github.com/papra-hq/papra/commit/5868800bcec6ed69b5441b50e4445fae5cdb5bfb) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fixed the impossibility to delete a tag that has been assigned to a document
+-
+-- [#432](https://github.com/papra-hq/papra/pull/432) [`6723baf`](https://github.com/papra-hq/papra/commit/6723baf98ad46f989fe1e1e19ad0dd25622cca77) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added new webhook events: document:updated, document:tag:added, document:tag:removed
+-
+-- [#432](https://github.com/papra-hq/papra/pull/432) [`6723baf`](https://github.com/papra-hq/papra/commit/6723baf98ad46f989fe1e1e19ad0dd25622cca77) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Webhooks invocation is now defered
+-
+-### Patch Changes
+-
+-- [#419](https://github.com/papra-hq/papra/pull/419) [`7768840`](https://github.com/papra-hq/papra/commit/7768840aa4425a03cb96dc1c17605bfa8e6a0de4) Thanks [@Edward205](https://github.com/Edward205)! - Added diacritics and improved wording for Romanian translation
+-
+-- [#448](https://github.com/papra-hq/papra/pull/448) [`5868800`](https://github.com/papra-hq/papra/commit/5868800bcec6ed69b5441b50e4445fae5cdb5bfb) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added feedback when an error occurs while deleting a tag
+-
+-- [#412](https://github.com/papra-hq/papra/pull/412) [`ffdae8d`](https://github.com/papra-hq/papra/commit/ffdae8db56c6ecfe63eb263ee606e9469eef8874) Thanks [@OsafAliSayed](https://github.com/OsafAliSayed)! - Simplified the organization intake email list
+-
+-- [#441](https://github.com/papra-hq/papra/pull/441) [`5e46bb9`](https://github.com/papra-hq/papra/commit/5e46bb9e6a39cd16a83636018370607a27db042a) Thanks [@Zavy86](https://github.com/Zavy86)! - Added Italian (it) language support
+-
+-- [#455](https://github.com/papra-hq/papra/pull/455) [`b33fde3`](https://github.com/papra-hq/papra/commit/b33fde35d3e8622e31b51aadfe56875d8e48a2ef) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Improved feedback message in case of invalid origin configuration
+-
+-## 0.7.0
+-
+-### Minor Changes
+-
+-- [#417](https://github.com/papra-hq/papra/pull/417) [`a82ff3a`](https://github.com/papra-hq/papra/commit/a82ff3a755fa1164b4d8ff09b591ed6482af0ccc) Thanks [@CorentinTh](https://github.com/CorentinTh)! - v0.7 release
+-
+-## 0.6.4
+-
+-### Patch Changes
+-
+-- [#392](https://github.com/papra-hq/papra/pull/392) [`21a5ccc`](https://github.com/papra-hq/papra/commit/21a5ccce6d42fde143fd3596918dfdfc9af577a1) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fix permission issue for non 1000:1000 rootless user
+-
+-- [#387](https://github.com/papra-hq/papra/pull/387) [`73b8d08`](https://github.com/papra-hq/papra/commit/73b8d080765b6eb9b479db39740cdc6972f6585d) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added configuration for the ocr language using DOCUMENTS_OCR_LANGUAGES
+-
+-- [#377](https://github.com/papra-hq/papra/pull/377) [`205c6cf`](https://github.com/papra-hq/papra/commit/205c6cfd461fa0020a93753571f886726ddfdb57) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Improve file preview for text-like files (.env, yaml, extension-less text files,...)
+-
+-- [#393](https://github.com/papra-hq/papra/pull/393) [`aad36f3`](https://github.com/papra-hq/papra/commit/aad36f325296548019148bc4e32782fe562fd95b) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fix weird centering in document page for long filenames
+-
+-- [#394](https://github.com/papra-hq/papra/pull/394) [`f28d824`](https://github.com/papra-hq/papra/commit/f28d8245bf385d7be3b3b8ee449c3fdc88fa375c) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added the possibility to disable login via email, to support sso-only auth
+-
+-- [#405](https://github.com/papra-hq/papra/pull/405) [`3401cfb`](https://github.com/papra-hq/papra/commit/3401cfbfdc7e280d2f0f3166ceddcbf55486f574) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Introduce APP_BASE_URL to mutualize server and client base url
+-
+-- [#346](https://github.com/papra-hq/papra/pull/346) [`c54a71d`](https://github.com/papra-hq/papra/commit/c54a71d2c5998abde8ec78741b8c2e561203a045) Thanks [@blstmo](https://github.com/blstmo)! - Fixes 400 error when submitting tags with uppercase hex colour codes.
+-
+-- [#408](https://github.com/papra-hq/papra/pull/408) [`09e3bc5`](https://github.com/papra-hq/papra/commit/09e3bc5e151594bdbcb1f9df1b869a78e583af3f) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added Romanian (ro) translation
+-
+-- [#383](https://github.com/papra-hq/papra/pull/383) [`0b276ee`](https://github.com/papra-hq/papra/commit/0b276ee0d5e936fffc1f8284c654a8ada0efbafb) Thanks [@LMArantes](https://github.com/LMArantes)! - Added Brazilian Portuguese (pt-BR) language support
+-
+-- [#399](https://github.com/papra-hq/papra/pull/399) [`47b69b1`](https://github.com/papra-hq/papra/commit/47b69b15f4f711e47421fc21a3ac447824d67642) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fix back to organization link in organization settings
+-
+-- [#403](https://github.com/papra-hq/papra/pull/403) [`1711ef8`](https://github.com/papra-hq/papra/commit/1711ef866d0071a804484b3e163a5e2ccbcec8fd) Thanks [@Icikowski](https://github.com/Icikowski)! - Added Polish (pl) language support
+-
+-- [#379](https://github.com/papra-hq/papra/pull/379) [`6cedc30`](https://github.com/papra-hq/papra/commit/6cedc30716e320946f79a0a9fd8d3b26e834f4db) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Updated dependencies
+-
+-- [#411](https://github.com/papra-hq/papra/pull/411) [`2601566`](https://github.com/papra-hq/papra/commit/26015666de197827a65a5bebf376921bbfcc3ab8) Thanks [@4DRIAN0RTIZ](https://github.com/4DRIAN0RTIZ)! - Added Spanish (es) translation
+-
+-- [#391](https://github.com/papra-hq/papra/pull/391) [`40a1f91`](https://github.com/papra-hq/papra/commit/40a1f91b67d92e135d13dfcd41e5fd3532c30ca5) Thanks [@itsjuoum](https://github.com/itsjuoum)! - Added European Portuguese (pt) translation
+-
+-- [#378](https://github.com/papra-hq/papra/pull/378) [`f1e1b40`](https://github.com/papra-hq/papra/commit/f1e1b4037b31ff5de1fd228b8390dd4d97a8bda8) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added tag color swatches and picker
+-
+-## 0.6.3
+-
+-### Patch Changes
+-
+-- [#357](https://github.com/papra-hq/papra/pull/357) [`585c53c`](https://github.com/papra-hq/papra/commit/585c53cd9d0d7dbd517dbb1adddfd9e7b70f9fe5) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added a /llms.txt on main website
+-
+-- [#366](https://github.com/papra-hq/papra/pull/366) [`b8c2bd7`](https://github.com/papra-hq/papra/commit/b8c2bd70e3d0c215da34efcdcdf1b75da1ed96a1) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Allow for adding/removing tags to document using api keys
+-
+-- [#359](https://github.com/papra-hq/papra/pull/359) [`0c2cf69`](https://github.com/papra-hq/papra/commit/0c2cf698d1a9e9a3cea023920b10cfcd5d83be14) Thanks [@Mavv3006](https://github.com/Mavv3006)! - Add German translation
+-
+-## 0.6.2
+-
+-### Patch Changes
+-
+-- [#337](https://github.com/papra-hq/papra/pull/337) [`1c574b8`](https://github.com/papra-hq/papra/commit/1c574b8305eb7bde4f1b75ac38a610ca0120a613) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Ensure database directory exists when running scripts (like migrations)
+-
+-- [#333](https://github.com/papra-hq/papra/pull/333) [`ff830c2`](https://github.com/papra-hq/papra/commit/ff830c234a02ddb4cbc480cf77ef49b8de35fbae) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fixed version release link
+-
+-## 0.6.1
+-
+-### Patch Changes
+-
+-- [#326](https://github.com/papra-hq/papra/pull/326) [`17ca8f8`](https://github.com/papra-hq/papra/commit/17ca8f8f8110c3ffb550f67bfba817872370171c) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fix content disposition header to support non-ascii filenames
+-
+-## 0.6.0
+-
+-### Minor Changes
+-
+-- [#320](https://github.com/papra-hq/papra/pull/320) [`8ccdb74`](https://github.com/papra-hq/papra/commit/8ccdb748349a3cacf38f032fd4d3beebce202487) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Set CLIENT_BASE_URL default value to http://localhost:1221 in Dockerfiles
+-
+-- [#317](https://github.com/papra-hq/papra/pull/317) [`79c1d32`](https://github.com/papra-hq/papra/commit/79c1d3206b140cf8b3d33ef8bda6098dcf4c9c9c) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added document activity log
+-
+-- [#319](https://github.com/papra-hq/papra/pull/319) [`60059c8`](https://github.com/papra-hq/papra/commit/60059c895c4860cbfda69d3c989ad00542def65b) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added pending invitation management page
+-
+-- [#306](https://github.com/papra-hq/papra/pull/306) [`f0876fd`](https://github.com/papra-hq/papra/commit/f0876fdc638d596c5b7f5eeb2e6cd9beecab328f) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added support for classic SMTP client for email sending
+-
+-- [#304](https://github.com/papra-hq/papra/pull/304) [`cb38d66`](https://github.com/papra-hq/papra/commit/cb38d66485368429027826d7a1630e75fbe52e65) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Reworked the email sending system to be more flexible and allow for different drivers to be used.
+-  `EMAILS_DRY_RUN` has been removed and you can now use `EMAILS_DRIVER=logger` config option to log emails instead of sending them.
+-
+-### Patch Changes
+-
+-- [#309](https://github.com/papra-hq/papra/pull/309) [`d4f72e8`](https://github.com/papra-hq/papra/commit/d4f72e889a4d39214de998942bc0eb88cd5cee3d) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Disable "Manage subscription" from organization setting by default
+-
+-- [#308](https://github.com/papra-hq/papra/pull/308) [`759a3ff`](https://github.com/papra-hq/papra/commit/759a3ff713db8337061418b9c9b122b957479343) Thanks [@CorentinTh](https://github.com/CorentinTh)! - I18n: full support for French language
+-
+-- [#312](https://github.com/papra-hq/papra/pull/312) [`e5ef40f`](https://github.com/papra-hq/papra/commit/e5ef40f36c27ea25dc8a79ef2805d673761eec2a) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fixed an issue with the reset-password page navigation guard that prevented reset
+-
+-## 0.5.1
+-
+-### Patch Changes
+-
+-- [#302](https://github.com/papra-hq/papra/pull/302) [`b62ddf2`](https://github.com/papra-hq/papra/commit/b62ddf2bc4d1b134b14c847ffa30b65cb29489af) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Set email setting to dry-run by default in docker
+-
+-## 0.5.0
+-
+-### Minor Changes
+-
+-- [#295](https://github.com/papra-hq/papra/pull/295) [`438a311`](https://github.com/papra-hq/papra/commit/438a31171c606138c4b7fa299fdd58dcbeaaf298) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added support for custom oauth2 providers
+-
+-- [#294](https://github.com/papra-hq/papra/pull/294) [`b400b3f`](https://github.com/papra-hq/papra/commit/b400b3f18ddbeff33f8265f128d4bc8b67b27d77) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Ensure local database directory en boot
+-
+-- [#291](https://github.com/papra-hq/papra/pull/291) [`0627ec2`](https://github.com/papra-hq/papra/commit/0627ec25a422b7b820b08740cfc2905f9c55c00e) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added invitation system to add users to an organization
+-
+-### Patch Changes
+-
+-- [#296](https://github.com/papra-hq/papra/pull/296) [`0ddc234`](https://github.com/papra-hq/papra/commit/0ddc2340f092cf6fe5bf2175b55fb46db7681c36) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fix register page description
+-
+-## 0.4.0
+-
+-### Minor Changes
+-
+-- [#280](https://github.com/papra-hq/papra/pull/280) [`85fa5c4`](https://github.com/papra-hq/papra/commit/85fa5c43424d139f5c2752a3ad644082e61d3d67) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Properly hard delete files in storage driver
+-
+-- [#280](https://github.com/papra-hq/papra/pull/280) [`85fa5c4`](https://github.com/papra-hq/papra/commit/85fa5c43424d139f5c2752a3ad644082e61d3d67) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added support for b2 document storage
+-
+-- [#280](https://github.com/papra-hq/papra/pull/280) [`85fa5c4`](https://github.com/papra-hq/papra/commit/85fa5c43424d139f5c2752a3ad644082e61d3d67) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added support for azure blob document storage
+-
+-- [#280](https://github.com/papra-hq/papra/pull/280) [`85fa5c4`](https://github.com/papra-hq/papra/commit/85fa5c43424d139f5c2752a3ad644082e61d3d67) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added webhook management
+-
+-- [#280](https://github.com/papra-hq/papra/pull/280) [`85fa5c4`](https://github.com/papra-hq/papra/commit/85fa5c43424d139f5c2752a3ad644082e61d3d67) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added API keys support
+-
+-- [#280](https://github.com/papra-hq/papra/pull/280) [`85fa5c4`](https://github.com/papra-hq/papra/commit/85fa5c43424d139f5c2752a3ad644082e61d3d67) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added document searchable content edit
+-
+-### Patch Changes
+-
+-- [#280](https://github.com/papra-hq/papra/pull/280) [`85fa5c4`](https://github.com/papra-hq/papra/commit/85fa5c43424d139f5c2752a3ad644082e61d3d67) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fix ingestion config coercion
+-
+-- [#280](https://github.com/papra-hq/papra/pull/280) [`85fa5c4`](https://github.com/papra-hq/papra/commit/85fa5c43424d139f5c2752a3ad644082e61d3d67) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added tag creation button in document page
+-
+-- [#280](https://github.com/papra-hq/papra/pull/280) [`85fa5c4`](https://github.com/papra-hq/papra/commit/85fa5c43424d139f5c2752a3ad644082e61d3d67) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Improved tag selector input wrapping
+-
+-- [#280](https://github.com/papra-hq/papra/pull/280) [`85fa5c4`](https://github.com/papra-hq/papra/commit/85fa5c43424d139f5c2752a3ad644082e61d3d67) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Properly handle file names without extensions
+-
+-- [#280](https://github.com/papra-hq/papra/pull/280) [`85fa5c4`](https://github.com/papra-hq/papra/commit/85fa5c43424d139f5c2752a3ad644082e61d3d67) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Wrap text in document preview
+-
+-- [#280](https://github.com/papra-hq/papra/pull/280) [`85fa5c4`](https://github.com/papra-hq/papra/commit/85fa5c43424d139f5c2752a3ad644082e61d3d67) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Excluded deleted documents from doc count
++Release notes are published outside this repository.
+diff --git a/packages/cli/CHANGELOG.md b/packages/cli/CHANGELOG.md
+index 744d30f6..1e2c8f22 100644
+--- a/packages/cli/CHANGELOG.md
++++ b/packages/cli/CHANGELOG.md
+@@ -1,92 +1,3 @@
+-# @papra/cli
++# Changelog
+ 
+-## 0.2.5
+-
+-### Patch Changes
+-
+-- [#1276](https://github.com/papra-hq/papra/pull/1276) [`95cfbb0`](https://github.com/papra-hq/papra/commit/95cfbb0639ba263bfc21a64729eb1e87d0a6b89a) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Excluded sourcemaps from package bundle
+-
+-- Updated dependencies [[`95cfbb0`](https://github.com/papra-hq/papra/commit/95cfbb0639ba263bfc21a64729eb1e87d0a6b89a)]:
+-  - @papra/api-sdk@1.3.1
+-
+-## 0.2.4
+-
+-### Patch Changes
+-
+-- Updated dependencies [[`e2e7fd4`](https://github.com/papra-hq/papra/commit/e2e7fd4f1d2ca102dc4a81257834ee582fa4c412)]:
+-  - @papra/api-sdk@1.3.0
+-
+-## 0.2.3
+-
+-### Patch Changes
+-
+-- Updated dependencies [[`ae03c76`](https://github.com/papra-hq/papra/commit/ae03c765bf495c63db53d5b60f429f3881887f5a)]:
+-  - @papra/api-sdk@1.2.0
+-
+-## 0.2.2
+-
+-### Patch Changes
+-
+-- Updated dependencies [[`815f6f9`](https://github.com/papra-hq/papra/commit/815f6f94f84478fef049f9baea9b0b30b56906a2)]:
+-  - @papra/api-sdk@1.1.3
+-
+-## 0.2.1
+-
+-### Patch Changes
+-
+-- [#696](https://github.com/papra-hq/papra/pull/696) [`1c64bca`](https://github.com/papra-hq/papra/commit/1c64bca2971ed8f000dd91785a9f0dc5dfff4873) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fixed the publication of cli assets
+-
+-## 0.2.0
+-
+-### Minor Changes
+-
+-- [#622](https://github.com/papra-hq/papra/pull/622) [`432a192`](https://github.com/papra-hq/papra/commit/432a192b94d06c663a7f345046e20fcff41dbf53) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added a paperless export importer
+-
+-### Patch Changes
+-
+-- Updated dependencies [[`432a192`](https://github.com/papra-hq/papra/commit/432a192b94d06c663a7f345046e20fcff41dbf53)]:
+-  - @papra/api-sdk@1.1.2
+-
+-## 0.1.2
+-
+-### Patch Changes
+-
+-- [#604](https://github.com/papra-hq/papra/pull/604) [`c70d7e4`](https://github.com/papra-hq/papra/commit/c70d7e419aa84eb63c18b72d529951761de75e33) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Use provenance for releases
+-
+-- Updated dependencies [[`c70d7e4`](https://github.com/papra-hq/papra/commit/c70d7e419aa84eb63c18b72d529951761de75e33)]:
+-  - @papra/api-sdk@1.1.1
+-
+-## 0.1.1
+-
+-### Patch Changes
+-
+-- [#586](https://github.com/papra-hq/papra/pull/586) [`59d5819`](https://github.com/papra-hq/papra/commit/59d5819018aabd3f8b64012143a7fa690636f423) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fix invalid import path causing cli crash
+-
+-## 0.1.0
+-
+-### Minor Changes
+-
+-- [#464](https://github.com/papra-hq/papra/pull/464) [`14bc2b8`](https://github.com/papra-hq/papra/commit/14bc2b8f8d0d6605062f37188e7c57bbc61b2c1a) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Ditched CommonJs build for packages
+-
+-### Patch Changes
+-
+-- Updated dependencies [[`14bc2b8`](https://github.com/papra-hq/papra/commit/14bc2b8f8d0d6605062f37188e7c57bbc61b2c1a)]:
+-  - @papra/api-sdk@1.1.0
+-
+-## 0.0.2
+-
+-### Patch Changes
+-
+-- [#379](https://github.com/papra-hq/papra/pull/379) [`6cedc30`](https://github.com/papra-hq/papra/commit/6cedc30716e320946f79a0a9fd8d3b26e834f4db) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Updated dependencies
+-
+-- Updated dependencies [[`6cedc30`](https://github.com/papra-hq/papra/commit/6cedc30716e320946f79a0a9fd8d3b26e834f4db)]:
+-  - @papra/api-sdk@1.0.2
+-
+-## 0.0.1
+-
+-### Patch Changes
+-
+-- [#280](https://github.com/papra-hq/papra/pull/280) [`85fa5c4`](https://github.com/papra-hq/papra/commit/85fa5c43424d139f5c2752a3ad644082e61d3d67) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Created CLI for document ingestion
+-
+-- Updated dependencies [[`85fa5c4`](https://github.com/papra-hq/papra/commit/85fa5c43424d139f5c2752a3ad644082e61d3d67)]:
+-  - @papra/api-sdk@1.0.1
++Release notes are published outside this repository.
+diff --git a/packages/lecture/CHANGELOG.md b/packages/lecture/CHANGELOG.md
+index d78b86de..1e2c8f22 100644
+--- a/packages/lecture/CHANGELOG.md
++++ b/packages/lecture/CHANGELOG.md
+@@ -1,63 +1,3 @@
+-# @papra/lecture
++# Changelog
+ 
+-## 0.5.2
+-
+-### Patch Changes
+-
+-- [#1469](https://github.com/papra-hq/papra/pull/1469) [`347029d`](https://github.com/papra-hq/papra/commit/347029dbd1ae997dcf537a9d04ab003b06021090) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fixed OCR extraction for images whose rotation is stored in EXIF metadata.
+-
+-- [#1470](https://github.com/papra-hq/papra/pull/1470) [`a58b4f0`](https://github.com/papra-hq/papra/commit/a58b4f0e349662218ce3a0a24321d352f3ff199d) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Silenced the content extraction warning about DPI.
+-
+-## 0.5.1
+-
+-### Patch Changes
+-
+-- [#1276](https://github.com/papra-hq/papra/pull/1276) [`95cfbb0`](https://github.com/papra-hq/papra/commit/95cfbb0639ba263bfc21a64729eb1e87d0a6b89a) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Excluded sourcemaps from package bundle
+-
+-- [#1184](https://github.com/papra-hq/papra/pull/1184) [`e2c3aa6`](https://github.com/papra-hq/papra/commit/e2c3aa61fca6bff8c73ce0cc83b3c59390f5088d) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Updated tesseract.js to v7 which should increase extraction performance by 15 to 35% on images, [source](https://github.com/naptha/tesseract.js/releases/tag/v7.0.0).
+-
+-## 0.5.0
+-
+-### Minor Changes
+-
+-- [#953](https://github.com/papra-hq/papra/pull/953) [`db6badb`](https://github.com/papra-hq/papra/commit/db6badbc3cc15d5d2b91b79602eccc3926e564eb) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added content extraction support for scanned PDFs images in 1-bit-per-pixel grayscale format.
+-
+-- [#948](https://github.com/papra-hq/papra/pull/948) [`725eaff`](https://github.com/papra-hq/papra/commit/725eaff4b0339ce974b91e9eeb4482f716cfa279) Thanks [@CorentinTh](https://github.com/CorentinTh)! - When extracting text from PDF documents, if neither text nor images suitable for OCR are found, the pages are rendered as images and processed with OCR. Adding support for vectorized text.
+-
+-### Patch Changes
+-
+-- [#949](https://github.com/papra-hq/papra/pull/949) [`ec740ed`](https://github.com/papra-hq/papra/commit/ec740ed168496a458a3da6a9c71d31e1d8bf2746) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added document content extraction support for .xlsx and .ods files.
+-
+-## 0.4.0
+-
+-### Minor Changes
+-
+-- [#621](https://github.com/papra-hq/papra/pull/621) [`8308e93`](https://github.com/papra-hq/papra/commit/8308e93fdf0c4d52b8ee1de71f1557366d6e622f) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added support for native tesseract cli when available
+-
+-### Patch Changes
+-
+-- [#627](https://github.com/papra-hq/papra/pull/627) [`5ccdf44`](https://github.com/papra-hq/papra/commit/5ccdf446f0603467ab8f8833110efbe197bc0f0f) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added logger parameter
+-
+-## 0.3.1
+-
+-### Patch Changes
+-
+-- [#604](https://github.com/papra-hq/papra/pull/604) [`c70d7e4`](https://github.com/papra-hq/papra/commit/c70d7e419aa84eb63c18b72d529951761de75e33) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Use provenance for releases
+-
+-## 0.3.0
+-
+-### Minor Changes
+-
+-- [#580](https://github.com/papra-hq/papra/pull/580) [`1228486`](https://github.com/papra-hq/papra/commit/1228486f28ec28a100665e08cb62ab65e883f952) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added text extraction support for `.docx`, `.odt`, `.rtf`, `.pptx` and `.odp`
+-
+-## 0.2.0
+-
+-### Minor Changes
+-
+-- [#464](https://github.com/papra-hq/papra/pull/464) [`14bc2b8`](https://github.com/papra-hq/papra/commit/14bc2b8f8d0d6605062f37188e7c57bbc61b2c1a) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Ditched CommonJs build for packages
+-
+-## 0.1.0
+-
+-### Minor Changes
+-
+-- [#429](https://github.com/papra-hq/papra/pull/429) [`67b3b14`](https://github.com/papra-hq/papra/commit/67b3b14cdfa994874c695b9d854a93160ba6a911) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added support for scanned pdf content extraction
++Release notes are published outside this repository.
+diff --git a/packages/search-parser/CHANGELOG.md b/packages/search-parser/CHANGELOG.md
+index 6791000a..1e2c8f22 100644
+--- a/packages/search-parser/CHANGELOG.md
++++ b/packages/search-parser/CHANGELOG.md
+@@ -1,23 +1,3 @@
+-# @papra/search-parser
++# Changelog
+ 
+-## 0.1.2
+-
+-### Patch Changes
+-
+-- [#1276](https://github.com/papra-hq/papra/pull/1276) [`95cfbb0`](https://github.com/papra-hq/papra/commit/95cfbb0639ba263bfc21a64729eb1e87d0a6b89a) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Excluded sourcemaps from package bundle
+-
+-## 0.1.1
+-
+-### Patch Changes
+-
+-- [#970](https://github.com/papra-hq/papra/pull/970) [`5900674`](https://github.com/papra-hq/papra/commit/5900674083f4f55733c843b438516c8fdfff687c) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added support for quoted search filters, like `"warranty date":>2026`
+-
+-## 0.1.0
+-
+-### Minor Changes
+-
+-- [#773](https://github.com/papra-hq/papra/pull/773) [`78eb1d8`](https://github.com/papra-hq/papra/commit/78eb1d83c71cd8e66ffbce5a4abccb39209dcda6) Thanks [@CorentinTh](https://github.com/CorentinTh)! - AST optimization is activated by default
+-
+-### Patch Changes
+-
+-- [#768](https://github.com/papra-hq/papra/pull/768) [`37c3aa9`](https://github.com/papra-hq/papra/commit/37c3aa93acd0a718c0daa6704803a1f555480502) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fix tokenization issue for negated filters with quoted value
++Release notes are published outside this repository.
+diff --git a/packages/webhooks/CHANGELOG.md b/packages/webhooks/CHANGELOG.md
+index 3e120766..1e2c8f22 100644
+--- a/packages/webhooks/CHANGELOG.md
++++ b/packages/webhooks/CHANGELOG.md
+@@ -1,53 +1,3 @@
+-# @papra/webhooks
++# Changelog
+ 
+-## 0.3.4
+-
+-### Patch Changes
+-
+-- [#1276](https://github.com/papra-hq/papra/pull/1276) [`95cfbb0`](https://github.com/papra-hq/papra/commit/95cfbb0639ba263bfc21a64729eb1e87d0a6b89a) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Excluded sourcemaps from package bundle
+-
+-## 0.3.3
+-
+-### Patch Changes
+-
+-- [#1099](https://github.com/papra-hq/papra/pull/1099) [`086dccb`](https://github.com/papra-hq/papra/commit/086dccbfda18c850bee50b94c48f5f110be6935c) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Export the http client type.
+-
+-## 0.3.2
+-
+-### Patch Changes
+-
+-- [#699](https://github.com/papra-hq/papra/pull/699) [`4342b31`](https://github.com/papra-hq/papra/commit/4342b319ea1b787b80d02090f3820797b928e115) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Fix mising prepublish script
+-
+-## 0.3.1
+-
+-### Patch Changes
+-
+-- [#604](https://github.com/papra-hq/papra/pull/604) [`c70d7e4`](https://github.com/papra-hq/papra/commit/c70d7e419aa84eb63c18b72d529951761de75e33) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Use provenance for releases
+-
+-## 0.3.0
+-
+-### Minor Changes
+-
+-- [#464](https://github.com/papra-hq/papra/pull/464) [`14bc2b8`](https://github.com/papra-hq/papra/commit/14bc2b8f8d0d6605062f37188e7c57bbc61b2c1a) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Ditched CommonJs build for packages
+-
+-## 0.2.0
+-
+-### Minor Changes
+-
+-- [#430](https://github.com/papra-hq/papra/pull/430) [`a8cff8c`](https://github.com/papra-hq/papra/commit/a8cff8cedc062be3ed1d454e9de6e456553a4d8c) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Breaking change: updated webhooks signatures and payload format to match standard-webhook spec
+-
+-- [#432](https://github.com/papra-hq/papra/pull/432) [`6723baf`](https://github.com/papra-hq/papra/commit/6723baf98ad46f989fe1e1e19ad0dd25622cca77) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added new webhook events: document:updated, document:tag:added, document:tag:removed
+-
+-- [#432](https://github.com/papra-hq/papra/pull/432) [`6723baf`](https://github.com/papra-hq/papra/commit/6723baf98ad46f989fe1e1e19ad0dd25622cca77) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Webhooks invocation is now defered
+-
+-## 0.1.1
+-
+-### Patch Changes
+-
+-- [#379](https://github.com/papra-hq/papra/pull/379) [`6cedc30`](https://github.com/papra-hq/papra/commit/6cedc30716e320946f79a0a9fd8d3b26e834f4db) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Updated dependencies
+-
+-## 0.1.0
+-
+-### Minor Changes
+-
+-- [#280](https://github.com/papra-hq/papra/pull/280) [`85fa5c4`](https://github.com/papra-hq/papra/commit/85fa5c43424d139f5c2752a3ad644082e61d3d67) Thanks [@CorentinTh](https://github.com/CorentinTh)! - Added webhook management
++Release notes are published outside this repository.

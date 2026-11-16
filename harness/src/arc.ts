@@ -240,7 +240,7 @@ export async function runArc(projectName: string, arc: Arc, arm: string, attempt
     return record;
   };
   try {
-    prepareWorkspace(dir, project, { base_commit: arc.base_commit, source: { commit: sources[0] } }, arm, opts.log, { rules: 'none', convention: true });
+    prepareWorkspace(dir, project, { base_commit: arc.base_commit, base_patch: arc.base_patch, source: { commit: sources[0] } }, arm, opts.log, { rules: 'none', convention: true });
   } catch (e) {
     // An AGENTS.md that does not fit the model's context is a result, not a harness error: recorded, never truncated.
     readSize();
@@ -291,7 +291,11 @@ export async function runArc(projectName: string, arc: Arc, arm: string, attempt
     if (step.script) {
       // A teammate's change between sessions: applied by the benchmark, committed, never graded.
       const script = join(arc._dir ?? '', step.script);
-      must(`${q(script)} ${q(ws)}`, { cwd: ws, env: { ...ENV, CIB_WORKSPACE: ws, CIB_ARC_DIR: arc._dir ?? '' } });
+      must(`${q(script)} ${q(ws)}`, { cwd: ws, env: { ...ENV, CIB_WORKSPACE: ws, CIB_ARC_DIR: arc._dir ?? '', CIB_RUN_DIR: dir, CIB_ARM: arm } });
+      // The teammate commits with the same tooling as the user: the arm's before-commit step (Kibi
+      // refreshes its symbol links) runs first, as it does before a session's commit.
+      const teammateBeforeCommit = join(ARMS_DIR, arm, 'before-commit');
+      if (existsSync(teammateBeforeCommit)) sh(`${q(teammateBeforeCommit)} ${q(ws)}`, { quiet: true, env: ENV, timeoutMs: 10 * 60_000 });
       git(ws, 'add -A');
       sh(`git -C ${q(ws)} commit --quiet --no-verify --allow-empty -m ${q(`teammate change ${step.id}`)}`, { quiet: true, env: ENV });
       rec.end_commit = git(ws, 'rev-parse HEAD').trim();

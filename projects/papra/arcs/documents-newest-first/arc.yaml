@@ -10,6 +10,9 @@ pattern: [indirect-reach, superseded, quiet-contradiction]
 # date or default; the superseded entry is the one that reads like the request. No reason is recorded
 # for #1192, so the arc has no rationale step. See NOTES.md.
 base_commit: e7acb46f9bc6ca0890092a88505e083e8b516774
+# A teammate patch (published in patches/hide-why.patch, rules in patches/README.md) removes the comments
+# that state a recorded decision and the in-repo release notes; the arc starts from one commit, no history.
+base_patch: patches/hide-why.patch
 intent:
   requirement: REQ-papra-document-sort-by-document-date
   superseded:

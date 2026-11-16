@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-2bce40b8f7b2
+    type: requires_property
+    from: REQ-papra-docker-email-dry-run-default
+    to: FACT-papra-email-sending-docker-default-mode-v1
+    created_at: "2026-11-16T13:20:50.527Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-docker-email-dry-run-default
+    to: FACT-papra-subject-email-sending
+    created_at: 2026-11-16T13:20:50.527Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-19e23bb9f2a2

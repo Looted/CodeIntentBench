@@ -1,0 +1,22 @@
+relationships:
+  - id: rel-a3bfe779c6bb
+    type: requires_property
+    from: REQ-papra-auth-secret-required-in-production
+    to: FACT-papra-auth-secret-required-in-production
+    created_at: "2026-11-16T13:22:09.525Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-auth-secret-required-in-production
+    to: FACT-papra-subject-auth-secret
+    created_at: 2026-11-16T13:22:09.525Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-0498acbea1a3
+  - type: verified_by
+    from: REQ-papra-auth-secret-required-in-production
+    to: TEST-papra-server-src-modules-app-auth-auth-config-models
+    created_at: 2026-11-16T13:23:49.136Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-7967d3564024

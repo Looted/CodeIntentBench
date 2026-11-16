@@ -1,0 +1,36 @@
+relationships:
+  - id: rel-301082176790
+    type: verified_by
+    from: REQ-only-the-file-content-is-hashed-for-dedupl-63EA565E
+    to: TEST-papra-server-src-modules-documents-documents-usecases
+    created_at: "2026-10-14T12:09:39.329Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: verified_by
+    from: REQ-only-the-file-content-is-hashed-for-dedupl-63EA565E
+    to: TEST-papra-server-src-modules-shared-streams-stream-hash
+    created_at: 2026-10-14T12:09:39.330Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9f5c9cecec84
+  - type: requires_property
+    from: REQ-only-the-file-content-is-hashed-for-dedupl-63EA565E
+    to: FACT-papra-document-deduplication-hashed-input
+    created_at: 2026-11-15T21:42:56.368Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-31158f12c894
+  - type: constrains
+    from: REQ-only-the-file-content-is-hashed-for-dedupl-63EA565E
+    to: FACT-papra-subject-document-deduplication
+    created_at: 2026-11-15T21:42:56.374Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-8f5279445311
+  - type: requires_property
+    from: REQ-only-the-file-content-is-hashed-for-dedupl-63EA565E
+    to: FACT-papra-document-deduplication-metadata-affects-match
+    created_at: 2026-11-15T21:42:56.377Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-8feb5e42c30b

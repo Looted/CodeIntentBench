@@ -21,15 +21,17 @@ export function runAudit(opts: AuditOptions): ArcAudit[] {
     const project = loadProject(p);
     const arcs = loadArcs(p).filter((a) => !opts.arcs || opts.arcs.includes(a.id));
     const byBase = new Map<string, Arc[]>();
-    for (const a of arcs) byBase.set(a.base_commit, [...(byBase.get(a.base_commit) ?? []), a]);
-    for (const [base, group] of byBase) {
+    const key = (a: Arc) => `${a.base_commit}\t${a.base_patch ?? ''}`;
+    for (const a of arcs) byBase.set(key(a), [...(byBase.get(key(a)) ?? []), a]);
+    for (const [k, group] of byBase) {
+      const [base, patch] = k.split('\t');
       const results = new Map<string, ArcAudit>(group.map((a) => [a.id, { project: p, arc: a.id, base_commit: base, ok: true, arms: [], errors: [] }]));
       for (const arm of arms) {
         // One directory per project and arm, so what an arm installs beside the workspace (the Kibi packages) is reused across bases.
         const dir = join(RUNS_DIR, '_audit', p, arm);
         mkdirSync(dir, { recursive: true });
         try {
-          prepareWorkspace(dir, project, { base_commit: base }, arm, (s) => opts.log(`${p}@${base.slice(0, 12)}/${arm}: ${s}`), { rules: 'none', convention: true, skipInstall: true });
+          prepareWorkspace(dir, project, { base_commit: base, base_patch: patch || undefined }, arm, (s) => opts.log(`${p}@${base.slice(0, 12)}/${arm}: ${s}`), { rules: 'none', convention: true, skipInstall: true });
           for (const a of group) results.get(a.id)!.arms.push(auditContainer(a, arm, workspaceDir(dir), dir));
         } catch (e) {
           const msg = `${arm}: setup failed, container not audited: ${(e as Error).message.split('\n')[0].slice(0, 400)}`;

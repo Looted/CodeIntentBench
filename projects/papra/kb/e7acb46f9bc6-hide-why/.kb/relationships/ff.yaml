@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-c781ab926d1f
+    type: requires_property
+    from: REQ-papra-azure-blob-storage-driver
+    to: FACT-papra-storage-azure-driver-available
+    created_at: "2026-11-16T13:16:45.862Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-azure-blob-storage-driver
+    to: FACT-papra-subject-storage-azure-driver
+    created_at: 2026-11-16T13:16:45.863Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-055963601064
