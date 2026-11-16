@@ -2,6 +2,8 @@
 # Build the knowledge base snapshot of a later Papra base commit from the stored April snapshot.
 # Usage: snapshot.sh <base-sha> <workdir> [--store]
 #   PAPRA_MIRROR  a clone of papra-hq/papra that has the base commit (default: $CIB_CACHE_DIR/repos/papra.git)
+#   BASE_PATCH    a teammate patch (relative to projects/papra, e.g. patches/hide-why.patch) applied on the
+#                 base; the snapshot is then keyed <sha12>-<patch name>, as the harness names a patched base.
 # The pinned kibi (arms/kibi/versions.env) must be on PATH. The workspace is <workdir>/ws-<sha12>, the
 # check result <workdir>/check-<sha12>.json. With --store the tracked .kb/ files are copied to ../<sha12>/.kb.
 set -euo pipefail
@@ -10,13 +12,16 @@ here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 mirror="${PAPRA_MIRROR:-${CIB_CACHE_DIR:?set PAPRA_MIRROR or CIB_CACHE_DIR}/repos/papra.git}"
 from=884d4704106b
 G="git -c user.name=kb -c user.email=kb@localhost"
-full="$(git --git-dir="$mirror" rev-parse "$sha^{commit}")"; short="${full:0:12}"; ws="$work/ws-$short"
+full="$(git --git-dir="$mirror" rev-parse "$sha^{commit}")"; short="${full:0:12}"
+if [ -n "${BASE_PATCH:-}" ]; then pname="$(basename "$BASE_PATCH")"; short="$short-${pname%.*}"; fi
+ws="$work/ws-$short"
 
 rm -rf "$ws" "$work/apply-ws-$short.log"
 git clone --quiet --shared --no-checkout "$mirror" "$ws"
 cd "$ws"
 git checkout --quiet -B cib-base "$full"
 git remote remove origin
+if [ -n "${BASE_PATCH:-}" ]; then git apply --whitespace=nowarn "$here/../../$BASE_PATCH" && $G commit -qa --no-verify -m "teammate patch"; fi
 cp -R "$here/../$from/.kb" .kb
 $G add -A .kb && $G commit -q --no-verify -m "kb: April snapshot"
 kibi init > "$work/init-$short.log" 2>&1 || true

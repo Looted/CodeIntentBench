@@ -3,7 +3,7 @@
 #
 # The arcs run on an onboarded knowledge base: Papra's product decisions, harvested from its documentation,
 # issue tracker, merged pull requests and in-repo spec and recorded with Kibi's bootstrap flow (kb/README.md),
-# stored under kb/<base commit>/.kb. Every arm starts from the same knowledge:
+# stored under kb/<base>/.kb (the commit, or the commit and the teammate patch). Every arm starts from the same knowledge:
 #   - kibi, kibi-conv: the knowledge base is placed in the checkout, as a Kibi-onboarded repository ships it;
 #     the arm's setup then installs the pinned Kibi and compiles it.
 #   - every other arm: the knowledge base is exported into the rules directory (one rule per requirement,
@@ -16,9 +16,11 @@ harness="$(cd "$here/../../harness" && pwd)"
 [ "${CIB_MODE:-task}" = "arc" ] || exit 0
 cd "$ws"
 
-base="$(git rev-parse HEAD | cut -c1-12)"
+# The harness names the base: the commit's first 12 characters, plus the teammate patch's name when the
+# arc starts from a patched base (whose single commit is not the upstream one).
+base="${CIB_BASE_KEY:-$(git rev-parse HEAD | cut -c1-12)}"
 kb="$here/kb/$base/.kb"
-if [ ! -d "$kb" ]; then echo "no onboarded knowledge base for base commit $base under $here/kb" >&2; exit 1; fi
+if [ ! -d "$kb" ]; then echo "no onboarded knowledge base for base $base under $here/kb" >&2; exit 1; fi
 rm -rf .kb
 cp -R "$kb" .kb
 

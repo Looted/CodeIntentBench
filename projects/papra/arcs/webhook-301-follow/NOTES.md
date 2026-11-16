@@ -19,6 +19,9 @@ The prompt says "301" and "outgoing event calls", not redirect or webhook. The S
 
 | Change | Result |
 |---|---|
-| none | 5 of 5 pass |
-| `redirect: 'follow'` | 5 fail |
+| none | 6 of 6 pass |
+| `redirect: 'follow'` | 6 fail |
 | a manual second request to the Location target | 5 fail |
+| the client unchanged, the trigger services re-request on a 3xx with `redirect: 'follow'` | the delivery test fails |
+
+The last test runs a whole delivery (`createWebhookTriggerServices`, `triggerWebhooks`, the saved delivery) against the local server, so a redirect followed by a caller of the HTTP client fails too.

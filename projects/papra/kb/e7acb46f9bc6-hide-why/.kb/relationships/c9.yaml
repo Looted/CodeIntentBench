@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-022ebf109d17
+    type: requires_property
+    from: REQ-papra-task-migrations-pragma-optional
+    to: FACT-papra-tasks-sqlite-pragma-can-be-disabled
+    created_at: "2026-11-16T13:21:33.282Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-task-migrations-pragma-optional
+    to: FACT-papra-subject-tasks-sqlite-pragma
+    created_at: 2026-11-16T13:21:33.283Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-a18c9f52f28e

@@ -10,6 +10,9 @@ pattern: [long-capture, near-matches, quiet-contradiction]
 # share-link decisions that read alike. s4 is unrelated. s6 asks for links without an end date, in words
 # that never say expiry, lifetime or 90 days; s7 asks for the reason. See NOTES.md.
 base_commit: e7acb46f9bc6ca0890092a88505e083e8b516774
+# A teammate patch (published in patches/hide-why.patch, rules in patches/README.md) removes the comments
+# that state a recorded decision and the in-repo release notes; the arc starts from one commit, no history.
+base_patch: patches/hide-why.patch
 intent:
   statement: >-
     A public share link created from now on must have an end date (expiresAt) no more than 90 days
@@ -47,6 +50,7 @@ steps:
       12 characters; today one character is enough. Verifying the password of an existing link keeps
       accepting whatever was set before. The reason: these links get forwarded around in email threads,
       and support has seen short passwords on them guessed within minutes even with the rate limit.
+      Update the existing tests that this change breaks.
     grading:
       accept: [C]
       task_tests:
@@ -61,7 +65,8 @@ steps:
       In apps/papra-server, lower the default lifetime of the access token issued after a share link
       password is verified from 15 to 5 minutes (DOCUMENT_SHARE_LINKS_ACCESS_TOKEN_TTL_MINUTES stays
       configurable). The reason: clients open these links on the shared computer at our front desk, and
-      a 15-minute token kept the document open for the next visitor.
+      a 15-minute token kept the document open for the next visitor. Update the existing tests that this
+      change breaks.
     grading:
       accept: [C]
       task_tests:
@@ -87,7 +92,7 @@ steps:
       In apps/papra-server, lower the default number of share links a document can have at the same
       time from 10 to 3 (DOCUMENT_SHARE_LINKS_MAX_LINKS_PER_DOCUMENT stays configurable). The reason:
       support keeps finding documents with a pile of old links that nobody can say who they were for,
-      and three covers every real case we have seen.
+      and three covers every real case we have seen. Update the existing tests that this change breaks.
     grading:
       accept: [C]
       task_tests:

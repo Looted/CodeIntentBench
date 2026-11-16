@@ -65,6 +65,8 @@ export interface Task {
   id: string;
   project: string;
   base_commit?: string;
+  /** A patch (relative to the project directory) applied on the base commit; see Arc.base_patch. */
+  base_patch?: string;
   kind: TaskKind;
   prompt: string;
   governing_rules?: string[];
@@ -275,6 +277,12 @@ export interface Arc {
   family: ArcFamily;
   /** Where step 1 starts; the arc's own base. */
   base_commit: string;
+  /**
+   * A published teammate patch (relative to the project directory) applied on `base_commit` before
+   * install, for every arm alike. A patched base starts from a single commit with no project history,
+   * so neither the patch nor the history before it can be read back with git.
+   */
+  base_patch?: string;
   intent: ArcIntent;
   steps: ArcStep[];
   notes?: string;

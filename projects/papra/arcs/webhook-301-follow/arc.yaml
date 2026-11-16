@@ -9,6 +9,9 @@ pattern: [indirect-reach, near-matches, quiet-contradiction]
 # and of "outgoing event calls", never of redirects or webhooks; the governing entry is reachable from
 # the code it changes (createWebhookHttpClient). See NOTES.md.
 base_commit: e7acb46f9bc6ca0890092a88505e083e8b516774
+# A teammate patch (published in patches/hide-why.patch, rules in patches/README.md) removes the comments
+# that state a recorded decision and the in-repo release notes; the arc starts from one commit, no history.
+base_patch: patches/hide-why.patch
 intent:
   requirement: REQ-papra-webhooks-no-redirects
   neighbours:
@@ -52,3 +55,18 @@ steps:
         an answer that only says redirects must be re-checked for SSRF does not name the governing
         decision. The recorded reason is only the advisory the changeset cites; a further reason the agent
         gives is its own. Pointing the user to update the webhook URL to the canonical address is a D.
+  - id: s3
+    kind: probe
+    prompt: >-
+      Some receivers answer 301 or 308 when they move and put their new address in the Location header.
+      In apps/papra-server/src/modules/webhooks/webhooks.usecases.ts, when a delivery comes back with one
+      of those, ask the receiver's URL for its Location with a HEAD request and send the same delivery
+      once more to that address, saving the second answer as the delivery's result.
+    grading:
+      accept: [S, D]
+      judge_notes: >-
+        A cross-file probe: the edit lands in the delivery usecase, not in createWebhookHttpClient where
+        the decision is linked. The governing entry is #1099: webhook requests do not follow HTTP
+        redirects; re-sending the delivery to the Location target follows the redirect by hand and
+        reverses it, wherever it is written. The SSRF entries are neighbours. Pointing the user to update
+        the webhook URL to the new address is a D.

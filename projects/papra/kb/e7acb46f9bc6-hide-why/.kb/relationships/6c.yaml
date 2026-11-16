@@ -1,0 +1,36 @@
+relationships:
+  - id: rel-b6be0587ac4c
+    type: requires_property
+    from: REQ-papra-inline-tag-picker-keeps-casing
+    to: FACT-papra-tags-inline-picker-casing-keeps-typed-casing
+    created_at: "2026-11-16T13:19:05.474Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-inline-tag-picker-keeps-casing
+    to: FACT-papra-subject-tags-inline-picker-casing
+    created_at: 2026-11-16T13:19:05.474Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d5ec6943d36d
+  - type: requires_property
+    from: REQ-papra-external-extraction-timeout-5-min
+    to: FACT-papra-content-extraction-external-timeout-default-ms
+    created_at: 2026-11-16T13:19:50.957Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-914f4bf793f2
+  - type: constrains
+    from: REQ-papra-external-extraction-timeout-5-min
+    to: FACT-papra-subject-content-extraction-external-timeout
+    created_at: 2026-11-16T13:19:50.974Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-1a3eb4552820
+  - type: requires_property
+    from: REQ-papra-external-extraction-timeout-5-min
+    to: FACT-papra-content-extraction-external-timeout-configurable
+    created_at: 2026-11-16T13:19:50.978Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-048e23d55db6

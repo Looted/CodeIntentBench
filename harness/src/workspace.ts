@@ -34,6 +34,13 @@ export function ensureMirror(project: ProjectConfig, commits: string[]): string 
   return mirror;
 }
 
+/** The name a base is stored under (the knowledge base of an arm is keyed by it): the commit's first 12 characters, plus the patch's file name. */
+export function baseKey(task: Pick<Task, 'base_commit' | 'base_patch'>, fallback = ''): string {
+  const commit = (task.base_commit ?? fallback).slice(0, 12);
+  if (!task.base_patch) return commit;
+  return `${commit}-${task.base_patch.split('/').pop()!.replace(/\.(patch|diff)$/, '')}`;
+}
+
 export function baseCommit(project: ProjectConfig, task: Task): string {
   return task.base_commit ?? project.commit;
 }
@@ -59,7 +66,7 @@ export function projectEnv(project: ProjectConfig, dir: string): Record<string, 
   return out;
 }
 
-export function prepareWorkspace(dir: string, project: ProjectConfig, task: Pick<Task, 'base_commit' | 'source'>, arm: string, log: (s: string) => void, opts: PrepareOptions = {}): { base: string; rules: Rule[] } {
+export function prepareWorkspace(dir: string, project: ProjectConfig, task: Pick<Task, 'base_commit' | 'base_patch' | 'source'>, arm: string, log: (s: string) => void, opts: PrepareOptions = {}): { base: string; rules: Rule[] } {
   const ws = workspaceDir(dir);
   // The project's environment applies to this process from here on: setup, the arm scripts, grading and the agent all inherit it.
   Object.assign(process.env, projectEnv(project, dir));
@@ -74,6 +81,19 @@ export function prepareWorkspace(dir: string, project: ProjectConfig, task: Pick
   git(`checkout --quiet -B ${BASE_BRANCH} ${base}`);
   // The agent must not learn anything from the project's own history or remotes.
   git('remote remove origin');
+  if (task.base_patch) {
+    const patch = join(PROJECTS_DIR, project.name, task.base_patch);
+    log(`base patch: ${task.base_patch}`);
+    git(`apply --whitespace=nowarn ${JSON.stringify(patch)}`);
+    // One commit with the patched tree and nothing else: no project history, branches or tags to read the patch or the decisions back from.
+    git('checkout --quiet --orphan cib-orphan');
+    git('add -A');
+    git(`commit --quiet --no-verify -m ${JSON.stringify(`project at ${base.slice(0, 12)}`)}`);
+    git(`branch --quiet -M cib-orphan ${BASE_BRANCH}`);
+    const refs = git(`for-each-ref '--format=%(refname)'`).split('\n').map((r) => r.trim()).filter((r) => r && r !== `refs/heads/${BASE_BRANCH}`);
+    for (const r of refs) git(`update-ref -d ${JSON.stringify(r)}`);
+    git('reflog expire --expire=now --all');
+  }
   // Hooks the project installs on `prepare` (husky, lefthook) would interfere with grading commits.
   sh(`git -C ${JSON.stringify(ws)} config core.hooksPath /dev/null`, { quiet: true });
 
@@ -102,7 +122,7 @@ export function prepareWorkspace(dir: string, project: ProjectConfig, task: Pick
     log(`arm prepare: ${project.setup.arm_prepare} (${arm})`);
     must(`${JSON.stringify(script)} ${JSON.stringify(ws)} ${JSON.stringify(arm)} ${JSON.stringify(rulesDir)} ${JSON.stringify(dir)}`, {
       cwd: ws,
-      env: { ...process.env, ...GIT_IDENTITY, CIB_RUN_DIR: dir, CIB_WORKSPACE: ws, CIB_RULES_DIR: rulesDir, CIB_PROJECT: project.name, CIB_CACHE_DIR: CACHE_DIR, CIB_MODE: mode },
+      env: { ...process.env, ...GIT_IDENTITY, CIB_RUN_DIR: dir, CIB_WORKSPACE: ws, CIB_RULES_DIR: rulesDir, CIB_PROJECT: project.name, CIB_CACHE_DIR: CACHE_DIR, CIB_MODE: mode, CIB_BASE_COMMIT: base, CIB_BASE_KEY: baseKey({ base_commit: base, base_patch: task.base_patch }) },
     });
   }
   const setup = join(ARMS_DIR, arm, 'setup');
@@ -110,7 +130,7 @@ export function prepareWorkspace(dir: string, project: ProjectConfig, task: Pick
     log(`arm setup: ${arm}`);
     must(`${JSON.stringify(setup)} ${JSON.stringify(ws)} ${JSON.stringify(rulesDir)} ${JSON.stringify(dir)}`, {
       cwd: ws,
-      env: { ...process.env, ...GIT_IDENTITY, CIB_RUN_DIR: dir, CIB_WORKSPACE: ws, CIB_RULES_DIR: rulesDir, CIB_PROJECT: project.name, CIB_CACHE_DIR: CACHE_DIR, CIB_MODE: mode },
+      env: { ...process.env, ...GIT_IDENTITY, CIB_RUN_DIR: dir, CIB_WORKSPACE: ws, CIB_RULES_DIR: rulesDir, CIB_PROJECT: project.name, CIB_CACHE_DIR: CACHE_DIR, CIB_MODE: mode, CIB_BASE_COMMIT: base, CIB_BASE_KEY: baseKey({ base_commit: base, base_patch: task.base_patch }) },
     });
   }
 

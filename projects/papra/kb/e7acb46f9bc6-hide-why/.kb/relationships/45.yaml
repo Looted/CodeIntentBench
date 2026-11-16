@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-c8f714fa1908
+    type: requires_property
+    from: REQ-papra-document-count-excludes-deleted
+    to: FACT-papra-documents-count-includes-deleted-documents
+    created_at: "2026-11-16T13:17:07.717Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-document-count-excludes-deleted
+    to: FACT-papra-subject-documents-count
+    created_at: 2026-11-16T13:17:07.718Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-0d89fde615a8

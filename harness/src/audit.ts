@@ -14,6 +14,7 @@ import YAML from 'yaml';
 import { decisionsOf } from './intent.ts';
 import { requiredKeys, defaultDecision } from './judge-arc.ts';
 import { exportKb } from './kb-rules.ts';
+import { sh } from './shell.ts';
 import { statusLine, firmnessLine } from './render.ts';
 import type { Arc, ArcIntent, ArcStep, AuditDecision, AuditResult, Rule } from './types.ts';
 
@@ -99,6 +100,19 @@ export function containerEntry(arm: string, ws: string, runDir: string, rule: Ru
     if (!existsSync(file)) return undefined;
     const issue = (JSON.parse(readFileSync(file, 'utf8')).issues ?? []).find((i: any) => i.title === rule.id.replace(/-/g, ' '));
     return issue ? `${issue.title}\n${issue.body}\n${(issue.labels ?? []).join(' ')}` : undefined;
+  }
+  if (arm === 'comments') {
+    // The block that starts `// Decision <id>:` in any tracked source file, its comment lines joined.
+    const files = sh(`git -C ${JSON.stringify(ws)} grep -l -F ${JSON.stringify(`// Decision ${rule.id}:`)}`, { quiet: true }).stdout.split('\n').filter(Boolean);
+    for (const f of files) {
+      const src = readFileSync(join(ws, f), 'utf8').split('\n');
+      const i = src.findIndex((l) => l.trim().startsWith(`// Decision ${rule.id}:`));
+      if (i < 0) continue;
+      const block: string[] = [src[i].trim().slice(3)];
+      for (let k = i + 1; k < src.length && src[k].trim().startsWith('// ') && !src[k].trim().startsWith('// Decision '); k += 1) block.push(src[k].trim().slice(3));
+      return block.join('\n').replace(/\n(?!(Why|Status|Firmness|Recorded|Supersedes|Superseded by|Where):)/g, ' ');
+    }
+    return undefined;
   }
   if (arm === 'memory') {
     const file = join(runDir, 'memory.json');

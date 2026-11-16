@@ -1,0 +1,22 @@
+relationships:
+  - id: rel-3b025abd25f3
+    type: requires_property
+    from: REQ-papra-default-route-timeout-config-key
+    to: FACT-papra-config-route-timeout-config-key
+    created_at: "2026-11-16T13:20:44.310Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-default-route-timeout-config-key
+    to: FACT-papra-subject-config-route-timeout
+    created_at: 2026-11-16T13:20:44.310Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-58d07715e4e5
+  - type: requires_property
+    from: REQ-papra-default-route-timeout-config-key
+    to: FACT-papra-config-route-timeout-env-variable-renamed
+    created_at: 2026-11-16T13:20:44.320Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-5cdda8c37532
