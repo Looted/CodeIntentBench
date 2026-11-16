@@ -45,6 +45,17 @@ fi
 cd "$ws"
 kibi --version > "$run/kibi-version.txt"
 kibi init
+# Where the repository's hooks belong to the pre-commit framework, `kibi init` installs none of its own and
+# tells the team to run Kibi's check from their manager (Kibi's own repository does, in .pre-commit-config.yaml).
+# A developer of that repository has run `pre-commit install`; do the same so the commit gate is the one the
+# team works with. Without pre-commit on the machine the run records that the gate is missing.
+if [ -f .pre-commit-config.yaml ] && grep -q 'kibi' .pre-commit-config.yaml; then
+  if command -v pre-commit >/dev/null 2>&1; then
+    pre-commit install --hook-type pre-commit > "$run/pre-commit-install.log" 2>&1 || { cat "$run/pre-commit-install.log" >&2; exit 1; }
+  else
+    echo "pre-commit is not installed: the repository's Kibi commit gate is not active in this run" | tee "$run/commit-gate-missing.txt" >&2
+  fi
+fi
 # A knowledge base written by an older Kibi (the onboarded Papra KB, Kibi's own KB at the arcs' base commit) is
 # upgraded the way Kibi tells a user to after an upgrade: `kibi migrate --yes` applies the deterministic schema
 # migration and leaves the review work it lists to people. A no-op on a current KB.
