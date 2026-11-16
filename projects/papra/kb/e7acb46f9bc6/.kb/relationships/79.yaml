@@ -27,3 +27,59 @@ relationships:
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-fc0b60df3737
+  - type: requires_property
+    from: REQ-papra-storage-migration-script
+    to: FACT-papra-storage-migration-script-available
+    created_at: 2026-11-16T10:19:56.769Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-1d2dc21c1760
+  - type: constrains
+    from: REQ-papra-storage-migration-script
+    to: FACT-papra-subject-storage-migration-script
+    created_at: 2026-11-16T10:19:56.783Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c68f96c1d93b
+  - type: requires_property
+    from: REQ-papra-password-reset-revokes-sessions
+    to: FACT-papra-auth-password-reset-revokes-sessions
+    created_at: 2026-11-16T10:25:03.398Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9192c1f57073
+  - type: constrains
+    from: REQ-papra-password-reset-revokes-sessions
+    to: FACT-papra-subject-auth-password-reset
+    created_at: 2026-11-16T10:25:03.412Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-8739107046f5
+  - type: verified_by
+    from: REQ-papra-password-reset-revokes-sessions
+    to: TEST-papra-server-src-modules-app-auth-auth-models
+    created_at: 2026-11-16T10:28:39.776Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-30060040447b
+  - type: verified_by
+    from: REQ-papra-password-reset-revokes-sessions
+    to: TEST-papra-server-src-modules-app-auth-e2e-email-verification-e2e
+    created_at: 2026-11-16T10:28:39.783Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c60b5025b4c5
+  - type: verified_by
+    from: REQ-papra-password-reset-revokes-sessions
+    to: TEST-papra-server-src-modules-app-auth-e2e-registration-e2e
+    created_at: 2026-11-16T10:28:39.787Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c91e3ac7686c
+  - type: verified_by
+    from: REQ-papra-password-reset-revokes-sessions
+    to: TEST-papra-server-src-modules-app-health-check-e2e-health-check-e2e
+    created_at: 2026-11-16T10:28:39.791Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-baffaf32728d

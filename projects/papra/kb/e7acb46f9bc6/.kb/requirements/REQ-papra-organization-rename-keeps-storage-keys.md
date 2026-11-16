@@ -57,7 +57,7 @@ required_evidence: asserted
 origin:
   kind: import
   ref: 'Papra documentation site (apps/docs): 03-guides/09-storage-key-patterns.mdx#organization-names-and-renames'
-  recorded_at: '2026-11-15T22:57:09.392Z'
+  recorded_at: '2026-11-16T10:17:59.317Z'
 tags:
   - bootstrap
   - knowledge-source:papra-docs

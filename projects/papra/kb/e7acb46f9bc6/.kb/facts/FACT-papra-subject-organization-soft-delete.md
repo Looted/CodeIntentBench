@@ -10,7 +10,7 @@ tags:
 origin:
   kind: agent
   ref: 'Papra documentation site (apps/docs): 05-architecture/organization-deletion-purge.mdx#soft-delete'
-  recorded_at: '2026-11-15T22:57:28.159Z'
+  recorded_at: '2026-11-16T10:18:22.093Z'
 id: FACT-papra-subject-organization-soft-delete
 type: fact
 ---

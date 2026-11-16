@@ -16,7 +16,7 @@ tags:
 origin:
   kind: agent
   ref: 'Papra server test suite (apps/papra-server/src/modules): organizations/organizations.usecases.test.ts#resend-only-inactive-invitations'
-  recorded_at: '2026-11-15T22:58:10.419Z'
+  recorded_at: '2026-11-16T10:19:08.729Z'
 id: FACT-papra-invitations-invitation-accepted-resendable
 type: fact
 ---

@@ -3,62 +3,62 @@ relationships:
     type: requires_property
     from: REQ-papra-storage-key-persisted-sync-optional
     to: FACT-papra-document-storage-key-persisted-with-document
-    created_at: "2026-11-15T23:00:00.414Z"
+    created_at: "2026-11-16T10:29:17.428Z"
     created_by: kibi/upsert
     source: mcp://kibi/upsert
   - type: constrains
     from: REQ-papra-storage-key-persisted-sync-optional
     to: FACT-papra-subject-document-storage-key
-    created_at: 2026-11-15T23:00:00.414Z
+    created_at: 2026-11-16T10:29:17.429Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-64f8f5077e57
   - type: requires_property
     from: REQ-papra-storage-key-persisted-sync-optional
     to: FACT-papra-document-storage-key-pattern-change-scope-by-default
-    created_at: 2026-11-15T23:00:00.423Z
+    created_at: 2026-11-16T10:29:17.439Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-310ca92181dd
   - type: requires_property
     from: REQ-papra-storage-key-persisted-sync-optional
     to: FACT-papra-document-storage-key-existing-key-changes-only-by
-    created_at: 2026-11-15T23:00:00.425Z
+    created_at: 2026-11-16T10:29:17.441Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-bfc9b14429c9
   - type: supersedes
     from: REQ-papra-storage-key-persisted-sync-optional
     to: REQ-a-document-s-storage-key-is-generated-at-u-4715C9F2
-    created_at: 2026-11-15T23:00:00.427Z
+    created_at: 2026-11-16T10:29:17.443Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-bd609aa93e05
   - type: verified_by
     from: REQ-papra-storage-key-persisted-sync-optional
     to: TEST-papra-server-src-modules-documents-document-encryption-usecases
-    created_at: 2026-11-15T23:02:18.182Z
+    created_at: 2026-11-16T10:37:44.541Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-ddb62c5960eb
   - type: verified_by
     from: REQ-papra-storage-key-persisted-sync-optional
     to: TEST-papra-server-src-modules-documents-document-storage-usecases
-    created_at: 2026-11-15T23:02:18.192Z
+    created_at: 2026-11-16T10:37:44.548Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-fe960aee2292
   - type: verified_by
     from: REQ-papra-storage-key-persisted-sync-optional
     to: TEST-papra-server-src-modules-documents-documents-repository
-    created_at: 2026-11-15T23:02:18.195Z
+    created_at: 2026-11-16T10:37:44.551Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-f249bbee9134
   - type: verified_by
     from: REQ-papra-storage-key-persisted-sync-optional
     to: TEST-papra-server-src-modules-documents-documents-usecases
-    created_at: 2026-11-15T23:02:18.198Z
+    created_at: 2026-11-16T10:37:44.554Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-1ed59b8a293d

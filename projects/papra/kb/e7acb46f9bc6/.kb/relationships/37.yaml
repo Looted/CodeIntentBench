@@ -51,56 +51,84 @@ relationships:
   - type: requires_property
     from: REQ-papra-former-members-can-be-reinvited
     to: FACT-papra-invitations-invitation-former-member-can-be-reinvited
-    created_at: 2026-11-15T22:57:14.659Z
+    created_at: 2026-11-16T10:18:05.847Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-4734fc607ac5
   - type: constrains
     from: REQ-papra-former-members-can-be-reinvited
     to: FACT-papra-subject-invitations-invitation
-    created_at: 2026-11-15T22:57:14.671Z
+    created_at: 2026-11-16T10:18:05.865Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-b37d6f7d77ed
   - type: requires_property
     from: REQ-papra-former-members-can-be-reinvited
     to: FACT-papra-invitations-invitation-new-invitation-blocked-by
-    created_at: 2026-11-15T22:57:14.675Z
+    created_at: 2026-11-16T10:18:05.873Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-3ac28990a884
   - type: requires_property
     from: REQ-papra-former-members-can-be-reinvited
     to: FACT-papra-invitations-invitation-closed-invitations-block-new-invitation
-    created_at: 2026-11-15T22:57:14.678Z
+    created_at: 2026-11-16T10:18:05.879Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-cf5eeae259b5
   - type: requires_property
     from: REQ-papra-former-members-can-be-reinvited
     to: FACT-papra-invitations-member-limit-counts-stale-pending-invitations
-    created_at: 2026-11-15T22:57:14.681Z
+    created_at: 2026-11-16T10:18:05.883Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-feb28e44a9eb
   - type: constrains
     from: REQ-papra-former-members-can-be-reinvited
     to: FACT-papra-subject-invitations-member-limit
-    created_at: 2026-11-15T22:57:14.684Z
+    created_at: 2026-11-16T10:18:05.887Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-fe5aad58eb89
+  - type: requires_property
+    from: REQ-papra-document-reprocess-endpoint
+    to: FACT-papra-documents-reprocess-reruns
+    created_at: 2026-11-16T10:20:29.583Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-77e89799bbbb
+  - type: constrains
+    from: REQ-papra-document-reprocess-endpoint
+    to: FACT-papra-subject-documents-reprocess
+    created_at: 2026-11-16T10:20:29.600Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-df1c597f8b21
+  - type: requires_property
+    from: REQ-papra-tagging-rule-delete-confirmation
+    to: FACT-papra-tagging-rules-delete-confirmation-required
+    created_at: 2026-11-16T10:22:10.578Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-7f3720484343
+  - type: constrains
+    from: REQ-papra-tagging-rule-delete-confirmation
+    to: FACT-papra-subject-tagging-rules-delete-confirmation
+    created_at: 2026-11-16T10:22:10.595Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-3e0c16759bf6
   - type: verified_by
     from: REQ-papra-former-members-can-be-reinvited
     to: TEST-papra-server-src-modules-organizations-organizations-repository
-    created_at: 2026-11-15T22:59:08.129Z
+    created_at: 2026-11-16T10:26:50.882Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-77719201cb1a
   - type: verified_by
     from: REQ-papra-former-members-can-be-reinvited
     to: TEST-papra-server-src-modules-organizations-organizations-usecases
-    created_at: 2026-11-15T22:59:08.141Z
+    created_at: 2026-11-16T10:26:50.897Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-43526aef3b99

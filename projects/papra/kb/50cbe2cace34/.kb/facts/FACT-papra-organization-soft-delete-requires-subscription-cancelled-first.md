@@ -16,7 +16,7 @@ tags:
 origin:
   kind: agent
   ref: 'Papra server test suite (apps/papra-server/src/modules): organizations/organizations.usecases.test.ts#active-subscription-blocks-deletion'
-  recorded_at: '2026-11-15T23:00:31.427Z'
+  recorded_at: '2026-11-16T10:29:47.304Z'
 id: FACT-papra-organization-soft-delete-requires-subscription-cancelled-first
 type: fact
 ---

@@ -10,7 +10,7 @@ tags:
 origin:
   kind: agent
   ref: 'Papra documentation site (apps/docs): 03-guides/09-storage-key-patterns.mdx#synchronizing-storage-keys-on-document-updates'
-  recorded_at: '2026-11-15T22:56:58.284Z'
+  recorded_at: '2026-11-16T10:17:46.350Z'
 id: FACT-papra-subject-document-storage-key-sync
 type: fact
 ---

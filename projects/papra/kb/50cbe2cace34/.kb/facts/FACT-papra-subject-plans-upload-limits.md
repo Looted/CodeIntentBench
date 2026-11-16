@@ -10,7 +10,7 @@ tags:
 origin:
   kind: agent
   ref: 'Papra server test suite (apps/papra-server/src/modules): documents/documents.usecases.test.ts'
-  recorded_at: '2026-11-15T23:01:05.032Z'
+  recorded_at: '2026-11-16T10:30:20.082Z'
 id: FACT-papra-subject-plans-upload-limits
 type: fact
 ---

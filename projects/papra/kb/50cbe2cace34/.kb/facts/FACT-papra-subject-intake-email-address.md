@@ -10,7 +10,7 @@ tags:
 origin:
   kind: agent
   ref: 'papra-hq/papra GitHub issues: #486'
-  recorded_at: '2026-11-15T23:00:46.763Z'
+  recorded_at: '2026-11-16T10:30:01.799Z'
 id: FACT-papra-subject-intake-email-address
 type: fact
 ---

@@ -16,7 +16,7 @@ tags:
 origin:
   kind: agent
   ref: 'Papra server test suite (apps/papra-server/src/modules): documents/documents.usecases.test.ts#plan-storage-and-file-size-limits'
-  recorded_at: '2026-11-15T22:58:07.230Z'
+  recorded_at: '2026-11-16T10:19:05.037Z'
 id: FACT-papra-plans-upload-limits-persists-anything-on-rejection
 type: fact
 ---

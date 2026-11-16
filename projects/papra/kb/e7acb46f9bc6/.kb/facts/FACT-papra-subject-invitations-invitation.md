@@ -10,7 +10,7 @@ tags:
 origin:
   kind: agent
   ref: 'Organization invitations specs: invtations.specs.md'
-  recorded_at: '2026-11-15T22:57:10.635Z'
+  recorded_at: '2026-11-16T10:18:00.953Z'
 id: FACT-papra-subject-invitations-invitation
 type: fact
 ---

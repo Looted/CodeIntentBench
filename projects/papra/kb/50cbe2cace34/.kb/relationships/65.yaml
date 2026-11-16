@@ -3,48 +3,48 @@ relationships:
     type: requires_property
     from: REQ-papra-intake-email-sender-allowlist
     to: FACT-papra-intake-email-allowed-origins-accepted-senders
-    created_at: "2026-11-15T23:00:48.343Z"
+    created_at: "2026-11-16T10:30:03.341Z"
     created_by: kibi/upsert
     source: mcp://kibi/upsert
   - type: constrains
     from: REQ-papra-intake-email-sender-allowlist
     to: FACT-papra-subject-intake-email-allowed-origins
-    created_at: 2026-11-15T23:00:48.343Z
+    created_at: 2026-11-16T10:30:03.342Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-ed72ed91c6b4
   - type: requires_property
     from: REQ-papra-intake-email-sender-allowlist
     to: FACT-papra-intake-email-allowed-origins-empty-list-accepts-mail
-    created_at: 2026-11-15T23:00:48.351Z
+    created_at: 2026-11-16T10:30:03.352Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-828dd4f95f72
   - type: requires_property
     from: REQ-papra-intake-email-sender-allowlist
     to: FACT-papra-intake-email-address-disabled-address-ingests-mail
-    created_at: 2026-11-15T23:00:48.353Z
+    created_at: 2026-11-16T10:30:03.354Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-cee6e83c3c1f
   - type: constrains
     from: REQ-papra-intake-email-sender-allowlist
     to: FACT-papra-subject-intake-email-address
-    created_at: 2026-11-15T23:00:48.355Z
+    created_at: 2026-11-16T10:30:03.358Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-3f82d75da9e1
   - type: verified_by
     from: REQ-papra-intake-email-sender-allowlist
     to: TEST-papra-server-src-modules-intake-emails-intake-emails-models
-    created_at: 2026-11-15T23:02:07.600Z
+    created_at: 2026-11-16T10:37:33.682Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-b9fd6e60e956
   - type: verified_by
     from: REQ-papra-intake-email-sender-allowlist
     to: TEST-papra-server-src-modules-intake-emails-intake-emails-usecases
-    created_at: 2026-11-15T23:02:07.609Z
+    created_at: 2026-11-16T10:37:33.689Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-c2cf293e453f

@@ -37,7 +37,28 @@ relationships:
   - type: verified_by
     from: REQ-AUTO-198A6A47509791DF
     to: TEST-papra-server-src-modules-ingestion-folders-ingestion-folders-usecases
-    created_at: 2026-11-16T04:51:19.785Z
+    created_at: 2026-11-16T04:52:01.275Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-9c4cad2bd7e1
+  - type: requires_property
+    from: REQ-papra-intake-attachment-mime-coercion
+    to: FACT-papra-intake-email-attachment-mime-coercion
+    created_at: 2026-11-16T10:36:13.853Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4b0179d6715a
+  - type: constrains
+    from: REQ-papra-intake-attachment-mime-coercion
+    to: FACT-papra-subject-intake-email-attachment-mime
+    created_at: 2026-11-16T10:36:13.865Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-197fe35154cf
+  - type: verified_by
+    from: REQ-papra-intake-attachment-mime-coercion
+    to: TEST-papra-server-src-modules-shared-mime-types-mime-types-usecases
+    created_at: 2026-11-16T10:37:32.740Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-adb9a43659e4

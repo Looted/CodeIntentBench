@@ -16,7 +16,7 @@ tags:
 origin:
   kind: agent
   ref: 'Papra server test suite (apps/papra-server/src/modules): intake-emails/intake-emails.models.test.ts#intake-email-sender-allowlist'
-  recorded_at: '2026-11-15T22:57:42.368Z'
+  recorded_at: '2026-11-16T10:18:38.513Z'
 id: FACT-papra-intake-email-allowed-origins-accepted-senders
 type: fact
 ---

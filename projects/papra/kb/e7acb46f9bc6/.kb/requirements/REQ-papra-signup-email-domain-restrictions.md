@@ -57,7 +57,7 @@ required_evidence: asserted
 origin:
   kind: import
   ref: 'Papra server test suite (apps/papra-server/src/modules): app/auth/auth.models.test.ts#signup-email-domain-restrictions'
-  recorded_at: '2026-11-15T22:58:19.659Z'
+  recorded_at: '2026-11-16T10:19:18.637Z'
 tags:
   - bootstrap
   - knowledge-source:papra-tests

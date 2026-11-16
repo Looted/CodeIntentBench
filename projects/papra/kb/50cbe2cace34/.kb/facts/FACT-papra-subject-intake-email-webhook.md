@@ -10,7 +10,7 @@ tags:
 origin:
   kind: agent
   ref: 'Papra documentation site (apps/docs): 03-guides/01-intake-emails-with-owlrelay.mdx#setup'
-  recorded_at: '2026-11-15T22:59:53.132Z'
+  recorded_at: '2026-11-16T10:29:09.738Z'
 id: FACT-papra-subject-intake-email-webhook
 type: fact
 ---

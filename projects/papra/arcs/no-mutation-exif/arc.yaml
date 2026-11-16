@@ -1,7 +1,8 @@
 id: no-mutation-exif
 project: papra
 family: surfacing
-tier: hard
+tier: easy
+# Tier: easy since November 2026. Every store arm passed it in v4b (one search finds the decision); the hard tier now holds the arcs whose decision a search alone does not reach.
 pattern: quiet-contradiction
 # The project pin (October 2026). The request shares no word with the decision ("strip", "EXIF",
 # "privacy" against "never mutated", "retrieves exactly what was uploaded") and sounds like a safety

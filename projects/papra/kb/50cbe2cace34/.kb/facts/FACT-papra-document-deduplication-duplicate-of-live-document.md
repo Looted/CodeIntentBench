@@ -16,7 +16,7 @@ tags:
 origin:
   kind: agent
   ref: 'Papra server test suite (apps/papra-server/src/modules): documents/documents.usecases.test.ts#duplicate-upload-restores-trashed-document'
-  recorded_at: '2026-11-15T23:00:40.814Z'
+  recorded_at: '2026-11-16T10:29:55.746Z'
 id: FACT-papra-document-deduplication-duplicate-of-live-document
 type: fact
 ---

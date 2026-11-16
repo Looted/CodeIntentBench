@@ -46,7 +46,7 @@ required_evidence: asserted
 origin:
   kind: import
   ref: 'Papra documentation site (apps/docs): 03-guides/09-storage-key-patterns.mdx#storage-key-persistence'
-  recorded_at: '2026-11-15T23:00:00.408Z'
+  recorded_at: '2026-11-16T10:29:17.421Z'
 tags:
   - bootstrap
   - knowledge-source:papra-docs

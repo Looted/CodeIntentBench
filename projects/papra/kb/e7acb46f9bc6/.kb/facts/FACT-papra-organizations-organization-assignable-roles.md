@@ -16,7 +16,7 @@ tags:
 origin:
   kind: agent
   ref: 'Papra server test suite (apps/papra-server/src/modules): organizations/organizations.usecases.test.ts#invite-cannot-create-owner'
-  recorded_at: '2026-11-15T22:57:48.212Z'
+  recorded_at: '2026-11-16T10:18:44.684Z'
 id: FACT-papra-organizations-organization-assignable-roles
 type: fact
 ---

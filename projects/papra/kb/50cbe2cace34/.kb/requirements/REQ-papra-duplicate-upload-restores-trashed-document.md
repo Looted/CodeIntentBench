@@ -46,7 +46,7 @@ required_evidence: asserted
 origin:
   kind: import
   ref: 'Papra server test suite (apps/papra-server/src/modules): documents/documents.usecases.test.ts#duplicate-upload-restores-trashed-document'
-  recorded_at: '2026-11-15T23:00:43.081Z'
+  recorded_at: '2026-11-16T10:29:58.496Z'
 tags:
   - bootstrap
   - knowledge-source:papra-tests

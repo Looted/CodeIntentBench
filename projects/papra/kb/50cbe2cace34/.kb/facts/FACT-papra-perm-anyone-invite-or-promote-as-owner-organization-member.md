@@ -19,7 +19,7 @@ tags:
 origin:
   kind: agent
   ref: 'Papra server test suite (apps/papra-server/src/modules): organizations/organizations.usecases.test.ts#invite-cannot-create-owner'
-  recorded_at: '2026-11-15T23:00:51.769Z'
+  recorded_at: '2026-11-16T10:30:06.706Z'
 id: FACT-papra-perm-anyone-invite-or-promote-as-owner-organization-member
 type: fact
 ---

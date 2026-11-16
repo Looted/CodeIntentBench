@@ -3,41 +3,55 @@ relationships:
     type: requires_property
     from: REQ-papra-application-versioning-year-based
     to: FACT-papra-release-versioning-application-format
-    created_at: "2026-11-15T23:00:22.574Z"
+    created_at: "2026-11-16T10:29:39.379Z"
     created_by: kibi/upsert
     source: mcp://kibi/upsert
   - type: constrains
     from: REQ-papra-application-versioning-year-based
     to: FACT-papra-subject-release-versioning
-    created_at: 2026-11-15T23:00:22.574Z
+    created_at: 2026-11-16T10:29:39.379Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-efffb66fa08d
   - type: requires_property
     from: REQ-papra-application-versioning-year-based
     to: FACT-papra-release-versioning-patches-older-minor-versions
-    created_at: 2026-11-15T23:00:22.584Z
+    created_at: 2026-11-16T10:29:39.389Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-d4fb64cedc7a
   - type: requires_property
     from: REQ-papra-application-versioning-year-based
     to: FACT-papra-release-versioning-library-versioning
-    created_at: 2026-11-15T23:00:22.587Z
+    created_at: 2026-11-16T10:29:39.392Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-a85bf43c6ea2
   - type: requires_property
     from: REQ-papra-application-versioning-year-based
     to: FACT-papra-release-versioning-docker-image-version-matches-application
-    created_at: 2026-11-15T23:00:22.589Z
+    created_at: 2026-11-16T10:29:39.394Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-0f0daf740ed1
   - type: supersedes
     from: REQ-papra-application-versioning-year-based
     to: REQ-the-application-package-is-versioned-with--B1FD7959
-    created_at: 2026-11-15T23:00:22.593Z
+    created_at: 2026-11-16T10:29:39.396Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-1ce69dfe8790
+  - type: requires_property
+    from: REQ-papra-no-open-in-new-tab
+    to: FACT-papra-documents-open-in-new-tab-available
+    created_at: 2026-11-16T10:31:18.066Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-00f47607671a
+  - type: constrains
+    from: REQ-papra-no-open-in-new-tab
+    to: FACT-papra-subject-documents-open-in-new-tab
+    created_at: 2026-11-16T10:31:18.079Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b98752d98f96

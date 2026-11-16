@@ -16,7 +16,7 @@ tags:
 origin:
   kind: agent
   ref: 'papra-hq/papra merged pull requests: #1529'
-  recorded_at: '2026-11-15T23:00:07.615Z'
+  recorded_at: '2026-11-16T10:29:24.874Z'
 id: FACT-papra-storage-pattern-organization-name-available-as-expression
 type: fact
 ---

@@ -5,7 +5,7 @@ sourceFile: apps/papra-server/src/modules/ingestion-folders/ingestion-folders.us
 text_ref: apps/papra-server/src/modules/ingestion-folders/ingestion-folders.usecases.test.ts
 origin:
   kind: agent
-  recorded_at: '2026-11-16T04:51:17.096Z'
+  recorded_at: '2026-11-16T04:51:58.370Z'
 id: TEST-papra-server-src-modules-ingestion-folders-ingestion-folders-usecases
 type: test
 ---

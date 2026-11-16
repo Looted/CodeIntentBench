@@ -16,7 +16,7 @@ tags:
 origin:
   kind: agent
   ref: 'Papra documentation site (apps/docs): 03-guides/09-storage-key-patterns.mdx#organization-names-and-renames'
-  recorded_at: '2026-11-15T23:00:12.450Z'
+  recorded_at: '2026-11-16T10:29:29.013Z'
 id: FACT-papra-document-storage-key-usable-after-organization-rename
 type: fact
 ---

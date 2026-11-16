@@ -46,7 +46,7 @@ required_evidence: asserted
 origin:
   kind: import
   ref: 'Papra server test suite (apps/papra-server/src/modules): documents/documents.usecases.test.ts#plan-storage-and-file-size-limits'
-  recorded_at: '2026-11-15T23:01:08.502Z'
+  recorded_at: '2026-11-16T10:30:23.005Z'
 tags:
   - bootstrap
   - knowledge-source:papra-tests

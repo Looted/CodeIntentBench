@@ -16,7 +16,7 @@ tags:
 origin:
   kind: agent
   ref: 'Papra documentation site (apps/docs): 03-guides/09-storage-key-patterns.mdx#storage-key-persistence'
-  recorded_at: '2026-11-15T22:56:55.858Z'
+  recorded_at: '2026-11-16T10:17:43.067Z'
 id: FACT-papra-document-storage-key-existing-key-changes-only-by
 type: fact
 ---

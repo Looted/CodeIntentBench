@@ -10,7 +10,7 @@ tags:
 origin:
   kind: agent
   ref: 'papra-hq/papra merged pull requests: #892'
-  recorded_at: '2026-11-15T22:56:45.343Z'
+  recorded_at: '2026-11-16T10:17:30.406Z'
 id: FACT-papra-subject-intake-email-webhook-secret
 type: fact
 ---

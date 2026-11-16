@@ -1,0 +1,43 @@
+relationships:
+  - id: rel-024057259885
+    type: requires_property
+    from: REQ-papra-email-html-escaped
+    to: FACT-papra-email-templates-user-value-handling
+    created_at: "2026-11-16T10:34:49.714Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-email-html-escaped
+    to: FACT-papra-subject-email-templates
+    created_at: 2026-11-16T10:34:49.714Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-5ad58d317731
+  - type: supersedes
+    from: REQ-papra-email-html-escaped
+    to: REQ-papra-email-user-name-sanitized
+    created_at: 2026-11-16T10:34:49.724Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ef80a104680a
+  - type: verified_by
+    from: REQ-papra-email-html-escaped
+    to: TEST-papra-server-src-modules-shared-html-html
+    created_at: 2026-11-16T10:37:31.784Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6b9595c8b2d4
+  - type: verified_by
+    from: REQ-papra-email-html-escaped
+    to: TEST-papra-server-src-modules-app-auth-auth-models
+    created_at: 2026-11-16T10:39:15.656Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-7cfe3cdd850a
+  - type: verified_by
+    from: REQ-papra-email-html-escaped
+    to: TEST-papra-server-src-modules-app-auth-e2e-email-verification-e2e
+    created_at: 2026-11-16T10:39:15.664Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-50e84ca6dc7b

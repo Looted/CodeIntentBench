@@ -46,7 +46,7 @@ required_evidence: asserted
 origin:
   kind: import
   ref: 'Papra server test suite (apps/papra-server/src/modules): tagging-rules/tagging-rules.usecases.test.ts#tagging-rule-match-mode'
-  recorded_at: '2026-11-15T23:01:17.152Z'
+  recorded_at: '2026-11-16T10:30:31.286Z'
 tags:
   - bootstrap
   - knowledge-source:papra-tests

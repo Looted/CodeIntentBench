@@ -48,10 +48,24 @@ relationships:
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-209b4d5efd42
+  - type: requires_property
+    from: REQ-papra-batch-document-tag-endpoint
+    to: FACT-papra-documents-batch-tags-available
+    created_at: 2026-11-16T10:31:35.441Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-071d5a9386e5
+  - type: constrains
+    from: REQ-papra-batch-document-tag-endpoint
+    to: FACT-papra-subject-documents-batch-tags
+    created_at: 2026-11-16T10:31:35.455Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-75ca48162a7d
   - type: verified_by
     from: REQ-deleting-an-organization-is-a-soft-delete--58DE105C
     to: TEST-papra-server-src-modules-admin-organizations-e2e-organizations-e2e
-    created_at: 2026-11-16T04:51:27.094Z
+    created_at: 2026-11-16T10:39:12.395Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-bd20ac2d36a9

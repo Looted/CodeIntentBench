@@ -10,7 +10,7 @@ tags:
 origin:
   kind: agent
   ref: 'Papra server test suite (apps/papra-server/src/modules): organizations/organizations.models.test.ts'
-  recorded_at: '2026-11-15T22:58:01.320Z'
+  recorded_at: '2026-11-16T10:18:58.947Z'
 id: FACT-papra-subject-organizations-member-removal
 type: fact
 ---

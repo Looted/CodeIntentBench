@@ -23,7 +23,21 @@ relationships:
   - type: verified_by
     from: REQ-an-invalid-date-in-a-created-filter-is-ign-800EF0B8
     to: TEST-papra-server-src-modules-documents-document-search-database-fts5-query-builder-query-builder-models
-    created_at: 2026-11-16T04:39:17.743Z
+    created_at: 2026-11-16T04:52:05.699Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-2806873b6fab
+  - type: requires_property
+    from: REQ-papra-webhooks-no-redirects
+    to: FACT-papra-webhook-redirects-followed
+    created_at: 2026-11-16T10:23:09.361Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b8839fe4fe3e
+  - type: constrains
+    from: REQ-papra-webhooks-no-redirects
+    to: FACT-papra-subject-webhook-redirects
+    created_at: 2026-11-16T10:23:09.382Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-57390332cac1

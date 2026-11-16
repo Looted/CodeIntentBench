@@ -5,7 +5,7 @@ sourceFile: apps/papra-server/src/modules/intake-emails/e2e/ingest-intake-emails
 text_ref: apps/papra-server/src/modules/intake-emails/e2e/ingest-intake-emails.e2e.test.ts
 origin:
   kind: agent
-  recorded_at: '2026-11-16T04:37:42.000Z'
+  recorded_at: '2026-11-16T04:51:59.098Z'
 id: TEST-papra-server-src-modules-intake-emails-e2e-ingest-intake-emails-e2e
 type: test
 ---

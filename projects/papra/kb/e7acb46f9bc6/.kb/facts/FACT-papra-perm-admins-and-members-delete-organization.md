@@ -19,7 +19,7 @@ tags:
 origin:
   kind: agent
   ref: 'Papra server test suite (apps/papra-server/src/modules): organizations/organizations.usecases.test.ts#only-owner-deletes-organization'
-  recorded_at: '2026-11-15T22:57:56.044Z'
+  recorded_at: '2026-11-16T10:18:53.268Z'
 id: FACT-papra-perm-admins-and-members-delete-organization
 type: fact
 ---

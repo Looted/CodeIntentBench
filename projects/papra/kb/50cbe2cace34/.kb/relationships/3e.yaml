@@ -1,0 +1,22 @@
+relationships:
+  - id: rel-1f166d047d88
+    type: requires_property
+    from: REQ-papra-scheduled-tasks-startup-toggle
+    to: FACT-papra-tasks-scheduled-startup-global-setting
+    created_at: "2026-11-16T10:35:21.928Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-scheduled-tasks-startup-toggle
+    to: FACT-papra-subject-tasks-scheduled-startup
+    created_at: 2026-11-16T10:35:21.929Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-e6d397299189
+  - type: requires_property
+    from: REQ-papra-scheduled-tasks-startup-toggle
+    to: FACT-papra-tasks-scheduled-startup-per-task-setting
+    created_at: 2026-11-16T10:35:21.942Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-1394e7f16b94

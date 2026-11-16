@@ -48,10 +48,59 @@ relationships:
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-2abdd766690c
+  - type: requires_property
+    from: REQ-papra-document-sort-by-document-date
+    to: FACT-papra-documents-sort-client-default-field
+    created_at: 2026-11-16T10:31:59.402Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6c5fae9f3c68
+  - type: constrains
+    from: REQ-papra-document-sort-by-document-date
+    to: FACT-papra-subject-documents-sort
+    created_at: 2026-11-16T10:31:59.417Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-590c96a0192c
+  - type: supersedes
+    from: REQ-papra-document-sort-by-document-date
+    to: REQ-papra-document-sort-parameters
+    created_at: 2026-11-16T10:31:59.421Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-f2ccadc72d13
+  - type: requires_property
+    from: REQ-papra-docling-options
+    to: FACT-papra-content-extraction-docling-options-setting
+    created_at: 2026-11-16T10:33:48.148Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-836f37d6f579
+  - type: constrains
+    from: REQ-papra-docling-options
+    to: FACT-papra-subject-content-extraction-docling-options
+    created_at: 2026-11-16T10:33:48.170Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-3b6fce51e259
+  - type: requires_property
+    from: REQ-papra-auth-secret-min-32
+    to: FACT-papra-auth-secret-min-length
+    created_at: 2026-11-16T10:35:51.665Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4554a5b6df68
+  - type: constrains
+    from: REQ-papra-auth-secret-min-32
+    to: FACT-papra-subject-auth-secret
+    created_at: 2026-11-16T10:35:51.681Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-abf48b2c4698
   - type: verified_by
     from: REQ-when-a-trashed-document-is-restored-by-a-d-F5E2FEA1
     to: TEST-papra-server-src-modules-documents-document-storage-usecases
-    created_at: 2026-11-15T23:02:32.586Z
+    created_at: 2026-11-16T10:38:00.478Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-f8dfe4e0a88e

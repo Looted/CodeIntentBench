@@ -5,7 +5,7 @@ sourceFile: apps/papra-server/src/modules/documents/storage-patterns/storage-pat
 text_ref: apps/papra-server/src/modules/documents/storage-patterns/storage-pattern.models.test.ts
 origin:
   kind: agent
-  recorded_at: '2026-11-16T04:51:15.583Z'
+  recorded_at: '2026-11-16T10:39:08.941Z'
 id: TEST-papra-server-src-modules-documents-storage-patterns-storage-pattern-models
 type: test
 ---

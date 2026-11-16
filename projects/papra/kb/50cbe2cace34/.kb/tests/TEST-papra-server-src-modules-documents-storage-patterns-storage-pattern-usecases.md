@@ -5,7 +5,7 @@ sourceFile: apps/papra-server/src/modules/documents/storage-patterns/storage-pat
 text_ref: apps/papra-server/src/modules/documents/storage-patterns/storage-pattern.usecases.test.ts
 origin:
   kind: agent
-  recorded_at: '2026-11-15T23:01:37.444Z'
+  recorded_at: '2026-11-16T10:36:59.384Z'
 id: TEST-papra-server-src-modules-documents-storage-patterns-storage-pattern-usecases
 type: test
 ---

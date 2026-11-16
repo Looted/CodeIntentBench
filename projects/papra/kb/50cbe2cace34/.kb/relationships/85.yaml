@@ -3,69 +3,69 @@ relationships:
     type: requires_property
     from: REQ-papra-duplicate-upload-restores-trashed-document
     to: FACT-papra-document-deduplication-identical-content-stored-once-per-organization
-    created_at: "2026-11-15T23:00:43.089Z"
+    created_at: "2026-11-16T10:29:58.502Z"
     created_by: kibi/upsert
     source: mcp://kibi/upsert
   - type: constrains
     from: REQ-papra-duplicate-upload-restores-trashed-document
     to: FACT-papra-subject-document-deduplication
-    created_at: 2026-11-15T23:00:43.089Z
+    created_at: 2026-11-16T10:29:58.502Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-2103a0210c84
   - type: requires_property
     from: REQ-papra-duplicate-upload-restores-trashed-document
     to: FACT-papra-document-deduplication-duplicate-of-live-document
-    created_at: 2026-11-15T23:00:43.100Z
+    created_at: 2026-11-16T10:29:58.513Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-558a967a4a8a
   - type: requires_property
     from: REQ-papra-duplicate-upload-restores-trashed-document
     to: FACT-papra-document-trash-restore-restores-in-place-with-new-name-cleared-tags-and-rules
-    created_at: 2026-11-15T23:00:43.105Z
+    created_at: 2026-11-16T10:29:58.517Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-ab167ea4ded9
   - type: constrains
     from: REQ-papra-duplicate-upload-restores-trashed-document
     to: FACT-papra-subject-document-trash-restore
-    created_at: 2026-11-15T23:00:43.108Z
+    created_at: 2026-11-16T10:29:58.521Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-45cdcbf205e3
   - type: restates
     from: REQ-papra-duplicate-upload-restores-trashed-document
     to: REQ-documents-are-deduplicated-per-organizatio-7DDB2737
-    created_at: 2026-11-15T23:00:43.111Z
+    created_at: 2026-11-16T10:29:58.525Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-d70350c955c7
   - type: restates
     from: REQ-papra-duplicate-upload-restores-trashed-document
     to: REQ-uploading-content-identical-to-a-trashed-d-F0111402
-    created_at: 2026-11-15T23:00:43.121Z
+    created_at: 2026-11-16T10:29:58.529Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-9e37826ca776
   - type: restates
     from: REQ-papra-duplicate-upload-restores-trashed-document
     to: REQ-when-a-trashed-document-is-restored-by-a-d-F5E2FEA1
-    created_at: 2026-11-15T23:00:43.124Z
+    created_at: 2026-11-16T10:29:58.533Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-cc2acc9fabf9
   - type: verified_by
     from: REQ-papra-duplicate-upload-restores-trashed-document
     to: TEST-papra-server-src-modules-documents-documents-repository
-    created_at: 2026-11-15T23:02:06.522Z
+    created_at: 2026-11-16T10:37:30.848Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-046ad831165f
   - type: verified_by
     from: REQ-papra-duplicate-upload-restores-trashed-document
     to: TEST-papra-server-src-modules-documents-documents-usecases
-    created_at: 2026-11-15T23:02:06.528Z
+    created_at: 2026-11-16T10:37:30.855Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-ef176dfe9d6d

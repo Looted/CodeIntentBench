@@ -5,7 +5,7 @@ sourceFile: apps/papra-server/src/modules/api-keys/api-keys.usecases.test.ts
 text_ref: apps/papra-server/src/modules/api-keys/api-keys.usecases.test.ts
 origin:
   kind: agent
-  recorded_at: '2026-11-15T22:58:38.543Z'
+  recorded_at: '2026-11-16T10:26:09.326Z'
 id: TEST-papra-server-src-modules-api-keys-api-keys-usecases
 type: test
 ---

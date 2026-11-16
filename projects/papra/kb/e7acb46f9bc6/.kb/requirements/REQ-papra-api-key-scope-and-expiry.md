@@ -57,7 +57,7 @@ required_evidence: asserted
 origin:
   kind: import
   ref: 'Papra server test suite (apps/papra-server/src/modules): app/auth/auth.models.test.ts#api-key-scope-and-expiry'
-  recorded_at: '2026-11-15T22:57:35.588Z'
+  recorded_at: '2026-11-16T10:18:30.970Z'
 tags:
   - bootstrap
   - knowledge-source:papra-tests

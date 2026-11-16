@@ -199,6 +199,22 @@ and attributed. 10 of the 26 claims have no stated reason and say "Reason not st
 organisation-rename boundary. The rule files' own `rationale` text was written for the benchmark and was
 not copied: where no Papra source gives the reason, the entry has none.
 
+### Decisions from the release changelogs (gold/bulk.py)
+
+The hard tier needs a store where one search does not find the answer, so the later bases also carry
+112 decisions taken from Papra's release changelogs (`gold/changelog.json`: the 352 changeset entries
+of `apps/*/CHANGELOG.md`, with package, version, pull request, commit and date). `gold/bulk.py` turns
+an entry into a requirement: the statement is the clauses joined with "; ", the excerpt is the
+changeset text verbatim, the date and commit are the changeset's, the source is `papra-changelog`.
+A reason is recorded only when the changeset states one (quoted); 88 of the 112 say "Reason not
+stated". Where a later changeset replaces an earlier one the later entry supersedes it, so the store
+has chains: the search endpoint (#650, #758, #899), the documents order (#1089 then #1192, with the
+#1292 tie-break beside it), email escaping (#995 then #1061), the B2 driver (#280 then #472), email
+dry-run (#302 then #304) and the base URL (#320 then #405). A superseded entry keeps its own facts
+(a fact tuple's fifth element tags its id) and those facts are deprecated once only closed entries use
+them. 14 of the entries name the code that decides them in `symbols-map.json`. The April snapshot is
+not touched: its arcs are the easy tier.
+
 ### Result
 
 | | `50cbe2cace34` | `e7acb46f9bc6` |

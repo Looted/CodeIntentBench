@@ -1,0 +1,3246 @@
+[
+ {
+  "pkg": "api-sdk",
+  "version": "1.0.1",
+  "pr": 280,
+  "commit": "85fa5c4",
+  "author": "CorentinTh",
+  "text": "Created a JS/TS api sdk package",
+  "date": "2025-05-13"
+ },
+ {
+  "pkg": "app",
+  "version": "0.4.0",
+  "pr": 280,
+  "commit": "85fa5c4",
+  "author": "CorentinTh",
+  "text": "Properly hard delete files in storage driver",
+  "date": "2025-05-13"
+ },
+ {
+  "pkg": "app",
+  "version": "0.4.0",
+  "pr": 280,
+  "commit": "85fa5c4",
+  "author": "CorentinTh",
+  "text": "Added support for b2 document storage",
+  "date": "2025-05-13"
+ },
+ {
+  "pkg": "app",
+  "version": "0.4.0",
+  "pr": 280,
+  "commit": "85fa5c4",
+  "author": "CorentinTh",
+  "text": "Added support for azure blob document storage",
+  "date": "2025-05-13"
+ },
+ {
+  "pkg": "app",
+  "version": "0.4.0",
+  "pr": 280,
+  "commit": "85fa5c4",
+  "author": "CorentinTh",
+  "text": "Added webhook management",
+  "also": [
+   "webhooks"
+  ],
+  "date": "2025-05-13"
+ },
+ {
+  "pkg": "app",
+  "version": "0.4.0",
+  "pr": 280,
+  "commit": "85fa5c4",
+  "author": "CorentinTh",
+  "text": "Added API keys support",
+  "date": "2025-05-13"
+ },
+ {
+  "pkg": "app",
+  "version": "0.4.0",
+  "pr": 280,
+  "commit": "85fa5c4",
+  "author": "CorentinTh",
+  "text": "Added document searchable content edit",
+  "date": "2025-05-13"
+ },
+ {
+  "pkg": "app",
+  "version": "0.4.0",
+  "pr": 280,
+  "commit": "85fa5c4",
+  "author": "CorentinTh",
+  "text": "Fix ingestion config coercion",
+  "date": "2025-05-13"
+ },
+ {
+  "pkg": "app",
+  "version": "0.4.0",
+  "pr": 280,
+  "commit": "85fa5c4",
+  "author": "CorentinTh",
+  "text": "Added tag creation button in document page",
+  "date": "2025-05-13"
+ },
+ {
+  "pkg": "app",
+  "version": "0.4.0",
+  "pr": 280,
+  "commit": "85fa5c4",
+  "author": "CorentinTh",
+  "text": "Improved tag selector input wrapping",
+  "date": "2025-05-13"
+ },
+ {
+  "pkg": "app",
+  "version": "0.4.0",
+  "pr": 280,
+  "commit": "85fa5c4",
+  "author": "CorentinTh",
+  "text": "Properly handle file names without extensions",
+  "date": "2025-05-13"
+ },
+ {
+  "pkg": "app",
+  "version": "0.4.0",
+  "pr": 280,
+  "commit": "85fa5c4",
+  "author": "CorentinTh",
+  "text": "Wrap text in document preview",
+  "date": "2025-05-13"
+ },
+ {
+  "pkg": "app",
+  "version": "0.4.0",
+  "pr": 280,
+  "commit": "85fa5c4",
+  "author": "CorentinTh",
+  "text": "Excluded deleted documents from doc count",
+  "date": "2025-05-13"
+ },
+ {
+  "pkg": "cli",
+  "version": "0.0.1",
+  "pr": 280,
+  "commit": "85fa5c4",
+  "author": "CorentinTh",
+  "text": "Created CLI for document ingestion",
+  "date": "2025-05-13"
+ },
+ {
+  "pkg": "docs",
+  "version": "0.3.1",
+  "pr": 280,
+  "commit": "85fa5c4",
+  "author": "CorentinTh",
+  "text": "Fix broken lint and added auto link check",
+  "date": "2025-05-13"
+ },
+ {
+  "pkg": "app",
+  "version": "0.5.0",
+  "pr": 291,
+  "commit": "0627ec2",
+  "author": "CorentinTh",
+  "text": "Added invitation system to add users to an organization",
+  "date": "2025-05-21"
+ },
+ {
+  "pkg": "docs",
+  "version": "0.4.0",
+  "pr": 293,
+  "commit": "53bf93f",
+  "author": "CorentinTh",
+  "text": "Added a papra docker-compose.yml generator",
+  "date": "2025-05-23"
+ },
+ {
+  "pkg": "app",
+  "version": "0.5.0",
+  "pr": 294,
+  "commit": "b400b3f",
+  "author": "CorentinTh",
+  "text": "Ensure local database directory en boot",
+  "date": "2025-05-23"
+ },
+ {
+  "pkg": "app",
+  "version": "0.5.0",
+  "pr": 295,
+  "commit": "438a311",
+  "author": "CorentinTh",
+  "text": "Added support for custom oauth2 providers",
+  "also": [
+   "docs"
+  ],
+  "date": "2025-05-24"
+ },
+ {
+  "pkg": "app",
+  "version": "0.5.0",
+  "pr": 296,
+  "commit": "0ddc234",
+  "author": "CorentinTh",
+  "text": "Fix register page description",
+  "date": "2025-05-24"
+ },
+ {
+  "pkg": "app",
+  "version": "0.5.1",
+  "pr": 302,
+  "commit": "b62ddf2",
+  "author": "CorentinTh",
+  "text": "Set email setting to dry-run by default in docker",
+  "date": "2025-05-24"
+ },
+ {
+  "pkg": "app",
+  "version": "0.6.0",
+  "pr": 304,
+  "commit": "cb38d66",
+  "author": "CorentinTh",
+  "text": "Reworked the email sending system to be more flexible and allow for different drivers to be used. `EMAILS_DRY_RUN` has been removed and you can now use `EMAILS_DRIVER=logger` config option to log emails instead of sending them.",
+  "date": "2025-05-25"
+ },
+ {
+  "pkg": "app",
+  "version": "0.6.0",
+  "pr": 306,
+  "commit": "f0876fd",
+  "author": "CorentinTh",
+  "text": "Added support for classic SMTP client for email sending",
+  "date": "2025-05-25"
+ },
+ {
+  "pkg": "app",
+  "version": "0.6.0",
+  "pr": 308,
+  "commit": "759a3ff",
+  "author": "CorentinTh",
+  "text": "I18n: full support for French language",
+  "date": "2025-05-26"
+ },
+ {
+  "pkg": "app",
+  "version": "0.6.0",
+  "pr": 309,
+  "commit": "d4f72e8",
+  "author": "CorentinTh",
+  "text": "Disable \"Manage subscription\" from organization setting by default",
+  "date": "2025-05-26"
+ },
+ {
+  "pkg": "app",
+  "version": "0.6.0",
+  "pr": 312,
+  "commit": "e5ef40f",
+  "author": "CorentinTh",
+  "text": "Fixed an issue with the reset-password page navigation guard that prevented reset",
+  "date": "2025-05-26"
+ },
+ {
+  "pkg": "app",
+  "version": "0.6.0",
+  "pr": 317,
+  "commit": "79c1d32",
+  "author": "CorentinTh",
+  "text": "Added document activity log",
+  "date": "2025-05-30"
+ },
+ {
+  "pkg": "app",
+  "version": "0.6.0",
+  "pr": 319,
+  "commit": "60059c8",
+  "author": "CorentinTh",
+  "text": "Added pending invitation management page",
+  "date": "2025-06-03"
+ },
+ {
+  "pkg": "app",
+  "version": "0.6.0",
+  "pr": 320,
+  "commit": "8ccdb74",
+  "author": "CorentinTh",
+  "text": "Set CLIENT_BASE_URL default value to http://localhost:1221 in Dockerfiles",
+  "date": "2025-06-03"
+ },
+ {
+  "pkg": "docs",
+  "version": "0.4.1",
+  "pr": 320,
+  "commit": "8ccdb74",
+  "author": "CorentinTh",
+  "text": "Added base url configuration in docker compose generator",
+  "date": "2025-06-03"
+ },
+ {
+  "pkg": "docs",
+  "version": "0.4.2",
+  "pr": 322,
+  "commit": "f54b8e1",
+  "author": "CorentinTh",
+  "text": "Auto computes urls from the provided port",
+  "date": "2025-06-04"
+ },
+ {
+  "pkg": "app",
+  "version": "0.6.1",
+  "pr": 326,
+  "commit": "17ca8f8",
+  "author": "CorentinTh",
+  "text": "Fix content disposition header to support non-ascii filenames",
+  "date": "2025-06-04"
+ },
+ {
+  "pkg": "app",
+  "version": "0.6.2",
+  "pr": 333,
+  "commit": "ff830c2",
+  "author": "CorentinTh",
+  "text": "Fixed version release link",
+  "date": "2025-06-07"
+ },
+ {
+  "pkg": "app",
+  "version": "0.6.2",
+  "pr": 337,
+  "commit": "1c574b8",
+  "author": "CorentinTh",
+  "text": "Ensure database directory exists when running scripts (like migrations)",
+  "date": "2025-06-07"
+ },
+ {
+  "pkg": "docs",
+  "version": "0.5.0",
+  "pr": 337,
+  "commit": "1c574b8",
+  "author": "CorentinTh",
+  "text": "Added troubleshooting page",
+  "date": "2025-06-07"
+ },
+ {
+  "pkg": "docs",
+  "version": "0.5.0",
+  "pr": 337,
+  "commit": "1c574b8",
+  "author": "CorentinTh",
+  "text": "Added `docker compose up` command in dc generator",
+  "date": "2025-06-07"
+ },
+ {
+  "pkg": "app",
+  "version": "0.6.3",
+  "pr": 357,
+  "commit": "585c53c",
+  "author": "CorentinTh",
+  "text": "Added a /llms.txt on main website",
+  "also": [
+   "docs"
+  ],
+  "date": "2025-06-14"
+ },
+ {
+  "pkg": "app",
+  "version": "0.6.3",
+  "pr": 359,
+  "commit": "0c2cf69",
+  "author": "Mavv3006",
+  "text": "Add German translation",
+  "date": "2025-06-15"
+ },
+ {
+  "pkg": "app",
+  "version": "0.6.3",
+  "pr": 366,
+  "commit": "b8c2bd7",
+  "author": "CorentinTh",
+  "text": "Allow for adding/removing tags to document using api keys",
+  "date": "2025-06-18"
+ },
+ {
+  "pkg": "app",
+  "version": "0.6.4",
+  "pr": 346,
+  "commit": "c54a71d",
+  "author": "blstmo",
+  "text": "Fixes 400 error when submitting tags with uppercase hex colour codes.",
+  "date": "2025-06-19"
+ },
+ {
+  "pkg": "app",
+  "version": "0.6.4",
+  "pr": 377,
+  "commit": "205c6cf",
+  "author": "CorentinTh",
+  "text": "Improve file preview for text-like files (.env, yaml, extension-less text files,...)",
+  "date": "2025-06-24"
+ },
+ {
+  "pkg": "app",
+  "version": "0.6.4",
+  "pr": 378,
+  "commit": "f1e1b40",
+  "author": "CorentinTh",
+  "text": "Added tag color swatches and picker",
+  "date": "2025-06-24"
+ },
+ {
+  "pkg": "api-sdk",
+  "version": "1.0.2",
+  "pr": 379,
+  "commit": "6cedc30",
+  "author": "CorentinTh",
+  "text": "Updated dependencies",
+  "also": [
+   "app",
+   "cli",
+   "webhooks",
+   "docs"
+  ],
+  "date": "2025-06-24"
+ },
+ {
+  "pkg": "app",
+  "version": "0.6.4",
+  "pr": 383,
+  "commit": "0b276ee",
+  "author": "LMArantes",
+  "text": "Added Brazilian Portuguese (pt-BR) language support",
+  "date": "2025-06-26"
+ },
+ {
+  "pkg": "app",
+  "version": "0.6.4",
+  "pr": 387,
+  "commit": "73b8d08",
+  "author": "CorentinTh",
+  "text": "Added configuration for the ocr language using DOCUMENTS_OCR_LANGUAGES",
+  "date": "2025-06-29"
+ },
+ {
+  "pkg": "docs",
+  "version": "0.5.2",
+  "pr": 390,
+  "commit": "42bc3c6",
+  "author": "CorentinTh",
+  "text": "Added API endpoints documentation",
+  "date": "2025-07-01"
+ },
+ {
+  "pkg": "app",
+  "version": "0.6.4",
+  "pr": 392,
+  "commit": "21a5ccc",
+  "author": "CorentinTh",
+  "text": "Fix permission issue for non 1000:1000 rootless user",
+  "date": "2025-07-01"
+ },
+ {
+  "pkg": "app",
+  "version": "0.6.4",
+  "pr": 393,
+  "commit": "aad36f3",
+  "author": "CorentinTh",
+  "text": "Fix weird centering in document page for long filenames",
+  "date": "2025-07-01"
+ },
+ {
+  "pkg": "app",
+  "version": "0.6.4",
+  "pr": 394,
+  "commit": "f28d824",
+  "author": "CorentinTh",
+  "text": "Added the possibility to disable login via email, to support sso-only auth",
+  "date": "2025-07-02"
+ },
+ {
+  "pkg": "app",
+  "version": "0.6.4",
+  "pr": 391,
+  "commit": "40a1f91",
+  "author": "itsjuoum",
+  "text": "Added European Portuguese (pt) translation",
+  "date": "2025-07-04"
+ },
+ {
+  "pkg": "app",
+  "version": "0.6.4",
+  "pr": 399,
+  "commit": "47b69b1",
+  "author": "CorentinTh",
+  "text": "Fix back to organization link in organization settings",
+  "date": "2025-07-04"
+ },
+ {
+  "pkg": "docs",
+  "version": "0.5.2",
+  "pr": 402,
+  "commit": "1d23f40",
+  "author": "CorentinTh",
+  "text": "Fix invalid domain in json schema urls",
+  "date": "2025-07-07"
+ },
+ {
+  "pkg": "app",
+  "version": "0.6.4",
+  "pr": 403,
+  "commit": "1711ef8",
+  "author": "Icikowski",
+  "text": "Added Polish (pl) language support",
+  "date": "2025-07-08"
+ },
+ {
+  "pkg": "app",
+  "version": "0.6.4",
+  "pr": 408,
+  "commit": "09e3bc5",
+  "author": "CorentinTh",
+  "text": "Added Romanian (ro) translation",
+  "date": "2025-07-09"
+ },
+ {
+  "pkg": "app",
+  "version": "0.6.4",
+  "pr": 411,
+  "commit": "2601566",
+  "author": "4DRIAN0RTIZ",
+  "text": "Added Spanish (es) translation",
+  "date": "2025-07-09"
+ },
+ {
+  "pkg": "app",
+  "version": "0.6.4",
+  "pr": 405,
+  "commit": "3401cfb",
+  "author": "CorentinTh",
+  "text": "Introduce APP_BASE_URL to mutualize server and client base url",
+  "also": [
+   "docs"
+  ],
+  "date": "2025-07-13"
+ },
+ {
+  "pkg": "app",
+  "version": "0.7.0",
+  "pr": 417,
+  "commit": "a82ff3a",
+  "author": "CorentinTh",
+  "text": "v0.7 release",
+  "date": "2025-07-13"
+ },
+ {
+  "pkg": "app",
+  "version": "0.8.0",
+  "pr": 412,
+  "commit": "ffdae8d",
+  "author": "OsafAliSayed",
+  "text": "Simplified the organization intake email list",
+  "date": "2025-07-14"
+ },
+ {
+  "pkg": "app",
+  "version": "0.8.0",
+  "pr": 419,
+  "commit": "7768840",
+  "author": "Edward205",
+  "text": "Added diacritics and improved wording for Romanian translation",
+  "date": "2025-07-14"
+ },
+ {
+  "pkg": "lecture",
+  "version": "0.1.0",
+  "pr": 429,
+  "commit": "67b3b14",
+  "author": "CorentinTh",
+  "text": "Added support for scanned pdf content extraction",
+  "date": "2025-07-24"
+ },
+ {
+  "pkg": "webhooks",
+  "version": "0.2.0",
+  "pr": 430,
+  "commit": "a8cff8c",
+  "author": "CorentinTh",
+  "text": "Breaking change: updated webhooks signatures and payload format to match standard-webhook spec",
+  "date": "2025-07-25"
+ },
+ {
+  "pkg": "app",
+  "version": "0.8.0",
+  "pr": 432,
+  "commit": "6723baf",
+  "author": "CorentinTh",
+  "text": "Added new webhook events: document:updated, document:tag:added, document:tag:removed",
+  "also": [
+   "webhooks"
+  ],
+  "date": "2025-07-25"
+ },
+ {
+  "pkg": "app",
+  "version": "0.8.0",
+  "pr": 432,
+  "commit": "6723baf",
+  "author": "CorentinTh",
+  "text": "Webhooks invocation is now defered",
+  "also": [
+   "webhooks"
+  ],
+  "date": "2025-07-25"
+ },
+ {
+  "pkg": "app",
+  "version": "0.8.0",
+  "pr": 441,
+  "commit": "5e46bb9",
+  "author": "Zavy86",
+  "text": "Added Italian (it) language support",
+  "date": "2025-07-31"
+ },
+ {
+  "pkg": "app",
+  "version": "0.8.0",
+  "pr": 447,
+  "commit": "b5ccc13",
+  "author": "CorentinTh",
+  "text": "The file content extraction (like OCR) is now done asynchronously by the task runner",
+  "date": "2025-08-01"
+ },
+ {
+  "pkg": "app",
+  "version": "0.8.0",
+  "pr": 448,
+  "commit": "5868800",
+  "author": "CorentinTh",
+  "text": "Fixed the impossibility to delete a tag that has been assigned to a document",
+  "date": "2025-08-02"
+ },
+ {
+  "pkg": "app",
+  "version": "0.8.0",
+  "pr": 448,
+  "commit": "5868800",
+  "author": "CorentinTh",
+  "text": "Added feedback when an error occurs while deleting a tag",
+  "date": "2025-08-02"
+ },
+ {
+  "pkg": "app",
+  "version": "0.8.0",
+  "pr": 452,
+  "commit": "7f7e5bf",
+  "author": "CorentinTh",
+  "text": "Completely rewrote the migration mechanism",
+  "date": "2025-08-08"
+ },
+ {
+  "pkg": "app",
+  "version": "0.8.0",
+  "pr": 455,
+  "commit": "b33fde3",
+  "author": "CorentinTh",
+  "text": "Improved feedback message in case of invalid origin configuration",
+  "also": [
+   "docs"
+  ],
+  "date": "2025-08-08"
+ },
+ {
+  "pkg": "app",
+  "version": "0.8.1",
+  "pr": 459,
+  "commit": "f20559e",
+  "author": "CorentinTh",
+  "text": "Removed dev-dependency needed in production build",
+  "date": "2025-08-09"
+ },
+ {
+  "pkg": "app",
+  "version": "0.8.2",
+  "pr": 461,
+  "commit": "c085b9d",
+  "author": "CorentinTh",
+  "text": "Fix a regression bug that executed tagging rules before the file content was extracted",
+  "date": "2025-08-09"
+ },
+ {
+  "pkg": "api-sdk",
+  "version": "1.1.0",
+  "pr": 464,
+  "commit": "14bc2b8",
+  "author": "CorentinTh",
+  "text": "Ditched CommonJs build for packages",
+  "also": [
+   "lecture",
+   "cli",
+   "webhooks"
+  ],
+  "date": "2025-08-09"
+ },
+ {
+  "pkg": "app",
+  "version": "0.9.0",
+  "pr": 468,
+  "commit": "14c3587",
+  "author": "CorentinTh",
+  "text": "Prevent infinit loading in search modal when an error occure",
+  "date": "2025-08-09"
+ },
+ {
+  "pkg": "app",
+  "version": "0.9.0",
+  "pr": 468,
+  "commit": "14c3587",
+  "author": "CorentinTh",
+  "text": "Improved the UX of the document content edition panel",
+  "date": "2025-08-09"
+ },
+ {
+  "pkg": "app",
+  "version": "0.9.0",
+  "pr": 468,
+  "commit": "14c3587",
+  "author": "CorentinTh",
+  "text": "Added content edition support in demo mode",
+  "date": "2025-08-09"
+ },
+ {
+  "pkg": "app",
+  "version": "0.9.0",
+  "pr": 470,
+  "commit": "d488efe",
+  "author": "CorentinTh",
+  "text": "Simplified i18n tooling + improved performances",
+  "date": "2025-08-12"
+ },
+ {
+  "pkg": "app",
+  "version": "0.9.0",
+  "pr": 471,
+  "commit": "e77a42f",
+  "author": "CorentinTh",
+  "text": "Lazy load the PDF viewer to reduce the main chunk size",
+  "date": "2025-08-12"
+ },
+ {
+  "pkg": "app",
+  "version": "0.9.0",
+  "pr": 472,
+  "commit": "b08241f",
+  "author": "CorentinTh",
+  "text": "Dropped support for the dedicated backblaze b2 storage driver as b2 now fully support s3 client",
+  "date": "2025-08-20"
+ },
+ {
+  "pkg": "app",
+  "version": "0.9.0",
+  "pr": 472,
+  "commit": "b08241f",
+  "author": "CorentinTh",
+  "text": "Stream file upload instead of full in-memory loading",
+  "date": "2025-08-20"
+ },
+ {
+  "pkg": "app",
+  "version": "0.9.0",
+  "pr": 472,
+  "commit": "b08241f",
+  "author": "CorentinTh",
+  "text": "Properly handle missing files errors in storage drivers",
+  "date": "2025-08-20"
+ },
+ {
+  "pkg": "app",
+  "version": "0.9.0",
+  "pr": 475,
+  "commit": "ea9d90d",
+  "author": "CorentinTh",
+  "text": "Use node file streams in ingestion folder for smaller RAM footprint",
+  "date": "2025-08-20"
+ },
+ {
+  "pkg": "app",
+  "version": "0.9.0",
+  "pr": 477,
+  "commit": "a62d376",
+  "author": "CorentinTh",
+  "text": "Fixed an issue where tags assigned to only deleted documents won't show up in the tag list",
+  "date": "2025-08-21"
+ },
+ {
+  "pkg": "app",
+  "version": "0.9.0",
+  "pr": 480,
+  "commit": "0a03f42",
+  "author": "CorentinTh",
+  "text": "Added documents encryption layer",
+  "also": [
+   "docs"
+  ],
+  "date": "2025-09-04"
+ },
+ {
+  "pkg": "app",
+  "version": "0.9.0",
+  "pr": 481,
+  "commit": "1606310",
+  "author": "CorentinTh",
+  "text": "Allow for more complex intake-email origin adresses",
+  "date": "2025-09-04"
+ },
+ {
+  "pkg": "app",
+  "version": "0.9.0",
+  "pr": 483,
+  "commit": "ec0a437",
+  "author": "CorentinTh",
+  "text": "Fix a bug where the ingestion folder was not working when the done or error destination folder path (`INGESTION_FOLDER_POST_PROCESSING_MOVE_FOLDER_PATH` and `INGESTION_FOLDER_ERROR_FOLDER_PATH`) were absolute.",
+  "date": "2025-09-08"
+ },
+ {
+  "pkg": "app",
+  "version": "0.9.1",
+  "pr": 488,
+  "commit": "83e943c",
+  "author": "CorentinTh",
+  "text": "Fix favicons display issues on firefox",
+  "date": "2025-09-09"
+ },
+ {
+  "pkg": "app",
+  "version": "0.9.1",
+  "pr": 491,
+  "commit": "bb9d555",
+  "author": "CorentinTh",
+  "text": "Fix cleanup state when a too-big-file is uploaded",
+  "date": "2025-09-10"
+ },
+ {
+  "pkg": "app",
+  "version": "0.9.1",
+  "pr": 492,
+  "commit": "54514e1",
+  "author": "CorentinTh",
+  "text": "Added a client side guard for rejecting too-big files",
+  "date": "2025-09-10"
+ },
+ {
+  "pkg": "app",
+  "version": "0.9.1",
+  "pr": 492,
+  "commit": "54514e1",
+  "author": "CorentinTh",
+  "text": "Fix i18n messages when a file-too-big error happens",
+  "date": "2025-09-10"
+ },
+ {
+  "pkg": "app",
+  "version": "0.9.1",
+  "pr": 492,
+  "commit": "54514e1",
+  "author": "CorentinTh",
+  "text": "Clean all upload method to happen through the import status modal",
+  "date": "2025-09-10"
+ },
+ {
+  "pkg": "app",
+  "version": "0.9.2",
+  "pr": 493,
+  "commit": "ed4d7e4",
+  "author": "CorentinTh",
+  "text": "Fix to allow cross docker volume file moving when consumption is done",
+  "date": "2025-09-10"
+ },
+ {
+  "pkg": "app",
+  "version": "0.9.2",
+  "pr": 498,
+  "commit": "3da13f7",
+  "author": "CorentinTh",
+  "text": "Removed the \"open in new tab\" button for security improvement (xss prevention)",
+  "date": "2025-09-13"
+ },
+ {
+  "pkg": "app",
+  "version": "0.9.2",
+  "pr": 499,
+  "commit": "40cb1d7",
+  "author": "CorentinTh",
+  "text": "Enhanced security by serving files as attachement and with an octet-stream content type",
+  "date": "2025-09-13"
+ },
+ {
+  "pkg": "app",
+  "version": "0.9.2",
+  "pr": 500,
+  "commit": "208a561",
+  "author": "CorentinTh",
+  "text": "Added the possibility to define a Libsql/Sqlite driver for the tasks service",
+  "date": "2025-09-13"
+ },
+ {
+  "pkg": "app",
+  "version": "0.9.2",
+  "pr": 501,
+  "commit": "b5bf0cc",
+  "author": "CorentinTh",
+  "text": "Fix an issue preventing to disable the max upload size",
+  "date": "2025-09-14"
+ },
+ {
+  "pkg": "app",
+  "version": "0.9.3",
+  "pr": 504,
+  "commit": "936bc2b",
+  "author": "CorentinTh",
+  "text": "Split the intake-email username generation from the email address creation, some changes regarding the configuration when using the `random` driver. ```env # Old configuration INTAKE_EMAILS_DRIVER=random-username INTAKE_EMAILS_EMAIL_GENERATION_DOMAIN=mydomain.com # New configuration INTAKE_EMAILS_DRIVER=catch-all INTAKE_EMAILS_CATCH_ALL_DOMAIN=mydomain.com INTAKE_EMAILS_USERNAME_DRIVER=random ```",
+  "date": "2025-09-18"
+ },
+ {
+  "pkg": "app",
+  "version": "0.9.3",
+  "pr": 504,
+  "commit": "936bc2b",
+  "author": "CorentinTh",
+  "text": "Added the possibility to configure OwlRelay domain",
+  "date": "2025-09-18"
+ },
+ {
+  "pkg": "app",
+  "version": "0.9.3",
+  "pr": 506,
+  "commit": "6bcb2a7",
+  "author": "CorentinTh",
+  "text": "Added the possibility to define patterns for email intake username generation",
+  "date": "2025-09-19"
+ },
+ {
+  "pkg": "app",
+  "version": "0.9.4",
+  "pr": 508,
+  "commit": "782f70f",
+  "author": "CorentinTh",
+  "text": "Added an option to disable PRAGMA statements from sqlite task service migrations",
+  "date": "2025-09-20"
+ },
+ {
+  "pkg": "app",
+  "version": "0.9.4",
+  "pr": 510,
+  "commit": "ab6fd6a",
+  "author": "CorentinTh",
+  "text": "Added fallbacks env variables for the task worker id",
+  "date": "2025-09-21"
+ },
+ {
+  "pkg": "app",
+  "version": "0.9.4",
+  "pr": 512,
+  "commit": "cb3ce6b",
+  "author": "CorentinTh",
+  "text": "Added organizations permissions for api keys",
+  "also": [
+   "docs"
+  ],
+  "date": "2025-09-24"
+ },
+ {
+  "pkg": "app",
+  "version": "0.9.5",
+  "pr": 517,
+  "commit": "a3f9f05",
+  "author": "CorentinTh",
+  "text": "Prevented organization deletion by non-organization owner",
+  "date": "2025-09-26"
+ },
+ {
+  "pkg": "app",
+  "version": "0.9.5",
+  "pr": 521,
+  "commit": "b287723",
+  "author": "CorentinTh",
+  "text": "Properly handle file names encoding (utf8 instead of latin1) to support non-ASCII characters.",
+  "date": "2025-09-29"
+ },
+ {
+  "pkg": "app",
+  "version": "0.9.6",
+  "pr": 524,
+  "commit": "c84a921",
+  "author": "CorentinTh",
+  "text": "Fixed the api validation of tag colors to make it case incensitive",
+  "date": "2025-10-01"
+ },
+ {
+  "pkg": "app",
+  "version": "0.9.6",
+  "pr": 531,
+  "commit": "2e2bb6f",
+  "author": "CorentinTh",
+  "text": "Added env variable to configure ip header for rate limit",
+  "date": "2025-10-02"
+ },
+ {
+  "pkg": "app",
+  "version": "25.10.0",
+  "pr": 534,
+  "commit": "624ad62",
+  "author": "CorentinTh",
+  "text": "Added a page to view organization usage",
+  "date": "2025-10-05"
+ },
+ {
+  "pkg": "app",
+  "version": "25.10.0",
+  "pr": 532,
+  "commit": "9a6e822",
+  "author": "CorentinTh",
+  "text": "Drop docker armv7 support",
+  "date": "2025-10-06"
+ },
+ {
+  "pkg": "app",
+  "version": "25.10.0",
+  "pr": 538,
+  "commit": "73ab9e8",
+  "author": "CorentinTh",
+  "text": "Save document activity log when auto tagging rule is applied",
+  "date": "2025-10-08"
+ },
+ {
+  "pkg": "app",
+  "version": "25.10.0",
+  "pr": 538,
+  "commit": "73ab9e8",
+  "author": "CorentinTh",
+  "text": "Trigger tag-added webhooks when auto tagging rule is applied",
+  "date": "2025-10-08"
+ },
+ {
+  "pkg": "app",
+  "version": "25.10.0",
+  "pr": 542,
+  "commit": "c434d87",
+  "author": "CorentinTh",
+  "text": "Added soft deletion with grace period for organizations",
+  "date": "2025-10-11"
+ },
+ {
+  "pkg": "app",
+  "version": "25.10.0",
+  "pr": 544,
+  "commit": "9c6f14f",
+  "author": "CorentinTh",
+  "text": "Use calendar based versioning for docker images",
+  "date": "2025-10-12"
+ },
+ {
+  "pkg": "app",
+  "version": "25.10.1",
+  "pr": 548,
+  "commit": "17cebde",
+  "author": "CorentinTh",
+  "text": "Made the validation more permissive for incoming intake email webhook addresses, allowing RFC 5322 compliant email addresses instead of just simple emails.",
+  "date": "2025-10-12"
+ },
+ {
+  "pkg": "app",
+  "version": "25.10.1",
+  "pr": 550,
+  "commit": "1a7a14b",
+  "author": "CorentinTh",
+  "text": "Fix weird navigation freeze when direct navigation to organizations",
+  "date": "2025-10-13"
+ },
+ {
+  "pkg": "app",
+  "version": "25.10.1",
+  "pr": 552,
+  "commit": "8aabd28",
+  "author": "CorentinTh",
+  "text": "Lighten the client bundle by removing lodash dep",
+  "date": "2025-10-13"
+ },
+ {
+  "pkg": "app",
+  "version": "25.10.1",
+  "pr": 555,
+  "commit": "c5b337f",
+  "author": "CorentinTh",
+  "text": "Use organization max file size limit for pre-upload validation",
+  "date": "2025-10-14"
+ },
+ {
+  "pkg": "app",
+  "version": "25.10.1",
+  "pr": 556,
+  "commit": "f66a9f5",
+  "author": "CorentinTh",
+  "text": "Added deleted and total document counts and sizes in the `/api/organizations/:organizationId/documents/statistics` route",
+  "date": "2025-10-14"
+ },
+ {
+  "pkg": "app",
+  "version": "25.10.1",
+  "pr": 560,
+  "commit": "54cc140",
+  "author": "CorentinTh",
+  "text": "Reduced the client bundle size by switching to posthog-lite",
+  "date": "2025-10-17"
+ },
+ {
+  "pkg": "app",
+  "version": "25.10.1",
+  "pr": 565,
+  "commit": "e4295e1",
+  "author": "CorentinTh",
+  "text": "Prevent small flash of wrong theme on initial load for slower connections",
+  "date": "2025-10-19"
+ },
+ {
+  "pkg": "app",
+  "version": "25.10.1",
+  "pr": 566,
+  "commit": "92daaa3",
+  "author": "CorentinTh",
+  "text": "Redacted webhook signing secret in api update response",
+  "date": "2025-10-19"
+ },
+ {
+  "pkg": "app",
+  "version": "25.10.1",
+  "pr": 567,
+  "commit": "d7df2f0",
+  "author": "CorentinTh",
+  "text": "Removed unnecessary left icon navbar",
+  "date": "2025-10-23"
+ },
+ {
+  "pkg": "app",
+  "version": "25.10.1",
+  "pr": 567,
+  "commit": "d7df2f0",
+  "author": "CorentinTh",
+  "text": "Redesigned the organization picker in the sidenav",
+  "date": "2025-10-23"
+ },
+ {
+  "pkg": "app",
+  "version": "25.10.1",
+  "pr": 570,
+  "commit": "c3ffa83",
+  "author": "CorentinTh",
+  "text": "Added server hostname configuration",
+  "date": "2025-10-23"
+ },
+ {
+  "pkg": "app",
+  "version": "25.10.2",
+  "pr": 540,
+  "commit": "75340f0",
+  "author": "jodli",
+  "text": "Added button to reapply a tagging rule",
+  "date": "2025-10-24"
+ },
+ {
+  "pkg": "app",
+  "version": "25.10.2",
+  "pr": 575,
+  "commit": "be25de7",
+  "author": "CorentinTh",
+  "text": "Added global errors handlers",
+  "date": "2025-10-24"
+ },
+ {
+  "pkg": "app",
+  "version": "25.10.2",
+  "pr": 577,
+  "commit": "bd3e321",
+  "author": "CorentinTh",
+  "text": "Improved graceful shutdown",
+  "date": "2025-10-24"
+ },
+ {
+  "pkg": "app",
+  "version": "25.10.2",
+  "pr": 577,
+  "commit": "bd3e321",
+  "author": "CorentinTh",
+  "text": "Added the possibility to start either just the api, just the workers, or both (default)",
+  "date": "2025-10-24"
+ },
+ {
+  "pkg": "app",
+  "version": "25.10.2",
+  "pr": 580,
+  "commit": "1228486",
+  "author": "CorentinTh",
+  "text": "Added text extraction support for `.docx`, `.odt`, `.rtf`, `.pptx` and `.odp`",
+  "also": [
+   "lecture"
+  ],
+  "date": "2025-10-24"
+ },
+ {
+  "pkg": "app",
+  "version": "25.10.2",
+  "pr": 582,
+  "commit": "182ccbb",
+  "author": "CorentinTh",
+  "text": "Fixed the webhook last triggered date always showing \"never\" in the webhook list.",
+  "date": "2025-10-25"
+ },
+ {
+  "pkg": "app",
+  "version": "25.10.2",
+  "pr": 583,
+  "commit": "b0abf7f",
+  "author": "CorentinTh",
+  "text": "Improved the translation of dates and relative time",
+  "date": "2025-10-25"
+ },
+ {
+  "pkg": "app",
+  "version": "25.10.2",
+  "pr": 584,
+  "commit": "f4740ba",
+  "author": "CorentinTh",
+  "text": "Reduced client bundle size by removing date-fns",
+  "date": "2025-10-25"
+ },
+ {
+  "pkg": "app",
+  "version": "25.10.2",
+  "pr": 585,
+  "commit": "a857370",
+  "author": "CorentinTh",
+  "text": "Fix webhook creation form preventing to create webhooks without secrets",
+  "date": "2025-10-25"
+ },
+ {
+  "pkg": "cli",
+  "version": "0.1.1",
+  "pr": 586,
+  "commit": "59d5819",
+  "author": "CorentinTh",
+  "text": "Fix invalid import path causing cli crash",
+  "date": "2025-10-25"
+ },
+ {
+  "pkg": "app",
+  "version": "25.10.2",
+  "pr": 589,
+  "commit": "e9a719d",
+  "author": "CorentinTh",
+  "text": "Fixed wrongly formatted [object Object] feedback message in auth pages",
+  "date": "2025-10-26"
+ },
+ {
+  "pkg": "app",
+  "version": "25.10.2",
+  "pr": 591,
+  "commit": "0aad884",
+  "author": "CorentinTh",
+  "text": "Updated pnpm version",
+  "date": "2025-10-26"
+ },
+ {
+  "pkg": "app",
+  "version": "25.10.2",
+  "pr": 598,
+  "commit": "377c11c",
+  "author": "CorentinTh",
+  "text": "Fix client redirection issue on non-existent organization",
+  "date": "2025-10-27"
+ },
+ {
+  "pkg": "app",
+  "version": "25.10.2",
+  "pr": 601,
+  "commit": "16ae461",
+  "author": "CorentinTh",
+  "text": "Added missing translations in the tagging rule form",
+  "date": "2025-10-28"
+ },
+ {
+  "pkg": "app",
+  "version": "25.10.2",
+  "pr": 601,
+  "commit": "16ae461",
+  "author": "CorentinTh",
+  "text": "Choose between `All conditions must match` and `Any condition must match` in tagging rules",
+  "date": "2025-10-28"
+ },
+ {
+  "pkg": "app",
+  "version": "25.10.2",
+  "pr": 602,
+  "commit": "79e9bb1",
+  "author": "CorentinTh",
+  "text": "Added an email verification confirmation/expiration page",
+  "date": "2025-10-30"
+ },
+ {
+  "pkg": "api-sdk",
+  "version": "1.1.1",
+  "pr": 604,
+  "commit": "c70d7e4",
+  "author": "CorentinTh",
+  "text": "Use provenance for releases",
+  "also": [
+   "lecture",
+   "cli",
+   "webhooks"
+  ],
+  "date": "2025-11-02"
+ },
+ {
+  "pkg": "app",
+  "version": "25.11.0",
+  "pr": 607,
+  "commit": "abc463f",
+  "author": "dbarenholz",
+  "text": "Added Dutch translation",
+  "date": "2025-11-07"
+ },
+ {
+  "pkg": "app",
+  "version": "25.11.0",
+  "pr": 609,
+  "commit": "cb1f1b5",
+  "author": "dbarenholz",
+  "text": "Made the tags clickable in the tag list",
+  "date": "2025-11-07"
+ },
+ {
+  "pkg": "app",
+  "version": "25.11.0",
+  "pr": 616,
+  "commit": "1922f24",
+  "author": "CorentinTh",
+  "text": "Upgraded to node v24",
+  "date": "2025-11-09"
+ },
+ {
+  "pkg": "app",
+  "version": "25.11.0",
+  "pr": 618,
+  "commit": "868281b",
+  "author": "CorentinTh",
+  "text": "Added translations for document table headers",
+  "date": "2025-11-09"
+ },
+ {
+  "pkg": "app",
+  "version": "25.11.0",
+  "pr": 619,
+  "commit": "5b5ce85",
+  "author": "CorentinTh",
+  "text": "Limit concurrent browser upload to avoid network crashes",
+  "date": "2025-11-09"
+ },
+ {
+  "pkg": "lecture",
+  "version": "0.4.0",
+  "pr": 621,
+  "commit": "8308e93",
+  "author": "CorentinTh",
+  "text": "Added support for native tesseract cli when available",
+  "date": "2025-11-11"
+ },
+ {
+  "pkg": "app",
+  "version": "25.11.0",
+  "pr": 623,
+  "commit": "b087764",
+  "author": "CorentinTh",
+  "text": "Improved unique constraints error when dealing with hosted libsql db",
+  "date": "2025-11-12"
+ },
+ {
+  "pkg": "app",
+  "version": "25.11.0",
+  "pr": 625,
+  "commit": "ee9eff4",
+  "author": "CorentinTh",
+  "text": "Improved server authentication logging",
+  "date": "2025-11-13"
+ },
+ {
+  "pkg": "lecture",
+  "version": "0.4.0",
+  "pr": 627,
+  "commit": "5ccdf44",
+  "author": "CorentinTh",
+  "text": "Added logger parameter",
+  "date": "2025-11-13"
+ },
+ {
+  "pkg": "api-sdk",
+  "version": "1.1.2",
+  "pr": 622,
+  "commit": "432a192",
+  "author": "CorentinTh",
+  "text": "Added listOrganizations, listTags, createTag, addTagToDocument method in papra sdk",
+  "date": "2025-11-14"
+ },
+ {
+  "pkg": "cli",
+  "version": "0.2.0",
+  "pr": 622,
+  "commit": "432a192",
+  "author": "CorentinTh",
+  "text": "Added a paperless export importer",
+  "date": "2025-11-14"
+ },
+ {
+  "pkg": "app",
+  "version": "25.11.0",
+  "pr": 633,
+  "commit": "d267605",
+  "author": "CorentinTh",
+  "text": "Lazy load some demo-mode specific code to reduce production client bundle",
+  "date": "2025-11-15"
+ },
+ {
+  "pkg": "app",
+  "version": "25.11.0",
+  "pr": 637,
+  "commit": "479a603",
+  "author": "CorentinTh",
+  "text": "Fix tags table overflow for long tag descriptions: added some text wrapping for the description",
+  "date": "2025-11-17"
+ },
+ {
+  "pkg": "app",
+  "version": "25.11.0",
+  "pr": 638,
+  "commit": "ae3abe9",
+  "author": "CorentinTh",
+  "text": "Added the possibility to filter out some email domain names for new registration",
+  "date": "2025-11-18"
+ },
+ {
+  "pkg": "app",
+  "version": "25.11.0",
+  "pr": 650,
+  "commit": "dc6ee5b",
+  "author": "CorentinTh",
+  "text": "Api breaking change: the document search endpoint return format changed, impacting any custom clients consuming it. Before ```ts // Get /api/organizations/:organizationId/documents/search { documents: { id: string; name: string; mimeType: string; // ... other document fields } []; } ``` After ```ts // Get /api/organizations/:organizationId/documents/search { searchResults: { documents: { id: string; name: string; } []; } } ```",
+  "date": "2025-11-20"
+ },
+ {
+  "pkg": "app",
+  "version": "25.11.0",
+  "pr": 653,
+  "commit": "ca80806",
+  "author": "CorentinTh",
+  "text": "Added some logging context when an intake email is received",
+  "date": "2025-11-24"
+ },
+ {
+  "pkg": "app",
+  "version": "25.11.0",
+  "pr": 655,
+  "commit": "08f4a1c",
+  "author": "CorentinTh",
+  "text": "Intake email edge case: use original destination addresses when available for intake emails when forwarded",
+  "date": "2025-11-25"
+ },
+ {
+  "pkg": "app",
+  "version": "25.11.0",
+  "pr": 657,
+  "commit": "96403c0",
+  "author": "CorentinTh",
+  "text": "Fix environment variable `DOCUMENT_STORAGE_S3_FORCE_PATH_STYLE` validation schema to account for boolean string",
+  "date": "2025-11-25"
+ },
+ {
+  "pkg": "app",
+  "version": "25.11.0",
+  "pr": 660,
+  "commit": "9b43baf",
+  "author": "bkwi",
+  "text": "Removed the possibility for unauthorized upload to another organization you're not member of",
+  "date": "2025-11-29"
+ },
+ {
+  "pkg": "app",
+  "version": "25.12.0",
+  "pr": 675,
+  "commit": "17d6e9a",
+  "author": "CorentinTh",
+  "text": "Added support for Simplified Chinese language",
+  "date": "2025-12-06"
+ },
+ {
+  "pkg": "app",
+  "version": "25.12.0",
+  "pr": 679,
+  "commit": "6f38659",
+  "author": "CorentinTh",
+  "text": "Fixed an issue where the document icon didn't load for unknown file types",
+  "date": "2025-12-06"
+ },
+ {
+  "pkg": "app",
+  "version": "25.12.0",
+  "pr": 685,
+  "commit": "cf91515",
+  "author": "CorentinTh",
+  "text": "Document search indexing and synchronization is now asynchronous, and no longer relies on database triggers. This significantly improves the responsiveness of the application when adding, updating, trashing, restoring, or deleting documents. It's even more noticeable when dealing with a large number of documents or on low-end hardware.",
+  "date": "2025-12-11"
+ },
+ {
+  "pkg": "app",
+  "version": "25.12.0",
+  "pr": 686,
+  "commit": "95662d0",
+  "author": "CorentinTh",
+  "text": "Enforcing the auth secret to be at least 32 characters long for security reasons",
+  "date": "2025-12-12"
+ },
+ {
+  "pkg": "app",
+  "version": "25.12.0",
+  "pr": 686,
+  "commit": "95662d0",
+  "author": "CorentinTh",
+  "text": "Now throw an error if AUTH_SECRET is not set in production mode",
+  "date": "2025-12-12"
+ },
+ {
+  "pkg": "app",
+  "version": "25.12.0",
+  "pr": 689,
+  "commit": "d795798",
+  "author": "CorentinTh",
+  "text": "Added a platform administration dashboard",
+  "date": "2025-12-16"
+ },
+ {
+  "pkg": "cli",
+  "version": "0.2.1",
+  "pr": 696,
+  "commit": "1c64bca",
+  "author": "CorentinTh",
+  "text": "Fixed the publication of cli assets",
+  "date": "2025-12-21"
+ },
+ {
+  "pkg": "api-sdk",
+  "version": "1.1.3",
+  "pr": 698,
+  "commit": "815f6f9",
+  "author": "CorentinTh",
+  "text": "Fixed prepublishing assets",
+  "date": "2025-12-21"
+ },
+ {
+  "pkg": "webhooks",
+  "version": "0.3.2",
+  "pr": 699,
+  "commit": "4342b31",
+  "author": "CorentinTh",
+  "text": "Fix mising prepublish script",
+  "date": "2025-12-21"
+ },
+ {
+  "pkg": "app",
+  "version": "26.0.0",
+  "pr": 702,
+  "commit": "ec34cf1",
+  "author": "CorentinTh",
+  "text": "Organizations listing and details in the admin dashboard",
+  "date": "2025-12-22"
+ },
+ {
+  "pkg": "app",
+  "version": "26.0.0",
+  "pr": 707,
+  "commit": "a213f06",
+  "author": "CorentinTh",
+  "text": "Added a dedicated increased timeout for the document upload route",
+  "date": "2025-12-28"
+ },
+ {
+  "pkg": "app",
+  "version": "26.0.0",
+  "pr": 707,
+  "commit": "a213f06",
+  "author": "CorentinTh",
+  "text": "Changed config key `config.server.routeTimeoutMs` to `config.server.defaultRouteTimeoutMs` (env variable remains the same)",
+  "date": "2025-12-28"
+ },
+ {
+  "pkg": "app",
+  "version": "26.0.0",
+  "pr": 712,
+  "commit": "b8c14d0",
+  "author": "CorentinTh",
+  "text": "Added a feedback message upon request timeout",
+  "date": "2025-12-29"
+ },
+ {
+  "pkg": "app",
+  "version": "26.0.0",
+  "pr": 715,
+  "commit": "7448a17",
+  "author": "kirarpit",
+  "text": "Properly cleanup orphan file when the same document exists in trash",
+  "date": "2025-12-31"
+ },
+ {
+  "pkg": "app",
+  "version": "26.0.0",
+  "pr": 718,
+  "commit": "8d70a7b",
+  "author": "CorentinTh",
+  "text": "Added api endpoint to check current API key (GET /api/api-keys/current)",
+  "date": "2025-12-31"
+ },
+ {
+  "pkg": "app",
+  "version": "26.0.0",
+  "pr": 717,
+  "commit": "f3fb5ff",
+  "author": "CorentinTh",
+  "text": "Added support for two factor authentication",
+  "date": "2026-01-02"
+ },
+ {
+  "pkg": "app",
+  "version": "26.0.0",
+  "pr": 723,
+  "commit": "68d848e",
+  "author": "CorentinTh",
+  "text": "Auto assign admin role to the first user registering",
+  "date": "2026-01-03"
+ },
+ {
+  "pkg": "app",
+  "version": "26.0.0",
+  "pr": 726,
+  "commit": "e8f6217",
+  "author": "CorentinTh",
+  "text": "Added about page and modal with version informations",
+  "date": "2026-01-06"
+ },
+ {
+  "pkg": "app",
+  "version": "26.0.0",
+  "pr": 733,
+  "commit": "848671b",
+  "author": "CorentinTh",
+  "text": "Improved search speed by using document and organization ids in index The first restart after updating may take up to few minutes as the search index is rebuilt",
+  "date": "2026-01-10"
+ },
+ {
+  "pkg": "api-sdk",
+  "version": "1.2.0",
+  "pr": 741,
+  "commit": "ae03c76",
+  "author": "CorentinTh",
+  "text": "Added `getCurrentApiKey` method in client",
+  "date": "2026-01-12"
+ },
+ {
+  "pkg": "app",
+  "version": "26.0.0",
+  "pr": 746,
+  "commit": "685f03c",
+  "author": "CorentinTh",
+  "text": "Added advanced search syntax support",
+  "date": "2026-01-15"
+ },
+ {
+  "pkg": "app",
+  "version": "26.0.0",
+  "pr": 758,
+  "commit": "a2a2061",
+  "author": "CorentinTh",
+  "text": "API Breaking Change: Document search endpoint now returns complete documents along with total count matching the search query, and no longer nests results under `searchResults`. Before: ```ts // GET /api/organizations/:organizationId/documents/search?searchQuery=foobar { searchResults: { documents: [ { id: 'doc_1', name: 'Document 1.pdf' }, { id: 'doc_2', name: 'Document 2.pdf' }, ], }, } ``` After: ```ts // GET /api/organizations/:organizationId/documents/search?searchQuery=foobar { documents: [ { id: 'doc_1', name: 'Document 1.pdf', mimeType: 'application/pdf' /* ...otherProps */ }, { id: 'doc_2', name: 'Document 2.pdf', mimeType: 'application/pdf' /* ...otherProps */ }, ], totalCount: 42, } ```",
+  "date": "2026-01-18"
+ },
+ {
+  "pkg": "app",
+  "version": "26.0.0",
+  "pr": 758,
+  "commit": "a2a2061",
+  "author": "CorentinTh",
+  "text": "The documents page can now be used with advanced search queries",
+  "date": "2026-01-18"
+ },
+ {
+  "pkg": "app",
+  "version": "26.0.0",
+  "pr": 758,
+  "commit": "a2a2061",
+  "author": "CorentinTh",
+  "text": "Added query params sync for the search query in the documents search page for deep linking and browser state navigation",
+  "date": "2026-01-18"
+ },
+ {
+  "pkg": "app",
+  "version": "26.0.0",
+  "pr": 758,
+  "commit": "a2a2061",
+  "author": "CorentinTh",
+  "text": "Removed the possibility to filter by tag in the `/api/organizations/:organizationId/documents` route, use the `/api/organizations/:organizationId/documents/search` route instead. ```bash # Before: GET /api/organizations/:organizationId/documents?tags=yourTagId # After: GET /api/organizations/:organizationId/documents/search?query=tag:yourTagNameOrId ```",
+  "date": "2026-01-18"
+ },
+ {
+  "pkg": "app",
+  "version": "26.0.0",
+  "pr": 761,
+  "commit": "2e46c08",
+  "author": "CorentinTh",
+  "text": "Added a \"Show more results\" option in quick search when there is more document not displayed",
+  "date": "2026-01-18"
+ },
+ {
+  "pkg": "search-parser",
+  "version": "0.1.0",
+  "pr": 768,
+  "commit": "37c3aa9",
+  "author": "CorentinTh",
+  "text": "Fix tokenization issue for negated filters with quoted value",
+  "date": "2026-01-19"
+ },
+ {
+  "pkg": "search-parser",
+  "version": "0.1.0",
+  "pr": 773,
+  "commit": "78eb1d8",
+  "author": "CorentinTh",
+  "text": "AST optimization is activated by default",
+  "date": "2026-01-19"
+ },
+ {
+  "pkg": "app",
+  "version": "26.1.0",
+  "pr": 777,
+  "commit": "42e401c",
+  "author": "CorentinTh",
+  "text": "Properly tree-shake all demo assets to reduce the size of production non-demo build. Reducing the bundle assets by ~70kB (~55kB on main chunk + removed demo chunk of ~15kB).",
+  "date": "2026-01-21"
+ },
+ {
+  "pkg": "app",
+  "version": "26.1.0",
+  "pr": 781,
+  "commit": "7c5e68f",
+  "author": "CorentinTh",
+  "text": "When navigating to / and having only one organization, get redirected to that organization",
+  "date": "2026-01-21"
+ },
+ {
+  "pkg": "app",
+  "version": "26.1.0",
+  "pr": 783,
+  "commit": "ad575bf",
+  "author": "CorentinTh",
+  "text": "Fix tag automatic search link issue when tags have spaces, before `tag:my tag` would not work, now generate `tag:\"my tag\"` to fix it.",
+  "date": "2026-01-21"
+ },
+ {
+  "pkg": "app",
+  "version": "26.1.0",
+  "pr": 784,
+  "commit": "2c078e2",
+  "author": "CorentinTh",
+  "text": "Tag list: order tags by creation date descending (newest on top)",
+  "date": "2026-01-22"
+ },
+ {
+  "pkg": "app",
+  "version": "26.1.0",
+  "pr": 785,
+  "commit": "45534a0",
+  "author": "CorentinTh",
+  "text": "Added the `has:tags` search filter to check for the presence or absence (`-has:tags` or `NOT has:tags`) of tags on documents.",
+  "date": "2026-01-22"
+ },
+ {
+  "pkg": "app",
+  "version": "26.1.0",
+  "pr": 794,
+  "commit": "0485701",
+  "author": "ktsourdinis",
+  "text": "Added Greek language support",
+  "date": "2026-01-24"
+ },
+ {
+  "pkg": "app",
+  "version": "26.1.0",
+  "pr": 795,
+  "commit": "3a41531",
+  "author": "CorentinTh",
+  "text": "Hide the \"Don't have an account? Register\" link on the login page when new account registration is disabled.",
+  "date": "2026-01-24"
+ },
+ {
+  "pkg": "app",
+  "version": "26.1.0",
+  "pr": 796,
+  "commit": "aaa05a8",
+  "author": "CorentinTh",
+  "text": "Renamed the internal distribution package from `@papra/docker` to `@papra/app`. New release tags will use the format `@papra/app@26.0.0` instead of `@papra/docker@26.0.0`.",
+  "date": "2026-01-24"
+ },
+ {
+  "pkg": "app",
+  "version": "26.1.0",
+  "pr": 798,
+  "commit": "c27d85f",
+  "author": "cergmin",
+  "text": "Added Russian language support",
+  "date": "2026-01-25"
+ },
+ {
+  "pkg": "app",
+  "version": "26.2.0",
+  "pr": 810,
+  "commit": "1d5ada8",
+  "author": "What-is-water93",
+  "text": "Significantly reduced the size of the rootless docker image by preventing file duplications due to `chown` operations, gaining ~230MB, more than 30% reduction in size.",
+  "date": "2026-01-26"
+ },
+ {
+  "pkg": "app",
+  "version": "26.2.0",
+  "pr": 811,
+  "commit": "1eeb3df",
+  "author": "CorentinTh",
+  "text": "Added small header in organization creation page to quickly access the invitations when first organization is being created",
+  "date": "2026-01-26"
+ },
+ {
+  "pkg": "app",
+  "version": "26.2.0",
+  "pr": 820,
+  "commit": "3fa398c",
+  "author": "CorentinTh",
+  "text": "Replaced `date-fns` functions with in-house implementations to avoid pulling the 30MB lib (mainly due to locale data).",
+  "date": "2026-01-27"
+ },
+ {
+  "pkg": "app",
+  "version": "26.2.0",
+  "pr": 822,
+  "commit": "b6951ea",
+  "author": "CorentinTh",
+  "text": "Tag names uniqueness enforced with case insensitivity per organization. Migration will ensure deduplication by appending prefixes in case of existing collisions.",
+  "date": "2026-01-28"
+ },
+ {
+  "pkg": "app",
+  "version": "26.2.0",
+  "pr": 826,
+  "commit": "494aa5b",
+  "author": "CorentinTh",
+  "text": "Trim tag names and descriptions on creation and update to avoid leading/trailing spaces.",
+  "date": "2026-01-28"
+ },
+ {
+  "pkg": "app",
+  "version": "26.2.0",
+  "pr": 827,
+  "commit": "ca2ef28",
+  "author": "CorentinTh",
+  "text": "In the search queries, tag filters are now case-insensitive, so `tag:Important` and `tag:important` will match the same tag (as tags names are case-insensitive).",
+  "date": "2026-01-28"
+ },
+ {
+  "pkg": "app",
+  "version": "26.2.0",
+  "pr": 829,
+  "commit": "393a155",
+  "author": "CorentinTh",
+  "text": "Added a button to generate a random color in the tag creation/edition modal.",
+  "date": "2026-01-28"
+ },
+ {
+  "pkg": "app",
+  "version": "26.2.0",
+  "pr": 851,
+  "commit": "316a8c2",
+  "author": "CorentinTh",
+  "text": "Added tag creation/update button loading state",
+  "date": "2026-01-31"
+ },
+ {
+  "pkg": "app",
+  "version": "26.2.0",
+  "pr": 851,
+  "commit": "316a8c2",
+  "author": "CorentinTh",
+  "text": "Prevented multiple tag creation attempts when clicking the create button quickly.",
+  "date": "2026-01-31"
+ },
+ {
+  "pkg": "app",
+  "version": "26.2.0",
+  "pr": 852,
+  "commit": "71872db",
+  "author": "CorentinTh",
+  "text": "Added explicit error when trying to update a tag with a name that already exists",
+  "date": "2026-01-31"
+ },
+ {
+  "pkg": "app",
+  "version": "26.2.0",
+  "pr": 855,
+  "commit": "3f4ca07",
+  "author": "CorentinTh",
+  "text": "Added tagging rules creation/update loading states",
+  "date": "2026-01-31"
+ },
+ {
+  "pkg": "app",
+  "version": "26.2.0",
+  "pr": 855,
+  "commit": "3f4ca07",
+  "author": "CorentinTh",
+  "text": "Prevented multiple tagging-rules creation attempts when clicking the create button quickly.",
+  "date": "2026-01-31"
+ },
+ {
+  "pkg": "app",
+  "version": "26.2.0",
+  "pr": 859,
+  "commit": "afcfcf7",
+  "author": "CorentinTh",
+  "text": "Fixed a race condition that could incorrectly show the \"Email verified\" page after successful login, even when email verification had not been completed or was not required.",
+  "date": "2026-01-31"
+ },
+ {
+  "pkg": "app",
+  "version": "26.2.0",
+  "pr": 870,
+  "commit": "69633fb",
+  "author": "CorentinTh",
+  "text": "Improved the document tag picker UI and UX, allowing tags to be managed from the document list.",
+  "date": "2026-02-05"
+ },
+ {
+  "pkg": "app",
+  "version": "26.2.0",
+  "pr": 880,
+  "commit": "4f5b29b",
+  "author": "CorentinTh",
+  "text": "Removed misleading \"git missing\" error log on app startup when git isn't available, like in Docker env.",
+  "date": "2026-02-08"
+ },
+ {
+  "pkg": "app",
+  "version": "26.2.0",
+  "pr": 883,
+  "commit": "63ddecf",
+  "author": "CorentinTh",
+  "text": "Synchronized pagination state in the URL on the documents list page.",
+  "date": "2026-02-09"
+ },
+ {
+  "pkg": "app",
+  "version": "26.2.0",
+  "pr": 884,
+  "commit": "4c7da4b",
+  "author": "CorentinTh",
+  "text": "Excluded Synology specific files for the ingestion folder",
+  "date": "2026-02-09"
+ },
+ {
+  "pkg": "app",
+  "version": "26.2.0",
+  "pr": 892,
+  "commit": "1c1d273",
+  "author": "CorentinTh",
+  "text": "Enforced the length of the intake email webhook secret (`INTAKE_EMAILS_WEBHOOK_SECRET`) to be between 16 and 128 characters to match the OwlRelay API validation requirements.",
+  "date": "2026-02-14"
+ },
+ {
+  "pkg": "app",
+  "version": "26.2.0",
+  "pr": 893,
+  "commit": "0c62716",
+  "author": "CorentinTh",
+  "text": "Security fix: prevented unauthorized listing to organization tags and webhooks. An authenticated user could list the tags and webhooks of an organization they are not a member of by sending requests to the corresponding endpoints by knowing the organization ID. Credit to [Sergio Cabrera](https://www.linkedin.com/in/sergio-cabrera-878766239), security researcher, for responsibly disclosing this vulnerability.",
+  "date": "2026-02-14"
+ },
+ {
+  "pkg": "app",
+  "version": "26.2.0",
+  "pr": 894,
+  "commit": "77186da",
+  "author": "CorentinTh",
+  "text": "Added a \"Open with...\" button for documents along with a complete PDF viewer page with standard features such as thumbnails, outline, attachments, and document properties.",
+  "date": "2026-02-15"
+ },
+ {
+  "pkg": "app",
+  "version": "26.2.0",
+  "pr": 896,
+  "commit": "fdd955e",
+  "author": "CorentinTh",
+  "text": "Coerce MIME type of intake email attachments when declared as `application/octet-stream` or empty, using magic bytes detection with extension-based fallback.",
+  "date": "2026-02-15"
+ },
+ {
+  "pkg": "app",
+  "version": "26.2.0",
+  "pr": 899,
+  "commit": "d1eae05",
+  "author": "CorentinTh",
+  "text": "Api breaking change: removed the `/api/organizations/:organizationId/documents/search` endpoint in favor of the existing `/api/organizations/:organizationId/documents` with an optional `searchQuery` query parameter. The new `/api/organizations/:organizationId/documents` endpoint now behave as the old `/search` endpoint, with all documents being returned when `searchQuery` is empty. Note that the response field `totalCount` of the old `/search` endpoint has been renamed to `documentsCount` in the new endpoint. Before: ``` GET /api/organizations/:organizationId/documents/search?searchQuery=invoice&pageIndex=1&pageSize=20 Response: { documents: Document[]; totalCount: number; } GET /api/organizations/:organizationId/documents?pageIndex=1&pageSize=20 Response: { documents: Document[]; documentsCount: number; } ``` After: ``` GET /api/organizations/:organizationId/documents?searchQuery=invoice&pageIndex=1&pageSize=20 Response: { documents: Document[]; documentsCount: number; } ```",
+  "date": "2026-02-16"
+ },
+ {
+  "pkg": "app",
+  "version": "26.2.0",
+  "pr": 900,
+  "commit": "9058f9e",
+  "author": "CorentinTh",
+  "text": "Added an option to limit the number of tags that can be created in an organization, defaulting to 200. Configurable via the `MAX_TAGS_PER_ORGANIZATION` environment variable.",
+  "date": "2026-02-16"
+ },
+ {
+  "pkg": "app",
+  "version": "26.2.0",
+  "pr": 903,
+  "commit": "d13c74f",
+  "author": "CorentinTh",
+  "text": "The command palette state no longer resets when opening it, allowing to keep the search query and results when closing and reopening it.",
+  "date": "2026-02-17"
+ },
+ {
+  "pkg": "app",
+  "version": "26.2.1",
+  "pr": 908,
+  "commit": "2143728",
+  "author": "CorentinTh",
+  "text": "Fixed an issue preventing the \"about Papra\" dialog from opening.",
+  "date": "2026-02-17"
+ },
+ {
+  "pkg": "app",
+  "version": "26.2.2",
+  "pr": 911,
+  "commit": "548608b",
+  "author": "CorentinTh",
+  "text": "In the advanced PDF viewer, added empty placeholders for thumbnails to prevent layout shifts.",
+  "date": "2026-02-18"
+ },
+ {
+  "pkg": "app",
+  "version": "26.2.2",
+  "pr": 911,
+  "commit": "548608b",
+  "author": "CorentinTh",
+  "text": "Fix an issue in the advanced PDF that caused the outline panel to appear empty",
+  "date": "2026-02-18"
+ },
+ {
+  "pkg": "app",
+  "version": "26.3.0",
+  "pr": 916,
+  "commit": "65c2bea",
+  "author": "CorentinTh",
+  "text": "Added low-level safeguards in the document storage service to prevent overwriting existing files",
+  "date": "2026-02-19"
+ },
+ {
+  "pkg": "app",
+  "version": "26.3.0",
+  "pr": 921,
+  "commit": "6be6bea",
+  "author": "CorentinTh",
+  "text": "Added the possibility to customize the document storage path",
+  "date": "2026-03-01"
+ },
+ {
+  "pkg": "app",
+  "version": "26.3.0",
+  "pr": 930,
+  "commit": "41e9f33",
+  "author": "CorentinTh",
+  "text": "Added an option to fully disable the content extraction feature.",
+  "date": "2026-03-01"
+ },
+ {
+  "pkg": "app",
+  "version": "26.3.0",
+  "pr": 935,
+  "commit": "62e9e66",
+  "author": "CorentinTh",
+  "text": "Add a document storage migration script to migrate documents from one storage service to another or update storage key or configuration.",
+  "date": "2026-03-03"
+ },
+ {
+  "pkg": "app",
+  "version": "26.3.0",
+  "pr": 939,
+  "commit": "87a94ab",
+  "author": "CorentinTh",
+  "text": "Removed useless corepack installation in Dockerfiles",
+  "date": "2026-03-04"
+ },
+ {
+  "pkg": "app",
+  "version": "26.3.0",
+  "pr": 943,
+  "commit": "a7b18ce",
+  "author": "CorentinTh",
+  "text": "Add the document date property.",
+  "date": "2026-03-08"
+ },
+ {
+  "pkg": "app",
+  "version": "26.3.0",
+  "pr": 945,
+  "commit": "31e27d5",
+  "author": "CorentinTh",
+  "text": "Added the `date` search filter, allowing to filter by document dates, like `date:>2026`, and `has:date`.",
+  "date": "2026-03-08"
+ },
+ {
+  "pkg": "app",
+  "version": "26.3.0",
+  "pr": 948,
+  "commit": "725eaff",
+  "author": "CorentinTh",
+  "text": "When extracting text from PDF documents, if neither text nor images suitable for OCR are found, the pages are rendered as images and processed with OCR. Adding support for vectorized text.",
+  "also": [
+   "lecture"
+  ],
+  "date": "2026-03-11"
+ },
+ {
+  "pkg": "app",
+  "version": "26.3.0",
+  "pr": 949,
+  "commit": "ec740ed",
+  "author": "CorentinTh",
+  "text": "Added document content extraction support for .xlsx and .ods files.",
+  "also": [
+   "lecture"
+  ],
+  "date": "2026-03-15"
+ },
+ {
+  "pkg": "app",
+  "version": "26.3.0",
+  "pr": 953,
+  "commit": "db6badb",
+  "author": "CorentinTh",
+  "text": "Added content extraction support for scanned PDFs images in 1-bit-per-pixel grayscale format.",
+  "also": [
+   "lecture"
+  ],
+  "date": "2026-03-21"
+ },
+ {
+  "pkg": "app",
+  "version": "26.3.0",
+  "pr": 956,
+  "commit": "7c2b2d2",
+  "author": "CorentinTh",
+  "text": "Introduced custom properties! Define custom properties on your organization and set them on documents. Custom properties can be of different types, including text, number, select, multi-select and document or organization members relations.",
+  "date": "2026-03-25"
+ },
+ {
+  "pkg": "app",
+  "version": "26.3.0",
+  "pr": 965,
+  "commit": "87d80af",
+  "author": "CorentinTh",
+  "text": "Added support for searching by custom properties. For example, given a custom property `status` of type `select` with options `todo`, `in progress` and `done`, you could search for `status:todo` to find all documents with the status set to todo, or `has:status` to find all documents with a status set (and `-has:status` for documents without a status).",
+  "date": "2026-03-25"
+ },
+ {
+  "pkg": "app",
+  "version": "26.3.0",
+  "pr": 968,
+  "commit": "74828e8",
+  "author": "AntonPalmqvist",
+  "text": "Added Swedish language support",
+  "date": "2026-03-25"
+ },
+ {
+  "pkg": "app",
+  "version": "26.3.0",
+  "pr": 969,
+  "commit": "812e7c3",
+  "author": "CorentinTh",
+  "text": "Added sort actions in the tags list page",
+  "date": "2026-03-25"
+ },
+ {
+  "pkg": "app",
+  "version": "26.3.0",
+  "pr": 970,
+  "commit": "5900674",
+  "author": "CorentinTh",
+  "text": "Added support for quoted search filters, like `\"warranty date\":>2026`",
+  "also": [
+   "search-parser"
+  ],
+  "date": "2026-03-26"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.0",
+  "pr": 981,
+  "commit": "f336b84",
+  "author": "CorentinTh",
+  "text": "Moved the theme picker to the user settings dropdown",
+  "date": "2026-03-28"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.0",
+  "pr": 984,
+  "commit": "8fe222b",
+  "author": "CorentinTh",
+  "text": "App environment configuration validation is now a bit stricter, with slightly different error messages. And the following specific changes: - Boolean env variables previously considered non-truthy values as `false`. Now they will throw a validation error if the value is not a valid boolean-ish value - `AUTH_PROVIDERS_CUSTOMS` json parsing now accepts only valid boolean values for the `pkce` property, while before it accepted any non-true value as `false` - Stricter `AUTH_FORBIDDEN_EMAIL_DOMAINS` domain validation",
+  "date": "2026-03-28"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.0",
+  "pr": 986,
+  "commit": "884d470",
+  "author": "CorentinTh",
+  "text": "Removed currently unused `expiresAt` placeholder fields in the internal API key creation endpoint to avoid confusions, as non-ui (so non-standard) creation of API keys can set an expiration date, which is not currently enforced by the system. Addressing [GHSA-866c-mc22-wvv5](https://github.com/papra-hq/papra/security/advisories/GHSA-866c-mc22-wvv5), credit to [@Toothless5143](https://github.com/Toothless5143) for the responsible disclosure.",
+  "date": "2026-04-02"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.0",
+  "pr": 992,
+  "commit": "9039b48",
+  "author": "CorentinTh",
+  "text": "Properly return a \"document already has tag\" error when trying to add a tag to a document that already has it, instead of a generic 500 error when using an hosted Turso db.",
+  "date": "2026-04-02"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.0",
+  "pr": 992,
+  "commit": "9039b48",
+  "author": "CorentinTh",
+  "text": "Api now returns a 409 status code instead of a 400 when either creating a tag that already exists or adding a tag to a document that already has it.",
+  "date": "2026-04-02"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.0",
+  "pr": 993,
+  "commit": "17b501a",
+  "author": "CorentinTh",
+  "text": "**Breaking change regarding webhook URLs** Added SSRF protection for webhook URLs. Webhook URLs are now validated to ensure they do not point to private or reserved IP addresses, preventing potential server-side request forgery attacks. So webhooks pointing to private IPs (e.g. `http://192.168.0.1/some/stuff`), or with domains resolving to private IPs (e.g. `http://myservice.local/some/stuff`) will be blocked unless explicitly allowed. Two new configuration options are available: - `WEBHOOK_SSRF_PROTECTION_ENABLED` Set to `false` to fully disable SSRF protection. This is not recommended, prefer using the allowlist below instead. - `WEBHOOK_URL_ALLOWED_HOSTNAMES` A comma-separated list of hostnames (IP addresses or domain names) that are explicitly trusted and exempt from SSRF checks (e.g. internal services you control). Addressing [GHSA-cjw7-qg95-58mq](https://github.com/papra-hq/papra/security/advisories/GHSA-cjw7-qg95-58mq), credit to [@Toothless5143](https://github.com/Toothless5143) for the responsible disclosure.",
+  "date": "2026-04-02"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.0",
+  "pr": 995,
+  "commit": "327eda0",
+  "author": "CorentinTh",
+  "text": "Properly sanitize user name before including it in the email content to prevent potential XSS or html injection attacks. Addressing [GHSA-6f8x-2rc9-vgh4](https://github.com/papra-hq/papra/security/advisories/GHSA-6f8x-2rc9-vgh4), credit to [@Toothless5143](https://github.com/Toothless5143) for the responsible disclosure.",
+  "date": "2026-04-02"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.1",
+  "pr": 1003,
+  "commit": "ad5e42d",
+  "author": "JohnCuba",
+  "text": "Increased the sidebar collapsing breakpoint to improve the UX on tablets and small laptops.",
+  "date": "2026-04-04"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.1",
+  "pr": 1003,
+  "commit": "ad5e42d",
+  "author": "JohnCuba",
+  "text": "Prevented the users and organizations tables from forcing horizontal scrolling in the admin panels.",
+  "date": "2026-04-04"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.1",
+  "pr": 1010,
+  "commit": "927c7d6",
+  "author": "CorentinTh",
+  "text": "Removed logging of a polluting empty error cause (with stack trace) when an error is thrown without a cause.",
+  "date": "2026-04-04"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.1",
+  "pr": 1015,
+  "commit": "5bdf0da",
+  "author": "JohnCuba",
+  "text": "Synchronized the document pagination of the home page in query params to permit sharing and navigation.",
+  "date": "2026-04-04"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.1",
+  "pr": 1016,
+  "commit": "07d7109",
+  "author": "JohnCuba",
+  "text": "Removed native clear button of search bar in safari.",
+  "date": "2026-04-04"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.1",
+  "pr": 1016,
+  "commit": "07d7109",
+  "author": "JohnCuba",
+  "text": "Removed useless close button in the small-screen sidebar sheet.",
+  "date": "2026-04-04"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.1",
+  "pr": 1020,
+  "commit": "015bb53",
+  "author": "CorentinTh",
+  "text": "Added some size limits on the webhooks creation and update API endpoints parameters. - Names are limited to 128 characters. - Secret keys are limited to 256 characters. - URLs are limited to 2048 characters.",
+  "date": "2026-04-04"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.1",
+  "pr": 1021,
+  "commit": "133d235",
+  "author": "CorentinTh",
+  "text": "Prevented long documents name from pushing the right columns out of the container.",
+  "date": "2026-04-05"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.1",
+  "pr": 1025,
+  "commit": "9c6985b",
+  "author": "CorentinTh",
+  "text": "When reopening the quick search modal with existing query, the input content is automatically selected to allow easy replacement or editing.",
+  "date": "2026-04-06"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.1",
+  "pr": 1027,
+  "commit": "b154d2f",
+  "author": "CorentinTh",
+  "text": "Removed weird shadows on ui components in light mode",
+  "date": "2026-04-07"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.1",
+  "pr": 1033,
+  "commit": "5d55e41",
+  "author": "CorentinTh",
+  "text": "Changed the server endpoint validation library from `zod` to `valibot`, and improved some validation schemas in the process.",
+  "date": "2026-04-15"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.1",
+  "pr": 1034,
+  "commit": "c5ccac5",
+  "author": "CorentinTh",
+  "text": "Added content preview for yaml files",
+  "date": "2026-04-15"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.1",
+  "pr": 1061,
+  "commit": "93c369d",
+  "author": "CorentinTh",
+  "text": "Html-ish characters in email templates are now escaped instead of sanitized-out",
+  "date": "2026-04-23"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.1",
+  "pr": 1067,
+  "commit": "79d4cac",
+  "author": "CorentinTh",
+  "text": "Increased default max file size from 10MB to 25MB (can still be customized using `DOCUMENT_STORAGE_MAX_UPLOAD_SIZE`, disable by setting it to 0).",
+  "date": "2026-04-25"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.1",
+  "pr": 1072,
+  "commit": "71d093f",
+  "author": "mvlanga",
+  "text": "Added a download file option in document list action menu",
+  "date": "2026-04-28"
+ },
+ {
+  "pkg": "api-sdk",
+  "version": "1.3.0",
+  "pr": 1074,
+  "commit": "e2e7fd4",
+  "author": "CorentinTh",
+  "text": "Add batch document trash API endpoint.",
+  "also": [
+   "app"
+  ],
+  "date": "2026-05-05"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.1",
+  "pr": 1074,
+  "commit": "e2e7fd4",
+  "author": "CorentinTh",
+  "text": "Limited search query to 1024 characters",
+  "date": "2026-05-05"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.1",
+  "pr": 1080,
+  "commit": "47d44e0",
+  "author": "CorentinTh",
+  "text": "Fixed an authorization issue where tag updates and deletions were not scoped to the organization in the URL. Tag mutation endpoints are now correctly scoped to the requested organization. Addressing [GHSA-wrx4-3vff-jm94](https://github.com/papra-hq/papra/security/advisories/GHSA-wrx4-3vff-jm94), credit to [@TinkAnet](https://github.com/TinkAnet) for the responsible disclosure.",
+  "date": "2026-05-05"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.1",
+  "pr": 1080,
+  "commit": "47d44e0",
+  "author": "CorentinTh",
+  "text": "Tag deletion endpoint now returns a `204 No Content` status code instead of `200 OK` with an empty JSON object, and a `404 Not Found` status code is returned when trying to delete a tag that does not exists for the organization.",
+  "date": "2026-05-05"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.1",
+  "pr": 1082,
+  "commit": "e8d19af",
+  "author": "CorentinTh",
+  "text": "Added batch selection in the document page, allowing to select multiple documents (or all matching the current search) and either manage tags or delete them in one go.",
+  "date": "2026-05-11"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.1",
+  "pr": 1082,
+  "commit": "e8d19af",
+  "author": "CorentinTh",
+  "text": "Added a batch document tag management API endpoint.",
+  "date": "2026-05-11"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.1",
+  "pr": 1089,
+  "commit": "aef3ef2",
+  "author": "CorentinTh",
+  "text": "Added `sortField` and `sortOrder` query parameters to the document list/search endpoint (`GET /api/organizations/:organizationId/documents`), allowing documents to be sorted by `createdAt`, `updatedAt`, `name`, or `documentDate` in ascending or descending order.",
+  "date": "2026-05-13"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.1",
+  "pr": 1090,
+  "commit": "5ea8ca3",
+  "author": "CorentinTh",
+  "text": "Added sorting option in the documents list, allowing to sort documents by name, or creation date, in ascending or descending order.",
+  "date": "2026-05-13"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.1",
+  "pr": 1091,
+  "commit": "4ab0f32",
+  "author": "CorentinTh",
+  "text": "The documents page content now uses the whole width of the page",
+  "date": "2026-05-13"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.1",
+  "pr": 1096,
+  "commit": "2bb75ce",
+  "author": "CorentinTh",
+  "text": "Updated some critical dependencies (better-auth, drizzle-orm, hono, ...) to fix transitive vulnerabilities. Please do not hesitate to report any regression you may encounter, especially if it is related to authentication or database access. Thanks!",
+  "date": "2026-05-13"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.1",
+  "pr": 1097,
+  "commit": "928ffc3",
+  "author": "CorentinTh",
+  "text": "Switched docker image pnpm installation from corepack to npm global installation, as Node.js 26 image no longer ships corepack.",
+  "date": "2026-05-14"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.1",
+  "pr": 1097,
+  "commit": "928ffc3",
+  "author": "CorentinTh",
+  "text": "Updated to Node.js 26",
+  "date": "2026-05-14"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.1",
+  "pr": 1098,
+  "commit": "7acca43",
+  "author": "CorentinTh",
+  "text": "Updated pnpm to v11",
+  "date": "2026-05-14"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.1",
+  "pr": 1099,
+  "commit": "086dccb",
+  "author": "CorentinTh",
+  "text": "Webhooks no longer follow http redirects (3xx responses) when sending requests. Addressing [GHSA-5g86-85rp-f9hx](https://github.com/papra-hq/papra/security/advisories/GHSA-5g86-85rp-f9hx), credit to [@FredrikEV](https://github.com/FredrikEV) for the responsible disclosure.",
+  "date": "2026-05-18"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.1",
+  "pr": 1099,
+  "commit": "086dccb",
+  "author": "CorentinTh",
+  "text": "Webhooks ssrf validation is now enforced when sending webhook requests, preventing potential TOCTOU dns rebinding attacks (the exploitation window was very small and only theoretical though).",
+  "date": "2026-05-18"
+ },
+ {
+  "pkg": "webhooks",
+  "version": "0.3.3",
+  "pr": 1099,
+  "commit": "086dccb",
+  "author": "CorentinTh",
+  "text": "Export the http client type.",
+  "date": "2026-05-18"
+ },
+ {
+  "pkg": "app",
+  "version": "26.4.2",
+  "pr": 1105,
+  "commit": "afb5fe3",
+  "author": "CorentinTh",
+  "text": "Fixed a regression issue breaking the two factor authentication after updating `better-auth`.",
+  "date": "2026-05-21"
+ },
+ {
+  "pkg": "app",
+  "version": "26.5.0",
+  "pr": 1109,
+  "commit": "d9bc129",
+  "author": "CorentinTh",
+  "text": "Added the possibility to delete a user in the admin user details page.",
+  "date": "2026-05-23"
+ },
+ {
+  "pkg": "app",
+  "version": "26.5.0",
+  "pr": 1111,
+  "commit": "1ecd2c8",
+  "author": "CorentinTh",
+  "text": "Fix admin layout pushing the sidenav out of view when page content is long.",
+  "date": "2026-05-23"
+ },
+ {
+  "pkg": "app",
+  "version": "26.5.0",
+  "pr": 996,
+  "commit": "2a8bdec",
+  "author": "magic0whi",
+  "text": "Fix preview of pdfs without embedded fonts by packaging cmaps and custom fonts in the app assets. Increasing the bundle size by ~2mb, but it's worth it for the improved UX and compatibility with a wider range of pdfs.",
+  "date": "2026-05-24"
+ },
+ {
+  "pkg": "app",
+  "version": "26.5.0",
+  "pr": 1121,
+  "commit": "3a67507",
+  "author": "CorentinTh",
+  "text": "Added the possibility to disable the initial startup execution of all scheduled tasks by setting the `RUN_SCHEDULED_TASKS_ON_STARTUP_DEFAULT=false` environment variable, mainly usefull for instance that reboot often, dev environments or fast startup requirements (few ms gained). Each task startup configuration remain individually configurable with their dedicated environment variable.",
+  "date": "2026-05-28"
+ },
+ {
+  "pkg": "app",
+  "version": "26.5.0",
+  "pr": 960,
+  "commit": "f4b361e",
+  "author": "anbraten",
+  "text": "Added the ability to save search queries as views, allowing quick access to frequently used searches. Saved views can be accessed from the sidebar.",
+  "date": "2026-06-06"
+ },
+ {
+  "pkg": "app",
+  "version": "26.5.0",
+  "pr": 1130,
+  "commit": "4fc4f68",
+  "author": "CorentinTh",
+  "text": "Added document sharing by link: generate a public link to share a document with anyone, without requiring a Papra account. Links can optionally be password-protected and given an expiration date, can be disabled/re-enabled, and are all manageable from a new organization-level \"Share links\" page.",
+  "date": "2026-06-06"
+ },
+ {
+  "pkg": "app",
+  "version": "26.5.0",
+  "pr": 1130,
+  "commit": "4fc4f68",
+  "author": "CorentinTh",
+  "text": "Laid out the base for the rate limit system.",
+  "date": "2026-06-06"
+ },
+ {
+  "pkg": "app",
+  "version": "26.5.0",
+  "pr": 1133,
+  "commit": "a0f2455",
+  "author": "CorentinTh",
+  "text": "Added the possibility to add notes to documents, which can be used to add additional information or context to a document.",
+  "date": "2026-06-06"
+ },
+ {
+  "pkg": "app",
+  "version": "26.5.0",
+  "pr": 1135,
+  "commit": "d73933a",
+  "author": "CorentinTh",
+  "text": "Added api-key permissions for managing custom properties",
+  "date": "2026-06-07"
+ },
+ {
+  "pkg": "app",
+  "version": "26.5.0",
+  "pr": 1141,
+  "commit": "f93d6e1",
+  "author": "CorentinTh",
+  "text": "Custom property definition deletion endpoint (`DELETE /api/organizations/:organizationId/custom-properties/:propertyDefinitionId`) now returns a 204 with no body instead of a 200 with an empty object.",
+  "date": "2026-06-07"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.0",
+  "pr": 1152,
+  "commit": "632ac0f",
+  "author": "CorentinTh",
+  "text": "Fix the document preview being shrunk by very long document name not containing common break characters (spaces, dashes, ...)",
+  "date": "2026-06-10"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.0",
+  "pr": 1155,
+  "commit": "e6de1ee",
+  "author": "CorentinTh",
+  "text": "Fix the displayed max organization count on the user admin page",
+  "date": "2026-06-10"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.0",
+  "pr": 1172,
+  "commit": "0e970aa",
+  "author": "CorentinTh",
+  "text": "Set S3 checksum verification headers to \"when required\" to fix Backblaze B2 storage issues.",
+  "date": "2026-06-16"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.0",
+  "pr": 1173,
+  "commit": "c541b1f",
+  "author": "CorentinTh",
+  "text": "Added the possibility to configure the file size polling interval for ingestion folder watchers. - `INGESTION_FOLDER_WATCHER_FILE_STABILITY_THRESHOLD_MS`: The amount of time in milliseconds for a file size to remain constant before being consumed. This helps to avoid processing files that are still being written to (e.g., scanners, cameras, network shares, etc.). - `INGESTION_FOLDER_WATCHER_FILE_STABILITY_POLL_INTERVAL_MS`: The interval in milliseconds at which the file size is polled while waiting for write to finish.",
+  "date": "2026-06-17"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.0",
+  "pr": 1179,
+  "commit": "63ec093",
+  "author": "CorentinTh",
+  "text": "Replace the AWS S3 SDK (`@aws-sdk/client-s3` + `@aws-sdk/lib-storage`) with the zero-dependency `s3mini` for document S3 storage. This removes 97 transitive packages (~23 MB unpacked) from the server, replacing them with a single more performant and dependency-free package.",
+  "date": "2026-06-19"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.0",
+  "pr": 1184,
+  "commit": "e2c3aa6",
+  "author": "CorentinTh",
+  "text": "Updated tesseract.js to v7 which should increase extraction performance by 15 to 35% on images, [source](https://github.com/naptha/tesseract.js/releases/tag/v7.0.0).",
+  "also": [
+   "lecture"
+  ],
+  "date": "2026-06-19"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.0",
+  "pr": 1192,
+  "commit": "edbd368",
+  "author": "Pallavikumarimdb",
+  "text": "Sort documents by document date instead of the created date.",
+  "date": "2026-06-20"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.0",
+  "pr": 1196,
+  "commit": "4250141",
+  "author": "CorentinTh",
+  "text": "Added missing translations in all non-English languages.",
+  "date": "2026-06-20"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.0",
+  "pr": 1200,
+  "commit": "68fbacb",
+  "author": "CorentinTh",
+  "text": "Added AI auto-tagging. When document content is extracted, it can now be automatically tagged using AI. The system uses tag names and descriptions to determine the most relevant tags for the document, and can optionally create new tags if they don't already exist.",
+  "date": "2026-06-24"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.0",
+  "pr": 1201,
+  "commit": "167fb8c",
+  "author": "CorentinTh",
+  "text": "Auto tagging can be configured per organization, with a dedicated page in organization settings. Owners can manage the following settings: - Enable or disable auto tagging for their organization. - Enable the creation of new tags if relevant tags do not exist. - Configure the maximum number of tags that can be automatically added to a document.",
+  "date": "2026-06-24"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.0",
+  "pr": 1219,
+  "commit": "aef57ce",
+  "author": "CorentinTh",
+  "text": "Pined the Dockerfile node version sha to reduce supply chain attack surface.",
+  "date": "2026-06-24"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.0",
+  "pr": 1232,
+  "commit": "e853d09",
+  "author": "CorentinTh",
+  "text": "Make the top navigation bar mobile-friendly: the search, import, and admin buttons now collapse to icon-only on small screens, and the user settings dropdown is now available on mobile devices.",
+  "date": "2026-06-24"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.0",
+  "pr": 1235,
+  "commit": "ae42102",
+  "author": "CorentinTh",
+  "text": "Added mobile friendly hamburger menu in organization settings.",
+  "date": "2026-06-24"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.0",
+  "pr": 1240,
+  "commit": "874354f",
+  "author": "CorentinTh",
+  "text": "Added mobile friendly hamburger menu in account settings.",
+  "date": "2026-06-24"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.0",
+  "pr": 1246,
+  "commit": "677f81e",
+  "author": "CorentinTh",
+  "text": "Extracted and translated remaining hard coded texts, improving localization for non-English languages.",
+  "date": "2026-06-25"
+ },
+ {
+  "pkg": "api-sdk",
+  "version": "1.3.1",
+  "pr": 1276,
+  "commit": "95cfbb0",
+  "author": "CorentinTh",
+  "text": "Excluded sourcemaps from package bundle",
+  "also": [
+   "search-parser",
+   "lecture",
+   "cli",
+   "webhooks"
+  ],
+  "date": "2026-06-26"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.0",
+  "pr": 1283,
+  "commit": "62ae3a0",
+  "author": "CorentinTh",
+  "text": "Add support for external document content extraction/ocr, with multiple provider, and support for combining providers using document type filtering and fallback. Currently supported providers are: - Mistral OCR - Azure Document Intelligence - Docling server - Custom HTTP endpoint (configurable) - Internal Papra extraction engine (default)",
+  "date": "2026-06-28"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.0",
+  "pr": 1292,
+  "commit": "923e27a",
+  "author": "CorentinTh",
+  "text": "Document sort order fallback to the importation date when the sort order is set to other sort orders.",
+  "date": "2026-06-30"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.0",
+  "pr": 1296,
+  "commit": "df9f6c6",
+  "author": "CorentinTh",
+  "text": "Fixed the inline tag picker lowercasing the typed name when suggesting a new tag, so newly created tags now keep their original casing (e.g. typing \"Invoices\" no longer suggests \"invoices\").",
+  "date": "2026-06-30"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.1",
+  "pr": 1312,
+  "commit": "aded832",
+  "author": "CorentinTh",
+  "text": "Greatly improved the performances when updating and deleting document from the sezarch index, avoiding unnecessary table scans. Noticeable improvement on large document collections (10k+ documents).",
+  "date": "2026-07-02"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.1",
+  "pr": 1313,
+  "commit": "94f2a68",
+  "author": "CorentinTh",
+  "text": "Added visual loading state to the rename document modal.",
+  "date": "2026-07-02"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.1",
+  "pr": 1317,
+  "commit": "35ce235",
+  "author": "CorentinTh",
+  "text": "Fix the coercion of `AUTO_TAGGING_DEFAULT_MAX_TAGS` that caused a validation error when the value is a string instead of a number. Now correctly converts the string to a number, preventing the validation error.",
+  "date": "2026-07-03"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.1",
+  "pr": 1320,
+  "commit": "2ef3148",
+  "author": "CorentinTh",
+  "text": "Fix auto tagging schema definition for some ai providers (notably OpenAI and Anthropic), as they do not support all JSON schema features. It's really nice to have a common spec, if only all providers respected it...",
+  "date": "2026-07-04"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.1",
+  "pr": 1323,
+  "commit": "74d98b2",
+  "author": "CorentinTh",
+  "text": "Added better logging when an error occurs during the structured data generation.",
+  "date": "2026-07-04"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.2",
+  "pr": 1324,
+  "commit": "8a3653c",
+  "author": "CorentinTh",
+  "text": "Collapse the mobile menu sheet when navigating to a new page.",
+  "date": "2026-07-05"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.2",
+  "pr": 1326,
+  "commit": "0247a7a",
+  "author": "CorentinTh",
+  "text": "Added some database indexes for better performances.",
+  "date": "2026-07-05"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.2",
+  "pr": 1348,
+  "commit": "12e1d4b",
+  "author": "CorentinTh",
+  "text": "Security fix: document share links belonging to a soft-deleted organization were still publicly accessible. Public access (document metadata, file download, and password verification) now stops with a 410 Gone as soon as the organization is deleted, and resumes automatically if the organization is restored during the grace period. Thank you to [Thammachart Sittharod](https://github.com/penthammachat-creator) for the responsible disclosure of this issue.",
+  "date": "2026-07-10"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.2",
+  "pr": 1357,
+  "commit": "bad01b7",
+  "author": "CorentinTh",
+  "text": "Added a skeleton loader in the sidenav organization picker when fetching organizations",
+  "date": "2026-07-13"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.2",
+  "pr": 1362,
+  "commit": "8adb16d",
+  "author": "CorentinTh",
+  "text": "Fix mistral ocr replacing tables with external references, no more `[tbl-0.md](tbl-0.md)` in extracted content, the tables are now properly extracted and included in the content.",
+  "date": "2026-07-15"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.2",
+  "pr": 1365,
+  "commit": "881796e",
+  "author": "CorentinTh",
+  "text": "Increased and made configurable the timeout of content extraction external service. Docling, Mistral OCR, and Azure DI can now take up to 5 minutes to process a document, instead of the previous 30 seconds, configurable via `DOCLING_REQUEST_TIMEOUT_MS`, `MISTRAL_OCR_REQUEST_TIMEOUT_MS` and `AZURE_DI_REQUEST_TIMEOUT_MS` respectively.",
+  "date": "2026-07-16"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.2",
+  "pr": 1375,
+  "commit": "88f1d86",
+  "author": "CorentinTh",
+  "text": "Added Catalan language",
+  "date": "2026-07-20"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.2",
+  "pr": 1406,
+  "commit": "d178643",
+  "author": "CorentinTh",
+  "text": "Security fix: revoke all user sessions on password reset. Thank you to [MMartinez](https://github.com/murillomr) for the responsible disclosure of this issue.",
+  "date": "2026-08-07"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.2",
+  "pr": 1407,
+  "commit": "30760f5",
+  "author": "CorentinTh",
+  "text": "Added a deletion confirmation modal when deleting a tagging rule, to prevent accidental deletion of tagging rules.",
+  "date": "2026-08-07"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.2",
+  "pr": 1416,
+  "commit": "5d43402",
+  "author": "ybizeul",
+  "text": "Fix PDF content preview rendering issue after navigation",
+  "date": "2026-08-18"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.2",
+  "pr": 1420,
+  "commit": "510c162",
+  "author": "qmarlats",
+  "text": "Fixed the batch document selection remaining in \"select all matching documents\" mode after unselecting documents.",
+  "date": "2026-08-20"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.2",
+  "pr": 1432,
+  "commit": "a0ce312",
+  "author": "CorentinTh",
+  "text": "Prevent stripe webhook forgery for apps with unconfigured webhooks secrets. Thank you to [Andrew Gonzalez](https://www.linkedin.com/in/andrew-gonzalez-6b8b68257/) ([@bruhdev1290](https://github.com/bruhdev1290)) for the responsible disclosure of this issue.",
+  "date": "2026-08-21"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.2",
+  "pr": 1442,
+  "commit": "03f4ad4",
+  "author": "sp71",
+  "text": "Include the tag name in the tag deletion confirmation message.",
+  "date": "2026-08-24"
+ },
+ {
+  "pkg": "app",
+  "version": "26.6.2",
+  "pr": 1453,
+  "commit": "a64cbba",
+  "author": "CorentinTh",
+  "text": "Fixed an issue where setting `AUTH_IS_REGISTRATION_ENABLED=false` hid the sign-up interface but did not block email and password registrations made directly through the authentication API.",
+  "date": "2026-09-01"
+ },
+ {
+  "pkg": "mobile",
+  "version": "1.1.0",
+  "pr": 1459,
+  "commit": "9b8d9d7",
+  "author": "CorentinTh",
+  "text": "Verify server initial ping response body to avoid interpreting 2xx responses that may be an auth proxy redirection.",
+  "date": "2026-09-02"
+ },
+ {
+  "pkg": "app",
+  "version": "26.7.0",
+  "pr": 1468,
+  "commit": "4fef955",
+  "author": "CorentinTh",
+  "text": "Fonts are now bundled with the app, so that it can be used offline, and no longer depends on Bunny Fonts. A step towards making Papra fully air-gapped.",
+  "date": "2026-09-08"
+ },
+ {
+  "pkg": "app",
+  "version": "26.7.0",
+  "pr": 1469,
+  "commit": "347029d",
+  "author": "CorentinTh",
+  "text": "Fixed OCR extraction for images whose rotation is stored in EXIF metadata.",
+  "also": [
+   "lecture"
+  ],
+  "date": "2026-09-09"
+ },
+ {
+  "pkg": "app",
+  "version": "26.7.0",
+  "pr": 1470,
+  "commit": "a58b4f0",
+  "author": "CorentinTh",
+  "text": "Silenced the content extraction warning about DPI.",
+  "also": [
+   "lecture"
+  ],
+  "date": "2026-09-09"
+ },
+ {
+  "pkg": "app",
+  "version": "26.7.0",
+  "pr": 1474,
+  "commit": "aa26524",
+  "author": "CorentinTh",
+  "text": "API breaking change: The route to trash a document `DELETE /api/organizations/:organizationId/documents/:documentId` now returns a 204 No Content status code instead of `{ success: true }` JSON body.",
+  "date": "2026-09-09"
+ },
+ {
+  "pkg": "mobile",
+  "version": "1.1.0",
+  "pr": 1480,
+  "commit": "f81bee7",
+  "author": "CorentinTh",
+  "text": "Stack the alert dialog buttons vertically to avoid line breaks in long button labels on small screens.",
+  "date": "2026-09-10"
+ },
+ {
+  "pkg": "mobile",
+  "version": "1.1.0",
+  "pr": 1482,
+  "commit": "cde1bf0",
+  "author": "CorentinTh",
+  "text": "Added multi-lang support. Currently, the supported languages are English, French, German, and Spanish. You can now switch between these languages in the app settings, it automatically detects your device's language, and you can also set a preferred language.",
+  "date": "2026-09-10"
+ },
+ {
+  "pkg": "mobile",
+  "version": "1.1.0",
+  "pr": 1485,
+  "commit": "588a1a1",
+  "author": "CorentinTh",
+  "text": "Fixed select and multi-select custom properties to display option names correctly (previously displayed as JSON).",
+  "date": "2026-09-10"
+ },
+ {
+  "pkg": "mobile",
+  "version": "1.1.0",
+  "pr": 1486,
+  "commit": "f3d36aa",
+  "author": "CorentinTh",
+  "text": "Format date according to the user's locale in the mobile app.",
+  "date": "2026-09-10"
+ },
+ {
+  "pkg": "mobile",
+  "version": "1.1.0",
+  "pr": 1488,
+  "commit": "9cc1cfb",
+  "author": "CorentinTh",
+  "text": "Automatically load more documents as you scroll through the document list and search results, instead of showing only the first 20.",
+  "date": "2026-09-10"
+ },
+ {
+  "pkg": "mobile",
+  "version": "1.1.0",
+  "pr": 1489,
+  "commit": "ff74b80",
+  "author": "CorentinTh",
+  "text": "Added app version and commit short hash in the app settings screen.",
+  "date": "2026-09-10"
+ },
+ {
+  "pkg": "mobile",
+  "version": "1.1.0",
+  "pr": 1490,
+  "commit": "e3317d2",
+  "author": "CorentinTh",
+  "text": "Added a pull-to-refresh to the document details screen.",
+  "date": "2026-09-10"
+ },
+ {
+  "pkg": "mobile",
+  "version": "1.1.0",
+  "pr": 1491,
+  "commit": "a6ac457",
+  "author": "CorentinTh",
+  "text": "Manage document tags from the document details or the document list.",
+  "date": "2026-09-10"
+ },
+ {
+  "pkg": "app",
+  "version": "26.7.0",
+  "pr": 1461,
+  "commit": "5d3063b",
+  "author": "bartdenhoed",
+  "text": "Fixed missing refresh of the updatedAt db attribute.",
+  "date": "2026-09-11"
+ },
+ {
+  "pkg": "app",
+  "version": "26.7.0",
+  "pr": 1502,
+  "commit": "c16661e",
+  "author": "CorentinTh",
+  "text": "Removed the default value for the intake email webhook validation secret to prevent ingestion of documents from untrusted sources when no secret is provided. Users must now explicitly set a secret using `INTAKE_EMAILS_WEBHOOK_SECRET`. Thanks to [\u767d\u58a8](https://github.com/5255fgh) for the responsible disclosure of this issue.",
+  "date": "2026-09-12"
+ },
+ {
+  "pkg": "app",
+  "version": "26.7.0",
+  "pr": 1503,
+  "commit": "2993c6e",
+  "author": "CorentinTh",
+  "text": "Security fix: Prevent custom OAuth providers from creating new accounts when registration is disabled, while allowing existing users to sign in. Thanks to [\u767d\u58a8](https://github.com/5255fgh) for the responsible disclosure of this issue.",
+  "date": "2026-09-12"
+ },
+ {
+  "pkg": "app",
+  "version": "26.7.0",
+  "pr": 1428,
+  "commit": "76c4501",
+  "author": "jakubM817",
+  "text": "Add Slovak (sk) translation for the app.",
+  "date": "2026-09-15"
+ },
+ {
+  "pkg": "app",
+  "version": "26.7.0",
+  "pr": 1511,
+  "commit": "71fdd27",
+  "author": "CorentinTh",
+  "text": "Fully disabled AI credit accounting by default for self-hosted instances to silence \"Failed to register AI credit usage\" logs.",
+  "date": "2026-09-15"
+ },
+ {
+  "pkg": "app",
+  "version": "26.7.0",
+  "pr": 1513,
+  "commit": "1f1a9ad",
+  "author": "CorentinTh",
+  "text": "Added an API endpoint to reprocess existing documents `POST /api/organizations/:organizationId/documents/:documentId/reprocess`. This endpoint allows re-running content extraction + auto tagging and tagging rules on existing documents.",
+  "date": "2026-09-15"
+ },
+ {
+  "pkg": "app",
+  "version": "26.7.0",
+  "pr": 1517,
+  "commit": "956684c",
+  "author": "CorentinTh",
+  "text": "Added a button to reprocess a document in the documents content tab.",
+  "date": "2026-09-15"
+ },
+ {
+  "pkg": "app",
+  "version": "26.7.0",
+  "pr": 1519,
+  "commit": "82778df",
+  "author": "CorentinTh",
+  "text": "Fixed document action menus wrapping longer translations by allowing the menu to expand.",
+  "date": "2026-09-15"
+ },
+ {
+  "pkg": "app",
+  "version": "26.7.0",
+  "pr": 1525,
+  "commit": "7c9a96f",
+  "author": "CorentinTh",
+  "text": "Added optional storage key synchronization so document renames are reflected in the underlying storage. Enable it with `DOCUMENT_STORAGE_KEY_SYNC_ENABLED=true` when using pattern-based storage keys.",
+  "date": "2026-09-18"
+ },
+ {
+  "pkg": "app",
+  "version": "26.7.0",
+  "pr": 1528,
+  "commit": "13a6d4a",
+  "author": "CorentinTh",
+  "text": "Added `document.date` and `document.createdAt` to storage key patterns, so you can organize files by document date or creation date. Documents without a date use `no-date` (and can be configured with the `default` transformer).",
+  "date": "2026-09-18"
+ },
+ {
+  "pkg": "app",
+  "version": "26.7.0",
+  "pr": 1529,
+  "commit": "1c993e4",
+  "author": "CorentinTh",
+  "text": "Add support for `{{organization.name}}` in document storage key patterns to organize files into folders named after your organizations.",
+  "date": "2026-09-18"
+ },
+ {
+  "pkg": "app",
+  "version": "26.7.0",
+  "pr": 1531,
+  "commit": "4ac1d68",
+  "author": "CorentinTh",
+  "text": "Added Hungarian translation",
+  "date": "2026-09-18"
+ },
+ {
+  "pkg": "app",
+  "version": "26.7.0",
+  "pr": 1532,
+  "commit": "50cbe2c",
+  "author": "CorentinTh",
+  "text": "You can now configure Docling OCR languages and other conversion options with `DOCLING_OPTIONS`, using a JSON object such as `{\"ocr_lang\":[\"en\",\"fr\"]}`.",
+  "date": "2026-09-18"
+ },
+ {
+  "pkg": "app",
+  "version": "26.7.0",
+  "pr": 1534,
+  "commit": "a03dc5a",
+  "author": "CorentinTh",
+  "text": "Fix an issue that prevented reinviting users who left or were removed from an organisation.",
+  "date": "2026-09-20"
+ },
+ {
+  "pkg": "app",
+  "version": "26.7.0",
+  "pr": 1545,
+  "commit": "193d860",
+  "author": "CorentinTh",
+  "text": "Added an option to restrict registration to specific email domains using `AUTH_ALLOWED_EMAIL_DOMAINS`. Forbidden domains still take precedence.",
+  "date": "2026-09-30"
+ }
+]

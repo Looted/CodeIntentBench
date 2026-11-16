@@ -10,7 +10,7 @@ tags:
 origin:
   kind: agent
   ref: 'Papra server test suite (apps/papra-server/src/modules): organizations/organizations.usecases.test.ts'
-  recorded_at: '2026-11-15T23:01:18.665Z'
+  recorded_at: '2026-11-16T10:30:32.539Z'
 id: FACT-papra-subject-organizations-user-cap
 type: fact
 ---

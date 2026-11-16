@@ -16,7 +16,7 @@ tags:
 origin:
   kind: agent
   ref: 'Papra documentation site (apps/docs): 03-guides/09-storage-key-patterns.mdx#organization-names-and-renames'
-  recorded_at: '2026-11-15T22:57:08.110Z'
+  recorded_at: '2026-11-16T10:17:57.214Z'
 id: FACT-papra-storage-pattern-organization-name-value-for-new-uploads
 type: fact
 ---

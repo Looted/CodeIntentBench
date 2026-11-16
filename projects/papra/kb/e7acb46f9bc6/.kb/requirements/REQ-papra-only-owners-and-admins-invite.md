@@ -46,7 +46,7 @@ required_evidence: asserted
 origin:
   kind: import
   ref: 'Papra server test suite (apps/papra-server/src/modules): organizations/organizations.usecases.test.ts#only-owners-and-admins-invite'
-  recorded_at: '2026-11-15T22:58:00.084Z'
+  recorded_at: '2026-11-16T10:18:57.613Z'
 tags:
   - bootstrap
   - knowledge-source:papra-tests

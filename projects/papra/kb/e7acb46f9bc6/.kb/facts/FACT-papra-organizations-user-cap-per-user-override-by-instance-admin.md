@@ -16,7 +16,7 @@ tags:
 origin:
   kind: agent
   ref: 'Papra server test suite (apps/papra-server/src/modules): organizations/organizations.usecases.test.ts#user-owned-organization-cap'
-  recorded_at: '2026-11-15T22:58:26.775Z'
+  recorded_at: '2026-11-16T10:19:26.302Z'
 id: FACT-papra-organizations-user-cap-per-user-override-by-instance-admin
 type: fact
 ---

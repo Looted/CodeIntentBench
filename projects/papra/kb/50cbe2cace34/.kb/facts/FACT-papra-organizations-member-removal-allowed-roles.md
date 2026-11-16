@@ -16,7 +16,7 @@ tags:
 origin:
   kind: agent
   ref: 'Papra server test suite (apps/papra-server/src/modules): organizations/organizations.models.test.ts#owner-cannot-be-removed'
-  recorded_at: '2026-11-15T23:01:02.253Z'
+  recorded_at: '2026-11-16T10:30:17.136Z'
 id: FACT-papra-organizations-member-removal-allowed-roles
 type: fact
 ---

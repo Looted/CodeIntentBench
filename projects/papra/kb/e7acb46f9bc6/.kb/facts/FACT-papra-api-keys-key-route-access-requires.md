@@ -16,7 +16,7 @@ tags:
 origin:
   kind: agent
   ref: 'Papra server test suite (apps/papra-server/src/modules): app/auth/auth.models.test.ts#api-key-scope-and-expiry'
-  recorded_at: '2026-11-15T22:57:32.515Z'
+  recorded_at: '2026-11-16T10:18:27.303Z'
 id: FACT-papra-api-keys-key-route-access-requires
 type: fact
 ---

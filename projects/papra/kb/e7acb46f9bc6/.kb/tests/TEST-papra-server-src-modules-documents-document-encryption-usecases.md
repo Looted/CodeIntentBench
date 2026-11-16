@@ -5,7 +5,7 @@ sourceFile: apps/papra-server/src/modules/documents/document-encryption.usecases
 text_ref: apps/papra-server/src/modules/documents/document-encryption.usecases.test.ts
 origin:
   kind: agent
-  recorded_at: '2026-11-15T22:58:40.325Z'
+  recorded_at: '2026-11-16T10:26:12.333Z'
 id: TEST-papra-server-src-modules-documents-document-encryption-usecases
 type: test
 ---

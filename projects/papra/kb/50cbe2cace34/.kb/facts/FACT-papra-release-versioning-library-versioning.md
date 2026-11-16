@@ -16,7 +16,7 @@ tags:
 origin:
   kind: agent
   ref: 'Papra documentation site (apps/docs): 04-resources/04-versioning-and-tagging.mdx#application-versioning'
-  recorded_at: '2026-11-15T23:00:21.076Z'
+  recorded_at: '2026-11-16T10:29:37.994Z'
 id: FACT-papra-release-versioning-library-versioning
 type: fact
 ---

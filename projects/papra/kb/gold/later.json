@@ -8,6 +8,14 @@
    "locator": "apps/papra-server/src/modules",
    "authority": "supporting",
    "notes": "Test titles are the maintainer's own wording of a behaviour. The v1 rule statements were written by the benchmark from the code and checked against these tests (../../RULES-NOTES.md); the cited titles are the excerpt, and a reason is recorded only where a title, a code comment, a changeset, the docs or an issue states one."
+  },
+  {
+   "id": "papra-changelog",
+   "kind": "decision_log",
+   "title": "papra-hq/papra release changelogs (apps/*/CHANGELOG.md)",
+   "locator": "apps/papra-server/CHANGELOG.md",
+   "authority": "supporting",
+   "notes": "Each entry is a changeset the maintainers wrote with the change; it states what changed and sometimes why. A reason is recorded only where the changeset states one. bulk.py turns the entries into decisions."
   }
  ],
  "claims": [

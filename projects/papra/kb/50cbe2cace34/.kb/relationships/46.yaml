@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-904204f0c733
+    type: requires_property
+    from: REQ-papra-document-trash-returns-204
+    to: FACT-papra-documents-trash-response-status-code
+    created_at: "2026-11-16T10:31:23.837Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-document-trash-returns-204
+    to: FACT-papra-subject-documents-trash-response
+    created_at: 2026-11-16T10:31:23.838Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-957f64ff3d7a

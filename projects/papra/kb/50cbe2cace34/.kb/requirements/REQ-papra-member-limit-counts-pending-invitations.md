@@ -46,7 +46,7 @@ required_evidence: asserted
 origin:
   kind: import
   ref: 'Papra server test suite (apps/papra-server/src/modules): organizations/organizations.usecases.test.ts#member-limit'
-  recorded_at: '2026-11-15T23:00:28.464Z'
+  recorded_at: '2026-11-16T10:29:44.658Z'
 tags:
   - bootstrap
   - knowledge-source:papra-tests

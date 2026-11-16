@@ -3,27 +3,27 @@ relationships:
     type: requires_predicate
     from: REQ-papra-only-owner-deletes-organization
     to: FACT-papra-perm-organization-owner-delete-organization
-    created_at: "2026-11-15T23:00:56.008Z"
+    created_at: "2026-11-16T10:30:10.315Z"
     created_by: kibi/upsert
     source: mcp://kibi/upsert
   - type: requires_predicate
     from: REQ-papra-only-owner-deletes-organization
     to: FACT-papra-perm-admins-and-members-delete-organization
-    created_at: 2026-11-15T23:00:56.011Z
+    created_at: 2026-11-16T10:30:10.315Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-1bdaf20b34a0
   - type: restates
     from: REQ-papra-only-owner-deletes-organization
     to: REQ-only-the-organization-owner-can-delete-an--8207027D
-    created_at: 2026-11-15T23:00:56.024Z
+    created_at: 2026-11-16T10:30:10.326Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-02d28c7e5730
   - type: verified_by
     from: REQ-papra-only-owner-deletes-organization
     to: TEST-papra-server-src-modules-organizations-organizations-usecases
-    created_at: 2026-11-15T23:02:10.897Z
+    created_at: 2026-11-16T10:37:37.783Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-5dd5b9b92b39

@@ -34,59 +34,73 @@ relationships:
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-ca4d2e941e9f
-  - type: requires_property
-    from: REQ-papra-active-subscription-blocks-deletion
-    to: FACT-papra-organization-soft-delete-allowed-with-live-subscription
-    created_at: 2026-11-15T23:00:32.942Z
-    created_by: kibi/upsert
-    source: mcp://kibi/upsert
-    id: rel-d99781a24f7f
-  - type: constrains
-    from: REQ-papra-active-subscription-blocks-deletion
-    to: FACT-papra-subject-organization-soft-delete
-    created_at: 2026-11-15T23:00:32.954Z
-    created_by: kibi/upsert
-    source: mcp://kibi/upsert
-    id: rel-23a09df1e41b
-  - type: requires_property
-    from: REQ-papra-active-subscription-blocks-deletion
-    to: FACT-papra-organization-soft-delete-requires-subscription-cancelled-first
-    created_at: 2026-11-15T23:00:32.957Z
-    created_by: kibi/upsert
-    source: mcp://kibi/upsert
-    id: rel-287a5af29f21
-  - type: requires_property
-    from: REQ-papra-active-subscription-blocks-deletion
-    to: FACT-papra-organization-soft-delete-allowed-with-ended-or-ending-subscription
-    created_at: 2026-11-15T23:00:32.963Z
-    created_by: kibi/upsert
-    source: mcp://kibi/upsert
-    id: rel-37455ae790ad
-  - type: verified_by
-    from: REQ-papra-active-subscription-blocks-deletion
-    to: TEST-papra-server-src-modules-organizations-organizations-usecases
-    created_at: 2026-11-15T23:02:04.330Z
-    created_by: kibi/upsert
-    source: mcp://kibi/upsert
-    id: rel-00cfbda743d5
-  - type: verified_by
-    from: REQ-papra-active-subscription-blocks-deletion
-    to: TEST-papra-server-src-modules-subscriptions-subscriptions-models
-    created_at: 2026-11-15T23:02:04.344Z
-    created_by: kibi/upsert
-    source: mcp://kibi/upsert
-    id: rel-4055069c1c03
   - type: verified_by
     from: REQ-search-queries-are-parsed-by-the-papra-sea-4463E6DB
     to: TEST-papra-server-src-modules-documents-document-search-database-fts5-query-builder-query-builder
-    created_at: 2026-11-16T04:51:37.256Z
+    created_at: 2026-11-16T04:52:09.969Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-360c3f0052c1
   - type: verified_by
     from: REQ-search-queries-are-parsed-by-the-papra-sea-4463E6DB
     to: TEST-papra-server-src-modules-documents-document-search-database-fts5-query-builder-query-builder-models
-    created_at: 2026-11-16T04:51:37.265Z
+    created_at: 2026-11-16T04:52:09.977Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-9fa163d57b95
+  - type: requires_property
+    from: REQ-papra-active-subscription-blocks-deletion
+    to: FACT-papra-organization-soft-delete-allowed-with-live-subscription
+    created_at: 2026-11-16T10:29:48.667Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d99781a24f7f
+  - type: constrains
+    from: REQ-papra-active-subscription-blocks-deletion
+    to: FACT-papra-subject-organization-soft-delete
+    created_at: 2026-11-16T10:29:48.681Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-23a09df1e41b
+  - type: requires_property
+    from: REQ-papra-active-subscription-blocks-deletion
+    to: FACT-papra-organization-soft-delete-requires-subscription-cancelled-first
+    created_at: 2026-11-16T10:29:48.686Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-287a5af29f21
+  - type: requires_property
+    from: REQ-papra-active-subscription-blocks-deletion
+    to: FACT-papra-organization-soft-delete-allowed-with-ended-or-ending-subscription
+    created_at: 2026-11-16T10:29:48.690Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-37455ae790ad
+  - type: requires_property
+    from: REQ-papra-client-rejects-too-big-files
+    to: FACT-papra-upload-client-guard-rejects-too-big-files
+    created_at: 2026-11-16T10:34:16.243Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-a926706904c0
+  - type: constrains
+    from: REQ-papra-client-rejects-too-big-files
+    to: FACT-papra-subject-upload-client-guard
+    created_at: 2026-11-16T10:34:16.258Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-69b0f09c2a60
+  - type: verified_by
+    from: REQ-papra-active-subscription-blocks-deletion
+    to: TEST-papra-server-src-modules-organizations-organizations-usecases
+    created_at: 2026-11-16T10:37:27.069Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-00cfbda743d5
+  - type: verified_by
+    from: REQ-papra-active-subscription-blocks-deletion
+    to: TEST-papra-server-src-modules-subscriptions-subscriptions-models
+    created_at: 2026-11-16T10:37:27.078Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4055069c1c03

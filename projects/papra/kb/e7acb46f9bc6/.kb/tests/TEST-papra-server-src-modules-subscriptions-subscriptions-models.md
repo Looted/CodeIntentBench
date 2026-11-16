@@ -5,7 +5,7 @@ sourceFile: apps/papra-server/src/modules/subscriptions/subscriptions.models.tes
 text_ref: apps/papra-server/src/modules/subscriptions/subscriptions.models.test.ts
 origin:
   kind: agent
-  recorded_at: '2026-11-15T22:58:48.161Z'
+  recorded_at: '2026-11-16T10:26:22.474Z'
 id: TEST-papra-server-src-modules-subscriptions-subscriptions-models
 type: test
 ---

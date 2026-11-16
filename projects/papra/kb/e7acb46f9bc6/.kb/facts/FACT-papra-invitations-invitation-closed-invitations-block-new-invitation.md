@@ -16,7 +16,7 @@ tags:
 origin:
   kind: agent
   ref: 'papra-hq/papra merged pull requests: #1534'
-  recorded_at: '2026-11-15T22:57:12.625Z'
+  recorded_at: '2026-11-16T10:18:03.469Z'
 id: FACT-papra-invitations-invitation-closed-invitations-block-new-invitation
 type: fact
 ---

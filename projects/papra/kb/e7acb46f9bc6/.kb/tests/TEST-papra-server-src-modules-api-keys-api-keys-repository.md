@@ -5,7 +5,7 @@ sourceFile: apps/papra-server/src/modules/api-keys/api-keys.repository.test.ts
 text_ref: apps/papra-server/src/modules/api-keys/api-keys.repository.test.ts
 origin:
   kind: agent
-  recorded_at: '2026-11-15T22:58:37.912Z'
+  recorded_at: '2026-11-16T10:26:08.513Z'
 id: TEST-papra-server-src-modules-api-keys-api-keys-repository
 type: test
 ---

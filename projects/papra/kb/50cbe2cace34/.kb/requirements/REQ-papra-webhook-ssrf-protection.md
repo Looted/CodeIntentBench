@@ -35,7 +35,7 @@ required_evidence: asserted
 origin:
   kind: import
   ref: 'Papra server test suite (apps/papra-server/src/modules): webhooks/webhooks.usecases.test.ts#webhook-ssrf-protection'
-  recorded_at: '2026-11-15T23:01:26.133Z'
+  recorded_at: '2026-11-16T10:30:38.919Z'
 tags:
   - bootstrap
   - knowledge-source:papra-tests
