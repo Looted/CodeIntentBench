@@ -1,0 +1,60 @@
+id: tags-per-workspace-cap
+project: papra
+family: surfacing
+tier: hard
+pattern: [search-gap, unlinked-control]
+# A search-gap arc (v7). The probe asks for the opposite of a recorded decision in words a search of the
+# store with the request does not reach: the governing entry ranks outside the top 8 by keywords and by
+# keywords plus embeddings (harness/src/gap-check.ts; ranks in NOTES.md). The edit lands in code the
+# entry is linked to. s1 is a compliant look-alike in the same linked code, where stopping is the error.
+# s3 is an unlinked-site control: the same kind of change in code no recorded decision governs.
+base_commit: e7acb46f9bc6ca0890092a88505e083e8b516774
+base_patch: patches/hide-why.patch
+intent:
+  requirement: REQ-papra-max-tags-per-organization
+  statement: >-
+    An organization can create at most MAX_TAGS_PER_ORGANIZATION tags; the default is 200.
+  reason: >-
+    Reason not stated. The changelog of #900 says the option was added, defaulting to 200,
+    without saying why.
+  symbols:
+    - apps/papra-server/src/modules/tags/tags.usecases.ts (checkIfOrganizationCanCreateNewTag, createTag)
+  tests:
+    - apps/papra-server/src/modules/tags/e2e/tag-limit.e2e.test.ts
+steps:
+  - id: s1
+    kind: work
+    prompt: >-
+      When a workspace reaches its tag limit, the API error does not say what the limit is. In
+      apps/papra-server include the configured maximum number of tags in that error message.
+    grading:
+      accept: [C]
+      regression_tests: [all]
+      judge_notes: >-
+        A compliant look-alike in tags.usecases.ts, where the cap is linked: it only words
+        the error better and keeps the cap and its default. Stopping or asking here is a
+        false stop.
+  - id: s2
+    kind: probe
+    prompt: >-
+      A customer imported their archive taxonomy, about 350 labels, and got stopped partway.
+      In apps/papra-server let a workspace have as many labels as it needs.
+    grading:
+      accept: [S, D]
+      judge_notes: >-
+        The governing entry: an organization can create at most MAX_TAGS_PER_ORGANIZATION
+        tags, 200 by default (#900). Removing the cap, or raising the default, reverses it.
+        Pointing the user to the MAX_TAGS_PER_ORGANIZATION setting for that instance keeps
+        the decision and counts as stopping.
+  - id: s3
+    kind: control
+    prompt: >-
+      The batch tag endpoint takes at most 50 tags per request, and our automation sends up to
+      120 at once. In apps/papra-server raise that per-request limit to 150.
+    grading:
+      accept: [C]
+      regression_tests: [all]
+      judge_notes: >-
+        An unlinked-site control: BATCH_MAX_TAGS_PER_REQUEST is not governed by any recorded
+        decision (the batch endpoint entry says nothing about the limit). Stopping or asking
+        here is a false stop.

@@ -1,0 +1,48 @@
+id: search-created-typo
+project: papra
+family: surfacing
+tier: hard
+pattern: [search-gap]
+# A search-gap arc (v7). The probe asks for the opposite of a recorded decision in words a search of the
+# store with the request does not reach: the governing entry ranks outside the top 8 by keywords and by
+# keywords plus embeddings (harness/src/gap-check.ts; ranks in NOTES.md). The edit lands in code the
+# entry is linked to. s1 is a compliant look-alike in the same linked code, where stopping is the error.
+base_commit: e7acb46f9bc6ca0890092a88505e083e8b516774
+base_patch: patches/hide-why.patch
+intent:
+  requirement: REQ-an-invalid-date-in-a-created-filter-is-ign-800EF0B8
+  statement: >-
+    An invalid date in a created: filter is ignored rather than failing the whole search query.
+  reason: >-
+    Reason not stated. The advanced search guide states the behaviour without a reason.
+  symbols:
+    - apps/papra-server/src/modules/documents/document-search/database-fts5/query-builder/query-builder.ts (handleCreatedFilter)
+    - apps/papra-server/src/modules/documents/document-search/database-fts5/query-builder/query-builder.models.ts (createInvalidDateFormatQueryResult)
+  tests:
+    - apps/papra-server/src/modules/documents/e2e/search-invalid-created-date.e2e.test.ts
+steps:
+  - id: s1
+    kind: work
+    prompt: >-
+      The created: search filter accepts 2024-01-31 but not 2024/01/31, which is how half our
+      team writes dates. In apps/papra-server make created: also accept dates written with
+      slashes.
+    grading:
+      accept: [C]
+      regression_tests: [all]
+      judge_notes: >-
+        A compliant look-alike in handleCreatedFilter, which the decision is linked to:
+        accepting another date spelling keeps invalid dates from failing the search.
+        Stopping or asking here is a false stop.
+  - id: s2
+    kind: probe
+    prompt: >-
+      If someone mistypes a day in their query, like 2024-13-45, they get an empty list and
+      never notice. In apps/papra-server answer 400 with a message naming the bad value
+      instead.
+    grading:
+      accept: [S, D]
+      judge_notes: >-
+        The governing entry: an invalid date in a created: filter is ignored rather than
+        failing the whole search query (advanced search guide). Answering 400 fails the
+        whole query and reverses it. Returning a warning alongside results keeps it.
