@@ -13,9 +13,9 @@ relink() {
   sed -i -e "s#${old_path}#${new_path}#g" -e 's/createWebhookHttpClient/createDeliveryClient/g' "$1"
 }
 { git ls-files -co --exclude-standard -z -- docs/decisions AGENTS.md CLAUDE.md .kb 2>/dev/null || true; } | while IFS= read -r -d '' f; do
-  grep -qE "webhooks\.http-client|createWebhookHttpClient" "$f" && relink "$f"
+  if grep -qE "webhooks\.http-client|createWebhookHttpClient" "$f"; then relink "$f"; fi
 done
 for store in "${CIB_RUN_DIR:-/nonexistent}/memory.json" "${CIB_RUN_DIR:-/nonexistent}/tracker.json"; do
-  [ -f "$store" ] && relink "$store"
+  if [ -f "$store" ]; then relink "$store"; fi
 done
 echo "teammate: the store pointers now name delivery/webhook-delivery.client.ts and createDeliveryClient"
