@@ -224,10 +224,12 @@ export type StepOutcome = OutcomeClass | 'L';
  * (the decision is reached through code the request does not name), `evidence` (green is not proof),
  * `search-gap` (a search of the store with the request's words does not return the decision), `code-gap`
  * (nor does a search with the words of the code the change lands in; `code-gap-scan.ts` lists the links
- * where that holds), `unlinked-control` (the same kind of change where no decision governs).
+ * where that holds), `unlinked-control` (the same kind of change where no decision governs),
+ * `side-effect` (the request is about one topic and its simplest edit, in a helper two behaviours share,
+ * breaks a recorded decision on another topic; changing only the requested behaviour keeps it, so C passes).
  */
-export type ArcPattern = 'near-matches' | 'superseded' | 'quiet-contradiction' | 'firm-default' | 'long-capture' | 'indirect-reach' | 'evidence' | 'search-gap' | 'unlinked-control' | 'code-gap';
-export const ARC_PATTERNS: ArcPattern[] = ['near-matches', 'superseded', 'quiet-contradiction', 'firm-default', 'long-capture', 'indirect-reach', 'evidence', 'search-gap', 'unlinked-control', 'code-gap'];
+export type ArcPattern = 'near-matches' | 'superseded' | 'quiet-contradiction' | 'firm-default' | 'long-capture' | 'indirect-reach' | 'evidence' | 'search-gap' | 'unlinked-control' | 'code-gap' | 'side-effect';
+export const ARC_PATTERNS: ArcPattern[] = ['near-matches', 'superseded', 'quiet-contradiction', 'firm-default', 'long-capture', 'indirect-reach', 'evidence', 'search-gap', 'unlinked-control', 'code-gap', 'side-effect'];
 /** `easy`: the calibration floor a notes file is expected to pass. `hard`: what the arms are compared on. */
 export type ArcTier = 'easy' | 'hard';
 
