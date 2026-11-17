@@ -1,0 +1,25 @@
+---
+title: backoffice.organizations ownership_transfer = existing member
+status: active
+fact_kind: property_value
+subject_key: backoffice.organizations
+property_key: ownership_transfer
+operator: eq
+value_type: string
+value_string: existing member
+claim_key: CLAIM-32C77F17255DEA18
+claim_text: Ownership of an organization in the Papra Cloud back office can be transferred only to someone who is already a member of it
+text_ref: REQ-backoffice-organizations-ownership-transfer
+tags:
+  - lane:strict
+  - knowledge-source:backoffice-decisions
+origin:
+  kind: agent
+  ref: 'Papra Cloud back office handbook: OPS-456'
+  recorded_at: '2026-05-19T10:39:15.000Z'
+id: FACT-backoffice-organizations-ownership-transfer
+type: fact
+---
+Ownership of an organization in the Papra Cloud back office can be transferred only to someone who is already a member of it.
+
+Modeled from REQ-backoffice-organizations-ownership-transfer so the claim can be checked for contradictions.

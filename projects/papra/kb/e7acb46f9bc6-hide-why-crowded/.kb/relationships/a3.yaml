@@ -1,0 +1,120 @@
+relationships:
+  - id: rel-17d7297ddcd0
+    type: verified_by
+    from: REQ-a-tagging-rule-applies-only-to-documents-u-C9F8BBF7
+    to: TEST-papra-server-src-modules-tagging-rules-tagging-rules-usecases
+    created_at: "2026-10-14T12:09:52.175Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: requires_property
+    from: REQ-a-tagging-rule-applies-only-to-documents-u-C9F8BBF7
+    to: FACT-papra-tagging-rules-rule-applies-automatically-to-existing-documents
+    created_at: 2026-11-15T21:44:58.510Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-0e58f6daef9e
+  - type: constrains
+    from: REQ-a-tagging-rule-applies-only-to-documents-u-C9F8BBF7
+    to: FACT-papra-subject-tagging-rules-rule
+    created_at: 2026-11-15T21:44:58.515Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c2ee4dad9d51
+  - type: requires_property
+    from: REQ-a-tagging-rule-applies-only-to-documents-u-C9F8BBF7
+    to: FACT-papra-tagging-rules-apply-to-existing-explicit-user-action
+    created_at: 2026-11-15T21:44:58.517Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9918ff0ae197
+  - type: constrains
+    from: REQ-a-tagging-rule-applies-only-to-documents-u-C9F8BBF7
+    to: FACT-papra-subject-tagging-rules-apply-to-existing
+    created_at: 2026-11-15T21:44:58.519Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-1fa2fa4931b8
+  - type: requires_property
+    from: REQ-papra-manage-subscription-off-by-default
+    to: FACT-papra-billing-manage-subscription-enabled-by-default
+    created_at: 2026-11-16T13:21:50.933Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-71669f8c7ca9
+  - type: constrains
+    from: REQ-papra-manage-subscription-off-by-default
+    to: FACT-papra-subject-billing-manage-subscription
+    created_at: 2026-11-16T13:21:50.953Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ab938f864acc
+  - type: requires_property
+    from: REQ-papra-admin-can-delete-users
+    to: FACT-papra-admin-user-deletion-available
+    created_at: 2026-11-16T13:22:50.947Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-aaa8cc7a14df
+  - type: constrains
+    from: REQ-papra-admin-can-delete-users
+    to: FACT-papra-subject-admin-user-deletion
+    created_at: 2026-11-16T13:22:50.964Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d2c5d467a230
+  - id: rel-61d6ffa88670
+    type: requires_property
+    from: REQ-portal-client-labels-maximum-count
+    to: FACT-portal-client-labels-maximum-count
+    created_at: "2025-09-17T09:33:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d6428e579182
+    type: requires_property
+    from: REQ-portal-client-labels-maximum-count
+    to: FACT-portal-client-labels-limit-configurable
+    created_at: "2025-09-17T09:33:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1cacda4b5128
+    type: constrains
+    from: REQ-portal-client-labels-maximum-count
+    to: FACT-portal-client-labels-subject
+    created_at: "2025-09-17T09:33:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-787c31b1c339
+    type: requires_property
+    from: REQ-forum-forum-registration-allowed-domains
+    to: FACT-forum-forum-registration-allowed-domain-matching
+    created_at: "2026-08-06T10:41:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6f2729f56908
+    type: requires_property
+    from: REQ-forum-forum-registration-allowed-domains
+    to: FACT-forum-forum-registration-domain-case-folding
+    created_at: "2026-08-06T10:41:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5eb26daa86a7
+    type: constrains
+    from: REQ-forum-forum-registration-allowed-domains
+    to: FACT-forum-forum-registration-subject
+    created_at: "2026-08-06T10:41:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-462065e25b1f
+    type: requires_property
+    from: REQ-cli-saved-organizations-name-length
+    to: FACT-cli-saved-organizations-name-max-length
+    created_at: "2025-09-10T11:17:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0eff0739587c
+    type: constrains
+    from: REQ-cli-saved-organizations-name-length
+    to: FACT-cli-saved-organizations-subject
+    created_at: "2025-09-10T11:17:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

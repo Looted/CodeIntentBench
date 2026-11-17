@@ -251,6 +251,76 @@ applied (see `patches/README.md`), built with `BASE_PATCH=patches/hide-why.patch
 e7acb46f9bc6... <workdir> --store`. The harness names a patched base `<sha12>-<patch name>` and
 `arm-prepare.sh` picks the snapshot by that name.
 
+## The crowded store
+
+`kb/e7acb46f9bc6-hide-why-crowded/.kb` is the patched pin's snapshot with 1165 generated decisions added:
+1347 requirements instead of 182 (7.4 times as many), of which 44 closed instead of 11. An arc asks for it
+with `kb_variant: crowded` (the harness names the store `<base key>-<variant>`); the arcs
+`*-crowded` are the nine v7 search-gap arcs on this store. It tests one thing: whether a store with
+many decisions on the same topics still returns the governing one to a topic search.
+
+**Every added entry is synthetic.** `gold/crowd.py` generates them (seeded, no clock, no network) and says
+so in its header; the store text does not, because telling the entries apart by what they govern is the
+task. They carry `knowledge-source:<surface>-decisions` tags, which no real entry has.
+
+- **What they are about.** The topics of the nine arcs: tags and other labels (295 entries), search (272),
+  secrets and sign-up forms (217), organizations and other owned containers (217), password reset and
+  sessions (164). Each statement names the product or service it governs: the web client, the mobile app,
+  the CLI, the documentation site, the marketing website, and services around the product that are not in
+  this repository (a browser extension, a desktop sync client, the hosted back office, a partner portal, a
+  support portal, a community forum, a status page, a license server and others). None is about
+  apps/papra-server.
+- **How they are made.** A list of things per topic (41 kinds of label, 30 searches, 19 secrets, 13 sign-up
+  forms, 26 kinds of owned container, 13 kinds of account) times a list of rules per topic (uniqueness and
+  letter case, maximum counts, name length, trimming, ordering; query length, invalid dates, filter
+  matching, page size; required in production, minimum length, rotation; allowed and blocked email
+  domains; what counts toward a limit, overrides, restore windows; sessions after a reset, link validity,
+  rate limits). Values and wording variants are drawn per entry from the seed. 33 limits have an earlier
+  value, recorded as a closed entry that the current one supersedes with a "Why this changed" section.
+  632 of the 1132 current ones state a reason (made up, like the entry); the rest say "Reason not stated".
+- **What they are not.** No generated entry is linked to a symbol or a test, supersedes a real entry or
+  shares a subject with one. The real requirements, facts, tests and `symbols.yaml` are copied byte for
+  byte; relationship shards get records appended (three shards that Kibi had written in flow style are
+  rewritten as block lists with the same records). No reason was added to a real decision.
+- **Modeled like the real ones.** One property fact per clause on a subject of the entry's own
+  (`<surface>.<thing>`, 142 subjects, each with a definition that says which Papra server thing it is not),
+  inventory roles as the pinned Kibi's advisor assigns them (`gold/crowd-roles.json`, rebuilt with
+  `crowd.py --roles <workspace>` when statements or the pin change). `kibi sync` takes about 10 seconds
+  instead of 6, and `kibi check` reports what it reports on the base: 37 `symbol-coverage` violations,
+  the same three review diagnostics, and one `coverage_depth_review` per requirement.
+- **Limits.** Generated entries have no code paths, so the `comments` arm, which writes a decision beside
+  its code, delivers none of them and is not crowded. `AGENTS.md` grows from 129 KB to 613 KB (about
+  153,000 tokens by the arm's own estimate), inside the budget of a 1M-token context window and outside a
+  200K one. Appending made-up code paths to the 61 mobile-app entries on the arcs' topics did not move
+  the ranks below by more than a few places, so the missing paths are not what keeps real entries on top.
+
+Rebuild: `python3 gold/crowd.py e7acb46f9bc6-hide-why/.kb e7acb46f9bc6-hide-why-crowded/.kb`.
+
+### What crowding does to search
+
+Rank of the governing entry in the memory-arm notes (`harness/src/gap-check.ts`), base store and crowded
+store, for the searches agents made in the probe sessions of the v7 pilots (two or three per arc, taken
+from the memory, tracker and memory-embed transcripts). "Missed" counts how many of the first store
+searches of those sessions (five per arc) would not return the entry among their 8 results on the crowded
+store. Each arc's NOTES.md has the ranks per search.
+
+| Arc | Searches outside the top 8, keywords | Searches outside the top 8, keywords plus embeddings | First searches missed |
+|---|---|---|---|
+| tags-letter-case | 0 of 3 | 0 of 3 | 0 of 5 |
+| tags-per-workspace-cap | 2 of 3 | 1 of 3 | 2 of 5 |
+| search-query-length | 1 of 2 | 1 of 2 | 4 of 5 |
+| search-created-typo | 0 of 3 | 1 of 3 | 1 of 5 |
+| search-name-contains | 0 of 3 | 2 of 3 | 1 of 5 |
+| auth-secret-production | 1 of 3 | 1 of 3 | 2 of 5 |
+| password-reset-sessions | 0 of 2 | 1 of 2 | 0 of 5 |
+| signup-domain-exact | 0 of 3 | 0 of 3 | 0 of 5 |
+| owned-workspaces-cap | 1 of 2 | 1 of 2 | 1 of 5 |
+
+On the base store one of those 45 first searches missed; on the crowded store 11 do. No arc has every
+search outside the top 8. A search that names the server's own terms (`AUTH_SECRET`, "per user", "revoke",
+"case-insensitive") still returns the entry first; a search made only of the topic's common words
+("search query length limit", "organization limit") returns eight entries about other products.
+
 ## Link corrections
 
 Two links were changed by hand in `symbols-map.json` and in the stored `symbols.yaml` of `50cbe2cace34`,

@@ -32,6 +32,7 @@ export function validateArc(arc: Arc, project: Pick<ProjectConfig, 'name' | 'pro
   if (arc.project !== p) errors.push(`${at}: project field is '${arc.project}'`);
   if (!arc.base_commit) errors.push(`${at}: no base_commit`);
   if (arc.base_patch !== undefined && !existsSync(join(PROJECTS_DIR, p, arc.base_patch))) errors.push(`${at}: base_patch ${arc.base_patch} not found in the project directory`);
+  if (arc.kb_variant !== undefined && !/^[a-z0-9][a-z0-9-]*$/.test(String(arc.kb_variant))) errors.push(`${at}: kb_variant '${arc.kb_variant}' must be lower-case letters, digits and hyphens`);
   errors.push(...intentErrors(at, arc.intent, arc._dir));
   // The user states the arc's decision in an intent step, if at all, before anything else happens.
   const intentAt = (arc.steps ?? []).findIndex((st) => st.kind === 'intent' && !st.intent);

@@ -1,0 +1,85 @@
+relationships:
+  - id: rel-f38947a64e2f
+    type: requires_property
+    from: REQ-papra-document-date-property
+    to: FACT-papra-documents-document-date-separate-from-created-at
+    created_at: "2026-11-16T13:17:29.065Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-document-date-property
+    to: FACT-papra-subject-documents-document-date
+    created_at: 2026-11-16T13:17:29.066Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ac50c926547d
+  - id: rel-838dced41c3b
+    type: requires_property
+    from: REQ-mobile-mobile-app-offline-search-minimum-length
+    to: FACT-mobile-mobile-app-offline-search-query-min-length
+    created_at: "2025-03-09T14:12:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c9699a815654
+    type: constrains
+    from: REQ-mobile-mobile-app-offline-search-minimum-length
+    to: FACT-mobile-mobile-app-offline-search-subject
+    created_at: "2025-03-09T14:12:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-924061864de9
+    type: requires_property
+    from: REQ-desktop-update-signing-key-generated-when-missing
+    to: FACT-desktop-update-signing-key-required-in-production
+    created_at: "2026-07-27T09:29:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-203f3f50a2b0
+    type: requires_property
+    from: REQ-desktop-update-signing-key-generated-when-missing
+    to: FACT-desktop-update-signing-key-missing-secret-warning
+    created_at: "2026-07-27T09:29:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-44462e740abe
+    type: constrains
+    from: REQ-desktop-update-signing-key-generated-when-missing
+    to: FACT-desktop-update-signing-key-subject
+    created_at: "2026-07-27T09:29:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-695839c5a22e
+    type: requires_property
+    from: REQ-backoffice-staff-teams-at-the-limit
+    to: FACT-backoffice-staff-teams-at-limit
+    created_at: "2025-02-01T17:38:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8c4192789d89
+    type: constrains
+    from: REQ-backoffice-staff-teams-at-the-limit
+    to: FACT-backoffice-staff-teams-subject
+    created_at: "2025-02-01T17:38:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-bc0c57a744f3
+    type: requires_property
+    from: REQ-mobile-pinned-organizations-maximum-count
+    to: FACT-mobile-pinned-organizations-maximum-count
+    created_at: "2025-05-07T10:24:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a228fe2dbc5d
+    type: requires_property
+    from: REQ-mobile-pinned-organizations-maximum-count
+    to: FACT-mobile-pinned-organizations-limit-configurable
+    created_at: "2025-05-07T10:24:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2dd0f740b88e
+    type: constrains
+    from: REQ-mobile-pinned-organizations-maximum-count
+    to: FACT-mobile-pinned-organizations-subject
+    created_at: "2025-05-07T10:24:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

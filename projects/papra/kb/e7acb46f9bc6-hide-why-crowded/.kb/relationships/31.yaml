@@ -1,0 +1,50 @@
+relationships:
+  - id: rel-a671c1866103
+    type: requires_property
+    from: REQ-docs-documentation-site-search-text-filter-matching
+    to: FACT-docs-documentation-site-search-text-filter-matching
+    created_at: "2025-07-02T08:31:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-793ffbfd854a
+    type: constrains
+    from: REQ-docs-documentation-site-search-text-filter-matching
+    to: FACT-docs-documentation-site-search-subject
+    created_at: "2025-07-02T08:31:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-224b2da028d4
+    type: requires_property
+    from: REQ-education-edu-portal-session-secret-required-in-production
+    to: FACT-education-edu-portal-session-secret-required-in-production
+    created_at: "2026-08-07T15:06:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5ba6d20350d1
+    type: constrains
+    from: REQ-education-edu-portal-session-secret-required-in-production
+    to: FACT-education-edu-portal-session-secret-subject
+    created_at: "2026-08-07T15:06:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-357357bcebaa
+    type: requires_property
+    from: REQ-marketplace-template-author-accounts-reset-link-single-use
+    to: FACT-marketplace-template-author-accounts-reset-link-single-use
+    created_at: "2026-06-26T16:46:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-90d35471324c
+    type: requires_property
+    from: REQ-marketplace-template-author-accounts-reset-link-single-use
+    to: FACT-marketplace-template-author-accounts-new-link-invalidates-old
+    created_at: "2026-06-26T16:46:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c288afc789f5
+    type: constrains
+    from: REQ-marketplace-template-author-accounts-reset-link-single-use
+    to: FACT-marketplace-template-author-accounts-subject
+    created_at: "2026-06-26T16:46:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

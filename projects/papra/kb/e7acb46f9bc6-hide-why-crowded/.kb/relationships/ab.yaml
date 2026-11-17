@@ -1,0 +1,99 @@
+relationships:
+  - id: rel-f38c5944e898
+    type: requires_property
+    from: REQ-support-help-centre-article-search-empty-query
+    to: FACT-support-help-centre-article-search-empty-query
+    created_at: "2025-03-06T08:08:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8e86aa274124
+    type: constrains
+    from: REQ-support-help-centre-article-search-empty-query
+    to: FACT-support-help-centre-article-search-subject
+    created_at: "2025-03-06T08:08:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9fb859e78de9
+    type: requires_property
+    from: REQ-forum-forum-registration-blocked-domains
+    to: FACT-forum-forum-registration-disposable-domains-refused
+    created_at: "2025-06-05T10:53:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d0ee9b894fd2
+    type: requires_property
+    from: REQ-forum-forum-registration-blocked-domains
+    to: FACT-forum-forum-registration-list-precedence
+    created_at: "2025-06-05T10:53:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4aec080a7ca3
+    type: constrains
+    from: REQ-forum-forum-registration-blocked-domains
+    to: FACT-forum-forum-registration-subject
+    created_at: "2025-06-05T10:53:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7467f1e142e3
+    type: requires_property
+    from: REQ-desktop-linked-organizations-limit-override
+    to: FACT-desktop-linked-organizations-limit-override
+    created_at: "2025-08-18T16:41:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4e5ba96023d7
+    type: constrains
+    from: REQ-desktop-linked-organizations-limit-override
+    to: FACT-desktop-linked-organizations-subject
+    created_at: "2025-08-18T16:41:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3463747220e0
+    type: requires_property
+    from: REQ-support-shared-inboxes-deletion-grace
+    to: FACT-support-shared-inboxes-restore-window-days
+    created_at: "2025-02-06T11:58:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d63f956d74dc
+    type: requires_property
+    from: REQ-support-shared-inboxes-deletion-grace
+    to: FACT-support-shared-inboxes-purged-after-window
+    created_at: "2025-02-06T11:58:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1440152a22f6
+    type: constrains
+    from: REQ-support-shared-inboxes-deletion-grace
+    to: FACT-support-shared-inboxes-subject
+    created_at: "2025-02-06T11:58:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a708d219b5e0
+    type: requires_property
+    from: REQ-education-classroom-workspaces-name-length
+    to: FACT-education-classroom-workspaces-name-max-length
+    created_at: "2025-10-23T14:39:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-569241462c62
+    type: constrains
+    from: REQ-education-classroom-workspaces-name-length
+    to: FACT-education-classroom-workspaces-subject
+    created_at: "2025-10-23T14:39:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a436a3df1437
+    type: requires_property
+    from: REQ-n8n-integration-service-accounts-reset-rate-limit
+    to: FACT-n8n-integration-service-accounts-reset-emails-per-day
+    created_at: "2025-06-24T16:05:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cdd63edbe054
+    type: constrains
+    from: REQ-n8n-integration-service-accounts-reset-rate-limit
+    to: FACT-n8n-integration-service-accounts-subject
+    created_at: "2025-06-24T16:05:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -1,0 +1,85 @@
+relationships:
+  - id: rel-5bef1eb3092e
+    type: requires_property
+    from: REQ-papra-signup-email-domain-restrictions
+    to: FACT-papra-auth-signup-email-domains-allowlist-match
+    created_at: "2026-11-16T13:16:24.501Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-signup-email-domain-restrictions
+    to: FACT-papra-subject-auth-signup-email-domains
+    created_at: 2026-11-16T13:16:24.502Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-bde92d54fe0d
+  - type: requires_property
+    from: REQ-papra-signup-email-domain-restrictions
+    to: FACT-papra-auth-signup-email-domains-allowlist-includes-subdomains
+    created_at: 2026-11-16T13:16:24.512Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b25eb3f676fa
+  - type: requires_property
+    from: REQ-papra-signup-email-domain-restrictions
+    to: FACT-papra-auth-signup-email-domains-precedence
+    created_at: 2026-11-16T13:16:24.515Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b790cc2c127a
+  - type: requires_property
+    from: REQ-papra-signup-email-domain-restrictions
+    to: FACT-papra-auth-signup-email-domains-case-sensitive
+    created_at: 2026-11-16T13:16:24.517Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-5a8e60b61573
+  - type: verified_by
+    from: REQ-papra-signup-email-domain-restrictions
+    to: TEST-papra-server-src-modules-app-auth-auth-models
+    created_at: 2026-11-16T13:24:06.158Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9a9333192268
+  - id: rel-1115606b5e43
+    type: requires_property
+    from: REQ-backoffice-trial-organizations-name-uniqueness
+    to: FACT-backoffice-trial-organizations-name-uniqueness
+    created_at: "2025-02-07T09:27:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2bcc9e459405
+    type: constrains
+    from: REQ-backoffice-trial-organizations-name-uniqueness
+    to: FACT-backoffice-trial-organizations-subject
+    created_at: "2025-02-07T09:27:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2a45e1b69abf
+    type: requires_property
+    from: REQ-website-demo-workspaces-limit-override
+    to: FACT-website-demo-workspaces-limit-override
+    created_at: "2026-02-04T08:14:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-08e8e52744c2
+    type: constrains
+    from: REQ-website-demo-workspaces-limit-override
+    to: FACT-website-demo-workspaces-subject
+    created_at: "2026-02-04T08:14:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6d626ad9c9aa
+    type: requires_property
+    from: REQ-backoffice-back-office-staff-accounts-reset-unknown-address
+    to: FACT-backoffice-back-office-staff-accounts-reset-reveals-account
+    created_at: "2026-02-07T12:59:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1898810735ba
+    type: constrains
+    from: REQ-backoffice-back-office-staff-accounts-reset-unknown-address
+    to: FACT-backoffice-back-office-staff-accounts-subject
+    created_at: "2026-02-07T12:59:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

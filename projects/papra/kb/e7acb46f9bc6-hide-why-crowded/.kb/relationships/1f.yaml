@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-6e953fdcd29e
+    type: requires_property
+    from: REQ-backoffice-back-office-staff-accounts-email-change
+    to: FACT-backoffice-back-office-staff-accounts-sessions-on-email-change
+    created_at: "2025-08-27T11:07:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3bb1455aa0e0
+    type: constrains
+    from: REQ-backoffice-back-office-staff-accounts-email-change
+    to: FACT-backoffice-back-office-staff-accounts-subject
+    created_at: "2025-08-27T11:07:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c5ab07105fc5
+    type: requires_property
+    from: REQ-infra-infrastructure-console-accounts-reset-unknown-address
+    to: FACT-infra-infrastructure-console-accounts-reset-reveals-account
+    created_at: "2025-05-15T15:51:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a776223effee
+    type: constrains
+    from: REQ-infra-infrastructure-console-accounts-reset-unknown-address
+    to: FACT-infra-infrastructure-console-accounts-subject
+    created_at: "2025-05-15T15:51:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -1,0 +1,85 @@
+relationships:
+  - id: rel-d7ceb64c33e9
+    type: requires_property
+    from: REQ-docs-glossary-terms-maximum-count
+    to: FACT-docs-glossary-terms-maximum-count
+    created_at: "2025-03-27T14:53:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-38ae975e1e22
+    type: requires_property
+    from: REQ-docs-glossary-terms-maximum-count
+    to: FACT-docs-glossary-terms-limit-configurable
+    created_at: "2025-03-27T14:53:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-62634db22c54
+    type: constrains
+    from: REQ-docs-glossary-terms-maximum-count
+    to: FACT-docs-glossary-terms-subject
+    created_at: "2025-03-27T14:53:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-219f1b2e073a
+    type: requires_property
+    from: REQ-mobile-mobile-app-tag-picker-filter-case-folding
+    to: FACT-mobile-mobile-app-tag-picker-filter-case-folding
+    created_at: "2025-10-09T15:49:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ba31b386496c
+    type: constrains
+    from: REQ-mobile-mobile-app-tag-picker-filter-case-folding
+    to: FACT-mobile-mobile-app-tag-picker-filter-subject
+    created_at: "2025-10-09T15:49:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8b2d70b12cb8
+    type: requires_property
+    from: REQ-website-newsletter-sign-up-plus-addressing
+    to: FACT-website-newsletter-sign-up-plus-addressing
+    created_at: "2025-06-18T13:55:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7ba1083ee4d4
+    type: constrains
+    from: REQ-website-newsletter-sign-up-plus-addressing
+    to: FACT-website-newsletter-sign-up-subject
+    created_at: "2025-06-18T13:55:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-71b0a2e6f2fb
+    type: requires_property
+    from: REQ-docs-feedback-submissions-blocked-domains
+    to: FACT-docs-feedback-submissions-disposable-domains-refused
+    created_at: "2026-04-04T09:44:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fc63ced4879f
+    type: requires_property
+    from: REQ-docs-feedback-submissions-blocked-domains
+    to: FACT-docs-feedback-submissions-list-precedence
+    created_at: "2026-04-04T09:44:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9b8d7be9fcac
+    type: constrains
+    from: REQ-docs-feedback-submissions-blocked-domains
+    to: FACT-docs-feedback-submissions-subject
+    created_at: "2026-04-04T09:44:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cd1478d9fbdc
+    type: requires_property
+    from: REQ-n8n-integration-service-accounts-reset-and-two-factor
+    to: FACT-n8n-integration-service-accounts-reset-disables-two-factor
+    created_at: "2026-06-12T13:38:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-84f96860a56e
+    type: constrains
+    from: REQ-n8n-integration-service-accounts-reset-and-two-factor
+    to: FACT-n8n-integration-service-accounts-subject
+    created_at: "2026-06-12T13:38:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

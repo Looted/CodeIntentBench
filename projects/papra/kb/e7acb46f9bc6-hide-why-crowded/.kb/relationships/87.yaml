@@ -1,0 +1,22 @@
+relationships:
+  - id: rel-a32104aa2843
+    type: requires_property
+    from: REQ-portal-referral-links-what-counts
+    to: FACT-portal-referral-links-counted-toward-limit
+    created_at: "2026-08-02T12:31:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cdf0c38bb967
+    type: requires_property
+    from: REQ-portal-referral-links-what-counts
+    to: FACT-portal-referral-links-limit-detail
+    created_at: "2026-08-02T12:31:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ff1e815eb55b
+    type: constrains
+    from: REQ-portal-referral-links-what-counts
+    to: FACT-portal-referral-links-subject
+    created_at: "2026-08-02T12:31:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

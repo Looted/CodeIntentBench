@@ -1,0 +1,78 @@
+relationships:
+  - id: rel-ceea3ce2cedd
+    type: requires_property
+    from: REQ-website-blog-categories-name-length
+    to: FACT-website-blog-categories-name-max-length
+    created_at: "2025-06-02T15:45:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2aafbf4c2c83
+    type: constrains
+    from: REQ-website-blog-categories-name-length
+    to: FACT-website-blog-categories-subject
+    created_at: "2025-06-02T15:45:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d232daec57f3
+    type: requires_property
+    from: REQ-desktop-watch-folder-labels-name-length
+    to: FACT-desktop-watch-folder-labels-name-max-length
+    created_at: "2025-02-09T14:48:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2dfdb8a6ebda
+    type: constrains
+    from: REQ-desktop-watch-folder-labels-name-length
+    to: FACT-desktop-watch-folder-labels-subject
+    created_at: "2025-02-09T14:48:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-20bf334d333e
+    type: requires_property
+    from: REQ-client-web-client-demo-mode-search-minimum-length
+    to: FACT-client-web-client-demo-mode-search-query-min-length
+    created_at: "2026-01-14T16:45:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-bdca1f7de124
+    type: constrains
+    from: REQ-client-web-client-demo-mode-search-minimum-length
+    to: FACT-client-web-client-demo-mode-search-subject
+    created_at: "2026-01-14T16:45:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-42102b9699b7
+    type: requires_property
+    from: REQ-support-support-sso-secret-generated-when-missing
+    to: FACT-support-support-sso-secret-required-in-production
+    created_at: "2026-02-02T11:23:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-13835585cc4c
+    type: requires_property
+    from: REQ-support-support-sso-secret-generated-when-missing
+    to: FACT-support-support-sso-secret-missing-secret-warning
+    created_at: "2026-02-02T11:23:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f4527030a51c
+    type: constrains
+    from: REQ-support-support-sso-secret-generated-when-missing
+    to: FACT-support-support-sso-secret-subject
+    created_at: "2026-02-02T11:23:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0444a6358906
+    type: requires_property
+    from: REQ-education-edu-portal-session-secret-source
+    to: FACT-education-edu-portal-session-secret-value-source
+    created_at: "2025-09-27T13:47:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d5db91330432
+    type: constrains
+    from: REQ-education-edu-portal-session-secret-source
+    to: FACT-education-edu-portal-session-secret-subject
+    created_at: "2025-09-27T13:47:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

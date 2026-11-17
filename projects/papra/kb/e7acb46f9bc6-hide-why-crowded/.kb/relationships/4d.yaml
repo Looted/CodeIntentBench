@@ -1,0 +1,92 @@
+relationships:
+  - id: rel-5f5f6728d634
+    type: requires_property
+    from: REQ-papra-tag-list-newest-first
+    to: FACT-papra-tags-list-order-default-order
+    created_at: "2026-11-16T13:19:02.047Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-tag-list-newest-first
+    to: FACT-papra-subject-tags-list-order
+    created_at: 2026-11-16T13:19:02.048Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-f1c15c588738
+  - id: rel-a121f479aedc
+    type: requires_property
+    from: REQ-marketplace-template-categories-maximum-count
+    to: FACT-marketplace-template-categories-maximum-count
+    created_at: "2026-05-14T10:53:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-21895271558e
+    type: requires_property
+    from: REQ-marketplace-template-categories-maximum-count
+    to: FACT-marketplace-template-categories-limit-configurable
+    created_at: "2026-05-14T10:53:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-12d1acf4ee9a
+    type: constrains
+    from: REQ-marketplace-template-categories-maximum-count
+    to: FACT-marketplace-template-categories-subject
+    created_at: "2026-05-14T10:53:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8f3856285175
+    type: requires_property
+    from: REQ-marketplace-template-categories-names-trimmed
+    to: FACT-marketplace-template-categories-name-trimmed
+    created_at: "2026-02-24T16:11:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9a87773b6b6e
+    type: requires_property
+    from: REQ-marketplace-template-categories-names-trimmed
+    to: FACT-marketplace-template-categories-empty-name-refused
+    created_at: "2026-02-24T16:11:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9a2b3fac155d
+    type: constrains
+    from: REQ-marketplace-template-categories-names-trimmed
+    to: FACT-marketplace-template-categories-subject
+    created_at: "2026-02-24T16:11:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-750afcddf455
+    type: requires_property
+    from: REQ-backoffice-sandbox-organizations-maximum-count-earlier
+    to: FACT-backoffice-sandbox-organizations-maximum-count-earlier
+    created_at: "2025-02-11T08:19:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4fc0aa645cc5
+    type: constrains
+    from: REQ-backoffice-sandbox-organizations-maximum-count-earlier
+    to: FACT-backoffice-sandbox-organizations-subject
+    created_at: "2025-02-11T08:19:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-00d58ded3c7c
+    type: requires_property
+    from: REQ-extension-connected-organizations-maximum-count
+    to: FACT-extension-connected-organizations-maximum-count
+    created_at: "2026-08-10T13:00:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-925921d61359
+    type: requires_property
+    from: REQ-extension-connected-organizations-maximum-count
+    to: FACT-extension-connected-organizations-limit-configurable
+    created_at: "2026-08-10T13:00:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e8f889e43581
+    type: constrains
+    from: REQ-extension-connected-organizations-maximum-count
+    to: FACT-extension-connected-organizations-subject
+    created_at: "2026-08-10T13:00:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

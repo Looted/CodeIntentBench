@@ -1,0 +1,78 @@
+relationships:
+  - id: rel-2a1f75f0117a
+    type: requires_property
+    from: REQ-papra-forbidden-email-domains
+    to: FACT-papra-auth-forbidden-email-domains-can-register
+    created_at: "2026-11-16T13:22:04.135Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-forbidden-email-domains
+    to: FACT-papra-subject-auth-forbidden-email-domains
+    created_at: 2026-11-16T13:22:04.135Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6f8bbda8116e
+  - type: requires_property
+    from: REQ-papra-single-organization-redirect
+    to: FACT-papra-organizations-single-redirect-redirects
+    created_at: 2026-11-16T13:22:54.225Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-1b9a35ee29ac
+  - type: constrains
+    from: REQ-papra-single-organization-redirect
+    to: FACT-papra-subject-organizations-single-redirect
+    created_at: 2026-11-16T13:22:54.237Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-30ee478633ec
+  - id: rel-4a55ea92ba47
+    type: requires_property
+    from: REQ-extension-pinned-tags-listing-order
+    to: FACT-extension-pinned-tags-listing-order
+    created_at: "2026-07-02T11:33:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2912f42364d6
+    type: constrains
+    from: REQ-extension-pinned-tags-listing-order
+    to: FACT-extension-pinned-tags-subject
+    created_at: "2026-07-02T11:33:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8db01d22647c
+    type: requires_property
+    from: REQ-website-template-gallery-search-invalid-date
+    to: FACT-website-template-gallery-search-invalid-date-filter
+    created_at: "2026-02-28T16:38:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c017d1490232
+    type: constrains
+    from: REQ-website-template-gallery-search-invalid-date
+    to: FACT-website-template-gallery-search-subject
+    created_at: "2026-02-28T16:38:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fa3dca27eb3f
+    type: requires_property
+    from: REQ-license-license-keys-maximum-count
+    to: FACT-license-license-keys-maximum-count
+    created_at: "2026-04-28T10:17:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1081c53012b3
+    type: requires_property
+    from: REQ-license-license-keys-maximum-count
+    to: FACT-license-license-keys-limit-configurable
+    created_at: "2026-04-28T10:17:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a894933f9f8a
+    type: constrains
+    from: REQ-license-license-keys-maximum-count
+    to: FACT-license-license-keys-subject
+    created_at: "2026-04-28T10:17:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

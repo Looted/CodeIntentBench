@@ -1,0 +1,43 @@
+relationships:
+  - id: rel-bd6e0db90f20
+    type: requires_property
+    from: REQ-papra-custom-property-delete-returns-204
+    to: FACT-papra-custom-properties-delete-response-status-code
+    created_at: "2026-11-16T13:22:46.939Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-custom-property-delete-returns-204
+    to: FACT-papra-subject-custom-properties-delete-response
+    created_at: 2026-11-16T13:22:46.939Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-7b6fa0482322
+  - id: rel-43a717cb685f
+    type: requires_property
+    from: REQ-backoffice-coupon-codes-delete-in-use
+    to: FACT-backoffice-coupon-codes-delete-in-use
+    created_at: "2026-08-27T16:43:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f948bba890d7
+    type: constrains
+    from: REQ-backoffice-coupon-codes-delete-in-use
+    to: FACT-backoffice-coupon-codes-subject
+    created_at: "2026-08-27T16:43:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d22a6574f402
+    type: requires_property
+    from: REQ-telemetry-event-labels-delete-in-use
+    to: FACT-telemetry-event-labels-delete-in-use
+    created_at: "2026-04-13T17:09:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9e76bd58ce6e
+    type: constrains
+    from: REQ-telemetry-event-labels-delete-in-use
+    to: FACT-telemetry-event-labels-subject
+    created_at: "2026-04-13T17:09:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

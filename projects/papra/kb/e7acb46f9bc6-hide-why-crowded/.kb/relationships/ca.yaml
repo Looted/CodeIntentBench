@@ -1,0 +1,120 @@
+relationships:
+  - id: rel-c061be07a088
+    type: verified_by
+    from: REQ-file-uploads-are-handled-as-streams-end-to-F1A1D5B6
+    to: TEST-papra-server-src-modules-documents-documents-usecases
+    created_at: "2026-10-14T12:09:47.276Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: verified_by
+    from: REQ-file-uploads-are-handled-as-streams-end-to-F1A1D5B6
+    to: TEST-papra-server-src-modules-shared-streams-byte-counter
+    created_at: 2026-10-14T12:09:47.277Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d09ac890a8d8
+  - type: verified_by
+    from: REQ-file-uploads-are-handled-as-streams-end-to-F1A1D5B6
+    to: TEST-papra-server-src-modules-shared-streams-stream-hash
+    created_at: 2026-10-14T12:09:47.285Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-e6df8f91fae0
+  - type: requires_property
+    from: REQ-file-uploads-are-handled-as-streams-end-to-F1A1D5B6
+    to: FACT-papra-document-upload-streamed-end-to-end
+    created_at: 2026-11-15T21:42:34.627Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-1d6fb8e2115c
+  - type: constrains
+    from: REQ-file-uploads-are-handled-as-streams-end-to-F1A1D5B6
+    to: FACT-papra-subject-document-upload
+    created_at: 2026-11-15T21:42:34.633Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-778773c42e5e
+  - type: requires_property
+    from: REQ-file-uploads-are-handled-as-streams-end-to-F1A1D5B6
+    to: FACT-papra-document-upload-hash-and-size-computed-while-streaming
+    created_at: 2026-11-15T21:42:34.635Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-dd2f28084fac
+  - type: requires_property
+    from: REQ-file-uploads-are-handled-as-streams-end-to-F1A1D5B6
+    to: FACT-papra-document-upload-buffers-whole-file
+    created_at: 2026-11-15T21:42:34.638Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6c62cd04a0a0
+  - id: rel-0fbb9fdc96d5
+    type: requires_property
+    from: REQ-extension-site-rules-name-length
+    to: FACT-extension-site-rules-name-max-length
+    created_at: "2025-12-19T11:47:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-384b1abfc07b
+    type: constrains
+    from: REQ-extension-site-rules-name-length
+    to: FACT-extension-site-rules-subject
+    created_at: "2025-12-19T11:47:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-92ccdf14dcdb
+    type: requires_property
+    from: REQ-extension-browser-extension-address-bar-search-text-filter-matching
+    to: FACT-extension-browser-extension-address-bar-search-text-filter-matching
+    created_at: "2026-06-01T17:35:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6385b6b9dbeb
+    type: constrains
+    from: REQ-extension-browser-extension-address-bar-search-text-filter-matching
+    to: FACT-extension-browser-extension-address-bar-search-subject
+    created_at: "2026-06-01T17:35:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3e9c8924af35
+    type: requires_property
+    from: REQ-backoffice-back-office-organization-lookup-empty-query
+    to: FACT-backoffice-back-office-organization-lookup-empty-query
+    created_at: "2025-12-16T11:15:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7babd6b862aa
+    type: constrains
+    from: REQ-backoffice-back-office-organization-lookup-empty-query
+    to: FACT-backoffice-back-office-organization-lookup-subject
+    created_at: "2025-12-16T11:15:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-aafcf10ed5a4
+    type: requires_property
+    from: REQ-portal-client-workspaces-maximum-count-earlier
+    to: FACT-portal-client-workspaces-maximum-count-earlier
+    created_at: "2026-07-19T15:11:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-892d53f4c51f
+    type: constrains
+    from: REQ-portal-client-workspaces-maximum-count-earlier
+    to: FACT-portal-client-workspaces-subject
+    created_at: "2026-07-19T15:11:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-74e3438fc2ed
+    type: requires_property
+    from: REQ-forum-community-forum-accounts-reset-unknown-address
+    to: FACT-forum-community-forum-accounts-reset-reveals-account
+    created_at: "2025-03-14T10:12:58.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a9e05e80366b
+    type: constrains
+    from: REQ-forum-community-forum-accounts-reset-unknown-address
+    to: FACT-forum-community-forum-accounts-subject
+    created_at: "2025-03-14T10:12:58.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

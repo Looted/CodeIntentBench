@@ -1,0 +1,85 @@
+relationships:
+  - id: rel-1c591ee4b392
+    type: requires_property
+    from: REQ-support-canned-replies-maximum-count
+    to: FACT-support-canned-replies-maximum-count
+    created_at: "2025-12-18T09:36:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-814e0e3a9ec1
+    type: requires_property
+    from: REQ-support-canned-replies-maximum-count
+    to: FACT-support-canned-replies-limit-configurable
+    created_at: "2025-12-18T09:36:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d7b32ad0c46a
+    type: constrains
+    from: REQ-support-canned-replies-maximum-count
+    to: FACT-support-canned-replies-subject
+    created_at: "2025-12-18T09:36:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-826f673e6fc3
+    type: requires_property
+    from: REQ-desktop-desktop-sync-client-local-file-search-page-size
+    to: FACT-desktop-desktop-sync-client-local-file-search-page-size-maximum
+    created_at: "2026-01-05T17:51:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ffdd82683ea5
+    type: constrains
+    from: REQ-desktop-desktop-sync-client-local-file-search-page-size
+    to: FACT-desktop-desktop-sync-client-local-file-search-subject
+    created_at: "2026-01-05T17:51:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1e1fd59797b6
+    type: requires_property
+    from: REQ-backoffice-back-office-audit-log-search-page-size
+    to: FACT-backoffice-back-office-audit-log-search-page-size-maximum
+    created_at: "2025-07-24T15:55:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3edf14a167b4
+    type: constrains
+    from: REQ-backoffice-back-office-audit-log-search-page-size
+    to: FACT-backoffice-back-office-audit-log-search-subject
+    created_at: "2025-07-24T15:55:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9394f4d2b5c7
+    type: requires_property
+    from: REQ-license-license-lookup-date-format
+    to: FACT-license-license-lookup-date-filter-format
+    created_at: "2026-07-19T12:24:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-997e030bb347
+    type: constrains
+    from: REQ-license-license-lookup-date-format
+    to: FACT-license-license-lookup-subject
+    created_at: "2026-07-19T12:24:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-78283171258e
+    type: requires_property
+    from: REQ-desktop-linked-organizations-deletion-grace
+    to: FACT-desktop-linked-organizations-restore-window-days
+    created_at: "2026-06-28T14:28:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-660f2ed60762
+    type: requires_property
+    from: REQ-desktop-linked-organizations-deletion-grace
+    to: FACT-desktop-linked-organizations-purged-after-window
+    created_at: "2026-06-28T14:28:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5990c3f95b04
+    type: constrains
+    from: REQ-desktop-linked-organizations-deletion-grace
+    to: FACT-desktop-linked-organizations-subject
+    created_at: "2026-06-28T14:28:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

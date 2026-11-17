@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-c435b29d3775
+    type: requires_property
+    from: REQ-status-status-page-incident-filter-page-size
+    to: FACT-status-status-page-incident-filter-page-size-maximum
+    created_at: "2026-08-11T13:32:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3ecbfee43073
+    type: constrains
+    from: REQ-status-status-page-incident-filter-page-size
+    to: FACT-status-status-page-incident-filter-subject
+    created_at: "2026-08-11T13:32:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-efda8079028a
+    type: requires_property
+    from: REQ-extension-ext-pairing-secret-required-in-production
+    to: FACT-extension-ext-pairing-secret-required-in-production
+    created_at: "2026-09-14T12:03:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-28cbeaff244d
+    type: constrains
+    from: REQ-extension-ext-pairing-secret-required-in-production
+    to: FACT-extension-ext-pairing-secret-subject
+    created_at: "2026-09-14T12:03:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

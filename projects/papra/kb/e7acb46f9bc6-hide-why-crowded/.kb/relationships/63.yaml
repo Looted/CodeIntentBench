@@ -1,0 +1,50 @@
+relationships:
+  - id: rel-83007494c6f7
+    type: supersedes
+    from: REQ-forum-community-forum-post-search-query-length
+    to: REQ-forum-community-forum-post-search-query-length-earlier
+    created_at: "2025-11-25T16:30:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d017dd8322fc
+    type: requires_property
+    from: REQ-forum-community-forum-post-search-query-length
+    to: FACT-forum-community-forum-post-search-query-max-length
+    created_at: "2025-11-25T16:30:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f925725e454e
+    type: requires_property
+    from: REQ-forum-community-forum-post-search-query-length
+    to: FACT-forum-community-forum-post-search-over-length-input
+    created_at: "2025-11-25T16:30:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3290929fb351
+    type: constrains
+    from: REQ-forum-community-forum-post-search-query-length
+    to: FACT-forum-community-forum-post-search-subject
+    created_at: "2025-11-25T16:30:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c734474ecaca
+    type: requires_property
+    from: REQ-infra-infrastructure-console-accounts-password-length
+    to: FACT-infra-infrastructure-console-accounts-password-min-length
+    created_at: "2026-01-15T14:57:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ca244ee9ed9b
+    type: requires_property
+    from: REQ-infra-infrastructure-console-accounts-password-length
+    to: FACT-infra-infrastructure-console-accounts-character-class-rule
+    created_at: "2026-01-15T14:57:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9d3ec59c4c54
+    type: constrains
+    from: REQ-infra-infrastructure-console-accounts-password-length
+    to: FACT-infra-infrastructure-console-accounts-subject
+    created_at: "2026-01-15T14:57:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
