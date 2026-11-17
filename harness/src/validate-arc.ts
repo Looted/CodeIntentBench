@@ -46,7 +46,13 @@ export function validateArc(arc: Arc, project: Pick<ProjectConfig, 'name' | 'pro
   const tools = forbidden(TOOL_WORDS, project);
   const hints = forbidden(HINT_WORDS, project);
   const stepIds = new Set<string>();
+  // Intent steps seen so far: a decision stated in the arc is stated before the step that refers to it.
+  const intentSteps = new Set<string>();
   for (const st of arc.steps ?? []) {
+    const refs = [...(st.intent?.stated_in ? [st.intent.stated_in] : []), ...(st.intent?.supersedes ?? [])];
+    for (const ref of refs) if (!intentSteps.has(ref)) errors.push(`${at}/${st.id}: intent refers to '${ref}', which is not an earlier intent step of this arc`);
+    if (st.intent?.stated_in && st.intent.requirement) errors.push(`${at}/${st.id}: a decision stated in the arc (stated_in) has no recorded entry at setup (requirement)`);
+    if (st.kind === 'intent') intentSteps.add(st.id);
     const sat = `${at}/${st.id}`;
     if (stepIds.has(st.id)) errors.push(`${sat}: duplicate step id`);
     stepIds.add(st.id);

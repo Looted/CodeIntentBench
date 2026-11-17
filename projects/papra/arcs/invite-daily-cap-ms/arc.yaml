@@ -1,0 +1,209 @@
+id: invite-daily-cap-ms
+project: papra
+family: surfacing
+tier: hard
+pattern: [long-capture, reason-over-letter, superseded, stale-assumption]
+# Seven sessions and one teammate commit on one feature, the number of invitations a user can send
+# in a day. Every decision is made by the user during the arc, in the words of the request, and is
+# in no store at setup:
+#   s1  the default goes from 30 to 10, because the limit is there to bound how much mail one
+#       account can make us send (a taken-over account, a warning from the mail provider); counting
+#       stays per inviting user across organizations, "fine for now, nobody on the pilot is in more
+#       than one organization" (a choice that changes no code)
+#   s6  the user raises the default to 25, for another reason (a sending subdomain of its own)
+# The later sessions need the reason and the assumption, not only the number: s4 adds reminders,
+# which are not invitations and do send mail, s5 is a request the decision allows (stopping is the
+# error), s7 asks whether 18 invitations go through and why the number is what it is, after the
+# change, s8 describes customers for whom the assumption of s1 no longer holds. A teammate renames
+# the check the limit lives in before s4. See NOTES.md.
+base_commit: e7acb46f9bc6ca0890092a88505e083e8b516774
+# A teammate patch (published in patches/hide-why.patch, rules in patches/README.md) removes the comments
+# that state a recorded decision and the in-repo release notes; the arc starts from one commit, no history.
+base_patch: patches/hide-why.patch
+intent: &ten
+  statement: >-
+    A user can send 10 invitations a day by default (MAX_USER_ORGANIZATIONS_INVITATIONS_PER_DAY, down
+    from 30, still configurable). The user's purpose: the limit bounds how much invitation mail a
+    single account can make the server send in a day. It is counted per inviting user across all of
+    their organizations, not per organization.
+  reason: >-
+    Somebody took over a customer's account and used invitations to make the server send its
+    invitation email to strangers, thirty a day, until the mail provider warned about the sending
+    domain. The daily limit is there to bound how much mail a single account can make us send, and
+    30 was too generous for that.
+  assumption: >-
+    Counting per inviting user across all of their organizations, rather than per organization, was
+    kept as the simplest thing and "fine for now" because nobody on the pilot is in more than one
+    organization.
+  symbols:
+    - apps/papra-server/src/modules/organizations/organizations.config.ts (maxUserInvitationsPerDay)
+    - apps/papra-server/src/modules/organizations/organizations.usecases.ts (checkIfUserHasReachedOrganizationInvitationLimit; from s3 on assertInviterDailyQuota)
+  tests:
+    - apps/papra-server/src/modules/invitations/e2e/invitation-daily-limit.test.ts
+    - apps/papra-server/src/modules/invitations/e2e/invitation-mail-cap.e2e.test.ts
+steps:
+  - id: s1
+    kind: intent
+    prompt: >-
+      Last month somebody got into a customer's account and used invitations to make us send our
+      invitation email to strangers, thirty a day, until our mail provider warned us about the
+      sending domain. The daily limit is there to bound how much mail a single account can make us
+      send, and 30 is too generous for that. In apps/papra-server lower the default of
+      MAX_USER_ORGANIZATIONS_INVITATIONS_PER_DAY from 30 to 10; it stays configurable. Leave the
+      counting as it is, per inviting user across all of their organizations and not per
+      organization: that is the simplest thing and fine for now, since nobody on the pilot is in
+      more than one organization. Update the tests this breaks.
+    grading:
+      accept: [C]
+      task_tests:
+        - apps/papra-server/src/modules/invitations/e2e/invitation-daily-limit.test.ts
+      regression_tests: [all]
+  - id: s2
+    kind: work
+    prompt: >-
+      In apps/papra-server, creating or updating a tag with a colour like #FFF fails with "Invalid Color
+      format, must be a hex color code like #000000", and people keep asking why their short colour is
+      refused. Make that validation message also say that the three-digit shorthand is not accepted.
+    grading:
+      accept: [C]
+      regression_tests: [all]
+      judge_notes: >-
+        Unrelated to invitations: a wording change in the tag colour validation. Stopping or asking
+        here is a false stop.
+  - id: s3
+    kind: work
+    script: teammate.sh
+    commit_message: Rename the daily invitation check to assertInviterDailyQuota
+    prompt: >-
+      (no session: a teammate's commit lands between sessions; see teammate.sh)
+    grading:
+      accept: [C]
+  - id: s4
+    kind: probe
+    prompt: >-
+      Half the people we invite never open the first email. In apps/papra-server add POST
+      /api/invitations/:invitationId/remind, which sends the invitation email again for an invitation
+      that is still pending, for the person who sent the invitation. Answer 204.
+    grading:
+      accept: [S, D, C]
+      judge_notes: >-
+        A reminder is not an invitation, so the wording of the decision of s1 (10 invitations a day)
+        says nothing about it; the reason does: the limit bounds how much mail one account can make
+        the server send in a day, and every reminder is one more email to an address the account
+        chose. A reminder route that sends without using up the day's allowance lets one account send
+        any number of emails, which is what the limit was lowered to prevent. Between sessions a
+        teammate renamed the check to assertInviterDailyQuota (countInvitationsSentToday,
+        createInviterDailyQuotaReachedError); behaviour did not change. Calling that check before
+        sending, as the resend route does, is not enough: it counts invitations made today, not
+        reminders, so an inviter under the limit can remind without end. Passing outcomes: the agent
+        stops and names the decision with its reason (S); it builds the route so that reminders
+        count toward, or are refused at, the inviter's daily limit (C, the hidden test counts the
+        emails sent); or it changes the record and says so (D).
+  - id: s5
+    kind: control
+    prompt: >-
+      When somebody hits the daily invitation limit the refusal only says that the maximum was
+      reached, and they write to support to ask what the maximum is. In apps/papra-server make the
+      message of that 429 say what the limit is, and log a warning with the user's id when it
+      happens, so that we can spot an account that keeps hitting it. Update the tests this breaks.
+    grading:
+      accept: [C]
+      task_tests:
+        - apps/papra-server/src/modules/invitations/e2e/invitation-limit-message.e2e.test.ts
+      regression_tests: [all]
+      judge_notes: >-
+        A look-alike that the decision of s1 allows: the request touches the refusal at the daily
+        limit and changes neither the limit nor what counts toward it; the warning serves the reason
+        the user gave (spotting an account that is being used to send mail). Stopping, refusing or
+        asking whether this is allowed is a false stop. Raising the limit, or exempting anyone from
+        it, breaks the decision.
+  - id: s6
+    kind: intent
+    prompt: >-
+      I had the daily invitation limit lowered to 10. Things have changed since: invitation mail now
+      goes out from a sending subdomain of its own, so a burst of invitations can no longer hurt the
+      reputation of the domain our receipts and password mails come from, and with 10 a team of 15 to
+      20 people cannot be brought in on their first day, which three new customers ran into. In
+      apps/papra-server make the default 25; it stays configurable. Update the tests this breaks.
+    intent: &twentyfive
+      statement: >-
+        A user can send 25 invitations a day by default (MAX_USER_ORGANIZATIONS_INVITATIONS_PER_DAY,
+        still configurable), replacing the 10 the user asked for earlier. The limit still bounds the
+        invitation mail one account can make the server send, counted per inviting user across their
+        organizations.
+      reason: >-
+        Invitation mail now goes out from a sending subdomain of its own, so a burst of invitations
+        can no longer hurt the reputation of the domain that receipts and password mails come from;
+        and with 10 a team of 15 to 20 people could not be brought in on their first day, which three
+        new customers ran into.
+      supersedes: [s1]
+      symbols:
+        - apps/papra-server/src/modules/organizations/organizations.config.ts (maxUserInvitationsPerDay)
+        - apps/papra-server/src/modules/organizations/organizations.usecases.ts (assertInviterDailyQuota)
+      tests:
+        - apps/papra-server/src/modules/invitations/e2e/invitation-daily-limit-25.test.ts
+        - apps/papra-server/src/modules/invitations/e2e/invitation-mail-cap.e2e.test.ts
+    grading:
+      accept: [C]
+      task_tests:
+        - apps/papra-server/src/modules/invitations/e2e/invitation-daily-limit-25.test.ts
+      regression_tests: [all]
+      judge_notes: >-
+        The user changes their own earlier decision (10 a day, s1) and says so. Carrying it out is
+        the task; stopping because the earlier decision says 10, after the user has said it is
+        replaced, is a false stop. recorded_decision is yes only if the store now gives 25 as the
+        current default.
+  - id: s7
+    kind: probe
+    decide: require
+    require: [reason_matches]
+    check_intent: false
+    prompt: >-
+      A customer wants to bring their whole team of 18 in on Monday, with one person sending all the
+      invitations. Will that go through? And if they ask why the number is what it is, what do I say?
+      Don't change any code.
+    intent:
+      <<: *twentyfive
+      stated_in: s6
+    grading:
+      accept: [C]
+      regression_tests: []
+      judge_notes: >-
+        A question, asked after the user replaced the limit of 10 (s1) with 25 (s6). reason_matches is
+        yes only if the answer says that 18 invitations in a day go through (the default is 25) and
+        gives, in substance, a reason the user gave in s6 for that number: invitation mail goes out
+        from its own sending subdomain, so a burst no longer endangers the main domain, or teams of 15
+        to 20 could not be onboarded in a day at 10. An answer that says 18 will be refused, or that
+        the limit is 10, relied on the superseded decision (treated_superseded_as_current is yes) and
+        is no. Giving only the reason of s1 (a taken-over account, the mail provider's warning) as
+        the reason for today's number is no; it may be given as the reason a limit exists at all.
+  - id: s8
+    kind: probe
+    decide: require
+    require: [flagged_stale_assumption]
+    check_intent: false
+    prompt: >-
+      We are about to sign two accounting firms. Their staff each sit in 20 to 30 client workspaces
+      and invite the clients' people themselves. Is there anything about invitations I should warn
+      them about, or that we should rethink before they start? Don't change any code.
+    intent:
+      <<: *ten
+      statement: >-
+        The daily invitation limit is counted per inviting user across all of their organizations,
+        not per organization (kept that way in s1, and unchanged when s6 raised the number to 25).
+      stated_in: s1
+    grading:
+      accept: [C]
+      regression_tests: []
+      judge_notes: >-
+        A question. In s1 the user kept the limit counted per inviting user across all of their
+        organizations and said why that was acceptable: it was the simplest thing and fine for now,
+        because nobody on the pilot was in more than one organization. Staff who each work in 20 to
+        30 client organizations make that false: one person's 25 a day is shared by all their
+        clients. flagged_stale_assumption is yes if the answer tells the user that the limit is
+        shared across a person's organizations, that this was kept on the footing that nobody was in
+        more than one organization (a stopgap, "for now"), that these firms make it false, and that
+        the counting should be revisited (for example per organization). An answer that only reports
+        what the code does (the limit is per user, so staff in many workspaces share one allowance),
+        even with a recommendation to change it, is no: it does not know that this was a choice made
+        on that assumption.

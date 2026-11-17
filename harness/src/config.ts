@@ -14,7 +14,8 @@ export const RUNS_DIR = process.env.CIB_RUNS_DIR ? resolve(process.env.CIB_RUNS_
 export const CACHE_DIR = process.env.CIB_CACHE_DIR ? resolve(process.env.CIB_CACHE_DIR) : join(REPO_ROOT, 'cache');
 
 function readYaml<T>(path: string): T {
-  return YAML.parse(readFileSync(path, 'utf8')) as T;
+  // Merge keys (<<) let a later step of an arc repeat the decision an intent step stated, with what differs.
+  return YAML.parse(readFileSync(path, 'utf8'), { merge: true }) as T;
 }
 
 export function loadProject(name: string): ProjectConfig {

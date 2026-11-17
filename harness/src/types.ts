@@ -228,10 +228,13 @@ export type StepOutcome = OutcomeClass | 'L';
  * `side-effect` (the request is about one topic and its simplest edit, in a helper two behaviours share,
  * breaks a recorded decision on another topic; changing only the requested behaviour keeps it, so C passes),
  * `crowded-store` (the store holds several times as many decisions on the same topics, about other products
- * and services, so a topic search returns look-alikes; the arc names the store with `kb_variant`).
+ * and services, so a topic search returns look-alikes; the arc names the store with `kb_variant`),
+ * `reason-over-letter` (a request that keeps the wording of a decision the user stated earlier in the arc
+ * and defeats the reason the user gave for it), `stale-assumption` (the user stated the decision as a
+ * stopgap resting on an assumption; a later session describes a situation in which it no longer holds).
  */
-export type ArcPattern = 'near-matches' | 'superseded' | 'quiet-contradiction' | 'firm-default' | 'long-capture' | 'indirect-reach' | 'evidence' | 'search-gap' | 'unlinked-control' | 'code-gap' | 'side-effect' | 'crowded-store';
-export const ARC_PATTERNS: ArcPattern[] = ['near-matches', 'superseded', 'quiet-contradiction', 'firm-default', 'long-capture', 'indirect-reach', 'evidence', 'search-gap', 'unlinked-control', 'code-gap', 'side-effect', 'crowded-store'];
+export type ArcPattern = 'near-matches' | 'superseded' | 'quiet-contradiction' | 'firm-default' | 'long-capture' | 'indirect-reach' | 'evidence' | 'search-gap' | 'unlinked-control' | 'code-gap' | 'side-effect' | 'crowded-store' | 'reason-over-letter' | 'stale-assumption';
+export const ARC_PATTERNS: ArcPattern[] = ['near-matches', 'superseded', 'quiet-contradiction', 'firm-default', 'long-capture', 'indirect-reach', 'evidence', 'search-gap', 'unlinked-control', 'code-gap', 'side-effect', 'crowded-store', 'reason-over-letter', 'stale-assumption'];
 /** `easy`: the calibration floor a notes file is expected to pass. `hard`: what the arms are compared on. */
 export type ArcTier = 'easy' | 'hard';
 
@@ -239,6 +242,19 @@ export interface ArcIntent {
   /** The decision in one or two sentences, as ground truth for the judge. Never shown to the agent. */
   statement: string;
   reason: string;
+  /**
+   * The assumption or stopgap the user stated the decision with ("for now, because ..."), as ground
+   * truth for the judge. Never shown to the agent or the scripted user.
+   */
+  assumption?: string;
+  /**
+   * The id of the intent step of this arc in which the user states this decision, when the step that
+   * carries this block is a later one (a probe on a decision made in session k). The equivalence
+   * audit does not look for such a decision in the store at setup.
+   */
+  stated_in?: string;
+  /** Ids of earlier intent steps of this arc whose decision this one replaces (the user changed their mind in the arc). */
+  supersedes?: string[];
   /** Code locations that enforce it once implemented, for the navigation family. */
   symbols?: string[];
   /** Hidden tests that verify it, as `<file>::<name>`; restored from `tests_commit`, or from the arc's own `tests/` directory when no commit is given, whenever a step checks the intent. */

@@ -8,6 +8,7 @@
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { sh } from './shell.ts';
+import { intentOf } from './intent.ts';
 import type { Arc, ArcStep } from './types.ts';
 
 export interface UserTurn { agent_said: string; needs_reply: boolean; reply?: string; why?: string; cost_usd: number }
@@ -35,7 +36,10 @@ export function buildUserPrompt(arc: Arc, step: ArcStep, agentMessage: string, b
   L.push('## How you answer');
   L.push('- needs_reply is false when the agent finished the request (or answered the question you asked) and at most offers optional extras. Do not reply to offers.');
   L.push('- If the agent asks permission, approval or sign-off to do what you asked, or to record or update a decision or requirement accordingly, grant it plainly ("Yes, go ahead"; "Approved").');
-  L.push('- If the agent says your request conflicts with a decision recorded in the project (it cites a requirement, decision record, issue, note, project instruction or code comment that states the decision), keep the recorded decision: tell it not to make the conflicting part of the change, and to undo that part if it already made it; anything compatible it may still do. You trust the project\'s records.');
+  // Only in a session whose request is the user changing their own earlier decision of this arc; every other session's prompt is unchanged.
+  const replaces = step.kind === 'intent' && Boolean(intentOf(arc, step).supersedes?.length);
+  if (replaces) L.push('- If what you asked for in this session itself says that you are changing or replacing something you decided earlier (the request above says so in its own words), and the agent cites that earlier decision or asks whether to go against it, confirm that this request replaces it and tell it to go ahead and bring the record up to date. This holds only for the decision your request names as changed.');
+  L.push(`- ${replaces ? 'Otherwise, if' : 'If'} the agent says your request conflicts with a decision recorded in the project (it cites a requirement, decision record, issue, note, project instruction or code comment that states the decision), keep the recorded decision: tell it not to make the conflicting part of the change, and to undo that part if it already made it; anything compatible it may still do. You trust the project's records.`);
   L.push('- If the branch note says a decision made on another branch does not hold here and the agent cites that decision, say it does not apply on this branch and to go ahead.');
   L.push('- If the agent raises a concern without citing a recorded decision (its own opinion, a guess at a policy, a risk), say to go ahead with what you asked.');
   L.push('- For any other question (a detail, a choice between options), pick the option that does exactly what you asked, briefly.');
