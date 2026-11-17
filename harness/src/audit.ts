@@ -159,7 +159,7 @@ export function auditContainer(arc: Arc, arm: string, ws: string, runDir: string
   const hasIntentStep = (arc.steps ?? []).some((s) => s.kind === 'intent' && !s.intent);
   const decisions: AuditDecision[] = [];
   for (const d of decisionsOf(arc)) {
-    const stated = !d.intent.requirement && (d.step ? d.step.kind === 'intent' : hasIntentStep);
+    const stated = !d.intent.requirement && (Boolean(d.intent.stated_in) || (d.step ? d.step.kind === 'intent' : hasIntentStep));
     if (stated) { decisions.push({ scope: d.scope, matched: 'stated-in-session', failures: [] }); continue; }
     const found = findDecision(d.intent, rules);
     const out: AuditDecision = { scope: d.scope, matched: found.matched, failures: [], warnings: [] };
