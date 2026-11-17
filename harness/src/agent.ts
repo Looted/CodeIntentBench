@@ -52,14 +52,21 @@ export function hostPathPrepend(host: ArmHost, hostDir: string): string[] {
 }
 
 /** `dir` holds this session's config and transcript; `hostDir` is where the arm's setup put its files (`${RUN_DIR}`), the same as `dir` except in arcs, where one arm setup serves several sessions. */
+const HOST_ONLY_ENV = /^(CLAUDE_COWORK_MEMORY_PATH_OVERRIDE|CLAUDE_MEMORY_STORES|CLAUDE_ADDITIONAL_DIRECTORIES|CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD|CLAUDE_CODE_USER_EMAIL|CLAUDE_CODE_ARTIFACT_\w+|CLAUDE_CODE_COORDINATOR_EXTRA_TOOLS|CLAUDE_CODE_SKILL_PROPOSALS|CLAUDE_CODE_SYNC_\w+|CLAUDE_CODE_MESSAGING_\w+|CLAUDE_CODE_TERMINAL_MCP_TOOLS|CLAUDE_CODE_PROJECTS_SESSION|CLAUDE_CODE_ENABLE_REMOTE_RECAP|CLAUDE_CODE_SILENT_TURN_REMINDER|CCR_HEARTH_\w+|CCR_REPLY_STOP_\w+|CCR_OPUS_REMINDER_HOOK_BODY)$/;
+
 export function buildEnv(dir: string, arm: string, host: ArmHost, hostDir = dir, keepConfig = false): NodeJS.ProcessEnv {
   const env: NodeJS.ProcessEnv = { ...process.env };
   // The agent must not inherit the operator's session.
   for (const k of Object.keys(env)) {
     if (k === 'CLAUDECODE' || k === 'CLAUDE_CODE_SESSION_ID' || k === 'CLAUDE_CODE_ENTRYPOINT') delete env[k];
+    // The operator's host session leaks its own context through these: memory directories (the operator's
+    // notes about the benchmark and Kibi), extra directories and CLAUDE.md files, synced skills and plugins,
+    // coordinator tools, artifacts, messaging and reply hooks. An agent under test sees none of it.
+    if (HOST_ONLY_ENV.test(k)) delete env[k];
   }
   env.CLAUDE_CONFIG_DIR = keepConfig ? join(dir, 'claude-config') : isolatedConfigDir(dir);
   const prepend = hostPathPrepend(host, hostDir);
+  env.CLAUDE_CODE_DISABLE_AUTO_MEMORY = '1';
   if (prepend.length > 0) env.PATH = [...prepend, env.PATH ?? ''].join(':');
   for (const [k, v] of Object.entries(host.env ?? {})) env[k] = expandHostValue(v, hostDir, arm);
   return env;
