@@ -55,6 +55,10 @@ if [ ! -d "$run/plugin/kibi-claude" ]; then
 fi
 
 cd "$ws"
+# A team installs kibi-cli as a dev dependency, so `npx --no-install kibi` (what Kibi's own messages suggest)
+# resolves in the workspace. The packages live one directory up to keep the lockfile untouched; link the
+# binary where npx looks for it (node_modules is ignored by git).
+mkdir -p node_modules/.bin && ln -sf "$run/kibi/node_modules/.bin/kibi" node_modules/.bin/kibi
 kibi --version > "$run/kibi-version.txt"
 kibi init
 # Where the repository's hooks belong to the pre-commit framework, `kibi init` installs none of its own and
