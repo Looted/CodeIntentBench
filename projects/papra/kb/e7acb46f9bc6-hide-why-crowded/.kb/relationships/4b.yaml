@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-a849bb65da05
+    type: requires_property
+    from: REQ-status-component-groups-name-length
+    to: FACT-status-component-groups-name-max-length
+    created_at: "2025-09-08T14:30:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-80d2c428e5e9
+    type: constrains
+    from: REQ-status-component-groups-name-length
+    to: FACT-status-component-groups-subject
+    created_at: "2025-09-08T14:30:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

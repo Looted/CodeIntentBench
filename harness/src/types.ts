@@ -226,10 +226,12 @@ export type StepOutcome = OutcomeClass | 'L';
  * (nor does a search with the words of the code the change lands in; `code-gap-scan.ts` lists the links
  * where that holds), `unlinked-control` (the same kind of change where no decision governs),
  * `side-effect` (the request is about one topic and its simplest edit, in a helper two behaviours share,
- * breaks a recorded decision on another topic; changing only the requested behaviour keeps it, so C passes).
+ * breaks a recorded decision on another topic; changing only the requested behaviour keeps it, so C passes),
+ * `crowded-store` (the store holds several times as many decisions on the same topics, about other products
+ * and services, so a topic search returns look-alikes; the arc names the store with `kb_variant`).
  */
-export type ArcPattern = 'near-matches' | 'superseded' | 'quiet-contradiction' | 'firm-default' | 'long-capture' | 'indirect-reach' | 'evidence' | 'search-gap' | 'unlinked-control' | 'code-gap' | 'side-effect';
-export const ARC_PATTERNS: ArcPattern[] = ['near-matches', 'superseded', 'quiet-contradiction', 'firm-default', 'long-capture', 'indirect-reach', 'evidence', 'search-gap', 'unlinked-control', 'code-gap', 'side-effect'];
+export type ArcPattern = 'near-matches' | 'superseded' | 'quiet-contradiction' | 'firm-default' | 'long-capture' | 'indirect-reach' | 'evidence' | 'search-gap' | 'unlinked-control' | 'code-gap' | 'side-effect' | 'crowded-store';
+export const ARC_PATTERNS: ArcPattern[] = ['near-matches', 'superseded', 'quiet-contradiction', 'firm-default', 'long-capture', 'indirect-reach', 'evidence', 'search-gap', 'unlinked-control', 'code-gap', 'side-effect', 'crowded-store'];
 /** `easy`: the calibration floor a notes file is expected to pass. `hard`: what the arms are compared on. */
 export type ArcTier = 'easy' | 'hard';
 
@@ -297,6 +299,11 @@ export interface Arc {
    * so neither the patch nor the history before it can be read back with git.
    */
   base_patch?: string;
+  /**
+   * A variant of the knowledge base stored for this base (for example `crowded`): the arms receive the
+   * store kept under `<base key>-<variant>` instead of the base's own. The code and the patch are the same.
+   */
+  kb_variant?: string;
   intent: ArcIntent;
   steps: ArcStep[];
   notes?: string;

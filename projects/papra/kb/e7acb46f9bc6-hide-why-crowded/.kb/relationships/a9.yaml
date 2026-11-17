@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-dce5ce853264
+    type: requires_property
+    from: REQ-docs-sidebar-groups-delete-in-use
+    to: FACT-docs-sidebar-groups-delete-in-use
+    created_at: "2026-02-07T13:24:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4b01b3393538
+    type: constrains
+    from: REQ-docs-sidebar-groups-delete-in-use
+    to: FACT-docs-sidebar-groups-subject
+    created_at: "2026-02-07T13:24:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5a3dab5c7e13
+    type: requires_property
+    from: REQ-mobile-mobile-app-offline-search-date-format
+    to: FACT-mobile-mobile-app-offline-search-date-filter-format
+    created_at: "2026-07-23T08:39:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ac53e2b465a3
+    type: constrains
+    from: REQ-mobile-mobile-app-offline-search-date-format
+    to: FACT-mobile-mobile-app-offline-search-subject
+    created_at: "2026-07-23T08:39:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2dab890cae27
+    type: requires_property
+    from: REQ-backoffice-back-office-invoice-search-case-folding
+    to: FACT-backoffice-back-office-invoice-search-case-folding
+    created_at: "2026-03-21T16:09:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5cc34968184b
+    type: constrains
+    from: REQ-backoffice-back-office-invoice-search-case-folding
+    to: FACT-backoffice-back-office-invoice-search-subject
+    created_at: "2026-03-21T16:09:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-46ac1dfcdf54
+    type: requires_property
+    from: REQ-forum-community-forum-accounts-reset-notification
+    to: FACT-forum-community-forum-accounts-reset-confirmation-email
+    created_at: "2025-02-04T15:37:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-904e586aeebd
+    type: constrains
+    from: REQ-forum-community-forum-accounts-reset-notification
+    to: FACT-forum-community-forum-accounts-subject
+    created_at: "2025-02-04T15:37:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

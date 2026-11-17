@@ -1,0 +1,148 @@
+relationships:
+  - id: rel-d50ff8853d22
+    type: requires_property
+    from: REQ-papra-storage-driver-hard-deletes-files
+    to: FACT-papra-storage-driver-delete-hard-deletes-file
+    created_at: "2026-11-16T13:16:40.138Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-storage-driver-hard-deletes-files
+    to: FACT-papra-subject-storage-driver-delete
+    created_at: 2026-11-16T13:16:40.139Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-91e7657ae592
+  - id: rel-6893d4a25b72
+    type: supersedes
+    from: REQ-client-saved-views-maximum-count
+    to: REQ-client-saved-views-maximum-count-earlier
+    created_at: "2026-03-23T09:06:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1697da9b31a9
+    type: requires_property
+    from: REQ-client-saved-views-maximum-count
+    to: FACT-client-saved-views-maximum-count
+    created_at: "2026-03-23T09:06:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-183b045e2075
+    type: requires_property
+    from: REQ-client-saved-views-maximum-count
+    to: FACT-client-saved-views-limit-configurable
+    created_at: "2026-03-23T09:06:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8ca188e94e17
+    type: constrains
+    from: REQ-client-saved-views-maximum-count
+    to: FACT-client-saved-views-subject
+    created_at: "2026-03-23T09:06:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-106baa7e0ae4
+    type: requires_property
+    from: REQ-backoffice-coupon-codes-batch-size
+    to: FACT-backoffice-coupon-codes-batch-maximum
+    created_at: "2025-11-21T13:07:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-39ba9bd3a5e0
+    type: constrains
+    from: REQ-backoffice-coupon-codes-batch-size
+    to: FACT-backoffice-coupon-codes-subject
+    created_at: "2025-11-21T13:07:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b4f921ca2b44
+    type: requires_property
+    from: REQ-education-course-labels-name-length
+    to: FACT-education-course-labels-name-max-length
+    created_at: "2025-03-04T10:24:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8f6f4a387eec
+    type: constrains
+    from: REQ-education-course-labels-name-length
+    to: FACT-education-course-labels-subject
+    created_at: "2025-03-04T10:24:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-62ef82d3ae01
+    type: requires_property
+    from: REQ-website-blog-search-minimum-length
+    to: FACT-website-blog-search-query-min-length
+    created_at: "2026-05-17T15:35:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d170533ceb63
+    type: constrains
+    from: REQ-website-blog-search-minimum-length
+    to: FACT-website-blog-search-subject
+    created_at: "2026-05-17T15:35:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d1223e9e7859
+    type: requires_property
+    from: REQ-backoffice-back-office-organization-lookup-minimum-length
+    to: FACT-backoffice-back-office-organization-lookup-query-min-length
+    created_at: "2025-11-21T16:04:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8dd3064a30be
+    type: constrains
+    from: REQ-backoffice-back-office-organization-lookup-minimum-length
+    to: FACT-backoffice-back-office-organization-lookup-subject
+    created_at: "2025-11-21T16:04:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-305b0865f19b
+    type: supersedes
+    from: REQ-portal-sub-partner-accounts-maximum-count
+    to: REQ-portal-sub-partner-accounts-maximum-count-earlier
+    created_at: "2026-09-17T13:31:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a64b5acde22f
+    type: requires_property
+    from: REQ-portal-sub-partner-accounts-maximum-count
+    to: FACT-portal-sub-partner-accounts-maximum-count
+    created_at: "2026-09-17T13:31:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4b06c0707f21
+    type: requires_property
+    from: REQ-portal-sub-partner-accounts-maximum-count
+    to: FACT-portal-sub-partner-accounts-limit-configurable
+    created_at: "2026-09-17T13:31:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-edf4c7867c8f
+    type: constrains
+    from: REQ-portal-sub-partner-accounts-maximum-count
+    to: FACT-portal-sub-partner-accounts-subject
+    created_at: "2026-09-17T13:31:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-79516f093320
+    type: requires_property
+    from: REQ-license-license-keys-what-counts
+    to: FACT-license-license-keys-counted-toward-limit
+    created_at: "2025-06-12T08:55:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-49707e6d5f15
+    type: requires_property
+    from: REQ-license-license-keys-what-counts
+    to: FACT-license-license-keys-limit-detail
+    created_at: "2025-06-12T08:55:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1683a217fd55
+    type: constrains
+    from: REQ-license-license-keys-what-counts
+    to: FACT-license-license-keys-subject
+    created_at: "2025-06-12T08:55:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -1,0 +1,246 @@
+relationships:
+  - id: rel-bfc84c9f909b
+    type: requires_property
+    from: REQ-papra-invite-cannot-create-owner
+    to: FACT-papra-organizations-organization-owner-count
+    created_at: "2026-11-16T13:15:50.563Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-invite-cannot-create-owner
+    to: FACT-papra-subject-organizations-organization
+    created_at: 2026-11-16T13:15:50.563Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-1b7113c1e2a8
+  - type: requires_property
+    from: REQ-papra-invite-cannot-create-owner
+    to: FACT-papra-organizations-organization-assignable-roles
+    created_at: 2026-11-16T13:15:50.574Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c784fa9c79c7
+  - type: requires_predicate
+    from: REQ-papra-invite-cannot-create-owner
+    to: FACT-papra-perm-anyone-invite-or-promote-as-owner-organization-member
+    created_at: 2026-11-16T13:15:50.578Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-cad4996b19b7
+  - type: verified_by
+    from: REQ-papra-invite-cannot-create-owner
+    to: TEST-papra-server-src-modules-admin-organizations-e2e-organizations-e2e
+    created_at: 2026-11-16T13:30:11.340Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9f2e82f86a70
+  - id: rel-e8a2bc012eb4
+    type: requires_property
+    from: REQ-mobile-saved-filters-delete-in-use
+    to: FACT-mobile-saved-filters-delete-in-use
+    created_at: "2025-05-15T10:27:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-33d864e3c44b
+    type: constrains
+    from: REQ-mobile-saved-filters-delete-in-use
+    to: FACT-mobile-saved-filters-subject
+    created_at: "2025-05-15T10:27:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e3abf5bfb5df
+    type: requires_property
+    from: REQ-desktop-folder-to-tag-mappings-delete-in-use
+    to: FACT-desktop-folder-to-tag-mappings-delete-in-use
+    created_at: "2025-02-08T15:34:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e79071e1cfc0
+    type: constrains
+    from: REQ-desktop-folder-to-tag-mappings-delete-in-use
+    to: FACT-desktop-folder-to-tag-mappings-subject
+    created_at: "2025-02-08T15:34:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-96491b7abb8e
+    type: requires_property
+    from: REQ-extension-browser-extension-clip-history-search-date-format
+    to: FACT-extension-browser-extension-clip-history-search-date-filter-format
+    created_at: "2026-06-10T16:11:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-956679a2a30f
+    type: constrains
+    from: REQ-extension-browser-extension-clip-history-search-date-format
+    to: FACT-extension-browser-extension-clip-history-search-subject
+    created_at: "2026-06-10T16:11:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fbcc9e09b065
+    type: requires_property
+    from: REQ-support-help-centre-article-search-unknown-filter
+    to: FACT-support-help-centre-article-search-unknown-filter
+    created_at: "2026-06-03T12:48:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f2347a03a107
+    type: constrains
+    from: REQ-support-help-centre-article-search-unknown-filter
+    to: FACT-support-help-centre-article-search-subject
+    created_at: "2026-06-03T12:48:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-659a6b9fa0a0
+    type: requires_property
+    from: REQ-marketplace-template-marketplace-search-page-size
+    to: FACT-marketplace-template-marketplace-search-page-size-maximum
+    created_at: "2026-09-18T15:50:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e95e5d3af329
+    type: constrains
+    from: REQ-marketplace-template-marketplace-search-page-size
+    to: FACT-marketplace-template-marketplace-search-subject
+    created_at: "2026-09-18T15:50:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0cdea4e08ae2
+    type: requires_property
+    from: REQ-status-status-webhook-secret-development-default
+    to: FACT-status-status-webhook-secret-development-default
+    created_at: "2026-08-08T13:18:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3ef9f26f2332
+    type: constrains
+    from: REQ-status-status-webhook-secret-development-default
+    to: FACT-status-status-webhook-secret-subject
+    created_at: "2026-08-08T13:18:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e96af73b07a3
+    type: requires_property
+    from: REQ-license-license-signing-key-minimum-length
+    to: FACT-license-license-signing-key-minimum-length
+    created_at: "2026-06-05T13:48:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4ea0180920c6
+    type: constrains
+    from: REQ-license-license-signing-key-minimum-length
+    to: FACT-license-license-signing-key-subject
+    created_at: "2026-06-05T13:48:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a831b1ecbc8b
+    type: requires_property
+    from: REQ-telemetry-telemetry-ingest-token-required-in-production
+    to: FACT-telemetry-telemetry-ingest-token-required-in-production
+    created_at: "2026-05-20T09:32:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8b1af357de1f
+    type: constrains
+    from: REQ-telemetry-telemetry-ingest-token-required-in-production
+    to: FACT-telemetry-telemetry-ingest-token-subject
+    created_at: "2026-05-20T09:32:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1dd28402ee43
+    type: requires_property
+    from: REQ-support-support-sso-secret-minimum-length-earlier
+    to: FACT-support-support-sso-secret-minimum-length-earlier
+    created_at: "2025-09-09T17:42:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-da0052115920
+    type: constrains
+    from: REQ-support-support-sso-secret-minimum-length-earlier
+    to: FACT-support-support-sso-secret-subject
+    created_at: "2025-09-09T17:42:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a1eeb69b4631
+    type: requires_property
+    from: REQ-desktop-sync-folders-name-length
+    to: FACT-desktop-sync-folders-name-max-length
+    created_at: "2026-06-02T10:58:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-68c427557835
+    type: constrains
+    from: REQ-desktop-sync-folders-name-length
+    to: FACT-desktop-sync-folders-subject
+    created_at: "2026-06-02T10:58:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b88e3d290791
+    type: requires_property
+    from: REQ-education-classroom-workspaces-maximum-count-earlier
+    to: FACT-education-classroom-workspaces-maximum-count-earlier
+    created_at: "2025-09-05T12:16:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7b04be7a5872
+    type: constrains
+    from: REQ-education-classroom-workspaces-maximum-count-earlier
+    to: FACT-education-classroom-workspaces-subject
+    created_at: "2025-09-05T12:16:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-23f1bb4fd59c
+    type: requires_property
+    from: REQ-backoffice-back-office-staff-accounts-reset-link-single-use
+    to: FACT-backoffice-back-office-staff-accounts-reset-link-single-use
+    created_at: "2026-05-16T17:21:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0a8094eaa99c
+    type: requires_property
+    from: REQ-backoffice-back-office-staff-accounts-reset-link-single-use
+    to: FACT-backoffice-back-office-staff-accounts-new-link-invalidates-old
+    created_at: "2026-05-16T17:21:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-bce65705cbf9
+    type: constrains
+    from: REQ-backoffice-back-office-staff-accounts-reset-link-single-use
+    to: FACT-backoffice-back-office-staff-accounts-subject
+    created_at: "2026-05-16T17:21:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-71289d4525bc
+    type: requires_property
+    from: REQ-portal-partner-portal-accounts-reset-link-single-use
+    to: FACT-portal-partner-portal-accounts-reset-link-single-use
+    created_at: "2025-06-24T17:12:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ea705432811d
+    type: requires_property
+    from: REQ-portal-partner-portal-accounts-reset-link-single-use
+    to: FACT-portal-partner-portal-accounts-new-link-invalidates-old
+    created_at: "2025-06-24T17:12:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a42dd4414828
+    type: constrains
+    from: REQ-portal-partner-portal-accounts-reset-link-single-use
+    to: FACT-portal-partner-portal-accounts-subject
+    created_at: "2025-06-24T17:12:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1f155bfe13ca
+    type: requires_property
+    from: REQ-docs-documentation-contributor-accounts-reset-link-validity-earlier
+    to: FACT-docs-documentation-contributor-accounts-reset-link-minutes-earlier
+    created_at: "2025-03-12T09:03:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-def5ba6325cc
+    type: constrains
+    from: REQ-docs-documentation-contributor-accounts-reset-link-validity-earlier
+    to: FACT-docs-documentation-contributor-accounts-subject
+    created_at: "2025-03-12T09:03:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

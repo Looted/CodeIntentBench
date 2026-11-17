@@ -50,6 +50,8 @@ Before the first session of an arc run the harness audits the arm's container ([
 
 The knowledge a project keeps in a Kibi knowledge base reaches the passive arms through [src/kb-rules.ts](src/kb-rules.ts) (`arm-tools/kb-export.ts` on the command line): one rule file per requirement and ADR, whatever its status, with the statement, the recorded reason, the code and tests linked to it, and its standing (status, the firmness Kibi itself would show (an entry with none recorded is firm unless an agent wrote it), who recorded it and when, what it supersedes and what supersedes it). [src/render.ts](src/render.ts) writes those facts into each container (a decision file, an AGENTS.md section, a tracker issue, a memory note).
 
+An arc may name a variant of the knowledge base stored for its base (`kb_variant: crowded` in arc.yaml): the arms then receive the store kept under `<base key>-<variant>`, the code and the teammate patch staying the same. `CIB_BASE_KEY` carries the full name to the project's arm preparation, and the audit groups arcs by commit, patch and variant.
+
 The `agents-md` setup writes the whole file or nothing: when the rendered AGENTS.md is estimated (four bytes per token) to exceed the budget, the setup exits with "does not fit" and the arc run is recorded as not scored. The budget is `CIB_AGENTS_MD_TOKEN_BUDGET`, by default the context window of the agent's model (`contextTokensFor` in [src/pricing.ts](src/pricing.ts), override with `CIB_MODEL_CONTEXT_TOKENS`). The size is written to `agents-md-size.json` in the run directory and shown in the report.
 
 `npm test` runs the unit tests under `test/` (export, per-step decisions, audit, the surfacing measure, the report).

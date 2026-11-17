@@ -1,0 +1,43 @@
+relationships:
+  - id: rel-e278d358de12
+    type: requires_property
+    from: REQ-backoffice-back-office-customer-search-date-format
+    to: FACT-backoffice-back-office-customer-search-date-filter-format
+    created_at: "2026-08-20T14:42:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e6032f0ca788
+    type: constrains
+    from: REQ-backoffice-back-office-customer-search-date-format
+    to: FACT-backoffice-back-office-customer-search-subject
+    created_at: "2026-08-20T14:42:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1206bcf401a2
+    type: requires_property
+    from: REQ-extension-ext-pairing-secret-example-value-refused
+    to: FACT-extension-ext-pairing-secret-example-value-refused
+    created_at: "2025-11-01T10:52:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3091aae03c44
+    type: constrains
+    from: REQ-extension-ext-pairing-secret-example-value-refused
+    to: FACT-extension-ext-pairing-secret-subject
+    created_at: "2025-11-01T10:52:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4a60c65ebe22
+    type: requires_property
+    from: REQ-backoffice-staff-sign-in-repeat-address
+    to: FACT-backoffice-staff-sign-in-repeat-address
+    created_at: "2026-09-01T16:03:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-829c53de3534
+    type: constrains
+    from: REQ-backoffice-staff-sign-in-repeat-address
+    to: FACT-backoffice-staff-sign-in-subject
+    created_at: "2026-09-01T16:03:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

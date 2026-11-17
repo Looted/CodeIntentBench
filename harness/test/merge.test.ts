@@ -1,6 +1,15 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { mergeAgentResults, type AgentResult } from '../src/agent.ts';
+import { baseKey } from '../src/workspace.ts';
+
+test('a knowledge base variant is part of the name a base is stored under', () => {
+  const commit = 'e7acb46f9bc6ca0890092a88505e083e8b516774';
+  assert.equal(baseKey({ base_commit: commit }), 'e7acb46f9bc6');
+  assert.equal(baseKey({ base_commit: commit, base_patch: 'patches/hide-why.patch' }), 'e7acb46f9bc6-hide-why');
+  assert.equal(baseKey({ base_commit: commit, base_patch: 'patches/hide-why.patch', kb_variant: 'crowded' }), 'e7acb46f9bc6-hide-why-crowded');
+  assert.equal(baseKey({ base_commit: commit, kb_variant: 'crowded' }), 'e7acb46f9bc6-crowded');
+});
 
 const part = (session: string, cost: number, cacheRead: number, turns: number): AgentResult => ({
   code: 0, timed_out: false, session_id: session, terminal_reason: 'end', final_answer: 'x', tools_available: [], tool_calls: [], permission_denials: 0,

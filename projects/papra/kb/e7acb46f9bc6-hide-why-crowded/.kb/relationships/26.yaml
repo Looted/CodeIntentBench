@@ -1,0 +1,64 @@
+relationships:
+  - id: rel-476530ace851
+    type: requires_property
+    from: REQ-support-canned-replies-names-trimmed
+    to: FACT-support-canned-replies-name-trimmed
+    created_at: "2025-04-25T16:12:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-47ea12d7a07b
+    type: requires_property
+    from: REQ-support-canned-replies-names-trimmed
+    to: FACT-support-canned-replies-empty-name-refused
+    created_at: "2025-04-25T16:12:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b80c6e535b0e
+    type: constrains
+    from: REQ-support-canned-replies-names-trimmed
+    to: FACT-support-canned-replies-subject
+    created_at: "2025-04-25T16:12:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-dd39888d269d
+    type: requires_property
+    from: REQ-backoffice-sandbox-organizations-name-length
+    to: FACT-backoffice-sandbox-organizations-name-max-length
+    created_at: "2026-02-22T14:11:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2be33ed3b486
+    type: constrains
+    from: REQ-backoffice-sandbox-organizations-name-length
+    to: FACT-backoffice-sandbox-organizations-subject
+    created_at: "2026-02-22T14:11:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-303cd17fa133
+    type: requires_property
+    from: REQ-education-classroom-workspaces-at-the-limit
+    to: FACT-education-classroom-workspaces-at-limit
+    created_at: "2025-08-11T13:09:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8dfeeab81347
+    type: constrains
+    from: REQ-education-classroom-workspaces-at-the-limit
+    to: FACT-education-classroom-workspaces-subject
+    created_at: "2025-08-11T13:09:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-84f83c9f1906
+    type: requires_property
+    from: REQ-status-status-page-administrator-accounts-reset-link-validity-earlier
+    to: FACT-status-status-page-administrator-accounts-reset-link-minutes-earlier
+    created_at: "2025-05-03T09:47:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4564c2d03c3d
+    type: constrains
+    from: REQ-status-status-page-administrator-accounts-reset-link-validity-earlier
+    to: FACT-status-status-page-administrator-accounts-subject
+    created_at: "2025-05-03T09:47:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

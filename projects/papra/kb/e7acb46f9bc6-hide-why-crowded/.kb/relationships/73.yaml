@@ -1,0 +1,127 @@
+relationships:
+  - id: rel-0f4f2e762e67
+    type: requires_property
+    from: REQ-papra-server-hostname-configurable
+    to: FACT-papra-server-hostname-configurable
+    created_at: "2026-11-16T13:21:22.333Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-server-hostname-configurable
+    to: FACT-papra-subject-server-hostname
+    created_at: 2026-11-16T13:21:22.334Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-491334876adc
+  - id: rel-5bc61b7dcd6c
+    type: requires_property
+    from: REQ-forum-forum-categories-names-trimmed
+    to: FACT-forum-forum-categories-name-trimmed
+    created_at: "2025-02-06T17:38:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b4d39a7516ae
+    type: requires_property
+    from: REQ-forum-forum-categories-names-trimmed
+    to: FACT-forum-forum-categories-empty-name-refused
+    created_at: "2025-02-06T17:38:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d4da2c908d81
+    type: constrains
+    from: REQ-forum-forum-categories-names-trimmed
+    to: FACT-forum-forum-categories-subject
+    created_at: "2025-02-06T17:38:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-73b503dfa188
+    type: requires_property
+    from: REQ-status-status-page-incident-filter-unknown-filter
+    to: FACT-status-status-page-incident-filter-unknown-filter
+    created_at: "2026-03-08T17:44:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-338bece53e6b
+    type: constrains
+    from: REQ-status-status-page-incident-filter-unknown-filter
+    to: FACT-status-status-page-incident-filter-subject
+    created_at: "2026-03-08T17:44:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-61ccd672c467
+    type: requires_property
+    from: REQ-support-support-contacts-name-uniqueness
+    to: FACT-support-support-contacts-name-uniqueness
+    created_at: "2025-04-28T16:22:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cc19823517dc
+    type: constrains
+    from: REQ-support-support-contacts-name-uniqueness
+    to: FACT-support-support-contacts-subject
+    created_at: "2025-04-28T16:22:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e0f986441092
+    type: requires_property
+    from: REQ-education-classroom-workspaces-ownership-transfer
+    to: FACT-education-classroom-workspaces-ownership-transfer
+    created_at: "2025-03-20T15:27:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7ca21d1800a5
+    type: constrains
+    from: REQ-education-classroom-workspaces-ownership-transfer
+    to: FACT-education-classroom-workspaces-subject
+    created_at: "2025-03-20T15:27:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fc2e52d0efc6
+    type: requires_property
+    from: REQ-status-status-page-administrator-accounts-reset-and-two-factor
+    to: FACT-status-status-page-administrator-accounts-reset-disables-two-factor
+    created_at: "2026-04-16T10:05:24.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9eaccff920a4
+    type: constrains
+    from: REQ-status-status-page-administrator-accounts-reset-and-two-factor
+    to: FACT-status-status-page-administrator-accounts-subject
+    created_at: "2026-04-16T10:05:24.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-96d575eb0f8b
+    type: requires_property
+    from: REQ-telemetry-telemetry-dashboard-accounts-reset-link-single-use
+    to: FACT-telemetry-telemetry-dashboard-accounts-reset-link-single-use
+    created_at: "2026-04-06T12:25:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-91ec81088b32
+    type: requires_property
+    from: REQ-telemetry-telemetry-dashboard-accounts-reset-link-single-use
+    to: FACT-telemetry-telemetry-dashboard-accounts-new-link-invalidates-old
+    created_at: "2026-04-06T12:25:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7a184d5d60d1
+    type: constrains
+    from: REQ-telemetry-telemetry-dashboard-accounts-reset-link-single-use
+    to: FACT-telemetry-telemetry-dashboard-accounts-subject
+    created_at: "2026-04-06T12:25:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-89d26e417108
+    type: requires_property
+    from: REQ-telemetry-telemetry-dashboard-accounts-reset-notification
+    to: FACT-telemetry-telemetry-dashboard-accounts-reset-confirmation-email
+    created_at: "2025-06-24T09:48:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5c1d0e0cc87c
+    type: constrains
+    from: REQ-telemetry-telemetry-dashboard-accounts-reset-notification
+    to: FACT-telemetry-telemetry-dashboard-accounts-subject
+    created_at: "2025-06-24T09:48:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

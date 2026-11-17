@@ -1,0 +1,50 @@
+relationships:
+  - id: rel-1ecbe1e5ce47
+    type: requires_property
+    from: REQ-desktop-ignore-patterns-listing-order
+    to: FACT-desktop-ignore-patterns-listing-order
+    created_at: "2026-02-22T10:20:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-72d8072ad718
+    type: constrains
+    from: REQ-desktop-ignore-patterns-listing-order
+    to: FACT-desktop-ignore-patterns-subject
+    created_at: "2026-02-22T10:20:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8cef3604c5dc
+    type: requires_property
+    from: REQ-telemetry-telemetry-event-search-date-format
+    to: FACT-telemetry-telemetry-event-search-date-filter-format
+    created_at: "2026-02-12T15:37:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0527e3571c31
+    type: constrains
+    from: REQ-telemetry-telemetry-event-search-date-format
+    to: FACT-telemetry-telemetry-event-search-subject
+    created_at: "2026-02-12T15:37:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-79c8cd98a188
+    type: requires_property
+    from: REQ-docs-docsearch-admin-key-never-logged
+    to: FACT-docs-docsearch-admin-key-value-logged
+    created_at: "2026-03-13T11:53:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a6bb95f89e33
+    type: requires_property
+    from: REQ-docs-docsearch-admin-key-never-logged
+    to: FACT-docs-docsearch-admin-key-startup-log
+    created_at: "2026-03-13T11:53:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ce4ea8054a7b
+    type: constrains
+    from: REQ-docs-docsearch-admin-key-never-logged
+    to: FACT-docs-docsearch-admin-key-subject
+    created_at: "2026-03-13T11:53:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

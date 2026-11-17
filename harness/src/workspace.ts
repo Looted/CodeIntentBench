@@ -48,11 +48,14 @@ export function ensureMirror(project: ProjectConfig, commits: string[]): string 
   return mirror;
 }
 
-/** The name a base is stored under (the knowledge base of an arm is keyed by it): the commit's first 12 characters, plus the patch's file name. */
-export function baseKey(task: Pick<Task, 'base_commit' | 'base_patch'>, fallback = ''): string {
+/**
+ * The name a base is stored under (the knowledge base of an arm is keyed by it): the commit's first 12 characters,
+ * plus the patch's file name, plus the knowledge base variant an arc asks for (`kb_variant`, for example `crowded`).
+ */
+export function baseKey(task: Pick<Task, 'base_commit' | 'base_patch'> & { kb_variant?: string }, fallback = ''): string {
   const commit = (task.base_commit ?? fallback).slice(0, 12);
-  if (!task.base_patch) return commit;
-  return `${commit}-${task.base_patch.split('/').pop()!.replace(/\.(patch|diff)$/, '')}`;
+  const patched = task.base_patch ? `${commit}-${task.base_patch.split('/').pop()!.replace(/\.(patch|diff)$/, '')}` : commit;
+  return task.kb_variant ? `${patched}-${task.kb_variant}` : patched;
 }
 
 export function baseCommit(project: ProjectConfig, task: Task): string {
@@ -80,7 +83,7 @@ export function projectEnv(project: ProjectConfig, dir: string): Record<string, 
   return out;
 }
 
-export function prepareWorkspace(dir: string, project: ProjectConfig, task: Pick<Task, 'base_commit' | 'base_patch' | 'source'>, arm: string, log: (s: string) => void, opts: PrepareOptions = {}): { base: string; rules: Rule[] } {
+export function prepareWorkspace(dir: string, project: ProjectConfig, task: Pick<Task, 'base_commit' | 'base_patch' | 'source'> & { kb_variant?: string }, arm: string, log: (s: string) => void, opts: PrepareOptions = {}): { base: string; rules: Rule[] } {
   const ws = workspaceDir(dir);
   // The project's environment applies to this process from here on: setup, the arm scripts, grading and the agent all inherit it.
   Object.assign(process.env, projectEnv(project, dir));
@@ -136,7 +139,7 @@ export function prepareWorkspace(dir: string, project: ProjectConfig, task: Pick
     log(`arm prepare: ${project.setup.arm_prepare} (${arm})`);
     must(`${JSON.stringify(script)} ${JSON.stringify(ws)} ${JSON.stringify(arm)} ${JSON.stringify(rulesDir)} ${JSON.stringify(dir)}`, {
       cwd: ws,
-      env: { ...process.env, ...GIT_IDENTITY, CIB_RUN_DIR: dir, CIB_WORKSPACE: ws, CIB_RULES_DIR: rulesDir, CIB_PROJECT: project.name, CIB_CACHE_DIR: CACHE_DIR, CIB_MODE: mode, CIB_BASE_COMMIT: base, CIB_BASE_KEY: baseKey({ base_commit: base, base_patch: task.base_patch }) },
+      env: { ...process.env, ...GIT_IDENTITY, CIB_RUN_DIR: dir, CIB_WORKSPACE: ws, CIB_RULES_DIR: rulesDir, CIB_PROJECT: project.name, CIB_CACHE_DIR: CACHE_DIR, CIB_MODE: mode, CIB_BASE_COMMIT: base, CIB_BASE_KEY: baseKey({ base_commit: base, base_patch: task.base_patch, kb_variant: task.kb_variant }) },
     });
   }
   const setup = join(ARMS_DIR, arm, 'setup');
@@ -144,7 +147,7 @@ export function prepareWorkspace(dir: string, project: ProjectConfig, task: Pick
     log(`arm setup: ${arm}`);
     must(`${JSON.stringify(setup)} ${JSON.stringify(ws)} ${JSON.stringify(rulesDir)} ${JSON.stringify(dir)}`, {
       cwd: ws,
-      env: { ...process.env, ...GIT_IDENTITY, CIB_RUN_DIR: dir, CIB_WORKSPACE: ws, CIB_RULES_DIR: rulesDir, CIB_PROJECT: project.name, CIB_CACHE_DIR: CACHE_DIR, CIB_MODE: mode, CIB_BASE_COMMIT: base, CIB_BASE_KEY: baseKey({ base_commit: base, base_patch: task.base_patch }) },
+      env: { ...process.env, ...GIT_IDENTITY, CIB_RUN_DIR: dir, CIB_WORKSPACE: ws, CIB_RULES_DIR: rulesDir, CIB_PROJECT: project.name, CIB_CACHE_DIR: CACHE_DIR, CIB_MODE: mode, CIB_BASE_COMMIT: base, CIB_BASE_KEY: baseKey({ base_commit: base, base_patch: task.base_patch, kb_variant: task.kb_variant }) },
     });
   }
 

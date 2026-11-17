@@ -1,0 +1,127 @@
+relationships:
+  - id: rel-99d21aa80a47
+    type: requires_property
+    from: REQ-client-tag-filter-shortcuts-case-sensitive-names
+    to: FACT-client-tag-filter-shortcuts-name-uniqueness
+    created_at: "2026-06-25T17:39:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b0f298442108
+    type: requires_property
+    from: REQ-client-tag-filter-shortcuts-case-sensitive-names
+    to: FACT-client-tag-filter-shortcuts-case-variants-distinct
+    created_at: "2026-06-25T17:39:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-972e947d98d1
+    type: constrains
+    from: REQ-client-tag-filter-shortcuts-case-sensitive-names
+    to: FACT-client-tag-filter-shortcuts-subject
+    created_at: "2026-06-25T17:39:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-383dcadbf604
+    type: requires_property
+    from: REQ-support-ticket-tags-listing-order
+    to: FACT-support-ticket-tags-listing-order
+    created_at: "2026-06-13T15:57:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ba22c67dd246
+    type: constrains
+    from: REQ-support-ticket-tags-listing-order
+    to: FACT-support-ticket-tags-subject
+    created_at: "2026-06-13T15:57:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cab26958606b
+    type: requires_property
+    from: REQ-mobile-mobile-app-offline-search-text-filter-matching
+    to: FACT-mobile-mobile-app-offline-search-text-filter-matching
+    created_at: "2025-03-17T11:56:53.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-603c42010b88
+    type: constrains
+    from: REQ-mobile-mobile-app-offline-search-text-filter-matching
+    to: FACT-mobile-mobile-app-offline-search-subject
+    created_at: "2025-03-17T11:56:53.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ee78668d180b
+    type: requires_property
+    from: REQ-backoffice-back-office-organization-lookup-query-length
+    to: FACT-backoffice-back-office-organization-lookup-query-max-length
+    created_at: "2026-08-27T11:40:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c1fd125a8376
+    type: requires_property
+    from: REQ-backoffice-back-office-organization-lookup-query-length
+    to: FACT-backoffice-back-office-organization-lookup-over-length-input
+    created_at: "2026-08-27T11:40:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b4868ea87d73
+    type: constrains
+    from: REQ-backoffice-back-office-organization-lookup-query-length
+    to: FACT-backoffice-back-office-organization-lookup-subject
+    created_at: "2026-08-27T11:40:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7b3771beb6bf
+    type: requires_property
+    from: REQ-telemetry-telemetry-dashboard-search-invalid-date
+    to: FACT-telemetry-telemetry-dashboard-search-invalid-date-filter
+    created_at: "2026-04-04T14:51:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c23065016c4a
+    type: constrains
+    from: REQ-telemetry-telemetry-dashboard-search-invalid-date
+    to: FACT-telemetry-telemetry-dashboard-search-subject
+    created_at: "2026-04-04T14:51:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4c45d9568831
+    type: requires_property
+    from: REQ-docs-docs-feedback-secret-development-default
+    to: FACT-docs-docs-feedback-secret-development-default
+    created_at: "2025-02-11T15:55:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-dd3939112451
+    type: constrains
+    from: REQ-docs-docs-feedback-secret-development-default
+    to: FACT-docs-docs-feedback-secret-subject
+    created_at: "2025-02-11T15:55:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6bf322eac100
+    type: requires_property
+    from: REQ-backoffice-organizations-name-length
+    to: FACT-backoffice-organizations-name-max-length
+    created_at: "2025-03-16T12:10:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a15a8c61d48a
+    type: constrains
+    from: REQ-backoffice-organizations-name-length
+    to: FACT-backoffice-organizations-subject
+    created_at: "2025-03-16T12:10:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5b026a6eeb42
+    type: requires_property
+    from: REQ-website-newsletter-preference-accounts-reset-and-two-factor
+    to: FACT-website-newsletter-preference-accounts-reset-disables-two-factor
+    created_at: "2025-06-11T12:28:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9af0d73bc003
+    type: constrains
+    from: REQ-website-newsletter-preference-accounts-reset-and-two-factor
+    to: FACT-website-newsletter-preference-accounts-subject
+    created_at: "2025-06-11T12:28:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

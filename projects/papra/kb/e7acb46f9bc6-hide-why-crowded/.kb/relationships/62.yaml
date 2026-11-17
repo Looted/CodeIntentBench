@@ -1,0 +1,176 @@
+relationships:
+  - id: rel-0b812d5292dc
+    type: requires_property
+    from: REQ-papra-office-document-extraction
+    to: FACT-papra-content-extraction-formats-office-formats-supported
+    created_at: "2026-11-16T13:19:33.845Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-office-document-extraction
+    to: FACT-papra-subject-content-extraction-formats
+    created_at: 2026-11-16T13:19:33.846Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c02705ca1f33
+  - type: requires_property
+    from: REQ-papra-webhook-ssrf-at-delivery
+    to: FACT-papra-webhook-ssrf-at-delivery-enforced
+    created_at: 2026-11-16T13:20:21.938Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-e114aca06d26
+  - type: constrains
+    from: REQ-papra-webhook-ssrf-at-delivery
+    to: FACT-papra-subject-webhook-ssrf-at-delivery
+    created_at: 2026-11-16T13:20:21.952Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-913c783cc904
+  - type: requires_property
+    from: REQ-papra-browser-upload-concurrency-limited
+    to: FACT-papra-upload-concurrency-limited
+    created_at: 2026-11-16T13:20:33.716Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-731cfedb165c
+  - type: constrains
+    from: REQ-papra-browser-upload-concurrency-limited
+    to: FACT-papra-subject-upload-concurrency
+    created_at: 2026-11-16T13:20:33.730Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c3d2695e0bfa
+  - type: verified_by
+    from: REQ-papra-webhook-ssrf-at-delivery
+    to: TEST-papra-server-src-modules-admin-organizations-e2e-organizations-e2e
+    created_at: 2026-11-16T13:30:19.215Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-27477066cf62
+  - type: verified_by
+    from: REQ-papra-webhook-ssrf-at-delivery
+    to: TEST-papra-server-src-modules-webhooks-webhooks-usecases
+    created_at: 2026-11-16T13:30:19.223Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c031a0214335
+  - id: rel-24e5e88805ce
+    type: requires_property
+    from: REQ-extension-site-rules-case-sensitive-names
+    to: FACT-extension-site-rules-name-uniqueness
+    created_at: "2026-05-12T10:15:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f519f4c6fafc
+    type: requires_property
+    from: REQ-extension-site-rules-case-sensitive-names
+    to: FACT-extension-site-rules-case-variants-distinct
+    created_at: "2026-05-12T10:15:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9d7f9efe5c9b
+    type: constrains
+    from: REQ-extension-site-rules-case-sensitive-names
+    to: FACT-extension-site-rules-subject
+    created_at: "2026-05-12T10:15:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8407171542f8
+    type: requires_property
+    from: REQ-desktop-desktop-sync-client-local-file-search-unknown-filter
+    to: FACT-desktop-desktop-sync-client-local-file-search-unknown-filter
+    created_at: "2026-02-16T09:04:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-067d7926d0ca
+    type: constrains
+    from: REQ-desktop-desktop-sync-client-local-file-search-unknown-filter
+    to: FACT-desktop-desktop-sync-client-local-file-search-subject
+    created_at: "2026-02-16T09:04:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-253699d91371
+    type: requires_property
+    from: REQ-support-support-portal-ticket-search-case-folding
+    to: FACT-support-support-portal-ticket-search-case-folding
+    created_at: "2025-08-02T17:59:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e4fafd499092
+    type: constrains
+    from: REQ-support-support-portal-ticket-search-case-folding
+    to: FACT-support-support-portal-ticket-search-subject
+    created_at: "2025-08-02T17:59:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7cbafb24c917
+    type: requires_property
+    from: REQ-status-status-page-incident-filter-query-length
+    to: FACT-status-status-page-incident-filter-query-max-length
+    created_at: "2025-05-10T10:34:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d2a3c7e3db98
+    type: requires_property
+    from: REQ-status-status-page-incident-filter-query-length
+    to: FACT-status-status-page-incident-filter-over-length-input
+    created_at: "2025-05-10T10:34:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1b2bb2ed23bc
+    type: constrains
+    from: REQ-status-status-page-incident-filter-query-length
+    to: FACT-status-status-page-incident-filter-subject
+    created_at: "2025-05-10T10:34:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0b4d391ee1e0
+    type: requires_property
+    from: REQ-telemetry-telemetry-dashboard-search-minimum-length
+    to: FACT-telemetry-telemetry-dashboard-search-query-min-length
+    created_at: "2025-05-14T13:14:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d719ec08ba16
+    type: constrains
+    from: REQ-telemetry-telemetry-dashboard-search-minimum-length
+    to: FACT-telemetry-telemetry-dashboard-search-subject
+    created_at: "2025-05-14T13:14:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1e3d34ecd57e
+    type: requires_property
+    from: REQ-marketplace-published-templates-name-uniqueness
+    to: FACT-marketplace-published-templates-name-uniqueness
+    created_at: "2026-02-01T13:45:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e2688d263181
+    type: constrains
+    from: REQ-marketplace-published-templates-name-uniqueness
+    to: FACT-marketplace-published-templates-subject
+    created_at: "2026-02-01T13:45:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7dd7b7c3f944
+    type: requires_property
+    from: REQ-infra-infrastructure-console-accounts-session-lifetime
+    to: FACT-infra-infrastructure-console-accounts-session-days
+    created_at: "2025-07-21T11:22:06.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4b1ccd9d8db3
+    type: requires_property
+    from: REQ-infra-infrastructure-console-accounts-session-lifetime
+    to: FACT-infra-infrastructure-console-accounts-session-idle-minutes
+    created_at: "2025-07-21T11:22:06.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f951cbf7f653
+    type: constrains
+    from: REQ-infra-infrastructure-console-accounts-session-lifetime
+    to: FACT-infra-infrastructure-console-accounts-subject
+    created_at: "2025-07-21T11:22:06.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

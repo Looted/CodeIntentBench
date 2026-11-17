@@ -1,0 +1,169 @@
+relationships:
+  - id: rel-8de22d93194d
+    type: requires_property
+    from: REQ-papra-tag-colour-case-insensitive
+    to: FACT-papra-tags-color-hex-case-insensitive
+    created_at: "2026-11-16T13:18:30.703Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-tag-colour-case-insensitive
+    to: FACT-papra-subject-tags-color
+    created_at: 2026-11-16T13:18:30.704Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b0fe94386310
+  - id: rel-dcea9871e20d
+    type: requires_property
+    from: REQ-client-saved-views-names-trimmed
+    to: FACT-client-saved-views-name-trimmed
+    created_at: "2026-02-02T10:53:06.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-175787631f08
+    type: requires_property
+    from: REQ-client-saved-views-names-trimmed
+    to: FACT-client-saved-views-empty-name-refused
+    created_at: "2026-02-02T10:53:06.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-99d662030a50
+    type: constrains
+    from: REQ-client-saved-views-names-trimmed
+    to: FACT-client-saved-views-subject
+    created_at: "2026-02-02T10:53:06.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-24c13494d277
+    type: requires_property
+    from: REQ-mobile-offline-tag-drafts-maximum-count
+    to: FACT-mobile-offline-tag-drafts-maximum-count
+    created_at: "2025-09-26T10:34:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b1fecc86c904
+    type: requires_property
+    from: REQ-mobile-offline-tag-drafts-maximum-count
+    to: FACT-mobile-offline-tag-drafts-limit-configurable
+    created_at: "2025-09-26T10:34:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-082f0c9d231d
+    type: constrains
+    from: REQ-mobile-offline-tag-drafts-maximum-count
+    to: FACT-mobile-offline-tag-drafts-subject
+    created_at: "2025-09-26T10:34:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9fb189b1a217
+    type: requires_property
+    from: REQ-extension-clip-presets-listing-order
+    to: FACT-extension-clip-presets-listing-order
+    created_at: "2025-04-28T13:36:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9803c7ba95a7
+    type: constrains
+    from: REQ-extension-clip-presets-listing-order
+    to: FACT-extension-clip-presets-subject
+    created_at: "2025-04-28T13:36:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-661a19c47841
+    type: requires_property
+    from: REQ-backoffice-coupon-codes-maximum-count
+    to: FACT-backoffice-coupon-codes-maximum-count
+    created_at: "2025-03-15T08:38:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1625eac5d303
+    type: requires_property
+    from: REQ-backoffice-coupon-codes-maximum-count
+    to: FACT-backoffice-coupon-codes-limit-configurable
+    created_at: "2025-03-15T08:38:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-facbc581a681
+    type: constrains
+    from: REQ-backoffice-coupon-codes-maximum-count
+    to: FACT-backoffice-coupon-codes-subject
+    created_at: "2025-03-15T08:38:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-43b2a223a7c8
+    type: requires_property
+    from: REQ-infra-backup-encryption-key-development-default
+    to: FACT-infra-backup-encryption-key-development-default
+    created_at: "2025-12-27T13:49:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0398f9fa1c60
+    type: constrains
+    from: REQ-infra-backup-encryption-key-development-default
+    to: FACT-infra-backup-encryption-key-subject
+    created_at: "2025-12-27T13:49:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b3bc0e7b2225
+    type: requires_property
+    from: REQ-status-status-subscriptions-blocked-domains
+    to: FACT-status-status-subscriptions-disposable-domains-refused
+    created_at: "2026-08-07T17:44:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-91d00ac3a101
+    type: requires_property
+    from: REQ-status-status-subscriptions-blocked-domains
+    to: FACT-status-status-subscriptions-list-precedence
+    created_at: "2026-08-07T17:44:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c7105108578b
+    type: constrains
+    from: REQ-status-status-subscriptions-blocked-domains
+    to: FACT-status-status-subscriptions-subject
+    created_at: "2026-08-07T17:44:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-dd96a3d231c9
+    type: requires_property
+    from: REQ-backoffice-staff-teams-deletion-grace
+    to: FACT-backoffice-staff-teams-restore-window-days
+    created_at: "2026-03-13T16:27:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-58ed7f27c64b
+    type: requires_property
+    from: REQ-backoffice-staff-teams-deletion-grace
+    to: FACT-backoffice-staff-teams-purged-after-window
+    created_at: "2026-03-13T16:27:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a2e0909751b8
+    type: constrains
+    from: REQ-backoffice-staff-teams-deletion-grace
+    to: FACT-backoffice-staff-teams-subject
+    created_at: "2026-03-13T16:27:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ad09a54f402e
+    type: requires_property
+    from: REQ-portal-partner-portal-accounts-concurrent-sessions
+    to: FACT-portal-partner-portal-accounts-concurrent-sessions
+    created_at: "2026-05-01T08:29:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3bbafb186935
+    type: requires_property
+    from: REQ-portal-partner-portal-accounts-concurrent-sessions
+    to: FACT-portal-partner-portal-accounts-over-limit
+    created_at: "2026-05-01T08:29:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-449f164f464e
+    type: constrains
+    from: REQ-portal-partner-portal-accounts-concurrent-sessions
+    to: FACT-portal-partner-portal-accounts-subject
+    created_at: "2026-05-01T08:29:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

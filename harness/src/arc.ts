@@ -286,7 +286,7 @@ export async function runArc(projectName: string, arc: Arc, arm: string, attempt
     return record;
   };
   try {
-    prepareWorkspace(dir, project, { base_commit: arc.base_commit, base_patch: arc.base_patch, source: { commit: sources[0] } }, arm, opts.log, { rules: 'none', convention: true });
+    prepareWorkspace(dir, project, { base_commit: arc.base_commit, base_patch: arc.base_patch, kb_variant: arc.kb_variant, source: { commit: sources[0] } }, arm, opts.log, { rules: 'none', convention: true });
   } catch (e) {
     // An AGENTS.md that does not fit the model's context is a result, not a harness error: recorded, never truncated.
     readSize();

@@ -1,0 +1,71 @@
+relationships:
+  - id: rel-a35ce5c9e245
+    type: requires_property
+    from: REQ-status-incident-labels-names-trimmed
+    to: FACT-status-incident-labels-name-trimmed
+    created_at: "2025-03-01T11:49:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-84e105398af3
+    type: requires_property
+    from: REQ-status-incident-labels-names-trimmed
+    to: FACT-status-incident-labels-empty-name-refused
+    created_at: "2025-03-01T11:49:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-615aa49b5870
+    type: constrains
+    from: REQ-status-incident-labels-names-trimmed
+    to: FACT-status-incident-labels-subject
+    created_at: "2025-03-01T11:49:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0d45878a7731
+    type: requires_property
+    from: REQ-backoffice-back-office-organization-lookup-invalid-date
+    to: FACT-backoffice-back-office-organization-lookup-invalid-date-filter
+    created_at: "2025-08-04T14:23:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1c5c768d9bad
+    type: constrains
+    from: REQ-backoffice-back-office-organization-lookup-invalid-date
+    to: FACT-backoffice-back-office-organization-lookup-subject
+    created_at: "2025-08-04T14:23:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-21da66aedc60
+    type: requires_property
+    from: REQ-license-license-lookup-query-length
+    to: FACT-license-license-lookup-query-max-length
+    created_at: "2026-07-18T12:05:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c13c0f279f93
+    type: requires_property
+    from: REQ-license-license-lookup-query-length
+    to: FACT-license-license-lookup-over-length-input
+    created_at: "2026-07-18T12:05:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-aa8ab53e8d64
+    type: constrains
+    from: REQ-license-license-lookup-query-length
+    to: FACT-license-license-lookup-subject
+    created_at: "2026-07-18T12:05:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7b49bb4ce9dd
+    type: requires_property
+    from: REQ-backoffice-organizations-at-the-limit
+    to: FACT-backoffice-organizations-at-limit
+    created_at: "2026-02-18T14:04:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1fdd16233ecf
+    type: constrains
+    from: REQ-backoffice-organizations-at-the-limit
+    to: FACT-backoffice-organizations-subject
+    created_at: "2026-02-18T14:04:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

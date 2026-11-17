@@ -1,0 +1,127 @@
+relationships:
+  - id: rel-d2255de13ab3
+    type: requires_property
+    from: REQ-papra-ai-auto-tagging
+    to: FACT-papra-auto-tagging-ai-available
+    created_at: "2026-11-16T13:19:20.097Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-ai-auto-tagging
+    to: FACT-papra-subject-auto-tagging-ai
+    created_at: 2026-11-16T13:19:20.098Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ff493643120b
+  - type: requires_property
+    from: REQ-papra-ai-auto-tagging
+    to: FACT-papra-auto-tagging-ai-can-create-tags
+    created_at: 2026-11-16T13:19:20.108Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b8bdd9c8b13e
+  - id: rel-c8209adbb360
+    type: requires_property
+    from: REQ-docs-glossary-terms-delete-in-use
+    to: FACT-docs-glossary-terms-delete-in-use
+    created_at: "2026-01-11T12:34:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-79febf978cd5
+    type: constrains
+    from: REQ-docs-glossary-terms-delete-in-use
+    to: FACT-docs-glossary-terms-subject
+    created_at: "2026-01-11T12:34:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b9b0b813116d
+    type: supersedes
+    from: REQ-desktop-folder-to-tag-mappings-maximum-count
+    to: REQ-desktop-folder-to-tag-mappings-maximum-count-earlier
+    created_at: "2025-08-11T12:10:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5561cf616613
+    type: requires_property
+    from: REQ-desktop-folder-to-tag-mappings-maximum-count
+    to: FACT-desktop-folder-to-tag-mappings-maximum-count
+    created_at: "2025-08-11T12:10:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fcfa0fac3caa
+    type: requires_property
+    from: REQ-desktop-folder-to-tag-mappings-maximum-count
+    to: FACT-desktop-folder-to-tag-mappings-limit-configurable
+    created_at: "2025-08-11T12:10:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0eb0b514165c
+    type: constrains
+    from: REQ-desktop-folder-to-tag-mappings-maximum-count
+    to: FACT-desktop-folder-to-tag-mappings-subject
+    created_at: "2025-08-11T12:10:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-255d02ea0707
+    type: requires_property
+    from: REQ-forum-community-forum-member-search-query-length
+    to: FACT-forum-community-forum-member-search-query-max-length
+    created_at: "2026-09-13T08:22:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b4e95a90f0a8
+    type: requires_property
+    from: REQ-forum-community-forum-member-search-query-length
+    to: FACT-forum-community-forum-member-search-over-length-input
+    created_at: "2026-09-13T08:22:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8072a2e8b03f
+    type: constrains
+    from: REQ-forum-community-forum-member-search-query-length
+    to: FACT-forum-community-forum-member-search-subject
+    created_at: "2026-09-13T08:22:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-89feceace654
+    type: requires_property
+    from: REQ-desktop-linked-organizations-at-the-limit
+    to: FACT-desktop-linked-organizations-at-limit
+    created_at: "2026-06-09T11:13:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3c729c3ccd44
+    type: constrains
+    from: REQ-desktop-linked-organizations-at-the-limit
+    to: FACT-desktop-linked-organizations-subject
+    created_at: "2026-06-09T11:13:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f021da244be3
+    type: requires_property
+    from: REQ-support-shared-inboxes-at-the-limit
+    to: FACT-support-shared-inboxes-at-limit
+    created_at: "2025-07-05T17:52:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-dd840252e3f7
+    type: constrains
+    from: REQ-support-shared-inboxes-at-the-limit
+    to: FACT-support-shared-inboxes-subject
+    created_at: "2025-07-05T17:52:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ecdab2afdee8
+    type: requires_property
+    from: REQ-website-demo-workspaces-name-uniqueness
+    to: FACT-website-demo-workspaces-name-uniqueness
+    created_at: "2026-03-26T11:57:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8dc812a81f06
+    type: constrains
+    from: REQ-website-demo-workspaces-name-uniqueness
+    to: FACT-website-demo-workspaces-subject
+    created_at: "2026-03-26T11:57:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

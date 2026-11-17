@@ -1,0 +1,134 @@
+relationships:
+  - id: rel-273fb4dc8cfc
+    type: requires_property
+    from: REQ-papra-b2-storage-driver-dropped
+    to: FACT-papra-storage-b2-driver-available
+    created_at: "2026-11-16T13:16:48.990Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-b2-storage-driver-dropped
+    to: FACT-papra-subject-storage-b2-driver
+    created_at: 2026-11-16T13:16:48.991Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-252f26dbd814
+  - type: requires_property
+    from: REQ-papra-b2-storage-driver-dropped
+    to: FACT-papra-storage-b2-driver-replacement
+    created_at: 2026-11-16T13:16:49.002Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-962027bbb87b
+  - type: supersedes
+    from: REQ-papra-b2-storage-driver-dropped
+    to: REQ-papra-b2-storage-driver-supported
+    created_at: 2026-11-16T13:16:49.005Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c1fb279944f4
+  - id: rel-b9b702e36a79
+    type: requires_property
+    from: REQ-desktop-folder-to-tag-mappings-names-trimmed
+    to: FACT-desktop-folder-to-tag-mappings-name-trimmed
+    created_at: "2026-08-01T08:42:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d72176ce8f6a
+    type: requires_property
+    from: REQ-desktop-folder-to-tag-mappings-names-trimmed
+    to: FACT-desktop-folder-to-tag-mappings-empty-name-refused
+    created_at: "2026-08-01T08:42:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-78c0788c47b9
+    type: constrains
+    from: REQ-desktop-folder-to-tag-mappings-names-trimmed
+    to: FACT-desktop-folder-to-tag-mappings-subject
+    created_at: "2026-08-01T08:42:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e78ca6e8e7d3
+    type: requires_property
+    from: REQ-marketplace-template-tags-batch-size
+    to: FACT-marketplace-template-tags-batch-maximum
+    created_at: "2026-05-19T16:28:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9bd59c2facd7
+    type: constrains
+    from: REQ-marketplace-template-tags-batch-size
+    to: FACT-marketplace-template-tags-subject
+    created_at: "2026-05-19T16:28:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7c1957617ab1
+    type: requires_property
+    from: REQ-website-blog-search-empty-query
+    to: FACT-website-blog-search-empty-query
+    created_at: "2025-09-07T15:17:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2edecd8745c3
+    type: constrains
+    from: REQ-website-blog-search-empty-query
+    to: FACT-website-blog-search-subject
+    created_at: "2025-09-07T15:17:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1a93417f8848
+    type: requires_property
+    from: REQ-forum-forum-groups-at-the-limit
+    to: FACT-forum-forum-groups-at-limit
+    created_at: "2026-06-07T12:29:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4bbd148d6d4b
+    type: constrains
+    from: REQ-forum-forum-groups-at-the-limit
+    to: FACT-forum-forum-groups-subject
+    created_at: "2026-06-07T12:29:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-599325a1c261
+    type: requires_property
+    from: REQ-forum-forum-groups-name-length
+    to: FACT-forum-forum-groups-name-max-length
+    created_at: "2025-10-14T08:48:53.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c5c629de110e
+    type: constrains
+    from: REQ-forum-forum-groups-name-length
+    to: FACT-forum-forum-groups-subject
+    created_at: "2025-10-14T08:48:53.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7f31d824b44d
+    type: requires_property
+    from: REQ-status-subscriber-lists-ownership-transfer
+    to: FACT-status-subscriber-lists-ownership-transfer
+    created_at: "2026-09-28T09:59:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a0235a922f73
+    type: constrains
+    from: REQ-status-subscriber-lists-ownership-transfer
+    to: FACT-status-subscriber-lists-subject
+    created_at: "2026-09-28T09:59:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5ea0d1236178
+    type: requires_property
+    from: REQ-telemetry-telemetry-dashboard-accounts-reset-and-sessions
+    to: FACT-telemetry-telemetry-dashboard-accounts-sessions-ended-on-reset
+    created_at: "2025-02-21T17:15:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-27e525cc2809
+    type: constrains
+    from: REQ-telemetry-telemetry-dashboard-accounts-reset-and-sessions
+    to: FACT-telemetry-telemetry-dashboard-accounts-subject
+    created_at: "2025-02-21T17:15:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

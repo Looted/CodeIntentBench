@@ -1,0 +1,71 @@
+relationships:
+  - id: rel-fee18011c7af
+    type: requires_property
+    from: REQ-forum-forum-tags-batch-size
+    to: FACT-forum-forum-tags-batch-maximum
+    created_at: "2025-06-05T14:33:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-41c0a4ee4f6b
+    type: constrains
+    from: REQ-forum-forum-tags-batch-size
+    to: FACT-forum-forum-tags-subject
+    created_at: "2025-06-05T14:33:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c8c176636c50
+    type: requires_property
+    from: REQ-portal-partner-portal-client-search-query-length
+    to: FACT-portal-partner-portal-client-search-query-max-length
+    created_at: "2026-04-20T14:01:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1e37f840d603
+    type: requires_property
+    from: REQ-portal-partner-portal-client-search-query-length
+    to: FACT-portal-partner-portal-client-search-over-length-input
+    created_at: "2026-04-20T14:01:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-257a6c10d676
+    type: constrains
+    from: REQ-portal-partner-portal-client-search-query-length
+    to: FACT-portal-partner-portal-client-search-subject
+    created_at: "2026-04-20T14:01:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7cd51301d3b8
+    type: requires_property
+    from: REQ-backoffice-staff-teams-ownership-transfer
+    to: FACT-backoffice-staff-teams-ownership-transfer
+    created_at: "2026-07-26T08:41:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-506af9a6f09f
+    type: constrains
+    from: REQ-backoffice-staff-teams-ownership-transfer
+    to: FACT-backoffice-staff-teams-subject
+    created_at: "2026-07-26T08:41:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4498f58f6991
+    type: requires_property
+    from: REQ-forum-community-forum-accounts-reset-link-single-use
+    to: FACT-forum-community-forum-accounts-reset-link-single-use
+    created_at: "2026-08-13T08:41:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-73796e335081
+    type: requires_property
+    from: REQ-forum-community-forum-accounts-reset-link-single-use
+    to: FACT-forum-community-forum-accounts-new-link-invalidates-old
+    created_at: "2026-08-13T08:41:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1096b0939d20
+    type: constrains
+    from: REQ-forum-community-forum-accounts-reset-link-single-use
+    to: FACT-forum-community-forum-accounts-subject
+    created_at: "2026-08-13T08:41:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

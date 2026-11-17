@@ -1,0 +1,155 @@
+relationships:
+  - id: rel-019f0b76f44a
+    type: requires_property
+    from: REQ-mobile-saved-filters-listing-order
+    to: FACT-mobile-saved-filters-listing-order
+    created_at: "2026-08-23T15:42:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-272d06b4e6fc
+    type: constrains
+    from: REQ-mobile-saved-filters-listing-order
+    to: FACT-mobile-saved-filters-subject
+    created_at: "2026-08-23T15:42:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-97b2364c7142
+    type: requires_property
+    from: REQ-mobile-quick-labels-maximum-count-earlier
+    to: FACT-mobile-quick-labels-maximum-count-earlier
+    created_at: "2025-08-28T09:24:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-db9e97738364
+    type: constrains
+    from: REQ-mobile-quick-labels-maximum-count-earlier
+    to: FACT-mobile-quick-labels-subject
+    created_at: "2025-08-28T09:24:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-66be7685dc99
+    type: requires_property
+    from: REQ-marketplace-template-marketplace-search-case-folding
+    to: FACT-marketplace-template-marketplace-search-case-folding
+    created_at: "2026-02-20T13:30:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-244bb6eb9390
+    type: constrains
+    from: REQ-marketplace-template-marketplace-search-case-folding
+    to: FACT-marketplace-template-marketplace-search-subject
+    created_at: "2026-02-20T13:30:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9e362294abc1
+    type: requires_property
+    from: REQ-marketplace-author-registration-blocked-domains
+    to: FACT-marketplace-author-registration-disposable-domains-refused
+    created_at: "2026-07-03T17:50:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a93a2bc5a997
+    type: requires_property
+    from: REQ-marketplace-author-registration-blocked-domains
+    to: FACT-marketplace-author-registration-list-precedence
+    created_at: "2026-07-03T17:50:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e481bbe29542
+    type: constrains
+    from: REQ-marketplace-author-registration-blocked-domains
+    to: FACT-marketplace-author-registration-subject
+    created_at: "2026-07-03T17:50:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f95402c841aa
+    type: requires_property
+    from: REQ-license-license-trial-requests-repeat-address
+    to: FACT-license-license-trial-requests-repeat-address
+    created_at: "2026-05-07T12:32:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c493c5cf911b
+    type: constrains
+    from: REQ-license-license-trial-requests-repeat-address
+    to: FACT-license-license-trial-requests-subject
+    created_at: "2026-05-07T12:32:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a0d0cad23973
+    type: requires_property
+    from: REQ-forum-forum-groups-what-counts
+    to: FACT-forum-forum-groups-counted-toward-limit
+    created_at: "2025-04-09T16:22:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d4a81b4c2a4d
+    type: requires_property
+    from: REQ-forum-forum-groups-what-counts
+    to: FACT-forum-forum-groups-limit-detail
+    created_at: "2025-04-09T16:22:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b0fe22065318
+    type: constrains
+    from: REQ-forum-forum-groups-what-counts
+    to: FACT-forum-forum-groups-subject
+    created_at: "2025-04-09T16:22:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-467d58a54ccf
+    type: requires_property
+    from: REQ-license-license-keys-limit-override
+    to: FACT-license-license-keys-limit-override
+    created_at: "2025-06-12T10:41:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5c0ca36881df
+    type: constrains
+    from: REQ-license-license-keys-limit-override
+    to: FACT-license-license-keys-subject
+    created_at: "2025-06-12T10:41:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b463b9e88c1a
+    type: requires_property
+    from: REQ-telemetry-dashboards-limit-override
+    to: FACT-telemetry-dashboards-limit-override
+    created_at: "2026-06-20T09:59:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f825b84f961a
+    type: constrains
+    from: REQ-telemetry-dashboards-limit-override
+    to: FACT-telemetry-dashboards-subject
+    created_at: "2026-06-20T09:59:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-eb56a2cd38e0
+    type: requires_property
+    from: REQ-education-classroom-workspaces-name-uniqueness
+    to: FACT-education-classroom-workspaces-name-uniqueness
+    created_at: "2025-04-14T09:37:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f49e6154cf64
+    type: constrains
+    from: REQ-education-classroom-workspaces-name-uniqueness
+    to: FACT-education-classroom-workspaces-subject
+    created_at: "2025-04-14T09:37:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3e7a2a53c92d
+    type: requires_property
+    from: REQ-status-subscriber-lists-at-the-limit
+    to: FACT-status-subscriber-lists-at-limit
+    created_at: "2025-02-07T16:57:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-deea0a7f0e81
+    type: constrains
+    from: REQ-status-subscriber-lists-at-the-limit
+    to: FACT-status-subscriber-lists-subject
+    created_at: "2025-02-07T16:57:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

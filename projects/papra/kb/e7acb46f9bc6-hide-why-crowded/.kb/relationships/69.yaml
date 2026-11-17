@@ -1,0 +1,64 @@
+relationships:
+  - id: rel-22dff972adb6
+    type: requires_property
+    from: REQ-education-course-labels-unique-ignoring-case
+    to: FACT-education-course-labels-name-uniqueness
+    created_at: "2025-05-18T17:15:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-bf579a8f5cad
+    type: requires_property
+    from: REQ-education-course-labels-unique-ignoring-case
+    to: FACT-education-course-labels-duplicate-error
+    created_at: "2025-05-18T17:15:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6d489cfbfa6d
+    type: constrains
+    from: REQ-education-course-labels-unique-ignoring-case
+    to: FACT-education-course-labels-subject
+    created_at: "2025-05-18T17:15:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-169a68f31630
+    type: requires_property
+    from: REQ-portal-partner-portal-client-search-text-filter-matching
+    to: FACT-portal-partner-portal-client-search-text-filter-matching
+    created_at: "2025-03-22T09:22:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ee8614dbc48c
+    type: constrains
+    from: REQ-portal-partner-portal-client-search-text-filter-matching
+    to: FACT-portal-partner-portal-client-search-subject
+    created_at: "2025-03-22T09:22:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0348357c3090
+    type: requires_property
+    from: REQ-license-license-signing-key-source
+    to: FACT-license-license-signing-key-value-source
+    created_at: "2025-09-03T10:09:45.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-abad0d0ff63d
+    type: constrains
+    from: REQ-license-license-signing-key-source
+    to: FACT-license-license-signing-key-subject
+    created_at: "2025-09-03T10:09:45.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6f185fdb5a7e
+    type: requires_property
+    from: REQ-forum-forum-groups-name-uniqueness
+    to: FACT-forum-forum-groups-name-uniqueness
+    created_at: "2025-02-15T14:30:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f198a811d6ca
+    type: constrains
+    from: REQ-forum-forum-groups-name-uniqueness
+    to: FACT-forum-forum-groups-subject
+    created_at: "2025-02-15T14:30:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

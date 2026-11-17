@@ -1,0 +1,22 @@
+relationships:
+  - id: rel-c814a893175a
+    type: requires_property
+    from: REQ-backoffice-back-office-staff-accounts-session-lifetime
+    to: FACT-backoffice-back-office-staff-accounts-session-days
+    created_at: "2025-11-09T16:13:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-69dbc8c0cd9d
+    type: requires_property
+    from: REQ-backoffice-back-office-staff-accounts-session-lifetime
+    to: FACT-backoffice-back-office-staff-accounts-session-idle-minutes
+    created_at: "2025-11-09T16:13:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a346c058b543
+    type: constrains
+    from: REQ-backoffice-back-office-staff-accounts-session-lifetime
+    to: FACT-backoffice-back-office-staff-accounts-subject
+    created_at: "2025-11-09T16:13:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

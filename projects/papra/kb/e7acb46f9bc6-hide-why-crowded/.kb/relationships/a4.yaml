@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-f9493baad497
+    type: requires_property
+    from: REQ-website-case-study-tags-listing-order
+    to: FACT-website-case-study-tags-listing-order
+    created_at: "2025-11-05T12:33:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f1a8221f0f6c
+    type: constrains
+    from: REQ-website-case-study-tags-listing-order
+    to: FACT-website-case-study-tags-subject
+    created_at: "2025-11-05T12:33:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6902cd983dd4
+    type: requires_property
+    from: REQ-backoffice-back-office-audit-log-search-query-length-earlier
+    to: FACT-backoffice-back-office-audit-log-search-query-max-length-earlier
+    created_at: "2025-03-13T09:40:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-38e781b7799d
+    type: constrains
+    from: REQ-backoffice-back-office-audit-log-search-query-length-earlier
+    to: FACT-backoffice-back-office-audit-log-search-subject
+    created_at: "2025-03-13T09:40:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

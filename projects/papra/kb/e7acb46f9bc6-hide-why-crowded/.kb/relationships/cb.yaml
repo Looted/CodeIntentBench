@@ -1,0 +1,92 @@
+relationships:
+  - id: rel-cf022f509306
+    type: requires_property
+    from: REQ-extension-clip-presets-delete-in-use
+    to: FACT-extension-clip-presets-delete-in-use
+    created_at: "2026-07-10T13:36:24.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1c8c9a2abd73
+    type: constrains
+    from: REQ-extension-clip-presets-delete-in-use
+    to: FACT-extension-clip-presets-subject
+    created_at: "2026-07-10T13:36:24.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-613e3f2a4862
+    type: requires_property
+    from: REQ-docs-api-reference-search-text-filter-matching
+    to: FACT-docs-api-reference-search-text-filter-matching
+    created_at: "2025-08-09T15:50:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ea4148fdd3d3
+    type: constrains
+    from: REQ-docs-api-reference-search-text-filter-matching
+    to: FACT-docs-api-reference-search-subject
+    created_at: "2025-08-09T15:50:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5472a3a4f847
+    type: requires_property
+    from: REQ-cli-papra-history-filter-unknown-filter
+    to: FACT-cli-papra-history-filter-unknown-filter
+    created_at: "2025-06-06T16:33:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6dac6cdc9611
+    type: constrains
+    from: REQ-cli-papra-history-filter-unknown-filter
+    to: FACT-cli-papra-history-filter-subject
+    created_at: "2025-06-06T16:33:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-177cc369c298
+    type: requires_property
+    from: REQ-backoffice-back-office-invoice-search-invalid-date
+    to: FACT-backoffice-back-office-invoice-search-invalid-date-filter
+    created_at: "2026-07-11T15:26:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4733fcd4e92a
+    type: constrains
+    from: REQ-backoffice-back-office-invoice-search-invalid-date
+    to: FACT-backoffice-back-office-invoice-search-subject
+    created_at: "2026-07-11T15:26:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ae6e24a7a289
+    type: requires_property
+    from: REQ-support-support-portal-ticket-search-invalid-date
+    to: FACT-support-support-portal-ticket-search-invalid-date-filter
+    created_at: "2025-06-12T13:30:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-079886501496
+    type: constrains
+    from: REQ-support-support-portal-ticket-search-invalid-date
+    to: FACT-support-support-portal-ticket-search-subject
+    created_at: "2025-06-12T13:30:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-474767c8ca36
+    type: requires_property
+    from: REQ-n8n-organization-connections-maximum-count
+    to: FACT-n8n-organization-connections-maximum-count
+    created_at: "2025-09-21T14:11:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e49da1a7c176
+    type: requires_property
+    from: REQ-n8n-organization-connections-maximum-count
+    to: FACT-n8n-organization-connections-limit-configurable
+    created_at: "2025-09-21T14:11:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-38b7e8be840e
+    type: constrains
+    from: REQ-n8n-organization-connections-maximum-count
+    to: FACT-n8n-organization-connections-subject
+    created_at: "2025-09-21T14:11:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

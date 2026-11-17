@@ -1,0 +1,36 @@
+relationships:
+  - id: rel-45fd3074fa2f
+    type: requires_property
+    from: REQ-mobile-saved-filters-batch-size
+    to: FACT-mobile-saved-filters-batch-maximum
+    created_at: "2026-01-24T12:33:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-14447c3f1fe1
+    type: constrains
+    from: REQ-mobile-saved-filters-batch-size
+    to: FACT-mobile-saved-filters-subject
+    created_at: "2026-01-24T12:33:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0efc6a6651e1
+    type: requires_property
+    from: REQ-support-support-portal-accounts-reset-link-single-use
+    to: FACT-support-support-portal-accounts-reset-link-single-use
+    created_at: "2025-10-20T14:39:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ccb7bbb9dae9
+    type: requires_property
+    from: REQ-support-support-portal-accounts-reset-link-single-use
+    to: FACT-support-support-portal-accounts-new-link-invalidates-old
+    created_at: "2025-10-20T14:39:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f5c353855167
+    type: constrains
+    from: REQ-support-support-portal-accounts-reset-link-single-use
+    to: FACT-support-support-portal-accounts-subject
+    created_at: "2025-10-20T14:39:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

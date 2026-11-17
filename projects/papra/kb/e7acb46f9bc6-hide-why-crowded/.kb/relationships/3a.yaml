@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-d7ac0f4e3653
+    type: requires_property
+    from: REQ-telemetry-dashboard-tags-batch-size
+    to: FACT-telemetry-dashboard-tags-batch-maximum
+    created_at: "2026-01-18T17:50:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a4d75658a099
+    type: constrains
+    from: REQ-telemetry-dashboard-tags-batch-size
+    to: FACT-telemetry-dashboard-tags-subject
+    created_at: "2026-01-18T17:50:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e35dfc2af518
+    type: requires_property
+    from: REQ-marketplace-author-registration-email-confirmation
+    to: FACT-marketplace-author-registration-email-confirmation
+    created_at: "2026-08-05T15:08:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c3824d73515d
+    type: constrains
+    from: REQ-marketplace-author-registration-email-confirmation
+    to: FACT-marketplace-author-registration-subject
+    created_at: "2026-08-05T15:08:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3976c6b2e108
+    type: requires_property
+    from: REQ-education-education-portal-accounts-reset-unknown-address
+    to: FACT-education-education-portal-accounts-reset-reveals-account
+    created_at: "2025-05-13T12:06:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-28b0ce3b1cac
+    type: constrains
+    from: REQ-education-education-portal-accounts-reset-unknown-address
+    to: FACT-education-education-portal-accounts-subject
+    created_at: "2025-05-13T12:06:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a7e43031fb73
+    type: requires_property
+    from: REQ-docs-documentation-contributor-accounts-reset-notification
+    to: FACT-docs-documentation-contributor-accounts-reset-confirmation-email
+    created_at: "2025-09-01T14:13:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6ac27463234b
+    type: constrains
+    from: REQ-docs-documentation-contributor-accounts-reset-notification
+    to: FACT-docs-documentation-contributor-accounts-subject
+    created_at: "2025-09-01T14:13:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

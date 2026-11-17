@@ -1,0 +1,64 @@
+relationships:
+  - id: rel-2604c7ab5444
+    type: supersedes
+    from: REQ-mobile-quick-labels-maximum-count
+    to: REQ-mobile-quick-labels-maximum-count-earlier
+    created_at: "2026-03-08T08:51:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-74f272c1f707
+    type: requires_property
+    from: REQ-mobile-quick-labels-maximum-count
+    to: FACT-mobile-quick-labels-maximum-count
+    created_at: "2026-03-08T08:51:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a60da4e707f3
+    type: requires_property
+    from: REQ-mobile-quick-labels-maximum-count
+    to: FACT-mobile-quick-labels-limit-configurable
+    created_at: "2026-03-08T08:51:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-82f012233542
+    type: constrains
+    from: REQ-mobile-quick-labels-maximum-count
+    to: FACT-mobile-quick-labels-subject
+    created_at: "2026-03-08T08:51:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6e1364e4e527
+    type: requires_property
+    from: REQ-website-webinar-registration-allowed-domains
+    to: FACT-website-webinar-registration-allowed-domain-matching
+    created_at: "2026-06-20T11:27:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cad4b814ba30
+    type: requires_property
+    from: REQ-website-webinar-registration-allowed-domains
+    to: FACT-website-webinar-registration-domain-case-folding
+    created_at: "2026-06-20T11:27:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7375867ac704
+    type: constrains
+    from: REQ-website-webinar-registration-allowed-domains
+    to: FACT-website-webinar-registration-subject
+    created_at: "2026-06-20T11:27:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8d2b6a20743b
+    type: requires_property
+    from: REQ-portal-client-workspaces-at-the-limit
+    to: FACT-portal-client-workspaces-at-limit
+    created_at: "2026-05-15T10:40:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-efe8837ed92b
+    type: constrains
+    from: REQ-portal-client-workspaces-at-the-limit
+    to: FACT-portal-client-workspaces-subject
+    created_at: "2026-05-15T10:40:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

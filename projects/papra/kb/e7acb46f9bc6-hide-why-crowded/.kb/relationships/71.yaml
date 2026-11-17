@@ -1,0 +1,99 @@
+relationships:
+  - id: rel-19916ae85e87
+    type: verified_by
+    from: REQ-documents-are-stored-as-ingested-with-no-m-73A751A1
+    to: TEST-papra-server-src-modules-documents-documents-usecases
+    created_at: "2026-10-14T12:09:44.440Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: requires_property
+    from: REQ-documents-are-stored-as-ingested-with-no-m-73A751A1
+    to: FACT-papra-document-stored-file-write-once
+    created_at: 2026-11-15T21:42:28.538Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-0b9be8a049cc
+  - type: constrains
+    from: REQ-documents-are-stored-as-ingested-with-no-m-73A751A1
+    to: FACT-papra-subject-document-stored-file
+    created_at: 2026-11-15T21:42:28.543Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-72b9055482fe
+  - type: verified_by
+    from: REQ-documents-are-stored-as-ingested-with-no-m-73A751A1
+    to: TEST-papra-server-src-modules-storage-storage-usecases
+    created_at: 2026-11-16T13:23:36.747Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-770eb3d086ff
+  - id: rel-ec3f466adedd
+    type: requires_property
+    from: REQ-backoffice-coupon-codes-unique-ignoring-case
+    to: FACT-backoffice-coupon-codes-name-uniqueness
+    created_at: "2026-08-02T12:54:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-17e714f26442
+    type: requires_property
+    from: REQ-backoffice-coupon-codes-unique-ignoring-case
+    to: FACT-backoffice-coupon-codes-duplicate-error
+    created_at: "2026-08-02T12:54:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5e1958933e35
+    type: constrains
+    from: REQ-backoffice-coupon-codes-unique-ignoring-case
+    to: FACT-backoffice-coupon-codes-subject
+    created_at: "2026-08-02T12:54:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e6ab9dcd3e87
+    type: requires_property
+    from: REQ-portal-partner-portal-client-search-invalid-date
+    to: FACT-portal-partner-portal-client-search-invalid-date-filter
+    created_at: "2025-04-11T09:24:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-39cfa6a6c770
+    type: constrains
+    from: REQ-portal-partner-portal-client-search-invalid-date
+    to: FACT-portal-partner-portal-client-search-subject
+    created_at: "2025-04-11T09:24:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2fce6f47e94f
+    type: requires_property
+    from: REQ-backoffice-backoffice-session-secret-never-logged
+    to: FACT-backoffice-backoffice-session-secret-value-logged
+    created_at: "2025-11-20T08:22:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-aa7ebcd29269
+    type: requires_property
+    from: REQ-backoffice-backoffice-session-secret-never-logged
+    to: FACT-backoffice-backoffice-session-secret-startup-log
+    created_at: "2025-11-20T08:22:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b87bd919f785
+    type: constrains
+    from: REQ-backoffice-backoffice-session-secret-never-logged
+    to: FACT-backoffice-backoffice-session-secret-subject
+    created_at: "2025-11-20T08:22:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c284b02d639c
+    type: requires_property
+    from: REQ-infra-infrastructure-console-accounts-email-change
+    to: FACT-infra-infrastructure-console-accounts-sessions-on-email-change
+    created_at: "2025-04-17T11:37:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-21b2373cbe6b
+    type: constrains
+    from: REQ-infra-infrastructure-console-accounts-email-change
+    to: FACT-infra-infrastructure-console-accounts-subject
+    created_at: "2025-04-17T11:37:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

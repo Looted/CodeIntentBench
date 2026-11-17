@@ -1,0 +1,78 @@
+relationships:
+  - id: rel-2eff1130ad4c
+    type: requires_property
+    from: REQ-papra-file-names-decoded-as-utf8
+    to: FACT-papra-documents-filename-encoding-encoding
+    created_at: "2026-11-16T13:17:19.899Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-file-names-decoded-as-utf8
+    to: FACT-papra-subject-documents-filename-encoding
+    created_at: 2026-11-16T13:17:19.900Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-dc368ba93877
+  - id: rel-22e89f07e6d3
+    type: requires_property
+    from: REQ-cli-papra-logs-filter-query-length
+    to: FACT-cli-papra-logs-filter-query-max-length
+    created_at: "2026-04-10T13:00:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3d5c4fe97d73
+    type: requires_property
+    from: REQ-cli-papra-logs-filter-query-length
+    to: FACT-cli-papra-logs-filter-over-length-input
+    created_at: "2026-04-10T13:00:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c7edcb44a0e4
+    type: constrains
+    from: REQ-cli-papra-logs-filter-query-length
+    to: FACT-cli-papra-logs-filter-subject
+    created_at: "2026-04-10T13:00:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e1fda81b3e10
+    type: requires_property
+    from: REQ-telemetry-telemetry-dashboard-search-date-format
+    to: FACT-telemetry-telemetry-dashboard-search-date-filter-format
+    created_at: "2026-04-01T09:42:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-49c2485f9008
+    type: constrains
+    from: REQ-telemetry-telemetry-dashboard-search-date-format
+    to: FACT-telemetry-telemetry-dashboard-search-subject
+    created_at: "2026-04-01T09:42:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-94c66f2fdf8b
+    type: requires_property
+    from: REQ-education-education-portal-course-search-minimum-length
+    to: FACT-education-education-portal-course-search-query-min-length
+    created_at: "2026-07-13T10:08:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b9d1e6ae1f7e
+    type: constrains
+    from: REQ-education-education-portal-course-search-minimum-length
+    to: FACT-education-education-portal-course-search-subject
+    created_at: "2026-07-13T10:08:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-72191ac20958
+    type: requires_property
+    from: REQ-portal-partner-portal-jwt-secret-development-default
+    to: FACT-portal-partner-portal-jwt-secret-development-default
+    created_at: "2025-05-07T14:38:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6547a39e253c
+    type: constrains
+    from: REQ-portal-partner-portal-jwt-secret-development-default
+    to: FACT-portal-partner-portal-jwt-secret-subject
+    created_at: "2025-05-07T14:38:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -1,0 +1,78 @@
+relationships:
+  - id: rel-816bea079d0a
+    type: requires_property
+    from: REQ-docs-glossary-terms-names-trimmed
+    to: FACT-docs-glossary-terms-name-trimmed
+    created_at: "2025-12-02T08:26:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-55e4de5c1b3e
+    type: requires_property
+    from: REQ-docs-glossary-terms-names-trimmed
+    to: FACT-docs-glossary-terms-empty-name-refused
+    created_at: "2025-12-02T08:26:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cdccaa770c40
+    type: constrains
+    from: REQ-docs-glossary-terms-names-trimmed
+    to: FACT-docs-glossary-terms-subject
+    created_at: "2025-12-02T08:26:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-994a9c26d4b6
+    type: requires_property
+    from: REQ-client-saved-views-delete-in-use
+    to: FACT-client-saved-views-delete-in-use
+    created_at: "2026-07-27T10:16:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-23cb8e0fbe55
+    type: constrains
+    from: REQ-client-saved-views-delete-in-use
+    to: FACT-client-saved-views-subject
+    created_at: "2026-07-27T10:16:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-badc8315fd3d
+    type: requires_property
+    from: REQ-portal-partner-portal-payout-search-query-length
+    to: FACT-portal-partner-portal-payout-search-query-max-length
+    created_at: "2025-10-28T12:24:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3d5f4427880a
+    type: requires_property
+    from: REQ-portal-partner-portal-payout-search-query-length
+    to: FACT-portal-partner-portal-payout-search-over-length-input
+    created_at: "2025-10-28T12:24:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-764a94eb09d3
+    type: constrains
+    from: REQ-portal-partner-portal-payout-search-query-length
+    to: FACT-portal-partner-portal-payout-search-subject
+    created_at: "2025-10-28T12:24:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ed92165cc87f
+    type: requires_property
+    from: REQ-forum-community-forum-accounts-concurrent-sessions
+    to: FACT-forum-community-forum-accounts-concurrent-sessions
+    created_at: "2026-06-16T13:58:45.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-682cc1531370
+    type: requires_property
+    from: REQ-forum-community-forum-accounts-concurrent-sessions
+    to: FACT-forum-community-forum-accounts-over-limit
+    created_at: "2026-06-16T13:58:45.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cd7d60eed386
+    type: constrains
+    from: REQ-forum-community-forum-accounts-concurrent-sessions
+    to: FACT-forum-community-forum-accounts-subject
+    created_at: "2026-06-16T13:58:45.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -1,0 +1,50 @@
+relationships:
+  - id: rel-b86a032afcd5
+    type: requires_property
+    from: REQ-papra-document-sort-parameters
+    to: FACT-papra-documents-sort-sort-fields
+    created_at: "2026-11-16T13:17:59.164Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-document-sort-parameters
+    to: FACT-papra-subject-documents-sort
+    created_at: 2026-11-16T13:17:59.166Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-39406361a3f8
+  - type: requires_property
+    from: REQ-papra-document-sort-parameters
+    to: FACT-papra-documents-sort-client-default-field-v1
+    created_at: 2026-11-16T13:17:59.178Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-3576bc15062c
+  - id: rel-5f826c55486b
+    type: requires_property
+    from: REQ-backoffice-coupon-codes-name-length
+    to: FACT-backoffice-coupon-codes-name-max-length
+    created_at: "2025-12-19T12:34:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-55903669059c
+    type: constrains
+    from: REQ-backoffice-coupon-codes-name-length
+    to: FACT-backoffice-coupon-codes-subject
+    created_at: "2025-12-19T12:34:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e976b3f406cb
+    type: requires_property
+    from: REQ-support-canned-replies-listing-order
+    to: FACT-support-canned-replies-listing-order
+    created_at: "2025-10-23T12:42:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2698ef579593
+    type: constrains
+    from: REQ-support-canned-replies-listing-order
+    to: FACT-support-canned-replies-subject
+    created_at: "2025-10-23T12:42:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

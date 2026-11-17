@@ -1,0 +1,155 @@
+relationships:
+  - id: rel-64dac5ca8dec
+    type: verified_by
+    from: REQ-tag-name-and-colour-are-validated-server-s-1890EF60
+    to: TEST-papra-server-src-modules-tags-tags-schemas
+    created_at: "2026-10-14T12:09:55.889Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: requires_property
+    from: REQ-tag-name-and-colour-are-validated-server-s-1890EF60
+    to: FACT-papra-tags-tag-validated-by-api-schema
+    created_at: 2026-11-15T21:46:10.450Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-bd7fe5e2467c
+  - type: constrains
+    from: REQ-tag-name-and-colour-are-validated-server-s-1890EF60
+    to: FACT-papra-subject-tags-tag
+    created_at: 2026-11-15T21:46:10.455Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-fa43084737d3
+  - type: requires_property
+    from: REQ-tag-name-and-colour-are-validated-server-s-1890EF60
+    to: FACT-papra-tags-tag-client-validation-is-guard
+    created_at: 2026-11-15T21:46:10.457Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-e6e7a5010a24
+  - type: verified_by
+    from: REQ-tag-name-and-colour-are-validated-server-s-1890EF60
+    to: TEST-papra-server-src-modules-admin-organizations-e2e-organizations-e2e
+    created_at: 2026-11-16T04:52:10.830Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-46f29cda92d8
+  - type: requires_property
+    from: REQ-papra-b2-storage-driver-supported
+    to: FACT-papra-storage-b2-driver-available-v1
+    created_at: 2026-11-16T13:16:42.999Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-22bf88d6d27b
+  - type: constrains
+    from: REQ-papra-b2-storage-driver-supported
+    to: FACT-papra-subject-storage-b2-driver
+    created_at: 2026-11-16T13:16:43.012Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-7cbd80b4fc41
+  - type: verified_by
+    from: REQ-tag-name-and-colour-are-validated-server-s-1890EF60
+    to: TEST-papra-server-src-modules-documents-e2e-batch-tags-e2e
+    created_at: 2026-11-16T13:30:20.120Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-271a0afafabb
+  - id: rel-5fff3b82182b
+    type: requires_property
+    from: REQ-website-blog-categories-listing-order
+    to: FACT-website-blog-categories-listing-order
+    created_at: "2025-12-20T12:29:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ed75a9229382
+    type: constrains
+    from: REQ-website-blog-categories-listing-order
+    to: FACT-website-blog-categories-subject
+    created_at: "2025-12-20T12:29:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e1e3cb9108ed
+    type: requires_property
+    from: REQ-backoffice-billing-webhook-secret-rotation
+    to: FACT-backoffice-billing-webhook-secret-rotation-days
+    created_at: "2026-01-22T09:49:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a09eec1f6ba0
+    type: requires_property
+    from: REQ-backoffice-billing-webhook-secret-rotation
+    to: FACT-backoffice-billing-webhook-secret-rotation-overlap-hours
+    created_at: "2026-01-22T09:49:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3a58d9e00877
+    type: constrains
+    from: REQ-backoffice-billing-webhook-secret-rotation
+    to: FACT-backoffice-billing-webhook-secret-subject
+    created_at: "2026-01-22T09:49:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0aa1dd62dd95
+    type: requires_property
+    from: REQ-website-newsletter-signing-key-source
+    to: FACT-website-newsletter-signing-key-value-source
+    created_at: "2025-08-09T15:21:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-47707384e8ac
+    type: constrains
+    from: REQ-website-newsletter-signing-key-source
+    to: FACT-website-newsletter-signing-key-subject
+    created_at: "2025-08-09T15:21:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2a235be9ef77
+    type: requires_property
+    from: REQ-education-sponsored-organizations-maximum-count
+    to: FACT-education-sponsored-organizations-maximum-count
+    created_at: "2026-05-13T15:19:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-13c970bfc52f
+    type: requires_property
+    from: REQ-education-sponsored-organizations-maximum-count
+    to: FACT-education-sponsored-organizations-limit-configurable
+    created_at: "2026-05-13T15:19:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-008388f9c5ef
+    type: constrains
+    from: REQ-education-sponsored-organizations-maximum-count
+    to: FACT-education-sponsored-organizations-subject
+    created_at: "2026-05-13T15:19:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f920ed1909e3
+    type: requires_property
+    from: REQ-support-support-portal-accounts-reset-and-sessions
+    to: FACT-support-support-portal-accounts-sessions-ended-on-reset
+    created_at: "2025-07-08T11:43:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-84c3dabe5cd7
+    type: constrains
+    from: REQ-support-support-portal-accounts-reset-and-sessions
+    to: FACT-support-support-portal-accounts-subject
+    created_at: "2025-07-08T11:43:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6c109e2d52b9
+    type: requires_property
+    from: REQ-license-license-portal-accounts-reset-notification
+    to: FACT-license-license-portal-accounts-reset-confirmation-email
+    created_at: "2025-03-04T16:24:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6cba744d07d3
+    type: constrains
+    from: REQ-license-license-portal-accounts-reset-notification
+    to: FACT-license-license-portal-accounts-subject
+    created_at: "2025-03-04T16:24:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

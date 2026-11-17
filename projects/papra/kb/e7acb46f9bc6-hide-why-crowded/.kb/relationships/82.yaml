@@ -1,0 +1,78 @@
+relationships:
+  - id: rel-b76639eb2add
+    type: requires_property
+    from: REQ-education-education-discount-requests-blocked-domains
+    to: FACT-education-education-discount-requests-disposable-domains-refused
+    created_at: "2026-05-02T16:40:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4cbecf520f2f
+    type: requires_property
+    from: REQ-education-education-discount-requests-blocked-domains
+    to: FACT-education-education-discount-requests-list-precedence
+    created_at: "2026-05-02T16:40:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-24311ed739db
+    type: constrains
+    from: REQ-education-education-discount-requests-blocked-domains
+    to: FACT-education-education-discount-requests-subject
+    created_at: "2026-05-02T16:40:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c9a1e779bf87
+    type: supersedes
+    from: REQ-telemetry-dashboards-maximum-count
+    to: REQ-telemetry-dashboards-maximum-count-earlier
+    created_at: "2026-03-03T12:23:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-30af87d492fa
+    type: requires_property
+    from: REQ-telemetry-dashboards-maximum-count
+    to: FACT-telemetry-dashboards-maximum-count
+    created_at: "2026-03-03T12:23:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-bbfd62832969
+    type: requires_property
+    from: REQ-telemetry-dashboards-maximum-count
+    to: FACT-telemetry-dashboards-limit-configurable
+    created_at: "2026-03-03T12:23:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e0747561b5d0
+    type: constrains
+    from: REQ-telemetry-dashboards-maximum-count
+    to: FACT-telemetry-dashboards-subject
+    created_at: "2026-03-03T12:23:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d447a5197a89
+    type: requires_property
+    from: REQ-education-education-portal-accounts-password-change
+    to: FACT-education-education-portal-accounts-sessions-on-password-change
+    created_at: "2026-05-04T12:36:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-07612b6d39a3
+    type: constrains
+    from: REQ-education-education-portal-accounts-password-change
+    to: FACT-education-education-portal-accounts-subject
+    created_at: "2026-05-04T12:36:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-22b38c30feb9
+    type: requires_property
+    from: REQ-infra-infrastructure-console-accounts-reset-and-sessions
+    to: FACT-infra-infrastructure-console-accounts-sessions-ended-on-reset
+    created_at: "2025-02-06T09:15:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a8f6912027a5
+    type: constrains
+    from: REQ-infra-infrastructure-console-accounts-reset-and-sessions
+    to: FACT-infra-infrastructure-console-accounts-subject
+    created_at: "2025-02-06T09:15:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -1,0 +1,148 @@
+relationships:
+  - id: rel-06b5cf3f637d
+    type: requires_property
+    from: REQ-papra-resend-only-inactive-invitations
+    to: FACT-papra-invitations-invitation-resendable-statuses
+    created_at: "2026-11-16T13:16:14.222Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-resend-only-inactive-invitations
+    to: FACT-papra-subject-invitations-invitation
+    created_at: 2026-11-16T13:16:14.223Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-5ebb7180c168
+  - type: requires_property
+    from: REQ-papra-resend-only-inactive-invitations
+    to: FACT-papra-invitations-invitation-pending-resendable
+    created_at: 2026-11-16T13:16:14.236Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b966c496f539
+  - type: requires_property
+    from: REQ-papra-resend-only-inactive-invitations
+    to: FACT-papra-invitations-invitation-accepted-resendable
+    created_at: 2026-11-16T13:16:14.240Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-0f84cd0f38dd
+  - type: restates
+    from: REQ-papra-resend-only-inactive-invitations
+    to: REQ-expired-cancelled-or-rejected-invitations--CDCCD352
+    created_at: 2026-11-16T13:16:14.243Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c231c43efda0
+  - type: requires_property
+    from: REQ-papra-register-link-hidden
+    to: FACT-papra-auth-register-link-shown-when-registration-disabled
+    created_at: 2026-11-16T13:22:00.814Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-3e22d25d23c3
+  - type: constrains
+    from: REQ-papra-register-link-hidden
+    to: FACT-papra-subject-auth-register-link
+    created_at: 2026-11-16T13:22:00.827Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-cd682f43b66e
+  - id: rel-ed886a3410fc
+    type: requires_property
+    from: REQ-website-changelog-labels-unique-ignoring-case
+    to: FACT-website-changelog-labels-name-uniqueness
+    created_at: "2026-04-13T17:29:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8b51f08a2b5e
+    type: requires_property
+    from: REQ-website-changelog-labels-unique-ignoring-case
+    to: FACT-website-changelog-labels-duplicate-error
+    created_at: "2026-04-13T17:29:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-06148cee040a
+    type: constrains
+    from: REQ-website-changelog-labels-unique-ignoring-case
+    to: FACT-website-changelog-labels-subject
+    created_at: "2026-04-13T17:29:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ef6a9cef7e80
+    type: requires_property
+    from: REQ-cli-tag-aliases-names-trimmed
+    to: FACT-cli-tag-aliases-name-trimmed
+    created_at: "2025-12-15T16:51:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-34fcc2776eb4
+    type: requires_property
+    from: REQ-cli-tag-aliases-names-trimmed
+    to: FACT-cli-tag-aliases-empty-name-refused
+    created_at: "2025-12-15T16:51:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-67f3991e79fc
+    type: constrains
+    from: REQ-cli-tag-aliases-names-trimmed
+    to: FACT-cli-tag-aliases-subject
+    created_at: "2025-12-15T16:51:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-55862321c681
+    type: requires_property
+    from: REQ-telemetry-dashboard-tags-case-sensitive-names
+    to: FACT-telemetry-dashboard-tags-name-uniqueness
+    created_at: "2025-10-21T13:15:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-35e7a309d74c
+    type: requires_property
+    from: REQ-telemetry-dashboard-tags-case-sensitive-names
+    to: FACT-telemetry-dashboard-tags-case-variants-distinct
+    created_at: "2025-10-21T13:15:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b48953b172a8
+    type: constrains
+    from: REQ-telemetry-dashboard-tags-case-sensitive-names
+    to: FACT-telemetry-dashboard-tags-subject
+    created_at: "2025-10-21T13:15:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-95473cde84b5
+    type: requires_property
+    from: REQ-license-license-keys-ownership-transfer
+    to: FACT-license-license-keys-ownership-transfer
+    created_at: "2025-08-08T09:26:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f439b887673f
+    type: constrains
+    from: REQ-license-license-keys-ownership-transfer
+    to: FACT-license-license-keys-subject
+    created_at: "2025-08-08T09:26:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-91faa9e2ca03
+    type: requires_property
+    from: REQ-telemetry-telemetry-dashboard-accounts-concurrent-sessions
+    to: FACT-telemetry-telemetry-dashboard-accounts-concurrent-sessions
+    created_at: "2025-11-18T10:06:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-07b0385135ae
+    type: requires_property
+    from: REQ-telemetry-telemetry-dashboard-accounts-concurrent-sessions
+    to: FACT-telemetry-telemetry-dashboard-accounts-over-limit
+    created_at: "2025-11-18T10:06:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6c2f3239cd87
+    type: constrains
+    from: REQ-telemetry-telemetry-dashboard-accounts-concurrent-sessions
+    to: FACT-telemetry-telemetry-dashboard-accounts-subject
+    created_at: "2025-11-18T10:06:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
