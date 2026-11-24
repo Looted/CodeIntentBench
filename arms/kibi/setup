@@ -19,6 +19,9 @@ if [ -n "${KIBI_SOURCE_PACKS:-}" ]; then
   # Kibi built from source (a develop checkout packed with scripts/pack-packages.ts): every Kibi package
   # comes from the packs, so no published package with the same version number slips in.
   packs=$(ls "$KIBI_SOURCE_PACKS"/kibi-{cli,mcp,core,runtime,agent-core,plugin-sdk,plugin-builtin,plugin-treesitter,plugin-jev,plugin-ui}-[0-9]*.tgz)
+  # kibi-swipl (the bundled SWI-Prolog) is a dependency from 2026.11.5 on; older checkouts have no pack for it.
+  swipl=$(ls "$KIBI_SOURCE_PACKS"/kibi-swipl-[0-9]*.tgz 2>/dev/null || true)
+  packs="$packs $swipl"
   ( cd "$run/kibi" && npm install --silent --no-audit --no-fund $packs )
   echo "source build: $(cat "$KIBI_SOURCE_PACKS/SOURCE" 2>/dev/null || echo unknown)" > "$run/kibi-source.txt"
 else
@@ -93,5 +96,5 @@ if [ -n "${CIB_KIBI_HINTS:-}" ] && [ -n "${KIBI_SEARCH_HINTS:-}" ] && [ "$reqs" 
     const fs = require("fs"); const p = JSON.parse(fs.readFileSync("package.json", "utf8"));
     p.kibi = p.kibi ?? {}; p.kibi.plugins = [...(p.kibi.plugins ?? []), { package: "kibi-plugin-search-hints", capabilities: { "kibi.search-hints.v1": { mode: "replace" } } }];
     fs.writeFileSync("package.json", JSON.stringify(p, null, 2) + "\n");'
-  echo "search hints: kibi-plugin-search-hints@$KIBI_SEARCH_HINTS ($reqs requirements)" > "$run/search-hints.txt"
+  echo "search hints: $(basename "$hints") ($reqs requirements)" > "$run/search-hints.txt"
 fi
