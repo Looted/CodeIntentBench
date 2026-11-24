@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Starts the run's Gitea on a Unix socket in its work directory, then serves gitea-mcp over stdio against it.
+# Gitea stops when the session closes the MCP server. Arguments: <binDir> <giteaWorkDir>
+set -uo pipefail
+bin="$1"; dir="$2"
+cd "$dir"
+# A Unix socket path must fit in 108 bytes and Gitea makes HTTP_ADDR absolute, so the socket lives under /tmp/gs.
+sock="/tmp/gs/$(printf %s "$dir" | sha1sum | cut -c1-12).sock"
+mkdir -p /tmp/gs && rm -f "$sock"
+# Gitea writes WORK_PATH into app.ini on its first start; a copied instance must use its own directory.
+sed -i -e "s|^HTTP_ADDR = .*|HTTP_ADDR = $sock|" -e '/^WORK_PATH = /d' custom/conf/app.ini
+sed -i "1i WORK_PATH = $dir" custom/conf/app.ini
+# An instance left by an earlier session (one whose MCP server was killed) would hold the database and index.
+pkill -f -- "gitea --work-path $dir web" 2>/dev/null && sleep 1
+# Gitea gets SIGTERM when this script dies, however it dies.
+setpriv --pdeathsig TERM -- "$bin/gitea" --work-path "$dir" web < /dev/null >> web.log 2>&1 &
+pid=$!
+trap 'kill $pid 2>/dev/null; wait $pid 2>/dev/null' EXIT
+trap 'exit 0' TERM INT HUP
+for _ in $(seq 1 120); do [ -S "$sock" ] && break; sleep 0.25; done
+GITEA_UNIX_SOCKET="$sock" GITEA_ACCESS_TOKEN="$(cat token)" "$bin/gitea-mcp" -H http://localhost -O list_issues,issue_read,issue_write,search_issues 2>> mcp.log

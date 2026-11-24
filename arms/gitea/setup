@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+# Arm `gitea`: decisions live as issues in a self-hosted Gitea (the official release binary), reached over
+# Gitea's official MCP server (gitea-mcp) with its issue tools. Each run gets its own Gitea instance under the
+# run directory; gitea-mcp-serve starts it for each agent session and stops it when the session ends.
+# Arguments: <workspace> <rulesDir> <runDir>
+set -euo pipefail
+ws="$1"; rules="$2"; run="$3"
+here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+harness="$(cd "$here/../../harness" && pwd)"
+. "$here/versions.env"
+cache="${CIB_CACHE_DIR:-$here/../../cache}/gitea"
+bin="$cache/bin-$GITEA_VERSION-$GITEA_MCP_VERSION"
+
+# The official binaries, checked against their published SHA-256 sums.
+if [ ! -x "$bin/gitea" ] || [ ! -x "$bin/gitea-mcp" ]; then
+  tmp="$(mktemp -d)"; trap 'rm -rf "$tmp"' EXIT
+  curl -sfL -o "$tmp/gitea" "$GITEA_URL"
+  echo "$(curl -sfL "$GITEA_SHA256_URL" | awk '{print $1}')  $tmp/gitea" | sha256sum -c --quiet
+  curl -sfL -o "$tmp/gm.tgz" "$GITEA_MCP_URL"
+  echo "$(curl -sfL "$GITEA_MCP_SUMS_URL" | grep 'Linux_x86_64.tar.gz' | awk '{print $1}')  $tmp/gm.tgz" | sha256sum -c --quiet
+  mkdir -p "$tmp/gm" && tar xzf "$tmp/gm.tgz" -C "$tmp/gm"
+  mkdir -p "$bin" && cp "$tmp/gitea" "$tmp/gm/gitea-mcp" "$bin/" && chmod +x "$bin/gitea" "$bin/gitea-mcp"
+fi
+
+# The project's rules, rendered as the tracker arm renders them (one closed issue per decision), then filed
+# into a fresh Gitea. A seeded instance is cached per rendered issue set and copied into the run.
+node "$harness/src/arm-tools/seed-store.ts" tracker "$run/tracker-seed.json" "$rules" > /dev/null
+key="$(sha256sum "$run/tracker-seed.json" | cut -c1-16)"
+store="$cache/stores/$GITEA_VERSION-$key"
+if [ ! -f "$store/.seeded" ]; then
+  rm -rf "$store.tmp" && mkdir -p "$store.tmp"
+  python3 -I "$here/gitea_store.py" seed "$bin/gitea" "$store.tmp" "$run/tracker-seed.json" > "$run/gitea-seed.log" 2>&1 || { tail -20 "$run/gitea-seed.log" >&2; exit 1; }
+  touch "$store.tmp/.seeded"; rm -rf "$store"; mv "$store.tmp" "$store"
+fi
+rm -rf "$run/gitea" && cp -R "$store" "$run/gitea"
+# What the instance holds, as the equivalence audit reads it.
+python3 -I "$here/gitea_store.py" export "$bin/gitea" "$run/gitea" "$run/gitea-issues.json" >> "$run/gitea-seed.log" 2>&1 || { tail -20 "$run/gitea-seed.log" >&2; exit 1; }
+cat > "$run/mcp.json" <<JSON
+{ "mcpServers": { "gitea": { "command": "$here/gitea-mcp-serve", "args": ["$bin", "$run/gitea"] } } }
+JSON
+echo "gitea $GITEA_VERSION, gitea-mcp $GITEA_MCP_VERSION, $(python3 -c "import json;print(len(json.load(open('$run/gitea-issues.json'))))") issues" > "$run/gitea-version.txt"

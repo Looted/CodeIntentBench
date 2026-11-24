@@ -101,6 +101,21 @@ export function containerEntry(arm: string, ws: string, runDir: string, rule: Ru
     const issue = (JSON.parse(readFileSync(file, 'utf8')).issues ?? []).find((i: any) => i.title === rule.id.replace(/-/g, ' '));
     return issue ? `${issue.title}\n${issue.body}\n${(issue.labels ?? []).join(' ')}` : undefined;
   }
+  if (arm === 'gitea') {
+    // The issues the run's Gitea instance holds, as the arm's setup exported them from Gitea's API.
+    const file = join(runDir, 'gitea-issues.json');
+    if (!existsSync(file)) return undefined;
+    const issue = (JSON.parse(readFileSync(file, 'utf8')) as any[]).find((i) => i.title === rule.id.replace(/-/g, ' '));
+    return issue ? `${issue.title}\n${issue.body}\n${(issue.labels ?? []).join(' ')}` : undefined;
+  }
+  if (arm === 'mem0') {
+    // The memories the run's mem0 store holds, as the arm's setup exported them from mem0.
+    const file = join(runDir, 'mem0-export.json');
+    if (!existsSync(file)) return undefined;
+    const items: any[] = JSON.parse(readFileSync(file, 'utf8'));
+    const item = items.find((m) => String(m.memory).includes(`Id: ${rule.id}.`)) ?? items.find((m) => norm(String(m.memory)).startsWith(norm(rule.statement)));
+    return item ? `${item.memory}\n${(item.metadata?.tags ?? []).join(' ')}` : undefined;
+  }
   if (arm === 'comments') {
     // The block that starts `// Decision <id>:` in any tracked source file, its comment lines joined.
     const files = sh(`git -C ${JSON.stringify(ws)} grep -l -F ${JSON.stringify(`// Decision ${rule.id}:`)}`, { quiet: true }).stdout.split('\n').filter(Boolean);
