@@ -33,8 +33,12 @@ export function serve(name: string, version: string, tools: ToolDef[]): void {
       } else if (method === 'tools/call') {
         const tool = byName.get(params?.name);
         if (!tool) { reply({ content: [{ type: 'text', text: `unknown tool ${params?.name}` }], isError: true }); return; }
+        // A missing required argument is an error, as real MCP servers answer it (schema validation).
+        const args = params?.arguments ?? {};
+        const missing = ((tool.inputSchema as { required?: string[] }).required ?? []).filter((k) => args[k] === undefined || args[k] === null || args[k] === '');
+        if (missing.length) { reply({ content: [{ type: 'text', text: `Invalid arguments: missing required ${missing.map((k) => `'${k}'`).join(', ')}` }], isError: true }); return; }
         try {
-          const text = await tool.handler(params?.arguments ?? {});
+          const text = await tool.handler(args);
           reply({ content: [{ type: 'text', text }] });
         } catch (e) {
           reply({ content: [{ type: 'text', text: (e as Error).message }], isError: true });

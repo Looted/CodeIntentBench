@@ -52,7 +52,7 @@ export function idForms(id: string): string[] {
   return [...new Set([id, id.replace(/-/g, ' '), id.toUpperCase().replace(/-/g, ' ')])];
 }
 
-const STORE_WRITE = /^(mcp__.*__)?(tracker_create_issue|tracker_update_issue|memory_save|memory_delete|kb_upsert|kb_delete|kb_supersede|kb_link)$|kb_upsert|kb_update/;
+const STORE_WRITE = /^(mcp__.*__)?(tracker_create_issue|tracker_update_issue|memory_save|memory_delete|kb_upsert|kb_delete|kb_supersede|kb_link|kb_record|issue_write|add_memory|update_memory|delete_memory)$|kb_upsert|kb_update/;
 
 /**
  * Did the session change the governing entry, or write a new entry that links to it? Read from the
