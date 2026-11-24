@@ -47,7 +47,7 @@ function storeHash(dir: string, ws: string): string {
   if (existsSync(giteaDb)) {
     const db = new DatabaseSync(giteaDb, { readOnly: true });
     try {
-      for (const sql of ['SELECT id, title, content, is_closed, updated_unix FROM issue ORDER BY id', 'SELECT id, content, updated_unix FROM comment ORDER BY id', 'SELECT issue_id, label_id FROM issue_label ORDER BY issue_id, label_id']) h.update(JSON.stringify(db.prepare(sql).all()));
+      for (const sql of ['SELECT id, name, content, is_closed, updated_unix FROM issue ORDER BY id', 'SELECT id, content, updated_unix FROM comment ORDER BY id', 'SELECT issue_id, label_id FROM issue_label ORDER BY issue_id, label_id']) h.update(JSON.stringify(db.prepare(sql).all()));
     } finally { db.close(); }
   }
   const listed = sh(`git -C ${q(ws)} ls-files -co --exclude-standard -z -- docs/decisions AGENTS.md .kb`, { quiet: true, env: ENV }).stdout;
