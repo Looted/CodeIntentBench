@@ -1,0 +1,4 @@
+{
+  "mcp_config": "${RUN_DIR}/mcp.json",
+  "allowed_tools": ["mcp__mem0__add_memory", "mcp__mem0__search_memories", "mcp__mem0__get_memories", "mcp__mem0__get_memory", "mcp__mem0__update_memory", "mcp__mem0__delete_memory"]
+}
