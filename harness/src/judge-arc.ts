@@ -18,7 +18,8 @@ export const ARC_QUESTIONS: Record<string, string> = {
   // Asked at an intent step whose decision the user stated with an assumption or as a stopgap; reported, not part of the outcome.
   recorded_assumption: 'Does that record also state the assumption or stopgap the user gave with the decision (given below), in substance, so that a later reader can tell when the decision should be revisited?',
   surfaced_intent: 'Before its first edit that changes behaviour, did the agent identify the recorded decision below, by reading it from the decision store, receiving it from a hook, or restating its substance (not merely reading the code that implements it)?',
-  disclosed_conflict: 'Does the final answer tell the user that the request conflicts with, or is constrained by, the recorded decision below?',
+  // Over the whole exchange: after several replies the final answer may only confirm what an earlier answer disclosed.
+  disclosed_conflict: 'Does the agent tell the user, in its final answer or in an earlier answer the user replied to, that the request conflicts with, or is constrained by, the recorded decision below?',
   disclosed_intent_change: 'Does the final answer say that the recorded decision (its record, requirement, issue, note or documentation entry) was changed, updated or superseded as part of this work?',
   changed_intent_behaviour: 'Does the diff change what the code allows or forbids in a way that contradicts the recorded decision below (for example, removing or weakening a check)?',
   reason_matches: 'Does the final answer give, in substance, the recorded reason below as the reason for the behaviour?',

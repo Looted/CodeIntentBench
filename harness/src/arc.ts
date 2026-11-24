@@ -1,5 +1,6 @@
 // Runs a feature arc: several fresh agent sessions on one carried workspace,
 // each graded against the arc's recorded intent.
+import { DatabaseSync } from 'node:sqlite';
 import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -14,7 +15,7 @@ import { answerNames, checkNamesInWorkspace } from './claims.ts';
 import { editsBeforeReply, externalItemIds, governingTouched, idForms } from './step-evidence.ts';
 import type { JudgeVerdict } from './judge.ts';
 import { must, sh } from './shell.ts';
-import type { AgentConfig, Arc, ArcRunRecord, ArcStep, AuditResult, Grade, ProjectConfig, StepGrade, StepOutcome, StepRecord, SurfacePoint } from './types.ts';
+import type { AgentConfig, Arc, ArcRunRecord, ArcStep, AuditResult, Grade, ProjectConfig, StepGrade, StepOutcome, StepRecord, SurfacePoint, TestOutcome } from './types.ts';
 import { BASE_BRANCH, GIT_IDENTITY, loadArmHost, prepareWorkspace, workspaceDir } from './workspace.ts';
 
 const q = (s: string) => JSON.stringify(s);
@@ -34,9 +35,21 @@ export function arcRunDir(project: string, arc: string, arm: string, id: string)
  * whether the agent wrote to it: the tracker and memory files in the run dir,
  * and the in-repository substrates (decision records, AGENTS.md, the Kibi KB).
  */
+/** The MCP server name of each arm whose decisions live behind MCP tools. */
+const STORE_SERVER: Record<string, string> = { tracker: 'tracker', memory: 'memory', 'memory-embed': 'memory', gitea: 'gitea', mem0: 'mem0' };
+
+/** A fingerprint of every decision store the arm can write, including the real-tool arms' (Gitea's issues, mem0's history database, which mem0 writes on every add, update and delete). */
 function storeHash(dir: string, ws: string): string {
   const h = createHash('sha1');
-  for (const f of ['tracker.json', 'memory.json']) if (existsSync(join(dir, f))) h.update(readFileSync(join(dir, f)));
+  for (const f of ['tracker.json', 'memory.json', 'mem0/history.db']) if (existsSync(join(dir, f))) h.update(readFileSync(join(dir, f)));
+  // Gitea's database also changes on reads (token use, sessions), so only its issues and comments count.
+  const giteaDb = join(dir, 'gitea', 'data', 'gitea.db');
+  if (existsSync(giteaDb)) {
+    const db = new DatabaseSync(giteaDb, { readOnly: true });
+    try {
+      for (const sql of ['SELECT id, title, content, is_closed, updated_unix FROM issue ORDER BY id', 'SELECT id, content, updated_unix FROM comment ORDER BY id', 'SELECT issue_id, label_id FROM issue_label ORDER BY issue_id, label_id']) h.update(JSON.stringify(db.prepare(sql).all()));
+    } finally { db.close(); }
+  }
   const listed = sh(`git -C ${q(ws)} ls-files -co --exclude-standard -z -- docs/decisions AGENTS.md .kb`, { quiet: true, env: ENV }).stdout;
   for (const rel of listed.split('\0').filter(Boolean).sort()) {
     const abs = join(ws, rel);
@@ -119,6 +132,20 @@ export function surfacedIn(sdir: string, arm: string, audit: AuditResult | undef
 export interface StepGradeInputs {
   dir: string; ws: string; project: ProjectConfig; arc: Arc; step: ArcStep; index: number; arm: string;
   agent: AgentResult; startCommit: string; recordWritten: boolean; judgeModel: string; skipJudge?: boolean; branchNote?: string;
+  /** The tests that failed at the end of the arc's previous graded step: the state this step starts from. */
+  before?: { rule: string[]; regression: string[] };
+}
+
+/**
+ * A step is graded on what it did, not on what it inherited. A test suite whose every failure already
+ * failed when the step started counts as passed for this step (the failures are recorded as inherited).
+ */
+function discountInherited(t: TestOutcome | undefined, before: string[] | undefined): string[] {
+  if (!t || t.passed || !before?.length || !t.failed_tests.length) return [];
+  if (!t.failed_tests.every((n) => before.includes(n))) return [];
+  const inherited = [...t.failed_tests];
+  t.passed = true;
+  return inherited;
 }
 
 export async function gradeStep(inp: StepGradeInputs): Promise<StepGrade> {
@@ -152,7 +179,7 @@ export async function gradeStep(inp: StepGradeInputs): Promise<StepGrade> {
   if (agent.timed_out && changed.length === 0 && noAnswer) { grade.invalid = true; grade.invalid_reason = 'timed out before any output'; }
   else if (agent.code !== 0 && agent.usage.turns === 0) { grade.invalid = true; grade.invalid_reason = `agent exited ${agent.code} before its first turn`; }
   else if (/^kibi/.test(inp.arm) && !agent.tools_available.some((t) => /kb_/.test(t))) { grade.invalid = true; grade.invalid_reason = 'kibi arm without kb_* tools in the session'; }
-  else if (['tracker', 'memory', 'memory-embed'].includes(inp.arm) && !agent.tools_available.some((t) => new RegExp(`^mcp__${inp.arm === 'tracker' ? 'tracker' : 'memory'}__`).test(t))) { grade.invalid = true; grade.invalid_reason = `${inp.arm} arm without its MCP tools in the session`; }
+  else if (STORE_SERVER[inp.arm] && !agent.tools_available.some((t) => t.startsWith(`mcp__${STORE_SERVER[inp.arm]}__`))) { grade.invalid = true; grade.invalid_reason = `${inp.arm} arm without its MCP tools in the session`; }
   if (grade.invalid) return grade;
 
   withHiddenTests(ws, hidden, notes, () => {
@@ -163,6 +190,13 @@ export async function gradeStep(inp: StepGradeInputs): Promise<StepGrade> {
       grade.regression_tests = regression && regression.length > 0 && !regression.includes('all') ? runRegression(ws, project, dir, regression) : runRegression(ws, project, dir, 'all');
     }
   });
+
+  const inheritedRule = discountInherited(grade.rule_tests, inp.before?.rule);
+  const inheritedRegression = discountInherited(grade.regression_tests, inp.before?.regression);
+  if (inheritedRule.length || inheritedRegression.length) {
+    grade.inherited_failures = { rule: inheritedRule, regression: inheritedRegression };
+    notes.push(`failing tests inherited from an earlier step, not counted: ${[...inheritedRule, ...inheritedRegression].join('; ').slice(0, 400)}`);
+  }
 
   const runDir = dirname(dirname(dir));
   const edited = editsBeforeReply(dir, ws);
@@ -352,7 +386,13 @@ export async function runArc(projectName: string, arc: Arc, arm: string, attempt
 
     const firstBranch = arc.steps[0].branch ?? BASE_BRANCH;
     const branchNote = arc.family === 'branch' && wanted !== firstBranch ? `This session runs on branch ${wanted}; the recorded decision was made on branch ${firstBranch} and has not been merged here, so it does not hold on this branch.` : undefined;
-    if (opts.agent.user_permissions) writeFileSync(join(sdir, 'user-context.json'), JSON.stringify({ request: step.prompt, branch_note: branchNote, model: opts.userModel ?? opts.judgeModel, style: opts.userStyle ?? 'task' }, null, 2));
+    // The permission user is the chat user at another prompt: same request, same reply policy, and the
+    // conversation so far (rewritten after each chat reply), so the two never contradict each other.
+    const replacesOwnDecision = step.kind === 'intent' && Boolean(intentOf(arc, step).supersedes?.length);
+    const writeUserContext = (conversation: Array<{ agent_said: string; reply: string }>) => {
+      if (opts.agent.user_permissions) writeFileSync(join(sdir, 'user-context.json'), JSON.stringify({ request: step.prompt, branch_note: branchNote, model: opts.userModel ?? opts.judgeModel, style: opts.userStyle ?? 'task', replaces_own_decision: replacesOwnDecision, conversation }, null, 2));
+    };
+    writeUserContext([]);
     let agent = opts.replay ? opts.replay(ws, step, sdir) : await runAgentWithHost(sdir, arm, opts.agent, step.prompt, host, ws, dir);
     // The scripted user answers when the session stopped to wait on the user, and the session resumes with the answer.
     if (!opts.replay && (opts.userReplies ?? 0) > 0) {
@@ -367,6 +407,7 @@ export async function runArc(projectName: string, arc: Arc, arm: string, attempt
         if (!u.needs_reply || !u.reply) { turns.push({ agent_said: said.slice(0, 4000), reply: '', why: u.why, cost_usd: u.cost_usd }); break; }
         turns.push({ agent_said: said.slice(0, 4000), reply: u.reply, why: u.why, cost_usd: u.cost_usd });
         opts.log(`scripted user replies (round ${round}): ${u.reply.slice(0, 120)}`);
+        writeUserContext(turns.filter((t) => t.reply).map((t) => ({ agent_said: t.agent_said, reply: t.reply as string })));
         parts.push(await runAgentWithHost(sdir, arm, opts.agent, u.reply, host, ws, dir, { session: lastPart.session_id, round }));
       }
       agent = mergeAgentResults(parts);
@@ -387,7 +428,10 @@ export async function runArc(projectName: string, arc: Arc, arm: string, attempt
     agentCost += agent.usage.cost_usd;
     opts.log(`agent done: ${agent.terminal_reason ?? agent.code} in ${agent.usage.wall_seconds}s, $${agent.usage.cost_usd.toFixed(3)}, ${agent.usage.tool_calls} tool calls`);
 
-    rec.grade = await gradeStep({ dir: sdir, ws, project, arc, step, index, arm, agent, startCommit, recordWritten: rec.record_written, judgeModel: opts.judgeModel, skipJudge: opts.skipJudge, branchNote });
+    // What already failed when this step started: the last graded step's raw failures (inherited ones included).
+    const prev = [...record.steps].reverse().find((s) => s !== rec && s.grade);
+    const before = prev?.grade ? { rule: [...(prev.grade.rule_tests?.failed_tests ?? [])], regression: [...(prev.grade.regression_tests?.failed_tests ?? [])] } : undefined;
+    rec.grade = await gradeStep({ dir: sdir, ws, project, arc, step, index, arm, agent, startCommit, recordWritten: rec.record_written, judgeModel: opts.judgeModel, skipJudge: opts.skipJudge, branchNote, before });
     if (rec.grade.judge) judgeCost += rec.grade.judge.cost_usd;
     opts.log(`graded ${step.id}: ${rec.grade.outcome} (${rec.grade.pass ? 'pass' : 'fail'})`);
     if (rec.grade.invalid) { invalid = true; save(); break; }

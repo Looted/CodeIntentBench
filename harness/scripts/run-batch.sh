@@ -15,7 +15,7 @@ arcs="${4:-$(ls ../projects/$project/arcs | tr '\n' ',' | sed 's/,$//')}"
 export CIB_RUNS_DIR="${CIB_RUNS_DIR:-$(cd .. && pwd)/runs/batch-${RUNS_TAG:-default}-$project}"
 mkdir -p "$CIB_RUNS_DIR/logs"
 export CIB_WORK_ROOT="${CIB_WORK_ROOT:-/tmp/cw}"
-TOOLS='Bash(pnpm:*),Bash(npx:*),Bash(git diff:*),Bash(git status:*),Bash(git log:*),Bash(git show:*),Bash(ls:*),Bash(cat:*),Bash(grep:*),Bash(rg:*),Bash(find:*),Bash(head:*),Bash(tail:*),Bash(wc:*),Bash(sed -n:*),Bash(jq:*)'
+TOOLS='Bash(pnpm:*),Bash(npx:*),Bash(git diff:*),Bash(git status:*),Bash(git log:*),Bash(git show:*),Bash(ls:*),Bash(cat:*),Bash(grep:*),Bash(rg:*),Bash(find:*),Bash(head:*),Bash(tail:*),Bash(wc:*),Bash(sed -n:*),Bash(jq:*),Bash(git checkout --:*),Bash(git restore:*)'
 [ "$project" = kibi ] && TOOLS="$TOOLS,Bash(bun:*)"
 export TOOLS project MODEL
 for arc in ${arcs//,/ }; do for arm in ${arms//,/ }; do echo "$arc $arm"; done; done | xargs -P "$n" -L 1 bash -c '

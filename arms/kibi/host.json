@@ -25,6 +25,10 @@
     "mcp__plugin_kibi-claude_kibi__kb_apply_plan",
     "mcp__plugin_kibi-claude_kibi__kb_plan_bootstrap",
     "mcp__plugin_kibi-claude_kibi__kb_ingest_proof",
-    "Bash(kibi:*)"
+    "mcp__plugin_kibi-claude_kibi__kb_record",
+    "mcp__plugin_kibi-claude_kibi__kb_review_firm_edit",
+    "mcp__plugin_kibi-claude_kibi__kb_author_impact_review",
+    "Bash(kibi:*)",
+    "Skill"
   ]
 }

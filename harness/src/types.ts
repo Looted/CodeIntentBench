@@ -182,6 +182,8 @@ export interface Grade {
   source_files_changed: string[];
   /** Source files edited before the user's first reply (sessions with a reply only). */
   edited_before_reply?: string[];
+  /** Tests that already failed when the step started (an earlier step of the arc broke them on the carried workspace); they are not this step's failures. */
+  inherited_failures?: { rule: string[]; regression: string[] };
   /** The session changed the governing entry of the store, or wrote one that links to it. */
   governing_changed?: boolean;
   /** Names the final answer asserts, checked against the project. */

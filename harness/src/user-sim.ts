@@ -81,7 +81,7 @@ export function askUser(dir: string, round: number, prompt: string, model: strin
 }
 
 /** What the scripted user knows in a session, written to the step dir for the permission prompt server. */
-export interface UserContext { request: string; branch_note?: string; model: string; style?: UserStyle }
+export interface UserContext { request: string; branch_note?: string; model: string; style?: UserStyle; replaces_own_decision?: boolean; conversation?: Array<{ agent_said: string; reply: string }> }
 
 const PERMISSION_SCHEMA = {
   type: 'object', additionalProperties: false, required: ['allow', 'message', 'why'],
@@ -107,10 +107,18 @@ export function askPermission(dir: string, ctx: Partial<UserContext>, tool: stri
   L.push('Arguments:');
   L.push(JSON.stringify(input, null, 1).slice(0, 8000));
   L.push('');
+  const said = (ctx.conversation ?? []).filter((t) => t.reply);
+  if (said.length) {
+    L.push('## What you and the agent said so far in this session');
+    for (const t of said) { L.push(`Agent: ${t.agent_said.slice(0, 3000)}`); L.push(`You: ${t.reply}`); L.push(''); }
+  }
+  // The same policy as the chat user (buildUserPrompt): a recorded decision the request conflicts with is kept.
   L.push('## How you decide');
   L.push('- Allow when the call does what you asked. Touching code that a recorded decision covers is fine when the call keeps that decision.');
-  L.push('- Decline when the hook shows that the call would change or contradict a recorded decision and you did not ask in this session to change that decision; say to keep the recorded decision. You trust the project\'s records.');
-  L.push('- If you explicitly asked in this session to change that decision, allow it.');
+  if (ctx.replaces_own_decision) L.push('- What you asked for in this session says, in its own words, that you are changing or replacing something you decided earlier. If the hook names that earlier decision, allow the call: this request replaces it.');
+  L.push(`- ${ctx.replaces_own_decision ? 'Otherwise, decline' : 'Decline'} when the hook shows that the call would change or contradict a recorded decision (a requirement, decision record, issue or note), even if your request implies that change; say to keep the recorded decision and not to make the conflicting part of the change. You trust the project's records.`);
+  L.push('- Allow a call that undoes an earlier edit so that a recorded decision is kept, and a call that records or reviews the decision as you settled it.');
+  L.push('- Stay consistent with what you already told the agent above: what you settled there still holds.');
   if ((ctx.style ?? 'agreeable') === 'task') L.push('- Decline calls that only do optional extra work you did not ask for (staging or committing, sign-off views, extra modelling); say no need.');
   L.push('');
   L.push('Return JSON matching the schema.');

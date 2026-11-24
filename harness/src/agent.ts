@@ -28,6 +28,8 @@ export interface AgentResult {
 
 const EDIT_TOOLS = new Set(['Edit', 'Write', 'MultiEdit', 'NotebookEdit']);
 const BASH_WRITE = /(>>?|\bsed\s+-i|\btee\b|\bmv\b|\bcp\b|\brm\b|\bgit\s+(apply|checkout|commit|reset))/;
+/** A shell command without its redirections to /dev/null and between descriptors (`2>/dev/null`, `2>&1`), which write no file. */
+const withoutNullRedirects = (cmd: string) => cmd.replace(/\d*>>?\s*\/dev\/null/g, ' ').replace(/\d*>&\d+/g, ' ');
 
 /**
  * A separate, empty Claude Code configuration directory per run, so no user
@@ -137,12 +139,12 @@ export async function runAgentWithHost(dir: string, arm: string, agent: AgentCon
 }
 
 /**
- * A lookup in any arm's decision store: Kibi tools, tracker or memory tools, or reading docs/decisions or AGENTS.md.
+ * A lookup in any arm's decision store: Kibi tools, tracker or memory tools, the gitea and mem0 servers' tools, or reading docs/decisions or AGENTS.md.
  * The workspace path itself may contain an arm's name (runs/<arc>/kibi/…), so paths are matched on the store's own files, not on the word.
  */
 export function isDecisionLookup(name: string, input: Record<string, any>): boolean {
   const target = String(input.command ?? input.file_path ?? input.path ?? '');
-  return /kb_|tracker_|memory_/i.test(name)
+  return /kb_|tracker_|memory_|^mcp__gitea__|^mcp__mem0__/i.test(name)
     || (name === 'Bash' && /(^|[\s;&|(])kibi\s/.test(String(input.command ?? '')))
     || (/^(Bash|Read|Grep|Glob)$/.test(name) && /(^|\/)\.kb\/|docs\/decisions|AGENTS\.md/.test(target));
 }
@@ -258,7 +260,7 @@ export function parseTranscript(text: string): Omit<AgentResult, 'code' | 'timed
         const isRuleLookup = isDecisionLookup(name, input);
         if (isRuleLookup && out.first_rule_lookup_turn === undefined) out.first_rule_lookup_turn = turn;
         if (isRuleLookup && typeof block.id === 'string') pendingLookups.set(block.id, name);
-        const isEdit = EDIT_TOOLS.has(name) || (name === 'Bash' && BASH_WRITE.test(String(input.command ?? '')));
+        const isEdit = EDIT_TOOLS.has(name) || (name === 'Bash' && BASH_WRITE.test(withoutNullRedirects(String(input.command ?? ''))));
         if (isEdit && out.first_edit_turn === undefined) out.first_edit_turn = turn;
       }
     }
