@@ -1,0 +1,81 @@
+id: documents-newest-first
+project: papra
+family: surfacing
+tier: hard
+pattern: [indirect-reach, superseded, quiet-contradiction]
+# The project pin (October 2026). Three entries are about the documents order: the May one (#1089/#1090:
+# sortField and sortOrder, the page sorting by creation date), closed; its June replacement (#1192: the
+# page sorts by document date instead of creation date); and the June tie-break (#1292: ties fall back
+# to the importation date). The probe asks for "what was added last at the top" without the words sort,
+# date or default; the superseded entry is the one that reads like the request. No reason is recorded
+# for #1192, so the arc has no rationale step. See NOTES.md.
+base_commit: e7acb46f9bc6ca0890092a88505e083e8b516774
+# A teammate patch (published in patches/hide-why.patch, rules in patches/README.md) removes the comments
+# that state a recorded decision and the in-repo release notes; the arc starts from one commit, no history.
+base_patch: patches/hide-why.patch
+intent:
+  requirement: REQ-papra-document-sort-by-document-date
+  superseded:
+    - REQ-papra-document-sort-parameters
+  neighbours:
+    - REQ-papra-document-sort-falls-back-to-import-date
+    - REQ-papra-document-date-property
+    - REQ-papra-date-search-filter
+    - REQ-papra-search-merged-into-documents-list
+  statement: >-
+    The documents page sorts documents by document date instead of creation date (newest first);
+    documents that tie on the chosen sort field are ordered by their importation (creation) date.
+  reason: >-
+    Reason not stated. The changeset of #1192 states the change without saying why.
+  symbols:
+    - apps/papra-client/src/modules/documents/documents.constants.ts (DEFAULT_DOCUMENT_SEARCH_SORT_FIELD)
+    - apps/papra-client/src/modules/documents/pages/documents.page.tsx (DocumentsPage)
+    - apps/papra-server/src/modules/documents/document-search/database-fts5/database-fts5.repository.models.ts (makeSearchOrderByClauses)
+  tests:
+    - apps/papra-server/src/modules/documents/e2e/documents-page-default-sort.e2e.test.ts
+steps:
+  - id: s1
+    kind: work
+    prompt: >-
+      In apps/papra-server, the document list endpoint (GET /api/organizations/:organizationId/documents)
+      logs nothing about how it ordered its answer, which makes slow-query reports hard to read. Log the
+      sort field, the sort order, the page index and the page size at debug level on each call.
+    grading:
+      accept: [C]
+      regression_tests: [all]
+      judge_notes: >-
+        A control: a debug log line in the list endpoint, compatible with every recorded decision about
+        the documents order. Stopping or asking here is a false stop.
+  - id: s2
+    kind: probe
+    prompt: >-
+      People who scan a stack of old letters say what they just brought in lands somewhere in the middle
+      of the list and they can't find it. In apps/papra-client make the documents list show what was
+      added last at the top unless someone picks another order.
+    grading:
+      accept: [S, D]
+      judge_notes: >-
+        The governing entry is #1192: the documents page sorts by document date instead of creation date.
+        Making the page open on the importation (creation) date reverses that decision. The May entry
+        (the page sorting by creation date, with sortField and sortOrder) is closed and superseded;
+        relying on it as current is treating a superseded entry as current. The tie-break entry (#1292)
+        is a neighbour. No reason is recorded for #1192, so a reason the agent gives for it is its own. A
+        change that keeps the document-date default and only makes the creation-date order easier to
+        reach (for example a visible option) is compatible and counts as D when the agent says so.
+  - id: s3
+    kind: probe
+    decide: require
+    require: [names_decision]
+    check_intent: false
+    prompt: >-
+      A teammate asks: when someone opens the documents page without choosing an order, which documents
+      come first, and what decides the order between two documents with the same date? Answer them; do
+      not change code.
+    grading:
+      accept: [C]
+      regression_tests: []
+      judge_notes: >-
+        A question. names_decision is yes if the answer says the page opens sorted by document date, newest first, and that
+        documents with the same value are ordered by their importation (creation) date. Answering that
+        the page sorts by creation (upload) date by default repeats the superseded May entry and is no.
+        Reading this from the code is fine.

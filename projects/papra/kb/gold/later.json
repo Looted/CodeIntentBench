@@ -1,0 +1,354 @@
+{
+ "note": "Decisions added to the 49 bootstrap claims (../claims.json) for bases after April 2026: the two decisions the first arcs kept out (#892, #994 inside the api-key rule), what landed between April and October 2026, and the 16 rules of the benchmark's v1 rule layer (../../rules). A claim applies to a base when its since date is on or before the base commit date and, where it names a commit, that commit is an ancestor of the base. apply.py reads this file.",
+ "knowledgeSources": [
+  {
+   "id": "papra-tests",
+   "kind": "test_suite",
+   "title": "Papra server test suite (apps/papra-server/src/modules)",
+   "locator": "apps/papra-server/src/modules",
+   "authority": "supporting",
+   "notes": "Test titles are the maintainer's own wording of a behaviour. The v1 rule statements were written by the benchmark from the code and checked against these tests (../../RULES-NOTES.md); the cited titles are the excerpt, and a reason is recorded only where a title, a code comment, a changeset, the docs or an issue states one."
+  },
+  {
+   "id": "papra-changelog",
+   "kind": "decision_log",
+   "title": "papra-hq/papra release changelogs (apps/*/CHANGELOG.md)",
+   "locator": "apps/papra-server/CHANGELOG.md",
+   "authority": "supporting",
+   "notes": "Each entry is a changeset the maintainers wrote with the change; it states what changed and sometimes why. A reason is recorded only where the changeset states one. bulk.py turns the entries into decisions."
+  }
+ ],
+ "claims": [
+  {
+   "id": "REQ-papra-intake-webhook-secret-length",
+   "since": "2026-02-14",
+   "commit": "1c1d273fbdd7dc433ff18fcb7ae546e4c2197cf9",
+   "component": "intake_emails",
+   "sourceId": "papra-prs",
+   "reference": "#892",
+   "statement": "The intake email webhook secret (INTAKE_EMAILS_WEBHOOK_SECRET) must be between 16 and 128 characters; a default value, please-change-me, stays in place and itself satisfies the rule.",
+   "excerpt": "Enforced the length of the intake email webhook secret (`INTAKE_EMAILS_WEBHOOK_SECRET`) to be between 16 and 128 characters to match the OwlRelay API validation requirements.\ndefault: 'please-change-me',",
+   "rationale": "The changeset of PR #892 (2026-02-14): the length is enforced \"to match the OwlRelay API validation requirements\". Why a default value was kept: reason not stated."
+  },
+  {
+   "id": "REQ-papra-intake-webhook-secret-required",
+   "since": "2026-09-12",
+   "commit": "c16661e93606de8759e5312020571a126f5f58e6",
+   "component": "intake_emails",
+   "sourceId": "papra-prs",
+   "reference": "#1502",
+   "statement": "The intake email webhook secret (INTAKE_EMAILS_WEBHOOK_SECRET) has no default value: when intake emails are enabled the server refuses to start without it, and the ingest endpoint rejects a request when no secret is configured; a secret that is set must be between 16 and 128 characters.",
+   "excerpt": "Removed the default value for the intake email webhook validation secret to prevent ingestion of documents from untrusted sources when no secret is provided. Users must now explicitly set a secret using `INTAKE_EMAILS_WEBHOOK_SECRET`.",
+   "rationale": "The changeset of PR #1502 (2026-09-12): the default was removed \"to prevent ingestion of documents from untrusted sources when no secret is provided\". The length rule is carried over from PR #892, whose changeset gives the reason \"to match the OwlRelay API validation requirements\".",
+   "supersedes": [
+    "REQ-papra-intake-webhook-secret-length"
+   ],
+   "why_changed": "PR #1502 (2026-09-12) removed the default value that PR #892 had kept in February 2026. Its changeset says users must now explicitly set a secret, \"to prevent ingestion of documents from untrusted sources when no secret is provided\"."
+  },
+  {
+   "id": "REQ-papra-storage-key-persisted-sync-optional",
+   "since": "2026-09-18",
+   "commit": "7c9a96fc350a73c0f53465643b6fcf6c56099ed0",
+   "component": "storage",
+   "sourceId": "papra-docs",
+   "reference": "03-guides/09-storage-key-patterns.mdx#storage-key-persistence",
+   "statement": "A document's storage key is generated at upload time and persisted with the document; by default changing the pattern configuration only affects newly uploaded documents, and existing documents keep their storage keys unless synchronization is enabled or they are explicitly migrated.",
+   "excerpt": "By default, **changing the pattern configuration only affects newly uploaded documents**. Existing documents retain their original storage keys unless you enable synchronization or explicitly migrate them.",
+   "rationale": "The storage key docs: after a switch to patterns, existing documents \"keep their legacy storage keys and remain accessible\". Why leaving existing keys alone is the default: reason not stated beyond that.",
+   "supersedes": [
+    "REQ-a-document-s-storage-key-is-generated-at-u-4715C9F2"
+   ],
+   "why_changed": "PR #1525 (2026-09-18) added optional storage key synchronization and reworded this docs section in the same change. The March 2026 statement that a pattern change never changes the key of an existing document no longer holds once synchronization is enabled."
+  },
+  {
+   "id": "REQ-papra-storage-key-sync-on-document-update",
+   "since": "2026-09-18",
+   "commit": "7c9a96fc350a73c0f53465643b6fcf6c56099ed0",
+   "component": "storage",
+   "sourceId": "papra-prs",
+   "reference": "#1525",
+   "statement": "Storage key synchronization is optional and off by default (DOCUMENT_STORAGE_KEY_SYNC_ENABLED, with pattern-based storage keys); when it is enabled, a change of a document's name or document date re-evaluates the pattern and moves the stored file to the new key; enabling it does not move existing files by itself; a failed copy or database update keeps the original file.",
+   "excerpt": "Added optional storage key synchronization so document renames are reflected in the underlying storage. Enable it with `DOCUMENT_STORAGE_KEY_SYNC_ENABLED=true` when using pattern-based storage keys.\nCurrently, synchronization is triggered by document name or document date changes. Papra copies the stored file to the new key, updates its database reference, and removes the old file.\nEnabling synchronization does not immediately move existing files: it applies to subsequent updates that trigger synchronization.\nFailed copies or database updates retain the original file, while failed old-file cleanup leaves the new key usable.",
+   "rationale": "The changeset of PR #1525 (2026-09-18): synchronization was added \"so document renames are reflected in the underlying storage\". Why it is off by default, and why only name and date changes trigger it: reason not stated."
+  },
+  {
+   "id": "REQ-papra-storage-pattern-organization-name",
+   "since": "2026-09-18",
+   "commit": "1c993e43105869e5256317ea2041099b0daf08b3",
+   "component": "storage",
+   "sourceId": "papra-prs",
+   "reference": "#1529",
+   "statement": "Storage key patterns support {{organization.name}}, the current organization name sanitized for safe filesystem use; organization names are not unique, so a pattern that uses it should also include {{organization.id}} to keep folders distinct.",
+   "excerpt": "Add support for `{{organization.name}}` in document storage key patterns to organize files into folders named after your organizations.\nUse `organization.name` for readable organization folders. Organization names are not unique, so include `organization.id` to keep folders distinct:",
+   "rationale": "Maintainer CorentinTh on issue #976 (2026-03-27): \"Organization names are not unique, so it could cause weird storage paths if two separate organizations have the same name\". The changeset of PR #1529 says the expression is there \"to organize files into folders named after your organizations\".",
+   "resolves_questions": [
+    "papra-issues:#976"
+   ]
+  },
+  {
+   "id": "REQ-papra-organization-rename-keeps-storage-keys",
+   "since": "2026-09-18",
+   "commit": "1c993e43105869e5256317ea2041099b0daf08b3",
+   "component": "storage",
+   "sourceId": "papra-docs",
+   "reference": "03-guides/09-storage-key-patterns.mdx#organization-names-and-renames",
+   "statement": "Renaming an organization does not move its existing documents, even when storage-key synchronization is enabled; their persisted keys remain usable, new uploads use the current organization name, and with synchronization enabled a later document name or document date change re-evaluates the entire pattern and uses the current organization name too.",
+   "excerpt": "Renaming an organization does not move its existing documents, even when storage-key synchronization is enabled. Their persisted keys remain usable. New uploads use the current organization name. With synchronization enabled, a later document name or document date change re-evaluates the entire pattern and uses the current organization name too."
+  },
+  {
+   "id": "REQ-papra-former-members-can-be-reinvited",
+   "since": "2026-09-20",
+   "commit": "a03dc5ab240607040bfe2058fe5a56e96a7b0c3b",
+   "component": "invitations",
+   "sourceId": "papra-prs",
+   "reference": "#1534",
+   "statement": "A user who left or was removed from an organization can be invited again: only a current membership or a pending invitation blocks a new invitation, while accepted, expired, cancelled and rejected invitations do not; pending invitations past their expiry date are marked expired before the checks, so they stop consuming organization capacity.",
+   "excerpt": "Fix an issue that prevented reinviting users who left or were removed from an organisation.\na former member can be reinvited after being removed from the organization\nexpired, cancelled and rejected invitations do not prevent a fresh invitation\nstale pending invitations expire immediately and stop consuming organization capacity",
+   "rationale": "Reported in issue #1398 by edwardho1994 (2026-07-29): \"Can not invite the same user after the user has been removed from the organization\". The maintainer fixed it in PR #1534 without stating a reason of his own."
+  },
+  {
+   "id": "REQ-papra-share-links-of-deleted-organizations",
+   "since": "2026-07-10",
+   "commit": "12e1d4b6db352e1725318d8b6f82a604f3282ef0",
+   "component": "share_links",
+   "sourceId": "papra-prs",
+   "reference": "#1348",
+   "statement": "Public access to a document share link (document metadata, file download and password verification) stops with 410 Gone as soon as the link's organization is soft-deleted, and resumes automatically if the organization is restored during the grace period.",
+   "excerpt": "Security fix: document share links belonging to a soft-deleted organization were still publicly accessible. Public access (document metadata, file download, and password verification) now stops with a 410 Gone as soon as the organization is deleted, and resumes automatically if the organization is restored during the grace period.",
+   "rationale": "The changeset of PR #1348 (2026-07-10) calls it a security fix: \"document share links belonging to a soft-deleted organization were still publicly accessible\"."
+  },
+  {
+   "id": "REQ-papra-application-versioning-year-based",
+   "since": "2026-09-01",
+   "commit": "eb0c8031",
+   "component": "release",
+   "sourceId": "papra-docs",
+   "reference": "04-resources/04-versioning-and-tagging.mdx#application-versioning",
+   "statement": "The application package (@papra/app) is versioned YY.MINOR.PATCH along a single release line, and older YY.MINOR versions receive no maintenance or security patches; library packages follow SemVer; Docker images use the same version as the application package.",
+   "excerpt": "Papra application uses the format `YY.MINOR.PATCH`:\nVersions move forwards along a single release line. Papra doesn't publish maintenance or security patches for older `YY.MINOR` versions, so you must upgrade to the latest version to receive fixes.\nDocker images use the same version as the application package.",
+   "supersedes": [
+    "REQ-the-application-package-is-versioned-with--B1FD7959"
+   ],
+   "why_changed": "PR #1454 (2026-09-01) rewrote the versioning page. The application format is now YY.MINOR.PATCH, a feature release counter within the year, where the earlier page described CalVer YY.M.N with the month number as the second part."
+  },
+  {
+   "id": "REQ-papra-member-limit-counts-pending-invitations",
+   "since": "2025-10-05",
+   "commit": "e52bc261",
+   "component": "invitations",
+   "sourceId": "papra-tests",
+   "reference": "organizations/organizations.usecases.test.ts#member-limit",
+   "statement": "An organization's plan sets a maximum number of members, and pending invitations count toward it: a new invitation is refused when current members plus pending invitations already reach the plan limit.",
+   "excerpt": "cannot invite new members when the organization has reached its maximum member count (including pending invitations) defined by the plan to enforce subscription limits",
+   "rationale": "The test that covers the check, added in PR #536 (2025-10-05), says the limit is \"defined by the plan to enforce subscription limits\". Why pending invitations count toward it: reason not stated."
+  },
+  {
+   "id": "REQ-papra-active-subscription-blocks-deletion",
+   "rule": "active-subscription-blocks-deletion",
+   "since": "2025-10-24",
+   "commit": "b1a88230",
+   "component": "subscriptions",
+   "sourceId": "papra-tests",
+   "reference": "organizations/organizations.usecases.test.ts#active-subscription-blocks-deletion",
+   "statement": "An organization with a live paid subscription (active, trialing, past due or unpaid, and not scheduled to cancel) cannot be deleted; the owner must cancel the subscription first. Organizations whose subscription is canceled, incomplete, or set to cancel at period end can be deleted.",
+   "excerpt": "cannot delete organization with an active subscription\ncan delete organization with subscription scheduled to cancel at period end\nactive subscription with ongoing billing blocks deletion\nuser who canceled subscription via customer portal can immediately delete organization",
+   "rationale": "The code comment on doesSubscriptionBlockDeletion (PR #572, 2025-10-24): a subscription set to cancel at period end does not block deletion because the \"User has already expressed intent to cancel\" and the \"Organization will lose access at period end anyway\". Why a live subscription blocks deletion instead of being cancelled with it: reason not stated."
+  },
+  {
+   "id": "REQ-papra-api-key-scope-and-expiry",
+   "rule": "api-key-scope-and-expiry",
+   "since": "2026-06-07",
+   "commit": "d73933a8",
+   "component": "api_keys",
+   "sourceId": "papra-tests",
+   "reference": "app/auth/auth.models.test.ts#api-key-scope-and-expiry",
+   "statement": "An API key can only call routes whose required permissions are all explicitly granted to the key; a key missing any one of them is unauthorized. A key past its expiry date is treated as if it did not exist, while a key with no expiry never expires.",
+   "excerpt": "when the auth type is api-key, all permissions must match\nwithout the custom-properties:create permission, creating a custom property definition with an api key should fail\nwhen retrieving an api key by hash, it only returns the api key if it is not expired"
+  },
+  {
+   "id": "REQ-papra-duplicate-upload-restores-trashed-document",
+   "rule": "duplicate-upload-restores-trashed-document",
+   "since": "2025-12-31",
+   "commit": "7448a170",
+   "component": "documents",
+   "sourceId": "papra-tests",
+   "reference": "documents/documents.usecases.test.ts#duplicate-upload-restores-trashed-document",
+   "statement": "Within an organization a file with identical content is stored only once. Uploading a duplicate of a live document is rejected with a conflict, while uploading a duplicate of a document that sits in the trash restores that document in place (new name, previous tags cleared, tagging rules re-applied) instead of creating a second record.",
+   "excerpt": "in the same organization, we should not be able to have two documents with the same content, an error is raised if the document already exists\nwhen restoring a deleted document via duplicate upload, the optimistically saved new file should be cleaned up to prevent orphan files\na document is unique by organization, an error is raised if a document with the same hash already exists",
+   "rationale": "The deduplication docs: only one copy is stored, \"saving storage space and reducing clutter\". Maintainer CorentinTh on issue #142 (2025-04-11) on why the restore is automatic: prompting the user would not be possible for intake emails, automated uploads through the public API and ingestion folders.",
+   "restates": [
+    "REQ-documents-are-deduplicated-per-organizatio-7DDB2737",
+    "REQ-uploading-content-identical-to-a-trashed-d-F0111402",
+    "REQ-when-a-trashed-document-is-restored-by-a-d-F5E2FEA1"
+   ]
+  },
+  {
+   "id": "REQ-papra-intake-email-sender-allowlist",
+   "rule": "intake-email-sender-allowlist",
+   "since": "2025-01-26",
+   "commit": "274fb7d7",
+   "component": "intake_emails",
+   "sourceId": "papra-tests",
+   "reference": "intake-emails/intake-emails.models.test.ts#intake-email-sender-allowlist",
+   "statement": "An intake email address only ingests attachments from senders explicitly listed in its allowed origins (compared case-insensitively). An intake email with an empty allow list accepts nothing, and a disabled intake email ignores all mail.",
+   "excerpt": "if no allowed origins are provided, the origin is not allowed\nan origin is allowed if it is in the list of the intake email allowed origins email address\nwhen the intake email is disabled, nothing happens, only a log is emitted"
+  },
+  {
+   "id": "REQ-papra-invite-cannot-create-owner",
+   "rule": "invite-cannot-create-owner",
+   "since": "2025-10-05",
+   "commit": "e52bc261",
+   "component": "invitations",
+   "sourceId": "papra-tests",
+   "reference": "organizations/organizations.usecases.test.ts#invite-cannot-create-owner",
+   "statement": "An organization has exactly one owner, the person who created it. Invitations and role changes can only grant the admin or member role; nobody can be invited or promoted as owner.",
+   "excerpt": "an invitation for the owner role cannot be created to prevent multiple owners in an organization",
+   "rationale": "The test that covers the check says an invitation for the owner role cannot be created \"to prevent multiple owners in an organization\". Why an organization has a single owner: reason not stated."
+  },
+  {
+   "id": "REQ-papra-member-cap-counts-pending-invitations",
+   "rule": "member-cap-counts-pending-invitations",
+   "since": "2026-09-20",
+   "commit": "a03dc5ab240607040bfe2058fe5a56e96a7b0c3b",
+   "component": "invitations",
+   "sourceId": "papra-tests",
+   "reference": "organizations/organizations.usecases.test.ts#member-cap-counts-pending-invitations",
+   "statement": "An organization's plan sets a maximum number of members. Pending invitations count toward that maximum, so a new invitation (or a resend) is refused when current members plus pending invitations already reach the plan limit.",
+   "excerpt": "cannot invite new members when the organization has reached its maximum member count (including pending invitations) defined by the plan to enforce subscription limits\nresending an invitation respects organization capacity",
+   "rationale": "The test that covers the check, added in PR #536 (2025-10-05), says the limit is \"defined by the plan to enforce subscription limits\". Why pending invitations count toward it: reason not stated.",
+   "supersedes": [
+    "REQ-papra-member-limit-counts-pending-invitations"
+   ],
+   "why_changed": "PR #1534 (2026-09-20) extended the capacity check to resent invitations (test: \"resending an invitation respects organization capacity\"). Before it, only a new invitation was checked against members plus pending invitations."
+  },
+  {
+   "id": "REQ-papra-only-owner-deletes-organization",
+   "rule": "only-owner-deletes-organization",
+   "since": "2025-10-11",
+   "commit": "c434d873",
+   "component": "organizations",
+   "sourceId": "papra-tests",
+   "reference": "organizations/organizations.usecases.test.ts#only-owner-deletes-organization",
+   "statement": "Only the organization owner can delete an organization. Admins and members cannot, even though admins can manage everything else.",
+   "excerpt": "only owner can delete organization, admins and members cannot\nthrows an error if the user is not the owner of the organization",
+   "restates": [
+    "REQ-only-the-organization-owner-can-delete-an--8207027D"
+   ]
+  },
+  {
+   "id": "REQ-papra-only-owners-and-admins-invite",
+   "rule": "only-owners-and-admins-invite",
+   "since": "2025-10-05",
+   "commit": "e52bc261",
+   "component": "invitations",
+   "sourceId": "papra-tests",
+   "reference": "organizations/organizations.usecases.test.ts#only-owners-and-admins-invite",
+   "statement": "Only an organization's owner or admins can invite new members or resend an invitation. Regular members cannot send invitations, and non-members are rejected outright.",
+   "excerpt": "only organization owners and admins can invite members, regular members cannot send invitations\nusers who are not members of the organization cannot send invitations to prevent unauthorized access",
+   "rationale": "The test that covers non-members says they cannot send invitations \"to prevent unauthorized access\". Why regular members cannot invite: reason not stated.",
+   "restates": [
+    "REQ-only-privileged-members-of-an-organization-FCDD9696"
+   ]
+  },
+  {
+   "id": "REQ-papra-owner-cannot-be-removed",
+   "rule": "owner-cannot-be-removed",
+   "since": "2025-05-21",
+   "commit": "72e5a9a4",
+   "component": "organizations",
+   "sourceId": "papra-tests",
+   "reference": "organizations/organizations.models.test.ts#owner-cannot-be-removed",
+   "statement": "Only owners and admins can remove members from an organization, and the owner can never be removed by anyone, including themselves.",
+   "excerpt": "the owner of an organization cannot be removed\nonly admins or owners can remove members from an organization\na member (not admin nor owner) cannot remove anyone from the organization"
+  },
+  {
+   "id": "REQ-papra-plan-storage-and-file-size-limits",
+   "rule": "plan-storage-and-file-size-limits",
+   "since": "2025-08-20",
+   "commit": "b08241f2",
+   "component": "documents",
+   "sourceId": "papra-tests",
+   "reference": "documents/documents.usecases.test.ts#plan-storage-and-file-size-limits",
+   "statement": "Uploads are bounded by the organization's plan: a file larger than the plan's maximum file size is rejected, and a file that would push total stored bytes past the plan's storage quota is rejected. In both cases nothing is persisted (no database row, no stored file).",
+   "excerpt": "if the document size exceeds the organization storage limit, an error is thrown and nothing is saved in the db\nwhen a document is created that exceeds the file size limit, an error is thrown and nothing is saved in the db"
+  },
+  {
+   "id": "REQ-papra-resend-only-inactive-invitations",
+   "rule": "resend-only-inactive-invitations",
+   "since": "2026-09-20",
+   "commit": "a03dc5ab240607040bfe2058fe5a56e96a7b0c3b",
+   "component": "invitations",
+   "sourceId": "papra-tests",
+   "reference": "organizations/organizations.usecases.test.ts#resend-only-inactive-invitations",
+   "statement": "An invitation can be resent only when it is expired, cancelled or rejected. Pending invitations cannot be resent, and accepted invitations are historical records that can never be resent.",
+   "excerpt": "accepted invitations remain historical and cannot be resent\nan old invitation cannot be resent to a current member",
+   "restates": [
+    "REQ-expired-cancelled-or-rejected-invitations--CDCCD352"
+   ]
+  },
+  {
+   "id": "REQ-papra-share-link-gone-semantics",
+   "rule": "share-link-gone-semantics",
+   "since": "2026-07-10",
+   "commit": "12e1d4b6db352e1725318d8b6f82a604f3282ef0",
+   "component": "share_links",
+   "sourceId": "papra-tests",
+   "reference": "document-share-links/document-share-links.usecases.test.ts#share-link-gone-semantics",
+   "statement": "A public share link answers 410 Gone (not 404) when the link is disabled or expired, when its document is in the trash, or when its organization is soft-deleted. The link itself is never deleted on trash, so access resumes automatically once the document or organization is restored.",
+   "excerpt": "throws 410 when the link is disabled\nthrows 410 when the link is expired\nthrows 410 when the organization is soft-deleted\na trashed document is no longer reachable through its share link, and access resumes once it is restored",
+   "rationale": "For the soft-deleted organization case, the changeset of PR #1348 (2026-07-10) calls it a security fix: such links \"were still publicly accessible\". Why the answer is 410 rather than 404, and why a link survives the trash: reason not stated.",
+   "restates": [
+    "REQ-papra-share-links-of-deleted-organizations"
+   ]
+  },
+  {
+   "id": "REQ-papra-signup-email-domain-restrictions",
+   "rule": "signup-email-domain-restrictions",
+   "since": "2026-09-30",
+   "commit": "193d860c",
+   "component": "auth",
+   "sourceId": "papra-tests",
+   "reference": "app/auth/auth.models.test.ts#signup-email-domain-restrictions",
+   "statement": "When an allowed-domain list is configured, only emails whose domain is exactly in the list may sign up; subdomains are not implicitly allowed. A domain on the forbidden list is always rejected, even if it also appears on the allowed list. Matching ignores case.",
+   "excerpt": "forbidden domains take precedence over allowed domains\nan allowed domain does not implicitly allow its subdomains\na non-empty allowlist only permits listed domains"
+  },
+  {
+   "id": "REQ-papra-tagging-rule-match-mode",
+   "rule": "tagging-rule-match-mode",
+   "since": "2025-10-28",
+   "commit": "16ae4617",
+   "component": "tagging_rules",
+   "sourceId": "papra-tests",
+   "reference": "tagging-rules/tagging-rules.usecases.test.ts#tagging-rule-match-mode",
+   "statement": "A tagging rule applies its tags only when its conditions match according to its match mode: \"all\" (the default) requires every condition to match, \"any\" requires at least one. A rule with no conditions always matches and tags every incoming document.",
+   "excerpt": "when conditionMatchMode is \"all\" (default), tags are not applied when only some conditions match\nwhen conditionMatchMode is \"any\", tags are applied when at least one condition matches\na rule without conditions will apply its tags to all imported documents",
+   "rationale": "Maintainer on issue #597: nested and/or rule groups were judged a lot of effort for something niche, and a toggle between \"All conditions should match (AND)\" and \"Any condition should match (OR)\" covers the need. Why \"all\" is the default and why a rule without conditions matches every document: reason not stated.",
+   "restates": [
+    "REQ-AUTO-E2E14D03456F8986"
+   ]
+  },
+  {
+   "id": "REQ-papra-user-owned-organization-cap",
+   "rule": "user-owned-organization-cap",
+   "since": "2026-06-10",
+   "commit": "e6de1ee1",
+   "component": "organizations",
+   "sourceId": "papra-tests",
+   "reference": "organizations/organizations.usecases.test.ts#user-owned-organization-cap",
+   "statement": "A user can own at most a configured number of organizations (default 10). Only organizations the user owns count toward the cap, and an instance admin can raise or lower the cap for an individual user.",
+   "excerpt": "by default the maximum number of organizations a user can create is defined in the config, if the user has reached the limit an error is thrown\nan admin can individually allow a user to create more organizations by setting the maxOrganizationCount on the user\na user with a custom max organization count uses that value"
+  },
+  {
+   "id": "REQ-papra-webhook-ssrf-protection",
+   "rule": "webhook-ssrf-protection",
+   "since": "2026-04-02",
+   "commit": "17b501a9",
+   "component": "webhooks",
+   "sourceId": "papra-tests",
+   "reference": "webhooks/webhooks.usecases.test.ts#webhook-ssrf-protection",
+   "statement": "When SSRF protection is enabled, a webhook URL pointing at a private, loopback or otherwise unsafe address is rejected at creation and at update, unless its hostname is on the instance's explicit allow list.",
+   "excerpt": "when SSRF protection is enabled, creating a webhook with a private IP URL throws ssrf_unsafe_url\nwhen SSRF protection is enabled, updating a webhook with a private IP URL throws ssrf_unsafe_url",
+   "rationale": "The changeset of PR #993 (2026-04-02): webhook URLs are validated so they \"do not point to private or reserved IP addresses, preventing potential server-side request forgery attacks\"; the hostname allow list is for \"internal services you control\"."
+  }
+ ]
+}

@@ -6,3 +6,31 @@ relationships:
     created_at: "2026-10-14T12:09:52.175Z"
     created_by: kibi/upsert
     source: mcp://kibi/upsert
+  - type: requires_property
+    from: REQ-a-tagging-rule-applies-only-to-documents-u-C9F8BBF7
+    to: FACT-papra-tagging-rules-rule-applies-automatically-to-existing-documents
+    created_at: 2026-11-15T21:44:58.510Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-0e58f6daef9e
+  - type: constrains
+    from: REQ-a-tagging-rule-applies-only-to-documents-u-C9F8BBF7
+    to: FACT-papra-subject-tagging-rules-rule
+    created_at: 2026-11-15T21:44:58.515Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c2ee4dad9d51
+  - type: requires_property
+    from: REQ-a-tagging-rule-applies-only-to-documents-u-C9F8BBF7
+    to: FACT-papra-tagging-rules-apply-to-existing-explicit-user-action
+    created_at: 2026-11-15T21:44:58.517Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9918ff0ae197
+  - type: constrains
+    from: REQ-a-tagging-rule-applies-only-to-documents-u-C9F8BBF7
+    to: FACT-papra-subject-tagging-rules-apply-to-existing
+    created_at: 2026-11-15T21:44:58.519Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-1fa2fa4931b8

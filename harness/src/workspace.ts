@@ -1,24 +1,38 @@
 import { existsSync, mkdirSync, rmSync, writeFileSync, readFileSync, copyFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { createHash } from 'node:crypto';
+import { isAbsolute, join, relative, resolve, sep } from 'node:path';
 import { ARMS_DIR, CACHE_DIR, PROJECTS_DIR, RUNS_DIR, loadRules } from './config.ts';
 import { must, sh } from './shell.ts';
 import type { ArmHost, ProjectConfig, Rule, RunSpec, Task } from './types.ts';
 
-export const BASE_BRANCH = 'cib-base';
+export const BASE_BRANCH = 'main';
 
+/** A neutral developer identity: the agent can read `git log`, and the name must not say it is in a benchmark. */
 export const GIT_IDENTITY = {
-  GIT_AUTHOR_NAME: 'CodeIntentBench',
-  GIT_AUTHOR_EMAIL: 'bench@codeintentbench.invalid',
-  GIT_COMMITTER_NAME: 'CodeIntentBench',
-  GIT_COMMITTER_EMAIL: 'bench@codeintentbench.invalid',
+  GIT_AUTHOR_NAME: 'Alex Morgan',
+  GIT_AUTHOR_EMAIL: 'alex.morgan@example.com',
+  GIT_COMMITTER_NAME: 'Alex Morgan',
+  GIT_COMMITTER_EMAIL: 'alex.morgan@example.com',
 };
 
 export function runDir(spec: RunSpec, id: string): string {
   return join(RUNS_DIR, spec.project, spec.task, spec.arm, id);
 }
 
+/**
+ * Where a run's workspace lives. Not inside the run dir: that path names the arc and the arm
+ * (runs/<project>/_arcs/<arc>/<arm>/<id>), and the agent sees its working directory. The workspace is
+ * `<runs>/_w/<hash of the run dir>/<project>`, the way a checkout of the project would be named.
+ * The run dir's `workspace.txt` points at it.
+ */
 export function workspaceDir(dir: string): string {
-  return join(dir, 'workspace');
+  const abs = resolve(dir);
+  const rel = relative(RUNS_DIR, abs);
+  const project = rel && !rel.startsWith('..') && !isAbsolute(rel) ? rel.split(sep)[0] : 'project';
+  // CIB_WORK_ROOT puts workspaces under a short root: Kibi's first sync crashes SWI-Prolog when the
+  // workspace path is long (about 118 characters), which deep runs directories reach.
+  const root = process.env.CIB_WORK_ROOT ? resolve(process.env.CIB_WORK_ROOT) : join(RUNS_DIR, '_w');
+  return join(root, createHash('sha1').update(abs).digest('hex').slice(0, 12), project);
 }
 
 /** A bare mirror of the project repository, fetched once and reused by every run. */
@@ -34,20 +48,32 @@ export function ensureMirror(project: ProjectConfig, commits: string[]): string 
   return mirror;
 }
 
+/**
+ * The name a base is stored under (the knowledge base of an arm is keyed by it): the commit's first 12 characters,
+ * plus the patch's file name, plus the knowledge base variant an arc asks for (`kb_variant`, for example `crowded`).
+ */
+export function baseKey(task: Pick<Task, 'base_commit' | 'base_patch'> & { kb_variant?: string }, fallback = ''): string {
+  const commit = (task.base_commit ?? fallback).slice(0, 12);
+  const patched = task.base_patch ? `${commit}-${task.base_patch.split('/').pop()!.replace(/\.(patch|diff)$/, '')}` : commit;
+  return task.kb_variant ? `${patched}-${task.kb_variant}` : patched;
+}
+
 export function baseCommit(project: ProjectConfig, task: Task): string {
   return task.base_commit ?? project.commit;
 }
 
 /**
  * Create the agent's workspace: the project at the task's base commit, built,
- * with the arm applied and everything committed on `cib-base` so the agent's
- * own changes are exactly `git diff cib-base`.
+ * with the arm applied and everything committed on `main` (BASE_BRANCH) so the agent's
+ * own changes are exactly `git diff main`.
  */
 export interface PrepareOptions {
   /** `applicable` (default): the project's rules whose scope exists at the commit. `none`: no rules (arcs). */
   rules?: 'applicable' | 'none';
   /** Append the arm's `convention.md` to CLAUDE.md (arcs: the one sentence that says where decisions live). */
   convention?: boolean;
+  /** Skip the project's install and build: enough to inspect what an arm's setup puts in its container (the audit), not to run tests. */
+  skipInstall?: boolean;
 }
 
 /** The project's `env` expanded for one run directory. */
@@ -57,7 +83,7 @@ export function projectEnv(project: ProjectConfig, dir: string): Record<string, 
   return out;
 }
 
-export function prepareWorkspace(dir: string, project: ProjectConfig, task: Pick<Task, 'base_commit' | 'source'>, arm: string, log: (s: string) => void, opts: PrepareOptions = {}): { base: string; rules: Rule[] } {
+export function prepareWorkspace(dir: string, project: ProjectConfig, task: Pick<Task, 'base_commit' | 'base_patch' | 'source'> & { kb_variant?: string }, arm: string, log: (s: string) => void, opts: PrepareOptions = {}): { base: string; rules: Rule[] } {
   const ws = workspaceDir(dir);
   // The project's environment applies to this process from here on: setup, the arm scripts, grading and the agent all inherit it.
   Object.assign(process.env, projectEnv(project, dir));
@@ -72,12 +98,27 @@ export function prepareWorkspace(dir: string, project: ProjectConfig, task: Pick
   git(`checkout --quiet -B ${BASE_BRANCH} ${base}`);
   // The agent must not learn anything from the project's own history or remotes.
   git('remote remove origin');
+  if (task.base_patch) {
+    const patch = join(PROJECTS_DIR, project.name, task.base_patch);
+    log(`base patch: ${task.base_patch}`);
+    git(`apply --whitespace=nowarn ${JSON.stringify(patch)}`);
+    // One commit with the patched tree and nothing else: no project history, branches or tags to read the patch or the decisions back from.
+    git('checkout --quiet --orphan scratch-orphan');
+    git('add -A');
+    git('commit --quiet --no-verify -m "Initial commit"');
+    git(`branch --quiet -M scratch-orphan ${BASE_BRANCH}`);
+    const refs = git(`for-each-ref '--format=%(refname)'`).split('\n').map((r) => r.trim()).filter((r) => r && r !== `refs/heads/${BASE_BRANCH}`);
+    for (const r of refs) git(`update-ref -d ${JSON.stringify(r)}`);
+    git('reflog expire --expire=now --all');
+  }
   // Hooks the project installs on `prepare` (husky, lefthook) would interfere with grading commits.
   sh(`git -C ${JSON.stringify(ws)} config core.hooksPath /dev/null`, { quiet: true });
 
-  log(`install: ${project.setup.install}`);
-  must(project.setup.install, { cwd: ws });
-  if (project.setup.build) {
+  if (!opts.skipInstall) {
+    log(`install: ${project.setup.install}`);
+    must(project.setup.install, { cwd: ws });
+  }
+  if (project.setup.build && !opts.skipInstall) {
     log(`build: ${project.setup.build}`);
     must(project.setup.build, { cwd: ws });
   }
@@ -98,7 +139,7 @@ export function prepareWorkspace(dir: string, project: ProjectConfig, task: Pick
     log(`arm prepare: ${project.setup.arm_prepare} (${arm})`);
     must(`${JSON.stringify(script)} ${JSON.stringify(ws)} ${JSON.stringify(arm)} ${JSON.stringify(rulesDir)} ${JSON.stringify(dir)}`, {
       cwd: ws,
-      env: { ...process.env, ...GIT_IDENTITY, CIB_RUN_DIR: dir, CIB_WORKSPACE: ws, CIB_RULES_DIR: rulesDir, CIB_PROJECT: project.name, CIB_CACHE_DIR: CACHE_DIR, CIB_MODE: mode },
+      env: { ...process.env, ...GIT_IDENTITY, CIB_RUN_DIR: dir, CIB_WORKSPACE: ws, CIB_RULES_DIR: rulesDir, CIB_PROJECT: project.name, CIB_CACHE_DIR: CACHE_DIR, CIB_MODE: mode, CIB_BASE_COMMIT: base, CIB_BASE_KEY: baseKey({ base_commit: base, base_patch: task.base_patch, kb_variant: task.kb_variant }) },
     });
   }
   const setup = join(ARMS_DIR, arm, 'setup');
@@ -106,7 +147,7 @@ export function prepareWorkspace(dir: string, project: ProjectConfig, task: Pick
     log(`arm setup: ${arm}`);
     must(`${JSON.stringify(setup)} ${JSON.stringify(ws)} ${JSON.stringify(rulesDir)} ${JSON.stringify(dir)}`, {
       cwd: ws,
-      env: { ...process.env, ...GIT_IDENTITY, CIB_RUN_DIR: dir, CIB_WORKSPACE: ws, CIB_RULES_DIR: rulesDir, CIB_PROJECT: project.name, CIB_CACHE_DIR: CACHE_DIR, CIB_MODE: mode },
+      env: { ...process.env, ...GIT_IDENTITY, CIB_RUN_DIR: dir, CIB_WORKSPACE: ws, CIB_RULES_DIR: rulesDir, CIB_PROJECT: project.name, CIB_CACHE_DIR: CACHE_DIR, CIB_MODE: mode, CIB_BASE_COMMIT: base, CIB_BASE_KEY: baseKey({ base_commit: base, base_patch: task.base_patch, kb_variant: task.kb_variant }) },
     });
   }
 
@@ -123,7 +164,7 @@ export function prepareWorkspace(dir: string, project: ProjectConfig, task: Pick
   // Lock files and generated artifacts the install produced are part of the base state.
   git('add -A');
   const dirty = sh(`git -C ${JSON.stringify(ws)} diff --cached --quiet`, { quiet: true }).code !== 0;
-  if (dirty) git(`commit --quiet --no-verify -m "benchmark base"`);
+  if (dirty) git(`commit --quiet --no-verify -m "Set up project tooling"`);
   const sha = git('rev-parse HEAD').trim();
   writeFileSync(join(dir, 'base.txt'), sha + '\n');
   return { base: sha, rules };

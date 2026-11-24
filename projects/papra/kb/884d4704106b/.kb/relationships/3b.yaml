@@ -20,3 +20,31 @@ relationships:
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-fd56d9e70db7
+  - type: requires_property
+    from: REQ-when-a-trashed-document-is-restored-by-a-d-F5E2FEA1
+    to: FACT-papra-document-trash-restore-name-set-from-upload
+    created_at: 2026-11-15T21:43:45.289Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ea3317e0078c
+  - type: constrains
+    from: REQ-when-a-trashed-document-is-restored-by-a-d-F5E2FEA1
+    to: FACT-papra-subject-document-trash-restore
+    created_at: 2026-11-15T21:43:45.294Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-5b1b94a15458
+  - type: requires_property
+    from: REQ-when-a-trashed-document-is-restored-by-a-d-F5E2FEA1
+    to: FACT-papra-document-trash-restore-keeps-previous-tags
+    created_at: 2026-11-15T21:43:45.296Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-f4b754ec8a88
+  - type: requires_property
+    from: REQ-when-a-trashed-document-is-restored-by-a-d-F5E2FEA1
+    to: FACT-papra-document-trash-restore-applies-tagging-rules
+    created_at: 2026-11-15T21:43:45.298Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2abdd766690c

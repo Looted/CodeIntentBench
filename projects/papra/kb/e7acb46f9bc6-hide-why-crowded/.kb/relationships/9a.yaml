@@ -1,0 +1,92 @@
+relationships:
+  - id: rel-1d9a7465f0d6
+    type: requires_property
+    from: REQ-website-newsletter-sign-up-allowed-domains
+    to: FACT-website-newsletter-sign-up-allowed-domain-matching
+    created_at: "2026-05-10T10:01:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b329f6c8b622
+    type: requires_property
+    from: REQ-website-newsletter-sign-up-allowed-domains
+    to: FACT-website-newsletter-sign-up-domain-case-folding
+    created_at: "2026-05-10T10:01:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a470be7306b3
+    type: constrains
+    from: REQ-website-newsletter-sign-up-allowed-domains
+    to: FACT-website-newsletter-sign-up-subject
+    created_at: "2026-05-10T10:01:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7190a193ca9b
+    type: supersedes
+    from: REQ-portal-client-workspaces-maximum-count
+    to: REQ-portal-client-workspaces-maximum-count-earlier
+    created_at: "2026-07-27T16:11:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8e9465fefe3e
+    type: requires_property
+    from: REQ-portal-client-workspaces-maximum-count
+    to: FACT-portal-client-workspaces-maximum-count
+    created_at: "2026-07-27T16:11:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fe5c54eebcce
+    type: requires_property
+    from: REQ-portal-client-workspaces-maximum-count
+    to: FACT-portal-client-workspaces-limit-configurable
+    created_at: "2026-07-27T16:11:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9c5db1bd3409
+    type: constrains
+    from: REQ-portal-client-workspaces-maximum-count
+    to: FACT-portal-client-workspaces-subject
+    created_at: "2026-07-27T16:11:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-aace9de3a378
+    type: requires_property
+    from: REQ-education-education-portal-accounts-concurrent-sessions
+    to: FACT-education-education-portal-accounts-concurrent-sessions
+    created_at: "2025-11-01T10:25:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c4f6eea76725
+    type: requires_property
+    from: REQ-education-education-portal-accounts-concurrent-sessions
+    to: FACT-education-education-portal-accounts-over-limit
+    created_at: "2025-11-01T10:25:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b01a3743ff35
+    type: constrains
+    from: REQ-education-education-portal-accounts-concurrent-sessions
+    to: FACT-education-education-portal-accounts-subject
+    created_at: "2025-11-01T10:25:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fb5570a257b4
+    type: supersedes
+    from: REQ-docs-documentation-contributor-accounts-reset-link-validity
+    to: REQ-docs-documentation-contributor-accounts-reset-link-validity-earlier
+    created_at: "2025-07-02T11:31:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-dad8f2e7d57a
+    type: requires_property
+    from: REQ-docs-documentation-contributor-accounts-reset-link-validity
+    to: FACT-docs-documentation-contributor-accounts-reset-link-minutes
+    created_at: "2025-07-02T11:31:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3a4ce1892d48
+    type: constrains
+    from: REQ-docs-documentation-contributor-accounts-reset-link-validity
+    to: FACT-docs-documentation-contributor-accounts-subject
+    created_at: "2025-07-02T11:31:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -3,20 +3,33 @@ title: Search queries are parsed by the @papra/search-parser package into struct
 status: active
 semantic_text: Search queries are parsed by the @papra/search-parser package into structured expressions (filters, AND/OR/NOT) that a query builder turns into SQL.
 logic_claims:
-  - CLAIM-0F444E271C46243C
+  - CLAIM-7E6668E0CE57FE11
+  - CLAIM-CDB875ED77B3524E
 semantic_clauses:
-  - Search queries are parsed by the @papra/search-parser package into structured expressions (filters, AND/OR/NOT) that a query builder turns into SQL
+  - Search queries are parsed by the @papra/search-parser package into structured expressions (filters, AND/OR/NOT)
+  - that a query builder turns into SQL
 semantic_inventory_version: kibi.semantic-inventory.v1
 semantic_source_field: semantic_text
 semantic_source_hash: 4b25a04b9cda55f41085d7673b354cb17b17b1c7b5d86a63e54ef9e3974cff28
 semantic_inventory:
-  - claim_key: CLAIM-0F444E271C46243C
-    claim_text: Search queries are parsed by the @papra/search-parser package into structured expressions (filters, AND/OR/NOT) that a query builder turns into SQL
+  - claim_key: CLAIM-7E6668E0CE57FE11
+    claim_text: Search queries are parsed by the @papra/search-parser package into structured expressions (filters, AND/OR/NOT)
     role: descriptive
-    status: ontology_gap
+    status: modeled
     span:
       start: 0
+      end: 111
+    subjects:
+      - search.query
+  - claim_key: CLAIM-CDB875ED77B3524E
+    claim_text: that a query builder turns into SQL
+    role: descriptive
+    status: modeled
+    span:
+      start: 112
       end: 147
+    subjects:
+      - search.query
 firmness: firm
 origin:
   kind: import
@@ -28,6 +41,7 @@ tags:
   - component:search
 id: REQ-search-queries-are-parsed-by-the-papra-sea-4463E6DB
 type: req
+required_evidence: asserted
 ---
 Search queries are parsed by the @papra/search-parser package into structured expressions (filters, AND/OR/NOT) that a query builder turns into SQL.
 

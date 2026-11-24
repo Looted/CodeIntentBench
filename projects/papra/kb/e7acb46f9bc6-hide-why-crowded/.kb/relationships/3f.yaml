@@ -1,0 +1,141 @@
+relationships:
+  - id: rel-630fa10ec069
+    type: requires_property
+    from: REQ-a-soft-deleted-organization-can-be-restore-09031B40
+    to: FACT-papra-organization-restore-allowed-before-scheduled-purge-at
+    created_at: "2026-11-15T21:42:03.298Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-a-soft-deleted-organization-can-be-restore-09031B40
+    to: FACT-papra-subject-organization-restore
+    created_at: 2026-11-15T21:42:03.299Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-35a01c275ca6
+  - type: requires_property
+    from: REQ-a-soft-deleted-organization-can-be-restore-09031B40
+    to: FACT-papra-organization-restore-allowed-actor
+    created_at: 2026-11-15T21:42:03.303Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2474e7baa38a
+  - type: requires_property
+    from: REQ-a-soft-deleted-organization-can-be-restore-09031B40
+    to: FACT-papra-organization-restore-allowed-after-scheduled-purge-at
+    created_at: 2026-11-15T21:42:03.305Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-04dacf83f498
+  - type: verified_by
+    from: REQ-a-soft-deleted-organization-can-be-restore-09031B40
+    to: TEST-papra-server-src-modules-organizations-organizations-repository
+    created_at: 2026-11-16T04:52:04.790Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9ecce8db8c95
+  - type: verified_by
+    from: REQ-a-soft-deleted-organization-can-be-restore-09031B40
+    to: TEST-papra-server-src-modules-organizations-organizations-usecases
+    created_at: 2026-11-16T04:52:04.796Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-a2ccb66dd280
+  - type: requires_property
+    from: REQ-papra-search-query-max-1024
+    to: FACT-papra-search-query-length-max-characters
+    created_at: 2026-11-16T13:18:11.329Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-7d5ce43c5343
+  - type: constrains
+    from: REQ-papra-search-query-max-1024
+    to: FACT-papra-subject-search-query-length
+    created_at: 2026-11-16T13:18:11.344Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2222295778c6
+  - type: verified_by
+    from: REQ-a-soft-deleted-organization-can-be-restore-09031B40
+    to: TEST-papra-server-src-modules-document-share-links-e2e-shared-document-access-e2e
+    created_at: 2026-11-16T13:30:05.290Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-59799f6bb423
+  - type: verified_by
+    from: REQ-papra-search-query-max-1024
+    to: TEST-papra-server-src-modules-documents-document-encryption-usecases
+    created_at: 2026-11-16T13:30:15.338Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6e4451520427
+  - type: verified_by
+    from: REQ-papra-search-query-max-1024
+    to: TEST-papra-server-src-modules-documents-documents-schemas
+    created_at: 2026-11-16T13:30:15.346Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-90b756fcaf26
+  - type: verified_by
+    from: REQ-papra-search-query-max-1024
+    to: TEST-papra-server-src-modules-documents-documents-usecases
+    created_at: 2026-11-16T13:30:15.351Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-abdc94b950ad
+  - id: rel-4129486958e8
+    type: requires_property
+    from: REQ-extension-browser-extension-clip-history-search-page-size
+    to: FACT-extension-browser-extension-clip-history-search-page-size-maximum
+    created_at: "2025-03-13T16:38:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1cbc4821ee0b
+    type: constrains
+    from: REQ-extension-browser-extension-clip-history-search-page-size
+    to: FACT-extension-browser-extension-clip-history-search-subject
+    created_at: "2025-03-13T16:38:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d776b7a38cdd
+    type: requires_property
+    from: REQ-desktop-desktop-sync-client-local-file-search-query-length
+    to: FACT-desktop-desktop-sync-client-local-file-search-query-max-length
+    created_at: "2026-03-22T13:01:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-144a24d29ca2
+    type: requires_property
+    from: REQ-desktop-desktop-sync-client-local-file-search-query-length
+    to: FACT-desktop-desktop-sync-client-local-file-search-over-length-input
+    created_at: "2026-03-22T13:01:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f1ccfe525380
+    type: constrains
+    from: REQ-desktop-desktop-sync-client-local-file-search-query-length
+    to: FACT-desktop-desktop-sync-client-local-file-search-subject
+    created_at: "2026-03-22T13:01:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-234a72a5dc5a
+    type: supersedes
+    from: REQ-backoffice-backoffice-session-secret-minimum-length
+    to: REQ-backoffice-backoffice-session-secret-minimum-length-earlier
+    created_at: "2026-01-02T12:08:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b4717a5fb2d9
+    type: requires_property
+    from: REQ-backoffice-backoffice-session-secret-minimum-length
+    to: FACT-backoffice-backoffice-session-secret-minimum-length
+    created_at: "2026-01-02T12:08:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-35658423476f
+    type: constrains
+    from: REQ-backoffice-backoffice-session-secret-minimum-length
+    to: FACT-backoffice-backoffice-session-secret-subject
+    created_at: "2026-01-02T12:08:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

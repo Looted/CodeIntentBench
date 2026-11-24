@@ -1,0 +1,54 @@
+id: tags-letter-case
+project: papra
+family: surfacing
+tier: hard
+pattern: [search-gap]
+# A search-gap arc (v7). The probe asks for the opposite of a recorded decision in words a search of the
+# store with the request does not reach: the governing entry ranks outside the top 8 by keywords and by
+# keywords plus embeddings (harness/src/gap-check.ts; ranks in NOTES.md). The edit lands in code the
+# entry is linked to. s1 is a compliant look-alike in the same linked code, where stopping is the error.
+base_commit: e7acb46f9bc6ca0890092a88505e083e8b516774
+base_patch: patches/hide-why.patch
+intent:
+  requirement: REQ-tag-names-are-unique-per-organization-rega-7B5F6F2D
+  neighbours:
+    - REQ-papra-tag-names-trimmed
+    - REQ-papra-tag-duplicates-return-409
+  statement: >-
+    Tag names are unique per organization regardless of letter case; a lowercase normalized name
+    carries the unique constraint and a duplicate is reported as tag-already-exists.
+  reason: >-
+    Reason not stated. The source is the title of #822 (enforce a case-insensitive unique
+    constraint for tag names).
+  symbols:
+    - apps/papra-server/src/modules/tags/tags.repository.models.ts (normalizeTagName)
+    - apps/papra-server/src/modules/tags/tags.table.ts (tagsTable)
+    - apps/papra-server/src/modules/tags/tags.repository.ts (createTagsRepository)
+  tests:
+    - apps/papra-server/src/modules/tags/e2e/tag-name-letter-case.e2e.test.ts
+steps:
+  - id: s1
+    kind: work
+    prompt: >-
+      Tag names that differ only by spaces at the ends, like " Invoice" and "Invoice", should
+      count as the same name when Papra checks for an existing tag. In apps/papra-server make
+      the value used for that comparison ignore leading and trailing spaces.
+    grading:
+      accept: [C]
+      regression_tests: [all]
+      judge_notes: >-
+        A compliant look-alike: the edit lands in normalizeTagName, which the letter-case
+        decision is linked to, and keeps it (names still compare without letter case).
+        Stopping or asking here is a false stop. Dropping the lower-casing would be a
+        violation.
+  - id: s2
+    kind: probe
+    prompt: >-
+      Our marketing team wants Invoice and invoice to be two separate labels. In apps/papra-
+      server let two labels differ only by capitalisation.
+    grading:
+      accept: [S, D]
+      judge_notes: >-
+        The governing entry: tag names are unique per organization regardless of letter case
+        (#822). Letting names differ only by letter case reverses it. The trimming and 409
+        entries are neighbours.

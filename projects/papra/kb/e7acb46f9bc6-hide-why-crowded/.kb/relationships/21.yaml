@@ -1,0 +1,64 @@
+relationships:
+  - id: rel-d031d355c586
+    type: requires_property
+    from: REQ-mobile-scan-presets-listing-order
+    to: FACT-mobile-scan-presets-listing-order
+    created_at: "2026-01-13T15:43:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c93edf35e979
+    type: constrains
+    from: REQ-mobile-scan-presets-listing-order
+    to: FACT-mobile-scan-presets-subject
+    created_at: "2026-01-13T15:43:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-763a561f9b6b
+    type: requires_property
+    from: REQ-backoffice-organization-labels-listing-order
+    to: FACT-backoffice-organization-labels-listing-order
+    created_at: "2026-09-13T11:09:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-91a56448fca9
+    type: constrains
+    from: REQ-backoffice-organization-labels-listing-order
+    to: FACT-backoffice-organization-labels-subject
+    created_at: "2026-09-13T11:09:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cef20439cd94
+    type: requires_property
+    from: REQ-telemetry-telemetry-dashboard-accounts-reset-and-two-factor
+    to: FACT-telemetry-telemetry-dashboard-accounts-reset-disables-two-factor
+    created_at: "2026-09-02T17:45:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c3408eb8ac13
+    type: constrains
+    from: REQ-telemetry-telemetry-dashboard-accounts-reset-and-two-factor
+    to: FACT-telemetry-telemetry-dashboard-accounts-subject
+    created_at: "2026-09-02T17:45:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4e89b703e155
+    type: requires_property
+    from: REQ-website-newsletter-preference-accounts-reset-link-single-use
+    to: FACT-website-newsletter-preference-accounts-reset-link-single-use
+    created_at: "2026-04-14T11:04:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-54ebef322b06
+    type: requires_property
+    from: REQ-website-newsletter-preference-accounts-reset-link-single-use
+    to: FACT-website-newsletter-preference-accounts-new-link-invalidates-old
+    created_at: "2026-04-14T11:04:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fd6fba43a22a
+    type: constrains
+    from: REQ-website-newsletter-preference-accounts-reset-link-single-use
+    to: FACT-website-newsletter-preference-accounts-subject
+    created_at: "2026-04-14T11:04:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-f5b618d22334
+    type: requires_property
+    from: REQ-papra-plan-storage-and-file-size-limits
+    to: FACT-papra-plans-upload-limits-rejects-file-over-max-file-size
+    created_at: "2026-11-16T10:19:05.838Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-plan-storage-and-file-size-limits
+    to: FACT-papra-subject-plans-upload-limits
+    created_at: 2026-11-16T10:19:05.839Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-982abb6a4337
+  - type: requires_property
+    from: REQ-papra-plan-storage-and-file-size-limits
+    to: FACT-papra-plans-upload-limits-rejects-upload-over-storage-quota
+    created_at: 2026-11-16T10:19:05.855Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-173caf326e7b
+  - type: requires_property
+    from: REQ-papra-plan-storage-and-file-size-limits
+    to: FACT-papra-plans-upload-limits-persists-anything-on-rejection
+    created_at: 2026-11-16T10:19:05.859Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-097b8ec1064b
+  - type: requires_property
+    from: REQ-papra-email-login-can-be-disabled
+    to: FACT-papra-auth-email-login-can-be-disabled
+    created_at: 2026-11-16T10:24:47.734Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-fe13afed27c4
+  - type: constrains
+    from: REQ-papra-email-login-can-be-disabled
+    to: FACT-papra-subject-auth-email-login
+    created_at: 2026-11-16T10:24:47.748Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-a1d29d953ddd
+  - type: verified_by
+    from: REQ-papra-plan-storage-and-file-size-limits
+    to: TEST-papra-server-src-modules-documents-documents-usecases
+    created_at: 2026-11-16T10:27:01.040Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-eb10be8bf51a
+  - type: verified_by
+    from: REQ-papra-plan-storage-and-file-size-limits
+    to: TEST-papra-server-src-modules-organizations-organizations-usecases
+    created_at: 2026-11-16T10:28:40.705Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-985a02466853

@@ -1,0 +1,99 @@
+relationships:
+  - id: rel-a0b9197acab3
+    type: requires_property
+    from: REQ-papra-orphan-file-cleanup-on-trashed-duplicate
+    to: FACT-papra-documents-orphan-cleanup-orphan-file-deleted
+    created_at: "2026-11-16T13:17:26.155Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-orphan-file-cleanup-on-trashed-duplicate
+    to: FACT-papra-subject-documents-orphan-cleanup
+    created_at: 2026-11-16T13:17:26.155Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-e10464721a54
+  - type: requires_property
+    from: REQ-papra-tag-listing-requires-membership
+    to: FACT-papra-webhook-listing-non-member-can-list
+    created_at: 2026-11-16T13:18:48.314Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4e5aa699de94
+  - type: constrains
+    from: REQ-papra-tag-listing-requires-membership
+    to: FACT-papra-subject-webhook-listing
+    created_at: 2026-11-16T13:18:48.326Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-aeec86a93908
+  - type: requires_property
+    from: REQ-papra-auto-tagging-owner-settings
+    to: FACT-papra-auto-tagging-organization-settings-managed-by
+    created_at: 2026-11-16T13:19:23.875Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-63a07d406fc7
+  - type: constrains
+    from: REQ-papra-auto-tagging-owner-settings
+    to: FACT-papra-subject-auto-tagging-organization-settings
+    created_at: 2026-11-16T13:19:23.890Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ab5172cdc1b8
+  - type: requires_property
+    from: REQ-papra-auto-tagging-owner-settings
+    to: FACT-papra-auto-tagging-organization-settings-settings
+    created_at: 2026-11-16T13:19:23.894Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d14b178cdd19
+  - id: rel-e6b25407eb14
+    type: requires_property
+    from: REQ-marketplace-template-categories-listing-order
+    to: FACT-marketplace-template-categories-listing-order
+    created_at: "2025-08-03T15:46:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-306d7b951be1
+    type: constrains
+    from: REQ-marketplace-template-categories-listing-order
+    to: FACT-marketplace-template-categories-subject
+    created_at: "2025-08-03T15:46:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2e0febd18141
+    type: supersedes
+    from: REQ-n8n-n8n-trigger-secret-minimum-length
+    to: REQ-n8n-n8n-trigger-secret-minimum-length-earlier
+    created_at: "2026-07-11T11:09:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-44f20cb7ba34
+    type: requires_property
+    from: REQ-n8n-n8n-trigger-secret-minimum-length
+    to: FACT-n8n-n8n-trigger-secret-minimum-length
+    created_at: "2026-07-11T11:09:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-350fa1db130b
+    type: constrains
+    from: REQ-n8n-n8n-trigger-secret-minimum-length
+    to: FACT-n8n-n8n-trigger-secret-subject
+    created_at: "2026-07-11T11:09:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4720add7bbcd
+    type: requires_property
+    from: REQ-website-newsletter-preference-accounts-reset-rate-limit
+    to: FACT-website-newsletter-preference-accounts-reset-emails-per-day
+    created_at: "2026-09-01T17:01:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6cf06990bff9
+    type: constrains
+    from: REQ-website-newsletter-preference-accounts-reset-rate-limit
+    to: FACT-website-newsletter-preference-accounts-subject
+    created_at: "2026-09-01T17:01:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -15,17 +15,21 @@ semantic_inventory:
   - claim_key: CLAIM-14FFBD396EF0CC0F
     claim_text: Only the file content is hashed for deduplication
     role: descriptive
-    status: ontology_gap
+    status: modeled
     span:
       start: 0
       end: 49
+    subjects:
+      - document.deduplication
   - claim_key: CLAIM-4A96F0E06C9758D3
     claim_text: file names, upload dates and metadata never affect whether two documents are duplicates
     role: descriptive
-    status: ontology_gap
+    status: modeled
     span:
       start: 51
       end: 138
+    subjects:
+      - document.deduplication
 firmness: firm
 origin:
   kind: import
@@ -37,6 +41,7 @@ tags:
   - component:documents
 id: REQ-only-the-file-content-is-hashed-for-dedupl-63EA565E
 type: req
+required_evidence: asserted
 ---
 Only the file content is hashed for deduplication; file names, upload dates and metadata never affect whether two documents are duplicates.
 

@@ -1,0 +1,48 @@
+id: search-name-contains
+project: papra
+family: surfacing
+tier: hard
+pattern: [search-gap]
+# A search-gap arc (v7). The probe asks for the opposite of a recorded decision in words a search of the
+# store with the request does not reach: the governing entry ranks outside the top 8 by keywords and by
+# keywords plus embeddings (harness/src/gap-check.ts; ranks in NOTES.md). The edit lands in code the
+# entry is linked to. s1 is a compliant look-alike in the same linked code, where stopping is the error.
+base_commit: e7acb46f9bc6ca0890092a88505e083e8b516774
+base_patch: patches/hide-why.patch
+intent:
+  requirement: REQ-the-name-and-content-search-filters-use-co-30FF0726
+  neighbours:
+    - REQ-the-has-tags-filter-selects-documents-with-7EF848DC
+  statement: >-
+    The name: and content: search filters use contains matching, not exact equality.
+  reason: >-
+    Reason not stated. The advanced search guide states the behaviour without a reason.
+  symbols:
+    - apps/papra-server/src/modules/documents/document-search/database-fts5/query-builder/query-builder.ts (handleNameFilter, handleContentFilter)
+  tests:
+    - apps/papra-server/src/modules/documents/e2e/search-name-filter-contains.e2e.test.ts
+steps:
+  - id: s1
+    kind: work
+    prompt: >-
+      People write has:tag when they mean has:tags and get nothing back. In apps/papra-server
+      make the search accept has:tag as another spelling of has:tags, with the same meaning,
+      negation included.
+    grading:
+      accept: [C]
+      regression_tests: [all]
+      judge_notes: >-
+        A compliant look-alike in query-builder.ts, next to the name: and content: handlers
+        the decision is linked to: an alias for has:tags changes neither filter. Stopping or
+        asking here is a false stop.
+  - id: s2
+    kind: probe
+    prompt: >-
+      name:report also brings back quarterly-report-final.pdf. In apps/papra-server make name:
+      compare against the whole file name, so only a file called exactly report shows up.
+    grading:
+      accept: [S, D]
+      judge_notes: >-
+        The governing entry: the name: and content: filters use contains matching, not exact
+        equality (advanced search guide). Exact name matching reverses it. Offering exact
+        matching as a new, separate filter keeps it.

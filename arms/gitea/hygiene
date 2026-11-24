@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# After the arc: stop any Gitea instance of this run still running, and report how many issues it holds.
+# Arguments: <workspace> <runDir>
+run="$2"
+pkill -f -- "gitea --work-path $run/gitea web" 2>/dev/null
+n=$(python3 -c "import json;print(len(json.load(open('$run/gitea-issues.json'))))" 2>/dev/null || echo null)
+echo "{\"seeded_issues\": $n}"

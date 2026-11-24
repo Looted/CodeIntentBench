@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Arm `comments`: decisions live as comment blocks in the code they apply to, beside the functions they
+# are linked to, the way a team that keeps its reasons in the code would leave them. Nothing reads them
+# for the agent; the convention in CLAUDE.md is the only pointer.
+# Arguments: <workspace> <rulesDir> <runDir>
+set -euo pipefail
+ws="$1"; rules="$2"; run="$3"
+if [ -n "$(ls -A "$rules" 2>/dev/null)" ]; then
+  here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  node "$here/../../harness/src/arm-tools/render-comments.ts" "$ws" "$rules" "$run/comments-report.json"
+fi

@@ -1,0 +1,176 @@
+relationships:
+  - id: rel-8bb41ccd5ee5
+    type: requires_property
+    from: REQ-papra-tagging-rule-match-mode
+    to: FACT-papra-tagging-rules-rule-default-condition-match-mode
+    created_at: "2026-11-16T13:16:29.004Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-tagging-rule-match-mode
+    to: FACT-papra-subject-tagging-rules-rule
+    created_at: 2026-11-16T13:16:29.005Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2967eb276557
+  - type: requires_property
+    from: REQ-papra-tagging-rule-match-mode
+    to: FACT-papra-tagging-rules-rule-any-mode-min-matching-conditions
+    created_at: 2026-11-16T13:16:29.014Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ffbc1b80f663
+  - type: requires_property
+    from: REQ-papra-tagging-rule-match-mode
+    to: FACT-papra-tagging-rules-rule-conditionless-rule-matches-every-document
+    created_at: 2026-11-16T13:16:29.017Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-7bafcc695168
+  - type: restates
+    from: REQ-papra-tagging-rule-match-mode
+    to: REQ-AUTO-E2E14D03456F8986
+    created_at: 2026-11-16T13:16:29.019Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-019afb5dd5eb
+  - type: requires_property
+    from: REQ-papra-docker-node-image-pinned
+    to: FACT-papra-docker-node-image-pinned-by-digest
+    created_at: 2026-11-16T13:21:40.300Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2c8821b743c1
+  - type: constrains
+    from: REQ-papra-docker-node-image-pinned
+    to: FACT-papra-subject-docker-node-image
+    created_at: 2026-11-16T13:21:40.313Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-7d799f60514e
+  - id: rel-fc796bcae89a
+    type: requires_property
+    from: REQ-client-saved-views-maximum-count-earlier
+    to: FACT-client-saved-views-maximum-count-earlier
+    created_at: "2025-08-03T14:55:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cdf2fb7ee334
+    type: constrains
+    from: REQ-client-saved-views-maximum-count-earlier
+    to: FACT-client-saved-views-subject
+    created_at: "2025-08-03T14:55:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-776d423b788b
+    type: requires_property
+    from: REQ-status-incident-labels-unique-ignoring-case
+    to: FACT-status-incident-labels-name-uniqueness
+    created_at: "2026-09-10T13:32:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2b05015ae8ea
+    type: requires_property
+    from: REQ-status-incident-labels-unique-ignoring-case
+    to: FACT-status-incident-labels-duplicate-error
+    created_at: "2026-09-10T13:32:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a1bfb1ba8838
+    type: constrains
+    from: REQ-status-incident-labels-unique-ignoring-case
+    to: FACT-status-incident-labels-subject
+    created_at: "2026-09-10T13:32:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-299b898c2ef9
+    type: requires_property
+    from: REQ-support-help-centre-article-search-minimum-length
+    to: FACT-support-help-centre-article-search-query-min-length
+    created_at: "2025-03-27T11:14:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f4ac7eafa5fd
+    type: constrains
+    from: REQ-support-help-centre-article-search-minimum-length
+    to: FACT-support-help-centre-article-search-subject
+    created_at: "2025-03-27T11:14:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-dad62fb986cf
+    type: supersedes
+    from: REQ-support-support-sso-secret-minimum-length
+    to: REQ-support-support-sso-secret-minimum-length-earlier
+    created_at: "2025-10-05T12:23:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4c26397fc8f9
+    type: requires_property
+    from: REQ-support-support-sso-secret-minimum-length
+    to: FACT-support-support-sso-secret-minimum-length
+    created_at: "2025-10-05T12:23:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-324a753fbdbb
+    type: constrains
+    from: REQ-support-support-sso-secret-minimum-length
+    to: FACT-support-support-sso-secret-subject
+    created_at: "2025-10-05T12:23:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0bad07a9c9d7
+    type: requires_property
+    from: REQ-portal-partner-registration-email-confirmation
+    to: FACT-portal-partner-registration-email-confirmation
+    created_at: "2025-09-12T11:43:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9c13edd50270
+    type: constrains
+    from: REQ-portal-partner-registration-email-confirmation
+    to: FACT-portal-partner-registration-subject
+    created_at: "2025-09-12T11:43:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e156383568f2
+    type: supersedes
+    from: REQ-education-classroom-workspaces-maximum-count
+    to: REQ-education-classroom-workspaces-maximum-count-earlier
+    created_at: "2026-03-16T16:45:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d47029b21f26
+    type: requires_property
+    from: REQ-education-classroom-workspaces-maximum-count
+    to: FACT-education-classroom-workspaces-maximum-count
+    created_at: "2026-03-16T16:45:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-68a4ea99a58d
+    type: requires_property
+    from: REQ-education-classroom-workspaces-maximum-count
+    to: FACT-education-classroom-workspaces-limit-configurable
+    created_at: "2026-03-16T16:45:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c13414b580f8
+    type: constrains
+    from: REQ-education-classroom-workspaces-maximum-count
+    to: FACT-education-classroom-workspaces-subject
+    created_at: "2026-03-16T16:45:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-011e803cf6f9
+    type: requires_property
+    from: REQ-marketplace-template-author-accounts-reset-and-two-factor
+    to: FACT-marketplace-template-author-accounts-reset-disables-two-factor
+    created_at: "2025-02-10T08:08:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9d39d09905de
+    type: constrains
+    from: REQ-marketplace-template-author-accounts-reset-and-two-factor
+    to: FACT-marketplace-template-author-accounts-subject
+    created_at: "2025-02-10T08:08:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

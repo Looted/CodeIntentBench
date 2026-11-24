@@ -1,0 +1,120 @@
+relationships:
+  - id: rel-c8f714fa1908
+    type: requires_property
+    from: REQ-papra-document-count-excludes-deleted
+    to: FACT-papra-documents-count-includes-deleted-documents
+    created_at: "2026-11-16T13:17:07.717Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-document-count-excludes-deleted
+    to: FACT-papra-subject-documents-count
+    created_at: 2026-11-16T13:17:07.718Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-0d89fde615a8
+  - id: rel-cdc00371ce9e
+    type: requires_property
+    from: REQ-docs-page-tags-maximum-count
+    to: FACT-docs-page-tags-maximum-count
+    created_at: "2026-06-26T13:24:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-bb966a046879
+    type: requires_property
+    from: REQ-docs-page-tags-maximum-count
+    to: FACT-docs-page-tags-limit-configurable
+    created_at: "2026-06-26T13:24:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7df697ae7b18
+    type: constrains
+    from: REQ-docs-page-tags-maximum-count
+    to: FACT-docs-page-tags-subject
+    created_at: "2026-06-26T13:24:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-81c44dfa8956
+    type: requires_property
+    from: REQ-status-incident-labels-maximum-count
+    to: FACT-status-incident-labels-maximum-count
+    created_at: "2026-08-13T16:20:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-38131d70c095
+    type: requires_property
+    from: REQ-status-incident-labels-maximum-count
+    to: FACT-status-incident-labels-limit-configurable
+    created_at: "2026-08-13T16:20:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fb3c2fe4975f
+    type: constrains
+    from: REQ-status-incident-labels-maximum-count
+    to: FACT-status-incident-labels-subject
+    created_at: "2026-08-13T16:20:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f15d37e6284e
+    type: requires_property
+    from: REQ-mobile-mobile-app-offline-search-query-length
+    to: FACT-mobile-mobile-app-offline-search-query-max-length
+    created_at: "2026-09-12T12:15:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-71892573a63b
+    type: requires_property
+    from: REQ-mobile-mobile-app-offline-search-query-length
+    to: FACT-mobile-mobile-app-offline-search-over-length-input
+    created_at: "2026-09-12T12:15:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a2c5d4dfb92f
+    type: constrains
+    from: REQ-mobile-mobile-app-offline-search-query-length
+    to: FACT-mobile-mobile-app-offline-search-subject
+    created_at: "2026-09-12T12:15:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b6d807c94746
+    type: requires_property
+    from: REQ-desktop-desktop-sync-client-sync-log-filter-invalid-date
+    to: FACT-desktop-desktop-sync-client-sync-log-filter-invalid-date-filter
+    created_at: "2026-07-18T12:15:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7c7491b35b19
+    type: constrains
+    from: REQ-desktop-desktop-sync-client-sync-log-filter-invalid-date
+    to: FACT-desktop-desktop-sync-client-sync-log-filter-subject
+    created_at: "2026-07-18T12:15:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b54ea0a6d341
+    type: requires_property
+    from: REQ-mobile-push-relay-auth-key-example-value-refused
+    to: FACT-mobile-push-relay-auth-key-example-value-refused
+    created_at: "2026-08-25T14:01:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8196cca80834
+    type: constrains
+    from: REQ-mobile-push-relay-auth-key-example-value-refused
+    to: FACT-mobile-push-relay-auth-key-subject
+    created_at: "2026-08-25T14:01:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-36b6c3316106
+    type: requires_property
+    from: REQ-n8n-organization-connections-limit-override
+    to: FACT-n8n-organization-connections-limit-override
+    created_at: "2026-02-21T12:05:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-93e07453b480
+    type: constrains
+    from: REQ-n8n-organization-connections-limit-override
+    to: FACT-n8n-organization-connections-subject
+    created_at: "2026-02-21T12:05:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

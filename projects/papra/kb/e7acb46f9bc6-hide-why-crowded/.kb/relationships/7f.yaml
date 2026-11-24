@@ -1,0 +1,64 @@
+relationships:
+  - id: rel-16dc8b87b6ca
+    type: verified_by
+    from: REQ-the-full-text-search-index-is-maintained-b-1B169822
+    to: TEST-papra-server-src-modules-documents-document-search-events-sync-document-search-handlers
+    created_at: "2026-10-14T12:10:00.938Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: requires_property
+    from: REQ-the-full-text-search-index-is-maintained-b-1B169822
+    to: FACT-papra-search-index-maintained-by
+    created_at: 2026-11-15T21:43:24.119Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-72cc7e7cf88f
+  - type: constrains
+    from: REQ-the-full-text-search-index-is-maintained-b-1B169822
+    to: FACT-papra-subject-search-index
+    created_at: 2026-11-15T21:43:24.124Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-8476de93b98a
+  - type: requires_property
+    from: REQ-the-full-text-search-index-is-maintained-b-1B169822
+    to: FACT-papra-search-index-maintained-by-database-triggers
+    created_at: 2026-11-15T21:43:24.126Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-507abadc0a73
+  - id: rel-83feed8da0e6
+    type: requires_property
+    from: REQ-portal-workspace-templates-unique-ignoring-case
+    to: FACT-portal-workspace-templates-name-uniqueness
+    created_at: "2025-11-13T11:51:58.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-55dbec8694ef
+    type: requires_property
+    from: REQ-portal-workspace-templates-unique-ignoring-case
+    to: FACT-portal-workspace-templates-duplicate-error
+    created_at: "2025-11-13T11:51:58.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7f599b2812e4
+    type: constrains
+    from: REQ-portal-workspace-templates-unique-ignoring-case
+    to: FACT-portal-workspace-templates-subject
+    created_at: "2025-11-13T11:51:58.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7fffa9514a95
+    type: requires_property
+    from: REQ-marketplace-template-marketplace-search-unknown-filter
+    to: FACT-marketplace-template-marketplace-search-unknown-filter
+    created_at: "2026-01-26T12:59:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-486d929ecba9
+    type: constrains
+    from: REQ-marketplace-template-marketplace-search-unknown-filter
+    to: FACT-marketplace-template-marketplace-search-subject
+    created_at: "2026-01-26T12:59:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

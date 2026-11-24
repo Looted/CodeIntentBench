@@ -1,0 +1,169 @@
+relationships:
+  - id: rel-961dd62b1a38
+    type: requires_property
+    from: REQ-papra-intake-email-sender-allowlist
+    to: FACT-papra-intake-email-allowed-origins-accepted-senders
+    created_at: "2026-11-16T13:15:46.358Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-intake-email-sender-allowlist
+    to: FACT-papra-subject-intake-email-allowed-origins
+    created_at: 2026-11-16T13:15:46.359Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ed72ed91c6b4
+  - type: requires_property
+    from: REQ-papra-intake-email-sender-allowlist
+    to: FACT-papra-intake-email-allowed-origins-empty-list-accepts-mail
+    created_at: 2026-11-16T13:15:46.370Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-828dd4f95f72
+  - type: requires_property
+    from: REQ-papra-intake-email-sender-allowlist
+    to: FACT-papra-intake-email-address-disabled-address-ingests-mail
+    created_at: 2026-11-16T13:15:46.372Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-cee6e83c3c1f
+  - type: constrains
+    from: REQ-papra-intake-email-sender-allowlist
+    to: FACT-papra-subject-intake-email-address
+    created_at: 2026-11-16T13:15:46.374Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-3f82d75da9e1
+  - type: verified_by
+    from: REQ-papra-intake-email-sender-allowlist
+    to: TEST-papra-server-src-modules-intake-emails-intake-emails-models
+    created_at: 2026-11-16T13:23:54.700Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b9fd6e60e956
+  - type: verified_by
+    from: REQ-papra-intake-email-sender-allowlist
+    to: TEST-papra-server-src-modules-intake-emails-intake-emails-usecases
+    created_at: 2026-11-16T13:23:54.706Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c2cf293e453f
+  - id: rel-f58ed277d2a6
+    type: requires_property
+    from: REQ-website-changelog-labels-delete-in-use
+    to: FACT-website-changelog-labels-delete-in-use
+    created_at: "2026-09-03T17:29:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-482867dbd8c3
+    type: constrains
+    from: REQ-website-changelog-labels-delete-in-use
+    to: FACT-website-changelog-labels-subject
+    created_at: "2026-09-03T17:29:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-320de05bb7e3
+    type: supersedes
+    from: REQ-client-tag-filter-shortcuts-maximum-count
+    to: REQ-client-tag-filter-shortcuts-maximum-count-earlier
+    created_at: "2025-12-02T17:27:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-57b250e33c23
+    type: requires_property
+    from: REQ-client-tag-filter-shortcuts-maximum-count
+    to: FACT-client-tag-filter-shortcuts-maximum-count
+    created_at: "2025-12-02T17:27:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2d17d70befb0
+    type: requires_property
+    from: REQ-client-tag-filter-shortcuts-maximum-count
+    to: FACT-client-tag-filter-shortcuts-limit-configurable
+    created_at: "2025-12-02T17:27:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c1c2f13cda45
+    type: constrains
+    from: REQ-client-tag-filter-shortcuts-maximum-count
+    to: FACT-client-tag-filter-shortcuts-subject
+    created_at: "2025-12-02T17:27:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ec3e50ac1c10
+    type: requires_property
+    from: REQ-cli-papra-logs-filter-case-folding
+    to: FACT-cli-papra-logs-filter-case-folding
+    created_at: "2025-10-27T17:57:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a0e45431f21a
+    type: constrains
+    from: REQ-cli-papra-logs-filter-case-folding
+    to: FACT-cli-papra-logs-filter-subject
+    created_at: "2025-10-27T17:57:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2c75aef9ee08
+    type: requires_property
+    from: REQ-forum-community-forum-post-search-minimum-length
+    to: FACT-forum-community-forum-post-search-query-min-length
+    created_at: "2025-08-08T10:31:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6d2f1513b5e1
+    type: constrains
+    from: REQ-forum-community-forum-post-search-minimum-length
+    to: FACT-forum-community-forum-post-search-subject
+    created_at: "2025-08-08T10:31:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8766c260aca9
+    type: requires_property
+    from: REQ-docs-feedback-submissions-email-confirmation
+    to: FACT-docs-feedback-submissions-email-confirmation
+    created_at: "2025-08-01T13:31:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-48dcf5aeab8f
+    type: constrains
+    from: REQ-docs-feedback-submissions-email-confirmation
+    to: FACT-docs-feedback-submissions-subject
+    created_at: "2025-08-01T13:31:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4b4a9a94ab35
+    type: requires_property
+    from: REQ-forum-community-forum-accounts-reset-link-validity
+    to: FACT-forum-community-forum-accounts-reset-link-minutes
+    created_at: "2025-09-25T09:30:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a4529ddeaf8a
+    type: constrains
+    from: REQ-forum-community-forum-accounts-reset-link-validity
+    to: FACT-forum-community-forum-accounts-subject
+    created_at: "2025-09-25T09:30:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9c84f5ba4ebc
+    type: requires_property
+    from: REQ-docs-documentation-contributor-accounts-concurrent-sessions
+    to: FACT-docs-documentation-contributor-accounts-concurrent-sessions
+    created_at: "2025-12-28T13:56:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9ebbedfa264a
+    type: requires_property
+    from: REQ-docs-documentation-contributor-accounts-concurrent-sessions
+    to: FACT-docs-documentation-contributor-accounts-over-limit
+    created_at: "2025-12-28T13:56:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-494d946ba0e1
+    type: constrains
+    from: REQ-docs-documentation-contributor-accounts-concurrent-sessions
+    to: FACT-docs-documentation-contributor-accounts-subject
+    created_at: "2025-12-28T13:56:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -7,10 +7,19 @@ its own container (`../arm-prepare.sh`): the Kibi arms get the knowledge base it
 it exported into rule files (`harness/src/arm-tools/kb-export.ts`, one rule per requirement with its reason,
 its source citation, the code paths that implement it and the test files linked to them; 42 of the 44 April rules carry code paths).
 
-Two bases, because the arcs start from two commits of Papra: `884d4704106b` (2026-04-02, the api-key
-expiry arcs) and `86805aeae078` (2026-02-14, the intake-secret arcs). Each claim carries the date its
-behaviour and source existed, and a base only gets the claims dated on or before its commit, so the
-February base holds 39 requirements and the April base 44.
+Three bases, one per commit the arcs start from:
+
+| Base | Date | Arcs | Requirements |
+|---|---|---|---|
+| `884d4704106b` | 2026-04-02 | `api-key-expiry-*`, `api-key-cache-long` | 44, all active |
+| `50cbe2cace34` | 2026-09-18 | `member-cap-refactor` | 66, of which 3 closed |
+| `e7acb46f9bc6` | 2026-10-06, the project pin | `intake-secret-superseded`, `storage-key-org-rename`, `no-mutation-exif` | 70, of which 4 closed |
+
+Each claim carries the date its behaviour and source existed, and a base only gets the claims dated on
+or before its commit. The April snapshot comes from the bootstrap and the quality pass described below.
+The two later ones are built from it ([Later bases](#later-bases)). A February snapshot (`86805aeae078`,
+39 requirements) served the `intake-secret-*` arcs of October and was retired with them; it is in the
+repository history.
 
 ## Sources and claims
 
@@ -42,7 +51,7 @@ and possibly none under concurrent sign-ups).
 ## Build
 
 `harness/src/arm-tools/kibi-bootstrap.ts` runs the flow on a checkout of a base commit (branch
-`cib-base`, as the arcs' workspaces), the pinned `kibi` on PATH:
+`main`, as the arcs' workspaces), the pinned `kibi` on PATH:
 
 1. `kibi init`, then a read-only `kibi plan-bootstrap` of the declared context (`maxCandidates: 1`, so
    the plan holds the declared claims and not the provenance stubs Kibi discovers for every source
@@ -79,3 +88,262 @@ own; the route the diagnostics name for the rest (`kb_compile_intent`) returns p
 applied when a clause is an ontology gap, so the practical path is the `kb_upsert` fallback; and a
 `maxCandidates` default of 50 fills the plan with provenance stubs ("Source module: eslint.config")
 rather than knowledge.
+
+## Quality pass (Kibi 2.44, schema 18)
+
+Both snapshots were then migrated to KB schema 18 with `kibi migrate --yes` and raised to the quality bar
+of Kibi's bundled `kb-quality.md`, without touching code, tests or proofs. The stored `.kb/` is the
+result, so an arm's setup finds nothing to migrate.
+
+- **Every claim is modeled.** Each requirement's statement is split into its atomic clauses
+  (`semantic_clauses`, verbatim fragments; the statements themselves are unchanged). Each clause is
+  grounded by exactly one fact: a `property_value` fact on a named subject (`requires_property`), or a
+  `permission_rule` predicate fact for who may do what (`requires_predicate`). The one clause the
+  advisor classes as an example stays `nonlogical`. April base: 91 modeled clauses, 1 nonlogical.
+  February base: 80 modeled, 1 nonlogical.
+- **Subjects are defined.** 33 subject facts (31 in February), named `component.aspect`, each with a
+  definition taken from the cited source. These replace the bootstrap's generated subjects such as
+  `user.receives.it.even.when.several.register.at.the.same.time`. Claims carry their `subjects`.
+  Requirements that state the same property of the same subject share that subject, so a later change
+  that contradicts one of them is caught.
+- **Reasons are traced, never invented.** The bootstrap stated reasons for 9 requirements. The pass
+  read the remaining sources: the docs pages at each base, plus the 17 issues and pull requests,
+  read on 2026-11-15. It added reasons for 18 more, with each quote attributed to the maintainer, the
+  docs, or the person who asked. 27 of 44 requirements now carry a `rationale` (23 of 39 in
+  February). The rest still say "Reason not stated": their sources give none, and most of the pull
+  requests have no description.
+- **Ownership is precise.** Twelve functions were listed once per requirement and shared a coordinate
+  (`duplicate_symbol_coordinate_review`); they were merged into one symbol each. `createDocument`, the
+  upload orchestrator, had implemented nine requirements; it now implements only the two it decides,
+  the streaming pipeline and the hash lookup for deduplication. The others keep their deciding
+  functions. No symbol implements more than two requirements.
+- **Result.** `kibi check` reports no violation other than `symbol-coverage` (37 April, 32 February) and
+  no diagnostic other than `coverage_depth_review` (44, 39), which are both test evidence and out of
+  scope. Before the pass it also reported 9 and 7 `claim-subject-missing`, 12 and 10 duplicate
+  coordinates, and a `kb-consistency-unresolved` permission fact.
+
+The pass is reproducible from [gold/](gold/). `spec.py` holds the clauses, facts and subject
+definitions, and `reasons.json` the traced reasons. `apply.py <workspace>` writes them through
+`kibi model`/`kibi upsert`/`kibi delete`, `orphans.py` removes the bootstrap facts left without links,
+and `symfix.py` merges the duplicate symbols. Run them on a workspace made from the stored KB at schema
+18 with the pinned `kibi` on PATH, then run `kibi sync --refresh-symbol-coordinates` and `kibi check`.
+
+## Declarations and test evidence (gate health)
+
+Kibi's commit gate (`kibi check --staged`) refuses a behaviour change to a linked source file unless every
+declaration Kibi's extractor finds in that file has its own symbol entry, and every changed symbol has test
+evidence that verifies a requirement it implements. The bootstrap recorded only the functions that decide a
+claim, so in the first hard-tier runs the gate refused correct changes over sibling declarations (an error
+factory, a repository type) the knowledge base had never listed. Kibi's own knowledge base links nearly all
+of its declarations this way, so the stored snapshots now do too. Code and tests are unchanged.
+
+- `gold/declarations.py <workspace>` finds the uncovered declarations the way the gate does (a throwaway
+  export in each linked file, `kibi check --staged`, files restored) and records each with a `symbol_role`
+  (type-shape, structural, config, behavioral), one `implements` link to the requirement of its directory
+  whose title shares the most words with its name (never past Kibi's broad-fanout threshold of 8
+  implementing symbols), and `covered_by` the tests in its directory that name it. April: 63 declarations
+  in 21 files; February and the later base: 115 and 114 in 36 files.
+- `gold/coverage.sh <workspace> <dir>` runs each server unit test file on its own with V8 coverage at the
+  base commit; `gold/coverage.py <workspace> <dir>` links each symbol still without test evidence to the
+  test files that ran it (a called function; for a span without functions, an executed statement, counted
+  only from tests of the same module, since module code runs on import), adds missing TEST entities, and
+  makes the requirement the symbol implements `verified_by` those tests. April: 23 symbols linked;
+  February and later: 37 each.
+- `gold/snapshot.sh` runs both as its step 4.
+- **Result.** `kibi check` reports only `symbol-coverage` for the symbols no existing test runs (21 April,
+  20 February, 19 later: task registrations, a few configs and tables, the client components) and
+  `coverage_depth_review`. With a behaviour change staged in every linked file, the gate reports nothing
+  but those untested symbols; touching one of them asks for a test, which is the gate working as meant.
+
+## Later bases
+
+`gold/snapshot.sh <base-sha> <workdir> [--store]` builds the snapshot of a later Papra commit from the
+April one, with the pinned `kibi` on PATH and a clone of Papra that has the commit:
+
+1. `apply.py <workspace> --base <sha>` adds the decisions of [gold/later.json](gold/later.json) that hold
+   at the base: a claim applies when its `since` date is not after the base commit's date and its
+   `commit` is an ancestor of the base. Clauses, facts and subjects come from `spec.py` as for the April
+   claims. A claim with `supersedes` gets the link and a "Why this changed" section, the entry it
+   replaces is set to `closed`, and a fact only closed entries still use is set to `deprecated`.
+2. `symbols.py <workspace>` re-reads [symbols-map.json](symbols-map.json) at the checkout and rewrites
+   `.kb/symbols.yaml`: a map entry lists every path and name a function has had, and only the ones
+   declared in this checkout are written. Closed entries get no `implements` link. Run on the April
+   checkout it reproduces the stored April `symbols.yaml` exactly.
+3. `kibi sync --refresh-symbol-coordinates`, then test entities whose file is gone and facts nothing
+   links to are deleted, then `kibi sync`.
+4. `declarations.py` and `coverage.py` (see above), then `kibi sync` and `kibi check`.
+
+### What later.json holds
+
+26 claims, each with its commit, the date from which it holds, a verbatim excerpt and, only where the
+source states one, a reason:
+
+- **Ten decisions that landed after April or were found while tracing the rules**: the intake webhook
+  secret's length rule and default (PR #892, February; closed at both later bases) and the removal of
+  the default (PR #1502, which supersedes it); storage keys persist unless synchronisation is enabled
+  (the docs after PR #1525, superseding the March entry); synchronisation on a document's name or date
+  change (PR #1525); `{{organization.name}}` in patterns (PR #1529, which answers the open question of
+  issue #976); an organisation rename moves nothing (docs); share links of deleted organisations
+  (PR #1348); former members can be reinvited (PR #1534); year-based versioning (the docs after PR
+  #1454, superseding the older versioning entry); and the plan's member limit counting pending
+  invitations (the test added in PR #536).
+- **The 16 rules of [../rules/](../rules/)**, with the rule's statement verbatim, its test titles as the
+  excerpt and the date from which every clause of the statement held. Three of them are therefore
+  absent at `50cbe2cace34`: the member cap (its "or a resend" clause holds from PR #1534), resending
+  only inactive invitations (PR #1534) and the sign-up domain restrictions (PR #1545). At that base the
+  member limit is the PR #536 entry; at the pin the rule supersedes it.
+
+Reasons: none of the pull requests read for these claims has a description. The reasons recorded come
+from changesets (#892, #1348, #1502, #1525, #1534), the docs, issue #976 and test titles; they are quoted
+and attributed. 10 of the 26 claims have no stated reason and say "Reason not stated", among them the
+organisation-rename boundary. The rule files' own `rationale` text was written for the benchmark and was
+not copied: where no Papra source gives the reason, the entry has none.
+
+### Decisions from the release changelogs (gold/bulk.py)
+
+The hard tier needs a store where one search does not find the answer, so the later bases also carry
+112 decisions taken from Papra's release changelogs (`gold/changelog.json`: the 352 changeset entries
+of `apps/*/CHANGELOG.md`, with package, version, pull request, commit and date). `gold/bulk.py` turns
+an entry into a requirement: the statement is the clauses joined with "; ", the excerpt is the
+changeset text verbatim, the date and commit are the changeset's, the source is `papra-changelog`.
+A reason is recorded only when the changeset states one (quoted); 88 of the 112 say "Reason not
+stated". Where a later changeset replaces an earlier one the later entry supersedes it, so the store
+has chains: the search endpoint (#650, #758, #899), the documents order (#1089 then #1192, with the
+#1292 tie-break beside it), email escaping (#995 then #1061), the B2 driver (#280 then #472), email
+dry-run (#302 then #304) and the base URL (#320 then #405). A superseded entry keeps its own facts
+(a fact tuple's fifth element tags its id) and those facts are deprecated once only closed entries use
+them. 14 of the entries name the code that decides them in `symbols-map.json`. The April snapshot is
+not touched: its arcs are the easy tier.
+
+### Result
+
+| | `50cbe2cace34` | `e7acb46f9bc6` |
+|---|---|---|
+| Requirements | 66 (63 active, 3 closed) | 70 (66 active, 4 closed) |
+| `supersedes` links | 3 | 4 |
+| Modeled clauses | 156, and 1 nonlogical | 170, and 1 nonlogical |
+| Subjects | 44 | 45 |
+| Symbols | 104, none implementing more than two requirements | 105, likewise |
+| Test entities | 39 | 39 |
+| `kibi check` violations | `symbol-coverage` 41 | `symbol-coverage` 40 |
+| `kibi check` diagnostics | `coverage_depth_review` 63 | `coverage_depth_review` 66 |
+
+Every requirement has an explicit `status` and `firmness: firm`. The export gives the passive arms each
+closed entry with its status and a "Superseded by" line.
+
+### Limits
+
+- For the 44 April claims only the documentation excerpts were re-read at the later bases (two had
+  changed and became superseded pairs: storage key persistence and versioning). The issue and pull
+  request claims were not re-read; their sources are closed threads.
+- `symbols-map.json` was extended by reading the code at `e7acb46f9bc6` and `50cbe2cace34`. A function
+  that moved and was not found again is dropped by `symbols.py` (it prints "no declared symbol for" the
+  requirement); 6 requirements at the pin have no code path for that reason or because they are closed.
+- The interview and authority calls remain the benchmark author's, as for the April snapshot.
+- The April snapshot was not rebuilt. It does not hold the February entry about the intake webhook
+  secret (PR #892), which `later.json` adds only at the two later bases; no arc at the April base is
+  about intake emails.
+
+## Snapshots of a patched base
+
+`kb/e7acb46f9bc6-hide-why/.kb` is the snapshot of the pin with the teammate patch `patches/hide-why.patch`
+applied (see `patches/README.md`), built with `BASE_PATCH=patches/hide-why.patch gold/snapshot.sh
+e7acb46f9bc6... <workdir> --store`. The harness names a patched base `<sha12>-<patch name>` and
+`arm-prepare.sh` picks the snapshot by that name.
+
+## The crowded store
+
+`kb/e7acb46f9bc6-hide-why-crowded/.kb` is the patched pin's snapshot with 1165 generated decisions added:
+1347 requirements instead of 182 (7.4 times as many), of which 44 closed instead of 11. An arc asks for it
+with `kb_variant: crowded` (the harness names the store `<base key>-<variant>`); the arcs
+`*-crowded` are the nine v7 search-gap arcs on this store. It tests one thing: whether a store with
+many decisions on the same topics still returns the governing one to a topic search.
+
+**Every added entry is synthetic.** `gold/crowd.py` generates them (seeded, no clock, no network) and says
+so in its header; the store text does not, because telling the entries apart by what they govern is the
+task. They carry `knowledge-source:<surface>-decisions` tags, which no real entry has.
+
+- **What they are about.** The topics of the nine arcs: tags and other labels (295 entries), search (272),
+  secrets and sign-up forms (217), organizations and other owned containers (217), password reset and
+  sessions (164). Each statement names the product or service it governs: the web client, the mobile app,
+  the CLI, the documentation site, the marketing website, and services around the product that are not in
+  this repository (a browser extension, a desktop sync client, the hosted back office, a partner portal, a
+  support portal, a community forum, a status page, a license server and others). None is about
+  apps/papra-server.
+- **How they are made.** A list of things per topic (41 kinds of label, 30 searches, 19 secrets, 13 sign-up
+  forms, 26 kinds of owned container, 13 kinds of account) times a list of rules per topic (uniqueness and
+  letter case, maximum counts, name length, trimming, ordering; query length, invalid dates, filter
+  matching, page size; required in production, minimum length, rotation; allowed and blocked email
+  domains; what counts toward a limit, overrides, restore windows; sessions after a reset, link validity,
+  rate limits). Values and wording variants are drawn per entry from the seed. 33 limits have an earlier
+  value, recorded as a closed entry that the current one supersedes with a "Why this changed" section.
+  632 of the 1132 current ones state a reason (made up, like the entry); the rest say "Reason not stated".
+- **What they are not.** No generated entry is linked to a symbol or a test, supersedes a real entry or
+  shares a subject with one. The real requirements, facts, tests and `symbols.yaml` are copied byte for
+  byte; relationship shards get records appended (three shards that Kibi had written in flow style are
+  rewritten as block lists with the same records). No reason was added to a real decision.
+- **Modeled like the real ones.** One property fact per clause on a subject of the entry's own
+  (`<surface>.<thing>`, 142 subjects, each with a definition that says which Papra server thing it is not),
+  inventory roles as the pinned Kibi's advisor assigns them (`gold/crowd-roles.json`, rebuilt with
+  `crowd.py --roles <workspace>` when statements or the pin change). `kibi sync` takes about 10 seconds
+  instead of 6, and `kibi check` reports what it reports on the base: 37 `symbol-coverage` violations,
+  the same three review diagnostics, and one `coverage_depth_review` per requirement.
+- **Limits.** Generated entries have no code paths, so the `comments` arm, which writes a decision beside
+  its code, delivers none of them and is not crowded. `AGENTS.md` grows from 129 KB to 613 KB (about
+  153,000 tokens by the arm's own estimate), inside the budget of a 1M-token context window and outside a
+  200K one. Appending made-up code paths to the 61 mobile-app entries on the arcs' topics did not move
+  the ranks below by more than a few places, so the missing paths are not what keeps real entries on top.
+
+Rebuild: `python3 gold/crowd.py e7acb46f9bc6-hide-why/.kb e7acb46f9bc6-hide-why-crowded/.kb`.
+
+### What crowding does to search
+
+Rank of the governing entry in the memory-arm notes (`harness/src/gap-check.ts`), base store and crowded
+store, for the searches agents made in the probe sessions of the v7 pilots (two or three per arc, taken
+from the memory, tracker and memory-embed transcripts). "Missed" counts how many of the first store
+searches of those sessions (five per arc) would not return the entry among their 8 results on the crowded
+store. Each arc's NOTES.md has the ranks per search.
+
+| Arc | Searches outside the top 8, keywords | Searches outside the top 8, keywords plus embeddings | First searches missed |
+|---|---|---|---|
+| tags-letter-case | 0 of 3 | 0 of 3 | 0 of 5 |
+| tags-per-workspace-cap | 2 of 3 | 1 of 3 | 2 of 5 |
+| search-query-length | 1 of 2 | 1 of 2 | 4 of 5 |
+| search-created-typo | 0 of 3 | 1 of 3 | 1 of 5 |
+| search-name-contains | 0 of 3 | 2 of 3 | 1 of 5 |
+| auth-secret-production | 1 of 3 | 1 of 3 | 2 of 5 |
+| password-reset-sessions | 0 of 2 | 1 of 2 | 0 of 5 |
+| signup-domain-exact | 0 of 3 | 0 of 3 | 0 of 5 |
+| owned-workspaces-cap | 1 of 2 | 1 of 2 | 1 of 5 |
+
+On the base store one of those 45 first searches missed; on the crowded store 11 do. No arc has every
+search outside the top 8. A search that names the server's own terms (`AUTH_SECRET`, "per user", "revoke",
+"case-insensitive") still returns the entry first; a search made only of the topic's common words
+("search query length limit", "organization limit") returns eight entries about other products.
+
+## Link corrections
+
+Two links were changed by hand in `symbols-map.json` and in the stored `symbols.yaml` of `50cbe2cace34`,
+`e7acb46f9bc6` and `e7acb46f9bc6-hide-why`. The snapshots were not rebuilt; requirements, facts and
+relationships are unchanged.
+
+- **Who can invite.** `REQ-papra-only-owners-and-admins-invite` was linked to `ensureUserIsInOrganization`,
+  the membership guard of the routes, which decides nothing about roles. It now links to the invite and
+  resend use cases, where the role check is (`buildInviteMemberToOrganization` and
+  `buildResendOrganizationInvitation` at the pin, `inviteMemberToOrganization` and
+  `resendOrganizationInvitation` at `50cbe2cace34`). Those two symbols now implement three requirements
+  each, so `kibi check` adds two `multi_requirement_symbol_review` diagnostics, and the sentence above that
+  no symbol implements more than two no longer holds for them. `ensureUserIsInOrganization` keeps a symbol
+  entry and implements `REQ-papra-tag-listing-requires-membership` (#893), the membership check the tag and
+  webhook routes call it for.
+- **Which subscriptions block a deletion.** `REQ-papra-active-subscription-blocks-deletion` also links to
+  `createSubscriptionsRepository` and `SubscriptionsRepository` (`subscriptions/subscriptions.repository.ts`),
+  at the pin and its patched base only. The repository's `getActiveOrganizationSubscription` query selects
+  the subscription the deletion check sees, so its status list decides which organizations can be deleted.
+  The query is not exported, and Kibi tracks exported declarations (an entry for the query itself is a
+  `symbol-granularity` violation), so the factory carries the link, as `createOrganizationsRepository` does
+  for the queries of its file. The requirement now has ten implementing symbols and `kibi check` adds one
+  `broad_requirement_review` diagnostic. The arc `overdue-plan-limits` needs this link.
+
+`kibi check` at the patched pin after both changes: the same 37 `symbol-coverage` violations as before and
+no other violation.

@@ -1,0 +1,99 @@
+relationships:
+  - id: rel-c836e079b890
+    type: requires_property
+    from: REQ-papra-storage-pattern-organization-name
+    to: FACT-papra-storage-pattern-organization-name-available-as-expression
+    created_at: "2026-11-16T13:15:02.469Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-storage-pattern-organization-name
+    to: FACT-papra-subject-storage-pattern-organization-name
+    created_at: 2026-11-16T13:15:02.470Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-09a4f080a3ac
+  - type: requires_property
+    from: REQ-papra-storage-pattern-organization-name
+    to: FACT-papra-storage-pattern-organization-name-unique-per-instance
+    created_at: 2026-11-16T13:15:02.482Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9e211131a5a5
+  - type: requires_property
+    from: REQ-papra-ai-credits-off-self-hosted
+    to: FACT-papra-auto-tagging-ai-credits-enabled-by-default-self-hosted
+    created_at: 2026-11-16T13:19:27.429Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-799556fd111e
+  - type: constrains
+    from: REQ-papra-ai-credits-off-self-hosted
+    to: FACT-papra-subject-auto-tagging-ai-credits
+    created_at: 2026-11-16T13:19:27.442Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-392175455ac1
+  - type: verified_by
+    from: REQ-papra-storage-pattern-organization-name
+    to: TEST-papra-server-src-modules-documents-storage-patterns-storage-pattern-usecases
+    created_at: 2026-11-16T13:24:09.165Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-518513d47961
+  - id: rel-042050bb62c0
+    type: requires_property
+    from: REQ-desktop-desktop-sync-client-sync-log-filter-page-size
+    to: FACT-desktop-desktop-sync-client-sync-log-filter-page-size-maximum
+    created_at: "2026-05-03T10:54:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-53580745edee
+    type: constrains
+    from: REQ-desktop-desktop-sync-client-sync-log-filter-page-size
+    to: FACT-desktop-desktop-sync-client-sync-log-filter-subject
+    created_at: "2026-05-03T10:54:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3da64f3d8604
+    type: requires_property
+    from: REQ-license-license-lookup-text-filter-matching
+    to: FACT-license-license-lookup-text-filter-matching
+    created_at: "2025-12-20T15:32:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0f5a75f4cba1
+    type: constrains
+    from: REQ-license-license-lookup-text-filter-matching
+    to: FACT-license-license-lookup-subject
+    created_at: "2025-12-20T15:32:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d0f825448211
+    type: requires_property
+    from: REQ-status-status-webhook-secret-required-in-production
+    to: FACT-status-status-webhook-secret-required-in-production
+    created_at: "2025-04-18T10:30:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-83d5042cd1d0
+    type: constrains
+    from: REQ-status-status-webhook-secret-required-in-production
+    to: FACT-status-status-webhook-secret-subject
+    created_at: "2025-04-18T10:30:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e7185e1decd3
+    type: requires_property
+    from: REQ-docs-feedback-submissions-repeat-address
+    to: FACT-docs-feedback-submissions-repeat-address
+    created_at: "2026-03-09T11:47:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d5edc391f870
+    type: constrains
+    from: REQ-docs-feedback-submissions-repeat-address
+    to: FACT-docs-feedback-submissions-subject
+    created_at: "2026-03-09T11:47:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

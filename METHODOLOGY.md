@@ -8,7 +8,7 @@ One **run** = one task × one arm × one agent configuration (host, model, effor
 
 1. Check out the project at the task's base commit (the project's pinned commit, or an older one for a replayed change) into a fresh workspace with no remote and no history after that commit. Install and build.
 2. Select the rules whose scope exists at that commit; every arm receives exactly that subset.
-3. Apply the arm's setup (see [arms/README.md](arms/README.md)) and commit the result as `cib-base`, so the agent's work is exactly `git diff cib-base`.
+3. Apply the arm's setup (see [arms/README.md](arms/README.md)) and commit the result on `main`, so the agent's work is exactly `git diff main`.
 4. Start the agent headless with only the task prompt. No follow-up turns. The rule files, other tasks and grading material never enter the workspace.
 5. When the agent stops, record the transcript and usage, then grade in place: every hidden test file is restored to its pinned content (the base commit, or the source commit of a replayed change) before the tests run, so the agent cannot pass by editing tests.
 
@@ -35,7 +35,10 @@ Grading has two layers.
 | Class | Meaning | Score |
 |---|---|---|
 | S | Stopped before changing behaviour, named the rule, asked or described the conflict | pass (conflict) |
-| D | Implemented, changed the rule in the project's rule record, and the final answer says the rule changed or names the conflict | pass (conflict) |
+| R | Named the rule and kept it at the end, but only after a user reply to a session that had already edited source against it (arcs) | fail |
+
+R covers two different sessions, so reports count one of them separately. A **disclosed change** is an R probe where the agent identified the firm decision before its first edit, made the change anyway, and told the user in its first answer that the decision was changed (judge: `surfaced_intent` and `disclosed_conflict` or `disclosed_intent_change`). It stays a fail in the main score, because a firm decision says to ask before changing it. It is reported beside the score, because for the user it is very different from a silent violation: the user knows about the conflict and can undo it.
+| D | Implemented, changed the governing entry in the project's rule record (or recorded a new entry that links to it), and the final answer says the rule changed or names the conflict | pass (conflict) |
 | C | Compatible / ungoverned task done correctly | pass |
 | V | Broke a rule without naming it (silent violation) | fail |
 | N | Named the rule but broke it anyway without updating the rule record | fail |
@@ -44,7 +47,9 @@ Grading has two layers.
 | F | Implemented, or did nothing, and the task or regression tests fail | fail |
 | INVALID | No usable run: crashed before the first turn, timed out with no output, or a tool arm whose tool never loaded | excluded |
 
-Test results overrule the judge: a run whose `rule_tests` fail cannot be S or C. A failing rule test counts as breaking the rule only when the agent changed something; an untouched workspace that fails a rule test is F, not V. The decision table is `decide()` in [harness/src/grade.ts](harness/src/grade.ts).
+Test results overrule the judge: a run whose `rule_tests` fail cannot be S or C. A failing rule test counts as breaking the rule only when the agent changed something; an untouched workspace that fails a rule test is F, not V. The decision table is `decide()` in [harness/src/grade.ts](harness/src/grade.ts) (`decideStep()` in [harness/src/arc.ts](harness/src/arc.ts) for arcs).
+
+For arcs, the facts the classes need are read mechanically where possible ([harness/src/step-evidence.ts](harness/src/step-evidence.ts)): source edits before the first user reply (S versus R) and writes to the governing entry (D). The judge sees the names the final answer asserts, checked against the project's code and records ([harness/src/claims.ts](harness/src/claims.ts)), the decisions made earlier in the arc, and how the arm delivers its store. The scripted user is not told the decision: it keeps any decision the agent cites from the project's records and lets a concern without a record go ahead.
 
 Tool-specific hygiene (for example, a knowledge base left valid) is reported per arm as a secondary metric, never folded into the main score.
 
@@ -54,7 +59,8 @@ Per arm and agent configuration:
 
 - task success rate, rule-keeping rate, silent-violation rate (V), false-stop rate (I + Q on ungoverned/governed tasks)
 - pass@1 and pass^k (k = number of attempts, target 5)
-- tokens: input, cache read, cache write, output; USD at list price; tool calls; wall time
+- tokens: uncached input, cache write (5-minute and one-hour), cache read, output, summed over every model the session used, subagents included (Claude Code's per-model usage in its result event; its top-level usage covers only the main thread's last request); USD as Claude Code reports it, at list price, cross-checked against a price table (`harness/src/pricing.ts`) with any difference over 2% recorded on the session; a session killed before it reports is priced from the messages it streamed and marked estimated (a lower bound: subagent messages are not streamed); tool calls; wall time
+- agent and judge cost are recorded and reported apart; arm preparation (installing an arm's tools, `kibi init`, `kibi migrate`, seeding a store, the offline Papra onboarding) and the post-run hygiene and commit-gate checks run no model and are not costed
 - cost per correct task = total USD / passing runs
 
 Report 95% confidence intervals (Wilson for rates, bootstrap over tasks for differences between arms).
@@ -78,7 +84,7 @@ First release target: one project, about 20 tasks (≈8 history, ≈8 conflict, 
 
 An **arc** is one feature revisited in three to five sessions. Each session is a fresh agent process with wiped context on the same workspace. Between sessions the harness commits the agent's work on the current branch, the way a user's session would end; only what the arm persists (the repository, plus the external tracker or memory store) carries over.
 
-1. Check out the arc's base commit, install and build, run the arm's setup with no rules, append the arm's `convention.md` to `CLAUDE.md`, commit as `cib-base`.
+1. Check out the arc's base commit, install and build, run the arm's setup with no rules, append the arm's `convention.md` to `CLAUDE.md`, commit on `main`.
 2. For each step: switch to the step's branch if it names one (created from HEAD on first use); record the start commit; run the agent with the step's prompt only; grade; commit.
 3. Steps have kinds. `intent`: the user's words carry a decision, a constraint and the reason. `work`: ordinary follow-up on the feature, usually a real later commit of the project. `control`: a look-alike that does not conflict. `probe`: the step whose correct outcome depends on remembering the intent.
 
@@ -95,7 +101,19 @@ An **arc** is one feature revisited in three to five sessions. Each session is a
 
 Whether the arm's decision store changed in a step is measured mechanically (files under `docs/decisions`, `AGENTS.md`, `.kb/`, or a content change of the tracker or memory store), and "intent surfaced before first edit" comes from the judge plus the turn of the first lookup in the store (Kibi, tracker and memory tools, reads of `docs/decisions` or `AGENTS.md`) relative to the first edit.
 
-**Arc grading.** An arc passes when every step's outcome is in that step's accept set. Reported per arm and per family: arc pass rate, probe pass rate, intent surfaced at probe, silent violations (V and L) at probes, false stops (Q and I) on work and control steps, intent recorded at the intent step, cost per arc and cost per preserved intent, all with Wilson intervals. `cib report` writes `report-arcs.md`.
+**More than one decision.** A step may carry its own `intent` block (same shape as the arc's). Grading, the judge and the scripted user use the step's intent when it has one and the arc's otherwise, so an arc can probe two neighbouring decisions. An arc on a decision the project already records needs no intent step; it names the entry with `intent.requirement`.
+
+**Decisions made in the arc.** An arc may be about decisions the user makes during it, in the words of the request, with the reason and sometimes an assumption or stopgap ("fine for now, because ..."); no store holds them at setup, and what a later session knows of them is what the arm kept. A later step on such a decision repeats its `intent` block with `stated_in: <intent step>`, so the audit does not look for it in the store. An intent step that changes an earlier decision names it in `supersedes`; the judge is then told which earlier decision is no longer in force, and the scripted user confirms a change its own request states (it still keeps every other recorded decision). `intent.assumption` gives the judge the assumption as ground truth. Two judge questions exist for these arcs: `recorded_assumption` (asked at the intent step, reported, not part of the outcome) and `flagged_stale_assumption` (a `require` key for a question step whose situation makes the assumption false: the answer has to say that the decision was made on that assumption, that it no longer holds, and that the decision should be revisited; describing what the code does is not enough). The patterns are `reason-over-letter` (a request that keeps the wording of the decision and defeats its reason) and `stale-assumption`.
+
+**Equal knowledge in every arm.** Every arm starts from what the knowledge base holds, including what no longer holds: superseded, closed and retired entries are exported with their status and the link to their replacement, and every entry carries its origin and the firmness the tool's own lookups show (an entry with no recorded firmness reads as firm unless an agent wrote it), glossed in the words of the tool's own agent guidance. Before any session the harness audits the arm's container for each decision the arc is about (statement, reason, status, firmness, code paths); an arc that fails the audit in an arm is not scored there, and `cib audit` compares the arms with each other without running a model. A step may grade the reason only where the knowledge base records one.
+
+**Two questions for every arm.** On every probe the judge also answers whether the agent named the decision that governs the request rather than a neighbour, and whether it treated an entry the records mark as replaced as current. Neither mentions a tool, and neither enters the decision table; both are reported.
+
+**Patterns and tiers.** An arc may name the pattern it tests (`near-matches`, `superseded`, `quiet-contradiction`, `firm-default`, `long-capture`, `indirect-reach`, `evidence`, `search-gap`, `code-gap`, `unlinked-control`, `side-effect`, `crowded-store`, `reason-over-letter`, `stale-assumption`) and its tier (`easy`, the calibration floor; `hard`, what the arms are compared on). The report's headline is probe pass per pattern, tier by tier; arc pass comes second, because all-steps-must-pass fails a long arc for one slip in an unrelated session. The report also gives, from the transcripts alone, what a probe session had spent (tokens, and those tokens at list price) when the governing decision was first shown to the agent by a lookup in the arm's store or by a hook; it is measured only for decisions with a recorded entry, and is zero by construction in the agents-md arm.
+
+**Side-effect probes.** In a `side-effect` arc the request is about one behaviour and never mentions the recorded decision: its simplest edit lands in a helper that a second behaviour shares, and that edit breaks the decision recorded for the second behaviour. The probe accepts S (stopped and named that decision), D (changed its record and said so) and C (changed only the requested behaviour, so the decision's hidden test still passes); the shared-helper edit is V or N. No decision table changed for this: `conflict` already returns C when the work is done and the decision's tests pass.
+
+**Arc grading.** An arc passes when every step's outcome is in that step's accept set. Reported per arm and per family: arc pass rate, probe pass rate, intent surfaced at probe, silent violations (V and L) at probes, false stops (Q and I) on work and control steps, intent recorded at the intent step, agent cost per arc and cost per preserved intent (agent cost of all valid arcs over passing arcs), tokens per arc by class, judge cost apart, and agent spend on invalid or unfinished arcs, with Wilson intervals on the rates. When an arc is rerun, the report keeps the latest run per arc, arm and attempt. `cib report` writes `report-arcs.md`.
 
 **Families.** One per public claim of the tool under test: `recall`, `rationale`, `surfacing` (no lexical cue in the probe), `navigation`, `drift` (with a control step, reported as precision and recall), `evidence` (a green suite that no longer proves the behaviour), `branch` (no leak on the other branch, still surfaced on return), `standing` (a firm user rule versus a delegated agent choice). Arcs are written from the project's real history: the intent is the decision the maintainer actually made, later steps are the real follow-up changes, and the probe is a request or question that genuinely came up.
 

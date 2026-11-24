@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-bd6e0db90f20
+    type: requires_property
+    from: REQ-papra-custom-property-delete-returns-204
+    to: FACT-papra-custom-properties-delete-response-status-code
+    created_at: "2026-11-16T10:36:31.347Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-custom-property-delete-returns-204
+    to: FACT-papra-subject-custom-properties-delete-response
+    created_at: 2026-11-16T10:36:31.347Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-7b6fa0482322

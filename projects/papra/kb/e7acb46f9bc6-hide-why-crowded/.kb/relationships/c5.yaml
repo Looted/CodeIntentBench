@@ -1,0 +1,50 @@
+relationships:
+  - id: rel-e3e59e592a06
+    type: requires_property
+    from: REQ-backoffice-support-macros-maximum-count-earlier
+    to: FACT-backoffice-support-macros-maximum-count-earlier
+    created_at: "2026-06-04T11:52:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ef1da9370726
+    type: constrains
+    from: REQ-backoffice-support-macros-maximum-count-earlier
+    to: FACT-backoffice-support-macros-subject
+    created_at: "2026-06-04T11:52:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0a5843e3daf6
+    type: requires_property
+    from: REQ-cli-papra-logs-filter-invalid-date
+    to: FACT-cli-papra-logs-filter-invalid-date-filter
+    created_at: "2025-05-09T15:52:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e0699e1dcb9e
+    type: constrains
+    from: REQ-cli-papra-logs-filter-invalid-date
+    to: FACT-cli-papra-logs-filter-subject
+    created_at: "2025-05-09T15:52:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6adb80821658
+    type: requires_property
+    from: REQ-backoffice-back-office-staff-accounts-concurrent-sessions
+    to: FACT-backoffice-back-office-staff-accounts-concurrent-sessions
+    created_at: "2025-08-27T17:35:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-66f2fac18ca2
+    type: requires_property
+    from: REQ-backoffice-back-office-staff-accounts-concurrent-sessions
+    to: FACT-backoffice-back-office-staff-accounts-over-limit
+    created_at: "2025-08-27T17:35:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7110b0d04ae0
+    type: constrains
+    from: REQ-backoffice-back-office-staff-accounts-concurrent-sessions
+    to: FACT-backoffice-back-office-staff-accounts-subject
+    created_at: "2025-08-27T17:35:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

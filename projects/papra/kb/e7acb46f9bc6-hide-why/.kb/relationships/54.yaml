@@ -1,0 +1,43 @@
+relationships:
+  - id: rel-5bef1eb3092e
+    type: requires_property
+    from: REQ-papra-signup-email-domain-restrictions
+    to: FACT-papra-auth-signup-email-domains-allowlist-match
+    created_at: "2026-11-16T13:16:24.501Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-signup-email-domain-restrictions
+    to: FACT-papra-subject-auth-signup-email-domains
+    created_at: 2026-11-16T13:16:24.502Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-bde92d54fe0d
+  - type: requires_property
+    from: REQ-papra-signup-email-domain-restrictions
+    to: FACT-papra-auth-signup-email-domains-allowlist-includes-subdomains
+    created_at: 2026-11-16T13:16:24.512Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b25eb3f676fa
+  - type: requires_property
+    from: REQ-papra-signup-email-domain-restrictions
+    to: FACT-papra-auth-signup-email-domains-precedence
+    created_at: 2026-11-16T13:16:24.515Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b790cc2c127a
+  - type: requires_property
+    from: REQ-papra-signup-email-domain-restrictions
+    to: FACT-papra-auth-signup-email-domains-case-sensitive
+    created_at: 2026-11-16T13:16:24.517Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-5a8e60b61573
+  - type: verified_by
+    from: REQ-papra-signup-email-domain-restrictions
+    to: TEST-papra-server-src-modules-app-auth-auth-models
+    created_at: 2026-11-16T13:24:06.158Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9a9333192268

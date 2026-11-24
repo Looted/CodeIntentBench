@@ -1,0 +1,169 @@
+relationships:
+  - id: rel-024057259885
+    type: requires_property
+    from: REQ-papra-email-html-escaped
+    to: FACT-papra-email-templates-user-value-handling
+    created_at: "2026-11-16T13:21:03.013Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-email-html-escaped
+    to: FACT-papra-subject-email-templates
+    created_at: 2026-11-16T13:21:03.013Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-5ad58d317731
+  - type: supersedes
+    from: REQ-papra-email-html-escaped
+    to: REQ-papra-email-user-name-sanitized
+    created_at: 2026-11-16T13:21:03.023Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ef80a104680a
+  - type: verified_by
+    from: REQ-papra-email-html-escaped
+    to: TEST-papra-server-src-modules-shared-html-html
+    created_at: 2026-11-16T13:23:51.928Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6b9595c8b2d4
+  - type: verified_by
+    from: REQ-papra-email-html-escaped
+    to: TEST-papra-server-src-modules-app-auth-e2e-email-verification-e2e
+    created_at: 2026-11-16T13:30:09.412Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-50e84ca6dc7b
+  - id: rel-ca9c64f33768
+    type: requires_property
+    from: REQ-website-case-study-tags-case-sensitive-names
+    to: FACT-website-case-study-tags-name-uniqueness
+    created_at: "2025-03-02T15:02:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5bf080ab6a30
+    type: requires_property
+    from: REQ-website-case-study-tags-case-sensitive-names
+    to: FACT-website-case-study-tags-case-variants-distinct
+    created_at: "2025-03-02T15:02:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-15430186ee6c
+    type: constrains
+    from: REQ-website-case-study-tags-case-sensitive-names
+    to: FACT-website-case-study-tags-subject
+    created_at: "2025-03-02T15:02:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-61cb2ce64db7
+    type: requires_property
+    from: REQ-client-tag-filter-shortcuts-names-trimmed
+    to: FACT-client-tag-filter-shortcuts-name-trimmed
+    created_at: "2025-09-25T10:21:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a5ecd5277f34
+    type: requires_property
+    from: REQ-client-tag-filter-shortcuts-names-trimmed
+    to: FACT-client-tag-filter-shortcuts-empty-name-refused
+    created_at: "2025-09-25T10:21:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7f8a60397fca
+    type: constrains
+    from: REQ-client-tag-filter-shortcuts-names-trimmed
+    to: FACT-client-tag-filter-shortcuts-subject
+    created_at: "2025-09-25T10:21:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-403ebc8bc06c
+    type: requires_property
+    from: REQ-docs-documentation-site-search-unknown-filter
+    to: FACT-docs-documentation-site-search-unknown-filter
+    created_at: "2025-05-26T10:05:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d47b933496aa
+    type: constrains
+    from: REQ-docs-documentation-site-search-unknown-filter
+    to: FACT-docs-documentation-site-search-subject
+    created_at: "2025-05-26T10:05:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2df69705cc26
+    type: requires_property
+    from: REQ-telemetry-telemetry-event-search-unknown-filter
+    to: FACT-telemetry-telemetry-event-search-unknown-filter
+    created_at: "2026-06-03T16:34:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8414eb064b6a
+    type: constrains
+    from: REQ-telemetry-telemetry-event-search-unknown-filter
+    to: FACT-telemetry-telemetry-event-search-subject
+    created_at: "2026-06-03T16:34:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9191f28b98c7
+    type: requires_property
+    from: REQ-license-license-signing-key-development-default
+    to: FACT-license-license-signing-key-development-default
+    created_at: "2026-07-08T17:27:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b942db79ad0b
+    type: constrains
+    from: REQ-license-license-signing-key-development-default
+    to: FACT-license-license-signing-key-subject
+    created_at: "2026-07-08T17:27:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5a5076d6e23c
+    type: requires_property
+    from: REQ-mobile-beta-programme-sign-up-repeat-address
+    to: FACT-mobile-beta-programme-sign-up-repeat-address
+    created_at: "2026-04-03T15:57:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4e6127b4e64d
+    type: constrains
+    from: REQ-mobile-beta-programme-sign-up-repeat-address
+    to: FACT-mobile-beta-programme-sign-up-subject
+    created_at: "2026-04-03T15:57:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-71672149ae64
+    type: requires_property
+    from: REQ-cli-saved-organizations-deletion-grace
+    to: FACT-cli-saved-organizations-restore-window-days
+    created_at: "2026-02-25T12:11:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e2991c0cc207
+    type: requires_property
+    from: REQ-cli-saved-organizations-deletion-grace
+    to: FACT-cli-saved-organizations-purged-after-window
+    created_at: "2026-02-25T12:11:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a4c6a4ae8717
+    type: constrains
+    from: REQ-cli-saved-organizations-deletion-grace
+    to: FACT-cli-saved-organizations-subject
+    created_at: "2026-02-25T12:11:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2e73356b913c
+    type: requires_property
+    from: REQ-docs-documentation-contributor-accounts-reset-and-sessions
+    to: FACT-docs-documentation-contributor-accounts-sessions-ended-on-reset
+    created_at: "2025-11-14T15:58:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-48a101e9d2a3
+    type: constrains
+    from: REQ-docs-documentation-contributor-accounts-reset-and-sessions
+    to: FACT-docs-documentation-contributor-accounts-subject
+    created_at: "2025-11-14T15:58:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

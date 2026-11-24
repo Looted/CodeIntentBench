@@ -1,0 +1,43 @@
+relationships:
+  - id: rel-51576cb32b42
+    type: requires_property
+    from: REQ-papra-search-merged-into-documents-list
+    to: FACT-papra-documents-search-endpoint-available
+    created_at: "2026-11-16T10:31:52.514Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-search-merged-into-documents-list
+    to: FACT-papra-subject-documents-search-endpoint
+    created_at: 2026-11-16T10:31:52.514Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-f07119b167b3
+  - type: requires_property
+    from: REQ-papra-search-merged-into-documents-list
+    to: FACT-papra-documents-list-endpoint-search-parameter
+    created_at: 2026-11-16T10:31:52.525Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ef58f17c7ecd
+  - type: constrains
+    from: REQ-papra-search-merged-into-documents-list
+    to: FACT-papra-subject-documents-list-endpoint
+    created_at: 2026-11-16T10:31:52.527Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-38c0aff7bcda
+  - type: requires_property
+    from: REQ-papra-search-merged-into-documents-list
+    to: FACT-papra-documents-list-endpoint-count-field
+    created_at: 2026-11-16T10:31:52.530Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-264b46c87be6
+  - type: supersedes
+    from: REQ-papra-search-merged-into-documents-list
+    to: REQ-papra-search-endpoint-complete-documents
+    created_at: 2026-11-16T10:31:52.532Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-bc1415e7344b

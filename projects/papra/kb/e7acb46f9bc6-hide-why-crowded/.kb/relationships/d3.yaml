@@ -1,0 +1,71 @@
+relationships:
+  - id: rel-8957257d9764
+    type: requires_property
+    from: REQ-extension-clip-presets-case-sensitive-names
+    to: FACT-extension-clip-presets-name-uniqueness
+    created_at: "2025-11-09T17:09:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1a0511fb5cfb
+    type: requires_property
+    from: REQ-extension-clip-presets-case-sensitive-names
+    to: FACT-extension-clip-presets-case-variants-distinct
+    created_at: "2025-11-09T17:09:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c98dedfc489e
+    type: constrains
+    from: REQ-extension-clip-presets-case-sensitive-names
+    to: FACT-extension-clip-presets-subject
+    created_at: "2025-11-09T17:09:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f39bce440336
+    type: requires_property
+    from: REQ-education-course-labels-maximum-count
+    to: FACT-education-course-labels-maximum-count
+    created_at: "2026-07-10T12:20:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f9d85cd7ef03
+    type: requires_property
+    from: REQ-education-course-labels-maximum-count
+    to: FACT-education-course-labels-limit-configurable
+    created_at: "2026-07-10T12:20:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-99bef2bb36ee
+    type: constrains
+    from: REQ-education-course-labels-maximum-count
+    to: FACT-education-course-labels-subject
+    created_at: "2026-07-10T12:20:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-193898a2ce44
+    type: requires_property
+    from: REQ-website-blog-search-case-folding
+    to: FACT-website-blog-search-case-folding
+    created_at: "2025-05-01T15:11:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2e2dd9f5df73
+    type: constrains
+    from: REQ-website-blog-search-case-folding
+    to: FACT-website-blog-search-subject
+    created_at: "2025-05-01T15:11:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-508dd628f478
+    type: requires_property
+    from: REQ-website-webinar-registration-rate-limit
+    to: FACT-website-webinar-registration-requests-per-ip-per-day
+    created_at: "2026-01-19T13:53:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ade6d0662a07
+    type: constrains
+    from: REQ-website-webinar-registration-rate-limit
+    to: FACT-website-webinar-registration-subject
+    created_at: "2026-01-19T13:53:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

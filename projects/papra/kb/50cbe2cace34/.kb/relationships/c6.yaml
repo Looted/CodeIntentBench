@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-6db329add44b
+    type: requires_property
+    from: REQ-papra-owner-cannot-be-removed
+    to: FACT-papra-organizations-member-removal-allowed-roles
+    created_at: "2026-11-16T10:30:18.692Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-owner-cannot-be-removed
+    to: FACT-papra-subject-organizations-member-removal
+    created_at: 2026-11-16T10:30:18.693Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2f78b541e64d
+  - type: requires_property
+    from: REQ-papra-owner-cannot-be-removed
+    to: FACT-papra-organizations-member-removal-owner-removable
+    created_at: 2026-11-16T10:30:18.703Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-7c5e02e43283
+  - type: requires_property
+    from: REQ-papra-tag-delete-returns-204
+    to: FACT-papra-tags-delete-response-status-code
+    created_at: 2026-11-16T10:32:48.938Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-68c6eaed7384
+  - type: constrains
+    from: REQ-papra-tag-delete-returns-204
+    to: FACT-papra-subject-tags-delete-response
+    created_at: 2026-11-16T10:32:48.950Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-fd8db5c002ee
+  - type: requires_property
+    from: REQ-papra-tag-delete-returns-204
+    to: FACT-papra-tags-delete-response-missing-tag-status-code
+    created_at: 2026-11-16T10:32:48.953Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c18983406b9c
+  - type: verified_by
+    from: REQ-papra-owner-cannot-be-removed
+    to: TEST-papra-server-src-modules-organizations-organizations-models
+    created_at: 2026-11-16T10:37:40.687Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-df2417df1a75
+  - type: verified_by
+    from: REQ-papra-owner-cannot-be-removed
+    to: TEST-papra-server-src-modules-organizations-organizations-usecases
+    created_at: 2026-11-16T10:37:40.693Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b11f6c478fae

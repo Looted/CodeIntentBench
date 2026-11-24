@@ -1,0 +1,71 @@
+relationships:
+  - id: rel-bbcc5670be78
+    type: verified_by
+    from: REQ-webhooks-emit-document-updated-document-ta-FB361BD1
+    to: TEST-papra-server-src-modules-tags-tags-repository
+    created_at: "2026-10-14T12:10:04.797Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: requires_property
+    from: REQ-webhooks-emit-document-updated-document-ta-FB361BD1
+    to: FACT-papra-webhook-events-post-creation-events
+    created_at: 2026-11-15T21:43:38.520Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b7b29246ec33
+  - type: constrains
+    from: REQ-webhooks-emit-document-updated-document-ta-FB361BD1
+    to: FACT-papra-subject-webhook-events
+    created_at: 2026-11-15T21:43:38.526Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d43a07b53f13
+  - type: requires_property
+    from: REQ-webhooks-emit-document-updated-document-ta-FB361BD1
+    to: FACT-papra-webhook-events-tag-changes-trigger-webhooks
+    created_at: 2026-11-15T21:43:38.528Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4016cef6d166
+  - type: verified_by
+    from: REQ-webhooks-emit-document-updated-document-ta-FB361BD1
+    to: TEST-papra-server-src-modules-documents-e2e-upload-documents-e2e
+    created_at: 2026-11-16T04:52:11.660Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-8afcde75de6e
+  - type: verified_by
+    from: REQ-webhooks-emit-document-updated-document-ta-FB361BD1
+    to: TEST-papra-server-src-modules-tags-tags-usecases
+    created_at: 2026-11-16T04:52:11.666Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-3276816c6182
+  - id: rel-26f5349d5175
+    type: requires_property
+    from: REQ-desktop-folder-to-tag-mappings-batch-size
+    to: FACT-desktop-folder-to-tag-mappings-batch-maximum
+    created_at: "2026-03-23T10:03:06.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f2588483e400
+    type: constrains
+    from: REQ-desktop-folder-to-tag-mappings-batch-size
+    to: FACT-desktop-folder-to-tag-mappings-subject
+    created_at: "2026-03-23T10:03:06.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-80c65d629804
+    type: requires_property
+    from: REQ-docs-documentation-site-search-empty-query
+    to: FACT-docs-documentation-site-search-empty-query
+    created_at: "2026-05-01T08:30:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2cac35473054
+    type: constrains
+    from: REQ-docs-documentation-site-search-empty-query
+    to: FACT-docs-documentation-site-search-subject
+    created_at: "2026-05-01T08:30:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-dc1e25c87fe6
+    type: requires_property
+    from: REQ-papra-application-versioning-year-based
+    to: FACT-papra-release-versioning-application-format
+    created_at: "2026-11-16T10:18:15.950Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-application-versioning-year-based
+    to: FACT-papra-subject-release-versioning
+    created_at: 2026-11-16T10:18:15.950Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-efffb66fa08d
+  - type: requires_property
+    from: REQ-papra-application-versioning-year-based
+    to: FACT-papra-release-versioning-patches-older-minor-versions
+    created_at: 2026-11-16T10:18:15.965Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d4fb64cedc7a
+  - type: requires_property
+    from: REQ-papra-application-versioning-year-based
+    to: FACT-papra-release-versioning-library-versioning
+    created_at: 2026-11-16T10:18:15.969Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-a85bf43c6ea2
+  - type: requires_property
+    from: REQ-papra-application-versioning-year-based
+    to: FACT-papra-release-versioning-docker-image-version-matches-application
+    created_at: 2026-11-16T10:18:15.973Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-0f0daf740ed1
+  - type: supersedes
+    from: REQ-papra-application-versioning-year-based
+    to: REQ-the-application-package-is-versioned-with--B1FD7959
+    created_at: 2026-11-16T10:18:15.976Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-1ce69dfe8790
+  - type: requires_property
+    from: REQ-papra-no-open-in-new-tab
+    to: FACT-papra-documents-open-in-new-tab-available
+    created_at: 2026-11-16T10:20:13.558Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-00f47607671a
+  - type: constrains
+    from: REQ-papra-no-open-in-new-tab
+    to: FACT-papra-subject-documents-open-in-new-tab
+    created_at: 2026-11-16T10:20:13.573Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b98752d98f96

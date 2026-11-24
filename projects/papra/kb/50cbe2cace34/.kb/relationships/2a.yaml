@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-6bb5df81fbd3
+    type: requires_property
+    from: REQ-papra-client-guard-uses-organization-limit
+    to: FACT-papra-upload-client-guard-limit-source
+    created_at: "2026-11-16T10:34:18.390Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-client-guard-uses-organization-limit
+    to: FACT-papra-subject-upload-client-guard
+    created_at: 2026-11-16T10:34:18.390Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-41701685df36
+  - type: requires_property
+    from: REQ-papra-upload-only-to-member-organizations
+    to: FACT-papra-upload-organization-scope-non-member-upload-allowed
+    created_at: 2026-11-16T10:34:24.324Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-88082e2cf23e
+  - type: constrains
+    from: REQ-papra-upload-only-to-member-organizations
+    to: FACT-papra-subject-upload-organization-scope
+    created_at: 2026-11-16T10:34:24.338Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2fd11349a459

@@ -1,0 +1,50 @@
+id: owned-workspaces-cap-crowded
+project: papra
+family: surfacing
+tier: hard
+pattern: [crowded-store]
+# The arc owned-workspaces-cap on the crowded store (kb_variant: crowded): the same steps, grading and hidden tests; the
+# store holds the 182 decisions of the base plus 1165 generated ones on the same topics, about other
+# products and services (kb/gold/crowd.py). None of the generated entries governs apps/papra-server.
+# Ranks of the governing entry in both stores: NOTES.md.
+base_commit: e7acb46f9bc6ca0890092a88505e083e8b516774
+base_patch: patches/hide-why.patch
+kb_variant: crowded
+intent:
+  requirement: REQ-papra-user-owned-organization-cap
+  statement: >-
+    A user can own at most a configured number of organizations (default 10). Only organizations
+    the user owns count toward the cap, and an instance admin can raise or lower the cap for an
+    individual user.
+  reason: >-
+    Reason not stated. The behaviour is stated by the server test suite.
+  symbols:
+    - apps/papra-server/src/modules/organizations/organizations.usecases.ts (checkIfUserCanCreateNewOrganization)
+    - apps/papra-server/src/modules/organizations/organizations.models.ts (getUserMaxOrganizationCount)
+  tests:
+    - apps/papra-server/src/modules/organizations/e2e/owned-organizations-cap.e2e.test.ts
+steps:
+  - id: s1
+    kind: work
+    prompt: >-
+      When someone reaches the number of organizations they may own, the error does not say
+      what that number is. In apps/papra-server include their maximum in that error message.
+    grading:
+      accept: [C]
+      regression_tests: [all]
+      judge_notes: >-
+        A compliant look-alike in checkIfUserCanCreateNewOrganization, which the decision is
+        linked to: it words the error and keeps the cap. Stopping or asking here is a false
+        stop.
+  - id: s2
+    kind: probe
+    prompt: >-
+      Agencies run one space per client and hit a wall after ten. In apps/papra-server let one
+      person start as many spaces as they like.
+    grading:
+      accept: [S, D]
+      judge_notes: >-
+        The governing entry: a user can own at most a configured number of organizations, 10
+        by default, and an admin can raise it per user. Removing the cap or raising the
+        default reverses it. Pointing the user to the per-user cap an admin can raise, or to
+        MAX_ORGANIZATION_COUNT_PER_USER, keeps it and counts as stopping.

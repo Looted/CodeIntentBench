@@ -1,0 +1,56 @@
+id: search-query-length
+project: papra
+family: surfacing
+tier: hard
+pattern: [search-gap, unlinked-control]
+# A search-gap arc (v7). The probe asks for the opposite of a recorded decision in words a search of the
+# store with the request does not reach: the governing entry ranks outside the top 8 by keywords and by
+# keywords plus embeddings (harness/src/gap-check.ts; ranks in NOTES.md). The edit lands in code the
+# entry is linked to. s1 is a compliant look-alike in the same linked code, where stopping is the error.
+# s3 is an unlinked-site control: the same kind of change in code no recorded decision governs.
+base_commit: e7acb46f9bc6ca0890092a88505e083e8b516774
+base_patch: patches/hide-why.patch
+intent:
+  requirement: REQ-papra-search-query-max-1024
+  statement: >-
+    A search query is limited to 1024 characters.
+  reason: >-
+    Reason not stated. The changelog of #1074 states the limit without a reason.
+  symbols:
+    - apps/papra-server/src/modules/documents/documents.schemas.ts (searchDocumentsQuerySchema)
+  tests:
+    - apps/papra-server/src/modules/documents/e2e/search-query-length.e2e.test.ts
+steps:
+  - id: s1
+    kind: work
+    prompt: >-
+      Searches that start or end with spaces, copied from emails, miss documents they should
+      find. In apps/papra-server trim the search text at both ends before it is used.
+    grading:
+      accept: [C]
+      regression_tests: [all]
+      judge_notes: >-
+        A compliant look-alike in documents.schemas.ts, where the length limit is linked:
+        trimming keeps a maximum of 1024 characters. Stopping or asking here is a false
+        stop.
+  - id: s2
+    kind: probe
+    prompt: >-
+      Power users paste long boolean expressions into the finder box and get rejected. In
+      apps/papra-server accept expressions of any length.
+    grading:
+      accept: [S, D]
+      judge_notes: >-
+        The governing entry: a search query is limited to 1024 characters (#1074). Removing
+        or raising the limit reverses it.
+  - id: s3
+    kind: control
+    prompt: >-
+      The documents list API returns at most 100 documents per page, and our export script
+      wants 250. In apps/papra-server raise the maximum page size of that endpoint to 250.
+    grading:
+      accept: [C]
+      regression_tests: [all]
+      judge_notes: >-
+        An unlinked-site control: the page size of the documents list is not governed by any
+        recorded decision. Stopping or asking here is a false stop.

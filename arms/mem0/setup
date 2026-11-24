@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+# Arm `mem0`: decisions live in open-source mem0 (mem0ai, run locally), reached over mem0's official MCP server
+# (mem0-mcp-server) with its own tools. See mem0_local.py for how the two are joined and what runs where.
+# Arguments: <workspace> <rulesDir> <runDir>
+set -euo pipefail
+ws="$1"; rules="$2"; run="$3"
+here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+harness="$(cd "$here/../../harness" && pwd)"
+cache="${CIB_CACHE_DIR:-$here/../../cache}/mem0"
+lock="$(sha256sum "$here/requirements.lock" | cut -c1-12)"
+venv="$cache/venv-$lock"
+export FASTEMBED_CACHE_PATH="$cache/fastembed" MEM0_TELEMETRY=False HF_HUB_DISABLE_TELEMETRY=1
+
+# The pinned packages (mem0ai with its nlp extra, mem0-mcp-server, fastembed, qdrant-client, spaCy's small English model).
+if [ ! -x "$venv/bin/python" ]; then
+  rm -rf "$venv.tmp"
+  uv="$(command -v uv || echo "$HOME/.local/bin/uv")"
+  "$uv" venv -q --python 3.12 "$venv.tmp" > "$run/mem0-install.log" 2>&1
+  VIRTUAL_ENV="$venv.tmp" "$uv" pip install -q -r "$here/requirements.lock" >> "$run/mem0-install.log" 2>&1 || { tail -20 "$run/mem0-install.log" >&2; exit 1; }
+  mv "$venv.tmp" "$venv"
+fi
+
+# The project's rules as the memory arm renders them (one note per decision), added to a fresh mem0 store.
+# A seeded store is cached per rendered note set and copied into the run.
+node "$harness/src/arm-tools/seed-store.ts" memory "$run/memory-seed.json" "$rules" > /dev/null
+key="$(sha256sum "$run/memory-seed.json" | cut -c1-16)"
+# The stored vectors depend only on the packages that write them, not on the MCP server's.
+storelock="$(grep -E '^(mem0ai|fastembed|qdrant-client|spacy)==' "$here/requirements.lock" | sha256sum | cut -c1-12)"
+store="$cache/stores/$storelock-$key"
+if [ ! -f "$store/.seeded" ]; then
+  rm -rf "$store.tmp" && mkdir -p "$store.tmp"
+  "$venv/bin/python" -I "$here/mem0_local.py" seed "$store.tmp" "$run/memory-seed.json" > "$run/mem0-seed.log" 2>&1 || { tail -20 "$run/mem0-seed.log" >&2; exit 1; }
+  touch "$store.tmp/.seeded"; rm -rf "$store"; mv "$store.tmp" "$store"
+fi
+rm -rf "$run/mem0" && cp -R "$store" "$run/mem0"
+# What the store holds, as the equivalence audit reads it.
+"$venv/bin/python" -I "$here/mem0_local.py" export "$run/mem0" "$run/mem0-export.json" >> "$run/mem0-seed.log" 2>&1 || { tail -20 "$run/mem0-seed.log" >&2; exit 1; }
+cat > "$run/mcp.json" <<JSON
+{ "mcpServers": { "mem0": { "command": "$venv/bin/python", "args": ["-I", "$here/mem0_local.py", "serve", "$run/mem0", "$run/mem0-llm-cost.jsonl"],
+  "env": { "FASTEMBED_CACHE_PATH": "$FASTEMBED_CACHE_PATH", "MEM0_TELEMETRY": "False", "HF_HUB_DISABLE_TELEMETRY": "1", "HF_HUB_OFFLINE": "1" } } } }
+JSON
+echo "mem0ai $(grep -i '^mem0ai' "$here/requirements.lock"), $(grep -i '^mem0-mcp-server' "$here/requirements.lock"), $(python3 -c "import json;print(len(json.load(open('$run/mem0-export.json'))))") memories" > "$run/mem0-version.txt"

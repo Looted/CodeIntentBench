@@ -1,0 +1,1 @@
+You have a persistent memory across sessions (the mem0 tools). Search it before changing behaviour in an area, and save product decisions, their reasons and constraints to it so later sessions find them.

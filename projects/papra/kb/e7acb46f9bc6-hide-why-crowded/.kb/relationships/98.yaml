@@ -1,0 +1,148 @@
+relationships:
+  - id: rel-60e173730c9e
+    type: requires_property
+    from: REQ-papra-share-links-of-deleted-organizations
+    to: FACT-papra-share-link-public-access-status-when-organization-soft-deleted
+    created_at: "2026-11-16T13:15:17.011Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-share-links-of-deleted-organizations
+    to: FACT-papra-subject-share-link-public-access
+    created_at: 2026-11-16T13:15:17.011Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-201279232101
+  - type: requires_property
+    from: REQ-papra-share-links-of-deleted-organizations
+    to: FACT-papra-share-link-public-access-resumes-when-organization-restored
+    created_at: 2026-11-16T13:15:17.021Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b2c15b95198c
+  - type: requires_property
+    from: REQ-papra-tags-changeable-with-api-keys
+    to: FACT-papra-tags-api-key-access-allowed
+    created_at: 2026-11-16T13:18:27.197Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-038c84a9ff8b
+  - type: constrains
+    from: REQ-papra-tags-changeable-with-api-keys
+    to: FACT-papra-subject-tags-api-key-access
+    created_at: 2026-11-16T13:18:27.210Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2946a42328b6
+  - type: requires_property
+    from: REQ-papra-pdf-page-render-ocr-fallback
+    to: FACT-papra-content-extraction-pdf-fallback-renders-pages-for-ocr
+    created_at: 2026-11-16T13:19:36.812Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-f707e04bf652
+  - type: constrains
+    from: REQ-papra-pdf-page-render-ocr-fallback
+    to: FACT-papra-subject-content-extraction-pdf-fallback
+    created_at: 2026-11-16T13:19:36.827Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-e607ec01d172
+  - type: verified_by
+    from: REQ-papra-share-links-of-deleted-organizations
+    to: TEST-papra-server-src-modules-document-share-links-document-share-links-usecases
+    created_at: 2026-11-16T13:24:05.202Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4e6215f04b2c
+  - id: rel-5918d4fb2237
+    type: requires_property
+    from: REQ-client-saved-views-batch-size
+    to: FACT-client-saved-views-batch-maximum
+    created_at: "2026-08-14T16:29:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d836e4774565
+    type: constrains
+    from: REQ-client-saved-views-batch-size
+    to: FACT-client-saved-views-subject
+    created_at: "2026-08-14T16:29:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-859b30e95e10
+    type: requires_property
+    from: REQ-forum-forum-categories-batch-size
+    to: FACT-forum-forum-categories-batch-maximum
+    created_at: "2025-08-01T17:16:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-028586db5a1e
+    type: constrains
+    from: REQ-forum-forum-categories-batch-size
+    to: FACT-forum-forum-categories-subject
+    created_at: "2025-08-01T17:16:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3a9a707ef411
+    type: requires_property
+    from: REQ-desktop-desktop-sync-client-sync-log-filter-text-filter-matching
+    to: FACT-desktop-desktop-sync-client-sync-log-filter-text-filter-matching
+    created_at: "2025-02-06T11:28:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b7cacb5c5ed7
+    type: constrains
+    from: REQ-desktop-desktop-sync-client-sync-log-filter-text-filter-matching
+    to: FACT-desktop-desktop-sync-client-sync-log-filter-subject
+    created_at: "2025-02-06T11:28:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8ca51c50d033
+    type: requires_property
+    from: REQ-license-license-lookup-case-folding
+    to: FACT-license-license-lookup-case-folding
+    created_at: "2025-11-25T13:31:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-28ac2bfa2ebe
+    type: constrains
+    from: REQ-license-license-lookup-case-folding
+    to: FACT-license-license-lookup-subject
+    created_at: "2025-11-25T13:31:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-eb022a9c239b
+    type: requires_property
+    from: REQ-portal-client-workspaces-what-counts
+    to: FACT-portal-client-workspaces-counted-toward-limit
+    created_at: "2026-04-25T13:58:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8947948967e2
+    type: requires_property
+    from: REQ-portal-client-workspaces-what-counts
+    to: FACT-portal-client-workspaces-limit-detail
+    created_at: "2026-04-25T13:58:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-143323a612ce
+    type: constrains
+    from: REQ-portal-client-workspaces-what-counts
+    to: FACT-portal-client-workspaces-subject
+    created_at: "2026-04-25T13:58:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fd29bfb9c43e
+    type: requires_property
+    from: REQ-license-activations-ownership-transfer
+    to: FACT-license-activations-ownership-transfer
+    created_at: "2026-02-13T12:39:06.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-331b8edf8714
+    type: constrains
+    from: REQ-license-activations-ownership-transfer
+    to: FACT-license-activations-subject
+    created_at: "2026-02-13T12:39:06.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

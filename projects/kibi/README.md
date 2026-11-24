@@ -1,6 +1,6 @@
 # Project `kibi`
 
-[Kibi](https://github.com/Looted/kibi) benchmarked on its own repository. The repository is the one public project with a mature Kibi knowledge base: at the pinned commit `.kb/` holds 259 requirements, 33 ADRs, 1,219 facts, 249 scenarios and 291 test entities, with 4,600 code symbols linked to them, written by its authors over months of development. Every arc in this project is about a decision that knowledge base already records.
+[Kibi](https://github.com/Looted/kibi) benchmarked on its own repository. The repository is the one public project with a mature Kibi knowledge base: at the pinned commit (release 2026.11.4, knowledge-base schema 18) `.kb/` holds 611 requirements (516 open, 93 closed, 2 retired), 35 ADRs (29 accepted, 1 proposed, 5 superseded), 2,647 facts, 857 scenarios and 746 test entities, written by its authors over months of development and reviewed entry by entry: each requirement and ADR carries a status, a firmness (204 count as firm: 106 are marked firm and 98 were recorded by a person with no firmness field; the other 442 are default), its supersession links and a reason traced to a source. Every arc in this project is about a decision that knowledge base already records.
 
 ## Why this project
 
@@ -22,31 +22,45 @@ The knowledge is held constant and the container varies. `arm-prepare.sh` runs a
 
 For the arms without Kibi, `neutral-agents-md.ts` removes the sections of the repository's `AGENTS.md` that tell agents to use Kibi's tools and knowledge base (Source of Truth, Using Kibi, Modeling Rules, Symbol Traceability) and the lines elsewhere that point at them; the product mission, release, documentation and quality policy stay, so every arm gets the same repository policy. The kibi arms keep `AGENTS.md` whole: a Kibi-onboarded repository tells its agents to use Kibi, and that instruction is part of what is being measured.
 
-The export reads `.kb/requirements`, `.kb/adr`, `.kb/relationships/*.yaml` and `.kb/symbols.yaml`: a requirement's code locations are the source files of the symbols that `implements` it, its tests are the `*.test.ts` files of the symbols `executable_for` the test entities it is `verified_by` (or that `covered_by` its symbols), and its reason is the Context, Rationale or Why section of its body. At the pinned commit 223 of 288 entities have code locations and 178 have unit tests. Facts, scenarios and events are Kibi's typed grounding of the same statements and are not exported; the arms are compared on the recorded decisions, not on Kibi's proof machinery.
+The export reads `.kb/requirements`, `.kb/adr`, `.kb/relationships/*.yaml` and `.kb/symbols.yaml`: a requirement's code locations are the source files of the symbols that `implements` it, its tests are the `*.test.ts` files of the symbols `executable_for` the test entities it is `verified_by` (or that `covered_by` its symbols), and its reason is the Context, Rationale or Why section of its body. At the pinned commit 526 of 646 entities have code locations, 575 have tests and 618 a recorded reason. Facts, scenarios and events are Kibi's typed grounding of the same statements and are not exported; the arms are compared on the recorded decisions, not on Kibi's proof machinery.
 
 ## Running the project's tests
 
-Kibi is a Bun workspace. `bun install --frozen-lockfile` takes about three minutes cold and seconds with a warm cache; `bun run build` (35 s) produces the `dist/` the CLI runs from, and tests that spawn `packages/cli/bin/kibi` read it, so the grader rebuilds the CLI stack (13 s) before every test run. `harness/src/arm-tools/bun-test-json.ts` runs `bun test` with the JUnit reporter and writes the Vitest-shaped report the grader reads. A source checkout's bundled SWI-Prolog package has no runtime, so `arm-prepare.sh` installs the released `kibi-swipl` next to the workspace and `project.yaml` points `KIBI_SWIPL` at it; Kibi's own tests then run as they do in its CI.
+Kibi is a Bun workspace. `bun install --frozen-lockfile` takes about three minutes cold and seconds with a warm cache; `bun run build` (26 s) produces the `dist/` the CLI runs from, and tests that spawn `packages/cli/bin/kibi` read it, so the grader rebuilds the CLI stack (13 s) before every test run. `harness/src/arm-tools/bun-test-json.ts` runs `bun test` with the JUnit reporter and writes the Vitest-shaped report the grader reads. A source checkout's bundled SWI-Prolog package has no runtime, so `arm-prepare.sh` installs the released `kibi-swipl` next to the workspace and `project.yaml` points `KIBI_SWIPL` at it; Kibi's own tests then run as they do in its CI.
 
 ## Arcs
 
-Sixteen arcs under `arcs/`, two per family, all on the same base commit (`develop` at 9f3311f3, knowledge-base schema 10, the schema the pinned release reads). The families and the decisions they are about:
+Thirteen arcs under `arcs/`, all on the same base commit (`8bc4204f`, release 2026.11.4). Each arc names the recorded entry it is about (`intent.requirement`) and its tier.
 
-| Family | Arcs | Recorded decision |
+The easy tier keeps one arc per family from the first run, re-anchored on the new base:
+
+| Family | Arc | Recorded decision |
 |---|---|---|
-| recall | `kibi-git-hooks-recall`, `kibi-swipl-minimum-recall` | hooks go to Git's effective hooks path (REQ-git-hook-effective-install); a system swipl older than 9.0 is refused (REQ-prolog-bundled-runtime) |
-| rationale | `kibi-firmness-words-rationale`, `kibi-mcp-freshness-rationale` | the 12-word floor on "Why this changed" (REQ-kb-decision-firmness); stat-based KB freshness in the MCP server (ADR-021) |
-| surfacing | `kibi-cursor-stop-surfacing`, `kibi-mcp-oneof-surfacing` | plan delivery is not job completion in the Cursor stop hook (REQ-cursor-stop-job-vs-plan); oneOf guard branches are enforced at MCP input validation (REQ-mcp-oneof-guard-input-validation) |
-| navigation | `kibi-swipl-resolver-navigation`, `kibi-mcp-routing-navigation` | the SWI-Prolog resolution order; workspace routing and its boundary (REQ-mcp-workspace-routing) |
-| drift | `kibi-firmness-words-drift`, `kibi-swipl-minimum-drift` | a stated change to a recorded decision (floor 12 to 6 words; floor 9.0 to 10.0), then a request that contradicts the new one |
-| evidence | `kibi-foreign-hook-evidence`, `kibi-mcp-oneof-evidence` | a teammate's commit silently drops the behaviour and its tests (foreign hooks are no longer skipped; the oneOf guard is switched off); the probe asks for a release check |
-| branch | `kibi-claim-name-length-branch`, `kibi-docs-analytics-branch` | a decision made on a branch (aspects of three words and thirty characters; no github-click analytics event) must not leak to the base branch |
-| standing | `kibi-foreign-hook-standing`, `kibi-daemon-versions-standing` | a firm project rule (foreign hooks untouched; a daemon never serves other package versions) next to a choice the agent made itself |
+| recall | `kibi-swipl-minimum-recall` | a system swipl older than 9.0 is refused (REQ-prolog-swipl-minimum-version, default) |
+| rationale | `kibi-firmness-words-rationale` | the 12-word floor on "Why this changed" (REQ-kb-decision-firmness) |
+| surfacing | `kibi-mcp-oneof-surfacing` | oneOf guard branches are enforced at MCP input validation (REQ-mcp-oneof-guard-input-validation) |
+| navigation | `kibi-swipl-resolver-navigation` | the SWI-Prolog resolution order (REQ-prolog-swipl-resolution-order, default) |
+| branch | `kibi-claim-name-length-branch` | a decision made on a branch (aspects of three words and thirty characters) must not leak to the base branch |
+| evidence | `kibi-mcp-oneof-evidence` | a teammate's commit switches the oneOf guard off and removes its tests; the probe asks for a release check |
 
-In the recall, rationale, surfacing, navigation and standing arcs the decision is one the knowledge base already records, so the arc starts with the probe: there is no session in which the agent is told the decision, and every arm has to find it in its own container. The drift and branch arcs need a decision that is new on top of the recorded one, so their first session states it, as the Papra arcs did, and their hidden tests are the benchmark's own, under `arcs/<id>/tests/`. The evidence arcs run `teammate.sh` between sessions. Hidden intent tests for the recorded decisions are the repository's tests at the base commit, restored by the grader before they run; each step names the few test files that cover the code it touches as its regression suite, because the whole suite takes minutes per run.
+The hard tier is seven arcs, each built on one way a flat store of notes fails once it holds 600 entries:
 
-The benchmark container runs as root, which `chmod` does not stop; eight of the repository's tests make a directory unreadable and expect Git to refuse, and fail on an untouched checkout here. `project.yaml` lists them under `tests.ignore`, and the grader records their failures without counting them.
+| Pattern | Arc | Recorded decision | What makes it hard |
+|---|---|---|---|
+| near-matches | `kibi-codex-no-deny` | Codex hooks never deny a tool call (REQ-codex-hook-limits, firm) | four neighbouring entries say the same of other hosts, one of which may ask the person |
+| quiet-contradiction | `kibi-config-skip-rule` | configuration cannot disable a canonical check rule (REQ-kibi-check-rule-selection, firm); the legacy config file is read only to plan the migration (REQ-kibi-legacy-config-read-only, firm) | the request says "skip" and "catch up", the entries say "disable" and "enforcement class" |
+| firm-default | `kibi-hook-manager-standing` | init installs nothing where a hook manager owns the hooks (REQ-git-hook-manager-integration, firm) next to per-hook results (REQ-git-hook-effective-install, default) | two neighbouring decisions with different standing: one the agent may change, one it must ask about |
+| near-matches | `kibi-engine-direct-write` | one engine is the single writer of a branch store (REQ-kibi-engine-single-writer-protocol, firm) | ten recorded decisions name the same file |
+| indirect-reach | `kibi-ci-proof-sha` | a proof is reused only when the code snapshot matches (REQ-kibi-ci-proof-reuse, firm) | the code is a script outside `packages/`; one entry names it |
+| superseded | `kibi-inline-links-superseded` | requirement links come only from the symbol manifest (REQ-traceability-manifest-only-links, firm) | a superseded ADR and older prose in the repository support the request |
+| long-capture | `kibi-swipl-floor-long` | a floor stated by the user in the first session (10.0, on top of REQ-prolog-swipl-minimum-version) | six sessions: unrelated work, then a teammate's commit renames and moves the constant before the probe |
+
+In every arc but the branch and long-capture ones the decision is one the knowledge base already records, so there is no session in which the agent is told it, and every arm has to find it in its own container. A hard arc that has room for one starts with a control step, a compatible request in the same code, so that an arm that stops at everything does not pass. Three arcs end with a question about the reason, graded against the reason the knowledge base records, quoted in the arc (in the long-capture arc, against the reason the user gave in the first session).
+
+Hidden intent tests are the repository's own tests at the base commit where those fail on the violating change and are not the agent's to edit in the step; otherwise the arc carries its own test file under `arcs/<id>/tests/`. Every hidden test was run both ways on a real checkout (it passes untouched and fails on a minimal violating change), and each arc's `NOTES.md` records the check. Each step names the few test files that cover the code it touches as its regression suite, because the whole suite takes minutes per run. The evidence and long-capture arcs run `teammate.sh` between sessions.
+
+The whole suite is 22,873 tests in 1,455 files and takes about 28 minutes. Some of the repository's tests set `KIBI_SWIPL=system` for the whole test process; with no `swipl` on `PATH`, every later file in the same run that starts the engine then fails (292 tests on an untouched checkout). The test commands in `project.yaml` therefore put the released runtime on `PATH` as well, which leaves four tests that fail on their own timeouts. Those four are listed under `tests.ignore`, and the grader records their failures without counting them. The eight tests ignored on the October base, which need a directory that root cannot read, pass at this one.
 
 ## Results
 
-The first run of these arcs is written up in [results/kibi-arcs-2026-10-14.md](../../results/kibi-arcs-2026-10-14.md), with the raw tables in [results/kibi-arcs-2026-10-14/](../../results/kibi-arcs-2026-10-14/).
+The first run, of sixteen arcs on the October base (`9f3311f3`), is written up in [results/kibi-arcs-2026-10-14.md](../../results/kibi-arcs-2026-10-14.md), with the raw tables in [results/kibi-arcs-2026-10-14/](../../results/kibi-arcs-2026-10-14/).

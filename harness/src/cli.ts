@@ -3,10 +3,15 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, wri
 import { join } from 'node:path';
 import { parseArgs } from 'node:util';
 import { parseTranscript, runAgentWithHost, type AgentResult } from './agent.ts';
-import { RUNS_DIR, listArms, listProjects, loadArc, loadArcs, loadProject, loadRules, loadRulesDir, loadTask, loadTasks } from './config.ts';
-import { decideStep, runArc } from './arc.ts';
-import { judgeStep, armConvention } from './judge-arc.ts';
-import { loadArcRuns, renderArcsMarkdown, summarizeArcs } from './report-arcs.ts';
+import { CACHE_DIR, PROJECTS_DIR, RUNS_DIR, listArms, listProjects, loadArc, loadArcs, loadProject, loadRules, loadRulesDir, loadTask, loadTasks } from './config.ts';
+import { decideStep, externalStoreTexts, governingKeys, runArc } from './arc.ts';
+import { answerNames, checkNamesAtBase, projectRecordTexts } from './claims.ts';
+import { editsBeforeReply, governingTouched } from './step-evidence.ts';
+import { intentOf } from './intent.ts';
+import { renderAudit, runAudit } from './audit-run.ts';
+import { validateArc } from './validate-arc.ts';
+import { judgeStep, armConvention, armStoreNote, earlierDecisions } from './judge-arc.ts';
+import { agentCost, judgeCost, loadArcRuns, renderArcsMarkdown, summarizeArcs } from './report-arcs.ts';
 import { decide, gradeRun } from './grade.ts';
 import { judgeRun } from './judge.ts';
 import { loadRuns, renderMarkdown, summarize } from './report.ts';
@@ -16,7 +21,11 @@ import { BASE_BRANCH, GIT_IDENTITY, loadArmHost, prepareWorkspace, runDir, works
 
 const HELP = `CodeIntentBench harness
 
-  cib validate                         check projects, rules and tasks
+  cib validate [--skip-audit]          check projects, rules, tasks and arcs, then run the equivalence audit
+  cib audit [--project P] [--arc A[,B]] [--arm A[,B]] [--keep]
+                                       the equivalence audit alone: after each arm's setup, every decision an
+                                       arc is about must be in the arm's container with its reason, status,
+                                       firmness and code paths. No model is called. An arc that fails is not scored.
   cib list [--project P]               list tasks and arms
   cib prepare --project P --task T --arm A [--out DIR]
                                        build a workspace and stop (debugging arms)
@@ -29,8 +38,9 @@ const HELP = `CodeIntentBench harness
   cib rejudge (--run DIR | --project P) [--judge-model M]
                                        re-run the judge and the decision table from saved artifacts
   cib report [--project P]             aggregate runs into runs/<project>/report.md (and report-arcs.md)
-  cib run-arc --project P --arc A|all --arm A[,B] [--family F] [--attempts N] [agent options as for run]
-                                       run a feature arc: fresh sessions on one carried workspace
+  cib run-arc --project P --arc A|all --arm A[,B] [--family F] [--attempts N] [--user-replies N] [--user-model M] [--user-style task|agreeable] [agent options as for run]
+                                       run a feature arc: fresh sessions on one carried workspace; with --user-replies N a
+                                       scripted user answers up to N times when a session stops to wait on the user
 
 Environment: CIB_RUNS_DIR (default: <repo>/runs), CIB_CACHE_DIR (default: <repo>/cache).
 Node 26 (or the project's runtime) must be on PATH before the project installs.
@@ -44,7 +54,7 @@ const { values: v, positionals } = parseArgs({
     'max-turns': { type: 'string', default: '60' }, timeout: { type: 'string', default: '25' }, budget: { type: 'string' },
     'judge-model': { type: 'string', default: 'claude-sonnet-5-5' }, agent: { type: 'string', default: 'claude' },
     permissions: { type: 'string', default: 'bypass' }, 'allowed-tools': { type: 'string' },
-    keep: { type: 'boolean', default: false }, 'skip-judge': { type: 'boolean', default: false }, help: { type: 'boolean', default: false },
+    keep: { type: 'boolean', default: false }, 'user-replies': { type: 'string', default: '0' }, 'user-model': { type: 'string' }, 'user-style': { type: 'string', default: 'task' }, 'skip-judge': { type: 'boolean', default: false }, 'skip-audit': { type: 'boolean', default: false }, help: { type: 'boolean', default: false },
   },
 });
 const cmd = positionals[0];
@@ -56,10 +66,24 @@ function agentConfig(): AgentConfig {
     max_budget_usd: v.budget ? Number(v.budget) : undefined,
     permissions: v.permissions === 'accept-edits' ? 'accept-edits' : 'bypass',
     allowed_tools: v['allowed-tools'] ? v['allowed-tools'].split(/\s*,\s*/).filter(Boolean) : undefined,
+    user_permissions: Number(v['user-replies'] ?? 0) > 0 ? true : undefined,
   };
 }
 
 function validate(): number {
+  const code = validateStatic();
+  if (code !== 0 || v['skip-audit']) { if (v['skip-audit']) console.log('equivalence audit skipped (--skip-audit): arcs are not cleared for scoring'); return code; }
+  return audit();
+}
+
+/** The equivalence audit (audit.ts) over the arcs' bases and the arms: exit 1 when an arc cannot be scored. */
+function audit(): number {
+  const results = runAudit({ projects: v.project ? [v.project] : listProjects(), arcs: v.arc && v.arc !== 'all' ? v.arc.split(',') : undefined, arms: v.arm ? v.arm.split(',') : undefined, keep: v.keep, log });
+  console.log(renderAudit(results));
+  return results.every((r) => r.ok) ? 0 : 1;
+}
+
+function validateStatic(): number {
   let errors = 0;
   const err = (s: string) => { errors += 1; console.error(`error: ${s}`); };
   const arms = listArms();
@@ -93,23 +117,7 @@ function validate(): number {
     for (const a of arcs) {
       if (arcIds.has(a.id)) err(`${p}/arcs/${a.id}: duplicate id`);
       arcIds.add(a.id);
-      if (a.project !== p) err(`${p}/arcs/${a.id}: project field is '${a.project}'`);
-      if (!a.base_commit) err(`${p}/arcs/${a.id}: no base_commit`);
-      if (!a.intent?.statement?.trim() || !a.intent?.reason?.trim()) err(`${p}/arcs/${a.id}: intent needs statement and reason`);
-      if (a.intent?.tests?.length && !a.intent.tests_commit && !existsSync(join(a._dir ?? '', 'tests'))) err(`${p}/arcs/${a.id}: intent.tests without tests_commit or a tests/ directory`);
-      if (!a.steps?.length || a.steps[0].kind !== 'intent') err(`${p}/arcs/${a.id}: first step must be the intent step`);
-      if (!a.steps?.some((st) => st.kind === 'probe')) err(`${p}/arcs/${a.id}: no probe step`);
-      const stepIds = new Set<string>();
-      for (const st of a.steps ?? []) {
-        if (stepIds.has(st.id)) err(`${p}/arcs/${a.id}/${st.id}: duplicate step id`);
-        stepIds.add(st.id);
-        if (st.script && !existsSync(join(a._dir ?? '', st.script))) err(`${p}/arcs/${a.id}/${st.id}: script ${st.script} not found`);
-        if (!st.script && !st.grading?.accept?.length) err(`${p}/arcs/${a.id}/${st.id}: no accept set`);
-        if (/\b(kibi|requirement|knowledge base|AGENTS\.md|CLAUDE\.md|benchmark|tracker|memory)\b/i.test(st.prompt) && st.kind !== 'intent') err(`${p}/arcs/${a.id}/${st.id}: prompt mentions tools or the benchmark`);
-        // Questions asked from the intent side (rationale, navigation) may name the decision; work requests must not.
-        const question = st.kind === 'probe' && (a.family === 'rationale' || a.family === 'navigation');
-        if (st.kind !== 'intent' && !question && /\b(decision|decided|recorded)\b/i.test(st.prompt)) err(`${p}/arcs/${a.id}/${st.id}: prompt hints that a decision exists`);
-      }
+      for (const e of validateArc(a, project)) err(e);
     }
     console.log(`${p}: ${rules.length} rules, ${tasks.length} tasks (${['history', 'conflict', 'governed', 'ungoverned'].map((k) => `${tasks.filter((t) => t.kind === k).length} ${k}`).join(', ')}), ${arcs.length} arcs, commit ${project.commit.slice(0, 12)}`);
   }
@@ -190,6 +198,7 @@ async function runOne(projectName: string, task: Task, arm: string, attempt: num
 async function main(): Promise<number> {
   if (!cmd || v.help) { console.log(HELP); return 0; }
   if (cmd === 'validate') return validate();
+  if (cmd === 'audit') return audit();
   if (cmd === 'list') {
     for (const p of v.project ? [v.project] : listProjects()) {
       for (const t of loadTasks(p)) console.log(`${p}\t${t.kind}\t${t.id}\t${t.governing_rules?.join(',') ?? ''}`);
@@ -227,7 +236,7 @@ async function main(): Promise<number> {
     const arms = v.arm.split(',');
     const results = [];
     for (const arc of arcs) for (const arm of arms) for (let a = 1; a <= Number(v.attempts); a++) {
-      try { results.push(await runArc(v.project, arc, arm, a, { agent: agentConfig(), judgeModel: v['judge-model']!, skipJudge: v['skip-judge'], keep: v.keep, replay: v.agent === 'replay' ? replayStep : undefined, log })); }
+      try { results.push(await runArc(v.project, arc, arm, a, { agent: agentConfig(), judgeModel: v['judge-model']!, skipJudge: v['skip-judge'], keep: v.keep, userReplies: Number(v['user-replies']), userModel: v['user-model'], userStyle: v['user-style'] === 'agreeable' ? 'agreeable' : 'task', replay: v.agent === 'replay' ? replayStep : undefined, log })); }
       catch (e) { log(`arc failed: ${arc.id}/${arm}/${a}: ${(e as Error).message}`); }
     }
     for (const [key, c] of summarizeArcs(results)) { const [fam, arm] = key.split('\u0000'); if (fam === 'all') console.log(`${arm}: ${c.pass}/${c.arcs - c.invalid} arcs pass, $${c.cost_usd.toFixed(2)}`); }
@@ -304,10 +313,10 @@ async function main(): Promise<number> {
     for (const p of v.project ? [v.project] : listProjects()) {
       const arcRuns = loadArcRuns(p);
       if (arcRuns.length === 0) continue;
-      const md = renderArcsMarkdown(p, arcRuns);
+      const md = renderArcsMarkdown(p, arcRuns, loadArcRuns(p, { unfinished: true }));
       mkdirSync(join(RUNS_DIR, p), { recursive: true });
       writeFileSync(join(RUNS_DIR, p, 'report-arcs.md'), md);
-      writeFileSync(join(RUNS_DIR, p, 'report-arcs.json'), JSON.stringify({ project: p, runs: arcRuns.map((r) => ({ id: r.id, arc: r.spec.arc, family: r.spec.family, arm: r.spec.arm, attempt: r.spec.attempt, pass: r.pass, invalid: r.invalid, cost_usd: r.cost_usd, steps: r.steps.map((s) => ({ id: s.id, kind: s.kind, outcome: s.grade?.outcome, pass: s.grade?.pass, record_written: s.record_written, first_lookup_turn: s.first_lookup_turn, first_edit_turn: s.first_edit_turn, commit_gate: s.commit_gate, usage: s.usage })) })) }, null, 2));
+      writeFileSync(join(RUNS_DIR, p, 'report-arcs.json'), JSON.stringify({ project: p, runs: arcRuns.map((r) => ({ id: r.id, arc: r.spec.arc, family: r.spec.family, tier: r.spec.tier, pattern: r.spec.pattern, audit: r.audit, invalid_reason: r.invalid_reason, agents_md: r.agents_md, arm: r.spec.arm, attempt: r.spec.attempt, pass: r.pass, invalid: r.invalid, cost_usd: r.cost_usd, agent_cost_usd: agentCost(r), judge_cost_usd: judgeCost(r), steps: r.steps.map((s) => ({ id: s.id, kind: s.kind, outcome: s.grade?.outcome, pass: s.grade?.pass, record_written: s.record_written, first_lookup_turn: s.first_lookup_turn, first_edit_turn: s.first_edit_turn, surfaced: s.surfaced, named_governing_decision: s.grade?.judge?.answers.find((a) => a.question === 'named_governing_decision')?.answer, treated_superseded_as_current: s.grade?.judge?.answers.find((a) => a.question === 'treated_superseded_as_current')?.answer, commit_gate: s.commit_gate, usage: s.usage })) })) }, null, 2));
       console.log(md);
     }
     return 0;
@@ -323,8 +332,15 @@ async function rejudgeArc(dir: string, judgeModel: string): Promise<void> {
   const record = JSON.parse(readFileSync(join(dir, 'run.json'), 'utf8')) as ArcRunRecord;
   const arc = JSON.parse(readFileSync(join(dir, 'arc.json'), 'utf8')) as Arc;
   const firstBranch = arc.steps[0].branch ?? BASE_BRANCH;
+  // A step the arc no longer has (voided after review) is not re-judged; it keeps its old grade and a note.
+  let current: Arc | undefined;
+  try { current = loadArc(record.spec.project, arc.id); } catch { current = undefined; }
   for (const rec of record.steps) {
     const step = arc.steps.find((s) => s.id === rec.id);
+    if (current && !current.steps.some((s) => s.id === rec.id)) {
+      if (rec.grade && !(rec.grade.notes ?? []).includes('voided: step removed from the arc')) rec.grade.notes = [...(rec.grade.notes ?? []), 'voided: step removed from the arc'];
+      continue;
+    }
     const sdir = join(dir, 'steps', rec.id);
     if (!step || !rec.grade || rec.grade.invalid || !existsSync(join(sdir, 'agent.json'))) continue;
     const agent = JSON.parse(readFileSync(join(sdir, 'agent.json'), 'utf8')) as AgentResult;
@@ -338,9 +354,28 @@ async function rejudgeArc(dir: string, judgeModel: string): Promise<void> {
     const diff = existsSync(join(sdir, 'diff.patch')) ? readFileSync(join(sdir, 'diff.patch'), 'utf8') : '';
     const branchNote = arc.family === 'branch' && rec.branch !== firstBranch ? `This session runs on branch ${rec.branch}; the recorded decision was made on branch ${firstBranch} and has not been merged here, so it does not hold on this branch.` : undefined;
     const before = rec.grade.outcome;
+    // The workspace is gone: names are checked against the base commit plus every change the arc made so far
+    // (session diffs, teammate scripts) and the project's recorded decisions.
+    const sofar: string[] = [];
+    for (const s of arc.steps) {
+      const d = join(dir, 'steps', s.id, 'diff.patch');
+      if (existsSync(d)) sofar.push(readFileSync(d, 'utf8'));
+      if (s.script && arc._dir && existsSync(join(arc._dir, s.script))) sofar.push(readFileSync(join(arc._dir, s.script), 'utf8'));
+      if (s.id === step.id) break;
+    }
+    const mirror = join(CACHE_DIR, 'repos', `${record.spec.project}.git`);
+    const names = answerNames(agent.final_answer ?? '');
+    if (arc.base_commit && existsSync(mirror)) rec.grade.name_check = checkNamesAtBase(mirror, arc.base_commit, names, [...sofar, ...externalStoreTexts(dir), ...projectRecordTexts(join(PROJECTS_DIR, record.spec.project, 'rules'))]);
+    const edited = editsBeforeReply(sdir, workspaceDir(dir));
+    if (edited.length) rec.grade.edited_before_reply = edited; else delete rec.grade.edited_before_reply;
+    // Runs before the comments arm's store detection: a change inside a `// Decision` block is a store write.
+    if (record.spec.arm === 'comments' && !rec.record_written && /^@@[^\n]*\n(?:[ +-][^\n]*\n)*?[ +-]\s*\/\/ Decision \S+:[^\n]*\n(?:[ ][^\n]*\n)*?[+-]\s*\/\//m.test(diff)) { rec.record_written = true; rec.grade.rule_record_changed = true; }
+    const keys = governingKeys(dir, intentOf(arc, step).requirement);
+    rec.grade.governing_changed = keys.length > 0 && governingTouched(sdir, diff, record.spec.arm, keys);
     try {
-      const verdict = await judgeStep({ dir: sdir, arc, step, agent, diff, model: judgeModel, recordWritten: rec.record_written, branchNote, convention: armConvention(record.spec.arm) });
-      rec.grade.judge = { answers: verdict.answers, model: judgeModel, cost_usd: verdict.cost_usd };
+      const verdict = await judgeStep({ dir: sdir, arc, step, agent, diff, model: judgeModel, recordWritten: rec.record_written, branchNote, convention: armConvention(record.spec.arm), ctx: { names: rec.grade.name_check, earlier: earlierDecisions(arc, step), armNote: armStoreNote(record.spec.arm) }, extraKeys: edited.length ? ['violated_before_reply'] : [] });
+      const prior = rec.grade.judge;
+      rec.grade.judge = { answers: verdict.answers, model: judgeModel, cost_usd: verdict.cost_usd, earlier_passes: prior ? [...(prior.earlier_passes ?? []), { model: prior.model, cost_usd: prior.cost_usd }] : undefined };
       rec.grade.notes = (rec.grade.notes ?? []).filter((n) => !n.startsWith('probe implemented without'));
       rec.grade.outcome = decideStep(arc, step, rec.grade, verdict, rec.grade.notes);
       rec.grade.pass = (step.grading.accept as string[]).includes(rec.grade.outcome);
@@ -348,5 +383,9 @@ async function rejudgeArc(dir: string, judgeModel: string): Promise<void> {
     } catch (e) { log(`rejudge failed for ${sdir}: ${(e as Error).message}`); }
   }
   record.pass = !record.invalid && record.steps.length === arc.steps.length && record.steps.every((s) => s.grade?.pass || s.terminal_reason === 'scripted');
+  // Costs follow the steps: the agent's never changes; the judge's is the current pass (earlier passes stay on each step).
+  record.agent_cost_usd = record.steps.reduce((a, s) => a + (s.usage?.cost_usd ?? 0), 0);
+  record.judge_cost_usd = record.steps.reduce((a, s) => a + (s.grade?.judge?.cost_usd ?? 0), 0);
+  record.cost_usd = record.agent_cost_usd + record.judge_cost_usd;
   writeFileSync(join(dir, 'run.json'), JSON.stringify(record, null, 2));
 }

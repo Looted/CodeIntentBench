@@ -1,28 +1,37 @@
 id: kibi-swipl-resolver-navigation
 project: kibi
 family: navigation
-# Decision recorded in the project's knowledge base as REQ-prolog-bundled-runtime, implemented by
-# the resolver module its symbols point at.
-base_commit: 9f3311f3f552c00dbba7eb6f1e571a681b03ec7a
+tier: easy
+# Recorded in the project's knowledge base as REQ-prolog-swipl-resolution-order (the order and the
+# failure message) and REQ-prolog-bundle-verification (manifest and checksum, SWI_HOME_DIR), both
+# status open and firmness default; they are the two children REQ-prolog-bundled-runtime (closed)
+# was split into. The reason quotes their Context sections.
+# Hidden tests: the three titles are present and pass at the base; the step changes no code.
+base_commit: 8bc4204f3c5ea1a4fa8319b2d9f69d53d5d99976
 intent:
+  requirement: REQ-prolog-swipl-resolution-order
+  neighbours:
+    - REQ-prolog-bundle-verification
+    - REQ-prolog-swipl-minimum-version
   statement: >-
-    Kibi resolves SWI-Prolog from KIBI_SWIPL first, then from the bundled platform package, then
-    from swipl on PATH, and KIBI_SWIPL=system skips the bundle. The bundle is used only when its
-    build-manifest.json parses and the binary's SHA-256 matches the manifest; a swipl on PATH older
-    than 9.0 is rejected; when nothing usable is found the error names the platform, the covering
-    package and the operating-system install command; SWI_HOME_DIR is set for the child when the
-    bundle is used.
+    Kibi resolves SWI-Prolog from KIBI_SWIPL first, then from the verified bundled platform package,
+    then from swipl on PATH, and KIBI_SWIPL=system skips the bundle. A bundled platform package
+    whose manifest is malformed or whose binary checksum differs from the manifest is refused; a
+    swipl on PATH older than 9.0 is rejected; when nothing usable is found the error names the
+    detected platform, the covering platform package and the operating-system install command;
+    SWI_HOME_DIR is set for the child when the bundled build is used.
   reason: >-
-    Users should install nothing on supported platforms, a damaged or half-installed bundle must be
-    an error rather than a silent fallback, and an old system swipl fails later in obscure ways, so
-    the resolver refuses it up front with install guidance.
+    "Every Kibi command runs on SWI-Prolog, so which install is chosen must be predictable, and a
+    damaged or wrong bundle must never be run in place of a working one." "An explicit KIBI_SWIPL
+    always wins, so an operator can pin or bypass the bundle", and "The bundle is a binary
+    downloaded with the package, so its manifest and checksum are checked before it runs".
   symbols:
     - packages/cli/src/prolog/swipl-resolver.ts (resolveSwiplWith, resolveSwipl, inspectSwiplBundle, MINIMUM_SWIPL_MAJOR, swiplChildEnv)
   tests:
     - packages/cli/tests/prolog/swipl-resolver.test.ts::KIBI_SWIPL wins over an installed bundle and swipl on PATH
     - packages/cli/tests/prolog/swipl-resolver.test.ts::uses the verified bundle, its SWI home, and the manifest version
     - packages/cli/tests/prolog/swipl-resolver.test.ts::rejects swipl on PATH older than 9.0 and says so
-  tests_commit: 9f3311f3f552c00dbba7eb6f1e571a681b03ec7a
+  tests_commit: 8bc4204f3c5ea1a4fa8319b2d9f69d53d5d99976
 steps:
   - id: s1
     kind: probe

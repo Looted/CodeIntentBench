@@ -1,0 +1,43 @@
+relationships:
+  - id: rel-94c4b5ae563a
+    type: requires_property
+    from: REQ-papra-documents-list-no-tag-filter
+    to: FACT-papra-documents-list-endpoint-accepts-tags-parameter
+    created_at: "2026-11-16T10:31:49.190Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-documents-list-no-tag-filter
+    to: FACT-papra-subject-documents-list-endpoint
+    created_at: 2026-11-16T10:31:49.191Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-beaa0695564c
+  - type: requires_property
+    from: REQ-papra-documents-list-no-tag-filter
+    to: FACT-papra-documents-list-endpoint-tag-filtering-via
+    created_at: 2026-11-16T10:31:49.201Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-7d72ba8019d6
+  - type: requires_property
+    from: REQ-papra-document-sort-falls-back-to-import-date
+    to: FACT-papra-documents-sort-tie-break-field
+    created_at: 2026-11-16T10:32:02.273Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-dde9612e5acd
+  - type: constrains
+    from: REQ-papra-document-sort-falls-back-to-import-date
+    to: FACT-papra-subject-documents-sort
+    created_at: 2026-11-16T10:32:02.287Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4ad31f7ef940
+  - type: verified_by
+    from: REQ-papra-document-sort-falls-back-to-import-date
+    to: TEST-papra-server-src-modules-documents-document-search-database-fts5-database-fts5-repository-models
+    created_at: 2026-11-16T10:37:29.884Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-89f0d11bffdf

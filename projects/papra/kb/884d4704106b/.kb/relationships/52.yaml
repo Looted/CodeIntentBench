@@ -1,11 +1,4 @@
 relationships:
-  - id: rel-a30ebdcf50e1
-    type: requires_predicate
-    from: REQ-only-the-organization-owner-can-delete-an--8207027D
-    to: FACT-PRED-2c8b4141123b
-    created_at: "2026-10-14T12:08:02.754Z"
-    created_by: kibi/upsert
-    source: mcp://kibi/upsert
   - type: verified_by
     from: REQ-only-the-organization-owner-can-delete-an--8207027D
     to: TEST-papra-server-src-modules-organizations-organizations-usecases
@@ -20,3 +13,17 @@ relationships:
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-9704f9016537
+  - type: requires_predicate
+    from: REQ-only-the-organization-owner-can-delete-an--8207027D
+    to: FACT-papra-perm-organization-owner-delete-organization
+    created_at: 2026-11-15T21:42:59.798Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-cdabb3375dfc
+  - type: requires_predicate
+    from: REQ-only-the-organization-owner-can-delete-an--8207027D
+    to: FACT-papra-perm-organization-admin-or-member-delete-organization
+    created_at: 2026-11-15T21:42:59.805Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-fd55d24fbb1d

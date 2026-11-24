@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-60e173730c9e
+    type: requires_property
+    from: REQ-papra-share-links-of-deleted-organizations
+    to: FACT-papra-share-link-public-access-status-when-organization-soft-deleted
+    created_at: "2026-11-16T10:18:09.882Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-share-links-of-deleted-organizations
+    to: FACT-papra-subject-share-link-public-access
+    created_at: 2026-11-16T10:18:09.883Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-201279232101
+  - type: requires_property
+    from: REQ-papra-share-links-of-deleted-organizations
+    to: FACT-papra-share-link-public-access-resumes-when-organization-restored
+    created_at: 2026-11-16T10:18:09.899Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b2c15b95198c
+  - type: requires_property
+    from: REQ-papra-tags-changeable-with-api-keys
+    to: FACT-papra-tags-api-key-access-allowed
+    created_at: 2026-11-16T10:21:24.484Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-038c84a9ff8b
+  - type: constrains
+    from: REQ-papra-tags-changeable-with-api-keys
+    to: FACT-papra-subject-tags-api-key-access
+    created_at: 2026-11-16T10:21:24.496Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2946a42328b6
+  - type: requires_property
+    from: REQ-papra-pdf-page-render-ocr-fallback
+    to: FACT-papra-content-extraction-pdf-fallback-renders-pages-for-ocr
+    created_at: 2026-11-16T10:22:30.297Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-f707e04bf652
+  - type: constrains
+    from: REQ-papra-pdf-page-render-ocr-fallback
+    to: FACT-papra-subject-content-extraction-pdf-fallback
+    created_at: 2026-11-16T10:22:30.311Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-e607ec01d172
+  - type: verified_by
+    from: REQ-papra-share-links-of-deleted-organizations
+    to: TEST-papra-server-src-modules-document-share-links-document-share-links-usecases
+    created_at: 2026-11-16T10:27:03.191Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4e6215f04b2c

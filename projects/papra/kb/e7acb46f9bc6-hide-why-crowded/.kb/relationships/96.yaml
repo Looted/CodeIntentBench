@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-50235d315c86
+    type: requires_property
+    from: REQ-papra-api-workers-or-both
+    to: FACT-papra-server-process-mode-options
+    created_at: "2026-11-16T13:21:26.352Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-api-workers-or-both
+    to: FACT-papra-subject-server-process-mode
+    created_at: 2026-11-16T13:21:26.353Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-da0e86b1fc3e
+  - type: requires_property
+    from: REQ-papra-api-workers-or-both
+    to: FACT-papra-server-process-mode-default
+    created_at: 2026-11-16T13:21:26.363Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-e1e2b72d9d45
+  - id: rel-5309af56f59e
+    type: requires_property
+    from: REQ-extension-clip-presets-maximum-count
+    to: FACT-extension-clip-presets-maximum-count
+    created_at: "2026-07-17T09:58:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c6738d3d4411
+    type: requires_property
+    from: REQ-extension-clip-presets-maximum-count
+    to: FACT-extension-clip-presets-limit-configurable
+    created_at: "2026-07-17T09:58:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e3e5f5fa3832
+    type: constrains
+    from: REQ-extension-clip-presets-maximum-count
+    to: FACT-extension-clip-presets-subject
+    created_at: "2026-07-17T09:58:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-41d46e95d2c3
+    type: requires_property
+    from: REQ-backoffice-staff-sign-in-plus-addressing
+    to: FACT-backoffice-staff-sign-in-plus-addressing
+    created_at: "2026-02-14T14:17:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e3f5a7aa3ed1
+    type: constrains
+    from: REQ-backoffice-staff-sign-in-plus-addressing
+    to: FACT-backoffice-staff-sign-in-subject
+    created_at: "2026-02-14T14:17:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

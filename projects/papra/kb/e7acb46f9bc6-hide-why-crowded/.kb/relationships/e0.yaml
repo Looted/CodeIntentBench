@@ -1,0 +1,127 @@
+relationships:
+  - id: rel-2d2d9af857de
+    type: requires_property
+    from: REQ-cli-tag-aliases-name-length
+    to: FACT-cli-tag-aliases-name-max-length
+    created_at: "2025-04-23T10:30:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1ed72431c6e4
+    type: constrains
+    from: REQ-cli-tag-aliases-name-length
+    to: FACT-cli-tag-aliases-subject
+    created_at: "2025-04-23T10:30:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-00b5fb302aa3
+    type: requires_property
+    from: REQ-cli-import-labels-names-trimmed
+    to: FACT-cli-import-labels-name-trimmed
+    created_at: "2026-09-16T16:22:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-117389883c3a
+    type: requires_property
+    from: REQ-cli-import-labels-names-trimmed
+    to: FACT-cli-import-labels-empty-name-refused
+    created_at: "2026-09-16T16:22:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2774946bb2f9
+    type: constrains
+    from: REQ-cli-import-labels-names-trimmed
+    to: FACT-cli-import-labels-subject
+    created_at: "2026-09-16T16:22:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-55571bd87df1
+    type: requires_property
+    from: REQ-docs-documentation-site-search-page-size
+    to: FACT-docs-documentation-site-search-page-size-maximum
+    created_at: "2026-09-26T08:50:58.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-01846e5a55b0
+    type: constrains
+    from: REQ-docs-documentation-site-search-page-size
+    to: FACT-docs-documentation-site-search-subject
+    created_at: "2026-09-26T08:50:58.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5240c3763e15
+    type: requires_property
+    from: REQ-website-blog-search-text-filter-matching
+    to: FACT-website-blog-search-text-filter-matching
+    created_at: "2026-03-16T09:20:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fdb2d4a77edb
+    type: constrains
+    from: REQ-website-blog-search-text-filter-matching
+    to: FACT-website-blog-search-subject
+    created_at: "2026-03-16T09:20:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-19dfa0151241
+    type: requires_property
+    from: REQ-backoffice-back-office-audit-log-search-unknown-filter
+    to: FACT-backoffice-back-office-audit-log-search-unknown-filter
+    created_at: "2026-02-14T11:59:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1ef365aaab15
+    type: constrains
+    from: REQ-backoffice-back-office-audit-log-search-unknown-filter
+    to: FACT-backoffice-back-office-audit-log-search-subject
+    created_at: "2026-02-14T11:59:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3755f7a7942d
+    type: requires_property
+    from: REQ-telemetry-telemetry-dashboard-search-empty-query
+    to: FACT-telemetry-telemetry-dashboard-search-empty-query
+    created_at: "2025-07-16T08:44:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-108a129ce579
+    type: constrains
+    from: REQ-telemetry-telemetry-dashboard-search-empty-query
+    to: FACT-telemetry-telemetry-dashboard-search-subject
+    created_at: "2025-07-16T08:44:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ccb29797efe2
+    type: requires_property
+    from: REQ-desktop-linked-organizations-name-uniqueness
+    to: FACT-desktop-linked-organizations-name-uniqueness
+    created_at: "2026-06-01T12:01:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1d9096139b63
+    type: constrains
+    from: REQ-desktop-linked-organizations-name-uniqueness
+    to: FACT-desktop-linked-organizations-subject
+    created_at: "2026-06-01T12:01:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c4a457af5ede
+    type: requires_property
+    from: REQ-website-newsletter-preference-accounts-concurrent-sessions
+    to: FACT-website-newsletter-preference-accounts-concurrent-sessions
+    created_at: "2026-01-10T09:24:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8c6585950511
+    type: requires_property
+    from: REQ-website-newsletter-preference-accounts-concurrent-sessions
+    to: FACT-website-newsletter-preference-accounts-over-limit
+    created_at: "2026-01-10T09:24:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e1deb1ff113b
+    type: constrains
+    from: REQ-website-newsletter-preference-accounts-concurrent-sessions
+    to: FACT-website-newsletter-preference-accounts-subject
+    created_at: "2026-01-10T09:24:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

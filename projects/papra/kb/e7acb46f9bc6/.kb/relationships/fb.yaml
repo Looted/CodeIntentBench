@@ -1,0 +1,36 @@
+relationships:
+  - id: rel-bfc84c9f909b
+    type: requires_property
+    from: REQ-papra-invite-cannot-create-owner
+    to: FACT-papra-organizations-organization-owner-count
+    created_at: "2026-11-16T10:18:46.794Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-invite-cannot-create-owner
+    to: FACT-papra-subject-organizations-organization
+    created_at: 2026-11-16T10:18:46.795Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-1b7113c1e2a8
+  - type: requires_property
+    from: REQ-papra-invite-cannot-create-owner
+    to: FACT-papra-organizations-organization-assignable-roles
+    created_at: 2026-11-16T10:18:46.806Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c784fa9c79c7
+  - type: requires_predicate
+    from: REQ-papra-invite-cannot-create-owner
+    to: FACT-papra-perm-anyone-invite-or-promote-as-owner-organization-member
+    created_at: 2026-11-16T10:18:46.808Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-cad4996b19b7
+  - type: verified_by
+    from: REQ-papra-invite-cannot-create-owner
+    to: TEST-papra-server-src-modules-admin-organizations-e2e-organizations-e2e
+    created_at: 2026-11-16T10:28:38.799Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9f2e82f86a70

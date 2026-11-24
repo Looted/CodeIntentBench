@@ -15,7 +15,8 @@ cd harness && npm install
 ## Commands
 
 ```
-cib validate                         check rules, tasks and arms
+cib validate [--skip-audit]          check rules, tasks, arcs and arms, then run the equivalence audit
+cib audit [--project P] [--arc A[,B]] [--arm A[,B]] [--keep]
 cib list [--project P]               tasks and arms
 cib prepare --project P --task T --arm A [--out DIR]
 cib run --project P --task T|all --arm A[,B,...] [--attempts N] [--model M] [--effort E]
@@ -33,9 +34,9 @@ Defaults: model `claude-sonnet-5-5`, effort `low`, 60 turns, 25 minutes, judge `
 
 ## What a run does
 
-1. `prepareWorkspace` ([src/workspace.ts](src/workspace.ts)): `git clone --shared` from the mirror, check out the task's base commit on branch `cib-base`, remove the remote, install and build, write the rules whose scope paths exist at that commit into `<run>/rules/`, run `arms/<arm>/setup`, commit everything as "benchmark base".
+1. `prepareWorkspace` ([src/workspace.ts](src/workspace.ts)): `git clone --shared` from the mirror, check out the task's base commit on branch `main`, remove the remote, install and build, write the rules whose scope paths exist at that commit into `<run>/rules/`, run `arms/<arm>/setup`, commit everything as "Set up project tooling".
 2. `runAgentWithHost` ([src/agent.ts](src/agent.ts)): `claude -p` with `--output-format stream-json`, the model, effort and turn limit, the arm's plugin directories and environment, and the task prompt as the only input. The transcript is kept as `transcript.jsonl`; usage, cost, tool calls, the turn of the first rule lookup and of the first edit are extracted from it.
-3. `gradeRun` ([src/grade.ts](src/grade.ts)): diff against `cib-base`; mark INVALID runs; restore hidden test files (task tests from the source commit of a replayed change, rule tests from the base); run rule tests, task tests and the regression suite with Vitest's JSON reporter (a named test that no longer runs counts as failed); call the judge; apply the decision table; run the arm's `hygiene` script.
+3. `gradeRun` ([src/grade.ts](src/grade.ts)): diff against `main`; mark INVALID runs; restore hidden test files (task tests from the source commit of a replayed change, rule tests from the base); run rule tests, task tests and the regression suite with Vitest's JSON reporter (a named test that no longer runs counts as failed); call the judge; apply the decision table; run the arm's `hygiene` script.
 4. `judgeRun` ([src/judge.ts](src/judge.ts)): one `claude -p` call with no tools and a JSON schema, answering the fixed questions in [METHODOLOGY.md](../METHODOLOGY.md) from the prompt, the governing and all other rules, the tool-call list, the final answer and the diff. Prompt, raw output and parsed verdict are written next to the run.
 5. `report` ([src/report.ts](src/report.ts)): per-arm table (pass, rule kept, silent violations, false stops, pass^k, tokens, cost, cost per pass) with Wilson intervals, and a per-task outcome table.
 
@@ -44,6 +45,16 @@ Each run directory holds `run.json` (spec, usage, grade), `agent.json`, `transcr
 ## What an arc run does
 
 `cib run-arc` ([src/arc.ts](src/arc.ts)) prepares one workspace per arc (no rules; the arm's `convention.md` appended to `CLAUDE.md`), then for each step: switches branch if the step names one, runs `claude -p` with the step prompt in the carried workspace, grades the step against its start commit (hidden tests restored only for the test run, so the carried workspace stays the agent's), judges it with the family's questions ([src/judge-arc.ts](src/judge-arc.ts)), and commits the session's work with git hooks enabled, so an arm that installs a commit gate (Kibi's pre-commit `kibi check --staged`) gets to refuse it (an arm's `before-commit` script runs first, for the mechanical step such a gate asks of the user before a retry, Kibi's `kibi sync --refresh-symbol-coordinates`); a refusal is recorded on the step as `commit_gate` with the hook's output, never graded, and the work is then committed with `--no-verify` so the arc continues. Teammate changes between sessions are committed by the benchmark without hooks. Arc runs live under `runs/<project>/_arcs/<arc>/<arm>/<id>/` with `run.json`, `arc.json`, one `steps/<step>/` directory per session (transcript, agent.json, diff.patch, tests, judge) and the external stores (`tracker.json`, `memory.json`, `mcp.json`) of the passive arms. `cib report` writes `report-arcs.md` and `report-arcs.json` next to the single-session report.
+
+Before the first session of an arc run the harness audits the arm's container ([src/audit.ts](src/audit.ts)): every decision the arc is about (the arc's `intent` and each step's own `intent`) must be there with its statement, reason, status, firmness and code paths. A decision is found by the id the arc names (`intent.requirement`), otherwise by its statement; one the user states in an intent step is in no container at setup and is not looked for. A run whose audit fails is marked invalid with the reason and no session runs, so it cannot be scored. `cib audit` runs the same check without a run, for every base commit the arcs start from and every arm (checkout, the project's arm preparation and the arm's setup; no install, no tests, no model), and also compares the arms with each other; `cib validate` calls it after its static checks. Results go to `runs/<project>/audit.json`.
+
+The knowledge a project keeps in a Kibi knowledge base reaches the passive arms through [src/kb-rules.ts](src/kb-rules.ts) (`arm-tools/kb-export.ts` on the command line): one rule file per requirement and ADR, whatever its status, with the statement, the recorded reason, the code and tests linked to it, and its standing (status, the firmness Kibi itself would show (an entry with none recorded is firm unless an agent wrote it), who recorded it and when, what it supersedes and what supersedes it). [src/render.ts](src/render.ts) writes those facts into each container (a decision file, an AGENTS.md section, a tracker issue, a memory note).
+
+An arc may name a variant of the knowledge base stored for its base (`kb_variant: crowded` in arc.yaml): the arms then receive the store kept under `<base key>-<variant>`, the code and the teammate patch staying the same. `CIB_BASE_KEY` carries the full name to the project's arm preparation, and the audit groups arcs by commit, patch and variant.
+
+The `agents-md` setup writes the whole file or nothing: when the rendered AGENTS.md is estimated (four bytes per token) to exceed the budget, the setup exits with "does not fit" and the arc run is recorded as not scored. The budget is `CIB_AGENTS_MD_TOKEN_BUDGET`, by default the context window of the agent's model (`contextTokensFor` in [src/pricing.ts](src/pricing.ts), override with `CIB_MODEL_CONTEXT_TOKENS`). The size is written to `agents-md-size.json` in the run directory and shown in the report.
+
+`npm test` runs the unit tests under `test/` (export, per-step decisions, audit, the surfacing measure, the report).
 
 The `tracker` and `memory` arms start a small stdio MCP server each ([src/arm-tools/tracker-mcp.ts](src/arm-tools/tracker-mcp.ts), [src/arm-tools/memory-mcp.ts](src/arm-tools/memory-mcp.ts), on [src/arm-tools/mcp-lite.ts](src/arm-tools/mcp-lite.ts)) through `--mcp-config`; both persist to a JSON file in the run directory.
 

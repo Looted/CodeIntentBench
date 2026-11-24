@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-6cb6d1001d42
+    type: requires_property
+    from: REQ-website-case-study-tags-batch-size
+    to: FACT-website-case-study-tags-batch-maximum
+    created_at: "2025-12-13T11:17:53.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e5ca43bf6906
+    type: constrains
+    from: REQ-website-case-study-tags-batch-size
+    to: FACT-website-case-study-tags-subject
+    created_at: "2025-12-13T11:17:53.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-96be89877e69
+    type: requires_property
+    from: REQ-website-newsletter-preference-accounts-reset-notification
+    to: FACT-website-newsletter-preference-accounts-reset-confirmation-email
+    created_at: "2026-04-09T10:47:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-98dace58fabe
+    type: constrains
+    from: REQ-website-newsletter-preference-accounts-reset-notification
+    to: FACT-website-newsletter-preference-accounts-subject
+    created_at: "2026-04-09T10:47:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

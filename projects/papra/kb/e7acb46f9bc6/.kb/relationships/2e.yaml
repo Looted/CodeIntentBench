@@ -1,0 +1,43 @@
+relationships:
+  - id: rel-6175b8736790
+    type: requires_property
+    from: REQ-papra-user-owned-organization-cap
+    to: FACT-papra-organizations-user-cap-default-max-owned-organizations
+    created_at: "2026-11-16T10:19:27.083Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-user-owned-organization-cap
+    to: FACT-papra-subject-organizations-user-cap
+    created_at: 2026-11-16T10:19:27.084Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-97c4d3781334
+  - type: requires_property
+    from: REQ-papra-user-owned-organization-cap
+    to: FACT-papra-organizations-user-cap-counted-organizations
+    created_at: 2026-11-16T10:19:27.094Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-69544078fb3b
+  - type: requires_property
+    from: REQ-papra-user-owned-organization-cap
+    to: FACT-papra-organizations-user-cap-per-user-override-by-instance-admin
+    created_at: 2026-11-16T10:19:27.097Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b6f827390f66
+  - type: verified_by
+    from: REQ-papra-user-owned-organization-cap
+    to: TEST-papra-server-src-modules-organizations-organizations-models
+    created_at: 2026-11-16T10:27:09.268Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-7e75ccf8f99c
+  - type: verified_by
+    from: REQ-papra-user-owned-organization-cap
+    to: TEST-papra-server-src-modules-organizations-organizations-usecases
+    created_at: 2026-11-16T10:27:09.275Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-1c8ebe661a69

@@ -3,20 +3,44 @@ title: 'File uploads are handled as streams end to end: the content hash and byt
 status: active
 semantic_text: 'File uploads are handled as streams end to end: the content hash and byte count are computed while streaming and size limits are enforced during the stream, never after buffering the whole file.'
 logic_claims:
-  - CLAIM-24E8539DC6804011
+  - CLAIM-0607A28847804592
+  - CLAIM-AE88543284F4048D
+  - CLAIM-3FFFC52B14DB6C55
 semantic_clauses:
-  - 'File uploads are handled as streams end to end: the content hash and byte count are computed while streaming and size limits are enforced during the stream, never after buffering the whole file'
+  - File uploads are handled as streams end to end
+  - the content hash and byte count are computed while streaming
+  - size limits are enforced during the stream, never after buffering the whole file
 semantic_inventory_version: kibi.semantic-inventory.v1
 semantic_source_field: semantic_text
 semantic_source_hash: 57dcbc7b8107aa704b223b60776200bf715df724a708c33c158127f1c7c9fc0b
 semantic_inventory:
-  - claim_key: CLAIM-24E8539DC6804011
-    claim_text: 'File uploads are handled as streams end to end: the content hash and byte count are computed while streaming and size limits are enforced during the stream, never after buffering the whole file'
+  - claim_key: CLAIM-0607A28847804592
+    claim_text: File uploads are handled as streams end to end
     role: descriptive
-    status: ontology_gap
+    status: modeled
     span:
       start: 0
+      end: 46
+    subjects:
+      - document.upload
+  - claim_key: CLAIM-AE88543284F4048D
+    claim_text: the content hash and byte count are computed while streaming
+    role: descriptive
+    status: modeled
+    span:
+      start: 48
+      end: 108
+    subjects:
+      - document.upload
+  - claim_key: CLAIM-3FFFC52B14DB6C55
+    claim_text: size limits are enforced during the stream, never after buffering the whole file
+    role: descriptive
+    status: modeled
+    span:
+      start: 113
       end: 193
+    subjects:
+      - document.upload
 firmness: firm
 origin:
   kind: import
@@ -28,6 +52,7 @@ tags:
   - component:documents
 id: REQ-file-uploads-are-handled-as-streams-end-to-F1A1D5B6
 type: req
+required_evidence: asserted
 ---
 File uploads are handled as streams end to end: the content hash and byte count are computed while streaming and size limits are enforced during the stream, never after buffering the whole file.
 

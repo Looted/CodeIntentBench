@@ -1,0 +1,190 @@
+relationships:
+  - id: rel-4f812b3b5135
+    type: verified_by
+    from: REQ-a-document-s-extracted-searchable-content--7CD26FB8
+    to: TEST-papra-server-src-modules-documents-documents-usecases
+    created_at: "2026-10-14T12:09:46.341Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: requires_property
+    from: REQ-a-document-s-extracted-searchable-content--7CD26FB8
+    to: FACT-papra-document-extracted-content-shown-on-document-page
+    created_at: 2026-11-15T21:40:53.218Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4ea5a625a183
+  - type: constrains
+    from: REQ-a-document-s-extracted-searchable-content--7CD26FB8
+    to: FACT-papra-subject-document-extracted-content
+    created_at: 2026-11-15T21:40:53.223Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-857c3c8f36d1
+  - type: requires_property
+    from: REQ-a-document-s-extracted-searchable-content--7CD26FB8
+    to: FACT-papra-document-extracted-content-editable-by-user
+    created_at: 2026-11-15T21:40:53.225Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6f9beee6586a
+  - type: verified_by
+    from: REQ-a-document-s-extracted-searchable-content--7CD26FB8
+    to: TEST-papra-server-src-modules-documents-e2e-upload-documents-e2e
+    created_at: 2026-11-16T04:52:03.095Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-f4162924d4df
+  - type: verified_by
+    from: REQ-a-document-s-extracted-searchable-content--7CD26FB8
+    to: TEST-papra-server-src-modules-documents-document-storage-usecases
+    created_at: 2026-11-16T13:23:27.904Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-36a3ef94263a
+  - id: rel-348c780f306d
+    type: requires_property
+    from: REQ-backoffice-back-office-customer-search-text-filter-matching
+    to: FACT-backoffice-back-office-customer-search-text-filter-matching
+    created_at: "2025-11-22T14:09:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c03bb6a2fcac
+    type: constrains
+    from: REQ-backoffice-back-office-customer-search-text-filter-matching
+    to: FACT-backoffice-back-office-customer-search-subject
+    created_at: "2025-11-22T14:09:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e9614b24604b
+    type: requires_property
+    from: REQ-portal-partner-portal-payout-search-empty-query
+    to: FACT-portal-partner-portal-payout-search-empty-query
+    created_at: "2025-04-15T16:56:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fcee171a7974
+    type: constrains
+    from: REQ-portal-partner-portal-payout-search-empty-query
+    to: FACT-portal-partner-portal-payout-search-subject
+    created_at: "2025-04-15T16:56:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b67fc38e99b9
+    type: requires_property
+    from: REQ-desktop-update-signing-key-source
+    to: FACT-desktop-update-signing-key-value-source
+    created_at: "2025-05-13T09:14:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9c3c7a648441
+    type: constrains
+    from: REQ-desktop-update-signing-key-source
+    to: FACT-desktop-update-signing-key-subject
+    created_at: "2025-05-13T09:14:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e6e0ec5f89e2
+    type: requires_property
+    from: REQ-n8n-n8n-trigger-secret-never-logged
+    to: FACT-n8n-n8n-trigger-secret-value-logged
+    created_at: "2025-07-26T08:59:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4a3998a71280
+    type: requires_property
+    from: REQ-n8n-n8n-trigger-secret-never-logged
+    to: FACT-n8n-n8n-trigger-secret-startup-log
+    created_at: "2025-07-26T08:59:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f81436cd2b52
+    type: constrains
+    from: REQ-n8n-n8n-trigger-secret-never-logged
+    to: FACT-n8n-n8n-trigger-secret-subject
+    created_at: "2025-07-26T08:59:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1e62ea45c9b5
+    type: requires_property
+    from: REQ-infra-backup-encryption-key-example-value-refused
+    to: FACT-infra-backup-encryption-key-example-value-refused
+    created_at: "2025-07-21T15:11:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a588df606d0e
+    type: constrains
+    from: REQ-infra-backup-encryption-key-example-value-refused
+    to: FACT-infra-backup-encryption-key-subject
+    created_at: "2025-07-21T15:11:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-93b53c9a3562
+    type: requires_property
+    from: REQ-portal-sub-partner-accounts-name-uniqueness
+    to: FACT-portal-sub-partner-accounts-name-uniqueness
+    created_at: "2025-04-07T11:19:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ef20973c1095
+    type: constrains
+    from: REQ-portal-sub-partner-accounts-name-uniqueness
+    to: FACT-portal-sub-partner-accounts-subject
+    created_at: "2025-04-07T11:19:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cf6895c3aacb
+    type: requires_property
+    from: REQ-education-sponsored-organizations-name-length
+    to: FACT-education-sponsored-organizations-name-max-length
+    created_at: "2025-06-23T11:57:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8ca581f89dee
+    type: constrains
+    from: REQ-education-sponsored-organizations-name-length
+    to: FACT-education-sponsored-organizations-subject
+    created_at: "2025-06-23T11:57:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d00883a9690d
+    type: requires_property
+    from: REQ-support-support-portal-accounts-session-lifetime
+    to: FACT-support-support-portal-accounts-session-days
+    created_at: "2026-01-05T14:20:58.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0d9cfbad5029
+    type: requires_property
+    from: REQ-support-support-portal-accounts-session-lifetime
+    to: FACT-support-support-portal-accounts-session-idle-minutes
+    created_at: "2026-01-05T14:20:58.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6d0f3c762fb6
+    type: constrains
+    from: REQ-support-support-portal-accounts-session-lifetime
+    to: FACT-support-support-portal-accounts-subject
+    created_at: "2026-01-05T14:20:58.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-71fcdb77f9df
+    type: supersedes
+    from: REQ-telemetry-telemetry-dashboard-accounts-reset-link-validity
+    to: REQ-telemetry-telemetry-dashboard-accounts-reset-link-validity-earlier
+    created_at: "2026-09-24T16:44:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c6111fe7023d
+    type: requires_property
+    from: REQ-telemetry-telemetry-dashboard-accounts-reset-link-validity
+    to: FACT-telemetry-telemetry-dashboard-accounts-reset-link-minutes
+    created_at: "2026-09-24T16:44:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-35c2ffab4aaf
+    type: constrains
+    from: REQ-telemetry-telemetry-dashboard-accounts-reset-link-validity
+    to: FACT-telemetry-telemetry-dashboard-accounts-subject
+    created_at: "2026-09-24T16:44:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

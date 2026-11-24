@@ -1,0 +1,64 @@
+relationships:
+  - id: rel-168544d7a475
+    type: requires_property
+    from: REQ-portal-workspace-templates-batch-size
+    to: FACT-portal-workspace-templates-batch-maximum
+    created_at: "2025-11-01T08:32:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b1d22206d8de
+    type: constrains
+    from: REQ-portal-workspace-templates-batch-size
+    to: FACT-portal-workspace-templates-subject
+    created_at: "2025-11-01T08:32:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-65cc437d2b58
+    type: requires_property
+    from: REQ-support-canned-replies-unique-ignoring-case
+    to: FACT-support-canned-replies-name-uniqueness
+    created_at: "2025-10-02T10:18:53.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0bc7b597c047
+    type: requires_property
+    from: REQ-support-canned-replies-unique-ignoring-case
+    to: FACT-support-canned-replies-duplicate-error
+    created_at: "2025-10-02T10:18:53.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-95bed0c69034
+    type: constrains
+    from: REQ-support-canned-replies-unique-ignoring-case
+    to: FACT-support-canned-replies-subject
+    created_at: "2025-10-02T10:18:53.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-365a23815b4c
+    type: requires_property
+    from: REQ-education-education-discount-requests-rate-limit
+    to: FACT-education-education-discount-requests-requests-per-ip-per-day
+    created_at: "2025-12-22T15:51:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0bb864baaa43
+    type: constrains
+    from: REQ-education-education-discount-requests-rate-limit
+    to: FACT-education-education-discount-requests-subject
+    created_at: "2025-12-22T15:51:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-23d5777944ae
+    type: requires_property
+    from: REQ-cli-saved-organizations-name-uniqueness
+    to: FACT-cli-saved-organizations-name-uniqueness
+    created_at: "2025-10-02T13:25:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f897fb86bae9
+    type: constrains
+    from: REQ-cli-saved-organizations-name-uniqueness
+    to: FACT-cli-saved-organizations-subject
+    created_at: "2025-10-02T13:25:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

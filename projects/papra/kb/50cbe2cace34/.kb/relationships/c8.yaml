@@ -1,0 +1,78 @@
+relationships:
+  - id: rel-85a1baeb1705
+    type: requires_property
+    from: REQ-inbound-intake-email-webhooks-are-signed-w-27EFD88D
+    to: FACT-papra-intake-email-webhook-requests-signed-with-secret
+    created_at: "2026-11-15T21:42:39.379Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-inbound-intake-email-webhooks-are-signed-w-27EFD88D
+    to: FACT-papra-subject-intake-email-webhook
+    created_at: 2026-11-15T21:42:39.380Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-315a6d291491
+  - type: requires_property
+    from: REQ-inbound-intake-email-webhooks-are-signed-w-27EFD88D
+    to: FACT-papra-intake-email-webhook-authenticates-relay
+    created_at: 2026-11-15T21:42:39.387Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b18c3b0950dc
+  - type: verified_by
+    from: REQ-inbound-intake-email-webhooks-are-signed-w-27EFD88D
+    to: TEST-papra-server-src-modules-intake-emails-e2e-ingest-intake-emails-e2e
+    created_at: 2026-11-16T04:52:08.241Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9a416a2541db
+  - type: verified_by
+    from: REQ-inbound-intake-email-webhooks-are-signed-w-27EFD88D
+    to: TEST-papra-server-src-modules-intake-emails-intake-emails-usecases
+    created_at: 2026-11-16T04:52:08.247Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-71bf29a47d52
+  - type: requires_property
+    from: REQ-papra-storage-pattern-document-date
+    to: FACT-papra-storage-pattern-document-date-available-as-expression
+    created_at: 2026-11-16T10:31:06.227Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-045c3e252a90
+  - type: constrains
+    from: REQ-papra-storage-pattern-document-date
+    to: FACT-papra-subject-storage-pattern-document-date
+    created_at: 2026-11-16T10:31:06.241Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4de76f6dcbdd
+  - type: requires_property
+    from: REQ-papra-storage-pattern-document-date
+    to: FACT-papra-storage-pattern-document-date-value-when-missing
+    created_at: 2026-11-16T10:31:06.244Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-e3d91842b253
+  - type: requires_property
+    from: REQ-papra-ingestion-watcher-stability
+    to: FACT-papra-ingestion-folder-watcher-stability-threshold-setting
+    created_at: 2026-11-16T10:36:21.609Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-3f82eef72644
+  - type: constrains
+    from: REQ-papra-ingestion-watcher-stability
+    to: FACT-papra-subject-ingestion-folder-watcher-stability
+    created_at: 2026-11-16T10:36:21.624Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-3e2c23098ad2
+  - type: requires_property
+    from: REQ-papra-ingestion-watcher-stability
+    to: FACT-papra-ingestion-folder-watcher-stability-poll-setting
+    created_at: 2026-11-16T10:36:21.629Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-04e1ebb0539d

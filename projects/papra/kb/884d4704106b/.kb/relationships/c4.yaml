@@ -6,3 +6,31 @@ relationships:
     created_at: "2026-10-14T12:09:41.472Z"
     created_by: kibi/upsert
     source: mcp://kibi/upsert
+  - type: requires_property
+    from: REQ-ocr-text-extracted-from-scanned-pdfs-is-us-8C007452
+    to: FACT-papra-ocr-transcript-use
+    created_at: 2026-11-15T21:42:48.191Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-fbf30cd23cdb
+  - type: constrains
+    from: REQ-ocr-text-extracted-from-scanned-pdfs-is-us-8C007452
+    to: FACT-papra-subject-ocr-transcript
+    created_at: 2026-11-15T21:42:48.196Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-0ed167d93c9d
+  - type: requires_property
+    from: REQ-ocr-text-extracted-from-scanned-pdfs-is-us-8C007452
+    to: FACT-papra-document-stored-file-ocr-transcript-embedded
+    created_at: 2026-11-15T21:42:48.198Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-f3d4e6ca4424
+  - type: constrains
+    from: REQ-ocr-text-extracted-from-scanned-pdfs-is-us-8C007452
+    to: FACT-papra-subject-document-stored-file
+    created_at: 2026-11-15T21:42:48.200Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-1abe0772ec91

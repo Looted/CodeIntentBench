@@ -13,10 +13,12 @@ semantic_inventory:
   - claim_key: CLAIM-4EBDCB7701A8704A
     claim_text: Documents are stored as ingested, with no modifications and no overlaid data (write-once storage)
     role: descriptive
-    status: ontology_gap
+    status: modeled
     span:
       start: 0
       end: 97
+    subjects:
+      - document.stored_file
 firmness: firm
 origin:
   kind: import
@@ -28,12 +30,14 @@ tags:
   - component:storage
 id: REQ-documents-are-stored-as-ingested-with-no-m-73A751A1
 type: req
+required_evidence: asserted
+rationale: 'Maintainer CorentinTh on issue #440 (2026-02-26) states the behaviour and points to the no-mutation principle in the architecture docs, which gives the reason: users archiving important documents "need absolute confidence that their files remain untouched".'
 ---
 Documents are stored as ingested, with no modifications and no overlaid data (write-once storage).
 
 ## Context
 
-Reason not stated.
+Maintainer CorentinTh on issue #440 (2026-02-26) states the behaviour and points to the no-mutation principle in the architecture docs, which gives the reason: users archiving important documents "need absolute confidence that their files remain untouched".
 
 ## Source
 

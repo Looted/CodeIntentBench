@@ -1,0 +1,99 @@
+relationships:
+  - id: rel-50048ef5481f
+    type: requires_property
+    from: REQ-mobile-saved-filters-name-length
+    to: FACT-mobile-saved-filters-name-max-length
+    created_at: "2026-07-23T09:24:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-033293bd8f44
+    type: constrains
+    from: REQ-mobile-saved-filters-name-length
+    to: FACT-mobile-saved-filters-subject
+    created_at: "2026-07-23T09:24:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cc1a771c6101
+    type: requires_property
+    from: REQ-client-web-client-command-palette-search-date-format
+    to: FACT-client-web-client-command-palette-search-date-filter-format
+    created_at: "2025-06-02T08:33:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-904249bbdd79
+    type: constrains
+    from: REQ-client-web-client-command-palette-search-date-format
+    to: FACT-client-web-client-command-palette-search-subject
+    created_at: "2025-06-02T08:33:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6b100b56dd31
+    type: requires_property
+    from: REQ-mobile-mobile-app-tag-picker-filter-text-filter-matching
+    to: FACT-mobile-mobile-app-tag-picker-filter-text-filter-matching
+    created_at: "2026-09-28T17:58:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7dbd3d43414d
+    type: constrains
+    from: REQ-mobile-mobile-app-tag-picker-filter-text-filter-matching
+    to: FACT-mobile-mobile-app-tag-picker-filter-subject
+    created_at: "2026-09-28T17:58:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1652b26149db
+    type: requires_property
+    from: REQ-infra-backup-encryption-key-never-logged
+    to: FACT-infra-backup-encryption-key-value-logged
+    created_at: "2025-05-23T14:54:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-da7611eb8d92
+    type: requires_property
+    from: REQ-infra-backup-encryption-key-never-logged
+    to: FACT-infra-backup-encryption-key-startup-log
+    created_at: "2025-05-23T14:54:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-81a58f8c38ef
+    type: constrains
+    from: REQ-infra-backup-encryption-key-never-logged
+    to: FACT-infra-backup-encryption-key-subject
+    created_at: "2025-05-23T14:54:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-34224cc37fbf
+    type: requires_property
+    from: REQ-license-license-trial-requests-allowed-domains
+    to: FACT-license-license-trial-requests-allowed-domain-matching
+    created_at: "2026-08-27T09:05:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f219100690fe
+    type: requires_property
+    from: REQ-license-license-trial-requests-allowed-domains
+    to: FACT-license-license-trial-requests-domain-case-folding
+    created_at: "2026-08-27T09:05:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-11df9d6cf6a9
+    type: constrains
+    from: REQ-license-license-trial-requests-allowed-domains
+    to: FACT-license-license-trial-requests-subject
+    created_at: "2026-08-27T09:05:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-54ef875bf8be
+    type: requires_property
+    from: REQ-marketplace-template-author-accounts-reset-and-sessions
+    to: FACT-marketplace-template-author-accounts-sessions-ended-on-reset
+    created_at: "2026-06-23T17:20:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-113abe073ce6
+    type: constrains
+    from: REQ-marketplace-template-author-accounts-reset-and-sessions
+    to: FACT-marketplace-template-author-accounts-subject
+    created_at: "2026-06-23T17:20:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -1,0 +1,78 @@
+relationships:
+  - id: rel-4be3499c3271
+    type: requires_property
+    from: REQ-backoffice-customer-tags-delete-in-use
+    to: FACT-backoffice-customer-tags-delete-in-use
+    created_at: "2026-09-26T14:22:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7b7e20ad0f17
+    type: constrains
+    from: REQ-backoffice-customer-tags-delete-in-use
+    to: FACT-backoffice-customer-tags-subject
+    created_at: "2026-09-26T14:22:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-95b95396d1bc
+    type: requires_property
+    from: REQ-backoffice-support-macros-name-length
+    to: FACT-backoffice-support-macros-name-max-length
+    created_at: "2026-06-12T10:43:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-99c49af0c32b
+    type: constrains
+    from: REQ-backoffice-support-macros-name-length
+    to: FACT-backoffice-support-macros-subject
+    created_at: "2026-06-12T10:43:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-777b568ccb6e
+    type: requires_property
+    from: REQ-backoffice-trial-organizations-maximum-count-earlier
+    to: FACT-backoffice-trial-organizations-maximum-count-earlier
+    created_at: "2026-06-10T09:06:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d1018e7cfa2d
+    type: constrains
+    from: REQ-backoffice-trial-organizations-maximum-count-earlier
+    to: FACT-backoffice-trial-organizations-subject
+    created_at: "2026-06-10T09:06:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d3c612e7a37d
+    type: requires_property
+    from: REQ-license-license-portal-accounts-email-change
+    to: FACT-license-license-portal-accounts-sessions-on-email-change
+    created_at: "2026-07-28T10:33:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7a93bd0df5c9
+    type: constrains
+    from: REQ-license-license-portal-accounts-email-change
+    to: FACT-license-license-portal-accounts-subject
+    created_at: "2026-07-28T10:33:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7d31df6b4157
+    type: requires_property
+    from: REQ-docs-documentation-contributor-accounts-session-lifetime
+    to: FACT-docs-documentation-contributor-accounts-session-days
+    created_at: "2025-12-28T13:41:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a4099373ee93
+    type: requires_property
+    from: REQ-docs-documentation-contributor-accounts-session-lifetime
+    to: FACT-docs-documentation-contributor-accounts-session-idle-minutes
+    created_at: "2025-12-28T13:41:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3554710ceb70
+    type: constrains
+    from: REQ-docs-documentation-contributor-accounts-session-lifetime
+    to: FACT-docs-documentation-contributor-accounts-subject
+    created_at: "2025-12-28T13:41:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

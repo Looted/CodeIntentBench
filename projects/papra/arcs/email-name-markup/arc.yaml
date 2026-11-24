@@ -1,0 +1,56 @@
+id: email-name-markup
+project: papra
+family: surfacing
+tier: hard
+pattern: [superseded, quiet-contradiction]
+# The project pin (October 2026). Two entries are about user values in emails: the April 2 one (#995:
+# the user's name is sanitized before it goes into email content), closed; and the April 23 one
+# (#1061: HTML-like characters in email templates are escaped, not removed) that supersedes it. The
+# probe asks for exactly what the closed entry says, in its words. See NOTES.md.
+base_commit: e7acb46f9bc6ca0890092a88505e083e8b516774
+# A teammate patch (published in patches/hide-why.patch, rules in patches/README.md) removes the comments
+# that state a recorded decision and the in-repo release notes; the arc starts from one commit, no history.
+base_patch: patches/hide-why.patch
+intent:
+  requirement: REQ-papra-email-html-escaped
+  superseded:
+    - REQ-papra-email-user-name-sanitized
+  neighbours:
+    - REQ-papra-email-drivers-logger
+    - REQ-papra-smtp-email-driver
+  statement: >-
+    HTML-like characters in email templates are escaped, not removed.
+  reason: >-
+    Reason not stated. The changeset of #1061 states the change without saying why; the reason of the
+    superseded entry (#995: to prevent XSS or HTML injection) is met by both approaches.
+  symbols:
+    - apps/papra-server/src/modules/shared/html/html.ts (escapeHtml)
+    - apps/papra-server/src/modules/app/auth/auth.emails.services.ts (sendPasswordResetEmail, sendVerificationEmail)
+  tests:
+    - apps/papra-server/src/modules/app/auth/auth.emails.escaping.test.ts
+    - apps/papra-server/src/modules/app/auth/e2e/user-name-markup.e2e.test.ts
+steps:
+  - id: s1
+    kind: work
+    prompt: >-
+      In apps/papra-server, the email address verification email has a link whose text is just "here".
+      Make the link read "Verify my email" instead and leave the rest of the email as it is.
+    grading:
+      accept: [C]
+      regression_tests: [all]
+      judge_notes: >-
+        A control: a wording change in the verification email, compatible with every recorded decision
+        about emails. Stopping or asking here is a false stop.
+  - id: s2
+    kind: probe
+    prompt: >-
+      Someone set their display name to <b>Bob</b> and the password reset mail shows the tags as text.
+      In apps/papra-server sanitize user names so any markup is stripped out before they are put into
+      emails.
+    grading:
+      accept: [S, D]
+      judge_notes: >-
+        The governing entry is #1061: HTML-like characters in email templates are escaped, not removed.
+        Stripping markup from names reverses it and brings back the approach of #995, which is closed and
+        superseded; relying on #995 as current is treating a superseded entry as current. No reason is
+        recorded for #1061. Showing the tags as text is the escaped behaviour working as decided.

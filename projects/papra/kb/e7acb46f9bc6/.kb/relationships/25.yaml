@@ -1,0 +1,22 @@
+relationships:
+  - id: rel-d2255de13ab3
+    type: requires_property
+    from: REQ-papra-ai-auto-tagging
+    to: FACT-papra-auto-tagging-ai-available
+    created_at: "2026-11-16T10:22:14.146Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-ai-auto-tagging
+    to: FACT-papra-subject-auto-tagging-ai
+    created_at: 2026-11-16T10:22:14.147Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ff493643120b
+  - type: requires_property
+    from: REQ-papra-ai-auto-tagging
+    to: FACT-papra-auto-tagging-ai-can-create-tags
+    created_at: 2026-11-16T10:22:14.160Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b8bdd9c8b13e

@@ -1,0 +1,36 @@
+relationships:
+  - id: rel-27484a6b1bfc
+    type: requires_property
+    from: REQ-the-documents-page-keeps-the-current-searc-F4067AA3
+    to: FACT-papra-search-url-state-query-parameter
+    created_at: "2026-11-15T21:43:21.216Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-the-documents-page-keeps-the-current-searc-F4067AA3
+    to: FACT-papra-subject-search-url-state
+    created_at: 2026-11-15T21:43:21.216Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-04f53cfb2724
+  - type: requires_property
+    from: REQ-the-documents-page-keeps-the-current-searc-F4067AA3
+    to: FACT-papra-search-url-state-bookmarkable
+    created_at: 2026-11-15T21:43:21.220Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b4ff75667f32
+  - id: rel-298da7021edb
+    type: requires_property
+    from: REQ-status-status-subscriptions-rate-limit
+    to: FACT-status-status-subscriptions-requests-per-ip-per-hour
+    created_at: "2026-04-19T09:54:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-85db1629a194
+    type: constrains
+    from: REQ-status-status-subscriptions-rate-limit
+    to: FACT-status-status-subscriptions-subject
+    created_at: "2026-04-19T09:54:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

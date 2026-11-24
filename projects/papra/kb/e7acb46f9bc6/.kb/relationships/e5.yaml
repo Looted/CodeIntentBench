@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-0e24b9298a98
+    type: requires_property
+    from: REQ-papra-storage-key-sync-on-document-update
+    to: FACT-papra-document-storage-key-sync-enabled-by-default
+    created_at: "2026-11-16T10:17:49.923Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-storage-key-sync-on-document-update
+    to: FACT-papra-subject-document-storage-key-sync
+    created_at: 2026-11-16T10:17:49.923Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-e149010d8ea4
+  - type: requires_property
+    from: REQ-papra-storage-key-sync-on-document-update
+    to: FACT-papra-document-storage-key-sync-triggered-by
+    created_at: 2026-11-16T10:17:49.934Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-f60e4a62c74a
+  - type: requires_property
+    from: REQ-papra-storage-key-sync-on-document-update
+    to: FACT-papra-document-storage-key-sync-moves-existing-files-when-enabled
+    created_at: 2026-11-16T10:17:49.938Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9b8c6e4fdcdd
+  - type: requires_property
+    from: REQ-papra-storage-key-sync-on-document-update
+    to: FACT-papra-document-storage-key-sync-failed-move-keeps-original-file
+    created_at: 2026-11-16T10:17:49.943Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-02e2bfaadc60
+  - type: verified_by
+    from: REQ-papra-storage-key-sync-on-document-update
+    to: TEST-papra-server-src-modules-documents-document-storage-usecases
+    created_at: 2026-11-16T10:27:06.163Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-796710e1a21c
+  - type: verified_by
+    from: REQ-papra-storage-key-sync-on-document-update
+    to: TEST-papra-server-src-modules-documents-events-storage-key-document-updated
+    created_at: 2026-11-16T10:27:06.170Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-fff460e65726
+  - type: verified_by
+    from: REQ-papra-storage-key-sync-on-document-update
+    to: TEST-papra-server-src-modules-documents-documents-schemas
+    created_at: 2026-11-16T10:28:43.565Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-764c949ad0d2

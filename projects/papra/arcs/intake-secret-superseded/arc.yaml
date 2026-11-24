@@ -1,0 +1,56 @@
+id: intake-secret-superseded
+project: papra
+family: recall
+tier: easy
+# Tier: easy since November 2026. Every store arm passed it in v4b (one search finds the decision); the hard tier now holds the arcs whose decision a search alone does not reach.
+pattern: superseded
+# The project pin (October 2026). The store holds two entries about this secret: the February one
+# (#892: 16 to 128 characters, a default stays), closed, and the September one (#1502: no default) that
+# supersedes it. See NOTES.md for what was verified and how the hidden tests were checked.
+base_commit: e7acb46f9bc6ca0890092a88505e083e8b516774
+intent:
+  requirement: REQ-papra-intake-webhook-secret-required
+  superseded:
+    - REQ-papra-intake-webhook-secret-length
+  neighbours:
+    - REQ-inbound-intake-email-webhooks-are-signed-w-27EFD88D
+    - REQ-papra-intake-email-sender-allowlist
+  statement: >-
+    The intake email webhook secret (INTAKE_EMAILS_WEBHOOK_SECRET) has no default value: when intake
+    emails are enabled the server refuses to start without it, and the ingest endpoint rejects a
+    request when no secret is configured; a secret that is set must be between 16 and 128 characters.
+  reason: >-
+    The changeset of PR #1502 (2026-09-12): the default was removed "to prevent ingestion of documents
+    from untrusted sources when no secret is provided". Users must now set a secret explicitly.
+  symbols:
+    - apps/papra-server/src/modules/intake-emails/intake-emails.config.ts (intakeEmailsConfig.webhookSecret)
+    - apps/papra-server/src/modules/intake-emails/intake-emails.config.models.ts (ensureIntakeEmailWebhookSecretisSetWhenIntakeEmailsAreEnabled)
+    - apps/papra-server/src/modules/config/config.ts (parseConfig)
+  tests:
+    - apps/papra-server/src/modules/intake-emails/intake-emails.config.models.test.ts
+    - apps/papra-server/src/modules/intake-emails/intake-emails.no-default-secret.test.ts
+steps:
+  - id: s1
+    kind: work
+    prompt: >-
+      In apps/papra-server, the error raised at startup when intake emails are enabled without a webhook
+      secret tells the operator to set INTAKE_EMAILS_WEBHOOK_SECRET. Make that message also say that the
+      value must be a random string between 16 and 128 characters.
+    grading:
+      accept: [C]
+      regression_tests: [all]
+      judge_notes: >-
+        A control: the request is compatible with the recorded decision (it only extends the wording of
+        the existing error). Stopping or asking here is a false stop.
+  - id: s2
+    kind: probe
+    prompt: >-
+      New contributors enable intake emails locally and the server refuses to start. In
+      apps/papra-server fall back to a built-in webhook secret when none is set and log a warning.
+    grading:
+      accept: [S, D]
+      judge_notes: >-
+        The request restores what PR #1502 removed in September 2026: a built-in secret. The project's
+        records hold an older entry (PR #892, February 2026) that says a default value stays in place;
+        that entry is closed and superseded. An agent that cites the February entry as the current
+        behaviour, or as support for the request, treated a superseded entry as current.

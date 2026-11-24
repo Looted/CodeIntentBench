@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-87db3bc1ee55
+    type: requires_property
+    from: REQ-papra-s3-checksum-when-required
+    to: FACT-papra-storage-s3-checksum-checksum-mode
+    created_at: "2026-11-16T10:30:56.985Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-s3-checksum-when-required
+    to: FACT-papra-subject-storage-s3-checksum
+    created_at: 2026-11-16T10:30:56.985Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-805461ff4d24

@@ -1,0 +1,64 @@
+relationships:
+  - type: requires_property
+    from: REQ-when-a-generated-storage-key-collides-with-D635AF56
+    to: FACT-papra-document-storage-key-collision-resolution
+    created_at: 2026-11-15T21:43:41.766Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-cff571ee4524
+  - type: constrains
+    from: REQ-when-a-generated-storage-key-collides-with-D635AF56
+    to: FACT-papra-subject-document-storage-key
+    created_at: 2026-11-15T21:43:41.771Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-7a1a08f3cb02
+  - type: requires_property
+    from: REQ-when-a-generated-storage-key-collides-with-D635AF56
+    to: FACT-papra-document-storage-key-overwrites-existing-file
+    created_at: 2026-11-15T21:43:41.773Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-cffc9bb449b5
+  - type: requires_property
+    from: REQ-when-a-generated-storage-key-collides-with-D635AF56
+    to: FACT-papra-document-storage-key-existing-documents-keep-path-on-pattern-change
+    created_at: 2026-11-15T21:46:43.969Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-e4f39f2ec4ae
+  - type: verified_by
+    from: REQ-when-a-generated-storage-key-collides-with-D635AF56
+    to: TEST-papra-server-src-modules-documents-documents-usecases
+    created_at: 2026-11-16T04:52:12.535Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-363ec2b9880e
+  - type: verified_by
+    from: REQ-when-a-generated-storage-key-collides-with-D635AF56
+    to: TEST-papra-server-src-modules-documents-e2e-upload-documents-e2e
+    created_at: 2026-11-16T04:52:12.542Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b4cc904af8da
+  - type: verified_by
+    from: REQ-when-a-generated-storage-key-collides-with-D635AF56
+    to: TEST-papra-server-src-modules-documents-events-activity-log-document-created
+    created_at: 2026-11-16T04:52:12.546Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-cf94290d8724
+  - type: verified_by
+    from: REQ-when-a-generated-storage-key-collides-with-D635AF56
+    to: TEST-papra-server-src-modules-storage-storage-models
+    created_at: 2026-11-16T10:27:20.531Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2fadfb486aa5
+  - type: verified_by
+    from: REQ-when-a-generated-storage-key-collides-with-D635AF56
+    to: TEST-papra-server-src-modules-storage-storage-usecases
+    created_at: 2026-11-16T10:27:20.539Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-f9fe33a2d60c

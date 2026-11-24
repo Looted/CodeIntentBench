@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-d50ff8853d22
+    type: requires_property
+    from: REQ-papra-storage-driver-hard-deletes-files
+    to: FACT-papra-storage-driver-delete-hard-deletes-file
+    created_at: "2026-11-16T10:30:42.220Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-storage-driver-hard-deletes-files
+    to: FACT-papra-subject-storage-driver-delete
+    created_at: 2026-11-16T10:30:42.221Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-91e7657ae592

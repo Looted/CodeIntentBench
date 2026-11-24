@@ -1,0 +1,113 @@
+relationships:
+  - id: rel-5e91a6dcbdc2
+    type: requires_property
+    from: REQ-telemetry-dashboard-tags-listing-order
+    to: FACT-telemetry-dashboard-tags-listing-order
+    created_at: "2026-09-18T12:20:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cf6190a22ece
+    type: constrains
+    from: REQ-telemetry-dashboard-tags-listing-order
+    to: FACT-telemetry-dashboard-tags-subject
+    created_at: "2026-09-18T12:20:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-906980cbb212
+    type: requires_property
+    from: REQ-docs-documentation-site-search-invalid-date
+    to: FACT-docs-documentation-site-search-invalid-date-filter
+    created_at: "2026-04-11T11:38:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8e08002966f7
+    type: constrains
+    from: REQ-docs-documentation-site-search-invalid-date
+    to: FACT-docs-documentation-site-search-subject
+    created_at: "2026-04-11T11:38:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2db6c6291a03
+    type: requires_property
+    from: REQ-extension-browser-extension-address-bar-search-minimum-length
+    to: FACT-extension-browser-extension-address-bar-search-query-min-length
+    created_at: "2025-11-18T15:07:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9c809c13134c
+    type: constrains
+    from: REQ-extension-browser-extension-address-bar-search-minimum-length
+    to: FACT-extension-browser-extension-address-bar-search-subject
+    created_at: "2025-11-18T15:07:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f7aa08de24d0
+    type: requires_property
+    from: REQ-portal-partner-portal-payout-search-page-size
+    to: FACT-portal-partner-portal-payout-search-page-size-maximum
+    created_at: "2025-02-03T08:19:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5b6cfe019032
+    type: constrains
+    from: REQ-portal-partner-portal-payout-search-page-size
+    to: FACT-portal-partner-portal-payout-search-subject
+    created_at: "2025-02-03T08:19:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-12ace5d1d16e
+    type: requires_property
+    from: REQ-docs-docs-feedback-secret-rotation
+    to: FACT-docs-docs-feedback-secret-rotation-days
+    created_at: "2026-02-09T10:16:53.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-989233005f76
+    type: requires_property
+    from: REQ-docs-docs-feedback-secret-rotation
+    to: FACT-docs-docs-feedback-secret-rotation-overlap-hours
+    created_at: "2026-02-09T10:16:53.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-eebe1f394a5f
+    type: constrains
+    from: REQ-docs-docs-feedback-secret-rotation
+    to: FACT-docs-docs-feedback-secret-subject
+    created_at: "2026-02-09T10:16:53.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-660a9ec0109f
+    type: requires_property
+    from: REQ-mobile-signed-in-accounts-what-counts
+    to: FACT-mobile-signed-in-accounts-counted-toward-limit
+    created_at: "2025-02-22T15:09:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-014e811b3685
+    type: requires_property
+    from: REQ-mobile-signed-in-accounts-what-counts
+    to: FACT-mobile-signed-in-accounts-limit-detail
+    created_at: "2025-02-22T15:09:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6efa08775229
+    type: constrains
+    from: REQ-mobile-signed-in-accounts-what-counts
+    to: FACT-mobile-signed-in-accounts-subject
+    created_at: "2025-02-22T15:09:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-61c5f963fca5
+    type: requires_property
+    from: REQ-n8n-integration-service-accounts-reset-and-sessions
+    to: FACT-n8n-integration-service-accounts-sessions-ended-on-reset
+    created_at: "2025-12-28T17:17:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d1b8c28bc9ae
+    type: constrains
+    from: REQ-n8n-integration-service-accounts-reset-and-sessions
+    to: FACT-n8n-integration-service-accounts-subject
+    created_at: "2025-12-28T17:17:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

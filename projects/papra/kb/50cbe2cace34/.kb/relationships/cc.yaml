@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-64dac5ca8dec
+    type: verified_by
+    from: REQ-tag-name-and-colour-are-validated-server-s-1890EF60
+    to: TEST-papra-server-src-modules-tags-tags-schemas
+    created_at: "2026-10-14T12:09:55.889Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: requires_property
+    from: REQ-tag-name-and-colour-are-validated-server-s-1890EF60
+    to: FACT-papra-tags-tag-validated-by-api-schema
+    created_at: 2026-11-15T21:46:10.450Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-bd7fe5e2467c
+  - type: constrains
+    from: REQ-tag-name-and-colour-are-validated-server-s-1890EF60
+    to: FACT-papra-subject-tags-tag
+    created_at: 2026-11-15T21:46:10.455Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-fa43084737d3
+  - type: requires_property
+    from: REQ-tag-name-and-colour-are-validated-server-s-1890EF60
+    to: FACT-papra-tags-tag-client-validation-is-guard
+    created_at: 2026-11-15T21:46:10.457Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-e6e7a5010a24
+  - type: verified_by
+    from: REQ-tag-name-and-colour-are-validated-server-s-1890EF60
+    to: TEST-papra-server-src-modules-admin-organizations-e2e-organizations-e2e
+    created_at: 2026-11-16T04:52:10.830Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-46f29cda92d8
+  - type: requires_property
+    from: REQ-papra-b2-storage-driver-supported
+    to: FACT-papra-storage-b2-driver-available-v1
+    created_at: 2026-11-16T10:30:44.923Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-22bf88d6d27b
+  - type: constrains
+    from: REQ-papra-b2-storage-driver-supported
+    to: FACT-papra-subject-storage-b2-driver
+    created_at: 2026-11-16T10:30:44.940Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-7cbd80b4fc41
+  - type: verified_by
+    from: REQ-tag-name-and-colour-are-validated-server-s-1890EF60
+    to: TEST-papra-server-src-modules-documents-e2e-batch-tags-e2e
+    created_at: 2026-11-16T10:39:25.777Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-271a0afafabb

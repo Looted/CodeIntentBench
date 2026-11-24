@@ -1,0 +1,113 @@
+relationships:
+  - id: rel-022ebf109d17
+    type: requires_property
+    from: REQ-papra-task-migrations-pragma-optional
+    to: FACT-papra-tasks-sqlite-pragma-can-be-disabled
+    created_at: "2026-11-16T13:21:33.282Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-task-migrations-pragma-optional
+    to: FACT-papra-subject-tasks-sqlite-pragma
+    created_at: 2026-11-16T13:21:33.283Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-a18c9f52f28e
+  - id: rel-a1a969faec8f
+    type: requires_property
+    from: REQ-client-tag-colour-presets-delete-in-use
+    to: FACT-client-tag-colour-presets-delete-in-use
+    created_at: "2026-05-13T11:08:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-97435bcb6d9b
+    type: constrains
+    from: REQ-client-tag-colour-presets-delete-in-use
+    to: FACT-client-tag-colour-presets-subject
+    created_at: "2026-05-13T11:08:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d33424660110
+    type: requires_property
+    from: REQ-mobile-mobile-app-tag-picker-filter-empty-query
+    to: FACT-mobile-mobile-app-tag-picker-filter-empty-query
+    created_at: "2025-12-24T08:47:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-58f727e2d8a8
+    type: constrains
+    from: REQ-mobile-mobile-app-tag-picker-filter-empty-query
+    to: FACT-mobile-mobile-app-tag-picker-filter-subject
+    created_at: "2025-12-24T08:47:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5241cabb18cd
+    type: requires_property
+    from: REQ-support-support-account-creation-repeat-address
+    to: FACT-support-support-account-creation-repeat-address
+    created_at: "2025-03-19T14:06:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fdda12fcebb0
+    type: constrains
+    from: REQ-support-support-account-creation-repeat-address
+    to: FACT-support-support-account-creation-subject
+    created_at: "2025-03-19T14:06:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-66cb0040df99
+    type: requires_property
+    from: REQ-mobile-pinned-organizations-name-uniqueness
+    to: FACT-mobile-pinned-organizations-name-uniqueness
+    created_at: "2026-01-21T16:35:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8ad2060bb927
+    type: constrains
+    from: REQ-mobile-pinned-organizations-name-uniqueness
+    to: FACT-mobile-pinned-organizations-subject
+    created_at: "2026-01-21T16:35:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-73a67874af98
+    type: requires_property
+    from: REQ-mobile-pinned-organizations-deletion-grace
+    to: FACT-mobile-pinned-organizations-restore-window-days
+    created_at: "2025-10-03T16:35:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-bbac5a1dd074
+    type: requires_property
+    from: REQ-mobile-pinned-organizations-deletion-grace
+    to: FACT-mobile-pinned-organizations-purged-after-window
+    created_at: "2025-10-03T16:35:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3759dbf796cf
+    type: constrains
+    from: REQ-mobile-pinned-organizations-deletion-grace
+    to: FACT-mobile-pinned-organizations-subject
+    created_at: "2025-10-03T16:35:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7b2d70ee6d54
+    type: requires_property
+    from: REQ-n8n-integration-service-accounts-concurrent-sessions
+    to: FACT-n8n-integration-service-accounts-concurrent-sessions
+    created_at: "2026-06-08T10:55:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e7a64bc8ee28
+    type: requires_property
+    from: REQ-n8n-integration-service-accounts-concurrent-sessions
+    to: FACT-n8n-integration-service-accounts-over-limit
+    created_at: "2026-06-08T10:55:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-523a4638d886
+    type: constrains
+    from: REQ-n8n-integration-service-accounts-concurrent-sessions
+    to: FACT-n8n-integration-service-accounts-subject
+    created_at: "2026-06-08T10:55:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Arm `kibi-hints`: the Kibi arm plus Kibi's search-hints plugin (offline potion-base-8M embeddings that
+# suggest requirements when a lexical kb_search is weak). Its counterpart is `memory-embed`, the notes
+# memory searched with the same embedding model. Everything else is the kibi arm's setup.
+export CIB_KIBI_HINTS=1
+exec "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../kibi/setup" "$@"

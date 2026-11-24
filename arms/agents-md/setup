@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 # Arm `agents-md`: all rules rendered once into AGENTS.md (+ CLAUDE.md pointer) at the workspace root.
+# The file is written whole or not at all: when it would not fit the model's context window
+# (or CIB_AGENTS_MD_TOKEN_BUDGET tokens) the setup fails with "does not fit". Its size goes to
+# <runDir>/agents-md-size.json and into the report.
 # Arguments: <workspace> <rulesDir> <runDir>
 set -euo pipefail
-ws="$1"; rules="$2"
+ws="$1"; rules="$2"; run="${3:-}"
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-node "$here/../../harness/src/arm-tools/render-agents-md.ts" "$ws" "$rules" "${CIB_PROJECT:-project}"
+node "$here/../../harness/src/arm-tools/render-agents-md.ts" "$ws" "$rules" "${CIB_PROJECT:-project}" "$run"

@@ -1,0 +1,113 @@
+relationships:
+  - id: rel-f4330cbb27b9
+    type: requires_property
+    from: REQ-files-matching-ingestion-folder-ignored-pa-9B49E534
+    to: FACT-papra-ingestion-folder-watcher-skips-ignored-patterns
+    created_at: "2026-11-15T21:42:36.625Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-files-matching-ingestion-folder-ignored-pa-9B49E534
+    to: FACT-papra-subject-ingestion-folder-watcher
+    created_at: 2026-11-15T21:42:36.625Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-83b42fa44178
+  - type: requires_property
+    from: REQ-files-matching-ingestion-folder-ignored-pa-9B49E534
+    to: FACT-papra-ingestion-folder-watcher-ignores-synology-metadata-by-default
+    created_at: 2026-11-15T21:42:36.629Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-a768607c5a3d
+  - type: verified_by
+    from: REQ-files-matching-ingestion-folder-ignored-pa-9B49E534
+    to: TEST-papra-server-src-modules-ingestion-folders-ingestion-folders-usecases
+    created_at: 2026-11-16T04:52:07.433Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-57cb76884bd3
+  - type: requires_property
+    from: REQ-papra-webhook-field-size-limits
+    to: FACT-papra-webhook-fields-name-max-characters
+    created_at: 2026-11-16T13:20:15.106Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6f195a3a9e03
+  - type: constrains
+    from: REQ-papra-webhook-field-size-limits
+    to: FACT-papra-subject-webhook-fields
+    created_at: 2026-11-16T13:20:15.119Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-41cf5f5380d4
+  - type: requires_property
+    from: REQ-papra-webhook-field-size-limits
+    to: FACT-papra-webhook-fields-secret-max-characters
+    created_at: 2026-11-16T13:20:15.122Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b8ca0941d422
+  - type: requires_property
+    from: REQ-papra-webhook-field-size-limits
+    to: FACT-papra-webhook-fields-url-max-characters
+    created_at: 2026-11-16T13:20:15.125Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-cba19695d177
+  - id: rel-93d64a9e51b6
+    type: requires_property
+    from: REQ-marketplace-template-tags-maximum-count
+    to: FACT-marketplace-template-tags-maximum-count
+    created_at: "2026-05-05T17:23:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ab256f6e3803
+    type: requires_property
+    from: REQ-marketplace-template-tags-maximum-count
+    to: FACT-marketplace-template-tags-limit-configurable
+    created_at: "2026-05-05T17:23:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5c8291c28f81
+    type: constrains
+    from: REQ-marketplace-template-tags-maximum-count
+    to: FACT-marketplace-template-tags-subject
+    created_at: "2026-05-05T17:23:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9510363f7188
+    type: requires_property
+    from: REQ-n8n-n8n-trigger-secret-rotation
+    to: FACT-n8n-n8n-trigger-secret-rotation-days
+    created_at: "2026-09-01T17:43:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f920383125a3
+    type: requires_property
+    from: REQ-n8n-n8n-trigger-secret-rotation
+    to: FACT-n8n-n8n-trigger-secret-rotation-overlap-hours
+    created_at: "2026-09-01T17:43:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6771e5c098c8
+    type: constrains
+    from: REQ-n8n-n8n-trigger-secret-rotation
+    to: FACT-n8n-n8n-trigger-secret-subject
+    created_at: "2026-09-01T17:43:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-352d68dea4c8
+    type: requires_property
+    from: REQ-portal-referral-links-limit-override
+    to: FACT-portal-referral-links-limit-override
+    created_at: "2025-08-24T12:51:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8ec0d4fae1c9
+    type: constrains
+    from: REQ-portal-referral-links-limit-override
+    to: FACT-portal-referral-links-subject
+    created_at: "2025-08-24T12:51:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

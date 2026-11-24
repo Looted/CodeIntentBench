@@ -1,0 +1,106 @@
+relationships:
+  - id: rel-671ef5ba1675
+    type: verified_by
+    from: REQ-built-in-content-extraction-can-be-turned--66925D7B
+    to: TEST-papra-server-src-modules-documents-documents-usecases
+    created_at: "2026-10-14T12:09:45.376Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: requires_property
+    from: REQ-built-in-content-extraction-can-be-turned--66925D7B
+    to: FACT-papra-document-content-extraction-can-be-disabled
+    created_at: 2026-11-15T21:42:16.497Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-00e0e7eec1eb
+  - type: constrains
+    from: REQ-built-in-content-extraction-can-be-turned--66925D7B
+    to: FACT-papra-subject-document-content-extraction
+    created_at: 2026-11-15T21:42:16.501Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-86d20ad4f1bc
+  - type: requires_property
+    from: REQ-built-in-content-extraction-can-be-turned--66925D7B
+    to: FACT-papra-document-extracted-content-writable-through-api
+    created_at: 2026-11-15T21:42:16.504Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9ae511c5fb43
+  - type: constrains
+    from: REQ-built-in-content-extraction-can-be-turned--66925D7B
+    to: FACT-papra-subject-document-extracted-content
+    created_at: 2026-11-15T21:42:16.507Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-0ab5dec4eb7f
+  - id: rel-d82196643e6b
+    type: requires_property
+    from: REQ-marketplace-template-categories-delete-in-use
+    to: FACT-marketplace-template-categories-delete-in-use
+    created_at: "2026-05-22T15:44:24.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a5c6625d8013
+    type: constrains
+    from: REQ-marketplace-template-categories-delete-in-use
+    to: FACT-marketplace-template-categories-subject
+    created_at: "2026-05-22T15:44:24.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-65be63193396
+    type: requires_property
+    from: REQ-backoffice-trial-organizations-deletion-grace
+    to: FACT-backoffice-trial-organizations-restore-window-days
+    created_at: "2026-01-07T16:25:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f2170ee37339
+    type: requires_property
+    from: REQ-backoffice-trial-organizations-deletion-grace
+    to: FACT-backoffice-trial-organizations-purged-after-window
+    created_at: "2026-01-07T16:25:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1cbc869651b8
+    type: constrains
+    from: REQ-backoffice-trial-organizations-deletion-grace
+    to: FACT-backoffice-trial-organizations-subject
+    created_at: "2026-01-07T16:25:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-743cda8a8d1f
+    type: requires_property
+    from: REQ-status-status-page-administrator-accounts-reset-notification
+    to: FACT-status-status-page-administrator-accounts-reset-confirmation-email
+    created_at: "2026-07-16T09:58:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4366b170dce4
+    type: constrains
+    from: REQ-status-status-page-administrator-accounts-reset-notification
+    to: FACT-status-status-page-administrator-accounts-subject
+    created_at: "2026-07-16T09:58:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f75f3b8f3cc8
+    type: requires_property
+    from: REQ-n8n-integration-service-accounts-session-lifetime
+    to: FACT-n8n-integration-service-accounts-session-days
+    created_at: "2026-05-11T14:13:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ba7b392cbd9c
+    type: requires_property
+    from: REQ-n8n-integration-service-accounts-session-lifetime
+    to: FACT-n8n-integration-service-accounts-session-idle-minutes
+    created_at: "2026-05-11T14:13:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b75df2fefdf7
+    type: constrains
+    from: REQ-n8n-integration-service-accounts-session-lifetime
+    to: FACT-n8n-integration-service-accounts-subject
+    created_at: "2026-05-11T14:13:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

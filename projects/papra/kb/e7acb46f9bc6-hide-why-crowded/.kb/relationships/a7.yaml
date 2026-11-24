@@ -1,0 +1,113 @@
+relationships:
+  - id: rel-4b575a6aa791
+    type: requires_property
+    from: REQ-website-changelog-labels-name-length
+    to: FACT-website-changelog-labels-name-max-length
+    created_at: "2025-11-20T11:22:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1ee16e9aa700
+    type: constrains
+    from: REQ-website-changelog-labels-name-length
+    to: FACT-website-changelog-labels-subject
+    created_at: "2025-11-20T11:22:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6ba6c326b3f9
+    type: requires_property
+    from: REQ-cli-profiles-delete-in-use
+    to: FACT-cli-profiles-delete-in-use
+    created_at: "2025-03-28T11:36:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-044476aa0fee
+    type: constrains
+    from: REQ-cli-profiles-delete-in-use
+    to: FACT-cli-profiles-subject
+    created_at: "2025-03-28T11:36:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3a948df7b214
+    type: requires_property
+    from: REQ-docs-api-reference-search-empty-query
+    to: FACT-docs-api-reference-search-empty-query
+    created_at: "2026-05-05T11:58:24.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d7768f0733bd
+    type: constrains
+    from: REQ-docs-api-reference-search-empty-query
+    to: FACT-docs-api-reference-search-subject
+    created_at: "2026-05-05T11:58:24.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c50e3bef4c33
+    type: requires_property
+    from: REQ-mobile-mobile-app-offline-search-page-size
+    to: FACT-mobile-mobile-app-offline-search-page-size-maximum
+    created_at: "2026-01-13T08:14:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e379fa435083
+    type: constrains
+    from: REQ-mobile-mobile-app-offline-search-page-size
+    to: FACT-mobile-mobile-app-offline-search-subject
+    created_at: "2026-01-13T08:14:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e8d8e9b107df
+    type: requires_property
+    from: REQ-status-status-webhook-secret-rotation
+    to: FACT-status-status-webhook-secret-rotation-days
+    created_at: "2026-05-28T17:05:45.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fabb679ccc53
+    type: requires_property
+    from: REQ-status-status-webhook-secret-rotation
+    to: FACT-status-status-webhook-secret-rotation-overlap-hours
+    created_at: "2026-05-28T17:05:45.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fe3618c63f12
+    type: constrains
+    from: REQ-status-status-webhook-secret-rotation
+    to: FACT-status-status-webhook-secret-subject
+    created_at: "2026-05-28T17:05:45.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fbbb2f164b23
+    type: requires_property
+    from: REQ-forum-forum-groups-ownership-transfer
+    to: FACT-forum-forum-groups-ownership-transfer
+    created_at: "2026-08-09T14:25:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-81fd132d5282
+    type: constrains
+    from: REQ-forum-forum-groups-ownership-transfer
+    to: FACT-forum-forum-groups-subject
+    created_at: "2026-08-09T14:25:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-65b77c1487ba
+    type: requires_property
+    from: REQ-n8n-organization-connections-what-counts
+    to: FACT-n8n-organization-connections-counted-toward-limit
+    created_at: "2026-01-05T16:21:06.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2fa6952dde6f
+    type: requires_property
+    from: REQ-n8n-organization-connections-what-counts
+    to: FACT-n8n-organization-connections-limit-detail
+    created_at: "2026-01-05T16:21:06.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e9ac2e78ff85
+    type: constrains
+    from: REQ-n8n-organization-connections-what-counts
+    to: FACT-n8n-organization-connections-subject
+    created_at: "2026-01-05T16:21:06.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

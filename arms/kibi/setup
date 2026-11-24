@@ -13,23 +13,40 @@ versions="$(cat "$here/versions.env")"; eval "$versions"
 # finds kibi-mcp by walking up from the workspace), so the project's own
 # package.json and lockfile stay untouched.
 mkdir -p "$run/kibi"
-( cd "$run/kibi" && npm install --silent --no-audit --no-fund "kibi-cli@$KIBI_CLI" "kibi-mcp@$KIBI_MCP" "kibi-core@$KIBI_CORE" "kibi-runtime@$KIBI_RUNTIME" )
-# kibi-mcp loads its operations from kibi-runtime and declares it with a caret range, so without the
-# pin above a fresh install picks up whatever runtime npm has newest (a later release's operations
-# over the pinned kibi-core). Refuse a tree where any of the four resolves to more than one version.
-( cd "$run/kibi" && node -e '
-  const { execFileSync } = require("node:child_process");
-  const tree = JSON.parse(execFileSync("npm", ["ls", "--all", "--json"], { encoding: "utf8" }));
-  const want = { "kibi-cli": process.argv[1], "kibi-mcp": process.argv[2], "kibi-core": process.argv[3], "kibi-runtime": process.argv[4] };
-  const seen = {};
-  const walk = (deps) => { for (const [name, d] of Object.entries(deps ?? {})) { if (name in want) (seen[name] ??= new Set()).add(d.version); walk(d.dependencies); } };
-  walk(tree.dependencies);
-  const bad = Object.entries(want).filter(([n, v]) => !seen[n] || seen[n].size !== 1 || !seen[n].has(v));
-  if (bad.length) { console.error("kibi arm: unpinned Kibi packages: " + bad.map(([n, v]) => `${n} wanted ${v} got ${[...(seen[n] ?? ["none"])].join("+")}`).join(", ")); process.exit(1); }
-' "$KIBI_CLI" "$KIBI_MCP" "$KIBI_CORE" "$KIBI_RUNTIME" )
+# Without a package.json here npm installs into the nearest ancestor that has one (or a node_modules), not into this directory.
+[ -f "$run/kibi/package.json" ] || echo '{ "private": true }' > "$run/kibi/package.json"
+if [ -n "${KIBI_SOURCE_PACKS:-}" ]; then
+  # Kibi built from source (a develop checkout packed with scripts/pack-packages.ts): every Kibi package
+  # comes from the packs, so no published package with the same version number slips in.
+  packs=$(ls "$KIBI_SOURCE_PACKS"/kibi-{cli,mcp,core,runtime,agent-core,plugin-sdk,plugin-builtin,plugin-treesitter,plugin-jev,plugin-ui}-[0-9]*.tgz)
+  # kibi-swipl (the bundled SWI-Prolog) is a dependency from 2026.11.5 on; older checkouts have no pack for it.
+  swipl=$(ls "$KIBI_SOURCE_PACKS"/kibi-swipl-[0-9]*.tgz 2>/dev/null || true)
+  packs="$packs $swipl"
+  ( cd "$run/kibi" && npm install --silent --no-audit --no-fund $packs )
+  echo "source build: $(cat "$KIBI_SOURCE_PACKS/SOURCE" 2>/dev/null || echo unknown)" > "$run/kibi-source.txt"
+else
+  ( cd "$run/kibi" && npm install --silent --no-audit --no-fund "kibi-cli@$KIBI_CLI" "kibi-mcp@$KIBI_MCP" "kibi-core@$KIBI_CORE" "kibi-runtime@$KIBI_RUNTIME" )
+  # kibi-mcp loads its operations from kibi-runtime and declares it with a caret range, so without the
+  # pin above a fresh install picks up whatever runtime npm has newest (a later release's operations
+  # over the pinned kibi-core). Refuse a tree where any of the four resolves to more than one version.
+  ( cd "$run/kibi" && node -e '
+    const { execFileSync } = require("node:child_process");
+    const tree = JSON.parse(execFileSync("npm", ["ls", "--all", "--json"], { encoding: "utf8" }));
+    const want = { "kibi-cli": process.argv[1], "kibi-mcp": process.argv[2], "kibi-core": process.argv[3], "kibi-runtime": process.argv[4] };
+    const seen = {};
+    const walk = (deps) => { for (const [name, d] of Object.entries(deps ?? {})) { if (name in want) (seen[name] ??= new Set()).add(d.version); walk(d.dependencies); } };
+    walk(tree.dependencies);
+    const bad = Object.entries(want).filter(([n, v]) => !seen[n] || seen[n].size !== 1 || !seen[n].has(v));
+    if (bad.length) { console.error("kibi arm: unpinned Kibi packages: " + bad.map(([n, v]) => `${n} wanted ${v} got ${[...(seen[n] ?? ["none"])].join("+")}`).join(", ")); process.exit(1); }
+  ' "$KIBI_CLI" "$KIBI_MCP" "$KIBI_CORE" "$KIBI_RUNTIME" )
+fi
 export PATH="$run/kibi/node_modules/.bin:$PATH"
 
 # The plugin at a pinned commit of the Kibi repository.
+if [ -n "${KIBI_SOURCE_PLUGIN:-}" ] && [ ! -d "$run/plugin/kibi-claude" ]; then
+  # The plugin from the same source build (packages/claude after `bun run build`).
+  mkdir -p "$run/plugin" && cp -R "$KIBI_SOURCE_PLUGIN" "$run/plugin/kibi-claude" && rm -rf "$run/plugin/kibi-claude/node_modules"
+fi
 if [ ! -d "$run/plugin/kibi-claude" ]; then
   mkdir -p "$run/plugin"
   cache="${CIB_CACHE_DIR:-$here/../../cache}/kibi-repo"
@@ -41,6 +58,43 @@ if [ ! -d "$run/plugin/kibi-claude" ]; then
 fi
 
 cd "$ws"
+# A team installs kibi-cli as a dev dependency, so `npx --no-install kibi` (what Kibi's own messages suggest)
+# resolves in the workspace. The packages live one directory up to keep the lockfile untouched; link the
+# binary where npx looks for it (node_modules is ignored by git).
+mkdir -p node_modules/.bin && ln -sf "$run/kibi/node_modules/.bin/kibi" node_modules/.bin/kibi
 kibi --version > "$run/kibi-version.txt"
 kibi init
+# Where the repository's hooks belong to the pre-commit framework, `kibi init` installs none of its own and
+# tells the team to run Kibi's check from their manager (Kibi's own repository does, in .pre-commit-config.yaml).
+# A developer of that repository has run `pre-commit install`; do the same so the commit gate is the one the
+# team works with. Without pre-commit on the machine the run records that the gate is missing.
+if [ -f .pre-commit-config.yaml ] && grep -q 'kibi' .pre-commit-config.yaml; then
+  if command -v pre-commit >/dev/null 2>&1; then
+    pre-commit install --hook-type pre-commit > "$run/pre-commit-install.log" 2>&1 || { cat "$run/pre-commit-install.log" >&2; exit 1; }
+  else
+    echo "pre-commit is not installed: the repository's Kibi commit gate is not active in this run" | tee "$run/commit-gate-missing.txt" >&2
+  fi
+fi
+# A knowledge base written by an older Kibi (the onboarded Papra KB, Kibi's own KB at the arcs' base commit) is
+# upgraded the way Kibi tells a user to after an upgrade: `kibi migrate --yes` applies the deterministic schema
+# migration and leaves the review work it lists to people. A no-op on a current KB.
+if [ -f .kb/manifest.json ]; then kibi migrate --yes > "$run/kibi-migrate.log" 2>&1 || { tail -40 "$run/kibi-migrate.log" >&2; exit 1; }; fi
 node "$here/../../harness/src/arm-tools/kibi-import.ts" "$ws" "$rules" "$run"
+# Kibi's bootstrap offers its search-hints plugin (offline embeddings that suggest requirements when a lexical
+# search is weak) once a knowledge base holds 50 or more requirements; a team with a store this size has
+# accepted it. Installed as its README says: a dev dependency of the project, activated in package.json#kibi.
+# Only in the kibi-hints arm (CIB_KIBI_HINTS=1): embeddings are a separate arm, against memory-embed.
+reqs="$(find .kb -path '*requirements*' -name '*.md' 2>/dev/null | wc -l)"
+if [ -n "${CIB_KIBI_HINTS:-}" ] && [ -n "${KIBI_SEARCH_HINTS:-}" ] && [ "$reqs" -ge 50 ] && ! grep -q '"kibi-plugin-search-hints"' package.json; then
+  hints="kibi-plugin-search-hints@$KIBI_SEARCH_HINTS"
+  [ -n "${KIBI_SOURCE_PACKS:-}" ] && hints="$(ls "$KIBI_SOURCE_PACKS"/kibi-plugin-search-hints-[0-9]*.tgz)"
+  if [ -f pnpm-lock.yaml ]; then pnpm add -D -w "$hints" > "$run/search-hints-install.log" 2>&1
+  elif [ -f bun.lock ] || [ -f bun.lockb ]; then bun add -d "$hints" > "$run/search-hints-install.log" 2>&1
+  else npm install --save-dev --no-audit --no-fund "$hints" > "$run/search-hints-install.log" 2>&1
+  fi || { tail -20 "$run/search-hints-install.log" >&2; exit 1; }
+  node -e '
+    const fs = require("fs"); const p = JSON.parse(fs.readFileSync("package.json", "utf8"));
+    p.kibi = p.kibi ?? {}; p.kibi.plugins = [...(p.kibi.plugins ?? []), { package: "kibi-plugin-search-hints", capabilities: { "kibi.search-hints.v1": { mode: "replace" } } }];
+    fs.writeFileSync("package.json", JSON.stringify(p, null, 2) + "\n");'
+  echo "search hints: $(basename "$hints") ($reqs requirements)" > "$run/search-hints.txt"
+fi

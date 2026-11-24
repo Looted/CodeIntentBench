@@ -1,0 +1,127 @@
+relationships:
+  - id: rel-13dee55f8f12
+    type: requires_property
+    from: REQ-extension-clip-presets-names-trimmed
+    to: FACT-extension-clip-presets-name-trimmed
+    created_at: "2025-09-15T09:19:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8d111c1d8600
+    type: requires_property
+    from: REQ-extension-clip-presets-names-trimmed
+    to: FACT-extension-clip-presets-empty-name-refused
+    created_at: "2025-09-15T09:19:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-75bde5478df4
+    type: constrains
+    from: REQ-extension-clip-presets-names-trimmed
+    to: FACT-extension-clip-presets-subject
+    created_at: "2025-09-15T09:19:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cc163514cc14
+    type: requires_property
+    from: REQ-extension-pinned-tags-name-length
+    to: FACT-extension-pinned-tags-name-max-length
+    created_at: "2026-05-20T11:27:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-60aca31d231e
+    type: constrains
+    from: REQ-extension-pinned-tags-name-length
+    to: FACT-extension-pinned-tags-subject
+    created_at: "2026-05-20T11:27:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9d931b3e3a5f
+    type: requires_property
+    from: REQ-cli-papra-history-filter-case-folding
+    to: FACT-cli-papra-history-filter-case-folding
+    created_at: "2026-08-02T09:35:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-24c34032f397
+    type: constrains
+    from: REQ-cli-papra-history-filter-case-folding
+    to: FACT-cli-papra-history-filter-subject
+    created_at: "2026-08-02T09:35:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9d44202ef950
+    type: requires_property
+    from: REQ-desktop-desktop-sync-client-sync-log-filter-unknown-filter
+    to: FACT-desktop-desktop-sync-client-sync-log-filter-unknown-filter
+    created_at: "2026-05-07T08:50:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ce552abe9ced
+    type: constrains
+    from: REQ-desktop-desktop-sync-client-sync-log-filter-unknown-filter
+    to: FACT-desktop-desktop-sync-client-sync-log-filter-subject
+    created_at: "2026-05-07T08:50:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b150568fefab
+    type: requires_property
+    from: REQ-support-support-sso-secret-rotation
+    to: FACT-support-support-sso-secret-rotation-days
+    created_at: "2026-06-15T15:59:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f2e1f4f21e65
+    type: requires_property
+    from: REQ-support-support-sso-secret-rotation
+    to: FACT-support-support-sso-secret-rotation-overlap-hours
+    created_at: "2026-06-15T15:59:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6fd3c25a261f
+    type: constrains
+    from: REQ-support-support-sso-secret-rotation
+    to: FACT-support-support-sso-secret-subject
+    created_at: "2026-06-15T15:59:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e87e8756549a
+    type: requires_property
+    from: REQ-mobile-pinned-organizations-name-length
+    to: FACT-mobile-pinned-organizations-name-max-length
+    created_at: "2025-06-11T15:24:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-70f163049e0e
+    type: constrains
+    from: REQ-mobile-pinned-organizations-name-length
+    to: FACT-mobile-pinned-organizations-subject
+    created_at: "2025-06-11T15:24:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d824590819bc
+    type: requires_property
+    from: REQ-license-activations-name-length
+    to: FACT-license-activations-name-max-length
+    created_at: "2026-04-02T09:34:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4d6d6343bdc3
+    type: constrains
+    from: REQ-license-activations-name-length
+    to: FACT-license-activations-subject
+    created_at: "2026-04-02T09:34:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b045f23d1ebf
+    type: requires_property
+    from: REQ-support-support-portal-accounts-reset-link-validity-earlier
+    to: FACT-support-support-portal-accounts-reset-link-minutes-earlier
+    created_at: "2025-03-24T15:24:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-848f90085c5e
+    type: constrains
+    from: REQ-support-support-portal-accounts-reset-link-validity-earlier
+    to: FACT-support-support-portal-accounts-subject
+    created_at: "2025-03-24T15:24:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

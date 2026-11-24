@@ -1,0 +1,43 @@
+relationships:
+  - id: rel-a88ccde2d468
+    type: requires_property
+    from: REQ-papra-member-cap-counts-pending-invitations
+    to: FACT-papra-invitations-member-limit-set-by-plan
+    created_at: "2026-11-16T10:18:50.294Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-member-cap-counts-pending-invitations
+    to: FACT-papra-subject-invitations-member-limit
+    created_at: 2026-11-16T10:18:50.295Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-552d94b31d3c
+  - type: requires_property
+    from: REQ-papra-member-cap-counts-pending-invitations
+    to: FACT-papra-invitations-member-limit-pending-invitations-count-toward-maximum
+    created_at: 2026-11-16T10:18:50.307Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2817fc2cbb8a
+  - type: requires_property
+    from: REQ-papra-member-cap-counts-pending-invitations
+    to: FACT-papra-invitations-member-limit-invitation-or-resend-refused-at-limit
+    created_at: 2026-11-16T10:18:50.311Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-83e04b6fae75
+  - type: supersedes
+    from: REQ-papra-member-cap-counts-pending-invitations
+    to: REQ-papra-member-limit-counts-pending-invitations
+    created_at: 2026-11-16T10:18:50.314Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2fcf3be142d2
+  - type: verified_by
+    from: REQ-papra-member-cap-counts-pending-invitations
+    to: TEST-papra-server-src-modules-organizations-organizations-usecases
+    created_at: 2026-11-16T10:26:55.690Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-df41e8145353

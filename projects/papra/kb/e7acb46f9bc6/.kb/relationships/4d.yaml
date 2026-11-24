@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-5f5f6728d634
+    type: requires_property
+    from: REQ-papra-tag-list-newest-first
+    to: FACT-papra-tags-list-order-default-order
+    created_at: "2026-11-16T10:21:57.458Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-tag-list-newest-first
+    to: FACT-papra-subject-tags-list-order
+    created_at: 2026-11-16T10:21:57.458Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-f1c15c588738

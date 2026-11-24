@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-907a136deb93
+    type: requires_property
+    from: REQ-papra-search-index-by-ids
+    to: FACT-papra-search-index-keys-keys
+    created_at: "2026-11-16T13:18:08.197Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-search-index-by-ids
+    to: FACT-papra-subject-search-index-keys
+    created_at: 2026-11-16T13:18:08.197Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4a87fc3bebc8

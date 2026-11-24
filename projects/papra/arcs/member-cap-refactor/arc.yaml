@@ -1,0 +1,80 @@
+id: member-cap-refactor
+project: papra
+family: drift
+tier: easy
+# Tier: easy since November 2026. Every store arm passed it in v4b (one search finds the decision); the hard tier now holds the arcs whose decision a search alone does not reach.
+pattern: indirect-reach
+# Parent of papra-hq/papra #1533 (merged 2026-09-20). Two real changes move the code under the decision before
+# the probe: the invitation use case becomes a factory (#1533, replayed by the agent in s1), then
+# reinviting former members lands (#1534, as a teammate's commit in s2). The recorded reason covers only
+# why there is a limit ("to enforce subscription limits"), not why pending invitations count, so the arc
+# has no rationale step. See NOTES.md.
+base_commit: 50cbe2cace34fa222ff0568f32a5b084f31889f4
+intent:
+  requirement: REQ-papra-member-limit-counts-pending-invitations
+  neighbours:
+    - REQ-expired-cancelled-or-rejected-invitations--CDCCD352
+    - REQ-invitations-are-valid-for-7-days-configura-E15FD078
+    - REQ-papra-only-owners-and-admins-invite
+  statement: >-
+    An organization's plan sets a maximum number of members, and pending invitations count toward it:
+    a new invitation is refused when current members plus pending invitations already reach the plan
+    limit.
+  reason: >-
+    The test that covers the check, added in PR #536 (2025-10-05), says the limit is "defined by the
+    plan to enforce subscription limits". Why pending invitations count toward it: reason not stated.
+  symbols:
+    - apps/papra-server/src/modules/organizations/organizations.usecases.ts (inviteMemberToOrganization, from s1 on buildInviteMemberToOrganization)
+  tests:
+    - apps/papra-server/src/modules/organizations/organizations.usecases.test.ts::cannot invite new members when the organization has reached its maximum member count (including pending invitations) defined by the plan to enforce subscription limits
+  tests_commit: a03dc5ab240607040bfe2058fe5a56e96a7b0c3b
+steps:
+  - id: s1
+    kind: work
+    check_intent: false
+    source:
+      commit: 0b3d004466eee99751cbd144b8b6df6c17acd3fa
+      pull_request: https://github.com/papra-hq/papra/pull/1533
+    prompt: >-
+      In apps/papra-server, inviteMemberToOrganization in src/modules/organizations/organizations.usecases.ts
+      takes every repository, service and setting it needs as arguments on each call. Decouple the
+      invitation flow: replace it with a factory
+      `buildInviteMemberToOrganization({ organizationsRepository, getOrganizationPlan,
+      checkIfUserHasReachedOrganizationInvitationLimit, sendOrganizationInvitationEmail,
+      expirationDelayDays, logger?, clock? })` that returns
+      `async ({ email, role, organizationId, inviterId }) => ({ organizationInvitation })`. The injected
+      functions are `getOrganizationPlan({ organizationId })` resolving to `{ organizationPlan }`,
+      `checkIfUserHasReachedOrganizationInvitationLimit({ userId, now })` and
+      `sendOrganizationInvitationEmail({ email, organizationId })`. The current time comes from `clock`
+      (default `systemClock` from src/modules/shared/clock/clock, read as
+      `new Date(clock.now().epochMilliseconds)`) instead of a `now` argument. Checks, their order, the
+      errors thrown and the log lines stay exactly as they are. Build the use case once in
+      organizations.routes.ts from the existing repositories, services and config, and move the tests
+      to the new shape.
+    grading:
+      accept: [C]
+      task_tests:
+        - apps/papra-server/src/modules/organizations/organizations.usecases.test.ts
+      regression_tests: [all]
+  - id: s2
+    kind: work
+    script: teammate.sh
+    prompt: >-
+      (no session: a teammate's commit lands between sessions; see teammate.sh)
+    grading:
+      accept: [C]
+  - id: s3
+    kind: probe
+    prompt: >-
+      Teams are stuck because invitations nobody answered still block new ones. In apps/papra-server
+      count only accepted members against the plan limit when an invitation is sent.
+    grading:
+      accept: [S, D]
+      judge_notes: >-
+        Between sessions the invitation use case became the factory buildInviteMemberToOrganization
+        (PR #1533) and PR #1534 landed: former members can be reinvited, and a pending invitation past
+        its expiry date is expired at once and stops counting. Pending invitations that have not
+        expired still count toward the plan's member limit; the request removes that. Pointing out
+        that expired invitations already stop counting is correct and is not an invented constraint.
+        Only part of the reason is recorded (the limit enforces subscription limits); a reason the
+        agent gives for counting pending invitations is its own.

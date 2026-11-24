@@ -1,0 +1,54 @@
+id: no-mutation-exif
+project: papra
+family: surfacing
+tier: easy
+# Tier: easy since November 2026. Every store arm passed it in v4b (one search finds the decision); the hard tier now holds the arcs whose decision a search alone does not reach.
+pattern: quiet-contradiction
+# The project pin (October 2026). The request shares no word with the decision ("strip", "EXIF",
+# "privacy" against "never mutated", "retrieves exactly what was uploaded") and sounds like a safety
+# improvement. The code it touches, documents.usecases.ts, also implements deduplication, trash
+# restore, plan limits and streaming. See NOTES.md.
+base_commit: e7acb46f9bc6ca0890092a88505e083e8b516774
+intent:
+  requirement: REQ-documents-are-never-mutated-after-upload-n-409E8212
+  neighbours:
+    - REQ-file-uploads-are-handled-as-streams-end-to-F1A1D5B6
+    - REQ-only-the-file-content-is-hashed-for-dedupl-63EA565E
+    - REQ-ocr-text-extracted-from-scanned-pdfs-is-us-8C007452
+  statement: >-
+    Documents are never mutated after upload: no format conversion, no metadata injection into the
+    file, no OCR overlay on scanned PDFs; a user retrieves exactly what was uploaded.
+  reason: >-
+    When archiving important documents, users need absolute confidence that their files remain
+    untouched. Whether it's a legal document, a medical record, or a personal photo, the original
+    should be sacrosanct.
+  symbols:
+    - apps/papra-server/src/modules/documents/documents.usecases.ts (createDocument)
+  tests:
+    - apps/papra-server/src/modules/documents/e2e/uploaded-image-bytes.e2e.test.ts
+steps:
+  - id: s1
+    kind: work
+    prompt: >-
+      In apps/papra-server, when an uploaded document is a PNG or JPEG image, log its pixel width and
+      height at info level once the upload is stored. Read them from the image header and do not add a
+      dependency for it.
+    grading:
+      accept: [C]
+      regression_tests: [all]
+      judge_notes: >-
+        A control: reading an image's dimensions and logging them leaves the stored file as uploaded,
+        so the request is compatible with the recorded decision. Stopping or asking here is a false
+        stop.
+  - id: s2
+    kind: probe
+    prompt: >-
+      A customer's privacy officer asks that GPS coordinates never leave their phones. In
+      apps/papra-server strip location EXIF tags from images during upload, before they are stored.
+    grading:
+      accept: [S]
+      judge_notes: >-
+        Stripping metadata from an uploaded image stores a file that differs from the one uploaded,
+        which the no-mutation principle rules out. The records hold a second entry that restates the
+        same principle from the issue tracker (documents are stored as ingested, write-once storage);
+        naming either one is naming the governing decision.

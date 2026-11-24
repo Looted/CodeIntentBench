@@ -1,0 +1,113 @@
+relationships:
+  - id: rel-7354b153fb4d
+    type: requires_property
+    from: REQ-papra-tag-filter-case-insensitive
+    to: FACT-papra-search-tag-name-matching-case-insensitive
+    created_at: "2026-11-16T13:18:14.872Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-tag-filter-case-insensitive
+    to: FACT-papra-subject-search-tag-name-matching
+    created_at: 2026-11-16T13:18:14.872Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d35aff82b250
+  - id: rel-51b83a3b2255
+    type: requires_property
+    from: REQ-infra-asset-url-signing-key-generated-when-missing
+    to: FACT-infra-asset-url-signing-key-required-in-production
+    created_at: "2025-10-24T14:33:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-83d6bd026d4b
+    type: requires_property
+    from: REQ-infra-asset-url-signing-key-generated-when-missing
+    to: FACT-infra-asset-url-signing-key-missing-secret-warning
+    created_at: "2025-10-24T14:33:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-86ddffe0a83f
+    type: constrains
+    from: REQ-infra-asset-url-signing-key-generated-when-missing
+    to: FACT-infra-asset-url-signing-key-subject
+    created_at: "2025-10-24T14:33:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-41ceeb3569fb
+    type: requires_property
+    from: REQ-education-edu-portal-session-secret-never-logged
+    to: FACT-education-edu-portal-session-secret-value-logged
+    created_at: "2025-08-21T08:39:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c7550917338a
+    type: requires_property
+    from: REQ-education-edu-portal-session-secret-never-logged
+    to: FACT-education-edu-portal-session-secret-startup-log
+    created_at: "2025-08-21T08:39:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c8b616ae33b6
+    type: constrains
+    from: REQ-education-edu-portal-session-secret-never-logged
+    to: FACT-education-edu-portal-session-secret-subject
+    created_at: "2025-08-21T08:39:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b2391f028aa1
+    type: requires_property
+    from: REQ-website-cloud-waiting-list-plus-addressing
+    to: FACT-website-cloud-waiting-list-plus-addressing
+    created_at: "2025-06-14T16:47:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e08cb7cb8bd6
+    type: constrains
+    from: REQ-website-cloud-waiting-list-plus-addressing
+    to: FACT-website-cloud-waiting-list-subject
+    created_at: "2025-06-14T16:47:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-232abd6430e1
+    type: requires_property
+    from: REQ-support-support-account-creation-allowed-domains
+    to: FACT-support-support-account-creation-allowed-domain-matching
+    created_at: "2025-10-28T15:28:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c1f7914615d0
+    type: requires_property
+    from: REQ-support-support-account-creation-allowed-domains
+    to: FACT-support-support-account-creation-domain-case-folding
+    created_at: "2025-10-28T15:28:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f670ace393f8
+    type: constrains
+    from: REQ-support-support-account-creation-allowed-domains
+    to: FACT-support-support-account-creation-subject
+    created_at: "2025-10-28T15:28:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3aac32b6d827
+    type: requires_property
+    from: REQ-forum-forum-groups-deletion-grace
+    to: FACT-forum-forum-groups-restore-window-days
+    created_at: "2025-02-03T08:55:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2ec9dc73911e
+    type: requires_property
+    from: REQ-forum-forum-groups-deletion-grace
+    to: FACT-forum-forum-groups-purged-after-window
+    created_at: "2025-02-03T08:55:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-da26c1d94ee3
+    type: constrains
+    from: REQ-forum-forum-groups-deletion-grace
+    to: FACT-forum-forum-groups-subject
+    created_at: "2025-02-03T08:55:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

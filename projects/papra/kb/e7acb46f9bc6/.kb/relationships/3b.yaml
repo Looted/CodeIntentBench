@@ -1,0 +1,106 @@
+relationships:
+  - id: rel-8ffe3f881669
+    type: verified_by
+    from: REQ-when-a-trashed-document-is-restored-by-a-d-F5E2FEA1
+    to: TEST-papra-server-src-modules-documents-documents-usecases
+    created_at: "2026-10-14T12:09:38.383Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: verified_by
+    from: REQ-when-a-trashed-document-is-restored-by-a-d-F5E2FEA1
+    to: TEST-papra-server-src-modules-documents-documents-repository
+    created_at: 2026-10-14T12:09:38.384Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6a127e5e44a3
+  - type: verified_by
+    from: REQ-when-a-trashed-document-is-restored-by-a-d-F5E2FEA1
+    to: TEST-papra-server-src-modules-tagging-rules-tagging-rules-usecases
+    created_at: 2026-10-14T12:09:38.393Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-fd56d9e70db7
+  - type: requires_property
+    from: REQ-when-a-trashed-document-is-restored-by-a-d-F5E2FEA1
+    to: FACT-papra-document-trash-restore-name-set-from-upload
+    created_at: 2026-11-15T21:43:45.289Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ea3317e0078c
+  - type: constrains
+    from: REQ-when-a-trashed-document-is-restored-by-a-d-F5E2FEA1
+    to: FACT-papra-subject-document-trash-restore
+    created_at: 2026-11-15T21:43:45.294Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-5b1b94a15458
+  - type: requires_property
+    from: REQ-when-a-trashed-document-is-restored-by-a-d-F5E2FEA1
+    to: FACT-papra-document-trash-restore-keeps-previous-tags
+    created_at: 2026-11-15T21:43:45.296Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-f4b754ec8a88
+  - type: requires_property
+    from: REQ-when-a-trashed-document-is-restored-by-a-d-F5E2FEA1
+    to: FACT-papra-document-trash-restore-applies-tagging-rules
+    created_at: 2026-11-15T21:43:45.298Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2abdd766690c
+  - type: requires_property
+    from: REQ-papra-document-sort-by-document-date
+    to: FACT-papra-documents-sort-client-default-field
+    created_at: 2026-11-16T10:20:59.602Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6c5fae9f3c68
+  - type: constrains
+    from: REQ-papra-document-sort-by-document-date
+    to: FACT-papra-subject-documents-sort
+    created_at: 2026-11-16T10:20:59.616Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-590c96a0192c
+  - type: supersedes
+    from: REQ-papra-document-sort-by-document-date
+    to: REQ-papra-document-sort-parameters
+    created_at: 2026-11-16T10:20:59.621Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-f2ccadc72d13
+  - type: requires_property
+    from: REQ-papra-docling-options
+    to: FACT-papra-content-extraction-docling-options-setting
+    created_at: 2026-11-16T10:22:49.614Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-836f37d6f579
+  - type: constrains
+    from: REQ-papra-docling-options
+    to: FACT-papra-subject-content-extraction-docling-options
+    created_at: 2026-11-16T10:22:49.629Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-3b6fce51e259
+  - type: requires_property
+    from: REQ-papra-auth-secret-min-32
+    to: FACT-papra-auth-secret-min-length
+    created_at: 2026-11-16T10:24:57.618Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4554a5b6df68
+  - type: constrains
+    from: REQ-papra-auth-secret-min-32
+    to: FACT-papra-subject-auth-secret
+    created_at: 2026-11-16T10:24:57.636Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-abf48b2c4698
+  - type: verified_by
+    from: REQ-when-a-trashed-document-is-restored-by-a-d-F5E2FEA1
+    to: TEST-papra-server-src-modules-documents-document-storage-usecases
+    created_at: 2026-11-16T10:27:21.576Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-f8dfe4e0a88e

@@ -3,20 +3,44 @@ title: When a trashed document is restored by a duplicate upload, its name is se
 status: active
 semantic_text: When a trashed document is restored by a duplicate upload, its name is set to the new file's name, its pre-existing tags are removed and the tagging rules are applied to the restored document.
 logic_claims:
-  - CLAIM-6BA8B0A767149C34
+  - CLAIM-4EF4915BDB8ED888
+  - CLAIM-1394C72D49DE4EB3
+  - CLAIM-F16AE4E6CD7C2E77
 semantic_clauses:
-  - When a trashed document is restored by a duplicate upload, its name is set to the new file's name, its pre-existing tags are removed and the tagging rules are applied to the restored document
+  - When a trashed document is restored by a duplicate upload, its name is set to the new file's name
+  - its pre-existing tags are removed
+  - the tagging rules are applied to the restored document
 semantic_inventory_version: kibi.semantic-inventory.v1
 semantic_source_field: semantic_text
 semantic_source_hash: f7d50901d9db9a4e22b99e469deac7d684551cea9da3198cd70261d77742af87
 semantic_inventory:
-  - claim_key: CLAIM-6BA8B0A767149C34
-    claim_text: When a trashed document is restored by a duplicate upload, its name is set to the new file's name, its pre-existing tags are removed and the tagging rules are applied to the restored document
+  - claim_key: CLAIM-4EF4915BDB8ED888
+    claim_text: When a trashed document is restored by a duplicate upload, its name is set to the new file's name
     role: condition
-    status: ontology_gap
+    status: modeled
     span:
       start: 0
+      end: 97
+    subjects:
+      - document.trash_restore
+  - claim_key: CLAIM-1394C72D49DE4EB3
+    claim_text: its pre-existing tags are removed
+    role: descriptive
+    status: modeled
+    span:
+      start: 99
+      end: 132
+    subjects:
+      - document.trash_restore
+  - claim_key: CLAIM-F16AE4E6CD7C2E77
+    claim_text: the tagging rules are applied to the restored document
+    role: descriptive
+    status: modeled
+    span:
+      start: 137
       end: 191
+    subjects:
+      - document.trash_restore
 firmness: firm
 origin:
   kind: import
@@ -29,6 +53,7 @@ tags:
   - component:documents
 id: REQ-when-a-trashed-document-is-restored-by-a-d-F5E2FEA1
 type: req
+required_evidence: asserted
 ---
 When a trashed document is restored by a duplicate upload, its name is set to the new file's name, its pre-existing tags are removed and the tagging rules are applied to the restored document.
 

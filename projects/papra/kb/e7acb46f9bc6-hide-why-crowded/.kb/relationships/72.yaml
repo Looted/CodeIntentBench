@@ -1,0 +1,36 @@
+relationships:
+  - id: rel-145764a7113e
+    type: requires_property
+    from: REQ-papra-document-activity-log
+    to: FACT-papra-activity-log-document-available
+    created_at: "2026-11-16T13:17:37.768Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-document-activity-log
+    to: FACT-papra-subject-activity-log-document
+    created_at: 2026-11-16T13:17:37.769Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-087d6b98fe61
+  - id: rel-e3ccacafb447
+    type: requires_property
+    from: REQ-support-support-account-creation-blocked-domains
+    to: FACT-support-support-account-creation-disposable-domains-refused
+    created_at: "2025-04-25T11:13:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e7764d756495
+    type: requires_property
+    from: REQ-support-support-account-creation-blocked-domains
+    to: FACT-support-support-account-creation-list-precedence
+    created_at: "2025-04-25T11:13:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f7b2094b94d7
+    type: constrains
+    from: REQ-support-support-account-creation-blocked-domains
+    to: FACT-support-support-account-creation-subject
+    created_at: "2025-04-25T11:13:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

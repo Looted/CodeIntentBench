@@ -1,0 +1,22 @@
+relationships:
+  - id: rel-50235d315c86
+    type: requires_property
+    from: REQ-papra-api-workers-or-both
+    to: FACT-papra-server-process-mode-options
+    created_at: "2026-11-16T10:24:15.708Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-api-workers-or-both
+    to: FACT-papra-subject-server-process-mode
+    created_at: 2026-11-16T10:24:15.709Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-da0e86b1fc3e
+  - type: requires_property
+    from: REQ-papra-api-workers-or-both
+    to: FACT-papra-server-process-mode-default
+    created_at: 2026-11-16T10:24:15.720Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-e1e2b72d9d45
