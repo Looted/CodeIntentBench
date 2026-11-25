@@ -1,0 +1,106 @@
+relationships:
+  - id: rel-e9171a39b8f0
+    type: requires_property
+    from: REQ-extension-ext-pairing-secret-development-default
+    to: FACT-extension-ext-pairing-secret-development-default
+    created_at: "2025-05-11T16:39:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e1eebbdcf37f
+    type: constrains
+    from: REQ-extension-ext-pairing-secret-development-default
+    to: FACT-extension-ext-pairing-secret-subject
+    created_at: "2025-05-11T16:39:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3151ccdac73e
+    type: requires_property
+    from: REQ-docs-documentation-contributor-accounts-password-length
+    to: FACT-docs-documentation-contributor-accounts-password-min-length
+    created_at: "2026-04-01T15:50:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cd69809970eb
+    type: requires_property
+    from: REQ-docs-documentation-contributor-accounts-password-length
+    to: FACT-docs-documentation-contributor-accounts-character-class-rule
+    created_at: "2026-04-01T15:50:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ea8dfdab0960
+    type: constrains
+    from: REQ-docs-documentation-contributor-accounts-password-length
+    to: FACT-docs-documentation-contributor-accounts-subject
+    created_at: "2026-04-01T15:50:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e39eae65b895
+    type: requires_property
+    from: REQ-papra-auth-auth-type-is-session-session-should-exist
+    to: FACT-papra-auth-check-authentication-when-the-auth-type-is-session-the-session-2
+    created_at: "2026-08-23T14:04:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-be8622528b41
+    type: constrains
+    from: REQ-papra-auth-auth-type-is-session-session-should-exist
+    to: FACT-papra-subject-auth-check-authentication
+    created_at: "2026-08-23T14:04:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f4df1154b85e
+    type: requires_property
+    from: REQ-papra-documents-skips-pairs-that-already-exist-idempotent-re
+    to: FACT-papra-documents-tag-documents-batch-skips-pairs-that-already-exist-idempotent-re-apply
+    created_at: "2025-12-09T17:13:06.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-979f666d0f45
+    type: constrains
+    from: REQ-papra-documents-skips-pairs-that-already-exist-idempotent-re
+    to: FACT-papra-subject-documents-tag-documents-batch
+    created_at: "2025-12-09T17:13:06.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a83f9dcbf730
+    type: requires_property
+    from: REQ-papra-documents-pattern-is-invalid-if-it-ends-with
+    to: FACT-papra-documents-is-storage-pattern-valid-a-pattern-is-invalid-if-it-ends-with
+    created_at: "2026-07-08T15:46:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-026ed309e126
+    type: constrains
+    from: REQ-papra-documents-pattern-is-invalid-if-it-ends-with
+    to: FACT-papra-subject-documents-is-storage-pattern-valid
+    created_at: "2026-07-08T15:46:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c5e2a97427a9
+    type: requires_property
+    from: REQ-papra-storage-returns-stream-that-preserves-all-content-once
+    to: FACT-papra-storage-buffer-stream-up-to-threshold-returns-a-stream-that-preserves-all-content-once
+    created_at: "2025-03-04T17:14:58.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ed0f9afd0f54
+    type: constrains
+    from: REQ-papra-storage-returns-stream-that-preserves-all-content-once
+    to: FACT-papra-subject-storage-buffer-stream-up-to-threshold
+    created_at: "2025-03-04T17:14:58.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ef25b94ee9c2
+    type: requires_property
+    from: REQ-papra-storage-no-kek-is-found-error-is-thrown
+    to: FACT-papra-storage-get-most-recent-kek-when-no-kek-is-found-an-error-is
+    created_at: "2026-09-22T10:58:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-66e63f6d8421
+    type: constrains
+    from: REQ-papra-storage-no-kek-is-found-error-is-thrown
+    to: FACT-papra-subject-storage-get-most-recent-kek
+    created_at: "2026-09-22T10:58:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

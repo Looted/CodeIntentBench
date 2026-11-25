@@ -1,0 +1,99 @@
+relationships:
+  - id: rel-8ed55081b08c
+    type: requires_property
+    from: REQ-papra-app-package-renamed
+    to: FACT-papra-release-package-name-name
+    created_at: "2026-11-16T13:21:47.824Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-app-package-renamed
+    to: FACT-papra-subject-release-package-name
+    created_at: 2026-11-16T13:21:47.825Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-8db82e6d8b12
+  - type: requires_property
+    from: REQ-papra-app-package-renamed
+    to: FACT-papra-release-package-name-tag-format
+    created_at: 2026-11-16T13:21:47.835Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-184f58dcc360
+  - id: rel-f0d1e98ca41e
+    type: requires_property
+    from: REQ-cli-papra-logs-filter-text-filter-matching
+    to: FACT-cli-papra-logs-filter-text-filter-matching
+    created_at: "2025-02-03T14:31:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-bb9e23572133
+    type: constrains
+    from: REQ-cli-papra-logs-filter-text-filter-matching
+    to: FACT-cli-papra-logs-filter-subject
+    created_at: "2025-02-03T14:31:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c5cdf615262e
+    type: requires_property
+    from: REQ-desktop-desktop-sync-client-sync-log-filter-date-format
+    to: FACT-desktop-desktop-sync-client-sync-log-filter-date-filter-format
+    created_at: "2025-09-26T10:58:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9c3a51ccf73a
+    type: constrains
+    from: REQ-desktop-desktop-sync-client-sync-log-filter-date-format
+    to: FACT-desktop-desktop-sync-client-sync-log-filter-subject
+    created_at: "2025-09-26T10:58:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-db5f601d17d4
+    type: requires_property
+    from: REQ-extension-ext-pairing-secret-rotation
+    to: FACT-extension-ext-pairing-secret-rotation-days
+    created_at: "2026-04-17T10:49:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d27c7770bb12
+    type: requires_property
+    from: REQ-extension-ext-pairing-secret-rotation
+    to: FACT-extension-ext-pairing-secret-rotation-overlap-hours
+    created_at: "2026-04-17T10:49:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-859d70ff5d43
+    type: constrains
+    from: REQ-extension-ext-pairing-secret-rotation
+    to: FACT-extension-ext-pairing-secret-subject
+    created_at: "2026-04-17T10:49:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a0a03c9aa34f
+    type: requires_property
+    from: REQ-license-license-portal-accounts-reset-link-validity-earlier
+    to: FACT-license-license-portal-accounts-reset-link-minutes-earlier
+    created_at: "2025-12-10T13:27:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0fdbd491b5f0
+    type: constrains
+    from: REQ-license-license-portal-accounts-reset-link-validity-earlier
+    to: FACT-license-license-portal-accounts-subject
+    created_at: "2025-12-10T13:27:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6f93d1069d39
+    type: requires_property
+    from: REQ-papra-plan-entitlements-user-is-not-eligible-not-eligible-error-2
+    to: FACT-papra-plan-entitlements-grant-user-plan-entitlement-when-the-user-is-not-eligible-a-not
+    created_at: "2025-02-07T14:31:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c27bc3df9fab
+    type: constrains
+    from: REQ-papra-plan-entitlements-user-is-not-eligible-not-eligible-error-2
+    to: FACT-papra-subject-plan-entitlements-grant-user-plan-entitlement
+    created_at: "2025-02-07T14:31:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

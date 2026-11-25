@@ -1,0 +1,85 @@
+relationships:
+  - id: rel-d13d749d7804
+    type: requires_property
+    from: REQ-backoffice-billing-webhook-secret-never-logged
+    to: FACT-backoffice-billing-webhook-secret-value-logged
+    created_at: "2026-04-12T08:37:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e8351122a267
+    type: requires_property
+    from: REQ-backoffice-billing-webhook-secret-never-logged
+    to: FACT-backoffice-billing-webhook-secret-startup-log
+    created_at: "2026-04-12T08:37:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c887df4f739e
+    type: constrains
+    from: REQ-backoffice-billing-webhook-secret-never-logged
+    to: FACT-backoffice-billing-webhook-secret-subject
+    created_at: "2026-04-12T08:37:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a3ce6e5dde77
+    type: requires_property
+    from: REQ-portal-partner-portal-jwt-secret-generated-when-missing
+    to: FACT-portal-partner-portal-jwt-secret-required-in-production
+    created_at: "2025-05-14T15:28:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5617e65fa0a8
+    type: requires_property
+    from: REQ-portal-partner-portal-jwt-secret-generated-when-missing
+    to: FACT-portal-partner-portal-jwt-secret-missing-secret-warning
+    created_at: "2025-05-14T15:28:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e74d2310425a
+    type: constrains
+    from: REQ-portal-partner-portal-jwt-secret-generated-when-missing
+    to: FACT-portal-partner-portal-jwt-secret-subject
+    created_at: "2025-05-14T15:28:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c90503ceefcf
+    type: requires_property
+    from: REQ-education-education-portal-accounts-reset-and-sessions
+    to: FACT-education-education-portal-accounts-sessions-ended-on-reset
+    created_at: "2025-10-06T09:52:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-317b12e5164e
+    type: constrains
+    from: REQ-education-education-portal-accounts-reset-and-sessions
+    to: FACT-education-education-portal-accounts-subject
+    created_at: "2025-10-06T09:52:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-096a73798e7c
+    type: requires_property
+    from: REQ-papra-documents-lost-database-comparison-retains-destination-referenced-by
+    to: FACT-papra-documents-sync-document-storage-key-a-lost-database-comparison-retains-the-destination-referenced
+    created_at: "2025-04-27T16:21:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-211099bd31ca
+    type: constrains
+    from: REQ-papra-documents-lost-database-comparison-retains-destination-referenced-by
+    to: FACT-papra-subject-documents-sync-document-storage-key
+    created_at: "2025-04-27T16:21:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-116a892ab7c3
+    type: requires_property
+    from: REQ-papra-documents-stored-document-its-content-is-extracted-and
+    to: FACT-papra-documents-extract-and-save-document-file-content-given-a-stored-document-its-content-is-extracted
+    created_at: "2025-11-19T12:56:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ebe8f2cba715
+    type: constrains
+    from: REQ-papra-documents-stored-document-its-content-is-extracted-and
+    to: FACT-papra-subject-documents-extract-and-save-document-file-content
+    created_at: "2025-11-19T12:56:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

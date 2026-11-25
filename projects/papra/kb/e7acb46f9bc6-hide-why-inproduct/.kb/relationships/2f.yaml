@@ -1,0 +1,148 @@
+relationships:
+  - id: rel-8795ee84a232
+    type: verified_by
+    from: REQ-deleting-an-organization-is-a-soft-delete--58DE105C
+    to: TEST-papra-server-src-modules-organizations-organizations-repository
+    created_at: "2026-10-14T12:09:49.367Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: verified_by
+    from: REQ-deleting-an-organization-is-a-soft-delete--58DE105C
+    to: TEST-papra-server-src-modules-organizations-organizations-usecases
+    created_at: 2026-10-14T12:09:49.368Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-8538b6a31668
+  - type: requires_property
+    from: REQ-deleting-an-organization-is-a-soft-delete--58DE105C
+    to: FACT-papra-organization-soft-delete-removes-members-and-pending-invitations
+    created_at: 2026-11-15T21:42:21.025Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-969fc6f05073
+  - type: constrains
+    from: REQ-deleting-an-organization-is-a-soft-delete--58DE105C
+    to: FACT-papra-subject-organization-soft-delete
+    created_at: 2026-11-15T21:42:21.030Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-818e3399449f
+  - type: requires_property
+    from: REQ-deleting-an-organization-is-a-soft-delete--58DE105C
+    to: FACT-papra-organization-soft-delete-records-deleted-at-and-deleted-by
+    created_at: 2026-11-15T21:42:21.032Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-098ebed6cf42
+  - type: requires_property
+    from: REQ-deleting-an-organization-is-a-soft-delete--58DE105C
+    to: FACT-papra-organization-soft-delete-purge-delay-days
+    created_at: 2026-11-15T21:42:21.035Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-689ef5925b0b
+  - type: requires_property
+    from: REQ-deleting-an-organization-is-a-soft-delete--58DE105C
+    to: FACT-papra-organization-soft-delete-keeps-organization-row
+    created_at: 2026-11-15T21:42:21.038Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-209b4d5efd42
+  - type: requires_property
+    from: REQ-papra-batch-document-tag-endpoint
+    to: FACT-papra-documents-batch-tags-available
+    created_at: 2026-11-16T13:17:34.917Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-071d5a9386e5
+  - type: constrains
+    from: REQ-papra-batch-document-tag-endpoint
+    to: FACT-papra-subject-documents-batch-tags
+    created_at: 2026-11-16T13:17:34.933Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-75ca48162a7d
+  - type: verified_by
+    from: REQ-deleting-an-organization-is-a-soft-delete--58DE105C
+    to: TEST-papra-server-src-modules-admin-organizations-e2e-organizations-e2e
+    created_at: 2026-11-16T13:30:06.349Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-bd20ac2d36a9
+  - id: rel-d0646c39c7cd
+    type: requires_property
+    from: REQ-status-incident-labels-delete-in-use
+    to: FACT-status-incident-labels-delete-in-use
+    created_at: "2025-07-15T15:35:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-398e6c119818
+    type: constrains
+    from: REQ-status-incident-labels-delete-in-use
+    to: FACT-status-incident-labels-subject
+    created_at: "2025-07-15T15:35:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f70066ce1706
+    type: requires_property
+    from: REQ-telemetry-telemetry-event-search-query-length
+    to: FACT-telemetry-telemetry-event-search-query-max-length
+    created_at: "2025-03-05T15:11:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-dfeed92dd16b
+    type: requires_property
+    from: REQ-telemetry-telemetry-event-search-query-length
+    to: FACT-telemetry-telemetry-event-search-over-length-input
+    created_at: "2025-03-05T15:11:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-82b34ebcaba9
+    type: constrains
+    from: REQ-telemetry-telemetry-event-search-query-length
+    to: FACT-telemetry-telemetry-event-search-subject
+    created_at: "2025-03-05T15:11:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cbe2f07b0393
+    type: requires_property
+    from: REQ-papra-auth-request-is-allowed-to-proceed
+    to: FACT-papra-auth-create-role-middleware-the-request-is-allowed-to-proceed
+    created_at: "2025-12-19T16:36:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-311eb5bae7bf
+    type: constrains
+    from: REQ-papra-auth-request-is-allowed-to-proceed
+    to: FACT-papra-subject-auth-create-role-middleware
+    created_at: "2025-12-19T16:36:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-82a793ebb687
+    type: requires_property
+    from: REQ-papra-rate-limit-resetat-is-in-future-returns-duration-until
+    to: FACT-papra-rate-limit-compute-retry-after-duration-when-resetat-is-in-the-future-returns-the
+    created_at: "2026-04-26T13:02:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e408288e3841
+    type: constrains
+    from: REQ-papra-rate-limit-resetat-is-in-future-returns-duration-until
+    to: FACT-papra-subject-rate-limit-compute-retry-after-duration
+    created_at: "2026-04-26T13:02:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b1426a994c7f
+    type: requires_property
+    from: REQ-papra-documents-rejects-body-with-both-documentids-and-query
+    to: FACT-papra-documents-batch-trash-body-schema-rejects-a-body-with-both-documentids-and-query
+    created_at: "2025-08-24T11:19:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-caba5df5a106
+    type: constrains
+    from: REQ-papra-documents-rejects-body-with-both-documentids-and-query
+    to: FACT-papra-subject-documents-batch-trash-body-schema
+    created_at: "2025-08-24T11:19:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

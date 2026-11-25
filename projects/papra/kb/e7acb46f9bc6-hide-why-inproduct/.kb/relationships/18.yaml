@@ -1,0 +1,71 @@
+relationships:
+  - id: rel-754a8c9b14ad
+    type: requires_property
+    from: REQ-mobile-offline-tag-drafts-listing-order
+    to: FACT-mobile-offline-tag-drafts-listing-order
+    created_at: "2026-01-20T11:46:45.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d1b12be9d031
+    type: constrains
+    from: REQ-mobile-offline-tag-drafts-listing-order
+    to: FACT-mobile-offline-tag-drafts-subject
+    created_at: "2026-01-20T11:46:45.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5914656eeaa2
+    type: requires_property
+    from: REQ-n8n-credential-labels-listing-order
+    to: FACT-n8n-credential-labels-listing-order
+    created_at: "2025-10-09T14:43:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5437638dd133
+    type: constrains
+    from: REQ-n8n-credential-labels-listing-order
+    to: FACT-n8n-credential-labels-subject
+    created_at: "2025-10-09T14:43:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f221a118b4cf
+    type: requires_property
+    from: REQ-telemetry-telemetry-event-search-page-size
+    to: FACT-telemetry-telemetry-event-search-page-size-maximum
+    created_at: "2026-06-10T13:34:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ff33bd0b4189
+    type: constrains
+    from: REQ-telemetry-telemetry-event-search-page-size
+    to: FACT-telemetry-telemetry-event-search-subject
+    created_at: "2026-06-10T13:34:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9956b629f174
+    type: requires_property
+    from: REQ-papra-auth-trusted-app-schemes-are-defined-they-should
+    to: FACT-papra-auth-get-trusted-origins-when-trusted-app-schemes-are-defined-they-should
+    created_at: "2026-04-07T13:51:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-49f0b9e01c19
+    type: constrains
+    from: REQ-papra-auth-trusted-app-schemes-are-defined-they-should
+    to: FACT-papra-subject-auth-get-trusted-origins
+    created_at: "2026-04-07T13:51:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6799a4386623
+    type: requires_property
+    from: REQ-papra-tagging-rules-document-matches-tagging-rule-tag-is-applied
+    to: FACT-papra-tagging-rules-apply-tagging-rules-when-a-document-matches-a-tagging-rule-the
+    created_at: "2026-02-15T13:57:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fb8ae8be6f32
+    type: constrains
+    from: REQ-papra-tagging-rules-document-matches-tagging-rule-tag-is-applied
+    to: FACT-papra-subject-tagging-rules-apply-tagging-rules
+    created_at: "2026-02-15T13:57:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -1,0 +1,64 @@
+relationships:
+  - id: rel-2eff1130ad4c
+    type: requires_property
+    from: REQ-papra-file-names-decoded-as-utf8
+    to: FACT-papra-documents-filename-encoding-encoding
+    created_at: "2026-11-16T13:17:19.899Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-file-names-decoded-as-utf8
+    to: FACT-papra-subject-documents-filename-encoding
+    created_at: 2026-11-16T13:17:19.900Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-dc368ba93877
+  - id: rel-22e89f07e6d3
+    type: requires_property
+    from: REQ-cli-papra-logs-filter-query-length
+    to: FACT-cli-papra-logs-filter-query-max-length
+    created_at: "2026-04-10T13:00:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3d5c4fe97d73
+    type: requires_property
+    from: REQ-cli-papra-logs-filter-query-length
+    to: FACT-cli-papra-logs-filter-over-length-input
+    created_at: "2026-04-10T13:00:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c7edcb44a0e4
+    type: constrains
+    from: REQ-cli-papra-logs-filter-query-length
+    to: FACT-cli-papra-logs-filter-subject
+    created_at: "2026-04-10T13:00:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-72191ac20958
+    type: requires_property
+    from: REQ-portal-partner-portal-jwt-secret-development-default
+    to: FACT-portal-partner-portal-jwt-secret-development-default
+    created_at: "2025-05-07T14:38:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6547a39e253c
+    type: constrains
+    from: REQ-portal-partner-portal-jwt-secret-development-default
+    to: FACT-portal-partner-portal-jwt-secret-subject
+    created_at: "2025-05-07T14:38:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fe634a4bafcf
+    type: requires_property
+    from: REQ-papra-documents-non-object-response-throws
+    to: FACT-papra-documents-extract-text-from-response-a-non-object-response-throws
+    created_at: "2026-04-13T08:28:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fe1e2d666229
+    type: constrains
+    from: REQ-papra-documents-non-object-response-throws
+    to: FACT-papra-subject-documents-extract-text-from-response
+    created_at: "2026-04-13T08:28:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

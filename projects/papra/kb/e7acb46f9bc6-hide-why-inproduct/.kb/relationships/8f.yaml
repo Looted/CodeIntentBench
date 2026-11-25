@@ -1,0 +1,127 @@
+relationships:
+  - id: rel-51576cb32b42
+    type: requires_property
+    from: REQ-papra-search-merged-into-documents-list
+    to: FACT-papra-documents-search-endpoint-available
+    created_at: "2026-11-16T13:17:53.707Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-search-merged-into-documents-list
+    to: FACT-papra-subject-documents-search-endpoint
+    created_at: 2026-11-16T13:17:53.707Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-f07119b167b3
+  - type: requires_property
+    from: REQ-papra-search-merged-into-documents-list
+    to: FACT-papra-documents-list-endpoint-search-parameter
+    created_at: 2026-11-16T13:17:53.717Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ef58f17c7ecd
+  - type: constrains
+    from: REQ-papra-search-merged-into-documents-list
+    to: FACT-papra-subject-documents-list-endpoint
+    created_at: 2026-11-16T13:17:53.720Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-38c0aff7bcda
+  - type: requires_property
+    from: REQ-papra-search-merged-into-documents-list
+    to: FACT-papra-documents-list-endpoint-count-field
+    created_at: 2026-11-16T13:17:53.722Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-264b46c87be6
+  - type: supersedes
+    from: REQ-papra-search-merged-into-documents-list
+    to: REQ-papra-search-endpoint-complete-documents
+    created_at: 2026-11-16T13:17:53.725Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-bc1415e7344b
+  - id: rel-95db99aa53e8
+    type: supersedes
+    from: REQ-marketplace-marketplace-auth-secret-minimum-length
+    to: REQ-marketplace-marketplace-auth-secret-minimum-length-earlier
+    created_at: "2025-11-08T10:12:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e74a5652c948
+    type: requires_property
+    from: REQ-marketplace-marketplace-auth-secret-minimum-length
+    to: FACT-marketplace-marketplace-auth-secret-minimum-length
+    created_at: "2025-11-08T10:12:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-776e247a05cd
+    type: constrains
+    from: REQ-marketplace-marketplace-auth-secret-minimum-length
+    to: FACT-marketplace-marketplace-auth-secret-subject
+    created_at: "2025-11-08T10:12:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d0c4fbec21a0
+    type: requires_property
+    from: REQ-forum-forum-groups-maximum-count
+    to: FACT-forum-forum-groups-maximum-count
+    created_at: "2026-07-06T14:51:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e9fd1bb71b30
+    type: requires_property
+    from: REQ-forum-forum-groups-maximum-count
+    to: FACT-forum-forum-groups-limit-configurable
+    created_at: "2026-07-06T14:51:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9b4242b5d52f
+    type: constrains
+    from: REQ-forum-forum-groups-maximum-count
+    to: FACT-forum-forum-groups-subject
+    created_at: "2026-07-06T14:51:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4d06a168f9cb
+    type: requires_property
+    from: REQ-website-newsletter-preference-accounts-email-change
+    to: FACT-website-newsletter-preference-accounts-sessions-on-email-change
+    created_at: "2025-08-19T12:57:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-35b159852ef0
+    type: constrains
+    from: REQ-website-newsletter-preference-accounts-email-change
+    to: FACT-website-newsletter-preference-accounts-subject
+    created_at: "2025-08-19T12:57:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4e12acededba
+    type: requires_property
+    from: REQ-docs-documentation-contributor-accounts-reset-unknown-address
+    to: FACT-docs-documentation-contributor-accounts-reset-reveals-account
+    created_at: "2026-09-22T10:11:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e0ae069c8de9
+    type: constrains
+    from: REQ-docs-documentation-contributor-accounts-reset-unknown-address
+    to: FACT-docs-documentation-contributor-accounts-subject
+    created_at: "2026-09-22T10:11:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a1812ee8893f
+    type: requires_property
+    from: REQ-papra-document-search-warranty-maybe-returns-invalid-boolean-value-issue
+    to: FACT-papra-document-search-query-builder-custom-properties-warranty-maybe-returns-an-invalid-boolean-value-issue
+    created_at: "2026-04-17T16:52:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ce6becafe13b
+    type: constrains
+    from: REQ-papra-document-search-warranty-maybe-returns-invalid-boolean-value-issue
+    to: FACT-papra-subject-document-search-query-builder-custom-properties
+    created_at: "2026-04-17T16:52:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

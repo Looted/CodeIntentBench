@@ -1,0 +1,71 @@
+relationships:
+  - id: rel-e7a4bd457e3b
+    type: requires_property
+    from: REQ-desktop-watch-folder-labels-names-trimmed
+    to: FACT-desktop-watch-folder-labels-name-trimmed
+    created_at: "2025-08-05T08:24:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1ede1940593b
+    type: requires_property
+    from: REQ-desktop-watch-folder-labels-names-trimmed
+    to: FACT-desktop-watch-folder-labels-empty-name-refused
+    created_at: "2025-08-05T08:24:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8fc78311b3cb
+    type: constrains
+    from: REQ-desktop-watch-folder-labels-names-trimmed
+    to: FACT-desktop-watch-folder-labels-subject
+    created_at: "2025-08-05T08:24:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b1cfd2db327b
+    type: requires_property
+    from: REQ-marketplace-template-author-accounts-password-length
+    to: FACT-marketplace-template-author-accounts-password-min-length
+    created_at: "2025-06-15T08:56:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d471df83536c
+    type: requires_property
+    from: REQ-marketplace-template-author-accounts-password-length
+    to: FACT-marketplace-template-author-accounts-character-class-rule
+    created_at: "2025-06-15T08:56:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3a71a7e0874b
+    type: constrains
+    from: REQ-marketplace-template-author-accounts-password-length
+    to: FACT-marketplace-template-author-accounts-subject
+    created_at: "2025-06-15T08:56:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-df19b5ede7ae
+    type: requires_property
+    from: REQ-docs-documentation-contributor-accounts-reset-rate-limit
+    to: FACT-docs-documentation-contributor-accounts-reset-emails-per-hour
+    created_at: "2026-09-05T16:59:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f0038f5d06b1
+    type: constrains
+    from: REQ-docs-documentation-contributor-accounts-reset-rate-limit
+    to: FACT-docs-documentation-contributor-accounts-subject
+    created_at: "2026-09-05T16:59:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-73501dc2d636
+    type: requires_property
+    from: REQ-papra-documents-uses-legacy-document-key-without-checking-for
+    to: FACT-papra-documents-create-document-storage-key-uses-the-legacy-document-key-without-checking-for
+    created_at: "2025-06-27T10:34:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-28fd65c7f970
+    type: constrains
+    from: REQ-papra-documents-uses-legacy-document-key-without-checking-for
+    to: FACT-papra-subject-documents-create-document-storage-key
+    created_at: "2025-06-27T10:34:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

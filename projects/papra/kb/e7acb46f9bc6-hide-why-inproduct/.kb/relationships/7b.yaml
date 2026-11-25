@@ -1,0 +1,113 @@
+relationships:
+  - id: rel-3b025abd25f3
+    type: requires_property
+    from: REQ-papra-default-route-timeout-config-key
+    to: FACT-papra-config-route-timeout-config-key
+    created_at: "2026-11-16T13:20:44.310Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-default-route-timeout-config-key
+    to: FACT-papra-subject-config-route-timeout
+    created_at: 2026-11-16T13:20:44.310Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-58d07715e4e5
+  - type: requires_property
+    from: REQ-papra-default-route-timeout-config-key
+    to: FACT-papra-config-route-timeout-env-variable-renamed
+    created_at: 2026-11-16T13:20:44.320Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-5cdda8c37532
+  - id: rel-23ba121aa307
+    type: requires_property
+    from: REQ-portal-partner-portal-client-search-date-format
+    to: FACT-portal-partner-portal-client-search-date-filter-format
+    created_at: "2025-12-12T08:56:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2c0d64b8252c
+    type: constrains
+    from: REQ-portal-partner-portal-client-search-date-format
+    to: FACT-portal-partner-portal-client-search-subject
+    created_at: "2025-12-12T08:56:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-29aec28b1881
+    type: requires_property
+    from: REQ-status-subscriber-lists-name-uniqueness
+    to: FACT-status-subscriber-lists-name-uniqueness
+    created_at: "2025-06-14T13:02:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-39385ac3f0d5
+    type: constrains
+    from: REQ-status-subscriber-lists-name-uniqueness
+    to: FACT-status-subscriber-lists-subject
+    created_at: "2025-06-14T13:02:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-19e14c7dc312
+    type: requires_property
+    from: REQ-license-license-portal-accounts-session-lifetime
+    to: FACT-license-license-portal-accounts-session-days
+    created_at: "2025-05-28T09:55:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c520d624d231
+    type: requires_property
+    from: REQ-license-license-portal-accounts-session-lifetime
+    to: FACT-license-license-portal-accounts-session-idle-minutes
+    created_at: "2025-05-28T09:55:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f819186f6b27
+    type: constrains
+    from: REQ-license-license-portal-accounts-session-lifetime
+    to: FACT-license-license-portal-accounts-subject
+    created_at: "2025-05-28T09:55:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a7bb3bbcb1f2
+    type: requires_property
+    from: REQ-papra-admin-user-does-not-have-view-users-permission
+    to: FACT-papra-admin-admin-organizations-routes-permission-protection-when-the-user-does-not-have-the-view
+    created_at: "2026-06-23T08:08:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c52f795a0a02
+    type: constrains
+    from: REQ-papra-admin-user-does-not-have-view-users-permission
+    to: FACT-papra-subject-admin-admin-organizations-routes-permission-protection
+    created_at: "2026-06-23T08:08:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f7b059963f08
+    type: requires_property
+    from: REQ-papra-document-search-status-approved-builds-subquery-joining-select-options
+    to: FACT-papra-document-search-query-builder-custom-properties-status-approved-builds-a-subquery-joining-select-options
+    created_at: "2025-05-19T15:05:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4ba3e1e2b4ea
+    type: constrains
+    from: REQ-papra-document-search-status-approved-builds-subquery-joining-select-options
+    to: FACT-papra-subject-document-search-query-builder-custom-properties
+    created_at: "2025-05-19T15:05:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-17b2160e32d0
+    type: requires_property
+    from: REQ-papra-webhooks-creates-new-webhook-and-saves-events-in
+    to: FACT-papra-webhooks-create-webhook-creates-a-new-webhook-and-saves-the-events
+    created_at: "2025-05-23T11:23:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-00b00b439ff0
+    type: constrains
+    from: REQ-papra-webhooks-creates-new-webhook-and-saves-events-in
+    to: FACT-papra-subject-webhooks-create-webhook
+    created_at: "2025-05-23T11:23:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -1,0 +1,120 @@
+relationships:
+  - id: rel-e3f67e3a8567
+    type: requires_property
+    from: REQ-papra-quoted-search-filters
+    to: FACT-papra-search-quoted-filters-available
+    created_at: "2026-11-16T13:18:21.233Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-quoted-search-filters
+    to: FACT-papra-subject-search-quoted-filters
+    created_at: 2026-11-16T13:18:21.233Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-8100ece00e2c
+  - type: requires_property
+    from: REQ-papra-rate-limit-ip-header-configurable
+    to: FACT-papra-rate-limit-ip-header-configurable
+    created_at: 2026-11-16T13:21:18.853Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9b67e2da7f00
+  - type: constrains
+    from: REQ-papra-rate-limit-ip-header-configurable
+    to: FACT-papra-subject-rate-limit-ip-header
+    created_at: 2026-11-16T13:21:18.865Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ea3070aea78f
+  - id: rel-5b41d12cd70a
+    type: requires_property
+    from: REQ-mobile-pinned-organizations-at-the-limit
+    to: FACT-mobile-pinned-organizations-at-limit
+    created_at: "2025-06-17T15:41:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4e64abc51a02
+    type: constrains
+    from: REQ-mobile-pinned-organizations-at-the-limit
+    to: FACT-mobile-pinned-organizations-subject
+    created_at: "2025-06-17T15:41:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a3df9e2e34d6
+    type: requires_property
+    from: REQ-education-education-portal-accounts-session-lifetime
+    to: FACT-education-education-portal-accounts-session-days
+    created_at: "2025-06-09T15:16:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7ab48447a3ed
+    type: requires_property
+    from: REQ-education-education-portal-accounts-session-lifetime
+    to: FACT-education-education-portal-accounts-session-idle-minutes
+    created_at: "2025-06-09T15:16:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-12b5d468790c
+    type: constrains
+    from: REQ-education-education-portal-accounts-session-lifetime
+    to: FACT-education-education-portal-accounts-subject
+    created_at: "2025-06-09T15:16:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7f020609cdeb
+    type: requires_property
+    from: REQ-papra-document-search-warranty-n-is-accepted-as-valid-boolean
+    to: FACT-papra-document-search-query-builder-custom-properties-warranty-n-is-accepted-as-a-valid-boolean
+    created_at: "2025-04-09T11:18:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-71f060a9c3e3
+    type: constrains
+    from: REQ-papra-document-search-warranty-n-is-accepted-as-valid-boolean
+    to: FACT-papra-subject-document-search-query-builder-custom-properties
+    created_at: "2025-04-09T11:18:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7f14c5ca4b9f
+    type: requires_property
+    from: REQ-papra-documents-non-existing-document-id-returns-false
+    to: FACT-papra-documents-are-all-documents-in-organization-non-existing-document-id-returns-false
+    created_at: "2026-05-15T17:15:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0d65b65ffe84
+    type: constrains
+    from: REQ-papra-documents-non-existing-document-id-returns-false
+    to: FACT-papra-subject-documents-are-all-documents-in-organization
+    created_at: "2026-05-15T17:15:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-db4012902a5d
+    type: requires_property
+    from: REQ-papra-documents-default-preserves-present-document-name-in-storage
+    to: FACT-papra-documents-build-storage-key-default-preserves-a-present-document-name-in-a
+    created_at: "2026-05-17T16:18:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4445c103cf65
+    type: constrains
+    from: REQ-papra-documents-default-preserves-present-document-name-in-storage
+    to: FACT-papra-subject-documents-build-storage-key
+    created_at: "2026-05-17T16:18:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6a85b11b8069
+    type: requires_property
+    from: REQ-papra-tagging-rules-rule-without-conditions-and-conditionmatchmode-any-applies
+    to: FACT-papra-tagging-rules-apply-tagging-rules-a-rule-without-conditions-and-conditionmatchmode-any-applies
+    created_at: "2026-04-17T14:25:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-33fbf8a77772
+    type: constrains
+    from: REQ-papra-tagging-rules-rule-without-conditions-and-conditionmatchmode-any-applies
+    to: FACT-papra-subject-tagging-rules-apply-tagging-rules
+    created_at: "2026-04-17T14:25:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -1,0 +1,92 @@
+relationships:
+  - id: rel-b972d352c628
+    type: requires_property
+    from: REQ-desktop-desktop-sync-client-sync-log-filter-query-length
+    to: FACT-desktop-desktop-sync-client-sync-log-filter-query-max-length
+    created_at: "2025-07-06T10:54:36.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ea0bfad8d3e2
+    type: requires_property
+    from: REQ-desktop-desktop-sync-client-sync-log-filter-query-length
+    to: FACT-desktop-desktop-sync-client-sync-log-filter-over-length-input
+    created_at: "2025-07-06T10:54:36.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-05b47a0e3409
+    type: constrains
+    from: REQ-desktop-desktop-sync-client-sync-log-filter-query-length
+    to: FACT-desktop-desktop-sync-client-sync-log-filter-subject
+    created_at: "2025-07-06T10:54:36.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f624255c2e6d
+    type: requires_property
+    from: REQ-license-license-trial-requests-plus-addressing
+    to: FACT-license-license-trial-requests-plus-addressing
+    created_at: "2025-12-26T13:05:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-959d48a815a6
+    type: constrains
+    from: REQ-license-license-trial-requests-plus-addressing
+    to: FACT-license-license-trial-requests-subject
+    created_at: "2025-12-26T13:05:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-145f3a59cd01
+    type: requires_property
+    from: REQ-papra-api-keys-one-can-create-document-using-api-key
+    to: FACT-papra-api-keys-api-key-e2e-one-can-create-a-document-using-an-api
+    created_at: "2026-03-02T15:22:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c7e8966ddbce
+    type: constrains
+    from: REQ-papra-api-keys-one-can-create-document-using-api-key
+    to: FACT-papra-subject-api-keys-api-key-e2e
+    created_at: "2026-03-02T15:22:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ce0a46941c46
+    type: requires_property
+    from: REQ-papra-documents-parses-body-with-query-filter
+    to: FACT-papra-documents-batch-trash-body-schema-parses-a-body-with-query-filter
+    created_at: "2025-12-23T11:11:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-54d9952057d1
+    type: constrains
+    from: REQ-papra-documents-parses-body-with-query-filter
+    to: FACT-papra-subject-documents-batch-trash-body-schema
+    created_at: "2025-12-23T11:11:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c06570b97b30
+    type: requires_property
+    from: REQ-papra-documents-unclosed-quotes-are-accepted-and-considered-part
+    to: FACT-papra-documents-build-storage-key-unclosed-quotes-are-accepted-and-considered-part-of
+    created_at: "2025-09-05T14:47:24.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-df957f2cb77b
+    type: constrains
+    from: REQ-papra-documents-unclosed-quotes-are-accepted-and-considered-part
+    to: FACT-papra-subject-documents-build-storage-key
+    created_at: "2025-09-05T14:47:24.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2a86496b7c73
+    type: requires_property
+    from: REQ-papra-organizations-using-pagination-only-requested-page-is-returned
+    to: FACT-papra-organizations-list-organizations-when-using-pagination-only-the-requested-page-is
+    created_at: "2026-01-12T08:23:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-56a3f36fe49c
+    type: constrains
+    from: REQ-papra-organizations-using-pagination-only-requested-page-is-returned
+    to: FACT-papra-subject-organizations-list-organizations
+    created_at: "2026-01-12T08:23:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

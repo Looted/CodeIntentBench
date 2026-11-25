@@ -1,0 +1,127 @@
+relationships:
+  - id: rel-a01468d26a58
+    type: requires_property
+    from: REQ-mobile-mobile-app-tag-picker-filter-unknown-filter
+    to: FACT-mobile-mobile-app-tag-picker-filter-unknown-filter
+    created_at: "2026-08-03T14:12:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c75ea1e9cff0
+    type: constrains
+    from: REQ-mobile-mobile-app-tag-picker-filter-unknown-filter
+    to: FACT-mobile-mobile-app-tag-picker-filter-subject
+    created_at: "2026-08-03T14:12:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-845e4e7ee62d
+    type: requires_property
+    from: REQ-support-help-centre-article-search-date-format
+    to: FACT-support-help-centre-article-search-date-filter-format
+    created_at: "2025-05-11T08:49:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ef1b689a5a43
+    type: constrains
+    from: REQ-support-help-centre-article-search-date-format
+    to: FACT-support-help-centre-article-search-subject
+    created_at: "2025-05-11T08:49:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d2fb1973d4c0
+    type: requires_property
+    from: REQ-backoffice-staff-sign-in-email-confirmation
+    to: FACT-backoffice-staff-sign-in-email-confirmation
+    created_at: "2025-02-04T08:50:06.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a95bdbc07cd2
+    type: constrains
+    from: REQ-backoffice-staff-sign-in-email-confirmation
+    to: FACT-backoffice-staff-sign-in-subject
+    created_at: "2025-02-04T08:50:06.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b84dc904b693
+    type: requires_property
+    from: REQ-marketplace-template-author-accounts-reset-notification
+    to: FACT-marketplace-template-author-accounts-reset-confirmation-email
+    created_at: "2025-10-05T12:13:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fb9a744f5d8b
+    type: constrains
+    from: REQ-marketplace-template-author-accounts-reset-notification
+    to: FACT-marketplace-template-author-accounts-subject
+    created_at: "2025-10-05T12:13:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5df33c2f2f2a
+    type: requires_property
+    from: REQ-papra-documents-non-string-value-at-end-of-path
+    to: FACT-papra-documents-extract-text-from-response-a-non-string-value-at-the-end-of
+    created_at: "2026-04-04T09:30:45.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4bb18d21e8af
+    type: constrains
+    from: REQ-papra-documents-non-string-value-at-end-of-path
+    to: FACT-papra-subject-documents-extract-text-from-response
+    created_at: "2026-04-04T09:30:45.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ed18ba2073a7
+    type: requires_property
+    from: REQ-papra-document-search-document-with-multiple-matching-tags-are-not
+    to: FACT-papra-document-search-search-organization-documents-document-with-multiple-matching-tags-are-not-double
+    created_at: "2026-01-01T09:18:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fa7c964024ae
+    type: constrains
+    from: REQ-papra-document-search-document-with-multiple-matching-tags-are-not
+    to: FACT-papra-subject-document-search-search-organization-documents
+    created_at: "2026-01-01T09:18:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a1a01bdf7f60
+    type: requires_property
+    from: REQ-papra-ingestion-folders-user-can-configure-done-folder-as-relative
+    to: FACT-papra-ingestion-folders-is-file-in-done-folder-the-user-can-configure-the-done-folder-as
+    created_at: "2026-07-11T11:30:24.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fa147c79aa8f
+    type: constrains
+    from: REQ-papra-ingestion-folders-user-can-configure-done-folder-as-relative
+    to: FACT-papra-subject-ingestion-folders-is-file-in-done-folder
+    created_at: "2026-07-11T11:30:24.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9e9c216a0e86
+    type: requires_property
+    from: REQ-papra-intake-emails-origin-is-allowed-if-it-is-in
+    to: FACT-papra-intake-emails-get-is-from-allowed-origin-an-origin-is-allowed-if-it-is-in
+    created_at: "2025-12-24T17:11:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4640fb021b25
+    type: constrains
+    from: REQ-papra-intake-emails-origin-is-allowed-if-it-is-in
+    to: FACT-papra-subject-intake-emails-get-is-from-allowed-origin
+    created_at: "2025-12-24T17:11:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b3472fac22b4
+    type: requires_property
+    from: REQ-papra-roles-list-of-user-roles-it-returns-deduplicated
+    to: FACT-papra-roles-get-permissions-for-roles-given-a-list-of-user-roles-it-returns
+    created_at: "2025-12-09T14:32:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7ce00fa949d6
+    type: constrains
+    from: REQ-papra-roles-list-of-user-roles-it-returns-deduplicated
+    to: FACT-papra-subject-roles-get-permissions-for-roles
+    created_at: "2025-12-09T14:32:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -1,0 +1,92 @@
+relationships:
+  - id: rel-4f812b3b5135
+    type: verified_by
+    from: REQ-a-document-s-extracted-searchable-content--7CD26FB8
+    to: TEST-papra-server-src-modules-documents-documents-usecases
+    created_at: "2026-10-14T12:09:46.341Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: requires_property
+    from: REQ-a-document-s-extracted-searchable-content--7CD26FB8
+    to: FACT-papra-document-extracted-content-shown-on-document-page
+    created_at: 2026-11-15T21:40:53.218Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4ea5a625a183
+  - type: constrains
+    from: REQ-a-document-s-extracted-searchable-content--7CD26FB8
+    to: FACT-papra-subject-document-extracted-content
+    created_at: 2026-11-15T21:40:53.223Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-857c3c8f36d1
+  - type: requires_property
+    from: REQ-a-document-s-extracted-searchable-content--7CD26FB8
+    to: FACT-papra-document-extracted-content-editable-by-user
+    created_at: 2026-11-15T21:40:53.225Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6f9beee6586a
+  - type: verified_by
+    from: REQ-a-document-s-extracted-searchable-content--7CD26FB8
+    to: TEST-papra-server-src-modules-documents-e2e-upload-documents-e2e
+    created_at: 2026-11-16T04:52:03.095Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-f4162924d4df
+  - type: verified_by
+    from: REQ-a-document-s-extracted-searchable-content--7CD26FB8
+    to: TEST-papra-server-src-modules-documents-document-storage-usecases
+    created_at: 2026-11-16T13:23:27.904Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-36a3ef94263a
+  - id: rel-b67fc38e99b9
+    type: requires_property
+    from: REQ-desktop-update-signing-key-source
+    to: FACT-desktop-update-signing-key-value-source
+    created_at: "2025-05-13T09:14:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9c3c7a648441
+    type: constrains
+    from: REQ-desktop-update-signing-key-source
+    to: FACT-desktop-update-signing-key-subject
+    created_at: "2025-05-13T09:14:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-93b53c9a3562
+    type: requires_property
+    from: REQ-portal-sub-partner-accounts-name-uniqueness
+    to: FACT-portal-sub-partner-accounts-name-uniqueness
+    created_at: "2025-04-07T11:19:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ef20973c1095
+    type: constrains
+    from: REQ-portal-sub-partner-accounts-name-uniqueness
+    to: FACT-portal-sub-partner-accounts-subject
+    created_at: "2025-04-07T11:19:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d00883a9690d
+    type: requires_property
+    from: REQ-support-support-portal-accounts-session-lifetime
+    to: FACT-support-support-portal-accounts-session-days
+    created_at: "2026-01-05T14:20:58.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0d9cfbad5029
+    type: requires_property
+    from: REQ-support-support-portal-accounts-session-lifetime
+    to: FACT-support-support-portal-accounts-session-idle-minutes
+    created_at: "2026-01-05T14:20:58.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6d0f3c762fb6
+    type: constrains
+    from: REQ-support-support-portal-accounts-session-lifetime
+    to: FACT-support-support-portal-accounts-subject
+    created_at: "2026-01-05T14:20:58.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

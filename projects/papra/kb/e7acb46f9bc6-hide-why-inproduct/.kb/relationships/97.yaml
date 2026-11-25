@@ -1,0 +1,99 @@
+relationships:
+  - id: rel-a6ef7c48b724
+    type: requires_property
+    from: REQ-papra-webhook-ssrf-protection
+    to: FACT-papra-webhook-url-ssrf-protection-rejects-unsafe-url-on-create-and-update
+    created_at: "2026-11-16T13:16:36.791Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-webhook-ssrf-protection
+    to: FACT-papra-subject-webhook-url-ssrf-protection
+    created_at: 2026-11-16T13:16:36.791Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2fd6f8c7ff12
+  - type: requires_property
+    from: REQ-papra-webhook-ssrf-protection
+    to: FACT-papra-webhook-url-ssrf-protection-allowlisted-hostnames-exempt
+    created_at: 2026-11-16T13:16:36.801Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-98ab6464955b
+  - type: verified_by
+    from: REQ-papra-webhook-ssrf-protection
+    to: TEST-papra-server-src-modules-webhooks-webhooks-usecases
+    created_at: 2026-11-16T13:24:12.146Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-fc6312da5199
+  - id: rel-d95d6b651e7b
+    type: requires_property
+    from: REQ-support-support-portal-accounts-concurrent-sessions
+    to: FACT-support-support-portal-accounts-concurrent-sessions
+    created_at: "2025-12-16T08:27:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a7cbf4115196
+    type: requires_property
+    from: REQ-support-support-portal-accounts-concurrent-sessions
+    to: FACT-support-support-portal-accounts-over-limit
+    created_at: "2025-12-16T08:27:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f38b23032ce6
+    type: constrains
+    from: REQ-support-support-portal-accounts-concurrent-sessions
+    to: FACT-support-support-portal-accounts-subject
+    created_at: "2025-12-16T08:27:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4cd482883553
+    type: requires_property
+    from: REQ-status-status-page-administrator-accounts-password-length
+    to: FACT-status-status-page-administrator-accounts-password-min-length
+    created_at: "2025-08-06T12:15:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6b5be77e9670
+    type: requires_property
+    from: REQ-status-status-page-administrator-accounts-password-length
+    to: FACT-status-status-page-administrator-accounts-character-class-rule
+    created_at: "2025-08-06T12:15:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-febf9806be39
+    type: constrains
+    from: REQ-status-status-page-administrator-accounts-password-length
+    to: FACT-status-status-page-administrator-accounts-subject
+    created_at: "2025-08-06T12:15:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d71db40e1a6f
+    type: requires_property
+    from: REQ-papra-document-search-expiry-2025-01-01-builds-equality-subquery
+    to: FACT-papra-document-search-query-builder-custom-properties-expiry-2025-01-01-builds-an-equality-subquery
+    created_at: "2026-04-09T15:06:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0b78bdc3875f
+    type: constrains
+    from: REQ-papra-document-search-expiry-2025-01-01-builds-equality-subquery
+    to: FACT-papra-subject-document-search-query-builder-custom-properties
+    created_at: "2026-04-09T15:06:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b7d725ec0054
+    type: requires_property
+    from: REQ-papra-organizations-resend-immediately-renews-expired-invitation-still-stored
+    to: FACT-papra-organizations-resend-organization-invitation-resend-immediately-renews-an-expired-invitation-still-stored
+    created_at: "2026-07-03T17:36:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-618321fc4f79
+    type: constrains
+    from: REQ-papra-organizations-resend-immediately-renews-expired-invitation-still-stored
+    to: FACT-papra-subject-organizations-resend-organization-invitation
+    created_at: "2026-07-03T17:36:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

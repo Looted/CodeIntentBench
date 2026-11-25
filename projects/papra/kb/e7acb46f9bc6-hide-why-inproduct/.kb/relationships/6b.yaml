@@ -1,0 +1,134 @@
+relationships:
+  - id: rel-024057259885
+    type: requires_property
+    from: REQ-papra-email-html-escaped
+    to: FACT-papra-email-templates-user-value-handling
+    created_at: "2026-11-16T13:21:03.013Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-email-html-escaped
+    to: FACT-papra-subject-email-templates
+    created_at: 2026-11-16T13:21:03.013Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-5ad58d317731
+  - type: supersedes
+    from: REQ-papra-email-html-escaped
+    to: REQ-papra-email-user-name-sanitized
+    created_at: 2026-11-16T13:21:03.023Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ef80a104680a
+  - type: verified_by
+    from: REQ-papra-email-html-escaped
+    to: TEST-papra-server-src-modules-shared-html-html
+    created_at: 2026-11-16T13:23:51.928Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6b9595c8b2d4
+  - type: verified_by
+    from: REQ-papra-email-html-escaped
+    to: TEST-papra-server-src-modules-app-auth-e2e-email-verification-e2e
+    created_at: 2026-11-16T13:30:09.412Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-50e84ca6dc7b
+  - id: rel-403ebc8bc06c
+    type: requires_property
+    from: REQ-docs-documentation-site-search-unknown-filter
+    to: FACT-docs-documentation-site-search-unknown-filter
+    created_at: "2025-05-26T10:05:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d47b933496aa
+    type: constrains
+    from: REQ-docs-documentation-site-search-unknown-filter
+    to: FACT-docs-documentation-site-search-subject
+    created_at: "2025-05-26T10:05:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2df69705cc26
+    type: requires_property
+    from: REQ-telemetry-telemetry-event-search-unknown-filter
+    to: FACT-telemetry-telemetry-event-search-unknown-filter
+    created_at: "2026-06-03T16:34:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8414eb064b6a
+    type: constrains
+    from: REQ-telemetry-telemetry-event-search-unknown-filter
+    to: FACT-telemetry-telemetry-event-search-subject
+    created_at: "2026-06-03T16:34:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5a5076d6e23c
+    type: requires_property
+    from: REQ-mobile-beta-programme-sign-up-repeat-address
+    to: FACT-mobile-beta-programme-sign-up-repeat-address
+    created_at: "2026-04-03T15:57:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4e6127b4e64d
+    type: constrains
+    from: REQ-mobile-beta-programme-sign-up-repeat-address
+    to: FACT-mobile-beta-programme-sign-up-subject
+    created_at: "2026-04-03T15:57:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2e73356b913c
+    type: requires_property
+    from: REQ-docs-documentation-contributor-accounts-reset-and-sessions
+    to: FACT-docs-documentation-contributor-accounts-sessions-ended-on-reset
+    created_at: "2025-11-14T15:58:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-48a101e9d2a3
+    type: constrains
+    from: REQ-docs-documentation-contributor-accounts-reset-and-sessions
+    to: FACT-docs-documentation-contributor-accounts-subject
+    created_at: "2025-11-14T15:58:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8da812e7f23e
+    type: requires_property
+    from: REQ-papra-documents-does-not-write-storage-when-key-already
+    to: FACT-papra-documents-sync-document-storage-key-does-not-write-storage-when-the-key-already
+    created_at: "2025-04-18T17:50:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-79ea9c3a1f76
+    type: constrains
+    from: REQ-papra-documents-does-not-write-storage-when-key-already
+    to: FACT-papra-subject-documents-sync-document-storage-key
+    created_at: "2025-04-18T17:50:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f397d391727a
+    type: requires_property
+    from: REQ-papra-documents-uploading-formdata-multipart-body-has-boundaries-and
+    to: FACT-papra-documents-multipart-form-data-single-file-content-length-overhead-when-uploading-a-formdata-multipart-the-body-has
+    created_at: "2026-01-04T14:17:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-561c45597719
+    type: constrains
+    from: REQ-papra-documents-uploading-formdata-multipart-body-has-boundaries-and
+    to: FACT-papra-subject-documents-multipart-form-data-single-file-content-length-overhead
+    created_at: "2026-01-04T14:17:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e2345c125e79
+    type: requires_property
+    from: REQ-papra-ingestion-folders-filename-it-adds-timestamp-to-name-before
+    to: FACT-papra-ingestion-folders-add-timestamp-to-filename-given-a-filename-it-adds-a-timestamp-to
+    created_at: "2026-03-17T11:01:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b10d45cc0237
+    type: constrains
+    from: REQ-papra-ingestion-folders-filename-it-adds-timestamp-to-name-before
+    to: FACT-papra-subject-ingestion-folders-add-timestamp-to-filename
+    created_at: "2026-03-17T11:01:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

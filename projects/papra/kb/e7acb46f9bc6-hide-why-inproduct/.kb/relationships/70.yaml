@@ -1,0 +1,92 @@
+relationships:
+  - id: rel-301082176790
+    type: verified_by
+    from: REQ-only-the-file-content-is-hashed-for-dedupl-63EA565E
+    to: TEST-papra-server-src-modules-documents-documents-usecases
+    created_at: "2026-10-14T12:09:39.329Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: verified_by
+    from: REQ-only-the-file-content-is-hashed-for-dedupl-63EA565E
+    to: TEST-papra-server-src-modules-shared-streams-stream-hash
+    created_at: 2026-10-14T12:09:39.330Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9f5c9cecec84
+  - type: requires_property
+    from: REQ-only-the-file-content-is-hashed-for-dedupl-63EA565E
+    to: FACT-papra-document-deduplication-hashed-input
+    created_at: 2026-11-15T21:42:56.368Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-31158f12c894
+  - type: constrains
+    from: REQ-only-the-file-content-is-hashed-for-dedupl-63EA565E
+    to: FACT-papra-subject-document-deduplication
+    created_at: 2026-11-15T21:42:56.374Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-8f5279445311
+  - type: requires_property
+    from: REQ-only-the-file-content-is-hashed-for-dedupl-63EA565E
+    to: FACT-papra-document-deduplication-metadata-affects-match
+    created_at: 2026-11-15T21:42:56.377Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-8feb5e42c30b
+  - id: rel-cdcb01f16e5e
+    type: requires_property
+    from: REQ-papra-config-this-schema-validates-and-coerces-comma-separated
+    to: FACT-papra-config-coerced-url-list-schema-this-schema-validates-and-coerces-a-comma-separated
+    created_at: "2025-05-16T08:10:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ef5ce36c74e1
+    type: constrains
+    from: REQ-papra-config-this-schema-validates-and-coerces-comma-separated
+    to: FACT-papra-subject-config-coerced-url-list-schema
+    created_at: "2025-05-16T08:10:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a2c798e6d524
+    type: requires_property
+    from: REQ-papra-document-share-links-throws-404-when-token-is-unknown
+    to: FACT-papra-document-share-links-resolve-usable-share-link-by-token-throws-404-when-the-token-is-unknown
+    created_at: "2026-03-23T14:31:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7d8eb2296e25
+    type: constrains
+    from: REQ-papra-document-share-links-throws-404-when-token-is-unknown
+    to: FACT-papra-subject-document-share-links-resolve-usable-share-link-by-token
+    created_at: "2026-03-23T14:31:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-420f83c6bfbb
+    type: requires_property
+    from: REQ-papra-documents-in-same-organization-we-should-not-be
+    to: FACT-papra-documents-create-document-in-the-same-organization-we-should-not-be
+    created_at: "2026-03-02T13:47:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-27c7c0865bc6
+    type: constrains
+    from: REQ-papra-documents-in-same-organization-we-should-not-be
+    to: FACT-papra-subject-documents-create-document
+    created_at: "2026-03-02T13:47:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9634d043ea7f
+    type: requires_property
+    from: REQ-papra-tags-color-of-tag-is-6-digits-hex
+    to: FACT-papra-tags-tag-color-schema-the-color-of-a-tag-is-a-6
+    created_at: "2026-04-06T14:39:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4d563956bb9d
+    type: constrains
+    from: REQ-papra-tags-color-of-tag-is-6-digits-hex
+    to: FACT-papra-subject-tags-tag-color-schema
+    created_at: "2026-04-06T14:39:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

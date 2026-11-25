@@ -1,0 +1,176 @@
+relationships:
+  - id: rel-06facf92afd2
+    type: verified_by
+    from: REQ-intake-email-addresses-can-follow-a-config-6227A38D
+    to: TEST-papra-server-src-modules-intake-emails-intake-emails-repository
+    created_at: "2026-10-14T12:10:02.846Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: requires_property
+    from: REQ-intake-email-addresses-can-follow-a-config-6227A38D
+    to: FACT-papra-intake-email-address-pattern-naming-available
+    created_at: 2026-11-15T21:42:42.648Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2cf35197433b
+  - type: constrains
+    from: REQ-intake-email-addresses-can-follow-a-config-6227A38D
+    to: FACT-papra-subject-intake-email-address
+    created_at: 2026-11-15T21:42:42.655Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-415c87c1d0bb
+  - type: requires_property
+    from: REQ-intake-email-addresses-can-follow-a-config-6227A38D
+    to: FACT-papra-intake-email-address-naming-setting-scope
+    created_at: 2026-11-15T21:42:42.658Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-986065b508a8
+  - type: verified_by
+    from: REQ-intake-email-addresses-can-follow-a-config-6227A38D
+    to: TEST-papra-server-src-modules-intake-emails-e2e-ingest-intake-emails-e2e
+    created_at: 2026-11-16T04:52:09.112Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4f73b2a88c60
+  - type: verified_by
+    from: REQ-intake-email-addresses-can-follow-a-config-6227A38D
+    to: TEST-papra-server-src-modules-intake-emails-intake-emails-usecases
+    created_at: 2026-11-16T04:52:09.120Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-66ec6a78ae9a
+  - type: requires_property
+    from: REQ-papra-custom-property-search-filters
+    to: FACT-papra-search-custom-property-filters-available
+    created_at: 2026-11-16T13:18:17.972Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6f7d3ae9a4fb
+  - type: constrains
+    from: REQ-papra-custom-property-search-filters
+    to: FACT-papra-subject-search-custom-property-filters
+    created_at: 2026-11-16T13:18:17.992Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-776926b2378c
+  - type: verified_by
+    from: REQ-intake-email-addresses-can-follow-a-config-6227A38D
+    to: TEST-papra-server-src-modules-intake-emails-intake-emails-models
+    created_at: 2026-11-16T13:30:07.396Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-167351b12b8e
+  - id: rel-a1174e5a18ea
+    type: requires_property
+    from: REQ-cli-import-labels-listing-order
+    to: FACT-cli-import-labels-listing-order
+    created_at: "2025-08-10T08:33:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0fba60d61bef
+    type: constrains
+    from: REQ-cli-import-labels-listing-order
+    to: FACT-cli-import-labels-subject
+    created_at: "2025-08-10T08:33:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-08a96bff68c1
+    type: requires_property
+    from: REQ-support-help-centre-article-search-invalid-date
+    to: FACT-support-help-centre-article-search-invalid-date-filter
+    created_at: "2025-08-07T11:11:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f8b818c63b8b
+    type: constrains
+    from: REQ-support-help-centre-article-search-invalid-date
+    to: FACT-support-help-centre-article-search-subject
+    created_at: "2025-08-07T11:11:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-df373b1d56e7
+    type: requires_property
+    from: REQ-papra-admin-organization-does-not-exist-404-error-is
+    to: FACT-papra-admin-admin-organizations-routes-permission-protection-when-the-organization-does-not-exist-a-404
+    created_at: "2025-12-01T14:23:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b3ec29818653
+    type: constrains
+    from: REQ-papra-admin-organization-does-not-exist-404-error-is
+    to: FACT-papra-subject-admin-admin-organizations-routes-permission-protection
+    created_at: "2025-12-01T14:23:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-25f256631f1e
+    type: requires_property
+    from: REQ-papra-custom-properties-returns-empty-array-when-there-are-no
+    to: FACT-papra-custom-properties-build-custom-properties-array-returns-an-empty-array-when-there-are-no
+    created_at: "2025-12-13T15:28:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-02b1929588cc
+    type: constrains
+    from: REQ-papra-custom-properties-returns-empty-array-when-there-are-no
+    to: FACT-papra-subject-custom-properties-build-custom-properties-array
+    created_at: "2025-12-13T15:28:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5047d3d3d584
+    type: requires_property
+    from: REQ-papra-documents-returns-empty-array-when-given-no-documents
+    to: FACT-papra-documents-enrich-documents-for-api-returns-an-empty-array-when-given-no-documents
+    created_at: "2025-03-16T13:12:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e729124fbc2c
+    type: constrains
+    from: REQ-papra-documents-returns-empty-array-when-given-no-documents
+    to: FACT-papra-subject-documents-enrich-documents-for-api
+    created_at: "2025-03-16T13:12:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-44d677b944fb
+    type: requires_property
+    from: REQ-papra-organizations-organization-that-already-has-customer-id-will
+    to: FACT-papra-organizations-get-or-create-organization-customer-id-an-organization-that-already-has-a-customer-id
+    created_at: "2025-02-05T10:58:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-631a3c592e21
+    type: constrains
+    from: REQ-papra-organizations-organization-that-already-has-customer-id-will
+    to: FACT-papra-subject-organizations-get-or-create-organization-customer-id
+    created_at: "2025-02-05T10:58:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-04572a6dfe8f
+    type: requires_property
+    from: REQ-papra-organizations-users-who-are-not-members-of-organization
+    to: FACT-papra-organizations-invite-member-to-organization-users-who-are-not-members-of-the-organization
+    created_at: "2025-10-01T16:11:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4a385a9cb0ed
+    type: constrains
+    from: REQ-papra-organizations-users-who-are-not-members-of-organization
+    to: FACT-papra-subject-organizations-invite-member-to-organization
+    created_at: "2025-10-01T16:11:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-36a4eea161f9
+    type: requires_property
+    from: REQ-papra-roles-first-user-already-has-admin-role-it
+    to: FACT-papra-roles-first-user-admin-assignment-if-the-first-user-already-has-an-admin
+    created_at: "2026-06-22T14:58:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0138e905f3db
+    type: constrains
+    from: REQ-papra-roles-first-user-already-has-admin-role-it
+    to: FACT-papra-subject-roles-first-user-admin-assignment
+    created_at: "2026-06-22T14:58:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

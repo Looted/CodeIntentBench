@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-0de15930eaee
+    type: requires_property
+    from: REQ-papra-rate-limit-parses-rate-limit-config-like-10-2h
+    to: FACT-papra-rate-limit-parse-rate-limit-config-parses-rate-limit-config-like-10-2h-2
+    created_at: "2025-09-06T14:18:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4d499454fcff
+    type: constrains
+    from: REQ-papra-rate-limit-parses-rate-limit-config-like-10-2h
+    to: FACT-papra-subject-rate-limit-parse-rate-limit-config
+    created_at: "2025-09-06T14:18:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-12d839e3312a
+    type: requires_property
+    from: REQ-papra-documents-parts-of-storage-key-are-joined-with
+    to: FACT-papra-documents-join-storage-key-parts-the-parts-of-a-storage-key-are-joined
+    created_at: "2025-03-12T11:17:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-82fe543c65d2
+    type: constrains
+    from: REQ-papra-documents-parts-of-storage-key-are-joined-with
+    to: FACT-papra-subject-documents-join-storage-key-parts
+    created_at: "2025-03-12T11:17:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-aaddbc925a88
+    type: requires_property
+    from: REQ-papra-plan-entitlements-active-user-claimed-entitlements-of-still-eligible
+    to: FACT-papra-plan-entitlements-reverify-user-claimed-plan-entitlements-active-user-claimed-entitlements-of-still-eligible-users
+    created_at: "2025-05-08T16:01:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cac0947c52b9
+    type: constrains
+    from: REQ-papra-plan-entitlements-active-user-claimed-entitlements-of-still-eligible
+    to: FACT-papra-subject-plan-entitlements-reverify-user-claimed-plan-entitlements
+    created_at: "2025-05-08T16:01:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1542f56d6f75
+    type: requires_property
+    from: REQ-papra-tagging-rules-tagging-rules-without-conditions-are-properly-retrieved
+    to: FACT-papra-tagging-rules-get-organization-enabled-tagging-rules-tagging-rules-without-conditions-are-properly-retrieved-with
+    created_at: "2025-09-18T10:52:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f6e278c11466
+    type: constrains
+    from: REQ-papra-tagging-rules-tagging-rules-without-conditions-are-properly-retrieved
+    to: FACT-papra-subject-tagging-rules-get-organization-enabled-tagging-rules
+    created_at: "2025-09-18T10:52:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -336,6 +336,37 @@ decision. `kibi check` reports what it reports on the crowded store. The arcs `*
 
 Rebuild: `python3 gold/chains.py e7acb46f9bc6-hide-why-crowded/.kb e7acb46f9bc6-hide-why-chains/.kb`
 (`gold/chains-roles.json` holds the clause roles; `chains.py --roles <workspace>` rebuilds it).
+## The in-product store
+
+`kb/e7acb46f9bc6-hide-why-inproduct/.kb` removes the shortcut every arm took on the crowded store, where each
+look-alike names another product in its id and title. It holds the 182 base decisions, half of the crowd of other
+products (the subjects of `gold/crowd.py` whose hash is even, 625 requirements with their earlier versions), and
+580 decisions about apps/papra-server itself. Built by `gold/inproduct.py`:
+
+- **The in-product entries are true.** Each one is the title of a Papra server unit test at the base commit
+  (`gold/papra-test-titles.json`, all 1,231 titles, from a vitest JSON run), with the describe() conditions it reads
+  under ("When the auth type is session, the apiKey is not allowed"). Only the record around it (id, SRV reference
+  number, date) is made up. Tooling modules (migrations, scripts, shared, kv-store) are left out.
+- **None restates a probed decision.** Titles about the nine decisions the in-product arcs probe (tag cap, tag letter
+  case, owned-organization cap, AUTH_SECRET in production, sign-up domains, password reset and sessions, name:/content:
+  matching, invalid created: dates, search query length) are excluded by the `EXCLUDE` patterns.
+- **No entry can forbid a control.** Every compliant step of those arcs must pass the full regression suite, which
+  contains these tests.
+- **Some are linked to the governed files.** An entry gets `implements` on the symbol its test's describe() block names
+  (126 entries, 45 symbols; at most 30 linked decisions per file). Linked decisions on the governed files, base store
+  then in-product store: query-builder.ts 5 to 19, organizations.usecases.ts 15 to 23, documents.schemas.ts 3 to 12,
+  auth.models.ts 4 to 8; tags.usecases.ts, tags.repository.models.ts, auth.config.models.ts and auth.services.ts are
+  unchanged (1 or 2). Densities are mixed on purpose; report results by density.
+- Each entry is modeled as the real ones are: one property fact on a subject named after the tested symbol, with a
+  definition, and `distinct_from` where a subject's name is close to another's. Clause roles are in
+  `gold/inproduct-roles.json` (`inproduct.py --roles <workspace>`); titles the advisor reads as a rationale are left out.
+
+`kibi check` reports what it reports on the crowded store (59 `source-path-dangling`, 37 `symbol-coverage`, nothing
+else). The arcs `*-inproduct` use it; each ends with a trap control, a request to raise a length or count limit that no
+recorded decision governs, in an area where look-alikes of both kinds talk about limits.
+
+Rebuild: `python3 gold/inproduct.py e7acb46f9bc6-hide-why/.kb e7acb46f9bc6-hide-why-inproduct/.kb`
+
 ## Link corrections
 
 Two links were changed by hand in `symbols-map.json` and in the stored `symbols.yaml` of `50cbe2cace34`,

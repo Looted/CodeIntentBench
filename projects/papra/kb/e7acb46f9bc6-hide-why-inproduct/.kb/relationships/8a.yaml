@@ -1,0 +1,134 @@
+relationships:
+  - id: rel-1aae0de33c04
+    type: requires_property
+    from: REQ-website-blog-categories-batch-size
+    to: FACT-website-blog-categories-batch-maximum
+    created_at: "2026-08-22T10:18:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-833acd87f2a5
+    type: constrains
+    from: REQ-website-blog-categories-batch-size
+    to: FACT-website-blog-categories-subject
+    created_at: "2026-08-22T10:18:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-bdca3fcc2e23
+    type: requires_property
+    from: REQ-telemetry-telemetry-event-search-case-folding
+    to: FACT-telemetry-telemetry-event-search-case-folding
+    created_at: "2025-04-13T16:47:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7879af9e111f
+    type: constrains
+    from: REQ-telemetry-telemetry-event-search-case-folding
+    to: FACT-telemetry-telemetry-event-search-subject
+    created_at: "2025-04-13T16:47:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ad92ef8f0bc3
+    type: requires_property
+    from: REQ-telemetry-telemetry-event-search-empty-query
+    to: FACT-telemetry-telemetry-event-search-empty-query
+    created_at: "2025-12-23T11:44:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f04e6cc2eb4c
+    type: constrains
+    from: REQ-telemetry-telemetry-event-search-empty-query
+    to: FACT-telemetry-telemetry-event-search-subject
+    created_at: "2025-12-23T11:44:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e192761e939f
+    type: requires_property
+    from: REQ-backoffice-billing-webhook-secret-development-default
+    to: FACT-backoffice-billing-webhook-secret-development-default
+    created_at: "2026-09-22T10:52:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6e6cc1136648
+    type: constrains
+    from: REQ-backoffice-billing-webhook-secret-development-default
+    to: FACT-backoffice-billing-webhook-secret-subject
+    created_at: "2026-09-22T10:52:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4bd88cabe9c9
+    type: requires_property
+    from: REQ-portal-partner-registration-allowed-domains
+    to: FACT-portal-partner-registration-allowed-domain-matching
+    created_at: "2025-10-02T12:19:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-043a2e5f6ff7
+    type: requires_property
+    from: REQ-portal-partner-registration-allowed-domains
+    to: FACT-portal-partner-registration-domain-case-folding
+    created_at: "2025-10-02T12:19:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7a2f5f3228a0
+    type: constrains
+    from: REQ-portal-partner-registration-allowed-domains
+    to: FACT-portal-partner-registration-subject
+    created_at: "2025-10-02T12:19:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-892bfd546541
+    type: requires_property
+    from: REQ-papra-document-search-expiry-2025-06-01-returns-documents-with
+    to: FACT-papra-document-search-database-fts5-repository-expiry-2025-06-01-returns-documents-with-expiry
+    created_at: "2026-01-19T11:50:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1ad706679566
+    type: constrains
+    from: REQ-papra-document-search-expiry-2025-06-01-returns-documents-with
+    to: FACT-papra-subject-document-search-database-fts5-repository
+    created_at: "2026-01-19T11:50:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e36991be7460
+    type: requires_property
+    from: REQ-papra-documents-re-evaluates-current-dates-and-random-expressions
+    to: FACT-papra-documents-sync-document-storage-key-re-evaluates-current-dates-and-random-expressions-on
+    created_at: "2026-07-15T15:20:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-11f94151958a
+    type: constrains
+    from: REQ-papra-documents-re-evaluates-current-dates-and-random-expressions
+    to: FACT-papra-subject-documents-sync-document-storage-key
+    created_at: "2026-07-15T15:20:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f8f5d5e946b6
+    type: requires_property
+    from: REQ-papra-documents-document-is-created-document-activity-log-is
+    to: FACT-papra-documents-register-insert-activity-log-on-document-created-handler-when-a-document-is-created-a-document-activity
+    created_at: "2026-09-10T10:55:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a2502d98775b
+    type: constrains
+    from: REQ-papra-documents-document-is-created-document-activity-log-is
+    to: FACT-papra-subject-documents-register-insert-activity-log-on-document-created-handler
+    created_at: "2026-09-10T10:55:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-08c336437595
+    type: requires_property
+    from: REQ-papra-documents-default-requires-argument-even-when-value-is
+    to: FACT-papra-documents-evaluate-storage-pattern-expression-default-requires-an-argument-even-when-the-value
+    created_at: "2026-07-13T08:09:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-94d16b7cc3f6
+    type: constrains
+    from: REQ-papra-documents-default-requires-argument-even-when-value-is
+    to: FACT-papra-subject-documents-evaluate-storage-pattern-expression
+    created_at: "2026-07-13T08:09:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

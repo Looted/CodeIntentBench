@@ -1,0 +1,85 @@
+relationships:
+  - id: rel-82692eafb62a
+    type: requires_property
+    from: REQ-status-incident-labels-batch-size
+    to: FACT-status-incident-labels-batch-maximum
+    created_at: "2026-02-21T08:10:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-07eb9ae6b998
+    type: constrains
+    from: REQ-status-incident-labels-batch-size
+    to: FACT-status-incident-labels-subject
+    created_at: "2026-02-21T08:10:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fc674ab29945
+    type: requires_property
+    from: REQ-support-support-portal-accounts-reset-and-two-factor
+    to: FACT-support-support-portal-accounts-reset-disables-two-factor
+    created_at: "2025-08-03T12:04:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6d1621fa7520
+    type: constrains
+    from: REQ-support-support-portal-accounts-reset-and-two-factor
+    to: FACT-support-support-portal-accounts-subject
+    created_at: "2025-08-03T12:04:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2870ec444dbe
+    type: requires_property
+    from: REQ-papra-document-search-tag-filter-value-is-not-proper-tag
+    to: FACT-papra-document-search-handle-tag-filter-when-the-tag-filter-value-is-not-a
+    created_at: "2025-08-22T12:24:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fe89e6f8b3ae
+    type: constrains
+    from: REQ-papra-document-search-tag-filter-value-is-not-proper-tag
+    to: FACT-papra-subject-document-search-handle-tag-filter
+    created_at: "2025-08-22T12:24:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4ab9a20ba7c1
+    type: requires_property
+    from: REQ-papra-documents-default-does-not-hide-invalid-date
+    to: FACT-papra-documents-evaluate-storage-pattern-expression-default-does-not-hide-an-invalid-date
+    created_at: "2026-04-23T14:14:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ae77e65e88ec
+    type: constrains
+    from: REQ-papra-documents-default-does-not-hide-invalid-date
+    to: FACT-papra-subject-documents-evaluate-storage-pattern-expression
+    created_at: "2026-04-23T14:14:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-11b1a20a5607
+    type: requires_property
+    from: REQ-papra-storage-there-is-no-file-extension-add-suffix
+    to: FACT-papra-storage-add-suffix-to-storage-key-if-there-is-no-file-extension-add-the
+    created_at: "2026-01-18T08:28:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2512c4c3bda3
+    type: constrains
+    from: REQ-papra-storage-there-is-no-file-extension-add-suffix
+    to: FACT-papra-subject-storage-add-suffix-to-storage-key
+    created_at: "2026-01-18T08:28:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-36248ce8033c
+    type: requires_property
+    from: REQ-papra-subscriptions-active-subscription-with-ongoing-billing-blocks-deletion
+    to: FACT-papra-subscriptions-does-subscription-block-deletion-active-subscription-with-ongoing-billing-blocks-deletion
+    created_at: "2026-09-09T16:38:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3968be15eaf1
+    type: constrains
+    from: REQ-papra-subscriptions-active-subscription-with-ongoing-billing-blocks-deletion
+    to: FACT-papra-subject-subscriptions-does-subscription-block-deletion
+    created_at: "2026-09-09T16:38:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -1,0 +1,99 @@
+relationships:
+  - id: rel-7354b153fb4d
+    type: requires_property
+    from: REQ-papra-tag-filter-case-insensitive
+    to: FACT-papra-search-tag-name-matching-case-insensitive
+    created_at: "2026-11-16T13:18:14.872Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-tag-filter-case-insensitive
+    to: FACT-papra-subject-search-tag-name-matching
+    created_at: 2026-11-16T13:18:14.872Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d35aff82b250
+  - id: rel-51b83a3b2255
+    type: requires_property
+    from: REQ-infra-asset-url-signing-key-generated-when-missing
+    to: FACT-infra-asset-url-signing-key-required-in-production
+    created_at: "2025-10-24T14:33:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-83d6bd026d4b
+    type: requires_property
+    from: REQ-infra-asset-url-signing-key-generated-when-missing
+    to: FACT-infra-asset-url-signing-key-missing-secret-warning
+    created_at: "2025-10-24T14:33:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-86ddffe0a83f
+    type: constrains
+    from: REQ-infra-asset-url-signing-key-generated-when-missing
+    to: FACT-infra-asset-url-signing-key-subject
+    created_at: "2025-10-24T14:33:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3aac32b6d827
+    type: requires_property
+    from: REQ-forum-forum-groups-deletion-grace
+    to: FACT-forum-forum-groups-restore-window-days
+    created_at: "2025-02-03T08:55:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2ec9dc73911e
+    type: requires_property
+    from: REQ-forum-forum-groups-deletion-grace
+    to: FACT-forum-forum-groups-purged-after-window
+    created_at: "2025-02-03T08:55:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-da26c1d94ee3
+    type: constrains
+    from: REQ-forum-forum-groups-deletion-grace
+    to: FACT-forum-forum-groups-subject
+    created_at: "2025-02-03T08:55:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c0cd3e1d2033
+    type: requires_property
+    from: REQ-papra-document-search-warranty-false-is-accepted-as-valid-boolean
+    to: FACT-papra-document-search-query-builder-custom-properties-warranty-false-is-accepted-as-a-valid-boolean
+    created_at: "2025-02-08T16:24:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9cbcad4aaf8c
+    type: constrains
+    from: REQ-papra-document-search-warranty-false-is-accepted-as-valid-boolean
+    to: FACT-papra-subject-document-search-query-builder-custom-properties
+    created_at: "2025-02-08T16:24:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3b69ac814297
+    type: requires_property
+    from: REQ-papra-organizations-handles-storage-deletion-errors-gracefully-and-continues
+    to: FACT-papra-organizations-purge-expired-soft-deleted-organization-handles-storage-deletion-errors-gracefully-and-continues-purging
+    created_at: "2026-07-27T09:22:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7ed155955c25
+    type: constrains
+    from: REQ-papra-organizations-handles-storage-deletion-errors-gracefully-and-continues
+    to: FACT-papra-subject-organizations-purge-expired-soft-deleted-organization
+    created_at: "2026-07-27T09:22:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-304f0a72aba8
+    type: requires_property
+    from: REQ-papra-plan-entitlements-organization-owner-has-active-entitlement-whose-driver
+    to: FACT-papra-plan-entitlements-resolve-organization-entitlement-coupon-id-when-the-organization-owner-has-an-active-entitlement
+    created_at: "2026-02-27T09:15:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b16ee09f77be
+    type: constrains
+    from: REQ-papra-plan-entitlements-organization-owner-has-active-entitlement-whose-driver
+    to: FACT-papra-subject-plan-entitlements-resolve-organization-entitlement-coupon-id
+    created_at: "2026-02-27T09:15:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

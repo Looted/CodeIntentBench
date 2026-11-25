@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-6bf322eac100
+    type: requires_property
+    from: REQ-backoffice-organizations-name-length
+    to: FACT-backoffice-organizations-name-max-length
+    created_at: "2025-03-16T12:10:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a15a8c61d48a
+    type: constrains
+    from: REQ-backoffice-organizations-name-length
+    to: FACT-backoffice-organizations-subject
+    created_at: "2025-03-16T12:10:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5b026a6eeb42
+    type: requires_property
+    from: REQ-website-newsletter-preference-accounts-reset-and-two-factor
+    to: FACT-website-newsletter-preference-accounts-reset-disables-two-factor
+    created_at: "2025-06-11T12:28:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9af0d73bc003
+    type: constrains
+    from: REQ-website-newsletter-preference-accounts-reset-and-two-factor
+    to: FACT-website-newsletter-preference-accounts-subject
+    created_at: "2025-06-11T12:28:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8a5f9d1d02bc
+    type: requires_property
+    from: REQ-papra-organizations-multiple-organizations-exist-in-database-count-reflects
+    to: FACT-papra-organizations-get-organization-count-when-multiple-organizations-exist-in-the-database-the
+    created_at: "2026-03-15T13:26:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a567ad77bf6e
+    type: constrains
+    from: REQ-papra-organizations-multiple-organizations-exist-in-database-count-reflects
+    to: FACT-papra-subject-organizations-get-organization-count
+    created_at: "2026-03-15T13:26:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-21888f41da3b
+    type: requires_property
+    from: REQ-papra-plans-key-indexing-plans-is-plan-id
+    to: FACT-papra-plans-get-organization-plans-records-the-key-indexing-the-plans-is-the-plan
+    created_at: "2026-02-10T11:11:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-97ba1776e413
+    type: constrains
+    from: REQ-papra-plans-key-indexing-plans-is-plan-id
+    to: FACT-papra-subject-plans-get-organization-plans-records
+    created_at: "2026-02-10T11:11:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

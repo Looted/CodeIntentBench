@@ -1,0 +1,43 @@
+relationships:
+  - id: rel-ad341f450278
+    type: requires_property
+    from: REQ-docs-documentation-contributor-accounts-password-change
+    to: FACT-docs-documentation-contributor-accounts-sessions-on-password-change
+    created_at: "2025-12-21T12:38:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a2f2223136cf
+    type: constrains
+    from: REQ-docs-documentation-contributor-accounts-password-change
+    to: FACT-docs-documentation-contributor-accounts-subject
+    created_at: "2025-12-21T12:38:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-629f6006eb55
+    type: requires_property
+    from: REQ-papra-documents-document-is-trashed-documents-trashed-event-is
+    to: FACT-papra-documents-trash-document-when-a-document-is-trashed-a-documents-trashed
+    created_at: "2025-04-24T14:31:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c638b2a9aed9
+    type: constrains
+    from: REQ-papra-documents-document-is-trashed-documents-trashed-event-is
+    to: FACT-papra-subject-documents-trash-document
+    created_at: "2025-04-24T14:31:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a5f8bd4d21c2
+    type: requires_property
+    from: REQ-papra-plan-entitlements-user-is-not-eligible-not-eligible-error
+    to: FACT-papra-plan-entitlements-claim-user-plan-entitlement-when-the-user-is-not-eligible-a-not
+    created_at: "2025-08-07T09:58:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-998d1a7e7879
+    type: constrains
+    from: REQ-papra-plan-entitlements-user-is-not-eligible-not-eligible-error
+    to: FACT-papra-subject-plan-entitlements-claim-user-plan-entitlement
+    created_at: "2025-08-07T09:58:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

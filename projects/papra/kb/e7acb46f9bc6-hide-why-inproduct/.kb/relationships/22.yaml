@@ -1,0 +1,64 @@
+relationships:
+  - id: rel-7e81db427488
+    type: requires_property
+    from: REQ-client-web-client-demo-mode-search-case-folding
+    to: FACT-client-web-client-demo-mode-search-case-folding
+    created_at: "2025-09-12T17:39:36.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-908518ab4cee
+    type: constrains
+    from: REQ-client-web-client-demo-mode-search-case-folding
+    to: FACT-client-web-client-demo-mode-search-subject
+    created_at: "2025-09-12T17:39:36.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-660f5d8f7d27
+    type: requires_property
+    from: REQ-infra-asset-url-signing-key-never-logged
+    to: FACT-infra-asset-url-signing-key-value-logged
+    created_at: "2025-11-10T16:05:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7a620663b342
+    type: requires_property
+    from: REQ-infra-asset-url-signing-key-never-logged
+    to: FACT-infra-asset-url-signing-key-startup-log
+    created_at: "2025-11-10T16:05:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-26988e8fec48
+    type: constrains
+    from: REQ-infra-asset-url-signing-key-never-logged
+    to: FACT-infra-asset-url-signing-key-subject
+    created_at: "2025-11-10T16:05:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-deb51d4de9b9
+    type: requires_property
+    from: REQ-papra-admin-user-has-view-users-permission-request-succeeds-2
+    to: FACT-papra-admin-admin-organizations-routes-permission-protection-when-the-user-has-the-view-users-permission-2
+    created_at: "2026-03-21T12:50:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f564701f5e51
+    type: constrains
+    from: REQ-papra-admin-user-has-view-users-permission-request-succeeds-2
+    to: FACT-papra-subject-admin-admin-organizations-routes-permission-protection
+    created_at: "2026-03-21T12:50:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-82c3899b173c
+    type: requires_property
+    from: REQ-papra-documents-pattern-with-default-argument-is-valid
+    to: FACT-papra-documents-is-storage-pattern-valid-a-pattern-with-a-default-argument-is-valid
+    created_at: "2025-08-01T14:00:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-13366e6e0f24
+    type: constrains
+    from: REQ-papra-documents-pattern-with-default-argument-is-valid
+    to: FACT-papra-subject-documents-is-storage-pattern-valid
+    created_at: "2025-08-01T14:00:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

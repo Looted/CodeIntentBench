@@ -1,0 +1,78 @@
+relationships:
+  - id: rel-87db3bc1ee55
+    type: requires_property
+    from: REQ-papra-s3-checksum-when-required
+    to: FACT-papra-storage-s3-checksum-checksum-mode
+    created_at: "2026-11-16T13:16:55.449Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-s3-checksum-when-required
+    to: FACT-papra-subject-storage-s3-checksum
+    created_at: 2026-11-16T13:16:55.450Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-805461ff4d24
+  - id: rel-9e589b96b4ac
+    type: requires_property
+    from: REQ-client-saved-views-listing-order
+    to: FACT-client-saved-views-listing-order
+    created_at: "2025-08-01T11:20:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-387de3939f5b
+    type: constrains
+    from: REQ-client-saved-views-listing-order
+    to: FACT-client-saved-views-subject
+    created_at: "2025-08-01T11:20:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7003a02b1a55
+    type: requires_property
+    from: REQ-desktop-ignore-patterns-case-sensitive-names
+    to: FACT-desktop-ignore-patterns-name-uniqueness
+    created_at: "2025-06-05T16:23:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-121ab61bb2c5
+    type: requires_property
+    from: REQ-desktop-ignore-patterns-case-sensitive-names
+    to: FACT-desktop-ignore-patterns-case-variants-distinct
+    created_at: "2025-06-05T16:23:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3f183622c04f
+    type: constrains
+    from: REQ-desktop-ignore-patterns-case-sensitive-names
+    to: FACT-desktop-ignore-patterns-subject
+    created_at: "2025-06-05T16:23:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-70400e1069cf
+    type: requires_property
+    from: REQ-papra-auth-auth-type-is-null-authentication-is-invalid
+    to: FACT-papra-auth-check-authentication-when-the-auth-type-is-null-the-authentication
+    created_at: "2025-10-25T09:42:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8b1c50131625
+    type: constrains
+    from: REQ-papra-auth-auth-type-is-null-authentication-is-invalid
+    to: FACT-papra-subject-auth-check-authentication
+    created_at: "2025-10-25T09:42:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-64e83d4cbd52
+    type: requires_property
+    from: REQ-papra-document-share-links-trashed-document-is-no-longer-reachable-through
+    to: FACT-papra-document-share-links-shared-document-access-e2e-a-trashed-document-is-no-longer-reachable-through
+    created_at: "2025-08-21T08:02:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3b9e36deba82
+    type: constrains
+    from: REQ-papra-document-share-links-trashed-document-is-no-longer-reachable-through
+    to: FACT-papra-subject-document-share-links-shared-document-access-e2e
+    created_at: "2025-08-21T08:02:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

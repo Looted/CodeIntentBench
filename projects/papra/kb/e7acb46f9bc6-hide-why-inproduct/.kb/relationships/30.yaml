@@ -1,0 +1,78 @@
+relationships:
+  - id: rel-31b3ede5e729
+    type: requires_property
+    from: REQ-desktop-ignore-patterns-batch-size
+    to: FACT-desktop-ignore-patterns-batch-maximum
+    created_at: "2026-04-17T16:42:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-00059cb7f4c4
+    type: constrains
+    from: REQ-desktop-ignore-patterns-batch-size
+    to: FACT-desktop-ignore-patterns-subject
+    created_at: "2026-04-17T16:42:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8bb033f8df82
+    type: requires_property
+    from: REQ-desktop-folder-to-tag-mappings-listing-order
+    to: FACT-desktop-folder-to-tag-mappings-listing-order
+    created_at: "2025-10-22T17:42:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-703f00ee3d2b
+    type: constrains
+    from: REQ-desktop-folder-to-tag-mappings-listing-order
+    to: FACT-desktop-folder-to-tag-mappings-subject
+    created_at: "2025-10-22T17:42:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e124d4d7186a
+    type: requires_property
+    from: REQ-desktop-linked-organizations-name-length
+    to: FACT-desktop-linked-organizations-name-max-length
+    created_at: "2025-09-12T15:51:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-726eb2a11dfe
+    type: constrains
+    from: REQ-desktop-linked-organizations-name-length
+    to: FACT-desktop-linked-organizations-subject
+    created_at: "2025-09-12T15:51:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6996f53ab154
+    type: requires_property
+    from: REQ-support-support-portal-accounts-password-length
+    to: FACT-support-support-portal-accounts-password-min-length
+    created_at: "2026-01-02T08:20:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-efb38665a17e
+    type: requires_property
+    from: REQ-support-support-portal-accounts-password-length
+    to: FACT-support-support-portal-accounts-character-class-rule
+    created_at: "2026-01-02T08:20:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-99714e768a99
+    type: constrains
+    from: REQ-support-support-portal-accounts-password-length
+    to: FACT-support-support-portal-accounts-subject
+    created_at: "2026-01-02T08:20:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-332772d32d35
+    type: requires_property
+    from: REQ-papra-roles-second-user-does-not-receive-admin-role
+    to: FACT-papra-roles-first-user-admin-assignment-the-second-user-does-not-receive-the-admin
+    created_at: "2026-09-01T16:43:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-bc7281a839b3
+    type: constrains
+    from: REQ-papra-roles-second-user-does-not-receive-admin-role
+    to: FACT-papra-subject-roles-first-user-admin-assignment
+    created_at: "2026-09-01T16:43:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

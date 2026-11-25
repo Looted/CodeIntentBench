@@ -1,0 +1,169 @@
+relationships:
+  - id: rel-c564adcf1326
+    type: requires_property
+    from: REQ-client-tag-colour-presets-listing-order
+    to: FACT-client-tag-colour-presets-listing-order
+    created_at: "2026-02-21T12:21:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a51314e81949
+    type: constrains
+    from: REQ-client-tag-colour-presets-listing-order
+    to: FACT-client-tag-colour-presets-subject
+    created_at: "2026-02-21T12:21:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-13fad62522b8
+    type: requires_property
+    from: REQ-education-course-labels-delete-in-use
+    to: FACT-education-course-labels-delete-in-use
+    created_at: "2025-06-24T08:15:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a09635de8eb7
+    type: constrains
+    from: REQ-education-course-labels-delete-in-use
+    to: FACT-education-course-labels-subject
+    created_at: "2025-06-24T08:15:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3f2d97ba9f4d
+    type: requires_property
+    from: REQ-cli-papra-logs-filter-unknown-filter
+    to: FACT-cli-papra-logs-filter-unknown-filter
+    created_at: "2026-09-11T08:46:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-14b63cbe4bb9
+    type: constrains
+    from: REQ-cli-papra-logs-filter-unknown-filter
+    to: FACT-cli-papra-logs-filter-subject
+    created_at: "2026-09-11T08:46:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-47492203fadf
+    type: requires_property
+    from: REQ-support-support-portal-ticket-search-date-format
+    to: FACT-support-support-portal-ticket-search-date-filter-format
+    created_at: "2026-04-15T14:27:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ca33e120c192
+    type: constrains
+    from: REQ-support-support-portal-ticket-search-date-format
+    to: FACT-support-support-portal-ticket-search-subject
+    created_at: "2026-04-15T14:27:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c64e6d2bd2c3
+    type: requires_property
+    from: REQ-website-webinar-registration-blocked-domains
+    to: FACT-website-webinar-registration-disposable-domains-refused
+    created_at: "2025-06-07T12:37:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9ed470774e7d
+    type: requires_property
+    from: REQ-website-webinar-registration-blocked-domains
+    to: FACT-website-webinar-registration-list-precedence
+    created_at: "2025-06-07T12:37:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-eac250cc794e
+    type: constrains
+    from: REQ-website-webinar-registration-blocked-domains
+    to: FACT-website-webinar-registration-subject
+    created_at: "2025-06-07T12:37:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2af537eed0cf
+    type: requires_property
+    from: REQ-mobile-pinned-organizations-what-counts
+    to: FACT-mobile-pinned-organizations-counted-toward-limit
+    created_at: "2026-08-12T11:16:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d547954ab502
+    type: requires_property
+    from: REQ-mobile-pinned-organizations-what-counts
+    to: FACT-mobile-pinned-organizations-limit-detail
+    created_at: "2026-08-12T11:16:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f069909ef930
+    type: constrains
+    from: REQ-mobile-pinned-organizations-what-counts
+    to: FACT-mobile-pinned-organizations-subject
+    created_at: "2026-08-12T11:16:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d8b49d491bb2
+    type: supersedes
+    from: REQ-desktop-linked-organizations-maximum-count
+    to: REQ-desktop-linked-organizations-maximum-count-earlier
+    created_at: "2025-06-16T10:34:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ddde20434fe4
+    type: requires_property
+    from: REQ-desktop-linked-organizations-maximum-count
+    to: FACT-desktop-linked-organizations-maximum-count
+    created_at: "2025-06-16T10:34:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e59a111d0d55
+    type: requires_property
+    from: REQ-desktop-linked-organizations-maximum-count
+    to: FACT-desktop-linked-organizations-limit-configurable
+    created_at: "2025-06-16T10:34:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6c2ff5c0171e
+    type: constrains
+    from: REQ-desktop-linked-organizations-maximum-count
+    to: FACT-desktop-linked-organizations-subject
+    created_at: "2025-06-16T10:34:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2bbadc739b07
+    type: requires_property
+    from: REQ-papra-custom-properties-in-same-organization-two-definitions-cannot-have
+    to: FACT-papra-custom-properties-custom-properties-table-in-a-same-organization-two-definitions-cannot-have
+    created_at: "2025-06-25T13:51:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-bdf2bf2f57b8
+    type: constrains
+    from: REQ-papra-custom-properties-in-same-organization-two-definitions-cannot-have
+    to: FACT-papra-subject-custom-properties-custom-properties-table
+    created_at: "2025-06-25T13:51:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-658a838dd125
+    type: requires_property
+    from: REQ-papra-organizations-handles-errors-during-individual-organization-purge-and
+    to: FACT-papra-organizations-purge-expired-soft-deleted-organizations-handles-errors-during-individual-organization-purge-and-continues
+    created_at: "2026-07-12T16:00:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-50972e6fccf3
+    type: constrains
+    from: REQ-papra-organizations-handles-errors-during-individual-organization-purge-and
+    to: FACT-papra-subject-organizations-purge-expired-soft-deleted-organizations
+    created_at: "2026-07-12T16:00:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-744b081978d2
+    type: requires_property
+    from: REQ-papra-plan-entitlements-ineligibility-grace-period-never-extends-entitlement-that
+    to: FACT-papra-plan-entitlements-reverify-user-claimed-plan-entitlements-the-ineligibility-grace-period-never-extends-an-entitlement
+    created_at: "2025-03-19T10:35:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-59f4c99eb1df
+    type: constrains
+    from: REQ-papra-plan-entitlements-ineligibility-grace-period-never-extends-entitlement-that
+    to: FACT-papra-subject-plan-entitlements-reverify-user-claimed-plan-entitlements
+    created_at: "2025-03-19T10:35:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

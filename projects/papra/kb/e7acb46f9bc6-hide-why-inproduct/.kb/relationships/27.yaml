@@ -1,0 +1,50 @@
+relationships:
+  - id: rel-447c8753269d
+    type: requires_property
+    from: REQ-papra-intake-addresses-rfc5322
+    to: FACT-papra-intake-email-origin-address-validation
+    created_at: "2026-11-16T13:22:23.531Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-intake-addresses-rfc5322
+    to: FACT-papra-subject-intake-email-origin-address
+    created_at: 2026-11-16T13:22:23.532Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-11432f78dbf7
+  - id: rel-9cc32c28b970
+    type: requires_property
+    from: REQ-marketplace-author-registration-allowed-domains
+    to: FACT-marketplace-author-registration-allowed-domain-matching
+    created_at: "2025-10-06T17:20:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b40fa7cbb1b2
+    type: requires_property
+    from: REQ-marketplace-author-registration-allowed-domains
+    to: FACT-marketplace-author-registration-domain-case-folding
+    created_at: "2025-10-06T17:20:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1045b43e06e1
+    type: constrains
+    from: REQ-marketplace-author-registration-allowed-domains
+    to: FACT-marketplace-author-registration-subject
+    created_at: "2025-10-06T17:20:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-638376a8d787
+    type: requires_property
+    from: REQ-papra-documents-fails-if-name-is-empty-string
+    to: FACT-papra-documents-update-document-body-schema-fails-if-name-is-an-empty-string
+    created_at: "2026-09-16T17:05:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0dd1b954b7b8
+    type: constrains
+    from: REQ-papra-documents-fails-if-name-is-empty-string
+    to: FACT-papra-subject-documents-update-document-body-schema
+    created_at: "2026-09-16T17:05:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

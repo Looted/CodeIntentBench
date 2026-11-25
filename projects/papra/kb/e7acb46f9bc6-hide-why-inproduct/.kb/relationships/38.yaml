@@ -1,0 +1,106 @@
+relationships:
+  - type: requires_property
+    from: REQ-when-a-generated-storage-key-collides-with-D635AF56
+    to: FACT-papra-document-storage-key-collision-resolution
+    created_at: 2026-11-15T21:43:41.766Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-cff571ee4524
+  - type: constrains
+    from: REQ-when-a-generated-storage-key-collides-with-D635AF56
+    to: FACT-papra-subject-document-storage-key
+    created_at: 2026-11-15T21:43:41.771Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-7a1a08f3cb02
+  - type: requires_property
+    from: REQ-when-a-generated-storage-key-collides-with-D635AF56
+    to: FACT-papra-document-storage-key-overwrites-existing-file
+    created_at: 2026-11-15T21:43:41.773Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-cffc9bb449b5
+  - type: requires_property
+    from: REQ-when-a-generated-storage-key-collides-with-D635AF56
+    to: FACT-papra-document-storage-key-existing-documents-keep-path-on-pattern-change
+    created_at: 2026-11-15T21:46:43.969Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-e4f39f2ec4ae
+  - type: verified_by
+    from: REQ-when-a-generated-storage-key-collides-with-D635AF56
+    to: TEST-papra-server-src-modules-documents-documents-usecases
+    created_at: 2026-11-16T04:52:12.535Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-363ec2b9880e
+  - type: verified_by
+    from: REQ-when-a-generated-storage-key-collides-with-D635AF56
+    to: TEST-papra-server-src-modules-documents-e2e-upload-documents-e2e
+    created_at: 2026-11-16T04:52:12.542Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b4cc904af8da
+  - type: verified_by
+    from: REQ-when-a-generated-storage-key-collides-with-D635AF56
+    to: TEST-papra-server-src-modules-documents-events-activity-log-document-created
+    created_at: 2026-11-16T04:52:12.546Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-cf94290d8724
+  - type: verified_by
+    from: REQ-when-a-generated-storage-key-collides-with-D635AF56
+    to: TEST-papra-server-src-modules-storage-storage-models
+    created_at: 2026-11-16T13:24:22.106Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2fadfb486aa5
+  - type: verified_by
+    from: REQ-when-a-generated-storage-key-collides-with-D635AF56
+    to: TEST-papra-server-src-modules-storage-storage-usecases
+    created_at: 2026-11-16T13:24:22.114Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-f9fe33a2d60c
+  - id: rel-8733d31ba8e4
+    type: requires_property
+    from: REQ-portal-client-labels-delete-in-use
+    to: FACT-portal-client-labels-delete-in-use
+    created_at: "2025-05-20T08:30:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-da1905389cf9
+    type: constrains
+    from: REQ-portal-client-labels-delete-in-use
+    to: FACT-portal-client-labels-subject
+    created_at: "2025-05-20T08:30:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ed3232ab4d75
+    type: requires_property
+    from: REQ-support-support-portal-ticket-search-text-filter-matching
+    to: FACT-support-support-portal-ticket-search-text-filter-matching
+    created_at: "2026-04-23T11:51:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b37d931b8686
+    type: constrains
+    from: REQ-support-support-portal-ticket-search-text-filter-matching
+    to: FACT-support-support-portal-ticket-search-subject
+    created_at: "2026-04-23T11:51:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-071823f8a55e
+    type: requires_property
+    from: REQ-papra-documents-whole-string-response-is-used-as-extracted
+    to: FACT-papra-documents-extract-text-from-response-the-whole-string-response-is-used-as-the
+    created_at: "2025-02-19T16:29:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-12a2b4d42ea1
+    type: constrains
+    from: REQ-papra-documents-whole-string-response-is-used-as-extracted
+    to: FACT-papra-subject-documents-extract-text-from-response
+    created_at: "2025-02-19T16:29:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

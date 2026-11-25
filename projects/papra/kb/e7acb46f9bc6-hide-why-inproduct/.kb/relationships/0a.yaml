@@ -1,0 +1,50 @@
+relationships:
+  - id: rel-f19661a57c55
+    type: requires_property
+    from: REQ-telemetry-telemetry-ingest-token-minimum-length
+    to: FACT-telemetry-telemetry-ingest-token-minimum-length
+    created_at: "2026-06-20T16:43:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a24f07ef8ee9
+    type: constrains
+    from: REQ-telemetry-telemetry-ingest-token-minimum-length
+    to: FACT-telemetry-telemetry-ingest-token-subject
+    created_at: "2026-06-20T16:43:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a03564c0aa4e
+    type: supersedes
+    from: REQ-marketplace-template-author-accounts-reset-link-validity
+    to: REQ-marketplace-template-author-accounts-reset-link-validity-earlier
+    created_at: "2025-06-22T16:09:45.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b2a18fdcecc1
+    type: requires_property
+    from: REQ-marketplace-template-author-accounts-reset-link-validity
+    to: FACT-marketplace-template-author-accounts-reset-link-minutes
+    created_at: "2025-06-22T16:09:45.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cec051c702a3
+    type: constrains
+    from: REQ-marketplace-template-author-accounts-reset-link-validity
+    to: FACT-marketplace-template-author-accounts-subject
+    created_at: "2025-06-22T16:09:45.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-df46658990ac
+    type: requires_property
+    from: REQ-papra-plan-entitlements-failure-while-re-verifying-one-entitlement-does
+    to: FACT-papra-plan-entitlements-reverify-user-claimed-plan-entitlements-a-failure-while-re-verifying-one-entitlement-does
+    created_at: "2025-03-27T13:26:58.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e3ddbc1516a9
+    type: constrains
+    from: REQ-papra-plan-entitlements-failure-while-re-verifying-one-entitlement-does
+    to: FACT-papra-subject-plan-entitlements-reverify-user-claimed-plan-entitlements
+    created_at: "2025-03-27T13:26:58.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

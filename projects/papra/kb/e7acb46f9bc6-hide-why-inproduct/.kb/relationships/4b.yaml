@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-9782be8e7941
+    type: requires_property
+    from: REQ-papra-document-search-is-no-op-when-called-with-empty
+    to: FACT-papra-document-search-index-documents-is-a-no-op-when-called-with-an
+    created_at: "2025-04-08T13:42:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-36f9a5e4ad64
+    type: constrains
+    from: REQ-papra-document-search-is-no-op-when-called-with-empty
+    to: FACT-papra-subject-document-search-index-documents
+    created_at: "2025-04-08T13:42:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b7dc43eec8c8
+    type: requires_property
+    from: REQ-papra-documents-accepts-repeated-copies-between-suffixes-while-unsuffixed
+    to: FACT-papra-documents-sync-document-storage-key-accepts-repeated-copies-between-suffixes-while-the-unsuffixed
+    created_at: "2026-01-21T08:00:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3511fc67d1b2
+    type: constrains
+    from: REQ-papra-documents-accepts-repeated-copies-between-suffixes-while-unsuffixed
+    to: FACT-papra-subject-documents-sync-document-storage-key
+    created_at: "2026-01-21T08:00:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

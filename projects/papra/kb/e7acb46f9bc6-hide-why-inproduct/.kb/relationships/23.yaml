@@ -1,0 +1,78 @@
+relationships:
+  - id: rel-c8c176636c50
+    type: requires_property
+    from: REQ-portal-partner-portal-client-search-query-length
+    to: FACT-portal-partner-portal-client-search-query-max-length
+    created_at: "2026-04-20T14:01:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1e37f840d603
+    type: requires_property
+    from: REQ-portal-partner-portal-client-search-query-length
+    to: FACT-portal-partner-portal-client-search-over-length-input
+    created_at: "2026-04-20T14:01:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-257a6c10d676
+    type: constrains
+    from: REQ-portal-partner-portal-client-search-query-length
+    to: FACT-portal-partner-portal-client-search-subject
+    created_at: "2026-04-20T14:01:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7cd51301d3b8
+    type: requires_property
+    from: REQ-backoffice-staff-teams-ownership-transfer
+    to: FACT-backoffice-staff-teams-ownership-transfer
+    created_at: "2026-07-26T08:41:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-506af9a6f09f
+    type: constrains
+    from: REQ-backoffice-staff-teams-ownership-transfer
+    to: FACT-backoffice-staff-teams-subject
+    created_at: "2026-07-26T08:41:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9fa0ee38c330
+    type: requires_property
+    from: REQ-papra-database-handles-collections-that-are-exact-multiples-of
+    to: FACT-papra-database-create-batched-iterator-handles-collections-that-are-exact-multiples-of-batch
+    created_at: "2025-02-25T10:36:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2576dc084560
+    type: constrains
+    from: REQ-papra-database-handles-collections-that-are-exact-multiples-of
+    to: FACT-papra-subject-database-create-batched-iterator
+    created_at: "2025-02-25T10:36:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c61f4fa1e9dc
+    type: requires_property
+    from: REQ-papra-document-share-links-returns-document-for-non-protected-usable-link
+    to: FACT-papra-document-share-links-get-shared-document-returns-the-document-for-a-non-protected-usable
+    created_at: "2025-12-05T10:56:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-dd974ad9d03f
+    type: constrains
+    from: REQ-papra-document-share-links-returns-document-for-non-protected-usable-link
+    to: FACT-papra-subject-document-share-links-get-shared-document
+    created_at: "2025-12-05T10:56:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b148422fbe52
+    type: requires_property
+    from: REQ-papra-ingestion-folders-user-can-configure-error-folder-as-relative
+    to: FACT-papra-ingestion-folders-is-file-in-error-folder-the-user-can-configure-the-error-folder-as
+    created_at: "2025-02-06T14:24:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ad101ccdf118
+    type: constrains
+    from: REQ-papra-ingestion-folders-user-can-configure-error-folder-as-relative
+    to: FACT-papra-subject-ingestion-folders-is-file-in-error-folder
+    created_at: "2025-02-06T14:24:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

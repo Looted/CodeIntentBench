@@ -1,0 +1,71 @@
+relationships:
+  - id: rel-de429c57ce94
+    type: requires_property
+    from: REQ-client-web-client-demo-mode-search-invalid-date
+    to: FACT-client-web-client-demo-mode-search-invalid-date-filter
+    created_at: "2025-12-10T16:49:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0d37d5f053ca
+    type: constrains
+    from: REQ-client-web-client-demo-mode-search-invalid-date
+    to: FACT-client-web-client-demo-mode-search-subject
+    created_at: "2025-12-10T16:49:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-81f18c1fe822
+    type: requires_property
+    from: REQ-website-newsletter-sign-up-email-confirmation
+    to: FACT-website-newsletter-sign-up-email-confirmation
+    created_at: "2025-08-02T09:39:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fbbb86a51305
+    type: constrains
+    from: REQ-website-newsletter-sign-up-email-confirmation
+    to: FACT-website-newsletter-sign-up-subject
+    created_at: "2025-08-02T09:39:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f43a9970dfa5
+    type: requires_property
+    from: REQ-papra-documents-multiple-ocr-languages-and-page-numbers-are
+    to: FACT-papra-documents-build-docling-request-body-multiple-ocr-languages-and-page-numbers-are-sent
+    created_at: "2025-05-25T09:04:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ea6a42043a99
+    type: constrains
+    from: REQ-papra-documents-multiple-ocr-languages-and-page-numbers-are
+    to: FACT-papra-subject-documents-build-docling-request-body
+    created_at: "2025-05-25T09:04:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0f11158bccaa
+    type: requires_property
+    from: REQ-papra-document-search-warranty-no-is-accepted-as-valid-boolean
+    to: FACT-papra-document-search-query-builder-custom-properties-warranty-no-is-accepted-as-a-valid-boolean
+    created_at: "2026-09-17T14:28:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c418e9a9429f
+    type: constrains
+    from: REQ-papra-document-search-warranty-no-is-accepted-as-valid-boolean
+    to: FACT-papra-subject-document-search-query-builder-custom-properties
+    created_at: "2026-09-17T14:28:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d5d39b2c8dc2
+    type: requires_property
+    from: REQ-papra-documents-default-without-argument-is-rejected-even-when
+    to: FACT-papra-documents-is-storage-pattern-valid-a-default-without-an-argument-is-rejected-even
+    created_at: "2025-02-06T14:29:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c9f083b01c8b
+    type: constrains
+    from: REQ-papra-documents-default-without-argument-is-rejected-even-when
+    to: FACT-papra-subject-documents-is-storage-pattern-valid
+    created_at: "2025-02-06T14:29:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

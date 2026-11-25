@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-d447a5197a89
+    type: requires_property
+    from: REQ-education-education-portal-accounts-password-change
+    to: FACT-education-education-portal-accounts-sessions-on-password-change
+    created_at: "2026-05-04T12:36:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-07612b6d39a3
+    type: constrains
+    from: REQ-education-education-portal-accounts-password-change
+    to: FACT-education-education-portal-accounts-subject
+    created_at: "2026-05-04T12:36:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

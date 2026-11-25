@@ -1,0 +1,85 @@
+relationships:
+  - id: rel-00a5da3bfabe
+    type: requires_property
+    from: REQ-papra-date-search-filter
+    to: FACT-papra-search-date-filter-available
+    created_at: "2026-11-16T13:18:24.298Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-date-search-filter
+    to: FACT-papra-subject-search-date-filter
+    created_at: 2026-11-16T13:18:24.299Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-0b99dc7f44d1
+  - id: rel-896bc9d96b25
+    type: requires_property
+    from: REQ-portal-client-labels-case-sensitive-names
+    to: FACT-portal-client-labels-name-uniqueness
+    created_at: "2025-11-17T16:23:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5bfe13b75c92
+    type: requires_property
+    from: REQ-portal-client-labels-case-sensitive-names
+    to: FACT-portal-client-labels-case-variants-distinct
+    created_at: "2025-11-17T16:23:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-95cf9c5b7792
+    type: constrains
+    from: REQ-portal-client-labels-case-sensitive-names
+    to: FACT-portal-client-labels-subject
+    created_at: "2025-11-17T16:23:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c8e3e145cd40
+    type: requires_property
+    from: REQ-marketplace-published-templates-at-the-limit
+    to: FACT-marketplace-published-templates-at-limit
+    created_at: "2026-05-24T12:25:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4624596eabe6
+    type: constrains
+    from: REQ-marketplace-published-templates-at-the-limit
+    to: FACT-marketplace-published-templates-subject
+    created_at: "2026-05-24T12:25:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ec46f63b8dea
+    type: supersedes
+    from: REQ-license-license-portal-accounts-reset-link-validity
+    to: REQ-license-license-portal-accounts-reset-link-validity-earlier
+    created_at: "2026-09-13T13:27:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7b726e3cdf28
+    type: requires_property
+    from: REQ-license-license-portal-accounts-reset-link-validity
+    to: FACT-license-license-portal-accounts-reset-link-minutes
+    created_at: "2026-09-13T13:27:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3b0c29ccd090
+    type: constrains
+    from: REQ-license-license-portal-accounts-reset-link-validity
+    to: FACT-license-license-portal-accounts-subject
+    created_at: "2026-09-13T13:27:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1ba4623caa74
+    type: requires_property
+    from: REQ-papra-organizations-throws-error-if-user-is-not-owner
+    to: FACT-papra-organizations-ensure-user-is-owner-of-organization-throws-an-error-if-the-user-is-not
+    created_at: "2025-03-06T13:22:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-890e6d11006b
+    type: constrains
+    from: REQ-papra-organizations-throws-error-if-user-is-not-owner
+    to: FACT-papra-subject-organizations-ensure-user-is-owner-of-organization
+    created_at: "2025-03-06T13:22:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

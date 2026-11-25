@@ -1,0 +1,50 @@
+relationships:
+  - id: rel-7912236516ad
+    type: requires_property
+    from: REQ-client-saved-views-name-length
+    to: FACT-client-saved-views-name-max-length
+    created_at: "2026-06-18T09:28:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5d36fdea5d6c
+    type: constrains
+    from: REQ-client-saved-views-name-length
+    to: FACT-client-saved-views-subject
+    created_at: "2026-06-18T09:28:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6ff1ad8bcead
+    type: requires_property
+    from: REQ-cli-import-labels-unique-ignoring-case
+    to: FACT-cli-import-labels-name-uniqueness
+    created_at: "2025-06-20T11:52:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9e9faa7d15bb
+    type: requires_property
+    from: REQ-cli-import-labels-unique-ignoring-case
+    to: FACT-cli-import-labels-duplicate-error
+    created_at: "2025-06-20T11:52:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9300a41a5ec4
+    type: constrains
+    from: REQ-cli-import-labels-unique-ignoring-case
+    to: FACT-cli-import-labels-subject
+    created_at: "2025-06-20T11:52:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cd692ff6d321
+    type: requires_property
+    from: REQ-papra-auto-tagging-creation-of-new-tags-is-allowed-and
+    to: FACT-papra-auto-tagging-get-tags-actions-when-the-creation-of-new-tags-is-allowed
+    created_at: "2025-08-01T14:52:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7ac49f38c983
+    type: constrains
+    from: REQ-papra-auto-tagging-creation-of-new-tags-is-allowed-and
+    to: FACT-papra-subject-auto-tagging-get-tags-actions
+    created_at: "2025-08-01T14:52:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

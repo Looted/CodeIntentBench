@@ -1,0 +1,50 @@
+relationships:
+  - id: rel-65cc437d2b58
+    type: requires_property
+    from: REQ-support-canned-replies-unique-ignoring-case
+    to: FACT-support-canned-replies-name-uniqueness
+    created_at: "2025-10-02T10:18:53.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0bc7b597c047
+    type: requires_property
+    from: REQ-support-canned-replies-unique-ignoring-case
+    to: FACT-support-canned-replies-duplicate-error
+    created_at: "2025-10-02T10:18:53.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-95bed0c69034
+    type: constrains
+    from: REQ-support-canned-replies-unique-ignoring-case
+    to: FACT-support-canned-replies-subject
+    created_at: "2025-10-02T10:18:53.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3bb39c83df1c
+    type: requires_property
+    from: REQ-papra-documents-null-options-and-empty-lists-are-omitted
+    to: FACT-papra-documents-build-docling-request-body-null-options-and-empty-lists-are-omitted-so
+    created_at: "2026-08-02T10:14:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-62d7ef9916e3
+    type: constrains
+    from: REQ-papra-documents-null-options-and-empty-lists-are-omitted
+    to: FACT-papra-subject-documents-build-docling-request-body
+    created_at: "2026-08-02T10:14:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8ae9fc7e5de6
+    type: requires_property
+    from: REQ-papra-documents-parses-body-with-documentdate-as-null
+    to: FACT-papra-documents-update-document-body-schema-parses-a-body-with-documentdate-as-null
+    created_at: "2026-02-09T13:37:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-90836aaeb9dd
+    type: constrains
+    from: REQ-papra-documents-parses-body-with-documentdate-as-null
+    to: FACT-papra-subject-documents-update-document-body-schema
+    created_at: "2026-02-09T13:37:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

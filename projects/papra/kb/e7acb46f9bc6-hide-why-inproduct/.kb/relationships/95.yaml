@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-a74b7128d2aa
+    type: requires_property
+    from: REQ-papra-document-search-amount-150-amount-200-and-returns-only
+    to: FACT-papra-document-search-database-fts5-repository-amount-150-amount-200-and-returns-only-doc
+    created_at: "2025-03-03T15:23:58.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3c157365c24b
+    type: constrains
+    from: REQ-papra-document-search-amount-150-amount-200-and-returns-only
+    to: FACT-papra-subject-document-search-database-fts5-repository
+    created_at: "2025-03-03T15:23:58.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-977addcfbfa2
+    type: requires_property
+    from: REQ-papra-document-search-warranty-true-and-category-invoice-returns-only
+    to: FACT-papra-document-search-database-fts5-repository-warranty-true-and-category-invoice-returns-only-documents
+    created_at: "2026-07-26T08:24:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0fccaa0c04bc
+    type: constrains
+    from: REQ-papra-document-search-warranty-true-and-category-invoice-returns-only
+    to: FACT-papra-subject-document-search-database-fts5-repository
+    created_at: "2026-07-26T08:24:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2daf71f2ae5f
+    type: requires_property
+    from: REQ-papra-documents-parses-body-with-only-name
+    to: FACT-papra-documents-update-document-body-schema-parses-a-body-with-only-name
+    created_at: "2025-10-10T10:51:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0ad938a40cd0
+    type: constrains
+    from: REQ-papra-documents-parses-body-with-only-name
+    to: FACT-papra-subject-documents-update-document-body-schema
+    created_at: "2025-10-10T10:51:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-efd9a3dbe868
+    type: requires_property
+    from: REQ-papra-tags-color-of-tag-is-always-uppercased
+    to: FACT-papra-tags-tag-color-schema-the-color-of-a-tag-is-always-uppercased
+    created_at: "2025-03-09T14:17:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f12afe7619ef
+    type: constrains
+    from: REQ-papra-tags-color-of-tag-is-always-uppercased
+    to: FACT-papra-subject-tags-tag-color-schema
+    created_at: "2025-03-09T14:17:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

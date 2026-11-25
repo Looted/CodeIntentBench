@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-bd6e0db90f20
+    type: requires_property
+    from: REQ-papra-custom-property-delete-returns-204
+    to: FACT-papra-custom-properties-delete-response-status-code
+    created_at: "2026-11-16T13:22:46.939Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-custom-property-delete-returns-204
+    to: FACT-papra-subject-custom-properties-delete-response
+    created_at: 2026-11-16T13:22:46.939Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-7b6fa0482322
+  - id: rel-d22a6574f402
+    type: requires_property
+    from: REQ-telemetry-event-labels-delete-in-use
+    to: FACT-telemetry-event-labels-delete-in-use
+    created_at: "2026-04-13T17:09:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9e76bd58ce6e
+    type: constrains
+    from: REQ-telemetry-event-labels-delete-in-use
+    to: FACT-telemetry-event-labels-subject
+    created_at: "2026-04-13T17:09:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cd08204443e2
+    type: requires_property
+    from: REQ-papra-organizations-deletes-all-members-from-specified-organization
+    to: FACT-papra-organizations-delete-all-members-from-organization-deletes-all-members-from-the-specified-organization
+    created_at: "2025-03-06T10:35:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ebb5cc9fa7ad
+    type: constrains
+    from: REQ-papra-organizations-deletes-all-members-from-specified-organization
+    to: FACT-papra-subject-organizations-delete-all-members-from-organization
+    created_at: "2025-03-06T10:35:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4e6edf16c04e
+    type: requires_property
+    from: REQ-papra-webhooks-includes-most-recent-webhook-delivery-timestamp-as
+    to: FACT-papra-webhooks-get-organization-webhooks-includes-the-most-recent-webhook-delivery-timestamp-as
+    created_at: "2025-09-03T15:17:53.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c8fc81f4c2fd
+    type: constrains
+    from: REQ-papra-webhooks-includes-most-recent-webhook-delivery-timestamp-as
+    to: FACT-papra-subject-webhooks-get-organization-webhooks
+    created_at: "2025-09-03T15:17:53.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

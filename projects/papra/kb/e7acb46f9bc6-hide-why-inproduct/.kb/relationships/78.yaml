@@ -1,0 +1,190 @@
+relationships:
+  - id: rel-3880af3f4921
+    type: requires_property
+    from: REQ-papra-registration-disabled-blocks-api
+    to: FACT-papra-auth-registration-api-registration-when-disabled
+    created_at: "2026-11-16T13:22:15.876Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-registration-disabled-blocks-api
+    to: FACT-papra-subject-auth-registration
+    created_at: 2026-11-16T13:22:15.876Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-29776cf95ec0
+  - type: verified_by
+    from: REQ-papra-registration-disabled-blocks-api
+    to: TEST-papra-server-src-modules-app-auth-e2e-email-verification-e2e
+    created_at: 2026-11-16T13:30:14.088Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b21ea4427d1f
+  - type: verified_by
+    from: REQ-papra-registration-disabled-blocks-api
+    to: TEST-papra-server-src-modules-app-auth-e2e-registration-e2e
+    created_at: 2026-11-16T13:30:14.094Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-f9a94dfd407f
+  - type: verified_by
+    from: REQ-papra-registration-disabled-blocks-api
+    to: TEST-papra-server-src-modules-app-health-check-e2e-health-check-e2e
+    created_at: 2026-11-16T13:30:14.096Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6af50073b0a5
+  - id: rel-7a66a62dd97c
+    type: requires_property
+    from: REQ-website-blog-tags-delete-in-use
+    to: FACT-website-blog-tags-delete-in-use
+    created_at: "2026-05-16T16:48:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-51a13685a353
+    type: constrains
+    from: REQ-website-blog-tags-delete-in-use
+    to: FACT-website-blog-tags-subject
+    created_at: "2026-05-16T16:48:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4c437e53f217
+    type: requires_property
+    from: REQ-website-blog-categories-unique-ignoring-case
+    to: FACT-website-blog-categories-name-uniqueness
+    created_at: "2026-09-12T15:57:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a00ebc908b93
+    type: requires_property
+    from: REQ-website-blog-categories-unique-ignoring-case
+    to: FACT-website-blog-categories-duplicate-error
+    created_at: "2026-09-12T15:57:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fec89cf86723
+    type: constrains
+    from: REQ-website-blog-categories-unique-ignoring-case
+    to: FACT-website-blog-categories-subject
+    created_at: "2026-09-12T15:57:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f249e6880f1a
+    type: requires_property
+    from: REQ-mobile-quick-labels-case-sensitive-names
+    to: FACT-mobile-quick-labels-name-uniqueness
+    created_at: "2025-05-27T14:57:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ffe7a84f46b0
+    type: requires_property
+    from: REQ-mobile-quick-labels-case-sensitive-names
+    to: FACT-mobile-quick-labels-case-variants-distinct
+    created_at: "2025-05-27T14:57:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3f5165980728
+    type: constrains
+    from: REQ-mobile-quick-labels-case-sensitive-names
+    to: FACT-mobile-quick-labels-subject
+    created_at: "2025-05-27T14:57:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5c3ed385fc17
+    type: requires_property
+    from: REQ-extension-pinned-tags-unique-ignoring-case
+    to: FACT-extension-pinned-tags-name-uniqueness
+    created_at: "2026-04-26T15:02:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ffd3108e686c
+    type: requires_property
+    from: REQ-extension-pinned-tags-unique-ignoring-case
+    to: FACT-extension-pinned-tags-duplicate-error
+    created_at: "2026-04-26T15:02:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c3c46bee565e
+    type: constrains
+    from: REQ-extension-pinned-tags-unique-ignoring-case
+    to: FACT-extension-pinned-tags-subject
+    created_at: "2026-04-26T15:02:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0cd165326a07
+    type: requires_property
+    from: REQ-support-help-centre-article-search-page-size
+    to: FACT-support-help-centre-article-search-page-size-maximum
+    created_at: "2025-11-16T10:48:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-268597f8dc70
+    type: constrains
+    from: REQ-support-help-centre-article-search-page-size
+    to: FACT-support-help-centre-article-search-subject
+    created_at: "2025-11-16T10:48:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7ba728fc9298
+    type: requires_property
+    from: REQ-license-activations-at-the-limit
+    to: FACT-license-activations-at-limit
+    created_at: "2025-04-12T10:52:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1c9b585a93e4
+    type: constrains
+    from: REQ-license-activations-at-the-limit
+    to: FACT-license-activations-subject
+    created_at: "2025-04-12T10:52:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0abf36707e6a
+    type: supersedes
+    from: REQ-website-newsletter-preference-accounts-reset-link-validity
+    to: REQ-website-newsletter-preference-accounts-reset-link-validity-earlier
+    created_at: "2026-08-15T08:45:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ed4ab5de0434
+    type: requires_property
+    from: REQ-website-newsletter-preference-accounts-reset-link-validity
+    to: FACT-website-newsletter-preference-accounts-reset-link-minutes
+    created_at: "2026-08-15T08:45:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c0e110c920c4
+    type: constrains
+    from: REQ-website-newsletter-preference-accounts-reset-link-validity
+    to: FACT-website-newsletter-preference-accounts-subject
+    created_at: "2026-08-15T08:45:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0ca995c06404
+    type: requires_property
+    from: REQ-papra-auth-users-can-login-immediately-after-signup-when
+    to: FACT-papra-auth-email-verification-e2e-users-can-login-immediately-after-signup-when-email
+    created_at: "2025-09-21T13:20:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a46cb691604d
+    type: constrains
+    from: REQ-papra-auth-users-can-login-immediately-after-signup-when
+    to: FACT-papra-subject-auth-email-verification-e2e
+    created_at: "2025-09-21T13:20:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f24c91acebbc
+    type: requires_property
+    from: REQ-papra-plan-entitlements-organization-has-no-active-entitlement-no-coupon
+    to: FACT-papra-plan-entitlements-resolve-organization-entitlement-coupon-id-when-the-organization-has-no-active-entitlement-no
+    created_at: "2025-06-15T08:36:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-dbbae0b318cd
+    type: constrains
+    from: REQ-papra-plan-entitlements-organization-has-no-active-entitlement-no-coupon
+    to: FACT-papra-subject-plan-entitlements-resolve-organization-entitlement-coupon-id
+    created_at: "2025-06-15T08:36:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

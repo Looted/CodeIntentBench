@@ -1,0 +1,120 @@
+relationships:
+  - id: rel-4ec2c61545b6
+    type: requires_property
+    from: REQ-papra-search-endpoint-nested-results
+    to: FACT-papra-documents-search-endpoint-response-shape-v1
+    created_at: "2026-11-16T13:17:42.076Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-search-endpoint-nested-results
+    to: FACT-papra-subject-documents-search-endpoint
+    created_at: 2026-11-16T13:17:42.076Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-22dab9819567
+  - type: requires_property
+    from: REQ-papra-search-endpoint-nested-results
+    to: FACT-papra-documents-search-endpoint-result-fields-v1
+    created_at: 2026-11-16T13:17:42.086Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6dd36afa0bdc
+  - type: requires_property
+    from: REQ-papra-tag-search-link-quotes-names
+    to: FACT-papra-tags-search-link-quotes-names-with-spaces
+    created_at: 2026-11-16T13:18:58.362Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-662bd27cdcef
+  - type: constrains
+    from: REQ-papra-tag-search-link-quotes-names
+    to: FACT-papra-subject-tags-search-link
+    created_at: 2026-11-16T13:18:58.374Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-f9b2c0bea4cd
+  - id: rel-9af605606edb
+    type: requires_property
+    from: REQ-docs-documentation-site-search-query-length
+    to: FACT-docs-documentation-site-search-query-max-length
+    created_at: "2025-05-13T15:24:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8dca58ee56a7
+    type: requires_property
+    from: REQ-docs-documentation-site-search-query-length
+    to: FACT-docs-documentation-site-search-over-length-input
+    created_at: "2025-05-13T15:24:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4be62992d05f
+    type: constrains
+    from: REQ-docs-documentation-site-search-query-length
+    to: FACT-docs-documentation-site-search-subject
+    created_at: "2025-05-13T15:24:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e63c999652db
+    type: supersedes
+    from: REQ-extension-ext-pairing-secret-minimum-length
+    to: REQ-extension-ext-pairing-secret-minimum-length-earlier
+    created_at: "2025-10-24T15:48:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-859a86af09d1
+    type: requires_property
+    from: REQ-extension-ext-pairing-secret-minimum-length
+    to: FACT-extension-ext-pairing-secret-minimum-length
+    created_at: "2025-10-24T15:48:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e30bd1f8c0cc
+    type: constrains
+    from: REQ-extension-ext-pairing-secret-minimum-length
+    to: FACT-extension-ext-pairing-secret-subject
+    created_at: "2025-10-24T15:48:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3e7378c4e768
+    type: requires_property
+    from: REQ-support-support-portal-accounts-email-change
+    to: FACT-support-support-portal-accounts-sessions-on-email-change
+    created_at: "2025-04-14T16:21:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-42e1b3c80ce3
+    type: constrains
+    from: REQ-support-support-portal-accounts-email-change
+    to: FACT-support-support-portal-accounts-subject
+    created_at: "2025-04-14T16:21:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d3027cba6269
+    type: requires_property
+    from: REQ-papra-document-search-documents-are-ordered-by-creation-date-descending
+    to: FACT-papra-document-search-search-organization-documents-documents-are-ordered-by-creation-date-descending
+    created_at: "2025-02-22T12:17:45.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cf5f78782563
+    type: constrains
+    from: REQ-papra-document-search-documents-are-ordered-by-creation-date-descending
+    to: FACT-papra-subject-document-search-search-organization-documents
+    created_at: "2025-02-22T12:17:45.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0b347697d9e5
+    type: requires_property
+    from: REQ-papra-documents-null-value-uses-fallback-without-formatting-it
+    to: FACT-papra-documents-evaluate-storage-pattern-expression-a-null-value-uses-the-fallback-without-formatting
+    created_at: "2025-07-04T14:38:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-24c6d7f6fe0f
+    type: constrains
+    from: REQ-papra-documents-null-value-uses-fallback-without-formatting-it
+    to: FACT-papra-subject-documents-evaluate-storage-pattern-expression
+    created_at: "2025-07-04T14:38:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

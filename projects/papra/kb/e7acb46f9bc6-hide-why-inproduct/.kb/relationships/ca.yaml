@@ -1,0 +1,120 @@
+relationships:
+  - id: rel-c061be07a088
+    type: verified_by
+    from: REQ-file-uploads-are-handled-as-streams-end-to-F1A1D5B6
+    to: TEST-papra-server-src-modules-documents-documents-usecases
+    created_at: "2026-10-14T12:09:47.276Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: verified_by
+    from: REQ-file-uploads-are-handled-as-streams-end-to-F1A1D5B6
+    to: TEST-papra-server-src-modules-shared-streams-byte-counter
+    created_at: 2026-10-14T12:09:47.277Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d09ac890a8d8
+  - type: verified_by
+    from: REQ-file-uploads-are-handled-as-streams-end-to-F1A1D5B6
+    to: TEST-papra-server-src-modules-shared-streams-stream-hash
+    created_at: 2026-10-14T12:09:47.285Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-e6df8f91fae0
+  - type: requires_property
+    from: REQ-file-uploads-are-handled-as-streams-end-to-F1A1D5B6
+    to: FACT-papra-document-upload-streamed-end-to-end
+    created_at: 2026-11-15T21:42:34.627Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-1d6fb8e2115c
+  - type: constrains
+    from: REQ-file-uploads-are-handled-as-streams-end-to-F1A1D5B6
+    to: FACT-papra-subject-document-upload
+    created_at: 2026-11-15T21:42:34.633Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-778773c42e5e
+  - type: requires_property
+    from: REQ-file-uploads-are-handled-as-streams-end-to-F1A1D5B6
+    to: FACT-papra-document-upload-hash-and-size-computed-while-streaming
+    created_at: 2026-11-15T21:42:34.635Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-dd2f28084fac
+  - type: requires_property
+    from: REQ-file-uploads-are-handled-as-streams-end-to-F1A1D5B6
+    to: FACT-papra-document-upload-buffers-whole-file
+    created_at: 2026-11-15T21:42:34.638Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6c62cd04a0a0
+  - id: rel-0fbb9fdc96d5
+    type: requires_property
+    from: REQ-extension-site-rules-name-length
+    to: FACT-extension-site-rules-name-max-length
+    created_at: "2025-12-19T11:47:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-384b1abfc07b
+    type: constrains
+    from: REQ-extension-site-rules-name-length
+    to: FACT-extension-site-rules-subject
+    created_at: "2025-12-19T11:47:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-aafcf10ed5a4
+    type: requires_property
+    from: REQ-portal-client-workspaces-maximum-count-earlier
+    to: FACT-portal-client-workspaces-maximum-count-earlier
+    created_at: "2026-07-19T15:11:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-892d53f4c51f
+    type: constrains
+    from: REQ-portal-client-workspaces-maximum-count-earlier
+    to: FACT-portal-client-workspaces-subject
+    created_at: "2026-07-19T15:11:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d48c583e603e
+    type: requires_property
+    from: REQ-papra-admin-user-does-not-have-manage-plan-entitlements
+    to: FACT-papra-admin-admin-user-plan-entitlements-routes-when-the-user-does-not-have-the-manage
+    created_at: "2026-07-18T14:10:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6129af68574d
+    type: constrains
+    from: REQ-papra-admin-user-does-not-have-manage-plan-entitlements
+    to: FACT-papra-subject-admin-admin-user-plan-entitlements-routes
+    created_at: "2026-07-18T14:10:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b91db44d9695
+    type: requires_property
+    from: REQ-papra-ingestion-folders-user-can-configure-done-folder-as-absolute
+    to: FACT-papra-ingestion-folders-is-file-in-done-folder-the-user-can-configure-the-done-folder-as-2
+    created_at: "2025-11-14T14:48:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-beadc1d2c549
+    type: constrains
+    from: REQ-papra-ingestion-folders-user-can-configure-done-folder-as-absolute
+    to: FACT-papra-subject-ingestion-folders-is-file-in-done-folder
+    created_at: "2025-11-14T14:48:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-767a37e7f54c
+    type: requires_property
+    from: REQ-papra-organizations-no-organizations-exist-in-database-count-is
+    to: FACT-papra-organizations-get-organization-count-when-no-organizations-exist-in-the-database-the
+    created_at: "2025-05-20T12:04:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-acb0e05f352d
+    type: constrains
+    from: REQ-papra-organizations-no-organizations-exist-in-database-count-is
+    to: FACT-papra-subject-organizations-get-organization-count
+    created_at: "2025-05-20T12:04:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

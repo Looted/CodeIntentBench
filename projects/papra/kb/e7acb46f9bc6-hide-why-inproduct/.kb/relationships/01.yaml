@@ -1,0 +1,113 @@
+relationships:
+  - id: rel-a88ccde2d468
+    type: requires_property
+    from: REQ-papra-member-cap-counts-pending-invitations
+    to: FACT-papra-invitations-member-limit-set-by-plan
+    created_at: "2026-11-16T13:15:54.632Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-member-cap-counts-pending-invitations
+    to: FACT-papra-subject-invitations-member-limit
+    created_at: 2026-11-16T13:15:54.632Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-552d94b31d3c
+  - type: requires_property
+    from: REQ-papra-member-cap-counts-pending-invitations
+    to: FACT-papra-invitations-member-limit-pending-invitations-count-toward-maximum
+    created_at: 2026-11-16T13:15:54.643Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2817fc2cbb8a
+  - type: requires_property
+    from: REQ-papra-member-cap-counts-pending-invitations
+    to: FACT-papra-invitations-member-limit-invitation-or-resend-refused-at-limit
+    created_at: 2026-11-16T13:15:54.646Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-83e04b6fae75
+  - type: supersedes
+    from: REQ-papra-member-cap-counts-pending-invitations
+    to: REQ-papra-member-limit-counts-pending-invitations
+    created_at: 2026-11-16T13:15:54.648Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2fcf3be142d2
+  - type: verified_by
+    from: REQ-papra-member-cap-counts-pending-invitations
+    to: TEST-papra-server-src-modules-organizations-organizations-usecases
+    created_at: 2026-11-16T13:23:57.638Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-df41e8145353
+  - id: rel-d3b14214340d
+    type: requires_property
+    from: REQ-website-blog-categories-delete-in-use
+    to: FACT-website-blog-categories-delete-in-use
+    created_at: "2026-02-25T10:14:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3c1f1a64d55e
+    type: constrains
+    from: REQ-website-blog-categories-delete-in-use
+    to: FACT-website-blog-categories-subject
+    created_at: "2026-02-25T10:14:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3fa20cafdea7
+    type: requires_property
+    from: REQ-cli-tag-aliases-delete-in-use
+    to: FACT-cli-tag-aliases-delete-in-use
+    created_at: "2026-05-21T16:56:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-560fd370b300
+    type: constrains
+    from: REQ-cli-tag-aliases-delete-in-use
+    to: FACT-cli-tag-aliases-subject
+    created_at: "2026-05-21T16:56:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a99204d0e8f3
+    type: requires_property
+    from: REQ-papra-auth-auth-type-is-api-key-all-permissions
+    to: FACT-papra-auth-check-authentication-when-the-auth-type-is-api-key-all
+    created_at: "2025-12-18T10:31:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4589a71460c3
+    type: constrains
+    from: REQ-papra-auth-auth-type-is-api-key-all-permissions
+    to: FACT-papra-subject-auth-check-authentication
+    created_at: "2025-12-18T10:31:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4d4243182e4e
+    type: requires_property
+    from: REQ-papra-document-search-has-warranty-returns-only-documents-with-no
+    to: FACT-papra-document-search-database-fts5-repository-has-warranty-returns-only-documents-with-no-value
+    created_at: "2026-07-24T15:43:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-def04a7c2419
+    type: constrains
+    from: REQ-papra-document-search-has-warranty-returns-only-documents-with-no
+    to: FACT-papra-subject-document-search-database-fts5-repository
+    created_at: "2026-07-24T15:43:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1d9c873cfb77
+    type: requires_property
+    from: REQ-papra-storage-user-can-provide-comma-separated-list-of
+    to: FACT-papra-storage-storage-key-encryption-keys-schema-the-user-can-provide-a-comma-separated-list
+    created_at: "2025-10-20T17:42:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fba45063cd4a
+    type: constrains
+    from: REQ-papra-storage-user-can-provide-comma-separated-list-of
+    to: FACT-papra-subject-storage-storage-key-encryption-keys-schema
+    created_at: "2025-10-20T17:42:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -1,0 +1,141 @@
+relationships:
+  - id: rel-02a7058f3d70
+    type: requires_property
+    from: REQ-desktop-watch-folder-labels-unique-ignoring-case
+    to: FACT-desktop-watch-folder-labels-name-uniqueness
+    created_at: "2026-03-10T17:05:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-483791720a95
+    type: requires_property
+    from: REQ-desktop-watch-folder-labels-unique-ignoring-case
+    to: FACT-desktop-watch-folder-labels-duplicate-error
+    created_at: "2026-03-10T17:05:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d64dcc621208
+    type: constrains
+    from: REQ-desktop-watch-folder-labels-unique-ignoring-case
+    to: FACT-desktop-watch-folder-labels-subject
+    created_at: "2026-03-10T17:05:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e1f0b4a0376b
+    type: requires_property
+    from: REQ-cli-papra-history-filter-invalid-date
+    to: FACT-cli-papra-history-filter-invalid-date-filter
+    created_at: "2026-01-23T08:36:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2cf4f103a9c0
+    type: constrains
+    from: REQ-cli-papra-history-filter-invalid-date
+    to: FACT-cli-papra-history-filter-subject
+    created_at: "2026-01-23T08:36:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-aa78667fedc7
+    type: requires_property
+    from: REQ-portal-partner-portal-accounts-password-length
+    to: FACT-portal-partner-portal-accounts-password-min-length
+    created_at: "2026-02-21T12:58:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3eedadf59eb2
+    type: requires_property
+    from: REQ-portal-partner-portal-accounts-password-length
+    to: FACT-portal-partner-portal-accounts-character-class-rule
+    created_at: "2026-02-21T12:58:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cabe177deb34
+    type: constrains
+    from: REQ-portal-partner-portal-accounts-password-length
+    to: FACT-portal-partner-portal-accounts-subject
+    created_at: "2026-02-21T12:58:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fa60abbfef55
+    type: requires_property
+    from: REQ-education-education-portal-accounts-reset-link-validity
+    to: FACT-education-education-portal-accounts-reset-link-minutes
+    created_at: "2025-06-06T14:37:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f4ee2a9acb93
+    type: constrains
+    from: REQ-education-education-portal-accounts-reset-link-validity
+    to: FACT-education-education-portal-accounts-subject
+    created_at: "2025-06-06T14:37:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-11eed5150e67
+    type: requires_property
+    from: REQ-docs-documentation-contributor-accounts-reset-and-two-factor
+    to: FACT-docs-documentation-contributor-accounts-reset-disables-two-factor
+    created_at: "2025-02-07T12:34:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-53085d3f96a7
+    type: constrains
+    from: REQ-docs-documentation-contributor-accounts-reset-and-two-factor
+    to: FACT-docs-documentation-contributor-accounts-subject
+    created_at: "2025-02-07T12:34:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ba1ae577aa75
+    type: requires_property
+    from: REQ-papra-auth-401-unauthorized-error-is-returned
+    to: FACT-papra-auth-create-role-middleware-a-401-unauthorized-error-is-returned
+    created_at: "2026-05-25T14:18:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-915615217eeb
+    type: constrains
+    from: REQ-papra-auth-401-unauthorized-error-is-returned
+    to: FACT-papra-subject-auth-create-role-middleware
+    created_at: "2026-05-25T14:18:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c8c93d48c8ef
+    type: requires_property
+    from: REQ-papra-app-process-mode-is-set-to-worker-only
+    to: FACT-papra-app-get-process-mode-when-the-process-mode-is-set-to-worker
+    created_at: "2026-01-14T16:39:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c3454075b0f8
+    type: constrains
+    from: REQ-papra-app-process-mode-is-set-to-worker-only
+    to: FACT-papra-subject-app-get-process-mode
+    created_at: "2026-01-14T16:39:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-21f0b7461c1b
+    type: requires_property
+    from: REQ-papra-custom-properties-aggregates-multi-select-property-values-into-arrays
+    to: FACT-papra-custom-properties-aggregate-document-custom-property-values-aggregates-multi-select-property-values-into-arrays
+    created_at: "2025-02-24T09:52:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4782cb59b217
+    type: constrains
+    from: REQ-papra-custom-properties-aggregates-multi-select-property-values-into-arrays
+    to: FACT-papra-subject-custom-properties-aggregate-document-custom-property-values
+    created_at: "2025-02-24T09:52:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-49a17052781b
+    type: requires_property
+    from: REQ-papra-document-search-amount-150-returns-only-document-with-amount
+    to: FACT-papra-document-search-database-fts5-repository-amount-150-returns-only-the-document-with-amount
+    created_at: "2025-09-06T15:29:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-bf46aa193fd8
+    type: constrains
+    from: REQ-papra-document-search-amount-150-returns-only-document-with-amount
+    to: FACT-papra-subject-document-search-database-fts5-repository
+    created_at: "2025-09-06T15:29:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

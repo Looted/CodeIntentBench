@@ -1,0 +1,106 @@
+relationships:
+  - id: rel-55e70b277161
+    type: requires_property
+    from: REQ-marketplace-template-tags-delete-in-use
+    to: FACT-marketplace-template-tags-delete-in-use
+    created_at: "2026-05-20T15:23:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4936a6dd22f7
+    type: constrains
+    from: REQ-marketplace-template-tags-delete-in-use
+    to: FACT-marketplace-template-tags-subject
+    created_at: "2026-05-20T15:23:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-20810caeb12f
+    type: requires_property
+    from: REQ-n8n-credential-labels-names-trimmed
+    to: FACT-n8n-credential-labels-name-trimmed
+    created_at: "2025-02-07T13:27:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d7f1812b4da8
+    type: requires_property
+    from: REQ-n8n-credential-labels-names-trimmed
+    to: FACT-n8n-credential-labels-empty-name-refused
+    created_at: "2025-02-07T13:27:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ed4afed3a3e5
+    type: constrains
+    from: REQ-n8n-credential-labels-names-trimmed
+    to: FACT-n8n-credential-labels-subject
+    created_at: "2025-02-07T13:27:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d18543c05462
+    type: requires_property
+    from: REQ-desktop-desktop-sync-client-local-file-search-text-filter-matching
+    to: FACT-desktop-desktop-sync-client-local-file-search-text-filter-matching
+    created_at: "2026-06-17T10:16:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9c6ad842f1bd
+    type: constrains
+    from: REQ-desktop-desktop-sync-client-local-file-search-text-filter-matching
+    to: FACT-desktop-desktop-sync-client-local-file-search-subject
+    created_at: "2026-06-17T10:16:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-89a81f7b58d4
+    type: requires_property
+    from: REQ-papra-document-search-related-doc-1-builds-subquery-matching-relateddocumentid
+    to: FACT-papra-document-search-query-builder-custom-properties-related-doc-1-builds-a-subquery-matching-relateddocumentid
+    created_at: "2026-02-20T15:51:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b057cfd079c0
+    type: constrains
+    from: REQ-papra-document-search-related-doc-1-builds-subquery-matching-relateddocumentid
+    to: FACT-papra-subject-document-search-query-builder-custom-properties
+    created_at: "2026-02-20T15:51:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fbd4d7b06dd9
+    type: requires_property
+    from: REQ-papra-intake-emails-no-intake-email-is-found-for-recipient
+    to: FACT-papra-intake-emails-ingest-email-for-recipient-when-no-intake-email-is-found-for-the
+    created_at: "2025-08-28T12:35:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-13f1efac452f
+    type: constrains
+    from: REQ-papra-intake-emails-no-intake-email-is-found-for-recipient
+    to: FACT-papra-subject-intake-emails-ingest-email-for-recipient
+    created_at: "2025-08-28T12:35:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-979e725653fc
+    type: requires_property
+    from: REQ-papra-plan-entitlements-no-driver-exists-for-entitlement-type-no
+    to: FACT-papra-plan-entitlements-resolve-organization-entitlement-coupon-id-when-no-driver-exists-for-the-entitlement-type
+    created_at: "2026-06-19T08:26:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b4b481048eff
+    type: constrains
+    from: REQ-papra-plan-entitlements-no-driver-exists-for-entitlement-type-no
+    to: FACT-papra-subject-plan-entitlements-resolve-organization-entitlement-coupon-id
+    created_at: "2026-06-19T08:26:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-72a8bc92aeb7
+    type: requires_property
+    from: REQ-papra-tagging-rules-conditionmatchmode-is-all-default-tags-are-applied
+    to: FACT-papra-tagging-rules-apply-tagging-rules-when-conditionmatchmode-is-all-default-tags-are-applied
+    created_at: "2026-05-07T14:57:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cfe1b2ad1fe1
+    type: constrains
+    from: REQ-papra-tagging-rules-conditionmatchmode-is-all-default-tags-are-applied
+    to: FACT-papra-subject-tagging-rules-apply-tagging-rules
+    created_at: "2026-05-07T14:57:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

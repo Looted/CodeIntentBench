@@ -1,0 +1,169 @@
+relationships:
+  - type: requires_property
+    from: REQ-AUTO-E2E14D03456F8986
+    to: FACT-papra-tagging-rules-rule-condition-match-modes
+    created_at: "2026-11-15T21:44:38.274Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-aca5ce291335
+  - type: constrains
+    from: REQ-AUTO-E2E14D03456F8986
+    to: FACT-papra-subject-tagging-rules-rule
+    created_at: "2026-11-15T21:44:38.279Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-dc42d13291dd
+  - type: requires_property
+    from: REQ-AUTO-E2E14D03456F8986
+    to: FACT-papra-tagging-rules-rule-supports-nested-condition-groups
+    created_at: "2026-11-15T21:44:38.281Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-8e5016629fc2
+  - type: verified_by
+    from: REQ-AUTO-E2E14D03456F8986
+    to: TEST-papra-server-src-modules-tagging-rules-tagging-rules-usecases
+    created_at: "2026-11-16T04:52:02.158Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b73769c40a09
+  - type: requires_property
+    from: REQ-papra-s3-driver-uses-s3mini
+    to: FACT-papra-storage-s3-client-library
+    created_at: "2026-11-16T13:16:58.290Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4be424ae1c62
+  - type: constrains
+    from: REQ-papra-s3-driver-uses-s3mini
+    to: FACT-papra-subject-storage-s3-client
+    created_at: "2026-11-16T13:16:58.302Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-12769a552907
+  - type: requires_property
+    from: REQ-papra-tag-names-trimmed
+    to: FACT-papra-tags-name-normalization-trimmed
+    created_at: "2026-11-16T13:18:33.646Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-5fff4b5def43
+  - type: constrains
+    from: REQ-papra-tag-names-trimmed
+    to: FACT-papra-subject-tags-name-normalization
+    created_at: "2026-11-16T13:18:33.661Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-0fa9db0501e7
+  - type: requires_property
+    from: REQ-papra-ocr-languages-configurable
+    to: FACT-papra-ocr-languages-setting
+    created_at: "2026-11-16T13:19:39.702Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ab836d7e6317
+  - type: constrains
+    from: REQ-papra-ocr-languages-configurable
+    to: FACT-papra-subject-ocr-languages
+    created_at: "2026-11-16T13:19:39.717Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-081504f2087a
+  - type: verified_by
+    from: REQ-papra-tag-names-trimmed
+    to: TEST-papra-server-src-modules-tags-tags-schemas
+    created_at: "2026-11-16T13:30:18.263Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ff2d36791ccd
+  - id: rel-ed63b0a8911c
+    type: requires_property
+    from: REQ-telemetry-event-labels-name-length
+    to: FACT-telemetry-event-labels-name-max-length
+    created_at: "2026-01-07T12:24:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8c0a69b0be0b
+    type: constrains
+    from: REQ-telemetry-event-labels-name-length
+    to: FACT-telemetry-event-labels-subject
+    created_at: "2026-01-07T12:24:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c58264518e01
+    type: requires_property
+    from: REQ-status-status-page-administrator-accounts-reset-link-single-use
+    to: FACT-status-status-page-administrator-accounts-reset-link-single-use
+    created_at: "2026-06-12T12:02:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-30ac4e3907d5
+    type: requires_property
+    from: REQ-status-status-page-administrator-accounts-reset-link-single-use
+    to: FACT-status-status-page-administrator-accounts-new-link-invalidates-old
+    created_at: "2026-06-12T12:02:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-28f54aae8c94
+    type: constrains
+    from: REQ-status-status-page-administrator-accounts-reset-link-single-use
+    to: FACT-status-status-page-administrator-accounts-subject
+    created_at: "2026-06-12T12:02:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7c7906e04259
+    type: requires_property
+    from: REQ-papra-documents-leading-spaces-are-preserved-as-they-are
+    to: FACT-papra-documents-ensure-safe-file-name-leading-spaces-are-preserved-as-they-are-valid
+    created_at: "2026-07-18T10:34:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b84e03fb8a92
+    type: constrains
+    from: REQ-papra-documents-leading-spaces-are-preserved-as-they-are
+    to: FACT-papra-subject-documents-ensure-safe-file-name
+    created_at: "2026-07-18T10:34:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e720505274f4
+    type: requires_property
+    from: REQ-papra-organizations-resending-invitation-respects-senders-daily-invitation-limit
+    to: FACT-papra-organizations-resend-organization-invitation-resending-an-invitation-respects-the-senders-daily-invitation
+    created_at: "2025-10-28T16:50:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1150d57a91b6
+    type: constrains
+    from: REQ-papra-organizations-resending-invitation-respects-senders-daily-invitation-limit
+    to: FACT-papra-subject-organizations-resend-organization-invitation
+    created_at: "2025-10-28T16:50:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8ff11de05e6e
+    type: requires_property
+    from: REQ-papra-plans-plan-is-matched-by-its-annual-price
+    to: FACT-papra-plans-resolve-organization-plan-from-price-ids-a-plan-is-matched-by-its-annual-price
+    created_at: "2025-08-12T17:55:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d54a8ca6ebda
+    type: constrains
+    from: REQ-papra-plans-plan-is-matched-by-its-annual-price
+    to: FACT-papra-subject-plans-resolve-organization-plan-from-price-ids
+    created_at: "2025-08-12T17:55:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b73c0e005c49
+    type: requires_property
+    from: REQ-papra-tagging-rules-multiple-enabled-rules-are-retrieved-with-their
+    to: FACT-papra-tagging-rules-get-organization-enabled-tagging-rules-multiple-enabled-rules-are-retrieved-with-their-respective
+    created_at: "2026-09-06T12:47:06.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-55e1c39c7e9c
+    type: constrains
+    from: REQ-papra-tagging-rules-multiple-enabled-rules-are-retrieved-with-their
+    to: FACT-papra-subject-tagging-rules-get-organization-enabled-tagging-rules
+    created_at: "2026-09-06T12:47:06.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

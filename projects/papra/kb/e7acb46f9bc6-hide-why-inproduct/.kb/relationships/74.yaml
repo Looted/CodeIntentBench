@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-96be89877e69
+    type: requires_property
+    from: REQ-website-newsletter-preference-accounts-reset-notification
+    to: FACT-website-newsletter-preference-accounts-reset-confirmation-email
+    created_at: "2026-04-09T10:47:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-98dace58fabe
+    type: constrains
+    from: REQ-website-newsletter-preference-accounts-reset-notification
+    to: FACT-website-newsletter-preference-accounts-subject
+    created_at: "2026-04-09T10:47:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

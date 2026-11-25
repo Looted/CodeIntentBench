@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-efda8079028a
+    type: requires_property
+    from: REQ-extension-ext-pairing-secret-required-in-production
+    to: FACT-extension-ext-pairing-secret-required-in-production
+    created_at: "2026-09-14T12:03:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-28cbeaff244d
+    type: constrains
+    from: REQ-extension-ext-pairing-secret-required-in-production
+    to: FACT-extension-ext-pairing-secret-subject
+    created_at: "2026-09-14T12:03:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-513d1fcad8df
+    type: requires_property
+    from: REQ-papra-custom-properties-returns-array-with-definition-info-and-values
+    to: FACT-papra-custom-properties-build-custom-properties-array-returns-an-array-with-definition-info-and-values
+    created_at: "2025-12-27T08:33:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5188ab8e9d19
+    type: constrains
+    from: REQ-papra-custom-properties-returns-array-with-definition-info-and-values
+    to: FACT-papra-subject-custom-properties-build-custom-properties-array
+    created_at: "2025-12-27T08:33:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0fb66a84b31d
+    type: requires_property
+    from: REQ-papra-documents-batch-trashes-all-documents-matching-search-query
+    to: FACT-papra-documents-documents-e2e-batch-trashes-all-documents-matching-a-search-query
+    created_at: "2026-03-09T12:00:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-dbbc76f3ceb5
+    type: constrains
+    from: REQ-papra-documents-batch-trashes-all-documents-matching-search-query
+    to: FACT-papra-subject-documents-documents-e2e
+    created_at: "2026-03-09T12:00:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-98c45644c9a4
+    type: requires_property
+    from: REQ-papra-documents-multiple-spaces-between-arguments-are-ignored
+    to: FACT-papra-documents-tokenize-string-arguments-multiple-spaces-between-arguments-are-ignored
+    created_at: "2025-07-09T16:49:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0bb77c007254
+    type: constrains
+    from: REQ-papra-documents-multiple-spaces-between-arguments-are-ignored
+    to: FACT-papra-subject-documents-tokenize-string-arguments
+    created_at: "2025-07-09T16:49:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

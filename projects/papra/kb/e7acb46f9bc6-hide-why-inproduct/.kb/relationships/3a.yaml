@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-e35dfc2af518
+    type: requires_property
+    from: REQ-marketplace-author-registration-email-confirmation
+    to: FACT-marketplace-author-registration-email-confirmation
+    created_at: "2026-08-05T15:08:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c3824d73515d
+    type: constrains
+    from: REQ-marketplace-author-registration-email-confirmation
+    to: FACT-marketplace-author-registration-subject
+    created_at: "2026-08-05T15:08:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3976c6b2e108
+    type: requires_property
+    from: REQ-education-education-portal-accounts-reset-unknown-address
+    to: FACT-education-education-portal-accounts-reset-reveals-account
+    created_at: "2025-05-13T12:06:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-28b0ce3b1cac
+    type: constrains
+    from: REQ-education-education-portal-accounts-reset-unknown-address
+    to: FACT-education-education-portal-accounts-subject
+    created_at: "2025-05-13T12:06:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a7e43031fb73
+    type: requires_property
+    from: REQ-docs-documentation-contributor-accounts-reset-notification
+    to: FACT-docs-documentation-contributor-accounts-reset-confirmation-email
+    created_at: "2025-09-01T14:13:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6ac27463234b
+    type: constrains
+    from: REQ-docs-documentation-contributor-accounts-reset-notification
+    to: FACT-docs-documentation-contributor-accounts-subject
+    created_at: "2025-09-01T14:13:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-009b502885bc
+    type: requires_property
+    from: REQ-papra-organizations-expired-cancelled-and-rejected-invitations-do-not
+    to: FACT-papra-organizations-invite-member-to-organization-expired-cancelled-and-rejected-invitations-do-not-prevent
+    created_at: "2026-07-11T12:04:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fdd1320e76f7
+    type: constrains
+    from: REQ-papra-organizations-expired-cancelled-and-rejected-invitations-do-not
+    to: FACT-papra-subject-organizations-invite-member-to-organization
+    created_at: "2026-07-11T12:04:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

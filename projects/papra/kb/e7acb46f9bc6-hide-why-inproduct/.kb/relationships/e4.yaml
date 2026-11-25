@@ -1,0 +1,127 @@
+relationships:
+  - id: rel-a14b39259399
+    type: requires_property
+    from: REQ-papra-task-service-libsql-driver
+    to: FACT-papra-tasks-driver-libsql-supported
+    created_at: "2026-11-16T13:21:30.146Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-task-service-libsql-driver
+    to: FACT-papra-subject-tasks-driver
+    created_at: 2026-11-16T13:21:30.146Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-91804969e84c
+  - type: requires_property
+    from: REQ-papra-fonts-bundled
+    to: FACT-papra-client-fonts-source
+    created_at: 2026-11-16T13:21:43.457Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-a63ce507bf64
+  - type: constrains
+    from: REQ-papra-fonts-bundled
+    to: FACT-papra-subject-client-fonts
+    created_at: 2026-11-16T13:21:43.470Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-119f6d49d05e
+  - id: rel-0b13955dbb4e
+    type: requires_property
+    from: REQ-client-web-client-demo-mode-search-empty-query
+    to: FACT-client-web-client-demo-mode-search-empty-query
+    created_at: "2026-04-18T13:37:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-81b16b3a5656
+    type: constrains
+    from: REQ-client-web-client-demo-mode-search-empty-query
+    to: FACT-client-web-client-demo-mode-search-subject
+    created_at: "2026-04-18T13:37:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e2fc21948fef
+    type: requires_property
+    from: REQ-website-webinar-registration-plus-addressing
+    to: FACT-website-webinar-registration-plus-addressing
+    created_at: "2026-02-14T09:27:36.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9e8889a06ddb
+    type: constrains
+    from: REQ-website-webinar-registration-plus-addressing
+    to: FACT-website-webinar-registration-subject
+    created_at: "2026-02-14T09:27:36.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2bd95ff1582b
+    type: requires_property
+    from: REQ-status-status-page-administrator-accounts-reset-and-sessions
+    to: FACT-status-status-page-administrator-accounts-sessions-ended-on-reset
+    created_at: "2026-02-10T16:57:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-230f36d191c2
+    type: constrains
+    from: REQ-status-status-page-administrator-accounts-reset-and-sessions
+    to: FACT-status-status-page-administrator-accounts-subject
+    created_at: "2026-02-10T16:57:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f7d6f0b1530a
+    type: requires_property
+    from: REQ-papra-database-works-with-raw-sql-query-builder
+    to: FACT-papra-database-stringify-sql-query-works-with-raw-sql-query-builder
+    created_at: "2026-08-09T14:13:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7af9e5e01168
+    type: constrains
+    from: REQ-papra-database-works-with-raw-sql-query-builder
+    to: FACT-papra-subject-database-stringify-sql-query
+    created_at: "2026-08-09T14:13:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f087edf594c0
+    type: requires_property
+    from: REQ-papra-static-assets-api-route-starts-with-api
+    to: FACT-papra-static-assets-is-api-route-an-api-route-starts-with-api
+    created_at: "2025-05-07T15:25:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-41776e6707e3
+    type: constrains
+    from: REQ-papra-static-assets-api-route-starts-with-api
+    to: FACT-papra-subject-static-assets-is-api-route
+    created_at: "2025-05-07T15:25:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-805dc8102783
+    type: requires_property
+    from: REQ-papra-auto-tagging-should-not-happen-because-of-guards-but
+    to: FACT-papra-auto-tagging-get-tags-actions-should-not-happen-because-of-guards-but-when
+    created_at: "2025-04-19T13:48:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e25bc602867d
+    type: constrains
+    from: REQ-papra-auto-tagging-should-not-happen-because-of-guards-but
+    to: FACT-papra-subject-auto-tagging-get-tags-actions
+    created_at: "2025-04-19T13:48:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2a7f9a8cdf79
+    type: requires_property
+    from: REQ-papra-document-search-provides-full-text-search-on-document-name
+    to: FACT-papra-document-search-search-organization-documents-provides-full-text-search-on-document-name-original
+    created_at: "2025-12-18T10:22:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7207ae88403a
+    type: constrains
+    from: REQ-papra-document-search-provides-full-text-search-on-document-name
+    to: FACT-papra-subject-document-search-search-organization-documents
+    created_at: "2025-12-18T10:22:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

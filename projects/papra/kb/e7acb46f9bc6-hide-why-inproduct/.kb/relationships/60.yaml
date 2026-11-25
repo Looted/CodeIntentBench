@@ -1,0 +1,176 @@
+relationships:
+  - id: rel-2bce40b8f7b2
+    type: requires_property
+    from: REQ-papra-docker-email-dry-run-default
+    to: FACT-papra-email-sending-docker-default-mode-v1
+    created_at: "2026-11-16T13:20:50.527Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-docker-email-dry-run-default
+    to: FACT-papra-subject-email-sending
+    created_at: 2026-11-16T13:20:50.527Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-19e23bb9f2a2
+  - id: rel-ebf443a5a112
+    type: requires_property
+    from: REQ-cli-profiles-names-trimmed
+    to: FACT-cli-profiles-name-trimmed
+    created_at: "2025-12-18T09:37:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a15e048ab0b1
+    type: requires_property
+    from: REQ-cli-profiles-names-trimmed
+    to: FACT-cli-profiles-empty-name-refused
+    created_at: "2025-12-18T09:37:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-027c6dba863a
+    type: constrains
+    from: REQ-cli-profiles-names-trimmed
+    to: FACT-cli-profiles-subject
+    created_at: "2025-12-18T09:37:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e75187533e04
+    type: requires_property
+    from: REQ-forum-forum-registration-repeat-address
+    to: FACT-forum-forum-registration-repeat-address
+    created_at: "2025-09-10T17:28:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c921dcac4825
+    type: constrains
+    from: REQ-forum-forum-registration-repeat-address
+    to: FACT-forum-forum-registration-subject
+    created_at: "2025-09-10T17:28:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6fbc8b036ba2
+    type: requires_property
+    from: REQ-license-license-trial-requests-rate-limit
+    to: FACT-license-license-trial-requests-requests-per-ip-per-hour
+    created_at: "2026-08-17T09:31:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cc1470965d63
+    type: constrains
+    from: REQ-license-license-trial-requests-rate-limit
+    to: FACT-license-license-trial-requests-subject
+    created_at: "2026-08-17T09:31:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b2e52f2e38be
+    type: requires_property
+    from: REQ-portal-referral-links-maximum-count
+    to: FACT-portal-referral-links-maximum-count
+    created_at: "2025-05-22T12:40:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1ddafd76f7e5
+    type: requires_property
+    from: REQ-portal-referral-links-maximum-count
+    to: FACT-portal-referral-links-limit-configurable
+    created_at: "2025-05-22T12:40:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-332a9ffb99ca
+    type: constrains
+    from: REQ-portal-referral-links-maximum-count
+    to: FACT-portal-referral-links-subject
+    created_at: "2025-05-22T12:40:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1333582c5619
+    type: requires_property
+    from: REQ-license-license-portal-accounts-password-length
+    to: FACT-license-license-portal-accounts-password-min-length
+    created_at: "2026-09-16T13:23:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-eb939893708a
+    type: requires_property
+    from: REQ-license-license-portal-accounts-password-length
+    to: FACT-license-license-portal-accounts-character-class-rule
+    created_at: "2026-09-16T13:23:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-98e297748352
+    type: constrains
+    from: REQ-license-license-portal-accounts-password-length
+    to: FACT-license-license-portal-accounts-subject
+    created_at: "2026-09-16T13:23:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9a00ef25294b
+    type: requires_property
+    from: REQ-papra-document-search-combines-multiple-expressions-with-or-logic
+    to: FACT-papra-document-search-handle-or-expression-combines-multiple-expressions-with-or-logic
+    created_at: "2025-02-28T14:40:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e92700ca1414
+    type: constrains
+    from: REQ-papra-document-search-combines-multiple-expressions-with-or-logic
+    to: FACT-papra-subject-document-search-handle-or-expression
+    created_at: "2025-02-28T14:40:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6df12bb7ea75
+    type: requires_property
+    from: REQ-papra-document-search-inverts-valid-expression-with-not-logic
+    to: FACT-papra-document-search-handle-not-expression-inverts-a-valid-expression-with-not-logic
+    created_at: "2026-08-27T08:07:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4a5ca9ceb0cb
+    type: constrains
+    from: REQ-papra-document-search-inverts-valid-expression-with-not-logic
+    to: FACT-papra-subject-document-search-handle-not-expression
+    created_at: "2026-08-27T08:07:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ce1b703ee6ea
+    type: requires_property
+    from: REQ-papra-organizations-attempting-to-delete-non-existent-organization-throws
+    to: FACT-papra-organizations-soft-delete-organization-attempting-to-delete-a-non-existent-organization-throws
+    created_at: "2026-03-12T17:48:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-36fcabf6943d
+    type: constrains
+    from: REQ-papra-organizations-attempting-to-delete-non-existent-organization-throws
+    to: FACT-papra-subject-organizations-soft-delete-organization
+    created_at: "2026-03-12T17:48:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-70b4688abc58
+    type: requires_property
+    from: REQ-papra-subscriptions-incomplete-subscription-allows-deletion-since-payment-was
+    to: FACT-papra-subscriptions-does-subscription-block-deletion-incomplete-subscription-allows-deletion-since-payment-was-never
+    created_at: "2025-03-02T10:40:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7b628ba9071a
+    type: constrains
+    from: REQ-papra-subscriptions-incomplete-subscription-allows-deletion-since-payment-was
+    to: FACT-papra-subject-subscriptions-does-subscription-block-deletion
+    created_at: "2025-03-02T10:40:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1be1f3ca5782
+    type: requires_property
+    from: REQ-papra-tags-updatetag-scoped-by-organizationid-does-not-modify
+    to: FACT-papra-tags-update-tag-updatetag-scoped-by-organizationid-does-not-modify-tags
+    created_at: "2026-05-01T11:38:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-05556a7454a2
+    type: constrains
+    from: REQ-papra-tags-updatetag-scoped-by-organizationid-does-not-modify
+    to: FACT-papra-subject-tags-update-tag
+    created_at: "2026-05-01T11:38:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
