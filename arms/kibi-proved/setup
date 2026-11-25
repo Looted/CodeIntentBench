@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Arm `kibi-proved`: the Kibi arm on a knowledge base whose team proves its requirements: a proof integration
+# (`kibi proof run-steps` over the project's test runner) and a few requirements off the arcs' topics already
+# at the tested floor, proved against the checkout at setup (projects/<project>/kb/proof-ready). Its control is
+# the plain kibi arm in the same batch. Everything else is the kibi arm's setup.
+export CIB_KIBI_PROVED=1
+exec "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../kibi/setup" "$@"

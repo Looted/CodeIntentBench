@@ -4,7 +4,7 @@
 # The arcs run on an onboarded knowledge base: Papra's product decisions, harvested from its documentation,
 # issue tracker, merged pull requests and in-repo spec and recorded with Kibi's bootstrap flow (kb/README.md),
 # stored under kb/<base>/.kb (the commit, or the commit and the teammate patch). Every arm starts from the same knowledge:
-#   - kibi, kibi-conv, kibi-hints: the knowledge base is placed in the checkout, as a Kibi-onboarded repository ships it;
+#   - kibi, kibi-conv, kibi-hints, kibi-proved: the knowledge base is placed in the checkout, as a Kibi-onboarded repository ships it;
 #     the arm's setup then installs the pinned Kibi and compiles it.
 #   - every other arm: the knowledge base is exported into the rules directory (one rule per requirement,
 #     Kibi's own prose) for the arm's setup to render into its container, and removed.
@@ -25,7 +25,7 @@ rm -rf .kb
 cp -R "$kb" .kb
 
 case "$arm" in
-  kibi|kibi-conv|kibi-hints)
+  kibi|kibi-conv|kibi-hints|kibi-proved)
     ;;
   *)
     node "$harness/src/arm-tools/kb-export.ts" "$ws" "$rules"
