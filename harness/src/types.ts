@@ -371,6 +371,8 @@ export interface SurfacePoint {
   /** Assistant turn after which the decision was in the agent's context (0: before the first turn). */
   turn: number;
   via: 'hook' | 'lookup' | 'context';
+  /** The surface within `via`: edit-hook, read-hook or session-hook for a hook; the store tool (kb_search, tracker_search, ...), cli or file-read for a lookup; context for agents-md. */
+  source?: string;
   /** Tokens the session had processed by then: every model call up to and including that turn, input (cached or not) plus output. */
   tokens: number;
   /** The same calls at list price; absent when the model has no listed price. */
