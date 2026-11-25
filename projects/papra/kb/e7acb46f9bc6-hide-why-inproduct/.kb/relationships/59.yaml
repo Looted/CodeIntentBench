@@ -1,0 +1,92 @@
+relationships:
+  - id: rel-c45f7cd17b7d
+    type: requires_property
+    from: REQ-desktop-desktop-sync-client-local-file-search-case-folding
+    to: FACT-desktop-desktop-sync-client-local-file-search-case-folding
+    created_at: "2026-06-15T09:51:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2d104ee2fdc7
+    type: constrains
+    from: REQ-desktop-desktop-sync-client-local-file-search-case-folding
+    to: FACT-desktop-desktop-sync-client-local-file-search-subject
+    created_at: "2026-06-15T09:51:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-717f55e9c82b
+    type: requires_property
+    from: REQ-backoffice-staff-teams-what-counts
+    to: FACT-backoffice-staff-teams-counted-toward-limit
+    created_at: "2025-11-08T09:10:58.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-806e2740d8f9
+    type: requires_property
+    from: REQ-backoffice-staff-teams-what-counts
+    to: FACT-backoffice-staff-teams-limit-detail
+    created_at: "2025-11-08T09:10:58.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2f503e16371d
+    type: constrains
+    from: REQ-backoffice-staff-teams-what-counts
+    to: FACT-backoffice-staff-teams-subject
+    created_at: "2025-11-08T09:10:58.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-50c94b331151
+    type: requires_property
+    from: REQ-papra-documents-parses-body-with-only-content
+    to: FACT-papra-documents-update-document-body-schema-parses-a-body-with-only-content
+    created_at: "2025-12-22T14:49:24.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6177cfe39f65
+    type: constrains
+    from: REQ-papra-documents-parses-body-with-only-content
+    to: FACT-papra-subject-documents-update-document-body-schema
+    created_at: "2025-12-22T14:49:24.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6c0dd00ce977
+    type: requires_property
+    from: REQ-papra-intake-emails-username-is-whole-part-of-email-address
+    to: FACT-papra-intake-emails-get-email-username-the-username-is-the-whole-part-of-the
+    created_at: "2025-07-05T12:51:53.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2adca3bd4021
+    type: constrains
+    from: REQ-papra-intake-emails-username-is-whole-part-of-email-address
+    to: FACT-papra-subject-intake-emails-get-email-username
+    created_at: "2025-07-05T12:51:53.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-119008cbed53
+    type: requires_property
+    from: REQ-papra-plan-entitlements-only-entitlements-of-given-user-are-returned
+    to: FACT-papra-plan-entitlements-get-user-plan-entitlements-only-the-entitlements-of-the-given-user-are
+    created_at: "2026-09-06T16:51:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d14a2f3bcffb
+    type: constrains
+    from: REQ-papra-plan-entitlements-only-entitlements-of-given-user-are-returned
+    to: FACT-papra-subject-plan-entitlements-get-user-plan-entitlements
+    created_at: "2026-09-06T16:51:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-33fceac99bfe
+    type: requires_property
+    from: REQ-papra-subscriptions-subscription-with-failed-payment-still-maintains-access
+    to: FACT-papra-subscriptions-does-subscription-block-deletion-subscription-with-failed-payment-still-maintains-access-and
+    created_at: "2025-08-24T10:55:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cc3dd7078a43
+    type: constrains
+    from: REQ-papra-subscriptions-subscription-with-failed-payment-still-maintains-access
+    to: FACT-papra-subject-subscriptions-does-subscription-block-deletion
+    created_at: "2025-08-24T10:55:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

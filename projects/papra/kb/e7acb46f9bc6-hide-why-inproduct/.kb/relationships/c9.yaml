@@ -1,0 +1,120 @@
+relationships:
+  - id: rel-022ebf109d17
+    type: requires_property
+    from: REQ-papra-task-migrations-pragma-optional
+    to: FACT-papra-tasks-sqlite-pragma-can-be-disabled
+    created_at: "2026-11-16T13:21:33.282Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-task-migrations-pragma-optional
+    to: FACT-papra-subject-tasks-sqlite-pragma
+    created_at: 2026-11-16T13:21:33.283Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-a18c9f52f28e
+  - id: rel-a1a969faec8f
+    type: requires_property
+    from: REQ-client-tag-colour-presets-delete-in-use
+    to: FACT-client-tag-colour-presets-delete-in-use
+    created_at: "2026-05-13T11:08:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-97435bcb6d9b
+    type: constrains
+    from: REQ-client-tag-colour-presets-delete-in-use
+    to: FACT-client-tag-colour-presets-subject
+    created_at: "2026-05-13T11:08:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d33424660110
+    type: requires_property
+    from: REQ-mobile-mobile-app-tag-picker-filter-empty-query
+    to: FACT-mobile-mobile-app-tag-picker-filter-empty-query
+    created_at: "2025-12-24T08:47:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-58f727e2d8a8
+    type: constrains
+    from: REQ-mobile-mobile-app-tag-picker-filter-empty-query
+    to: FACT-mobile-mobile-app-tag-picker-filter-subject
+    created_at: "2025-12-24T08:47:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-66cb0040df99
+    type: requires_property
+    from: REQ-mobile-pinned-organizations-name-uniqueness
+    to: FACT-mobile-pinned-organizations-name-uniqueness
+    created_at: "2026-01-21T16:35:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8ad2060bb927
+    type: constrains
+    from: REQ-mobile-pinned-organizations-name-uniqueness
+    to: FACT-mobile-pinned-organizations-subject
+    created_at: "2026-01-21T16:35:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-73a67874af98
+    type: requires_property
+    from: REQ-mobile-pinned-organizations-deletion-grace
+    to: FACT-mobile-pinned-organizations-restore-window-days
+    created_at: "2025-10-03T16:35:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-bbac5a1dd074
+    type: requires_property
+    from: REQ-mobile-pinned-organizations-deletion-grace
+    to: FACT-mobile-pinned-organizations-purged-after-window
+    created_at: "2025-10-03T16:35:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3759dbf796cf
+    type: constrains
+    from: REQ-mobile-pinned-organizations-deletion-grace
+    to: FACT-mobile-pinned-organizations-subject
+    created_at: "2025-10-03T16:35:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5482637687ce
+    type: requires_property
+    from: REQ-papra-documents-creating-document-save-file-to-storage-and
+    to: FACT-papra-documents-create-document-creating-a-document-save-the-file-to-the
+    created_at: "2025-10-11T17:08:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-35daf7399951
+    type: constrains
+    from: REQ-papra-documents-creating-document-save-file-to-storage-and
+    to: FACT-papra-subject-documents-create-document
+    created_at: "2025-10-11T17:08:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d03704685b60
+    type: requires_property
+    from: REQ-papra-documents-transformers-arguments-can-have-escaped-quotes
+    to: FACT-papra-documents-build-storage-key-transformers-arguments-can-have-escaped-quotes
+    created_at: "2026-06-20T12:18:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4dfe4f0dd2ef
+    type: constrains
+    from: REQ-papra-documents-transformers-arguments-can-have-escaped-quotes
+    to: FACT-papra-subject-documents-build-storage-key
+    created_at: "2026-06-20T12:18:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7a9eafca0d9c
+    type: requires_property
+    from: REQ-papra-intake-emails-email-is-send-to-multiple-intake-emails
+    to: FACT-papra-intake-emails-process-intake-email-ingestion-when-an-email-is-send-to-multiple-intake
+    created_at: "2025-05-24T11:04:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-30370ec60a8f
+    type: constrains
+    from: REQ-papra-intake-emails-email-is-send-to-multiple-intake-emails
+    to: FACT-papra-subject-intake-emails-process-intake-email-ingestion
+    created_at: "2025-05-24T11:04:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

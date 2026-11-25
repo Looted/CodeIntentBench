@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-b8f727c36a06
+    type: requires_property
+    from: REQ-papra-auth-401-error-is-returned-if-user-is
+    to: FACT-papra-auth-create-role-middleware-a-401-error-is-returned-if-the-user
+    created_at: "2026-02-28T08:35:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-49cf153c593b
+    type: constrains
+    from: REQ-papra-auth-401-error-is-returned-if-user-is
+    to: FACT-papra-subject-auth-create-role-middleware
+    created_at: "2026-02-28T08:35:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

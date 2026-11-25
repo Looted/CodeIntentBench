@@ -1,0 +1,43 @@
+relationships:
+  - id: rel-4bf79610cfea
+    type: requires_property
+    from: REQ-forum-community-forum-member-search-minimum-length
+    to: FACT-forum-community-forum-member-search-query-min-length
+    created_at: "2026-07-02T10:35:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4d856cb55ca4
+    type: constrains
+    from: REQ-forum-community-forum-member-search-minimum-length
+    to: FACT-forum-community-forum-member-search-subject
+    created_at: "2026-07-02T10:35:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-10f073e29126
+    type: requires_property
+    from: REQ-papra-auth-signup-without-email-verification-requirement-does-not
+    to: FACT-papra-auth-email-verification-e2e-signup-without-email-verification-requirement-does-not-send
+    created_at: "2026-03-09T16:33:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0db105408e73
+    type: constrains
+    from: REQ-papra-auth-signup-without-email-verification-requirement-does-not
+    to: FACT-papra-subject-auth-email-verification-e2e
+    created_at: "2026-03-09T16:33:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d74e7e2c3ebf
+    type: requires_property
+    from: REQ-papra-tagging-rules-all-defined-allowed-operators-must-have-corresponding
+    to: FACT-papra-tagging-rules-tagging-rule-operator-definitions-all-defined-allowed-operators-must-have-a-corresponding
+    created_at: "2026-02-28T15:55:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d4f1a7b3e00c
+    type: constrains
+    from: REQ-papra-tagging-rules-all-defined-allowed-operators-must-have-corresponding
+    to: FACT-papra-subject-tagging-rules-tagging-rule-operator-definitions
+    created_at: "2026-02-28T15:55:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

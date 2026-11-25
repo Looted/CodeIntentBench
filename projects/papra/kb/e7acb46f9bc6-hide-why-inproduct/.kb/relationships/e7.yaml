@@ -1,0 +1,127 @@
+relationships:
+  - id: rel-97b2364c7142
+    type: requires_property
+    from: REQ-mobile-quick-labels-maximum-count-earlier
+    to: FACT-mobile-quick-labels-maximum-count-earlier
+    created_at: "2025-08-28T09:24:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-db9e97738364
+    type: constrains
+    from: REQ-mobile-quick-labels-maximum-count-earlier
+    to: FACT-mobile-quick-labels-subject
+    created_at: "2025-08-28T09:24:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9e362294abc1
+    type: requires_property
+    from: REQ-marketplace-author-registration-blocked-domains
+    to: FACT-marketplace-author-registration-disposable-domains-refused
+    created_at: "2026-07-03T17:50:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a93a2bc5a997
+    type: requires_property
+    from: REQ-marketplace-author-registration-blocked-domains
+    to: FACT-marketplace-author-registration-list-precedence
+    created_at: "2026-07-03T17:50:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e481bbe29542
+    type: constrains
+    from: REQ-marketplace-author-registration-blocked-domains
+    to: FACT-marketplace-author-registration-subject
+    created_at: "2026-07-03T17:50:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f95402c841aa
+    type: requires_property
+    from: REQ-license-license-trial-requests-repeat-address
+    to: FACT-license-license-trial-requests-repeat-address
+    created_at: "2026-05-07T12:32:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c493c5cf911b
+    type: constrains
+    from: REQ-license-license-trial-requests-repeat-address
+    to: FACT-license-license-trial-requests-subject
+    created_at: "2026-05-07T12:32:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a0d0cad23973
+    type: requires_property
+    from: REQ-forum-forum-groups-what-counts
+    to: FACT-forum-forum-groups-counted-toward-limit
+    created_at: "2025-04-09T16:22:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d4a81b4c2a4d
+    type: requires_property
+    from: REQ-forum-forum-groups-what-counts
+    to: FACT-forum-forum-groups-limit-detail
+    created_at: "2025-04-09T16:22:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b0fe22065318
+    type: constrains
+    from: REQ-forum-forum-groups-what-counts
+    to: FACT-forum-forum-groups-subject
+    created_at: "2025-04-09T16:22:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3e7a2a53c92d
+    type: requires_property
+    from: REQ-status-subscriber-lists-at-the-limit
+    to: FACT-status-subscriber-lists-at-limit
+    created_at: "2025-02-07T16:57:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-deea0a7f0e81
+    type: constrains
+    from: REQ-status-subscriber-lists-at-the-limit
+    to: FACT-status-subscriber-lists-subject
+    created_at: "2025-02-07T16:57:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a5748a79c133
+    type: requires_property
+    from: REQ-papra-auth-401-unauthorized-error-is-returned-2
+    to: FACT-papra-auth-create-role-middleware-a-401-unauthorized-error-is-returned-2
+    created_at: "2026-04-11T13:59:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-00c6e08a99d7
+    type: constrains
+    from: REQ-papra-auth-401-unauthorized-error-is-returned-2
+    to: FACT-papra-subject-auth-create-role-middleware
+    created_at: "2026-04-11T13:59:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-76f449afc5cf
+    type: requires_property
+    from: REQ-papra-document-search-warranty-enabled-is-accepted-as-valid-boolean
+    to: FACT-papra-document-search-query-builder-custom-properties-warranty-enabled-is-accepted-as-a-valid-boolean
+    created_at: "2026-07-07T11:12:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f210ddca25cb
+    type: constrains
+    from: REQ-papra-document-search-warranty-enabled-is-accepted-as-valid-boolean
+    to: FACT-papra-subject-document-search-query-builder-custom-properties
+    created_at: "2026-07-07T11:12:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-074bc9fc0f05
+    type: requires_property
+    from: REQ-papra-organizations-member-who-leaves-can-be-reinvited-repeatedly
+    to: FACT-papra-organizations-invite-member-to-organization-a-member-who-leaves-can-be-reinvited-repeatedly
+    created_at: "2025-07-05T13:39:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2f1d09c50d57
+    type: constrains
+    from: REQ-papra-organizations-member-who-leaves-can-be-reinvited-repeatedly
+    to: FACT-papra-subject-organizations-invite-member-to-organization
+    created_at: "2025-07-05T13:39:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

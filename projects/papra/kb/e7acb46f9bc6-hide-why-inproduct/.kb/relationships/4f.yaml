@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-1bd037857cc3
+    type: requires_property
+    from: REQ-support-canned-replies-batch-size
+    to: FACT-support-canned-replies-batch-maximum
+    created_at: "2026-09-13T14:16:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-62823b25986f
+    type: constrains
+    from: REQ-support-canned-replies-batch-size
+    to: FACT-support-canned-replies-subject
+    created_at: "2026-09-13T14:16:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-bddd35b9941c
+    type: requires_property
+    from: REQ-extension-ext-pairing-secret-minimum-length-earlier
+    to: FACT-extension-ext-pairing-secret-minimum-length-earlier
+    created_at: "2025-03-19T15:34:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6f628127aadf
+    type: constrains
+    from: REQ-extension-ext-pairing-secret-minimum-length-earlier
+    to: FACT-extension-ext-pairing-secret-subject
+    created_at: "2025-03-19T15:34:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

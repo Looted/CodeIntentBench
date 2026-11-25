@@ -1,0 +1,127 @@
+relationships:
+  - id: rel-b73e23b2e349
+    type: requires_property
+    from: REQ-papra-api-key-scope-and-expiry
+    to: FACT-papra-api-keys-key-route-access-requires
+    created_at: "2026-11-16T13:15:35.859Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-api-key-scope-and-expiry
+    to: FACT-papra-subject-api-keys-key
+    created_at: 2026-11-16T13:15:35.859Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-1b1e11a19d1e
+  - type: requires_property
+    from: REQ-papra-api-key-scope-and-expiry
+    to: FACT-papra-api-keys-key-authorized-with-missing-permission
+    created_at: 2026-11-16T13:15:35.870Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ce11eb8b7df3
+  - type: requires_property
+    from: REQ-papra-api-key-scope-and-expiry
+    to: FACT-papra-api-keys-key-authenticates-after-expiry
+    created_at: 2026-11-16T13:15:35.873Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-1db2641b9534
+  - type: requires_property
+    from: REQ-papra-api-key-scope-and-expiry
+    to: FACT-papra-api-keys-key-expires-without-expiry-date
+    created_at: 2026-11-16T13:15:35.875Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-3de0e5bc1461
+  - type: verified_by
+    from: REQ-papra-api-key-scope-and-expiry
+    to: TEST-papra-server-src-modules-api-keys-api-keys-repository
+    created_at: 2026-11-16T13:23:48.206Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4b663d6800c3
+  - type: verified_by
+    from: REQ-papra-api-key-scope-and-expiry
+    to: TEST-papra-server-src-modules-api-keys-api-keys-usecases
+    created_at: 2026-11-16T13:23:48.213Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c1c961e63233
+  - type: verified_by
+    from: REQ-papra-api-key-scope-and-expiry
+    to: TEST-papra-server-src-modules-app-auth-auth-models
+    created_at: 2026-11-16T13:23:48.217Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2b28169ec1e1
+  - id: rel-95316c4b7b56
+    type: requires_property
+    from: REQ-mobile-offline-tag-drafts-delete-in-use
+    to: FACT-mobile-offline-tag-drafts-delete-in-use
+    created_at: "2026-06-10T11:52:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4954250043b6
+    type: constrains
+    from: REQ-mobile-offline-tag-drafts-delete-in-use
+    to: FACT-mobile-offline-tag-drafts-subject
+    created_at: "2026-06-10T11:52:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3f0933d31f46
+    type: requires_property
+    from: REQ-desktop-folder-to-tag-mappings-name-length
+    to: FACT-desktop-folder-to-tag-mappings-name-max-length
+    created_at: "2025-11-16T15:35:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2a639b5c2ff1
+    type: constrains
+    from: REQ-desktop-folder-to-tag-mappings-name-length
+    to: FACT-desktop-folder-to-tag-mappings-subject
+    created_at: "2025-11-16T15:35:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8138735b6bfa
+    type: requires_property
+    from: REQ-backoffice-sandbox-organizations-limit-override
+    to: FACT-backoffice-sandbox-organizations-limit-override
+    created_at: "2025-12-26T17:46:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-eecef5d42d0c
+    type: constrains
+    from: REQ-backoffice-sandbox-organizations-limit-override
+    to: FACT-backoffice-sandbox-organizations-subject
+    created_at: "2025-12-26T17:46:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7c7c2a4ee59f
+    type: requires_property
+    from: REQ-papra-auth-request-is-allowed-to-proceed-2
+    to: FACT-papra-auth-create-role-middleware-the-request-is-allowed-to-proceed-2
+    created_at: "2025-05-09T09:50:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7b51888fc6ce
+    type: constrains
+    from: REQ-papra-auth-request-is-allowed-to-proceed-2
+    to: FACT-papra-subject-auth-create-role-middleware
+    created_at: "2025-05-09T09:50:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0bd0e46bd340
+    type: requires_property
+    from: REQ-papra-health-check-database-is-healthy-api-health-returns-200
+    to: FACT-papra-health-check-health-check-routes-e2e-when-the-database-is-healthy-the-api-health
+    created_at: "2025-06-15T14:09:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3b64c4a97775
+    type: constrains
+    from: REQ-papra-health-check-database-is-healthy-api-health-returns-200
+    to: FACT-papra-subject-health-check-health-check-routes-e2e
+    created_at: "2025-06-15T14:09:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

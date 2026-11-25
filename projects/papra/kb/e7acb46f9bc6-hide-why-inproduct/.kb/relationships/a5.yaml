@@ -1,0 +1,78 @@
+relationships:
+  - id: rel-0cbb377538ae
+    type: requires_property
+    from: REQ-cli-profiles-listing-order
+    to: FACT-cli-profiles-listing-order
+    created_at: "2025-07-14T14:54:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-07c61f3afda2
+    type: constrains
+    from: REQ-cli-profiles-listing-order
+    to: FACT-cli-profiles-subject
+    created_at: "2025-07-14T14:54:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-63859005d19b
+    type: requires_property
+    from: REQ-telemetry-telemetry-event-search-minimum-length
+    to: FACT-telemetry-telemetry-event-search-query-min-length
+    created_at: "2025-12-03T09:24:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-46eed4a5b5b6
+    type: constrains
+    from: REQ-telemetry-telemetry-event-search-minimum-length
+    to: FACT-telemetry-telemetry-event-search-subject
+    created_at: "2025-12-03T09:24:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-52c88cfa032a
+    type: requires_property
+    from: REQ-portal-referral-links-deletion-grace
+    to: FACT-portal-referral-links-restore-window-days
+    created_at: "2026-08-22T17:47:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-abb756290b77
+    type: requires_property
+    from: REQ-portal-referral-links-deletion-grace
+    to: FACT-portal-referral-links-purged-after-window
+    created_at: "2026-08-22T17:47:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d6b2b8d5bd07
+    type: constrains
+    from: REQ-portal-referral-links-deletion-grace
+    to: FACT-portal-referral-links-subject
+    created_at: "2026-08-22T17:47:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-880e72ca05ea
+    type: requires_property
+    from: REQ-papra-documents-parses-body-with-documentids-filter
+    to: FACT-papra-documents-batch-trash-body-schema-parses-a-body-with-documentids-filter
+    created_at: "2026-07-02T17:19:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f4acca11bb6e
+    type: constrains
+    from: REQ-papra-documents-parses-body-with-documentids-filter
+    to: FACT-papra-subject-documents-batch-trash-body-schema
+    created_at: "2026-07-02T17:19:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-268ab2f76b80
+    type: requires_property
+    from: REQ-papra-documents-defined-custom-property-with-no-value-set
+    to: FACT-papra-documents-enrich-documents-for-api-a-defined-custom-property-with-no-value-set
+    created_at: "2025-11-04T14:00:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ee9f0fe66d4c
+    type: constrains
+    from: REQ-papra-documents-defined-custom-property-with-no-value-set
+    to: FACT-papra-subject-documents-enrich-documents-for-api
+    created_at: "2025-11-04T14:00:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

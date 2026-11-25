@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-8ce474f16d29
+    type: requires_property
+    from: REQ-backoffice-support-macros-listing-order
+    to: FACT-backoffice-support-macros-listing-order
+    created_at: "2026-07-10T16:47:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e5179c6c6a23
+    type: constrains
+    from: REQ-backoffice-support-macros-listing-order
+    to: FACT-backoffice-support-macros-subject
+    created_at: "2026-07-10T16:47:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0ce5cc467356
+    type: requires_property
+    from: REQ-portal-referral-links-at-the-limit
+    to: FACT-portal-referral-links-at-limit
+    created_at: "2026-04-09T15:57:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2363d82adf3c
+    type: constrains
+    from: REQ-portal-referral-links-at-the-limit
+    to: FACT-portal-referral-links-subject
+    created_at: "2026-04-09T15:57:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0e5b3baea572
+    type: requires_property
+    from: REQ-papra-document-search-has-warranty-builds-subquery-checking-for-any
+    to: FACT-papra-document-search-query-builder-custom-properties-has-warranty-builds-a-subquery-checking-for-any
+    created_at: "2025-08-13T09:15:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-723a9a482de2
+    type: constrains
+    from: REQ-papra-document-search-has-warranty-builds-subquery-checking-for-any
+    to: FACT-papra-subject-document-search-query-builder-custom-properties
+    created_at: "2025-08-13T09:15:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-bb9ae0d87ef6
+    type: requires_property
+    from: REQ-papra-plans-organization-may-be-subscribed-to-plan
+    to: FACT-papra-plans-get-organization-plan-an-organization-may-be-subscribed-to-a-plan
+    created_at: "2025-06-03T09:09:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-85025b19123f
+    type: constrains
+    from: REQ-papra-plans-organization-may-be-subscribed-to-plan
+    to: FACT-papra-subject-plans-get-organization-plan
+    created_at: "2025-06-03T09:09:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

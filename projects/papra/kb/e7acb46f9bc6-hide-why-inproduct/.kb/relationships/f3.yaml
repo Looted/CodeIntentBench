@@ -1,0 +1,43 @@
+relationships:
+  - id: rel-1206bcf401a2
+    type: requires_property
+    from: REQ-extension-ext-pairing-secret-example-value-refused
+    to: FACT-extension-ext-pairing-secret-example-value-refused
+    created_at: "2025-11-01T10:52:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3091aae03c44
+    type: constrains
+    from: REQ-extension-ext-pairing-secret-example-value-refused
+    to: FACT-extension-ext-pairing-secret-subject
+    created_at: "2025-11-01T10:52:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4a60c65ebe22
+    type: requires_property
+    from: REQ-backoffice-staff-sign-in-repeat-address
+    to: FACT-backoffice-staff-sign-in-repeat-address
+    created_at: "2026-09-01T16:03:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-829c53de3534
+    type: constrains
+    from: REQ-backoffice-staff-sign-in-repeat-address
+    to: FACT-backoffice-staff-sign-in-subject
+    created_at: "2026-09-01T16:03:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c55135754e24
+    type: requires_property
+    from: REQ-papra-document-search-single-column-name-is-not-wrapped-in
+    to: FACT-papra-document-search-build-fts5-column-match-term-single-column-name-is-not-wrapped-in-curly
+    created_at: "2026-03-07T12:00:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2fde933685d6
+    type: constrains
+    from: REQ-papra-document-search-single-column-name-is-not-wrapped-in
+    to: FACT-papra-subject-document-search-build-fts5-column-match-term
+    created_at: "2026-03-07T12:00:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

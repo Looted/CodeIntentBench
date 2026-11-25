@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-906980cbb212
+    type: requires_property
+    from: REQ-docs-documentation-site-search-invalid-date
+    to: FACT-docs-documentation-site-search-invalid-date-filter
+    created_at: "2026-04-11T11:38:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8e08002966f7
+    type: constrains
+    from: REQ-docs-documentation-site-search-invalid-date
+    to: FACT-docs-documentation-site-search-subject
+    created_at: "2026-04-11T11:38:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9a43d2646ce0
+    type: requires_property
+    from: REQ-papra-document-search-no-column-names-results-in-query-atom
+    to: FACT-papra-document-search-build-fts5-column-match-term-no-column-names-results-in-a-query-atom
+    created_at: "2025-08-11T11:15:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-01f7134e8371
+    type: constrains
+    from: REQ-papra-document-search-no-column-names-results-in-query-atom
+    to: FACT-papra-subject-document-search-build-fts5-column-match-term
+    created_at: "2025-08-11T11:15:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-741627a9340b
+    type: requires_property
+    from: REQ-papra-documents-does-not-re-trash-documents-that-are
+    to: FACT-papra-documents-trash-documents-batch-does-not-re-trash-documents-that-are-already
+    created_at: "2026-05-26T08:25:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-63b2b4cca938
+    type: constrains
+    from: REQ-papra-documents-does-not-re-trash-documents-that-are
+    to: FACT-papra-subject-documents-trash-documents-batch
+    created_at: "2026-05-26T08:25:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e7d8e700086a
+    type: requires_property
+    from: REQ-papra-subscriptions-fully-canceled-subscription-allows-deletion-since-billing
+    to: FACT-papra-subscriptions-does-subscription-block-deletion-fully-canceled-subscription-allows-deletion-since-billing-has
+    created_at: "2025-11-05T13:23:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-57670525aa0c
+    type: constrains
+    from: REQ-papra-subscriptions-fully-canceled-subscription-allows-deletion-since-billing
+    to: FACT-papra-subject-subscriptions-does-subscription-block-deletion
+    created_at: "2025-11-05T13:23:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

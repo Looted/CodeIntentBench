@@ -1,0 +1,169 @@
+relationships:
+  - id: rel-83282bfac438
+    type: requires_property
+    from: REQ-papra-tag-duplicates-return-409
+    to: FACT-papra-tags-duplicate-status-create-duplicate-status
+    created_at: "2026-11-16T13:18:40.704Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-tag-duplicates-return-409
+    to: FACT-papra-subject-tags-duplicate-status
+    created_at: 2026-11-16T13:18:40.705Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2f8b803e779d
+  - type: requires_property
+    from: REQ-papra-tag-duplicates-return-409
+    to: FACT-papra-tags-duplicate-status-add-existing-tag-status
+    created_at: 2026-11-16T13:18:40.716Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4aac17c50a14
+  - type: requires_property
+    from: REQ-papra-api-key-custom-property-permissions
+    to: FACT-papra-api-keys-custom-property-permissions-available
+    created_at: 2026-11-16T13:22:43.751Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-3ec014ffb64a
+  - type: constrains
+    from: REQ-papra-api-key-custom-property-permissions
+    to: FACT-papra-subject-api-keys-custom-property-permissions
+    created_at: 2026-11-16T13:22:43.763Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9cfc3490fa60
+  - type: verified_by
+    from: REQ-papra-tag-duplicates-return-409
+    to: TEST-papra-server-src-modules-tags-tags-repository
+    created_at: 2026-11-16T13:24:10.238Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c0ab9a5f2edf
+  - type: verified_by
+    from: REQ-papra-tag-duplicates-return-409
+    to: TEST-papra-server-src-modules-tags-tags-usecases
+    created_at: 2026-11-16T13:30:17.337Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6612582a8205
+  - id: rel-b87612ca60f2
+    type: requires_property
+    from: REQ-extension-ext-pairing-secret-source
+    to: FACT-extension-ext-pairing-secret-value-source
+    created_at: "2026-05-08T10:19:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0522091cee68
+    type: constrains
+    from: REQ-extension-ext-pairing-secret-source
+    to: FACT-extension-ext-pairing-secret-subject
+    created_at: "2026-05-08T10:19:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-74763bba1ef2
+    type: requires_property
+    from: REQ-portal-partner-registration-repeat-address
+    to: FACT-portal-partner-registration-repeat-address
+    created_at: "2026-02-12T15:07:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4a3fb6ed2c5b
+    type: constrains
+    from: REQ-portal-partner-registration-repeat-address
+    to: FACT-portal-partner-registration-subject
+    created_at: "2026-02-12T15:07:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fc2dcd4c0721
+    type: requires_property
+    from: REQ-portal-client-workspaces-name-uniqueness
+    to: FACT-portal-client-workspaces-name-uniqueness
+    created_at: "2026-08-18T13:37:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d7dd4d52f015
+    type: constrains
+    from: REQ-portal-client-workspaces-name-uniqueness
+    to: FACT-portal-client-workspaces-subject
+    created_at: "2026-08-18T13:37:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-bbe40d65f78a
+    type: requires_property
+    from: REQ-telemetry-projects-what-counts
+    to: FACT-telemetry-projects-counted-toward-limit
+    created_at: "2026-06-28T14:15:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ed24d06ff31b
+    type: requires_property
+    from: REQ-telemetry-projects-what-counts
+    to: FACT-telemetry-projects-limit-detail
+    created_at: "2026-06-28T14:15:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1341a895c0d2
+    type: constrains
+    from: REQ-telemetry-projects-what-counts
+    to: FACT-telemetry-projects-subject
+    created_at: "2026-06-28T14:15:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c96ff91d4430
+    type: requires_property
+    from: REQ-status-subscriber-lists-maximum-count-earlier
+    to: FACT-status-subscriber-lists-maximum-count-earlier
+    created_at: "2025-02-21T12:46:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-441a269a79ae
+    type: constrains
+    from: REQ-status-subscriber-lists-maximum-count-earlier
+    to: FACT-status-subscriber-lists-subject
+    created_at: "2025-02-21T12:46:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4998cbcad169
+    type: requires_property
+    from: REQ-papra-auth-auth-type-is-session-apikey-is-not
+    to: FACT-papra-auth-check-authentication-when-the-auth-type-is-session-the-apikey
+    created_at: "2025-09-11T15:14:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-196bfba6fa56
+    type: constrains
+    from: REQ-papra-auth-auth-type-is-session-apikey-is-not
+    to: FACT-papra-subject-auth-check-authentication
+    created_at: "2025-09-11T15:14:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0940caa4e129
+    type: requires_property
+    from: REQ-papra-auth-email-and-password-sign-up-is-rejected
+    to: FACT-papra-auth-registration-e2e-email-and-password-sign-up-is-rejected
+    created_at: "2026-08-01T14:49:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7d7c687ffc71
+    type: constrains
+    from: REQ-papra-auth-email-and-password-sign-up-is-rejected
+    to: FACT-papra-subject-auth-registration-e2e
+    created_at: "2026-08-01T14:49:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-91986aace466
+    type: requires_property
+    from: REQ-papra-organizations-stale-pending-invitations-expire-immediately-and-stop
+    to: FACT-papra-organizations-invite-member-to-organization-stale-pending-invitations-expire-immediately-and-stop-consuming
+    created_at: "2025-11-22T14:10:53.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cb7b7beaccb7
+    type: constrains
+    from: REQ-papra-organizations-stale-pending-invitations-expire-immediately-and-stop
+    to: FACT-papra-subject-organizations-invite-member-to-organization
+    created_at: "2025-11-22T14:10:53.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

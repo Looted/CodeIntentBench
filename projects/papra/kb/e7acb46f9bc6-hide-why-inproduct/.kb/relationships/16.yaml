@@ -1,0 +1,92 @@
+relationships:
+  - id: rel-d855a5e1b5be
+    type: requires_property
+    from: REQ-papra-member-limit-counts-pending-invitations
+    to: FACT-papra-invitations-member-limit-set-by-plan
+    created_at: "2026-11-16T13:15:26.693Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-member-limit-counts-pending-invitations
+    to: FACT-papra-subject-invitations-member-limit
+    created_at: 2026-11-16T13:15:26.694Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-09def2ad1d79
+  - type: requires_property
+    from: REQ-papra-member-limit-counts-pending-invitations
+    to: FACT-papra-invitations-member-limit-counts-pending-invitations
+    created_at: 2026-11-16T13:15:26.709Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-da227990d8f2
+  - type: requires_property
+    from: REQ-papra-member-limit-counts-pending-invitations
+    to: FACT-papra-invitations-member-limit-new-invitation-refused-at-limit
+    created_at: 2026-11-16T13:15:26.712Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-0f6c83c9815f
+  - id: rel-2c80be3b02bd
+    type: requires_property
+    from: REQ-desktop-desktop-sync-client-sync-log-filter-case-folding
+    to: FACT-desktop-desktop-sync-client-sync-log-filter-case-folding
+    created_at: "2026-07-07T15:02:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0eaff627d911
+    type: constrains
+    from: REQ-desktop-desktop-sync-client-sync-log-filter-case-folding
+    to: FACT-desktop-desktop-sync-client-sync-log-filter-subject
+    created_at: "2026-07-07T15:02:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-dae5bbe0a349
+    type: requires_property
+    from: REQ-license-license-portal-accounts-concurrent-sessions
+    to: FACT-license-license-portal-accounts-concurrent-sessions
+    created_at: "2026-05-14T12:20:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-abcffcd7c7dd
+    type: requires_property
+    from: REQ-license-license-portal-accounts-concurrent-sessions
+    to: FACT-license-license-portal-accounts-over-limit
+    created_at: "2026-05-14T12:20:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a488e9cf6d0b
+    type: constrains
+    from: REQ-license-license-portal-accounts-concurrent-sessions
+    to: FACT-license-license-portal-accounts-subject
+    created_at: "2026-05-14T12:20:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6bc647e11d13
+    type: requires_property
+    from: REQ-papra-admin-user-does-not-have-view-analytics-permission
+    to: FACT-papra-admin-analytics-routes-permission-protection-when-the-user-does-not-have-the-view
+    created_at: "2025-03-16T14:03:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8ac13afd582b
+    type: constrains
+    from: REQ-papra-admin-user-does-not-have-view-analytics-permission
+    to: FACT-papra-subject-admin-analytics-routes-permission-protection
+    created_at: "2025-03-16T14:03:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f570e53178a4
+    type: requires_property
+    from: REQ-papra-document-search-handles-special-characters-in-text-expression-quotes
+    to: FACT-papra-document-search-handle-text-expression-handles-special-characters-in-text-expression-quotes-are
+    created_at: "2025-12-08T15:04:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-66b0605e5e25
+    type: constrains
+    from: REQ-papra-document-search-handles-special-characters-in-text-expression-quotes
+    to: FACT-papra-subject-document-search-handle-text-expression
+    created_at: "2025-12-08T15:04:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

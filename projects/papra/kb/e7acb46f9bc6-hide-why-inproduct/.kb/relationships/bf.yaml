@@ -1,0 +1,120 @@
+relationships:
+  - id: rel-d7c29359c842
+    type: verified_by
+    from: REQ-an-invalid-date-in-a-created-filter-is-ign-800EF0B8
+    to: TEST-papra-server-src-modules-documents-document-search-database-fts5-query-builder-query-builder
+    created_at: "2026-10-14T12:10:00.045Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: requires_property
+    from: REQ-an-invalid-date-in-a-created-filter-is-ign-800EF0B8
+    to: FACT-papra-search-filter-created-invalid-date-handling
+    created_at: 2026-11-15T21:42:11.207Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-194b8cb30592
+  - type: constrains
+    from: REQ-an-invalid-date-in-a-created-filter-is-ign-800EF0B8
+    to: FACT-papra-subject-search-filter-created
+    created_at: 2026-11-15T21:42:11.212Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-95ccb68fbac5
+  - type: verified_by
+    from: REQ-an-invalid-date-in-a-created-filter-is-ign-800EF0B8
+    to: TEST-papra-server-src-modules-documents-document-search-database-fts5-query-builder-query-builder-models
+    created_at: 2026-11-16T04:52:05.699Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2806873b6fab
+  - type: requires_property
+    from: REQ-papra-webhooks-no-redirects
+    to: FACT-papra-webhook-redirects-followed
+    created_at: 2026-11-16T13:20:18.345Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b8839fe4fe3e
+  - type: constrains
+    from: REQ-papra-webhooks-no-redirects
+    to: FACT-papra-subject-webhook-redirects
+    created_at: 2026-11-16T13:20:18.359Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-57390332cac1
+  - id: rel-b8601e978b64
+    type: requires_property
+    from: REQ-client-tag-colour-presets-names-trimmed
+    to: FACT-client-tag-colour-presets-name-trimmed
+    created_at: "2025-03-16T09:08:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-dbc8fc749a6e
+    type: requires_property
+    from: REQ-client-tag-colour-presets-names-trimmed
+    to: FACT-client-tag-colour-presets-empty-name-refused
+    created_at: "2025-03-16T09:08:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-368f67ab8f62
+    type: constrains
+    from: REQ-client-tag-colour-presets-names-trimmed
+    to: FACT-client-tag-colour-presets-subject
+    created_at: "2025-03-16T09:08:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-331ddf7c63c6
+    type: requires_property
+    from: REQ-cli-papra-history-filter-minimum-length
+    to: FACT-cli-papra-history-filter-query-min-length
+    created_at: "2025-07-10T13:33:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b21d82645bad
+    type: constrains
+    from: REQ-cli-papra-history-filter-minimum-length
+    to: FACT-cli-papra-history-filter-subject
+    created_at: "2025-07-10T13:33:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3af2e7184116
+    type: requires_property
+    from: REQ-website-newsletter-sign-up-repeat-address
+    to: FACT-website-newsletter-sign-up-repeat-address
+    created_at: "2025-12-23T09:31:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cd98df0f4799
+    type: constrains
+    from: REQ-website-newsletter-sign-up-repeat-address
+    to: FACT-website-newsletter-sign-up-subject
+    created_at: "2025-12-23T09:31:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-32ab629af1d5
+    type: requires_property
+    from: REQ-marketplace-template-author-accounts-reset-link-validity-earlier
+    to: FACT-marketplace-template-author-accounts-reset-link-minutes-earlier
+    created_at: "2025-06-14T15:33:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-17b65fb4d03a
+    type: constrains
+    from: REQ-marketplace-template-author-accounts-reset-link-validity-earlier
+    to: FACT-marketplace-template-author-accounts-subject
+    created_at: "2025-06-14T15:33:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-091a64169985
+    type: requires_property
+    from: REQ-papra-documents-ensure-storage-pattern-is-valid-it-throws
+    to: FACT-papra-documents-storage-pattern-schema-ensure-the-storage-pattern-is-valid-it-throws
+    created_at: "2026-09-25T10:40:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b0ffbf83c0f7
+    type: constrains
+    from: REQ-papra-documents-ensure-storage-pattern-is-valid-it-throws
+    to: FACT-papra-subject-documents-storage-pattern-schema
+    created_at: "2026-09-25T10:40:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

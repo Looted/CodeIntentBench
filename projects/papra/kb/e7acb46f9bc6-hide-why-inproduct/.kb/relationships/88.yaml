@@ -1,0 +1,85 @@
+relationships:
+  - id: rel-1d34e6b8affb
+    type: requires_property
+    from: REQ-marketplace-template-tags-case-sensitive-names
+    to: FACT-marketplace-template-tags-name-uniqueness
+    created_at: "2026-02-10T12:41:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-923eeb321e5f
+    type: requires_property
+    from: REQ-marketplace-template-tags-case-sensitive-names
+    to: FACT-marketplace-template-tags-case-variants-distinct
+    created_at: "2026-02-10T12:41:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-678bc5a8de74
+    type: constrains
+    from: REQ-marketplace-template-tags-case-sensitive-names
+    to: FACT-marketplace-template-tags-subject
+    created_at: "2026-02-10T12:41:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-90645f0090c1
+    type: requires_property
+    from: REQ-website-demo-workspaces-ownership-transfer
+    to: FACT-website-demo-workspaces-ownership-transfer
+    created_at: "2025-05-13T10:31:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a8c70e323818
+    type: constrains
+    from: REQ-website-demo-workspaces-ownership-transfer
+    to: FACT-website-demo-workspaces-subject
+    created_at: "2025-05-13T10:31:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7ce6bbcd18cd
+    type: requires_property
+    from: REQ-education-education-portal-accounts-reset-link-single-use
+    to: FACT-education-education-portal-accounts-reset-link-single-use
+    created_at: "2025-06-03T11:46:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2a03d0c12dfd
+    type: requires_property
+    from: REQ-education-education-portal-accounts-reset-link-single-use
+    to: FACT-education-education-portal-accounts-new-link-invalidates-old
+    created_at: "2025-06-03T11:46:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-eb476f3461cc
+    type: constrains
+    from: REQ-education-education-portal-accounts-reset-link-single-use
+    to: FACT-education-education-portal-accounts-subject
+    created_at: "2025-06-03T11:46:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-43e81371cbe7
+    type: requires_property
+    from: REQ-papra-document-search-enforces-organization-isolation-to-prevent-searching-documents
+    to: FACT-papra-document-search-search-organization-documents-enforces-organization-isolation-to-prevent-searching-documents-from
+    created_at: "2026-06-01T15:34:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-74a733853587
+    type: constrains
+    from: REQ-papra-document-search-enforces-organization-isolation-to-prevent-searching-documents
+    to: FACT-papra-subject-document-search-search-organization-documents
+    created_at: "2026-06-01T15:34:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ba50519f02c9
+    type: requires_property
+    from: REQ-papra-subscriptions-no-coupon-is-configured-promotion-codes-are
+    to: FACT-papra-subscriptions-resolve-checkout-discount-when-no-coupon-is-configured-promotion-codes-are
+    created_at: "2025-08-28T17:41:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7bf8ff2a7b94
+    type: constrains
+    from: REQ-papra-subscriptions-no-coupon-is-configured-promotion-codes-are
+    to: FACT-papra-subject-subscriptions-resolve-checkout-discount
+    created_at: "2025-08-28T17:41:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

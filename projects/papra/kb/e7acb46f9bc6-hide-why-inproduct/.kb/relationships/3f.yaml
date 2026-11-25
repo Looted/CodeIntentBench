@@ -1,0 +1,162 @@
+relationships:
+  - id: rel-630fa10ec069
+    type: requires_property
+    from: REQ-a-soft-deleted-organization-can-be-restore-09031B40
+    to: FACT-papra-organization-restore-allowed-before-scheduled-purge-at
+    created_at: "2026-11-15T21:42:03.298Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-a-soft-deleted-organization-can-be-restore-09031B40
+    to: FACT-papra-subject-organization-restore
+    created_at: 2026-11-15T21:42:03.299Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-35a01c275ca6
+  - type: requires_property
+    from: REQ-a-soft-deleted-organization-can-be-restore-09031B40
+    to: FACT-papra-organization-restore-allowed-actor
+    created_at: 2026-11-15T21:42:03.303Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2474e7baa38a
+  - type: requires_property
+    from: REQ-a-soft-deleted-organization-can-be-restore-09031B40
+    to: FACT-papra-organization-restore-allowed-after-scheduled-purge-at
+    created_at: 2026-11-15T21:42:03.305Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-04dacf83f498
+  - type: verified_by
+    from: REQ-a-soft-deleted-organization-can-be-restore-09031B40
+    to: TEST-papra-server-src-modules-organizations-organizations-repository
+    created_at: 2026-11-16T04:52:04.790Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9ecce8db8c95
+  - type: verified_by
+    from: REQ-a-soft-deleted-organization-can-be-restore-09031B40
+    to: TEST-papra-server-src-modules-organizations-organizations-usecases
+    created_at: 2026-11-16T04:52:04.796Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-a2ccb66dd280
+  - type: requires_property
+    from: REQ-papra-search-query-max-1024
+    to: FACT-papra-search-query-length-max-characters
+    created_at: 2026-11-16T13:18:11.329Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-7d5ce43c5343
+  - type: constrains
+    from: REQ-papra-search-query-max-1024
+    to: FACT-papra-subject-search-query-length
+    created_at: 2026-11-16T13:18:11.344Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2222295778c6
+  - type: verified_by
+    from: REQ-a-soft-deleted-organization-can-be-restore-09031B40
+    to: TEST-papra-server-src-modules-document-share-links-e2e-shared-document-access-e2e
+    created_at: 2026-11-16T13:30:05.290Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-59799f6bb423
+  - type: verified_by
+    from: REQ-papra-search-query-max-1024
+    to: TEST-papra-server-src-modules-documents-document-encryption-usecases
+    created_at: 2026-11-16T13:30:15.338Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6e4451520427
+  - type: verified_by
+    from: REQ-papra-search-query-max-1024
+    to: TEST-papra-server-src-modules-documents-documents-schemas
+    created_at: 2026-11-16T13:30:15.346Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-90b756fcaf26
+  - type: verified_by
+    from: REQ-papra-search-query-max-1024
+    to: TEST-papra-server-src-modules-documents-documents-usecases
+    created_at: 2026-11-16T13:30:15.351Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-abdc94b950ad
+  - id: rel-d776b7a38cdd
+    type: requires_property
+    from: REQ-desktop-desktop-sync-client-local-file-search-query-length
+    to: FACT-desktop-desktop-sync-client-local-file-search-query-max-length
+    created_at: "2026-03-22T13:01:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-144a24d29ca2
+    type: requires_property
+    from: REQ-desktop-desktop-sync-client-local-file-search-query-length
+    to: FACT-desktop-desktop-sync-client-local-file-search-over-length-input
+    created_at: "2026-03-22T13:01:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f1ccfe525380
+    type: constrains
+    from: REQ-desktop-desktop-sync-client-local-file-search-query-length
+    to: FACT-desktop-desktop-sync-client-local-file-search-subject
+    created_at: "2026-03-22T13:01:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-866798f9c120
+    type: requires_property
+    from: REQ-papra-auto-tagging-organization-has-no-existing-tags-and-cannot
+    to: FACT-papra-auto-tagging-auto-tag-document-when-the-organization-has-no-existing-tags-and
+    created_at: "2025-10-04T08:10:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-947d3f1f5d91
+    type: constrains
+    from: REQ-papra-auto-tagging-organization-has-no-existing-tags-and-cannot
+    to: FACT-papra-subject-auto-tagging-auto-tag-document
+    created_at: "2025-10-04T08:10:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b37ed6115b59
+    type: requires_property
+    from: REQ-papra-documents-form-data-format-puts-file-in-file
+    to: FACT-papra-documents-build-request-body-the-form-data-format-puts-the-file-in
+    created_at: "2026-05-09T10:53:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7f74079c6c11
+    type: constrains
+    from: REQ-papra-documents-form-data-format-puts-file-in-file
+    to: FACT-papra-subject-documents-build-request-body
+    created_at: "2026-05-09T10:53:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-76ae76c816cc
+    type: requires_property
+    from: REQ-papra-organizations-old-invitation-cannot-be-resent-to-current
+    to: FACT-papra-organizations-resend-organization-invitation-an-old-invitation-cannot-be-resent-to-a
+    created_at: "2025-07-18T09:25:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-60bdb2fbbbf5
+    type: constrains
+    from: REQ-papra-organizations-old-invitation-cannot-be-resent-to-current
+    to: FACT-papra-subject-organizations-resend-organization-invitation
+    created_at: "2025-07-18T09:25:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d3631b783175
+    type: requires_property
+    from: REQ-papra-storage-real-file-not-found-error-from-fs
+    to: FACT-papra-storage-is-file-not-found-error-real-file-not-found-error-from-fs-promises
+    created_at: "2026-04-08T13:17:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7e8b50024556
+    type: constrains
+    from: REQ-papra-storage-real-file-not-found-error-from-fs
+    to: FACT-papra-subject-storage-is-file-not-found-error
+    created_at: "2026-04-08T13:17:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

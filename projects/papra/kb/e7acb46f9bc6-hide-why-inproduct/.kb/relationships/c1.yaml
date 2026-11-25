@@ -1,0 +1,71 @@
+relationships:
+  - id: rel-a4ee9a8498f3
+    type: requires_property
+    from: REQ-papra-stripe-webhook-forgery-prevented
+    to: FACT-papra-billing-stripe-webhook-accepted-without-secret
+    created_at: "2026-11-16T13:21:54.128Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-stripe-webhook-forgery-prevented
+    to: FACT-papra-subject-billing-stripe-webhook
+    created_at: 2026-11-16T13:21:54.128Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-a6c28169e455
+  - id: rel-7496ac5e0eb9
+    type: requires_property
+    from: REQ-desktop-watch-folder-labels-listing-order
+    to: FACT-desktop-watch-folder-labels-listing-order
+    created_at: "2026-04-14T17:50:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-16a9702e617d
+    type: constrains
+    from: REQ-desktop-watch-folder-labels-listing-order
+    to: FACT-desktop-watch-folder-labels-subject
+    created_at: "2026-04-14T17:50:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d0d9a70d2a7c
+    type: requires_property
+    from: REQ-portal-sub-partner-accounts-ownership-transfer
+    to: FACT-portal-sub-partner-accounts-ownership-transfer
+    created_at: "2025-08-22T11:25:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-04c1b45ab8ce
+    type: constrains
+    from: REQ-portal-sub-partner-accounts-ownership-transfer
+    to: FACT-portal-sub-partner-accounts-subject
+    created_at: "2025-08-22T11:25:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-564545f8f258
+    type: requires_property
+    from: REQ-marketplace-published-templates-maximum-count-earlier
+    to: FACT-marketplace-published-templates-maximum-count-earlier
+    created_at: "2026-04-21T17:52:24.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a9bfb1b8df25
+    type: constrains
+    from: REQ-marketplace-published-templates-maximum-count-earlier
+    to: FACT-marketplace-published-templates-subject
+    created_at: "2026-04-21T17:52:24.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9a44bcba678f
+    type: requires_property
+    from: REQ-papra-storage-fully-buffers-stream-whose-size-stays-within
+    to: FACT-papra-storage-buffer-stream-up-to-threshold-fully-buffers-a-stream-whose-size-stays-within
+    created_at: "2025-09-03T08:17:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0ddf41adb8fc
+    type: constrains
+    from: REQ-papra-storage-fully-buffers-stream-whose-size-stays-within
+    to: FACT-papra-subject-storage-buffer-stream-up-to-threshold
+    created_at: "2025-09-03T08:17:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

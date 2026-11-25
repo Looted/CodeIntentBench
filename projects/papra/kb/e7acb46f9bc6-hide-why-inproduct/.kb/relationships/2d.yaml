@@ -1,0 +1,85 @@
+relationships:
+  - id: rel-7a67b5e339c9
+    type: requires_property
+    from: REQ-portal-partner-portal-client-search-minimum-length
+    to: FACT-portal-partner-portal-client-search-query-min-length
+    created_at: "2025-03-21T10:06:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-85e0d7c71857
+    type: constrains
+    from: REQ-portal-partner-portal-client-search-minimum-length
+    to: FACT-portal-partner-portal-client-search-subject
+    created_at: "2025-03-21T10:06:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8f9266d4119e
+    type: requires_property
+    from: REQ-website-webinar-registration-repeat-address
+    to: FACT-website-webinar-registration-repeat-address
+    created_at: "2026-08-01T09:58:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-88ab873b8b3e
+    type: constrains
+    from: REQ-website-webinar-registration-repeat-address
+    to: FACT-website-webinar-registration-subject
+    created_at: "2026-08-01T09:58:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5efc29898e50
+    type: requires_property
+    from: REQ-license-license-portal-accounts-password-change
+    to: FACT-license-license-portal-accounts-sessions-on-password-change
+    created_at: "2025-04-08T09:12:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-26c770f5c3be
+    type: constrains
+    from: REQ-license-license-portal-accounts-password-change
+    to: FACT-license-license-portal-accounts-subject
+    created_at: "2025-04-08T09:12:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a7dc53852c7f
+    type: requires_property
+    from: REQ-papra-ai-credits-totaltoken-count-does-not-match-sum-of
+    to: FACT-papra-ai-credits-parse-usage-info-when-the-totaltoken-count-does-not-match-the
+    created_at: "2026-01-05T12:46:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-725ef189725a
+    type: constrains
+    from: REQ-papra-ai-credits-totaltoken-count-does-not-match-sum-of
+    to: FACT-papra-subject-ai-credits-parse-usage-info
+    created_at: "2026-01-05T12:46:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0539f22eb0f2
+    type: requires_property
+    from: REQ-papra-organizations-uses-default-purge-delay-of-30-days
+    to: FACT-papra-organizations-soft-delete-organization-uses-default-purge-delay-of-30-days-when
+    created_at: "2026-06-11T11:43:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6ca19ba2b4dd
+    type: constrains
+    from: REQ-papra-organizations-uses-default-purge-delay-of-30-days
+    to: FACT-papra-subject-organizations-soft-delete-organization
+    created_at: "2026-06-11T11:43:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f87ed702efea
+    type: requires_property
+    from: REQ-papra-plan-entitlements-user-has-expired-entitlement-of-same-type
+    to: FACT-papra-plan-entitlements-claim-user-plan-entitlement-when-the-user-has-an-expired-entitlement-of
+    created_at: "2025-04-08T09:10:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-bac3565fafea
+    type: constrains
+    from: REQ-papra-plan-entitlements-user-has-expired-entitlement-of-same-type
+    to: FACT-papra-subject-plan-entitlements-claim-user-plan-entitlement
+    created_at: "2025-04-08T09:10:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

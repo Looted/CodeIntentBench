@@ -1,0 +1,92 @@
+relationships:
+  - id: rel-db3e20665760
+    type: requires_property
+    from: REQ-papra-max-upload-size-can-be-disabled
+    to: FACT-papra-upload-max-size-disabled-by-value
+    created_at: "2026-11-16T13:20:25.236Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-max-upload-size-can-be-disabled
+    to: FACT-papra-subject-upload-max-size
+    created_at: 2026-11-16T13:20:25.237Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6a5a6e50198e
+  - type: requires_property
+    from: REQ-papra-max-upload-default-25mb
+    to: FACT-papra-upload-max-size-default-megabytes
+    created_at: 2026-11-16T13:20:47.403Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-852c29534980
+  - type: constrains
+    from: REQ-papra-max-upload-default-25mb
+    to: FACT-papra-subject-upload-max-size
+    created_at: 2026-11-16T13:20:47.422Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-3e0730224a64
+  - type: requires_property
+    from: REQ-papra-max-upload-default-25mb
+    to: FACT-papra-upload-max-size-setting
+    created_at: 2026-11-16T13:20:47.426Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-dcece91ea38d
+  - id: rel-1aad69d00c69
+    type: requires_property
+    from: REQ-marketplace-marketplace-auth-secret-minimum-length-earlier
+    to: FACT-marketplace-marketplace-auth-secret-minimum-length-earlier
+    created_at: "2025-09-02T12:02:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9da4fca29274
+    type: constrains
+    from: REQ-marketplace-marketplace-auth-secret-minimum-length-earlier
+    to: FACT-marketplace-marketplace-auth-secret-subject
+    created_at: "2025-09-02T12:02:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-02cfc54589eb
+    type: requires_property
+    from: REQ-portal-partner-portal-accounts-reset-rate-limit
+    to: FACT-portal-partner-portal-accounts-reset-emails-per-hour
+    created_at: "2026-04-27T09:33:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-646547d6ab75
+    type: constrains
+    from: REQ-portal-partner-portal-accounts-reset-rate-limit
+    to: FACT-portal-partner-portal-accounts-subject
+    created_at: "2026-04-27T09:33:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0d6c8ceda35e
+    type: requires_property
+    from: REQ-papra-documents-moves-incremental-suffixed-key-to-unsuffixed-key
+    to: FACT-papra-documents-sync-document-storage-key-moves-an-incremental-suffixed-key-to-the-unsuffixed
+    created_at: "2026-08-11T15:09:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-53f910a923ae
+    type: constrains
+    from: REQ-papra-documents-moves-incremental-suffixed-key-to-unsuffixed-key
+    to: FACT-papra-subject-documents-sync-document-storage-key
+    created_at: "2026-08-11T15:09:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c1e4018f934c
+    type: requires_property
+    from: REQ-papra-tagging-rules-conditionmatchmode-is-any-tags-are-applied-when
+    to: FACT-papra-tagging-rules-apply-tagging-rules-when-conditionmatchmode-is-any-tags-are-applied-when
+    created_at: "2025-05-06T17:01:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fcf6d6a7ba65
+    type: constrains
+    from: REQ-papra-tagging-rules-conditionmatchmode-is-any-tags-are-applied-when
+    to: FACT-papra-subject-tagging-rules-apply-tagging-rules
+    created_at: "2025-05-06T17:01:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -1,0 +1,92 @@
+relationships:
+  - id: rel-eff453c7f50f
+    type: requires_property
+    from: REQ-extension-clip-presets-batch-size
+    to: FACT-extension-clip-presets-batch-maximum
+    created_at: "2026-04-09T13:32:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8b28f3945395
+    type: constrains
+    from: REQ-extension-clip-presets-batch-size
+    to: FACT-extension-clip-presets-subject
+    created_at: "2026-04-09T13:32:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-23f1496a821a
+    type: requires_property
+    from: REQ-telemetry-event-labels-maximum-count
+    to: FACT-telemetry-event-labels-maximum-count
+    created_at: "2026-01-09T13:58:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-10c71e88345b
+    type: requires_property
+    from: REQ-telemetry-event-labels-maximum-count
+    to: FACT-telemetry-event-labels-limit-configurable
+    created_at: "2026-01-09T13:58:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5972a0f79ec7
+    type: constrains
+    from: REQ-telemetry-event-labels-maximum-count
+    to: FACT-telemetry-event-labels-subject
+    created_at: "2026-01-09T13:58:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-52ba028e697b
+    type: requires_property
+    from: REQ-backoffice-back-office-invoice-search-empty-query
+    to: FACT-backoffice-back-office-invoice-search-empty-query
+    created_at: "2025-11-01T12:08:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4bec1990ead8
+    type: constrains
+    from: REQ-backoffice-back-office-invoice-search-empty-query
+    to: FACT-backoffice-back-office-invoice-search-subject
+    created_at: "2025-11-01T12:08:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4d877f67c487
+    type: requires_property
+    from: REQ-papra-admin-user-has-view-users-permission-request-succeeds
+    to: FACT-papra-admin-admin-organizations-routes-permission-protection-when-the-user-has-the-view-users-permission
+    created_at: "2025-08-03T15:15:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8148f09fa155
+    type: constrains
+    from: REQ-papra-admin-user-has-view-users-permission-request-succeeds
+    to: FACT-papra-subject-admin-admin-organizations-routes-permission-protection
+    created_at: "2025-08-03T15:15:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1b8b3838410c
+    type: requires_property
+    from: REQ-papra-documents-organizations-on-pro-plan-should-be-able
+    to: FACT-papra-documents-documents-e2e-organizations-on-pro-plan-should-be-able-to
+    created_at: "2025-05-03T10:54:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-950c94930ee4
+    type: constrains
+    from: REQ-papra-documents-organizations-on-pro-plan-should-be-able
+    to: FACT-papra-subject-documents-documents-e2e
+    created_at: "2025-05-03T10:54:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-096aa28c51a0
+    type: requires_property
+    from: REQ-papra-tagging-rules-returns-error-when-tagging-rule-does-not
+    to: FACT-papra-tagging-rules-apply-tagging-rule-to-existing-documents-returns-error-when-tagging-rule-does-not-exist
+    created_at: "2025-10-09T15:39:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-86b57d933aaf
+    type: constrains
+    from: REQ-papra-tagging-rules-returns-error-when-tagging-rule-does-not
+    to: FACT-papra-subject-tagging-rules-apply-tagging-rule-to-existing-documents
+    created_at: "2025-10-09T15:39:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

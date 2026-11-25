@@ -1,0 +1,50 @@
+relationships:
+  - id: rel-8b2c88f0f565
+    type: requires_property
+    from: REQ-website-blog-search-query-length
+    to: FACT-website-blog-search-query-max-length
+    created_at: "2025-11-18T14:57:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-781f1db80093
+    type: requires_property
+    from: REQ-website-blog-search-query-length
+    to: FACT-website-blog-search-over-length-input
+    created_at: "2025-11-18T14:57:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e4d32da39348
+    type: constrains
+    from: REQ-website-blog-search-query-length
+    to: FACT-website-blog-search-subject
+    created_at: "2025-11-18T14:57:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1af1d65c7f52
+    type: requires_property
+    from: REQ-papra-users-deleting-user-cascades-authentication-related-data-accounts
+    to: FACT-papra-users-delete-user-deleting-an-user-cascades-the-authentication-related-data
+    created_at: "2026-07-10T10:55:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2f3977f61fd0
+    type: constrains
+    from: REQ-papra-users-deleting-user-cascades-authentication-related-data-accounts
+    to: FACT-papra-subject-users-delete-user
+    created_at: "2026-07-10T10:55:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-982cb35ee251
+    type: requires_property
+    from: REQ-papra-webhooks-ssrf-protection-is-enabled-creating-webhook-with
+    to: FACT-papra-webhooks-create-webhook-when-ssrf-protection-is-enabled-creating-a-webhook
+    created_at: "2026-03-25T13:21:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-87f3747352a0
+    type: constrains
+    from: REQ-papra-webhooks-ssrf-protection-is-enabled-creating-webhook-with
+    to: FACT-papra-subject-webhooks-create-webhook
+    created_at: "2026-03-25T13:21:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

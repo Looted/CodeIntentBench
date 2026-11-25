@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-2dab890cae27
+    type: requires_property
+    from: REQ-backoffice-back-office-invoice-search-case-folding
+    to: FACT-backoffice-back-office-invoice-search-case-folding
+    created_at: "2026-03-21T16:09:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5cc34968184b
+    type: constrains
+    from: REQ-backoffice-back-office-invoice-search-case-folding
+    to: FACT-backoffice-back-office-invoice-search-subject
+    created_at: "2026-03-21T16:09:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

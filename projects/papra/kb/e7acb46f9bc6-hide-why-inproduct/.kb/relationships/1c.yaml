@@ -1,0 +1,43 @@
+relationships:
+  - id: rel-ae58c2d17103
+    type: requires_property
+    from: REQ-papra-config-use-generic-baseurl-if-set-otherwise-use
+    to: FACT-papra-config-get-client-base-url-use-the-generic-baseurl-if-set-otherwise-use
+    created_at: "2026-02-12T14:02:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-068b71548ebc
+    type: constrains
+    from: REQ-papra-config-use-generic-baseurl-if-set-otherwise-use
+    to: FACT-papra-subject-config-get-client-base-url
+    created_at: "2026-02-12T14:02:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a2f9c36dbb02
+    type: requires_property
+    from: REQ-papra-document-search-applies-heterogeneous-per-row-patches-in-single
+    to: FACT-papra-document-search-update-documents-applies-heterogeneous-per-row-patches-in-a-single
+    created_at: "2026-04-11T15:09:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2bbd812d2db5
+    type: constrains
+    from: REQ-papra-document-search-applies-heterogeneous-per-row-patches-in-single
+    to: FACT-papra-subject-document-search-update-documents
+    created_at: "2026-04-11T15:09:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7e83a4e47fa5
+    type: requires_property
+    from: REQ-papra-document-search-documents-can-be-sorted-by-update-date
+    to: FACT-papra-document-search-sort-documents-can-be-sorted-by-update-date
+    created_at: "2025-05-18T17:57:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-18409ab2fdd1
+    type: constrains
+    from: REQ-papra-document-search-documents-can-be-sorted-by-update-date
+    to: FACT-papra-subject-document-search-sort
+    created_at: "2025-05-18T17:57:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

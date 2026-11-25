@@ -1,0 +1,71 @@
+relationships:
+  - id: rel-c781ab926d1f
+    type: requires_property
+    from: REQ-papra-azure-blob-storage-driver
+    to: FACT-papra-storage-azure-driver-available
+    created_at: "2026-11-16T13:16:45.862Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-azure-blob-storage-driver
+    to: FACT-papra-subject-storage-azure-driver
+    created_at: 2026-11-16T13:16:45.863Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-055963601064
+  - id: rel-8041d810c1ff
+    type: requires_property
+    from: REQ-papra-document-search-warranty-y-is-accepted-as-valid-boolean
+    to: FACT-papra-document-search-query-builder-custom-properties-warranty-y-is-accepted-as-a-valid-boolean
+    created_at: "2026-08-21T11:06:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0c28c1b07f33
+    type: constrains
+    from: REQ-papra-document-search-warranty-y-is-accepted-as-valid-boolean
+    to: FACT-papra-subject-document-search-query-builder-custom-properties
+    created_at: "2026-08-21T11:06:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-69405585237d
+    type: requires_property
+    from: REQ-papra-documents-default-replaces-undefined-value-and-subsequent-transformers
+    to: FACT-papra-documents-evaluate-storage-pattern-expression-default-replaces-an-undefined-value-and-subsequent-transformers
+    created_at: "2025-05-27T11:52:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1e3fe2943b7c
+    type: constrains
+    from: REQ-papra-documents-default-replaces-undefined-value-and-subsequent-transformers
+    to: FACT-papra-subject-documents-evaluate-storage-pattern-expression
+    created_at: "2025-05-27T11:52:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b493ba969c2c
+    type: requires_property
+    from: REQ-papra-plan-entitlements-entitlements-of-no-longer-eligible-users-get
+    to: FACT-papra-plan-entitlements-reverify-user-claimed-plan-entitlements-entitlements-of-no-longer-eligible-users-get-their
+    created_at: "2025-04-14T15:31:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2dc840efc38e
+    type: constrains
+    from: REQ-papra-plan-entitlements-entitlements-of-no-longer-eligible-users-get
+    to: FACT-papra-subject-plan-entitlements-reverify-user-claimed-plan-entitlements
+    created_at: "2025-04-14T15:31:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-44f3bb788f91
+    type: requires_property
+    from: REQ-papra-tagging-rules-getting-enabled-tagging-rules-includes-all-related
+    to: FACT-papra-tagging-rules-get-organization-enabled-tagging-rules-getting-enabled-tagging-rules-includes-all-related-conditions
+    created_at: "2025-08-09T15:28:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9916157378c2
+    type: constrains
+    from: REQ-papra-tagging-rules-getting-enabled-tagging-rules-includes-all-related
+    to: FACT-papra-subject-tagging-rules-get-organization-enabled-tagging-rules
+    created_at: "2025-08-09T15:28:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

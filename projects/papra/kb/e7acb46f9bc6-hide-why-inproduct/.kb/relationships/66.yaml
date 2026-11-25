@@ -1,0 +1,92 @@
+relationships:
+  - id: rel-2c1f1e963ba5
+    type: requires_property
+    from: REQ-portal-client-labels-listing-order
+    to: FACT-portal-client-labels-listing-order
+    created_at: "2026-01-17T10:10:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c316aada20bf
+    type: constrains
+    from: REQ-portal-client-labels-listing-order
+    to: FACT-portal-client-labels-subject
+    created_at: "2026-01-17T10:10:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-41428ed1ad54
+    type: requires_property
+    from: REQ-support-support-portal-ticket-search-page-size
+    to: FACT-support-support-portal-ticket-search-page-size-maximum
+    created_at: "2026-03-19T13:23:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-dc53d6bba9ca
+    type: constrains
+    from: REQ-support-support-portal-ticket-search-page-size
+    to: FACT-support-support-portal-ticket-search-subject
+    created_at: "2026-03-19T13:23:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9858238878ce
+    type: supersedes
+    from: REQ-support-support-portal-accounts-reset-link-validity
+    to: REQ-support-support-portal-accounts-reset-link-validity-earlier
+    created_at: "2025-09-03T15:34:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e68898b135db
+    type: requires_property
+    from: REQ-support-support-portal-accounts-reset-link-validity
+    to: FACT-support-support-portal-accounts-reset-link-minutes
+    created_at: "2025-09-03T15:34:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8e36d72b0d70
+    type: constrains
+    from: REQ-support-support-portal-accounts-reset-link-validity
+    to: FACT-support-support-portal-accounts-subject
+    created_at: "2025-09-03T15:34:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7ce4fa8cf8ec
+    type: requires_property
+    from: REQ-papra-custom-properties-does-not-wipe-existing-options-when-foreign
+    to: FACT-papra-custom-properties-sync-select-options-does-not-wipe-existing-options-when-a-foreign
+    created_at: "2025-11-16T08:48:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b8d2a4e96f93
+    type: constrains
+    from: REQ-papra-custom-properties-does-not-wipe-existing-options-when-foreign
+    to: FACT-papra-subject-custom-properties-sync-select-options
+    created_at: "2025-11-16T08:48:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-837d6672824c
+    type: requires_property
+    from: REQ-papra-document-search-category-invoice-builds-exact-match-subquery-on
+    to: FACT-papra-document-search-query-builder-custom-properties-category-invoice-builds-an-exact-match-subquery-on
+    created_at: "2025-05-24T14:08:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5515041f4cb9
+    type: constrains
+    from: REQ-papra-document-search-category-invoice-builds-exact-match-subquery-on
+    to: FACT-papra-subject-document-search-query-builder-custom-properties
+    created_at: "2025-05-24T14:08:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-246c37890986
+    type: requires_property
+    from: REQ-papra-storage-given-storage-key-is-not-already-taken
+    to: FACT-papra-storage-ensure-storage-key-is-available-when-a-given-storage-key-is-not-already
+    created_at: "2025-07-25T15:27:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c87d8d6ee54e
+    type: constrains
+    from: REQ-papra-storage-given-storage-key-is-not-already-taken
+    to: FACT-papra-subject-storage-ensure-storage-key-is-available
+    created_at: "2025-07-25T15:27:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

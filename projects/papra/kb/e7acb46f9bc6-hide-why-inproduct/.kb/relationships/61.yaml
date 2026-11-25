@@ -1,0 +1,78 @@
+relationships:
+  - id: rel-671ef5ba1675
+    type: verified_by
+    from: REQ-built-in-content-extraction-can-be-turned--66925D7B
+    to: TEST-papra-server-src-modules-documents-documents-usecases
+    created_at: "2026-10-14T12:09:45.376Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: requires_property
+    from: REQ-built-in-content-extraction-can-be-turned--66925D7B
+    to: FACT-papra-document-content-extraction-can-be-disabled
+    created_at: 2026-11-15T21:42:16.497Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-00e0e7eec1eb
+  - type: constrains
+    from: REQ-built-in-content-extraction-can-be-turned--66925D7B
+    to: FACT-papra-subject-document-content-extraction
+    created_at: 2026-11-15T21:42:16.501Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-86d20ad4f1bc
+  - type: requires_property
+    from: REQ-built-in-content-extraction-can-be-turned--66925D7B
+    to: FACT-papra-document-extracted-content-writable-through-api
+    created_at: 2026-11-15T21:42:16.504Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9ae511c5fb43
+  - type: constrains
+    from: REQ-built-in-content-extraction-can-be-turned--66925D7B
+    to: FACT-papra-subject-document-extracted-content
+    created_at: 2026-11-15T21:42:16.507Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-0ab5dec4eb7f
+  - id: rel-743cda8a8d1f
+    type: requires_property
+    from: REQ-status-status-page-administrator-accounts-reset-notification
+    to: FACT-status-status-page-administrator-accounts-reset-confirmation-email
+    created_at: "2026-07-16T09:58:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4366b170dce4
+    type: constrains
+    from: REQ-status-status-page-administrator-accounts-reset-notification
+    to: FACT-status-status-page-administrator-accounts-subject
+    created_at: "2026-07-16T09:58:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-41ce701c6139
+    type: requires_property
+    from: REQ-papra-plan-entitlements-entitlement-belongs-to-another-user-not-found
+    to: FACT-papra-plan-entitlements-delete-user-plan-entitlement-when-the-entitlement-belongs-to-another-user-a
+    created_at: "2025-08-25T13:08:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-708c7fe0eb74
+    type: constrains
+    from: REQ-papra-plan-entitlements-entitlement-belongs-to-another-user-not-found
+    to: FACT-papra-subject-plan-entitlements-delete-user-plan-entitlement
+    created_at: "2025-08-25T13:08:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4aa8b4008149
+    type: requires_property
+    from: REQ-papra-users-user-already-exists-with-same-email-error
+    to: FACT-papra-users-create-user-when-a-user-already-exists-with-the-same
+    created_at: "2026-03-10T12:52:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7c446e636faf
+    type: constrains
+    from: REQ-papra-users-user-already-exists-with-same-email-error
+    to: FACT-papra-subject-users-create-user
+    created_at: "2026-03-10T12:52:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

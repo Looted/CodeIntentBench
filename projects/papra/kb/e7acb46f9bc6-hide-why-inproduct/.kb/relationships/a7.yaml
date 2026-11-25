@@ -1,0 +1,85 @@
+relationships:
+  - id: rel-4b575a6aa791
+    type: requires_property
+    from: REQ-website-changelog-labels-name-length
+    to: FACT-website-changelog-labels-name-max-length
+    created_at: "2025-11-20T11:22:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1ee16e9aa700
+    type: constrains
+    from: REQ-website-changelog-labels-name-length
+    to: FACT-website-changelog-labels-subject
+    created_at: "2025-11-20T11:22:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6ba6c326b3f9
+    type: requires_property
+    from: REQ-cli-profiles-delete-in-use
+    to: FACT-cli-profiles-delete-in-use
+    created_at: "2025-03-28T11:36:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-044476aa0fee
+    type: constrains
+    from: REQ-cli-profiles-delete-in-use
+    to: FACT-cli-profiles-subject
+    created_at: "2025-03-28T11:36:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fbbb2f164b23
+    type: requires_property
+    from: REQ-forum-forum-groups-ownership-transfer
+    to: FACT-forum-forum-groups-ownership-transfer
+    created_at: "2026-08-09T14:25:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-81fd132d5282
+    type: constrains
+    from: REQ-forum-forum-groups-ownership-transfer
+    to: FACT-forum-forum-groups-subject
+    created_at: "2026-08-09T14:25:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-06c2323fad7f
+    type: requires_property
+    from: REQ-papra-middlewares-non-internal-custom-error-is-thrown-with
+    to: FACT-papra-middlewares-register-error-middleware-when-a-non-internal-custom-error-is-thrown
+    created_at: "2025-11-06T13:43:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-db0f9e746026
+    type: constrains
+    from: REQ-papra-middlewares-non-internal-custom-error-is-thrown-with
+    to: FACT-papra-subject-middlewares-register-error-middleware
+    created_at: "2025-11-06T13:43:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-11474dcbb676
+    type: requires_property
+    from: REQ-papra-documents-returns-0-count-and-size-when-organization
+    to: FACT-papra-documents-get-organization-stats-returns-0-count-and-size-when-organization-does
+    created_at: "2026-05-12T08:16:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b1e78e5dc70d
+    type: constrains
+    from: REQ-papra-documents-returns-0-count-and-size-when-organization
+    to: FACT-papra-subject-documents-get-organization-stats
+    created_at: "2026-05-12T08:16:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6634c3340957
+    type: requires_property
+    from: REQ-papra-organizations-can-delete-organization-after-subscription-is-canceled
+    to: FACT-papra-organizations-soft-delete-organization-can-delete-organization-after-subscription-is-canceled
+    created_at: "2025-03-24T14:46:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-028f807dffb9
+    type: constrains
+    from: REQ-papra-organizations-can-delete-organization-after-subscription-is-canceled
+    to: FACT-papra-subject-organizations-soft-delete-organization
+    created_at: "2025-03-24T14:46:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

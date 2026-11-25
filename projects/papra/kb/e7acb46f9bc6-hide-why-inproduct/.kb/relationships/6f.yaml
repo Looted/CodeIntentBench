@@ -1,0 +1,71 @@
+relationships:
+  - id: rel-47edc1741a18
+    type: requires_property
+    from: REQ-telemetry-event-labels-unique-ignoring-case
+    to: FACT-telemetry-event-labels-name-uniqueness
+    created_at: "2025-04-21T09:16:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-017dfe7e1129
+    type: requires_property
+    from: REQ-telemetry-event-labels-unique-ignoring-case
+    to: FACT-telemetry-event-labels-duplicate-error
+    created_at: "2025-04-21T09:16:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e63aa8721835
+    type: constrains
+    from: REQ-telemetry-event-labels-unique-ignoring-case
+    to: FACT-telemetry-event-labels-subject
+    created_at: "2025-04-21T09:16:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-198f5391d68c
+    type: requires_property
+    from: REQ-backoffice-staff-sign-in-rate-limit
+    to: FACT-backoffice-staff-sign-in-requests-per-ip-per-hour
+    created_at: "2025-05-13T08:28:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8fcfcf361025
+    type: constrains
+    from: REQ-backoffice-staff-sign-in-rate-limit
+    to: FACT-backoffice-staff-sign-in-subject
+    created_at: "2025-05-13T08:28:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8407c3942351
+    type: requires_property
+    from: REQ-telemetry-projects-maximum-count
+    to: FACT-telemetry-projects-maximum-count
+    created_at: "2025-12-08T13:34:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9d212dfce1ac
+    type: requires_property
+    from: REQ-telemetry-projects-maximum-count
+    to: FACT-telemetry-projects-limit-configurable
+    created_at: "2025-12-08T13:34:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-63df96634cfb
+    type: constrains
+    from: REQ-telemetry-projects-maximum-count
+    to: FACT-telemetry-projects-subject
+    created_at: "2025-12-08T13:34:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-704e669c24c5
+    type: requires_property
+    from: REQ-papra-document-search-builds-query-to-find-documents-with-date
+    to: FACT-papra-document-search-handle-document-has-date-filter-builds-query-to-find-documents-with-a-date
+    created_at: "2026-08-23T12:21:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f1fefad0ed62
+    type: constrains
+    from: REQ-papra-document-search-builds-query-to-find-documents-with-date
+    to: FACT-papra-subject-document-search-handle-document-has-date-filter
+    created_at: "2026-08-23T12:21:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

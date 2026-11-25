@@ -1,0 +1,25 @@
+---
+title: marketplace.template_author_accounts character_class_rule = False
+status: active
+fact_kind: property_value
+subject_key: marketplace.template_author_accounts
+property_key: character_class_rule
+operator: eq
+value_type: bool
+value_bool: false
+claim_key: CLAIM-3BB7AA89852B2146
+claim_text: there is no rule about character classes
+text_ref: REQ-marketplace-template-author-accounts-password-length
+tags:
+  - lane:strict
+  - knowledge-source:marketplace-decisions
+origin:
+  kind: agent
+  ref: 'Template marketplace decision log: MKT-213'
+  recorded_at: '2025-06-15T08:56:52.000Z'
+id: FACT-marketplace-template-author-accounts-character-class-rule
+type: fact
+---
+There is no rule about character classes.
+
+Modeled from REQ-marketplace-template-author-accounts-password-length so the claim can be checked for contradictions.

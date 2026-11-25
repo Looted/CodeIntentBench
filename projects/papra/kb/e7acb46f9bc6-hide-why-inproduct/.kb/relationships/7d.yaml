@@ -1,0 +1,64 @@
+relationships:
+  - id: rel-3716305145cf
+    type: requires_property
+    from: REQ-desktop-folder-to-tag-mappings-maximum-count-earlier
+    to: FACT-desktop-folder-to-tag-mappings-maximum-count-earlier
+    created_at: "2025-04-14T12:46:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e4efc9c3c36b
+    type: constrains
+    from: REQ-desktop-folder-to-tag-mappings-maximum-count-earlier
+    to: FACT-desktop-folder-to-tag-mappings-subject
+    created_at: "2025-04-14T12:46:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e918f9c6392c
+    type: requires_property
+    from: REQ-support-canned-replies-name-length
+    to: FACT-support-canned-replies-name-max-length
+    created_at: "2025-07-09T14:16:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fa38a297b12c
+    type: constrains
+    from: REQ-support-canned-replies-name-length
+    to: FACT-support-canned-replies-subject
+    created_at: "2025-07-09T14:16:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6983c0734f15
+    type: requires_property
+    from: REQ-backoffice-staff-sign-in-blocked-domains
+    to: FACT-backoffice-staff-sign-in-disposable-domains-refused
+    created_at: "2025-11-11T12:59:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-481e37adf7de
+    type: requires_property
+    from: REQ-backoffice-staff-sign-in-blocked-domains
+    to: FACT-backoffice-staff-sign-in-list-precedence
+    created_at: "2025-11-11T12:59:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7e1a74c1d77b
+    type: constrains
+    from: REQ-backoffice-staff-sign-in-blocked-domains
+    to: FACT-backoffice-staff-sign-in-subject
+    created_at: "2025-11-11T12:59:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b70db25fd030
+    type: requires_property
+    from: REQ-papra-documents-undefined-value-uses-fallback-without-transformers
+    to: FACT-papra-documents-evaluate-storage-pattern-expression-an-undefined-value-uses-the-fallback-without-transformers
+    created_at: "2025-11-01T17:08:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6ce1d429b69c
+    type: constrains
+    from: REQ-papra-documents-undefined-value-uses-fallback-without-transformers
+    to: FACT-papra-subject-documents-evaluate-storage-pattern-expression
+    created_at: "2025-11-01T17:08:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

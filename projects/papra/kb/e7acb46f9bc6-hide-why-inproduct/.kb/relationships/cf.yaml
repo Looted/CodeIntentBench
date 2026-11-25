@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-cfce17389c01
+    type: requires_property
+    from: REQ-papra-custom-properties-throws-when-unknown-option-id-is-provided
+    to: FACT-papra-custom-properties-sync-select-options-throws-when-an-unknown-option-id-is-provided
+    created_at: "2026-01-05T14:33:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-98b6099fdde8
+    type: constrains
+    from: REQ-papra-custom-properties-throws-when-unknown-option-id-is-provided
+    to: FACT-papra-subject-custom-properties-sync-select-options
+    created_at: "2026-01-05T14:33:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

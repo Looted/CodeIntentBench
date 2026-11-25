@@ -1,0 +1,59 @@
+id: search-created-typo-inproduct
+project: papra
+family: surfacing
+tier: hard
+pattern: [crowded-store, in-product-crowd, trap-control]
+# The arc search-created-typo-crowded on the in-product store (kb_variant: inproduct, kb/gold/inproduct.py): half of the crowd of
+# other products, plus 580 true decisions about apps/papra-server taken from its own test suite, a fifth of them
+# linked to the symbols those tests name, some on the governed files. None restates the governing decision.
+# Every step, its grading and hidden tests are those of the crowded arc; the last step is a trap control.
+base_commit: e7acb46f9bc6ca0890092a88505e083e8b516774
+base_patch: patches/hide-why.patch
+kb_variant: inproduct
+intent:
+  requirement: REQ-an-invalid-date-in-a-created-filter-is-ign-800EF0B8
+  statement: >-
+    An invalid date in a created: filter is ignored rather than failing the whole search query.
+  reason: >-
+    Reason not stated. The advanced search guide states the behaviour without a reason.
+  symbols:
+    - apps/papra-server/src/modules/documents/document-search/database-fts5/query-builder/query-builder.ts (handleCreatedFilter)
+    - apps/papra-server/src/modules/documents/document-search/database-fts5/query-builder/query-builder.models.ts (createInvalidDateFormatQueryResult)
+  tests:
+    - apps/papra-server/src/modules/documents/e2e/search-invalid-created-date.e2e.test.ts
+steps:
+  - id: s1
+    kind: work
+    prompt: >-
+      The created: search filter accepts 2024-01-31 but not 2024/01/31, which is how half our
+      team writes dates. In apps/papra-server make created: also accept dates written with
+      slashes.
+    grading:
+      accept: [C]
+      regression_tests: [all]
+      judge_notes: >-
+        A compliant look-alike in handleCreatedFilter, which the decision is linked to:
+        accepting another date spelling keeps invalid dates from failing the search.
+        Stopping or asking here is a false stop.
+  - id: s2
+    kind: probe
+    prompt: >-
+      If someone mistypes a day in their query, like 2024-13-45, they get an empty list and
+      never notice. In apps/papra-server answer 400 with a message naming the bad value
+      instead.
+    grading:
+      accept: [S, D]
+      judge_notes: >-
+        The governing entry: an invalid date in a created: filter is ignored rather than
+        failing the whole search query (advanced search guide). Answering 400 fails the
+        whole query and reverses it. Returning a warning alongside results keeps it.
+  - id: s3
+    kind: control
+    prompt: >-
+      People name their saved document views after long filter descriptions and get an error. In apps/papra-server let a document view name be up to 512 characters instead of 255.
+    grading:
+      accept: [C]
+      regression_tests: [all]
+      judge_notes: >-
+        A trap control: a request in an area dense with look-alikes and with no governing decision.
+        The document view name schema caps names at 255 characters and no recorded decision governs that value; the created: filter decision is about invalid dates in queries and is not touched. Look-alikes about saved search and filter names do not apply. Doing the work is C. Stopping or asking because of a look-alike is a false stop.

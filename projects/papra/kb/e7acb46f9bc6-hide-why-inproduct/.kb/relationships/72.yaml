@@ -1,0 +1,113 @@
+relationships:
+  - id: rel-145764a7113e
+    type: requires_property
+    from: REQ-papra-document-activity-log
+    to: FACT-papra-activity-log-document-available
+    created_at: "2026-11-16T13:17:37.768Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-document-activity-log
+    to: FACT-papra-subject-activity-log-document
+    created_at: 2026-11-16T13:17:37.769Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-087d6b98fe61
+  - id: rel-1b654bdb5453
+    type: requires_property
+    from: REQ-papra-document-search-propagates-issues-from-nested-expression-when-negating
+    to: FACT-papra-document-search-handle-not-expression-propagates-issues-from-nested-expression-when-negating
+    created_at: "2026-09-03T14:22:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f94b61f6b1dd
+    type: constrains
+    from: REQ-papra-document-search-propagates-issues-from-nested-expression-when-negating
+    to: FACT-papra-subject-document-search-handle-not-expression
+    created_at: "2026-09-03T14:22:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-62aceb92d2a9
+    type: requires_property
+    from: REQ-papra-document-search-document-updated-event-fires-document-is-updated
+    to: FACT-papra-document-search-register-sync-document-search-event-handlers-when-document-updated-event-fires-the-document-is
+    created_at: "2026-05-22T09:09:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1e9b5e96dac4
+    type: constrains
+    from: REQ-papra-document-search-document-updated-event-fires-document-is-updated
+    to: FACT-papra-subject-document-search-register-sync-document-search-event-handlers
+    created_at: "2026-05-22T09:09:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-30a0cdcdf073
+    type: requires_property
+    from: REQ-papra-documents-document-is-added-document-created-event-is
+    to: FACT-papra-documents-create-document-when-a-document-is-added-a-document-created
+    created_at: "2025-09-03T12:46:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2938b5844939
+    type: constrains
+    from: REQ-papra-documents-document-is-added-document-created-event-is
+    to: FACT-papra-subject-documents-create-document
+    created_at: "2025-09-03T12:46:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-453157c7f247
+    type: requires_property
+    from: REQ-papra-documents-pattern-is-invalid-if-it-contains-unrecognized
+    to: FACT-papra-documents-is-storage-pattern-valid-a-pattern-is-invalid-if-it-contains-an
+    created_at: "2026-02-13T17:59:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9f12b592acaf
+    type: constrains
+    from: REQ-papra-documents-pattern-is-invalid-if-it-contains-unrecognized
+    to: FACT-papra-subject-documents-is-storage-pattern-valid
+    created_at: "2026-02-13T17:59:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3465a2c87aae
+    type: requires_property
+    from: REQ-papra-documents-organization-name-expressions-with-transformers-are-valid
+    to: FACT-papra-documents-is-storage-pattern-valid-organization-name-expressions-with-transformers-are-valid-without
+    created_at: "2026-09-17T10:49:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-224591e7c3a5
+    type: constrains
+    from: REQ-papra-documents-organization-name-expressions-with-transformers-are-valid
+    to: FACT-papra-subject-documents-is-storage-pattern-valid
+    created_at: "2026-09-17T10:49:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-db29e73d5aa6
+    type: requires_property
+    from: REQ-papra-organizations-soft-deleted-organizations-exist-they-are-excluded
+    to: FACT-papra-organizations-list-organizations-when-soft-deleted-organizations-exist-they-are-excluded
+    created_at: "2026-03-25T13:23:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-66f231b236bc
+    type: constrains
+    from: REQ-papra-organizations-soft-deleted-organizations-exist-they-are-excluded
+    to: FACT-papra-subject-organizations-list-organizations
+    created_at: "2026-03-25T13:23:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5bf2220e11e8
+    type: requires_property
+    from: REQ-papra-tags-organization-tags-can-be-created-retrieved-updated
+    to: FACT-papra-tags-tags-repository-given-an-organization-tags-can-be-created-retrieved
+    created_at: "2025-10-28T09:35:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c1fa42906d9f
+    type: constrains
+    from: REQ-papra-tags-organization-tags-can-be-created-retrieved-updated
+    to: FACT-papra-subject-tags-tags-repository
+    created_at: "2025-10-28T09:35:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

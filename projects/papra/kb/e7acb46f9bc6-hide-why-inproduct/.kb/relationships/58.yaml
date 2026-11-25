@@ -1,0 +1,162 @@
+relationships:
+  - id: rel-d95f925a40b7
+    type: requires_property
+    from: REQ-website-blog-tags-names-trimmed
+    to: FACT-website-blog-tags-name-trimmed
+    created_at: "2025-06-09T15:28:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c54cd3bac908
+    type: requires_property
+    from: REQ-website-blog-tags-names-trimmed
+    to: FACT-website-blog-tags-empty-name-refused
+    created_at: "2025-06-09T15:28:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fc6c21c53efe
+    type: constrains
+    from: REQ-website-blog-tags-names-trimmed
+    to: FACT-website-blog-tags-subject
+    created_at: "2025-06-09T15:28:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b86c675cf995
+    type: requires_property
+    from: REQ-cli-import-labels-name-length
+    to: FACT-cli-import-labels-name-max-length
+    created_at: "2025-07-25T14:09:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-878fc18dfd7d
+    type: constrains
+    from: REQ-cli-import-labels-name-length
+    to: FACT-cli-import-labels-subject
+    created_at: "2025-07-25T14:09:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-565361001253
+    type: requires_property
+    from: REQ-desktop-ignore-patterns-delete-in-use
+    to: FACT-desktop-ignore-patterns-delete-in-use
+    created_at: "2026-02-18T17:10:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-910d72867481
+    type: constrains
+    from: REQ-desktop-ignore-patterns-delete-in-use
+    to: FACT-desktop-ignore-patterns-subject
+    created_at: "2026-02-18T17:10:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0638d451907d
+    type: requires_property
+    from: REQ-backoffice-support-macros-case-sensitive-names
+    to: FACT-backoffice-support-macros-name-uniqueness
+    created_at: "2025-09-16T13:23:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fc0efe423138
+    type: requires_property
+    from: REQ-backoffice-support-macros-case-sensitive-names
+    to: FACT-backoffice-support-macros-case-variants-distinct
+    created_at: "2025-09-16T13:23:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e52a53da2ac9
+    type: constrains
+    from: REQ-backoffice-support-macros-case-sensitive-names
+    to: FACT-backoffice-support-macros-subject
+    created_at: "2025-09-16T13:23:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1fb7b540a2cd
+    type: requires_property
+    from: REQ-n8n-credential-labels-name-length
+    to: FACT-n8n-credential-labels-name-max-length
+    created_at: "2026-05-23T14:38:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a06cd51cf0d2
+    type: constrains
+    from: REQ-n8n-credential-labels-name-length
+    to: FACT-n8n-credential-labels-subject
+    created_at: "2026-05-23T14:38:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a80b222a8f8f
+    type: requires_property
+    from: REQ-client-web-client-demo-mode-search-query-length
+    to: FACT-client-web-client-demo-mode-search-query-max-length
+    created_at: "2026-03-08T16:17:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f23bff295223
+    type: requires_property
+    from: REQ-client-web-client-demo-mode-search-query-length
+    to: FACT-client-web-client-demo-mode-search-over-length-input
+    created_at: "2026-03-08T16:17:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-efcdab49f906
+    type: constrains
+    from: REQ-client-web-client-demo-mode-search-query-length
+    to: FACT-client-web-client-demo-mode-search-subject
+    created_at: "2026-03-08T16:17:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-52eb3142bea9
+    type: requires_property
+    from: REQ-portal-partner-portal-accounts-reset-and-two-factor
+    to: FACT-portal-partner-portal-accounts-reset-disables-two-factor
+    created_at: "2025-06-06T12:05:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-68fdb002f712
+    type: constrains
+    from: REQ-portal-partner-portal-accounts-reset-and-two-factor
+    to: FACT-portal-partner-portal-accounts-subject
+    created_at: "2025-06-06T12:05:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-21a636afa16e
+    type: requires_property
+    from: REQ-papra-api-keys-api-key-is-created-with-correct-hash
+    to: FACT-papra-api-keys-create-api-key-the-api-key-is-created-with-the-correct
+    created_at: "2026-03-10T09:30:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-617bd23f0d91
+    type: constrains
+    from: REQ-papra-api-keys-api-key-is-created-with-correct-hash
+    to: FACT-papra-subject-api-keys-create-api-key
+    created_at: "2026-03-10T09:30:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8dbe6e6560ea
+    type: requires_property
+    from: REQ-papra-documents-retrieve-document-count-and-total-size-for
+    to: FACT-papra-documents-get-organization-stats-retrieve-document-count-and-total-size-for-an
+    created_at: "2025-02-05T11:47:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-90bdcc621611
+    type: constrains
+    from: REQ-papra-documents-retrieve-document-count-and-total-size-for
+    to: FACT-papra-subject-documents-get-organization-stats
+    created_at: "2025-02-05T11:47:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-21275ab28991
+    type: requires_property
+    from: REQ-papra-intake-emails-fails-if-entry-is-not-valid-email
+    to: FACT-papra-intake-emails-allowed-origins-schema-fails-if-an-entry-is-not-a-valid
+    created_at: "2026-04-05T09:24:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-19baa66f6ebf
+    type: constrains
+    from: REQ-papra-intake-emails-fails-if-entry-is-not-valid-email
+    to: FACT-papra-subject-intake-emails-allowed-origins-schema
+    created_at: "2026-04-05T09:24:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

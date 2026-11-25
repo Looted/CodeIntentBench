@@ -1,0 +1,134 @@
+relationships:
+  - id: rel-a3bfe779c6bb
+    type: requires_property
+    from: REQ-papra-auth-secret-required-in-production
+    to: FACT-papra-auth-secret-required-in-production
+    created_at: "2026-11-16T13:22:09.525Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-auth-secret-required-in-production
+    to: FACT-papra-subject-auth-secret
+    created_at: 2026-11-16T13:22:09.525Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-0498acbea1a3
+  - type: verified_by
+    from: REQ-papra-auth-secret-required-in-production
+    to: TEST-papra-server-src-modules-app-auth-auth-config-models
+    created_at: 2026-11-16T13:23:49.136Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-7967d3564024
+  - id: rel-f3651d20104d
+    type: requires_property
+    from: REQ-website-blog-search-invalid-date
+    to: FACT-website-blog-search-invalid-date-filter
+    created_at: "2025-08-22T13:38:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0cabd8bc15ad
+    type: constrains
+    from: REQ-website-blog-search-invalid-date
+    to: FACT-website-blog-search-subject
+    created_at: "2025-08-22T13:38:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3c112edf277a
+    type: requires_property
+    from: REQ-cli-papra-history-filter-text-filter-matching
+    to: FACT-cli-papra-history-filter-text-filter-matching
+    created_at: "2026-04-21T11:55:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3e6db9bd8e23
+    type: constrains
+    from: REQ-cli-papra-history-filter-text-filter-matching
+    to: FACT-cli-papra-history-filter-subject
+    created_at: "2026-04-21T11:55:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-069d3a104e7c
+    type: requires_property
+    from: REQ-portal-partner-portal-jwt-secret-never-logged
+    to: FACT-portal-partner-portal-jwt-secret-value-logged
+    created_at: "2026-07-23T15:02:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ebae1e31cd90
+    type: requires_property
+    from: REQ-portal-partner-portal-jwt-secret-never-logged
+    to: FACT-portal-partner-portal-jwt-secret-startup-log
+    created_at: "2026-07-23T15:02:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e5ca968b3a4f
+    type: constrains
+    from: REQ-portal-partner-portal-jwt-secret-never-logged
+    to: FACT-portal-partner-portal-jwt-secret-subject
+    created_at: "2026-07-23T15:02:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cdbe7c9a3a17
+    type: requires_property
+    from: REQ-desktop-update-signing-key-never-logged
+    to: FACT-desktop-update-signing-key-value-logged
+    created_at: "2025-10-12T13:24:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7c6c1dbf326b
+    type: requires_property
+    from: REQ-desktop-update-signing-key-never-logged
+    to: FACT-desktop-update-signing-key-startup-log
+    created_at: "2025-10-12T13:24:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1fd35daabfdb
+    type: constrains
+    from: REQ-desktop-update-signing-key-never-logged
+    to: FACT-desktop-update-signing-key-subject
+    created_at: "2025-10-12T13:24:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-755c67a169f7
+    type: requires_property
+    from: REQ-website-webinar-registration-email-confirmation
+    to: FACT-website-webinar-registration-email-confirmation
+    created_at: "2025-04-19T16:04:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-06b46b0419f5
+    type: constrains
+    from: REQ-website-webinar-registration-email-confirmation
+    to: FACT-website-webinar-registration-subject
+    created_at: "2025-04-19T16:04:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f699efe34cec
+    type: requires_property
+    from: REQ-papra-documents-inserts-one-activity-log-entry-per-input
+    to: FACT-papra-documents-register-documents-activity-log-inserts-one-activity-log-entry-per-input-in
+    created_at: "2025-11-10T17:27:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a1dde279dacf
+    type: constrains
+    from: REQ-papra-documents-inserts-one-activity-log-entry-per-input
+    to: FACT-papra-subject-documents-register-documents-activity-log
+    created_at: "2025-11-10T17:27:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-05c402a2062c
+    type: requires_property
+    from: REQ-papra-document-search-warranty-on-is-accepted-as-valid-boolean
+    to: FACT-papra-document-search-query-builder-custom-properties-warranty-on-is-accepted-as-a-valid-boolean
+    created_at: "2025-05-10T11:02:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-77aca5cb39fb
+    type: constrains
+    from: REQ-papra-document-search-warranty-on-is-accepted-as-valid-boolean
+    to: FACT-papra-subject-document-search-query-builder-custom-properties
+    created_at: "2025-05-10T11:02:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -1,0 +1,36 @@
+relationships:
+  - id: rel-0efc6a6651e1
+    type: requires_property
+    from: REQ-support-support-portal-accounts-reset-link-single-use
+    to: FACT-support-support-portal-accounts-reset-link-single-use
+    created_at: "2025-10-20T14:39:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ccb7bbb9dae9
+    type: requires_property
+    from: REQ-support-support-portal-accounts-reset-link-single-use
+    to: FACT-support-support-portal-accounts-new-link-invalidates-old
+    created_at: "2025-10-20T14:39:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f5c353855167
+    type: constrains
+    from: REQ-support-support-portal-accounts-reset-link-single-use
+    to: FACT-support-support-portal-accounts-subject
+    created_at: "2025-10-20T14:39:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b6bb02e49905
+    type: requires_property
+    from: REQ-papra-plan-entitlements-user-is-eligible-entitlement-is-created-and
+    to: FACT-papra-plan-entitlements-grant-user-plan-entitlement-when-the-user-is-eligible-the-entitlement-is
+    created_at: "2026-06-14T11:39:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b25431d672f2
+    type: constrains
+    from: REQ-papra-plan-entitlements-user-is-eligible-entitlement-is-created-and
+    to: FACT-papra-subject-plan-entitlements-grant-user-plan-entitlement
+    created_at: "2026-06-14T11:39:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

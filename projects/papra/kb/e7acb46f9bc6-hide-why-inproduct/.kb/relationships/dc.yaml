@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-f2cc8bf12dc1
+    type: requires_property
+    from: REQ-papra-smtp-email-driver
+    to: FACT-papra-email-sending-smtp-supported
+    created_at: "2026-11-16T13:20:57.301Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-smtp-email-driver
+    to: FACT-papra-subject-email-sending
+    created_at: 2026-11-16T13:20:57.301Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-a9ca5c6c2fa3
+  - id: rel-811d75eac937
+    type: requires_property
+    from: REQ-status-incident-labels-name-length
+    to: FACT-status-incident-labels-name-max-length
+    created_at: "2025-10-22T15:41:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0d870713b54f
+    type: constrains
+    from: REQ-status-incident-labels-name-length
+    to: FACT-status-incident-labels-subject
+    created_at: "2025-10-22T15:41:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-20b0f043143e
+    type: requires_property
+    from: REQ-forum-community-forum-member-search-empty-query
+    to: FACT-forum-community-forum-member-search-empty-query
+    created_at: "2025-06-10T15:00:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c3c2b0c6875e
+    type: constrains
+    from: REQ-forum-community-forum-member-search-empty-query
+    to: FACT-forum-community-forum-member-search-subject
+    created_at: "2025-06-10T15:00:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8692bf0a414c
+    type: requires_property
+    from: REQ-papra-document-search-amount-100-builds-equality-subquery-on-numbervalue
+    to: FACT-papra-document-search-query-builder-custom-properties-amount-100-builds-an-equality-subquery-on-numbervalue
+    created_at: "2025-05-12T16:20:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ebcf371f2656
+    type: constrains
+    from: REQ-papra-document-search-amount-100-builds-equality-subquery-on-numbervalue
+    to: FACT-papra-subject-document-search-query-builder-custom-properties
+    created_at: "2025-05-12T16:20:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

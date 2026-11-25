@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-2d85d74bfd22
+    type: requires_property
+    from: REQ-extension-site-rules-delete-in-use
+    to: FACT-extension-site-rules-delete-in-use
+    created_at: "2025-03-27T09:35:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-80353a867a10
+    type: constrains
+    from: REQ-extension-site-rules-delete-in-use
+    to: FACT-extension-site-rules-subject
+    created_at: "2025-03-27T09:35:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

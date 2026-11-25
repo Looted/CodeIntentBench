@@ -1,0 +1,176 @@
+relationships:
+  - id: rel-1d9a7465f0d6
+    type: requires_property
+    from: REQ-website-newsletter-sign-up-allowed-domains
+    to: FACT-website-newsletter-sign-up-allowed-domain-matching
+    created_at: "2026-05-10T10:01:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b329f6c8b622
+    type: requires_property
+    from: REQ-website-newsletter-sign-up-allowed-domains
+    to: FACT-website-newsletter-sign-up-domain-case-folding
+    created_at: "2026-05-10T10:01:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a470be7306b3
+    type: constrains
+    from: REQ-website-newsletter-sign-up-allowed-domains
+    to: FACT-website-newsletter-sign-up-subject
+    created_at: "2026-05-10T10:01:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7190a193ca9b
+    type: supersedes
+    from: REQ-portal-client-workspaces-maximum-count
+    to: REQ-portal-client-workspaces-maximum-count-earlier
+    created_at: "2026-07-27T16:11:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8e9465fefe3e
+    type: requires_property
+    from: REQ-portal-client-workspaces-maximum-count
+    to: FACT-portal-client-workspaces-maximum-count
+    created_at: "2026-07-27T16:11:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fe5c54eebcce
+    type: requires_property
+    from: REQ-portal-client-workspaces-maximum-count
+    to: FACT-portal-client-workspaces-limit-configurable
+    created_at: "2026-07-27T16:11:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9c5db1bd3409
+    type: constrains
+    from: REQ-portal-client-workspaces-maximum-count
+    to: FACT-portal-client-workspaces-subject
+    created_at: "2026-07-27T16:11:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-aace9de3a378
+    type: requires_property
+    from: REQ-education-education-portal-accounts-concurrent-sessions
+    to: FACT-education-education-portal-accounts-concurrent-sessions
+    created_at: "2025-11-01T10:25:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c4f6eea76725
+    type: requires_property
+    from: REQ-education-education-portal-accounts-concurrent-sessions
+    to: FACT-education-education-portal-accounts-over-limit
+    created_at: "2025-11-01T10:25:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b01a3743ff35
+    type: constrains
+    from: REQ-education-education-portal-accounts-concurrent-sessions
+    to: FACT-education-education-portal-accounts-subject
+    created_at: "2025-11-01T10:25:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fb5570a257b4
+    type: supersedes
+    from: REQ-docs-documentation-contributor-accounts-reset-link-validity
+    to: REQ-docs-documentation-contributor-accounts-reset-link-validity-earlier
+    created_at: "2025-07-02T11:31:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-dad8f2e7d57a
+    type: requires_property
+    from: REQ-docs-documentation-contributor-accounts-reset-link-validity
+    to: FACT-docs-documentation-contributor-accounts-reset-link-minutes
+    created_at: "2025-07-02T11:31:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3a4ce1892d48
+    type: constrains
+    from: REQ-docs-documentation-contributor-accounts-reset-link-validity
+    to: FACT-docs-documentation-contributor-accounts-subject
+    created_at: "2025-07-02T11:31:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-596c15a6bde8
+    type: requires_property
+    from: REQ-papra-document-search-warranty-true-not-returns-documents-without-warranty
+    to: FACT-papra-document-search-database-fts5-repository-warranty-true-not-returns-documents-without-warranty-true
+    created_at: "2025-04-26T14:48:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-84b832825ff0
+    type: constrains
+    from: REQ-papra-document-search-warranty-true-not-returns-documents-without-warranty
+    to: FACT-papra-subject-document-search-database-fts5-repository
+    created_at: "2025-04-26T14:48:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f2d35464f9c7
+    type: requires_property
+    from: REQ-papra-document-search-status-approved-returns-only-documents-whose-select
+    to: FACT-papra-document-search-database-fts5-repository-status-approved-returns-only-documents-whose-select-option
+    created_at: "2026-05-16T12:19:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6b78360f6d22
+    type: constrains
+    from: REQ-papra-document-search-status-approved-returns-only-documents-whose-select
+    to: FACT-papra-subject-document-search-database-fts5-repository
+    created_at: "2026-05-16T12:19:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-52951e1a23e7
+    type: requires_property
+    from: REQ-papra-documents-query-filter-path-delegates-to-search-service
+    to: FACT-papra-documents-tag-documents-batch-query-filter-path-delegates-to-the-search-service
+    created_at: "2026-01-03T11:42:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5df26be4ffd3
+    type: constrains
+    from: REQ-papra-documents-query-filter-path-delegates-to-search-service
+    to: FACT-papra-subject-documents-tag-documents-batch
+    created_at: "2026-01-03T11:42:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c633d1f92d29
+    type: requires_property
+    from: REQ-papra-documents-throws-tagnotfounderror-when-tag-id-does-not
+    to: FACT-papra-documents-tag-documents-batch-throws-tagnotfounderror-when-a-tag-id-does-not
+    created_at: "2026-04-01T14:37:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fa08cd015074
+    type: constrains
+    from: REQ-papra-documents-throws-tagnotfounderror-when-tag-id-does-not
+    to: FACT-papra-subject-documents-tag-documents-batch
+    created_at: "2026-04-01T14:37:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e7d9f83d78cb
+    type: requires_property
+    from: REQ-papra-documents-returns-0-count-and-size-when-no
+    to: FACT-papra-documents-get-organization-stats-returns-0-count-and-size-when-no-documents
+    created_at: "2025-12-02T13:38:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8c599f2f25d3
+    type: constrains
+    from: REQ-papra-documents-returns-0-count-and-size-when-no
+    to: FACT-papra-subject-documents-get-organization-stats
+    created_at: "2025-12-02T13:38:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6e7506454ce0
+    type: requires_property
+    from: REQ-papra-organizations-deletes-all-invitations-for-specified-organization
+    to: FACT-papra-organizations-delete-all-organization-invitations-deletes-all-invitations-for-the-specified-organization
+    created_at: "2025-04-25T16:46:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0fa92e55c805
+    type: constrains
+    from: REQ-papra-organizations-deletes-all-invitations-for-specified-organization
+    to: FACT-papra-subject-organizations-delete-all-organization-invitations
+    created_at: "2025-04-25T16:46:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

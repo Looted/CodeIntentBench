@@ -1,0 +1,92 @@
+relationships:
+  - id: rel-8e1e5953f94d
+    type: requires_property
+    from: REQ-docs-documentation-site-search-minimum-length
+    to: FACT-docs-documentation-site-search-query-min-length
+    created_at: "2026-05-18T14:48:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7e5486aa73dd
+    type: constrains
+    from: REQ-docs-documentation-site-search-minimum-length
+    to: FACT-docs-documentation-site-search-subject
+    created_at: "2026-05-18T14:48:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4ebc912771a2
+    type: requires_property
+    from: REQ-cli-papra-history-filter-page-size
+    to: FACT-cli-papra-history-filter-page-size-maximum
+    created_at: "2025-08-05T16:03:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b918e5430dda
+    type: constrains
+    from: REQ-cli-papra-history-filter-page-size
+    to: FACT-cli-papra-history-filter-subject
+    created_at: "2025-08-05T16:03:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-96e9655fdb06
+    type: requires_property
+    from: REQ-mobile-beta-programme-sign-up-rate-limit
+    to: FACT-mobile-beta-programme-sign-up-requests-per-ip-per-day
+    created_at: "2026-06-13T15:05:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-44b11a5bdc2a
+    type: constrains
+    from: REQ-mobile-beta-programme-sign-up-rate-limit
+    to: FACT-mobile-beta-programme-sign-up-subject
+    created_at: "2026-06-13T15:05:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9cc726b40d7a
+    type: supersedes
+    from: REQ-status-status-page-administrator-accounts-reset-link-validity
+    to: REQ-status-status-page-administrator-accounts-reset-link-validity-earlier
+    created_at: "2025-09-28T13:37:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-81a3b59cc72a
+    type: requires_property
+    from: REQ-status-status-page-administrator-accounts-reset-link-validity
+    to: FACT-status-status-page-administrator-accounts-reset-link-minutes
+    created_at: "2025-09-28T13:37:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-93e5d0124fe7
+    type: constrains
+    from: REQ-status-status-page-administrator-accounts-reset-link-validity
+    to: FACT-status-status-page-administrator-accounts-subject
+    created_at: "2025-09-28T13:37:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1ab747b894b8
+    type: requires_property
+    from: REQ-papra-auto-tagging-there-are-existing-tags-and-new-tags
+    to: FACT-papra-auto-tagging-build-auto-tagging-system-prompt-when-there-are-existing-tags-and-new-tags
+    created_at: "2026-02-21T09:39:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-965a97fcbb04
+    type: constrains
+    from: REQ-papra-auto-tagging-there-are-existing-tags-and-new-tags
+    to: FACT-papra-subject-auto-tagging-build-auto-tagging-system-prompt
+    created_at: "2026-02-21T09:39:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-44c1ab575d4d
+    type: requires_property
+    from: REQ-papra-storage-trailing-slash-on-endpoint-does-not-produce
+    to: FACT-papra-storage-build-endpoint-url-a-trailing-slash-on-the-endpoint-does-not
+    created_at: "2025-04-11T15:22:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f98eb91f5a5c
+    type: constrains
+    from: REQ-papra-storage-trailing-slash-on-endpoint-does-not-produce
+    to: FACT-papra-subject-storage-build-endpoint-url
+    created_at: "2025-04-11T15:22:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

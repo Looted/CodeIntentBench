@@ -1,0 +1,64 @@
+relationships:
+  - id: rel-aabfae0c7119
+    type: requires_property
+    from: REQ-website-blog-categories-maximum-count
+    to: FACT-website-blog-categories-maximum-count
+    created_at: "2025-02-04T17:22:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0c65bdc32c19
+    type: requires_property
+    from: REQ-website-blog-categories-maximum-count
+    to: FACT-website-blog-categories-limit-configurable
+    created_at: "2025-02-04T17:22:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8002c63258e5
+    type: constrains
+    from: REQ-website-blog-categories-maximum-count
+    to: FACT-website-blog-categories-subject
+    created_at: "2025-02-04T17:22:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fb8653fd79a5
+    type: requires_property
+    from: REQ-cli-papra-logs-filter-date-format
+    to: FACT-cli-papra-logs-filter-date-filter-format
+    created_at: "2025-09-01T16:56:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5281fc41abd7
+    type: constrains
+    from: REQ-cli-papra-logs-filter-date-format
+    to: FACT-cli-papra-logs-filter-subject
+    created_at: "2025-09-01T16:56:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7abd55aece66
+    type: requires_property
+    from: REQ-portal-partner-portal-client-search-page-size
+    to: FACT-portal-partner-portal-client-search-page-size-maximum
+    created_at: "2026-06-24T17:44:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e4969c5a30af
+    type: constrains
+    from: REQ-portal-partner-portal-client-search-page-size
+    to: FACT-portal-partner-portal-client-search-subject
+    created_at: "2026-06-24T17:44:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b94af3ce6d0a
+    type: requires_property
+    from: REQ-papra-organizations-pending-invitations-that-are-expired-expiredat-now
+    to: FACT-papra-organizations-update-expired-pending-invitations-status-the-pending-invitations-that-are-expired-expiredat-now
+    created_at: "2026-07-11T09:43:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2b2c91a1b7fa
+    type: constrains
+    from: REQ-papra-organizations-pending-invitations-that-are-expired-expiredat-now
+    to: FACT-papra-subject-organizations-update-expired-pending-invitations-status
+    created_at: "2026-07-11T09:43:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
