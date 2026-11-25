@@ -81,6 +81,10 @@ for label, runs in batches:
                 "first_lookup_turn": s.get("first_lookup_turn"), "first_edit_turn": s.get("first_edit_turn"),
                 "surfaced_turn": (s.get("surfaced") or {}).get("turn"), "surfaced_via": (s.get("surfaced") or {}).get("via"),
                 "surfaced_cost_usd": (s.get("surfaced") or {}).get("cost_usd"),
+                "surfaced_source": (s.get("surfaced") or {}).get("source"),
+                # Shown no later than the turn of the first edit (an edit hook fires before its edit runs); a step with no edit counts when shown at all.
+                "surfaced_before_edit": (None if s.get("surfaced") is None and "surfaced" not in s else
+                                         bool(s.get("surfaced")) and (s.get("first_edit_turn") is None or s["surfaced"]["turn"] <= s["first_edit_turn"])),
                 "record_written": s.get("record_written"), "rule_record_changed": g.get("rule_record_changed"),
                 "governing_changed": g.get("governing_changed"),
                 "files_changed": len(g.get("files_changed") or []), "source_files_changed": len(g.get("source_files_changed") or []),

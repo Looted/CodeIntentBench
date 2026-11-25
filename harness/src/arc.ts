@@ -123,7 +123,7 @@ function withHiddenTests(ws: string, files: Map<string, string>, notes: string[]
 export function surfacedIn(sdir: string, arm: string, audit: AuditResult | undefined, step: ArcStep): SurfacePoint | null | undefined {
   const d = audit?.decisions.find((x) => x.scope === (step.intent ? step.id : 'arc'));
   if (!d?.id) return undefined;
-  if (arm === 'agents-md') return { turn: 0, via: 'context', tokens: 0, cost_usd: 0 };
+  if (arm === 'agents-md') return { turn: 0, via: 'context', source: 'context', tokens: 0, cost_usd: 0 };
   const files = existsSync(sdir) ? readdirSync(sdir).filter((f) => /^transcript(-reply\d+)?\.jsonl$/.test(f)).sort((a, b) => (Number(a.match(/reply(\d+)/)?.[1] ?? 0)) - (Number(b.match(/reply(\d+)/)?.[1] ?? 0))) : [];
   if (files.length === 0) return undefined;
   return surfacePoint(files.map((f) => readFileSync(join(sdir, f), 'utf8')), decisionNeedles(d.id, d.statement));

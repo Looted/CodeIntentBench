@@ -135,11 +135,12 @@ test('spend before the decision was shown is read from the transcript', () => {
   assert.deepEqual([p.turn, p.via, p.tokens], [3, 'lookup', 100 + 10 + 200 + 20 + 300 + 30 + 3000]);
   assert.ok(Math.abs(p.cost_usd! - (600 * 2 + 60 * 10 + 3000 * 0.1) / 1e6) < 1e-12);
   assert.equal(surfacePoint([transcript], decisionNeedles('REQ-other', undefined)), null);
-  const hook = line({ type: 'system', subtype: 'hook_response', hook_name: 'PreToolUse', output: JSON.stringify({ hookSpecificOutput: { additionalContext: 'Firm: REQ-hooks-never-deny' } }) });
-  assert.deepEqual(surfacePoint([`${hook}\n${transcript}`], needles), { turn: 0, via: 'hook', tokens: 0, cost_usd: 0 });
+  const hook = line({ type: 'system', subtype: 'hook_response', hook_name: 'PreToolUse:Edit', output: JSON.stringify({ hookSpecificOutput: { additionalContext: 'Firm: REQ-hooks-never-deny' } }) });
+  assert.deepEqual(surfacePoint([`${hook}\n${transcript}`], needles), { turn: 0, via: 'hook', source: 'edit-hook', tokens: 0, cost_usd: 0 });
   // A tracker lists the entry by its title, the id with spaces.
   const tracker = transcript.replace('"name":"Grep"', '"name":"mcp__tracker__tracker_search"').replace('0003-REQ-cursor-hooks.md', 'T-2 [closed] REQ hooks never deny');
   assert.equal(surfacePoint([tracker], needles)?.turn, 2);
+  assert.equal(surfacePoint([tracker], needles)?.source, 'tracker_search');
 });
 
 test('the surfacing measure is skipped where there is nothing to look for', () => {
@@ -150,7 +151,7 @@ test('the surfacing measure is skipped where there is nothing to look for', () =
   assert.equal(surfacedIn(dir, 'docs', audit, arc.steps[1])?.turn, 3);
   assert.equal(surfacedIn(dir, 'docs', audit, arc.steps[2]), undefined, 'no recorded entry for the step decision');
   assert.equal(surfacedIn(dir, 'none', { arm: 'none', ok: true, skipped: 'x', decisions: [] }, arc.steps[1]), undefined);
-  assert.deepEqual(surfacedIn(dir, 'agents-md', audit, arc.steps[1]), { turn: 0, via: 'context', tokens: 0, cost_usd: 0 });
+  assert.deepEqual(surfacedIn(dir, 'agents-md', audit, arc.steps[1]), { turn: 0, via: 'context', source: 'context', tokens: 0, cost_usd: 0 });
 });
 
 test('agents-md is written whole or not at all', () => {

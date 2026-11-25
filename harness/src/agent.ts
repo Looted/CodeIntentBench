@@ -149,6 +149,30 @@ export function isDecisionLookup(name: string, input: Record<string, any>): bool
     || (/^(Bash|Read|Grep|Glob)$/.test(name) && /(^|\/)\.kb\/|docs\/decisions|AGENTS\.md/.test(target));
 }
 
+/**
+ * Which surface of a hook showed a decision, from the hook's name (`PreToolUse:Edit`, `SessionStart:startup`, ...):
+ * edit-hook before an edit tool, read-hook before a read or a shell command (a shell edit is rare and reads as a
+ * read here), session-hook at session start or on a prompt, otherwise the hook's event.
+ */
+export function hookSource(hookName: string): string {
+  const [event, tool = ''] = hookName.split(':');
+  if (event === 'PreToolUse' || event === 'PostToolUse') {
+    if (/^(Edit|MultiEdit|Write|NotebookEdit)$/.test(tool)) return 'edit-hook';
+    if (/^(Read|Bash|Grep|Glob)$/.test(tool)) return 'read-hook';
+    return `hook:${tool || event}`;
+  }
+  if (event === 'SessionStart' || event === 'UserPromptSubmit') return 'session-hook';
+  return `hook:${event || 'unknown'}`;
+}
+
+/** Which lookup showed a decision: the store tool's name without its MCP prefix, `cli` for a store CLI called from a shell, `file-read` for a store file read directly. */
+export function lookupSource(name: string, input: Record<string, any>): string {
+  const tool = name.replace(/^mcp__.*__/, '');
+  if (/kb_|tracker_|memory_|^mcp__gitea__|^mcp__mem0__/i.test(name)) return tool;
+  if (name === 'Bash' && /(^|[\s;&|(])kibi\s/.test(String(input.command ?? ''))) return 'cli';
+  return 'file-read';
+}
+
 /** How a recorded entry shows up in what an agent is shown: its id (as written, or with spaces as the tracker titles it) or the opening of its statement. */
 export function decisionNeedles(id: string | undefined, statement: string | undefined): string[] {
   const out: string[] = [];
@@ -170,9 +194,9 @@ export function surfacePoint(transcripts: string[], needles: string[]): SurfaceP
   if (needles.length === 0) return null;
   const has = (t: unknown) => { const s = (typeof t === 'string' ? t : JSON.stringify(t ?? '')).replace(/\s+/g, ' ').toLowerCase(); return needles.some((n) => s.includes(n)); };
   const messages = new Map<string, { model: string; u: any }>();
-  const pending = new Set<string>();
+  const pending = new Map<string, string>(); // tool_use id -> where its result comes from (surfaceSource)
   let turn = 0;
-  const spent = (via: SurfacePoint['via']): SurfacePoint => {
+  const spent = (via: SurfacePoint['via'], source: string): SurfacePoint => {
     let tokens = 0; let cost = 0; let priced = true;
     for (const { model, u } of messages.values()) {
       const w = u.cache_creation_input_tokens ?? 0;
@@ -182,7 +206,7 @@ export function surfacePoint(transcripts: string[], needles: string[]): SurfaceP
       const c = priceTokens(model, t);
       if (c === undefined) priced = false; else cost += c;
     }
-    return { turn, via, tokens, ...(priced ? { cost_usd: cost } : {}) };
+    return { turn, via, source, tokens, ...(priced ? { cost_usd: cost } : {}) };
   };
   for (const text of transcripts) {
     for (const line of text.split('\n')) {
@@ -192,19 +216,20 @@ export function surfacePoint(transcripts: string[], needles: string[]): SurfaceP
       if (ev.type === 'system' && ev.subtype === 'hook_response') {
         let ctx = '';
         try { const o = JSON.parse(ev.output ?? ev.stdout ?? ''); ctx = o?.hookSpecificOutput?.additionalContext ?? o?.additionalContext ?? o?.systemMessage ?? o?.hookSpecificOutput?.permissionDecisionReason ?? ''; } catch { ctx = String(ev.output ?? ''); }
-        if (ctx && has(ctx)) return spent('hook');
+        if (ctx && has(ctx)) return spent('hook', hookSource(String(ev.hook_name ?? ev.hook_event ?? '')));
       }
       if (ev.type === 'assistant' && ev.message?.usage && ev.message?.id) messages.set(ev.message.id, { model: String(ev.message.model ?? 'unknown'), u: ev.message.usage });
       if (ev.type === 'assistant' && !ev.parent_tool_use_id) {
         turn += 1;
-        for (const block of ev.message?.content ?? []) if (block.type === 'tool_use' && typeof block.id === 'string' && isDecisionLookup(String(block.name ?? ''), block.input ?? {})) pending.add(block.id);
+        for (const block of ev.message?.content ?? []) if (block.type === 'tool_use' && typeof block.id === 'string' && isDecisionLookup(String(block.name ?? ''), block.input ?? {})) pending.set(block.id, lookupSource(String(block.name ?? ''), block.input ?? {}));
       }
       if (ev.type === 'user') {
         for (const block of ev.message?.content ?? []) {
-          if (block.type !== 'tool_result' || !pending.has(block.tool_use_id)) continue;
+          const source = pending.get(block.tool_use_id);
+          if (block.type !== 'tool_result' || source === undefined) continue;
           pending.delete(block.tool_use_id);
           const content = Array.isArray(block.content) ? block.content.map((c: any) => c.text ?? '').join('\n') : block.content;
-          if (has(content)) return spent('lookup');
+          if (has(content)) return spent('lookup', source);
         }
       }
     }
