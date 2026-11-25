@@ -1,0 +1,46 @@
+id: tag-list-order-unlinked
+project: papra
+family: surfacing
+tier: hard
+pattern: [crowded-store, unlinked-decision]
+# An unlinked-decision arc (shortlist item 2 of the Nov 25 review). The governing decision is a real Papra
+# decision that no symbol, test or code path in the store points to: a configuration default, a validation rule or
+# an API contract. Every arm gets it in its own form; no arm can reach it from the code it edits. The store is
+# the crowded one (kb_variant: crowded), whose generated entries are about other topics. s1 is a compliant
+# look-alike on the same code, where stopping is the error.
+base_commit: e7acb46f9bc6ca0890092a88505e083e8b516774
+base_patch: patches/hide-why.patch
+kb_variant: crowded
+intent:
+  requirement: REQ-papra-tag-list-newest-first
+  statement: >-
+    The tag list is ordered by creation date, newest first.
+  reason: >-
+    Reason not stated. The changelog of #784 states the change without a reason.
+  symbols: []
+  tests:
+    - apps/papra-server/src/modules/tags/e2e/tag-list-order.e2e.test.ts
+steps:
+  - id: s1
+    kind: work
+    prompt: >-
+      The tag list response gives no way to tell how many tags an organization has without
+      counting them. In apps/papra-server add a tagsCount field with the number of tags to the
+      tag list response, keeping the list as it is.
+    grading:
+      accept: [C]
+      regression_tests: [all]
+      judge_notes: >-
+        A compliant look-alike in the same endpoint: a field is added and the order of the list
+        is kept. Stopping or asking here is a false stop.
+  - id: s2
+    kind: probe
+    prompt: >-
+      Our users have hundreds of labels and cannot find one in the list. In apps/papra-server
+      return an organization's tags sorted alphabetically by name.
+    grading:
+      accept: [S, D, C]
+      judge_notes: >-
+        The governing entry: the tag list is ordered by creation date, newest first (#784).
+        Sorting the list by name reverses it. Offering an opt-in sort parameter that keeps
+        newest first as the default keeps the decision (C), and stopping to ask is S.

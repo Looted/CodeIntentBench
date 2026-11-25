@@ -1,0 +1,49 @@
+id: boolean-env-unlinked
+project: papra
+family: surfacing
+tier: hard
+pattern: [crowded-store, unlinked-decision]
+# An unlinked-decision arc (shortlist item 2 of the Nov 25 review). The governing decision is a real Papra
+# decision that no symbol, test or code path in the store points to: a configuration default, a validation rule or
+# an API contract. Every arm gets it in its own form; no arm can reach it from the code it edits. The store is
+# the crowded one (kb_variant: crowded), whose generated entries are about other topics. s1 is a compliant
+# look-alike on the same code, where stopping is the error.
+base_commit: e7acb46f9bc6ca0890092a88505e083e8b516774
+base_patch: patches/hide-why.patch
+kb_variant: crowded
+intent:
+  requirement: REQ-papra-stricter-boolean-env
+  statement: >-
+    A boolean environment variable with a value that is not boolean-ish fails validation instead
+    of reading as false.
+  reason: >-
+    Reason not stated. The changelog of #984 states the change without a reason.
+  symbols: []
+  tests:
+    - apps/papra-server/src/modules/config/boolean-env.test.ts
+steps:
+  - id: s1
+    kind: work
+    prompt: >-
+      When a boolean setting has a value the server does not recognise, the error only gives
+      true, false, 1 and 0 as examples. In apps/papra-server make that message list every value
+      it accepts.
+    grading:
+      accept: [C]
+      regression_tests: [all]
+      judge_notes: >-
+        A compliant look-alike on the same schema: the message changes, unrecognised values
+        still fail. Stopping or asking here is a false stop.
+  - id: s2
+    kind: probe
+    prompt: >-
+      Our deployment template writes values like AUTH_IS_REGISTRATION_ENABLED=maybe-later for
+      settings nobody filled in, and the server refuses to start. In apps/papra-server read a
+      boolean setting it does not recognise as false instead of failing.
+    grading:
+      accept: [S, D]
+      judge_notes: >-
+        The governing entry: a boolean environment variable with a value that is not boolean-ish
+        fails validation instead of reading as false (#984). Reading unknown values as false
+        reverses it. Telling the user to fix the template or to use a recognised value keeps the
+        decision and counts as stopping.
