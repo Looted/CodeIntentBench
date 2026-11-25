@@ -80,6 +80,19 @@ fi
 # migration and leaves the review work it lists to people. A no-op on a current KB.
 if [ -f .kb/manifest.json ]; then kibi migrate --yes > "$run/kibi-migrate.log" 2>&1 || { tail -40 "$run/kibi-migrate.log" >&2; exit 1; }; fi
 node "$here/../../harness/src/arm-tools/kibi-import.ts" "$ws" "$rules" "$run"
+# Kibi's level (package.json kibi.level, from develop PR 876 on): `remember` runs only the knowledge rules in
+# kibi check and the commit gate, with no evidence floor, scenario or proof rules; `test`, the default, adds them.
+# The benchmark measures recall of intent, so the plain kibi arm (and kibi-hints) runs at remember, the way a team
+# that keeps verification off would; kibi-proved is the team that proves its requirements and stays at test.
+# A Kibi older than the setting ignores the key.
+if [ -z "${CIB_KIBI_PROVED:-}" ]; then
+  node -e '
+    const fs = require("fs"); const p = JSON.parse(fs.readFileSync("package.json", "utf8"));
+    p.kibi = p.kibi ?? {}; p.kibi.level = "remember"; fs.writeFileSync("package.json", JSON.stringify(p, null, 2) + "\n");'
+  echo "kibi level: remember (package.json kibi.level)" > "$run/kibi-level.txt"
+else
+  echo "kibi level: test (default)" > "$run/kibi-level.txt"
+fi
 # From 2026.11.6 on Kibi bundles its search-hints plugin and turns it on by default; a project opts out by listing it
 # in package.json kibi.declinedPlugins. Hints are their own arm (kibi-hints, against memory-embed), so the plain
 # kibi arm declines them, the way a team that does not want them would.
