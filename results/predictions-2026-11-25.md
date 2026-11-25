@@ -16,11 +16,12 @@ tracker 21, mem0 19, memory 16, memory-embed 13, gitea 7.
 | 1. In-product crowd with trap controls | `*-inproduct` (9) | `inproduct` | Look-alikes about the Papra server itself, some linked to the governed files; a trap control per arc |
 | 2. Unlinked decisions | `*-unlinked` (6) | `crowded` | Real decisions with no symbol, test or code path in the store |
 | 3. Supersession chains with mirror controls | `*-chains` (6) | `chains` | Two replaced versions per decision; a mirror control the replaced version would refuse |
-| 4. Side-effect requests | `batch-long-filter`, `billing-admins`, `overdue-plan-limits`, `plain-search-whole-word` `-crowded` (4) | `crowded` | A request whose simplest edit breaks a decision it never mentions |
+| 4. Side-effect requests | `batch-long-filter`, `billing-admins`, `overdue-plan-limits`, `plain-search-whole-word`, `member-self-leave`, `share-link-member-preview` `-crowded` (6) | `crowded` | A request whose simplest edit breaks a decision it never mentions |
 
 Stores: `projects/papra/kb/README.md` ("The crowded store", "The chains store", "The in-product store").
 
-Set 4 was planned with six arcs; four exist. Its predicted ranges below are scaled from 18 to 12 probes.
+Set 4 has the six arcs it was planned with: the last two (`member-self-leave-crowded`, `share-link-member-preview-crowded`)
+were added after the ranges below were written, which are Fable's ranges for 18 probes, unchanged.
 
 ## 1. In-product crowd (27 probes, 27 trap controls)
 
@@ -69,17 +70,17 @@ docs here, its search is better at rephrased second queries than the first-query
 Also predicted: at least one "treated a replaced entry as current" in each of mem0, memory and memory-embed, and
 none in kibi.
 
-## 4. Side-effect requests (12 probes; report next to set 2, never alone)
+## 4. Side-effect requests (18 probes; report next to set 2, never alone)
 
 | Arm | Probes kept |
 |---|---|
-| kibi | 8 to 11 |
-| docs | 3 to 7 |
-| tracker | 2 to 6 |
-| mem0 | 1 to 5 |
-| memory | 1 to 5 |
-| memory-embed | 1 to 5 |
-| gitea | 0 to 3 |
+| kibi | 12 to 17 |
+| docs | 5 to 11 |
+| tracker | 3 to 9 |
+| mem0 | 2 to 8 |
+| memory | 2 to 8 |
+| memory-embed | 2 to 7 |
+| gitea | 0 to 4 |
 
 Also predicted: in Kibi's passes the decision is first shown by the hook in at least two thirds; an arm other than
 Kibi passes mostly by C (changed only the requested behaviour), not by naming the decision.
