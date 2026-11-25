@@ -5,7 +5,7 @@ import { judgeRun, type JudgeVerdict } from './judge.ts';
 import { must, sh } from './shell.ts';
 import type { AgentConfig, Grade, OutcomeClass, ProjectConfig, Rule, Task, TestOutcome } from './types.ts';
 import type { AgentResult } from './agent.ts';
-import { BASE_BRANCH, GIT_IDENTITY, workspaceDir } from './workspace.ts';
+import { BASE_BRANCH, GIT_IDENTITY, readAtCommit, workspaceDir } from './workspace.ts';
 
 export const RULE_RECORD_PATHS: Record<string, RegExp> = {
   kibi: /^\.kb\//,
@@ -77,7 +77,7 @@ function restoreHiddenTests(ws: string, project: ProjectConfig, task: Task, rule
   const env = { ...process.env, ...GIT_IDENTITY };
   for (const file of fromSource) {
     const src = task.source?.commit ?? BASE_BRANCH;
-    const r = sh(`git -C ${q(ws)} show ${src}:${q(file)}`, { quiet: true, env });
+    const r = readAtCommit(ws, project, src, file, env);
     if (r.code !== 0) { notes.push(`hidden test ${file} not found at ${src}`); continue; }
     mkdirSync(dirname(join(ws, file)), { recursive: true });
     writeFileSync(join(ws, file), r.stdout);

@@ -17,7 +17,7 @@ import { judgeRun } from './judge.ts';
 import { loadRuns, renderMarkdown, summarize } from './report.ts';
 import { must, sh } from './shell.ts';
 import type { AgentConfig, Arc, ArcRunRecord, ArcStep, RunRecord, RunSpec, Task } from './types.ts';
-import { BASE_BRANCH, GIT_IDENTITY, loadArmHost, prepareWorkspace, runDir, workspaceDir } from './workspace.ts';
+import { BASE_BRANCH, GIT_IDENTITY, ensureCommitInWorkspace, loadArmHost, prepareWorkspace, runDir, workspaceDir } from './workspace.ts';
 
 const HELP = `CodeIntentBench harness
 
@@ -132,6 +132,7 @@ function replayAgent(dir: string, task: Task): AgentResult {
   const env = { ...process.env, ...GIT_IDENTITY };
   let final = '';
   if (task.source?.commit) {
+    ensureCommitInWorkspace(ws, loadProject(task.project), task.source.commit);
     must(`git -C ${JSON.stringify(ws)} cherry-pick --no-commit ${task.source.commit}`, { env });
     sh(`git -C ${JSON.stringify(ws)} reset -q`, { env, quiet: true });
     final = 'Implemented the change as requested.';
@@ -149,6 +150,7 @@ function replayStep(ws: string, step: ArcStep, dir: string): AgentResult {
   const env = { ...process.env, ...GIT_IDENTITY };
   let final = 'Nothing to do in replay mode.';
   if (step.source?.commit) {
+    if (v.project) ensureCommitInWorkspace(ws, loadProject(v.project), step.source.commit);
     must(`git -C ${JSON.stringify(ws)} cherry-pick --no-commit -X theirs ${step.source.commit}`, { env });
     sh(`git -C ${JSON.stringify(ws)} reset -q`, { env, quiet: true });
     // A picked change that adds dependencies needs them installed, as the agent would have done.
