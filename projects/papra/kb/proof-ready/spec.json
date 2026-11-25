@@ -1,0 +1,10 @@
+{
+  "about": "Requirements a team proving its knowledge base would already hold at the tested floor. Chosen off every arc's topic (no arc touches intake attachments or webhooks), already modeled, and each checked by one existing test file of Papra's suite.",
+  "integration": { "command": ["npx", "kibi", "proof", "run-steps"] },
+  "requirements": [
+    { "id": "REQ-papra-intake-attachment-mime-coercion", "test": "TEST-papra-server-src-modules-shared-mime-types-mime-types-usecases", "file": "src/modules/shared/mime-types/mime-types.usecases.test.ts" },
+    { "id": "REQ-papra-webhook-ssrf-at-delivery", "test": "TEST-papra-server-src-modules-webhooks-webhooks-usecases", "file": "src/modules/webhooks/webhooks.usecases.test.ts" },
+    { "id": "REQ-papra-webhook-ssrf-protection", "test": "TEST-papra-server-src-modules-webhooks-webhooks-usecases", "file": "src/modules/webhooks/webhooks.usecases.test.ts" }
+  ],
+  "testsCwd": "apps/papra-server"
+}

@@ -1,0 +1,34 @@
+{
+  "plugin_dirs": [
+    "${RUN_DIR}/plugin/kibi-claude"
+  ],
+  "path_prepend": [
+    "kibi"
+  ],
+  "env": {
+    "KIBI_DIAGNOSTIC_MODE": "1"
+  },
+  "allowed_tools": [
+    "mcp__plugin_kibi-claude_kibi__kb_search",
+    "mcp__plugin_kibi-claude_kibi__kb_query",
+    "mcp__plugin_kibi-claude_kibi__kb_status",
+    "mcp__plugin_kibi-claude_kibi__kb_check",
+    "mcp__plugin_kibi-claude_kibi__kb_graph",
+    "mcp__plugin_kibi-claude_kibi__kb_skills",
+    "mcp__plugin_kibi-claude_kibi__kb_find_gaps",
+    "mcp__plugin_kibi-claude_kibi__kb_coverage",
+    "mcp__plugin_kibi-claude_kibi__kb_model",
+    "mcp__plugin_kibi-claude_kibi__kb_upsert",
+    "mcp__plugin_kibi-claude_kibi__kb_delete",
+    "mcp__plugin_kibi-claude_kibi__kb_prepare_impact_review",
+    "mcp__plugin_kibi-claude_kibi__kb_compile_intent",
+    "mcp__plugin_kibi-claude_kibi__kb_apply_plan",
+    "mcp__plugin_kibi-claude_kibi__kb_plan_bootstrap",
+    "mcp__plugin_kibi-claude_kibi__kb_ingest_proof",
+    "mcp__plugin_kibi-claude_kibi__kb_record",
+    "mcp__plugin_kibi-claude_kibi__kb_review_firm_edit",
+    "mcp__plugin_kibi-claude_kibi__kb_author_impact_review",
+    "Bash(kibi:*)",
+    "Skill"
+  ]
+}
