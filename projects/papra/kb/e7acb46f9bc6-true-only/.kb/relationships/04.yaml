@@ -1,0 +1,64 @@
+relationships:
+  - id: rel-4ec2c61545b6
+    type: requires_property
+    from: REQ-papra-search-endpoint-nested-results
+    to: FACT-papra-documents-search-endpoint-response-shape-v1
+    created_at: "2026-11-16T10:20:40.728Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-search-endpoint-nested-results
+    to: FACT-papra-subject-documents-search-endpoint
+    created_at: 2026-11-16T10:20:40.729Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-22dab9819567
+  - type: requires_property
+    from: REQ-papra-search-endpoint-nested-results
+    to: FACT-papra-documents-search-endpoint-result-fields-v1
+    created_at: 2026-11-16T10:20:40.741Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6dd36afa0bdc
+  - type: requires_property
+    from: REQ-papra-tag-search-link-quotes-names
+    to: FACT-papra-tags-search-link-quotes-names-with-spaces
+    created_at: 2026-11-16T10:21:54.441Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-662bd27cdcef
+  - type: constrains
+    from: REQ-papra-tag-search-link-quotes-names
+    to: FACT-papra-subject-tags-search-link
+    created_at: 2026-11-16T10:21:54.454Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-f9b2c0bea4cd
+  - id: rel-d3027cba6269
+    type: requires_property
+    from: REQ-papra-document-search-documents-are-ordered-by-creation-date-descending
+    to: FACT-papra-document-search-search-organization-documents-documents-are-ordered-by-creation-date-descending
+    created_at: "2025-02-22T12:17:45.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cf5f78782563
+    type: constrains
+    from: REQ-papra-document-search-documents-are-ordered-by-creation-date-descending
+    to: FACT-papra-subject-document-search-search-organization-documents
+    created_at: "2025-02-22T12:17:45.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0b347697d9e5
+    type: requires_property
+    from: REQ-papra-documents-null-value-uses-fallback-without-formatting-it
+    to: FACT-papra-documents-evaluate-storage-pattern-expression-a-null-value-uses-the-fallback-without-formatting
+    created_at: "2025-07-04T14:38:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-24c6d7f6fe0f
+    type: constrains
+    from: REQ-papra-documents-null-value-uses-fallback-without-formatting-it
+    to: FACT-papra-subject-documents-evaluate-storage-pattern-expression
+    created_at: "2025-07-04T14:38:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

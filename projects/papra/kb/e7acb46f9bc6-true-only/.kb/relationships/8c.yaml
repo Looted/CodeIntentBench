@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-10798e983af7
+    type: requires_property
+    from: REQ-papra-admin-admin-tries-to-delete-their-own-account
+    to: FACT-papra-admin-admin-users-routes-permission-protection-when-the-admin-tries-to-delete-their-own
+    created_at: "2026-09-01T08:00:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-601e6f60bbba
+    type: constrains
+    from: REQ-papra-admin-admin-tries-to-delete-their-own-account
+    to: FACT-papra-subject-admin-admin-users-routes-permission-protection
+    created_at: "2026-09-01T08:00:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

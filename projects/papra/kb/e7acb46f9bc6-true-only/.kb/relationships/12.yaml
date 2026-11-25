@@ -1,0 +1,71 @@
+relationships:
+  - id: rel-5df33c2f2f2a
+    type: requires_property
+    from: REQ-papra-documents-non-string-value-at-end-of-path
+    to: FACT-papra-documents-extract-text-from-response-a-non-string-value-at-the-end-of
+    created_at: "2026-04-04T09:30:45.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4bb18d21e8af
+    type: constrains
+    from: REQ-papra-documents-non-string-value-at-end-of-path
+    to: FACT-papra-subject-documents-extract-text-from-response
+    created_at: "2026-04-04T09:30:45.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ed18ba2073a7
+    type: requires_property
+    from: REQ-papra-document-search-document-with-multiple-matching-tags-are-not
+    to: FACT-papra-document-search-search-organization-documents-document-with-multiple-matching-tags-are-not-double
+    created_at: "2026-01-01T09:18:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fa7c964024ae
+    type: constrains
+    from: REQ-papra-document-search-document-with-multiple-matching-tags-are-not
+    to: FACT-papra-subject-document-search-search-organization-documents
+    created_at: "2026-01-01T09:18:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a1a01bdf7f60
+    type: requires_property
+    from: REQ-papra-ingestion-folders-user-can-configure-done-folder-as-relative
+    to: FACT-papra-ingestion-folders-is-file-in-done-folder-the-user-can-configure-the-done-folder-as
+    created_at: "2026-07-11T11:30:24.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fa147c79aa8f
+    type: constrains
+    from: REQ-papra-ingestion-folders-user-can-configure-done-folder-as-relative
+    to: FACT-papra-subject-ingestion-folders-is-file-in-done-folder
+    created_at: "2026-07-11T11:30:24.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9e9c216a0e86
+    type: requires_property
+    from: REQ-papra-intake-emails-origin-is-allowed-if-it-is-in
+    to: FACT-papra-intake-emails-get-is-from-allowed-origin-an-origin-is-allowed-if-it-is-in
+    created_at: "2025-12-24T17:11:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4640fb021b25
+    type: constrains
+    from: REQ-papra-intake-emails-origin-is-allowed-if-it-is-in
+    to: FACT-papra-subject-intake-emails-get-is-from-allowed-origin
+    created_at: "2025-12-24T17:11:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b3472fac22b4
+    type: requires_property
+    from: REQ-papra-roles-list-of-user-roles-it-returns-deduplicated
+    to: FACT-papra-roles-get-permissions-for-roles-given-a-list-of-user-roles-it-returns
+    created_at: "2025-12-09T14:32:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7ce00fa949d6
+    type: constrains
+    from: REQ-papra-roles-list-of-user-roles-it-returns-deduplicated
+    to: FACT-papra-subject-roles-get-permissions-for-roles
+    created_at: "2025-12-09T14:32:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

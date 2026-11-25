@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-0cd311ff9993
+    type: requires_property
+    from: REQ-papra-email-drivers-logger
+    to: FACT-papra-email-sending-driver-setting
+    created_at: "2026-11-16T10:23:44.498Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-email-drivers-logger
+    to: FACT-papra-subject-email-sending
+    created_at: 2026-11-16T10:23:44.498Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-dffcf379180e
+  - type: requires_property
+    from: REQ-papra-email-drivers-logger
+    to: FACT-papra-email-sending-dry-run-setting-available
+    created_at: 2026-11-16T10:23:44.511Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-39e0cfaf1e5f
+  - type: supersedes
+    from: REQ-papra-email-drivers-logger
+    to: REQ-papra-docker-email-dry-run-default
+    created_at: 2026-11-16T10:23:44.514Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-e481fa8c5370
+  - id: rel-821c6c178923
+    type: requires_property
+    from: REQ-papra-documents-json-value-must-be-object
+    to: FACT-papra-documents-docling-options-schema-the-json-value-must-be-an-object
+    created_at: "2026-06-25T10:39:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-70c25b77c0f8
+    type: constrains
+    from: REQ-papra-documents-json-value-must-be-object
+    to: FACT-papra-subject-documents-docling-options-schema
+    created_at: "2026-06-25T10:39:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3f57da4fc457
+    type: requires_property
+    from: REQ-papra-documents-valid-hard-coded-document-id-for-document
+    to: FACT-papra-documents-storage-pattern-constants-a-valid-hard-coded-document-id-for-document
+    created_at: "2026-01-01T13:18:06.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-89171df3b98d
+    type: constrains
+    from: REQ-papra-documents-valid-hard-coded-document-id-for-document
+    to: FACT-papra-subject-documents-storage-pattern-constants
+    created_at: "2026-01-01T13:18:06.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

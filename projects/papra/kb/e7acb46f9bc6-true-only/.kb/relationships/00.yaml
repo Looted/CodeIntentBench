@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-dbe45fcbf605
+    type: requires_property
+    from: REQ-papra-admin-target-user-still-owns-organization-400-error
+    to: FACT-papra-admin-admin-users-routes-permission-protection-when-the-target-user-still-owns-an-organization
+    created_at: "2026-09-24T13:53:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b7ac2e5911d5
+    type: constrains
+    from: REQ-papra-admin-target-user-still-owns-organization-400-error
+    to: FACT-papra-subject-admin-admin-users-routes-permission-protection
+    created_at: "2026-09-24T13:53:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-293e20f8d29a
+    type: requires_property
+    from: REQ-papra-intake-emails-no-allowed-origins-are-provided-origin-is
+    to: FACT-papra-intake-emails-get-is-from-allowed-origin-if-no-allowed-origins-are-provided-the-origin
+    created_at: "2026-03-11T15:12:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9924aa5f3060
+    type: constrains
+    from: REQ-papra-intake-emails-no-allowed-origins-are-provided-origin-is
+    to: FACT-papra-subject-intake-emails-get-is-from-allowed-origin
+    created_at: "2026-03-11T15:12:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

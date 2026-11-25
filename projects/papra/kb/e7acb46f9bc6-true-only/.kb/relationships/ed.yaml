@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-d7132e32518f
+    type: requires_property
+    from: REQ-papra-document-share-links-document-in-soft-deleted-organization-is-no
+    to: FACT-papra-document-share-links-shared-document-access-e2e-a-document-in-a-soft-deleted-organization-is
+    created_at: "2026-01-02T13:02:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-74beb3edc206
+    type: constrains
+    from: REQ-papra-document-share-links-document-in-soft-deleted-organization-is-no
+    to: FACT-papra-subject-document-share-links-shared-document-access-e2e
+    created_at: "2026-01-02T13:02:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

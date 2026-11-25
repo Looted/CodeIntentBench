@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-79dea36b7be2
+    type: requires_property
+    from: REQ-papra-intake-catch-all-driver
+    to: FACT-papra-intake-email-catch-all-driver-username-generation
+    created_at: "2026-11-16T10:25:26.501Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-intake-catch-all-driver
+    to: FACT-papra-subject-intake-email-catch-all-driver
+    created_at: 2026-11-16T10:25:26.502Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c33f8f34c19c
+  - id: rel-008dcb3c3e29
+    type: requires_property
+    from: REQ-papra-database-iterates-over-all-items-using-getbatch-function
+    to: FACT-papra-database-create-batched-iterator-iterates-over-all-items-using-the-getbatch-function
+    created_at: "2025-08-28T10:44:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-664f0e26c8e5
+    type: constrains
+    from: REQ-papra-database-iterates-over-all-items-using-getbatch-function
+    to: FACT-papra-subject-database-create-batched-iterator
+    created_at: "2025-08-28T10:44:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-accdf067b1c0
+    type: requires_property
+    from: REQ-papra-documents-custom-property-values-are-attached-to-correct
+    to: FACT-papra-documents-enrich-documents-for-api-custom-property-values-are-attached-to-the-correct
+    created_at: "2026-07-21T11:23:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3692c3ef2b38
+    type: constrains
+    from: REQ-papra-documents-custom-property-values-are-attached-to-correct
+    to: FACT-papra-subject-documents-enrich-documents-for-api
+    created_at: "2026-07-21T11:23:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a276d07d3215
+    type: requires_property
+    from: REQ-papra-organizations-user-is-not-in-organization
+    to: FACT-papra-organizations-ensure-user-is-in-organization-the-user-is-not-in-the-organization
+    created_at: "2026-07-19T08:01:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8cde3c509a96
+    type: constrains
+    from: REQ-papra-organizations-user-is-not-in-organization
+    to: FACT-papra-subject-organizations-ensure-user-is-in-organization
+    created_at: "2026-07-19T08:01:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

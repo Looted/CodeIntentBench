@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-e926d743bf0c
+    type: requires_property
+    from: REQ-papra-document-search-warranty-true-returns-unsupported-filter-operator-issue
+    to: FACT-papra-document-search-query-builder-custom-properties-warranty-true-returns-an-unsupported-filter-operator-issue
+    created_at: "2025-10-23T10:11:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cd2129eada2e
+    type: constrains
+    from: REQ-papra-document-search-warranty-true-returns-unsupported-filter-operator-issue
+    to: FACT-papra-subject-document-search-query-builder-custom-properties
+    created_at: "2025-10-23T10:11:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

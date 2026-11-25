@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-43e81371cbe7
+    type: requires_property
+    from: REQ-papra-document-search-enforces-organization-isolation-to-prevent-searching-documents
+    to: FACT-papra-document-search-search-organization-documents-enforces-organization-isolation-to-prevent-searching-documents-from
+    created_at: "2026-06-01T15:34:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-74a733853587
+    type: constrains
+    from: REQ-papra-document-search-enforces-organization-isolation-to-prevent-searching-documents
+    to: FACT-papra-subject-document-search-search-organization-documents
+    created_at: "2026-06-01T15:34:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ba50519f02c9
+    type: requires_property
+    from: REQ-papra-subscriptions-no-coupon-is-configured-promotion-codes-are
+    to: FACT-papra-subscriptions-resolve-checkout-discount-when-no-coupon-is-configured-promotion-codes-are
+    created_at: "2025-08-28T17:41:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7bf8ff2a7b94
+    type: constrains
+    from: REQ-papra-subscriptions-no-coupon-is-configured-promotion-codes-are
+    to: FACT-papra-subject-subscriptions-resolve-checkout-discount
+    created_at: "2025-08-28T17:41:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

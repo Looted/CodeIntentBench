@@ -1,0 +1,43 @@
+relationships:
+  - id: rel-907a136deb93
+    type: requires_property
+    from: REQ-papra-search-index-by-ids
+    to: FACT-papra-search-index-keys-keys
+    created_at: "2026-11-16T10:21:06.076Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-search-index-by-ids
+    to: FACT-papra-subject-search-index-keys
+    created_at: 2026-11-16T10:21:06.077Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4a87fc3bebc8
+  - id: rel-0ec503747a04
+    type: requires_property
+    from: REQ-papra-documents-combined-add-and-remove-in-one-call
+    to: FACT-papra-documents-tag-documents-batch-combined-add-and-remove-in-one-call
+    created_at: "2025-05-20T13:36:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fbfd9bc5d7fd
+    type: constrains
+    from: REQ-papra-documents-combined-add-and-remove-in-one-call
+    to: FACT-papra-subject-documents-tag-documents-batch
+    created_at: "2025-05-20T13:36:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-80f6743903ad
+    type: requires_property
+    from: REQ-papra-documents-transformers-arguments-can-use-quotes-for-spaces
+    to: FACT-papra-documents-build-storage-key-transformers-arguments-can-use-quotes-for-spaces
+    created_at: "2026-06-28T08:27:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-76d02fbab5fc
+    type: constrains
+    from: REQ-papra-documents-transformers-arguments-can-use-quotes-for-spaces
+    to: FACT-papra-subject-documents-build-storage-key
+    created_at: "2026-06-28T08:27:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

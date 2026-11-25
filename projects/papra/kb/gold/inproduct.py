@@ -1,6 +1,8 @@
 """Build the in-product variant of a stored Papra knowledge base: half of the crowd, plus look-alikes about Papra's server.
 
 Usage: python3 inproduct.py <hide-why .kb> <output .kb>
+       python3 inproduct.py --true-only <source .kb> <output .kb>   the same in-product entries with no crowd at all:
+                                                     every entry of the store is true (set 5, store `true-only`)
        python3 inproduct.py --list                    the in-product entries: id, linked symbol, statement
        python3 inproduct.py --roles <workspace>       rewrite inproduct-roles.json with the kibi on PATH
 
@@ -217,9 +219,9 @@ def append_rels(out, rels):
             records = yaml.load(head, Loader=yaml.BaseLoader)['relationships'] + records; head = 'relationships:\n'
         open(path, 'w').write(head + ''.join('  - ' + '\n    '.join(f'{k}: {json.dumps(v) if k == "created_at" else v}' for k, v in rec.items()) + '\n' for rec in records))
 
-def write(src, out):
+def write(src, out, with_crowd=True):
     files, rels, links = build(src)
-    cfiles, crels = half_crowd()
+    cfiles, crels = half_crowd() if with_crowd else ({}, [])
     if os.path.exists(out): shutil.rmtree(out)
     shutil.copytree(src, out)
     for path, text in sorted({**cfiles, **files}.items()):
@@ -256,5 +258,6 @@ if __name__ == '__main__':
     elif args and args[0] == '--list':
         sym = yaml.safe_load(open(os.path.join(src, 'symbols.yaml')))['symbols']
         for t, st, s in select(sym): print(f"{module_of(t['file'])}\t{s['title'] if s else '-'}\t{st}")
+    elif len(args) == 3 and args[0] == '--true-only': write(args[1], args[2], with_crowd=False)
     elif len(args) == 2: write(*args)
     else: raise SystemExit(__doc__)

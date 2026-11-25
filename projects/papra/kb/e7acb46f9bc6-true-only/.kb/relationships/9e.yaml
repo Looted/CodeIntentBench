@@ -1,0 +1,120 @@
+relationships:
+  - id: rel-c8e04354456e
+    type: verified_by
+    from: REQ-search-queries-are-parsed-by-the-papra-sea-4463E6DB
+    to: TEST-search-parser-src-parser
+    created_at: "2026-10-14T12:10:01.887Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: verified_by
+    from: REQ-search-queries-are-parsed-by-the-papra-sea-4463E6DB
+    to: TEST-papra-server-src-modules-documents-document-search-database-fts5-database-fts5-repository-models
+    created_at: 2026-10-14T12:10:01.887Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d029017279e5
+  - type: requires_property
+    from: REQ-search-queries-are-parsed-by-the-papra-sea-4463E6DB
+    to: FACT-papra-search-query-parser
+    created_at: 2026-11-15T21:43:08.454Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-90aa7233551c
+  - type: constrains
+    from: REQ-search-queries-are-parsed-by-the-papra-sea-4463E6DB
+    to: FACT-papra-subject-search-query
+    created_at: 2026-11-15T21:43:08.459Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-db9e4ea0abe1
+  - type: requires_property
+    from: REQ-search-queries-are-parsed-by-the-papra-sea-4463E6DB
+    to: FACT-papra-search-query-execution
+    created_at: 2026-11-15T21:43:08.461Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ca4d2e941e9f
+  - type: verified_by
+    from: REQ-search-queries-are-parsed-by-the-papra-sea-4463E6DB
+    to: TEST-papra-server-src-modules-documents-document-search-database-fts5-query-builder-query-builder
+    created_at: 2026-11-16T04:52:09.969Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-360c3f0052c1
+  - type: verified_by
+    from: REQ-search-queries-are-parsed-by-the-papra-sea-4463E6DB
+    to: TEST-papra-server-src-modules-documents-document-search-database-fts5-query-builder-query-builder-models
+    created_at: 2026-11-16T04:52:09.977Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9fa163d57b95
+  - type: requires_property
+    from: REQ-papra-active-subscription-blocks-deletion
+    to: FACT-papra-organization-soft-delete-allowed-with-live-subscription
+    created_at: 2026-11-16T10:18:24.982Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d99781a24f7f
+  - type: constrains
+    from: REQ-papra-active-subscription-blocks-deletion
+    to: FACT-papra-subject-organization-soft-delete
+    created_at: 2026-11-16T10:18:24.996Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-23a09df1e41b
+  - type: requires_property
+    from: REQ-papra-active-subscription-blocks-deletion
+    to: FACT-papra-organization-soft-delete-requires-subscription-cancelled-first
+    created_at: 2026-11-16T10:18:25.001Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-287a5af29f21
+  - type: requires_property
+    from: REQ-papra-active-subscription-blocks-deletion
+    to: FACT-papra-organization-soft-delete-allowed-with-ended-or-ending-subscription
+    created_at: 2026-11-16T10:18:25.005Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-37455ae790ad
+  - type: requires_property
+    from: REQ-papra-client-rejects-too-big-files
+    to: FACT-papra-upload-client-guard-rejects-too-big-files
+    created_at: 2026-11-16T10:23:19.146Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-a926706904c0
+  - type: constrains
+    from: REQ-papra-client-rejects-too-big-files
+    to: FACT-papra-subject-upload-client-guard
+    created_at: 2026-11-16T10:23:19.161Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-69b0f09c2a60
+  - type: verified_by
+    from: REQ-papra-active-subscription-blocks-deletion
+    to: TEST-papra-server-src-modules-organizations-organizations-usecases
+    created_at: 2026-11-16T10:26:45.106Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-00cfbda743d5
+  - type: verified_by
+    from: REQ-papra-active-subscription-blocks-deletion
+    to: TEST-papra-server-src-modules-subscriptions-subscriptions-models
+    created_at: 2026-11-16T10:26:45.117Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4055069c1c03
+  - id: rel-7cb8ddb8871f
+    type: requires_property
+    from: REQ-papra-documents-document-is-unique-by-organization-error-is
+    to: FACT-papra-documents-save-organization-document-a-document-is-unique-by-organization-an-error
+    created_at: "2026-09-06T10:18:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-afb83bf0d082
+    type: constrains
+    from: REQ-papra-documents-document-is-unique-by-organization-error-is
+    to: FACT-papra-subject-documents-save-organization-document
+    created_at: "2026-09-06T10:18:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

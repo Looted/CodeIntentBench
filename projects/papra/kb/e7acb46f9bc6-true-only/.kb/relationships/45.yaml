@@ -1,0 +1,85 @@
+relationships:
+  - id: rel-c8f714fa1908
+    type: requires_property
+    from: REQ-papra-document-count-excludes-deleted
+    to: FACT-papra-documents-count-includes-deleted-documents
+    created_at: "2026-11-16T10:20:04.170Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-document-count-excludes-deleted
+    to: FACT-papra-subject-documents-count
+    created_at: 2026-11-16T10:20:04.170Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-0d89fde615a8
+  - id: rel-daabca05dffa
+    type: requires_property
+    from: REQ-papra-api-keys-api-token-is-64-random-alphanumeric-characters
+    to: FACT-papra-api-keys-generate-api-token-api-token-is-a-64-random-alphanumeric-characters
+    created_at: "2026-06-08T14:47:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-02bc0dfcb3e3
+    type: constrains
+    from: REQ-papra-api-keys-api-token-is-64-random-alphanumeric-characters
+    to: FACT-papra-subject-api-keys-generate-api-token
+    created_at: "2026-06-08T14:47:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a9d81434fa70
+    type: requires_property
+    from: REQ-papra-document-share-links-expired-access-token-is-rejected
+    to: FACT-papra-document-share-links-document-share-links-usecases-an-expired-access-token-is-rejected
+    created_at: "2026-01-27T15:25:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-71c9ee879c28
+    type: constrains
+    from: REQ-papra-document-share-links-expired-access-token-is-rejected
+    to: FACT-papra-subject-document-share-links-document-share-links-usecases
+    created_at: "2026-01-27T15:25:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2ec73d1a751e
+    type: requires_property
+    from: REQ-papra-documents-documents-can-be-sorted-by-name-descending
+    to: FACT-papra-documents-documents-e2e-documents-can-be-sorted-by-name-descending
+    created_at: "2025-07-17T15:59:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a0f3ad030676
+    type: constrains
+    from: REQ-papra-documents-documents-can-be-sorted-by-name-descending
+    to: FACT-papra-subject-documents-documents-e2e
+    created_at: "2025-07-17T15:59:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f04933a9e090
+    type: requires_property
+    from: REQ-papra-documents-unset-document-date-falls-back-to-no
+    to: FACT-papra-documents-build-storage-key-an-unset-document-date-falls-back-to-no
+    created_at: "2025-09-25T15:39:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4cf2d544823c
+    type: constrains
+    from: REQ-papra-documents-unset-document-date-falls-back-to-no
+    to: FACT-papra-subject-documents-build-storage-key
+    created_at: "2025-09-25T15:39:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7647f63e3b8a
+    type: requires_property
+    from: REQ-papra-intake-emails-parses-valid-json-string-into-ingestion-meta
+    to: FACT-papra-intake-emails-intake-email-ingestion-email-field-schema-parses-a-valid-json-string-into-an-ingestion
+    created_at: "2025-09-10T16:37:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6e680511b035
+    type: constrains
+    from: REQ-papra-intake-emails-parses-valid-json-string-into-ingestion-meta
+    to: FACT-papra-subject-intake-emails-intake-email-ingestion-email-field-schema
+    created_at: "2025-09-10T16:37:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

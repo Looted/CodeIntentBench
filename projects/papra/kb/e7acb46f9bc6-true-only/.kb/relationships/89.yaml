@@ -1,0 +1,85 @@
+relationships:
+  - id: rel-bbcc5670be78
+    type: verified_by
+    from: REQ-webhooks-emit-document-updated-document-ta-FB361BD1
+    to: TEST-papra-server-src-modules-tags-tags-repository
+    created_at: "2026-10-14T12:10:04.797Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: requires_property
+    from: REQ-webhooks-emit-document-updated-document-ta-FB361BD1
+    to: FACT-papra-webhook-events-post-creation-events
+    created_at: 2026-11-15T21:43:38.520Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b7b29246ec33
+  - type: constrains
+    from: REQ-webhooks-emit-document-updated-document-ta-FB361BD1
+    to: FACT-papra-subject-webhook-events
+    created_at: 2026-11-15T21:43:38.526Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d43a07b53f13
+  - type: requires_property
+    from: REQ-webhooks-emit-document-updated-document-ta-FB361BD1
+    to: FACT-papra-webhook-events-tag-changes-trigger-webhooks
+    created_at: 2026-11-15T21:43:38.528Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4016cef6d166
+  - type: verified_by
+    from: REQ-webhooks-emit-document-updated-document-ta-FB361BD1
+    to: TEST-papra-server-src-modules-documents-e2e-upload-documents-e2e
+    created_at: 2026-11-16T04:52:11.660Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-8afcde75de6e
+  - type: verified_by
+    from: REQ-webhooks-emit-document-updated-document-ta-FB361BD1
+    to: TEST-papra-server-src-modules-tags-tags-usecases
+    created_at: 2026-11-16T04:52:11.666Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-3276816c6182
+  - id: rel-e5598e51edd4
+    type: requires_property
+    from: REQ-papra-document-search-warranty-1-is-accepted-as-valid-boolean
+    to: FACT-papra-document-search-query-builder-custom-properties-warranty-1-is-accepted-as-a-valid-boolean
+    created_at: "2026-03-11T09:03:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6c52c31fd9cf
+    type: constrains
+    from: REQ-papra-document-search-warranty-1-is-accepted-as-valid-boolean
+    to: FACT-papra-subject-document-search-query-builder-custom-properties
+    created_at: "2026-03-11T09:03:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b09b9a306144
+    type: requires_property
+    from: REQ-papra-document-search-supports-now-value-to-use-current-date
+    to: FACT-papra-document-search-handle-document-date-filter-supports-now-value-to-use-the-current-date
+    created_at: "2026-06-01T12:04:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ffee11c04907
+    type: constrains
+    from: REQ-papra-document-search-supports-now-value-to-use-current-date
+    to: FACT-papra-subject-document-search-handle-document-date-filter
+    created_at: "2026-06-01T12:04:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1254733e8c9d
+    type: requires_property
+    from: REQ-papra-documents-document-with-no-tags-gets-empty-tags
+    to: FACT-papra-documents-enrich-documents-for-api-a-document-with-no-tags-gets-an-empty
+    created_at: "2025-10-20T08:16:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3887d06fc54e
+    type: constrains
+    from: REQ-papra-documents-document-with-no-tags-gets-empty-tags
+    to: FACT-papra-subject-documents-enrich-documents-for-api
+    created_at: "2025-10-20T08:16:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

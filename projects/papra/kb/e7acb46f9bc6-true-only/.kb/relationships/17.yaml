@@ -1,0 +1,71 @@
+relationships:
+  - id: rel-c77c230e5d50
+    type: verified_by
+    from: REQ-the-name-and-content-search-filters-use-co-30FF0726
+    to: TEST-papra-server-src-modules-documents-document-search-database-fts5-query-builder-query-builder
+    created_at: "2026-10-14T12:09:57.984Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: verified_by
+    from: REQ-the-name-and-content-search-filters-use-co-30FF0726
+    to: TEST-papra-server-src-modules-documents-document-search-database-fts5-query-builder-query-builder-models
+    created_at: 2026-10-14T12:09:57.985Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b705f21dd097
+  - type: requires_property
+    from: REQ-the-name-and-content-search-filters-use-co-30FF0726
+    to: FACT-papra-search-filter-name-content-match-mode
+    created_at: 2026-11-15T21:43:29.137Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9d34952bebdc
+  - type: constrains
+    from: REQ-the-name-and-content-search-filters-use-co-30FF0726
+    to: FACT-papra-subject-search-filter-name-content
+    created_at: 2026-11-15T21:43:29.142Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-89c49995e93b
+  - id: rel-30174c0f2265
+    type: requires_property
+    from: REQ-papra-auth-user-defined-list-of-trusted-origins-it
+    to: FACT-papra-auth-get-trusted-origins-if-the-user-defined-a-list-of-trusted
+    created_at: "2025-12-13T15:03:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-721d7ff0cc72
+    type: constrains
+    from: REQ-papra-auth-user-defined-list-of-trusted-origins-it
+    to: FACT-papra-subject-auth-get-trusted-origins
+    created_at: "2025-12-13T15:03:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f515e3c0aba6
+    type: requires_property
+    from: REQ-papra-documents-there-is-issue-when-inserting-document-in
+    to: FACT-papra-documents-create-document-when-there-is-an-issue-when-inserting-the
+    created_at: "2025-12-13T10:51:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-54bec17ef5a6
+    type: constrains
+    from: REQ-papra-documents-there-is-issue-when-inserting-document-in
+    to: FACT-papra-subject-documents-create-document
+    created_at: "2025-12-13T10:51:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cda556d94734
+    type: requires_property
+    from: REQ-papra-users-multiple-users-exist-in-database-count-reflects
+    to: FACT-papra-users-get-user-count-when-multiple-users-exist-in-the-database-the
+    created_at: "2025-03-14T10:41:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2456981b084e
+    type: constrains
+    from: REQ-papra-users-multiple-users-exist-in-database-count-reflects
+    to: FACT-papra-subject-users-get-user-count
+    created_at: "2025-03-14T10:41:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

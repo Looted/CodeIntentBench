@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-fc2ebd765624
+    type: requires_property
+    from: REQ-papra-documents-scalar-options-preserve-punctuation-false-and-zero
+    to: FACT-papra-documents-build-docling-request-body-scalar-options-preserve-punctuation-false-and-zero-values
+    created_at: "2025-07-14T09:24:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f282f898c765
+    type: constrains
+    from: REQ-papra-documents-scalar-options-preserve-punctuation-false-and-zero
+    to: FACT-papra-subject-documents-build-docling-request-body
+    created_at: "2025-07-14T09:24:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

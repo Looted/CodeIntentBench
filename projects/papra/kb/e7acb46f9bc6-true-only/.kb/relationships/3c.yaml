@@ -1,0 +1,57 @@
+relationships:
+  - type: requires_property
+    from: REQ-when-several-versioned-key-encryption-keys-2FAB9215
+    to: FACT-papra-encryption-key-encryption-key-key-for-new-documents
+    created_at: 2026-11-15T21:43:48.346Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-45f4caa2438f
+  - type: constrains
+    from: REQ-when-several-versioned-key-encryption-keys-2FAB9215
+    to: FACT-papra-subject-encryption-key-encryption-key
+    created_at: 2026-11-15T21:43:48.351Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-f9e49596ce04
+  - type: requires_property
+    from: REQ-when-several-versioned-key-encryption-keys-2FAB9215
+    to: FACT-papra-encryption-key-encryption-key-all-configured-keys-decrypt
+    created_at: 2026-11-15T21:43:48.353Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-8fea0927111d
+  - type: verified_by
+    from: REQ-when-several-versioned-key-encryption-keys-2FAB9215
+    to: TEST-papra-server-src-modules-storage-encryption-storage-encryption-models
+    created_at: 2026-11-16T10:27:22.669Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-e25458c1ae66
+  - type: verified_by
+    from: REQ-when-several-versioned-key-encryption-keys-2FAB9215
+    to: TEST-papra-server-src-modules-documents-document-encryption-usecases
+    created_at: 2026-11-16T10:28:49.041Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2adaedb0c5eb
+  - type: verified_by
+    from: REQ-when-several-versioned-key-encryption-keys-2FAB9215
+    to: TEST-papra-server-src-modules-documents-documents-usecases
+    created_at: 2026-11-16T10:28:49.050Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-8bad6e4678df
+  - id: rel-3c0af170728a
+    type: requires_property
+    from: REQ-papra-documents-throws-error-if-any-of-provided-documentids
+    to: FACT-papra-documents-resolve-batch-target-document-ids-throws-an-error-if-any-of-the-provided
+    created_at: "2025-09-13T11:34:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e0b168fd59a3
+    type: constrains
+    from: REQ-papra-documents-throws-error-if-any-of-provided-documentids
+    to: FACT-papra-subject-documents-resolve-batch-target-document-ids
+    created_at: "2025-09-13T11:34:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

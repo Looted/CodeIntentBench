@@ -1,0 +1,155 @@
+relationships:
+  - id: rel-bb09a8368e26
+    type: requires_property
+    from: REQ-the-application-package-is-versioned-with--B1FD7959
+    to: FACT-papra-release-versioning-application-scheme
+    created_at: "2026-11-15T21:43:18.200Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-the-application-package-is-versioned-with--B1FD7959
+    to: FACT-papra-subject-release-versioning
+    created_at: 2026-11-15T21:43:18.200Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-292175febed4
+  - type: requires_property
+    from: REQ-the-application-package-is-versioned-with--B1FD7959
+    to: FACT-papra-release-versioning-library-scheme
+    created_at: 2026-11-15T21:43:18.204Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-1ef13677f50d
+  - type: requires_property
+    from: REQ-the-application-package-is-versioned-with--B1FD7959
+    to: FACT-papra-release-versioning-docker-tag-matches-application-version
+    created_at: 2026-11-15T21:43:18.206Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c25e6fa05da8
+  - id: rel-92bfb33cf2e8
+    type: requires_property
+    from: REQ-papra-middlewares-request-last-longer-than-config-timeout-504
+    to: FACT-papra-middlewares-timeout-middleware-when-a-request-last-longer-than-the-config
+    created_at: "2025-08-28T14:55:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7ebb467800b4
+    type: constrains
+    from: REQ-papra-middlewares-request-last-longer-than-config-timeout-504
+    to: FACT-papra-subject-middlewares-timeout-middleware
+    created_at: "2025-08-28T14:55:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f62be2f24283
+    type: requires_property
+    from: REQ-papra-document-search-amount-100-returns-documents-with-amount-greater
+    to: FACT-papra-document-search-database-fts5-repository-amount-100-returns-documents-with-amount-greater-than
+    created_at: "2026-08-26T08:36:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-bc093dd7f3f0
+    type: constrains
+    from: REQ-papra-document-search-amount-100-returns-documents-with-amount-greater
+    to: FACT-papra-subject-document-search-database-fts5-repository
+    created_at: "2026-08-26T08:36:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4d3bb30d6f7a
+    type: requires_property
+    from: REQ-papra-document-search-warranty-yes-is-accepted-as-truthy-alias
+    to: FACT-papra-document-search-database-fts5-repository-warranty-yes-is-accepted-as-truthy-alias
+    created_at: "2026-07-25T12:31:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-39e8b11dc25e
+    type: constrains
+    from: REQ-papra-document-search-warranty-yes-is-accepted-as-truthy-alias
+    to: FACT-papra-subject-document-search-database-fts5-repository
+    created_at: "2026-07-25T12:31:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-bc691b396604
+    type: requires_property
+    from: REQ-papra-documents-path-separators-are-replaced-with-underscores-to
+    to: FACT-papra-documents-ensure-safe-file-name-path-separators-are-replaced-with-underscores-to-prevent
+    created_at: "2025-07-05T11:22:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9d13d6996338
+    type: constrains
+    from: REQ-papra-documents-path-separators-are-replaced-with-underscores-to
+    to: FACT-papra-subject-documents-ensure-safe-file-name
+    created_at: "2025-07-05T11:22:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-687d861131b4
+    type: requires_property
+    from: REQ-papra-documents-fails-if-unknown-property-is-present
+    to: FACT-papra-documents-update-document-body-schema-fails-if-an-unknown-property-is-present
+    created_at: "2026-07-21T11:47:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-728e742f816b
+    type: constrains
+    from: REQ-papra-documents-fails-if-unknown-property-is-present
+    to: FACT-papra-subject-documents-update-document-body-schema
+    created_at: "2026-07-21T11:47:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7eebfa4128d7
+    type: requires_property
+    from: REQ-papra-documents-transformers-multiple-arguments-can-be-quoted
+    to: FACT-papra-documents-build-storage-key-transformers-multiple-arguments-can-be-quoted
+    created_at: "2026-09-10T15:51:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-498704d79335
+    type: constrains
+    from: REQ-papra-documents-transformers-multiple-arguments-can-be-quoted
+    to: FACT-papra-subject-documents-build-storage-key
+    created_at: "2026-09-10T15:51:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-39996bc893fd
+    type: requires_property
+    from: REQ-papra-organizations-called-with-valid-settings-it-should-create
+    to: FACT-papra-organizations-create-or-update-organization-settings-when-called-with-valid-settings-it-should-create
+    created_at: "2026-08-25T14:23:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9a4214caa191
+    type: constrains
+    from: REQ-papra-organizations-called-with-valid-settings-it-should-create
+    to: FACT-papra-subject-organizations-create-or-update-organization-settings
+    created_at: "2026-08-25T14:23:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9393c0752625
+    type: requires_property
+    from: REQ-papra-storage-user-can-provide-single-32-bytes-long
+    to: FACT-papra-storage-storage-key-encryption-keys-schema-the-user-can-provide-a-single-32-bytes
+    created_at: "2026-04-07T12:36:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-444821eb6731
+    type: constrains
+    from: REQ-papra-storage-user-can-provide-single-32-bytes-long
+    to: FACT-papra-subject-storage-storage-key-encryption-keys-schema
+    created_at: "2026-04-07T12:36:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d0d7038d09ce
+    type: requires_property
+    from: REQ-papra-tags-updating-tag-to-name-that-already-exists
+    to: FACT-papra-tags-update-tag-when-updating-a-tag-to-a-name-that
+    created_at: "2025-03-11T12:41:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d83950220f72
+    type: constrains
+    from: REQ-papra-tags-updating-tag-to-name-that-already-exists
+    to: FACT-papra-subject-tags-update-tag
+    created_at: "2025-03-11T12:41:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

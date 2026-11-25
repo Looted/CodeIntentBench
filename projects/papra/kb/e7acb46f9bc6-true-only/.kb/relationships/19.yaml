@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-798f40d61590
+    type: requires_property
+    from: REQ-papra-email-user-name-sanitized
+    to: FACT-papra-email-templates-user-value-handling-v1
+    created_at: "2026-11-16T10:23:50.792Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-email-user-name-sanitized
+    to: FACT-papra-subject-email-templates
+    created_at: 2026-11-16T10:23:50.793Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-f9f94409bb0a
+  - id: rel-25513325203d
+    type: requires_property
+    from: REQ-papra-documents-mistral-ocrs-can-extract-text-allowed-mime
+    to: FACT-papra-documents-is-mistral-ocr-able-to-extract-text-from-document-mistral-ocrs-can-extract-text-allowed-mime-types
+    created_at: "2026-04-05T10:10:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-66f13aa9a3be
+    type: constrains
+    from: REQ-papra-documents-mistral-ocrs-can-extract-text-allowed-mime
+    to: FACT-papra-subject-documents-is-mistral-ocr-able-to-extract-text-from-document
+    created_at: "2026-04-05T10:10:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-af9c2707a114
+    type: requires_property
+    from: REQ-papra-document-search-has-unknownprop-returns-no-results-without-crashing
+    to: FACT-papra-document-search-database-fts5-repository-has-unknownprop-returns-no-results-without-crashing
+    created_at: "2026-01-14T17:10:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0bda942c1a79
+    type: constrains
+    from: REQ-papra-document-search-has-unknownprop-returns-no-results-without-crashing
+    to: FACT-papra-subject-document-search-database-fts5-repository
+    created_at: "2026-01-14T17:10:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-61be6bb24022
+    type: requires_property
+    from: REQ-papra-documents-strips-sensitive-storage-and-encryption-fields
+    to: FACT-papra-documents-enrich-documents-for-api-strips-sensitive-storage-and-encryption-fields
+    created_at: "2025-10-14T14:24:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3f9b97100e6e
+    type: constrains
+    from: REQ-papra-documents-strips-sensitive-storage-and-encryption-fields
+    to: FACT-papra-subject-documents-enrich-documents-for-api
+    created_at: "2025-10-14T14:24:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

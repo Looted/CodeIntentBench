@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-b6bb02e49905
+    type: requires_property
+    from: REQ-papra-plan-entitlements-user-is-eligible-entitlement-is-created-and
+    to: FACT-papra-plan-entitlements-grant-user-plan-entitlement-when-the-user-is-eligible-the-entitlement-is
+    created_at: "2026-06-14T11:39:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b25431d672f2
+    type: constrains
+    from: REQ-papra-plan-entitlements-user-is-eligible-entitlement-is-created-and
+    to: FACT-papra-subject-plan-entitlements-grant-user-plan-entitlement
+    created_at: "2026-06-14T11:39:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

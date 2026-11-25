@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-022ebf109d17
+    type: requires_property
+    from: REQ-papra-task-migrations-pragma-optional
+    to: FACT-papra-tasks-sqlite-pragma-can-be-disabled
+    created_at: "2026-11-16T10:24:21.757Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-task-migrations-pragma-optional
+    to: FACT-papra-subject-tasks-sqlite-pragma
+    created_at: 2026-11-16T10:24:21.757Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-a18c9f52f28e
+  - id: rel-5482637687ce
+    type: requires_property
+    from: REQ-papra-documents-creating-document-save-file-to-storage-and
+    to: FACT-papra-documents-create-document-creating-a-document-save-the-file-to-the
+    created_at: "2025-10-11T17:08:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-35daf7399951
+    type: constrains
+    from: REQ-papra-documents-creating-document-save-file-to-storage-and
+    to: FACT-papra-subject-documents-create-document
+    created_at: "2025-10-11T17:08:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d03704685b60
+    type: requires_property
+    from: REQ-papra-documents-transformers-arguments-can-have-escaped-quotes
+    to: FACT-papra-documents-build-storage-key-transformers-arguments-can-have-escaped-quotes
+    created_at: "2026-06-20T12:18:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4dfe4f0dd2ef
+    type: constrains
+    from: REQ-papra-documents-transformers-arguments-can-have-escaped-quotes
+    to: FACT-papra-subject-documents-build-storage-key
+    created_at: "2026-06-20T12:18:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7a9eafca0d9c
+    type: requires_property
+    from: REQ-papra-intake-emails-email-is-send-to-multiple-intake-emails
+    to: FACT-papra-intake-emails-process-intake-email-ingestion-when-an-email-is-send-to-multiple-intake
+    created_at: "2025-05-24T11:04:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-30370ec60a8f
+    type: constrains
+    from: REQ-papra-intake-emails-email-is-send-to-multiple-intake-emails
+    to: FACT-papra-subject-intake-emails-process-intake-email-ingestion
+    created_at: "2025-05-24T11:04:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

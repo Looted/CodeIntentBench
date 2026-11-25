@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-332772d32d35
+    type: requires_property
+    from: REQ-papra-roles-second-user-does-not-receive-admin-role
+    to: FACT-papra-roles-first-user-admin-assignment-the-second-user-does-not-receive-the-admin
+    created_at: "2026-09-01T16:43:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-bc7281a839b3
+    type: constrains
+    from: REQ-papra-roles-second-user-does-not-receive-admin-role
+    to: FACT-papra-subject-roles-first-user-admin-assignment
+    created_at: "2026-09-01T16:43:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

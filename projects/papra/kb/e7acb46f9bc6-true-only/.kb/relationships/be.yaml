@@ -1,0 +1,43 @@
+relationships:
+  - id: rel-41c97cec32d7
+    type: requires_property
+    from: REQ-papra-document-search-matching-columns-can-be-customized
+    to: FACT-papra-document-search-format-fts5-query-value-the-matching-columns-can-be-customized
+    created_at: "2026-06-02T09:51:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ab5530c55343
+    type: constrains
+    from: REQ-papra-document-search-matching-columns-can-be-customized
+    to: FACT-papra-subject-document-search-format-fts5-query-value
+    created_at: "2026-06-02T09:51:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-86ebefef5935
+    type: requires_property
+    from: REQ-papra-storage-endpoint-port-is-preserved-in-both-styles
+    to: FACT-papra-storage-build-endpoint-url-the-endpoint-port-is-preserved-in-both-styles
+    created_at: "2025-08-02T13:05:45.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8c106ce1d9fe
+    type: constrains
+    from: REQ-papra-storage-endpoint-port-is-preserved-in-both-styles
+    to: FACT-papra-subject-storage-build-endpoint-url
+    created_at: "2025-08-02T13:05:45.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0644770511ab
+    type: requires_property
+    from: REQ-papra-subscriptions-stripe-api-dates-are-represented-as-unix
+    to: FACT-papra-subscriptions-coerce-stripe-timestamp-to-date-stripe-api-dates-are-represented-as-unix-timestamps
+    created_at: "2025-12-25T17:54:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4a90785c2477
+    type: constrains
+    from: REQ-papra-subscriptions-stripe-api-dates-are-represented-as-unix
+    to: FACT-papra-subject-subscriptions-coerce-stripe-timestamp-to-date
+    created_at: "2025-12-25T17:54:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

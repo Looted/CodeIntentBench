@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-f5eaf6fa6fb1
+    type: requires_property
+    from: REQ-papra-tagging-rules-after-extraction
+    to: FACT-papra-tagging-rules-execution-order-runs-after
+    created_at: "2026-11-16T10:22:03.455Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-tagging-rules-after-extraction
+    to: FACT-papra-subject-tagging-rules-execution-order
+    created_at: 2026-11-16T10:22:03.455Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-09fde26a6738
+  - id: rel-e1b1754f0976
+    type: requires_property
+    from: REQ-papra-documents-nested-options-are-json-encoded-without-flattening
+    to: FACT-papra-documents-build-docling-request-body-nested-options-are-json-encoded-without-flattening-their
+    created_at: "2026-07-05T13:14:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-60558170fd32
+    type: constrains
+    from: REQ-papra-documents-nested-options-are-json-encoded-without-flattening
+    to: FACT-papra-subject-documents-build-docling-request-body
+    created_at: "2026-07-05T13:14:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-03d3722aa2af
+    type: requires_property
+    from: REQ-papra-documents-writes-tagged-untagged-activity-log-per-changed
+    to: FACT-papra-documents-register-insert-activity-log-on-document-tags-changed-handler-writes-a-tagged-untagged-activity-log-per-changed
+    created_at: "2025-02-03T16:51:45.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-18b63dc43f82
+    type: constrains
+    from: REQ-papra-documents-writes-tagged-untagged-activity-log-per-changed
+    to: FACT-papra-subject-documents-register-insert-activity-log-on-document-tags-changed-handler
+    created_at: "2025-02-03T16:51:45.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fb12f1ab2258
+    type: requires_property
+    from: REQ-papra-intake-emails-fails-if-parsed-json-does-not-match
+    to: FACT-papra-intake-emails-intake-email-ingestion-email-field-schema-fails-if-the-parsed-json-does-not-match
+    created_at: "2025-10-05T12:49:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ed9f15a17450
+    type: constrains
+    from: REQ-papra-intake-emails-fails-if-parsed-json-does-not-match
+    to: FACT-papra-subject-intake-emails-intake-email-ingestion-email-field-schema
+    created_at: "2025-10-05T12:49:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

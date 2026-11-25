@@ -1,0 +1,85 @@
+relationships:
+  - id: rel-5fc26a4da29a
+    type: requires_property
+    from: REQ-papra-auth-request-is-allowed-if-user-has-all
+    to: FACT-papra-auth-create-role-middleware-the-request-is-allowed-if-the-user-has
+    created_at: "2026-06-21T13:04:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-de915a168238
+    type: constrains
+    from: REQ-papra-auth-request-is-allowed-if-user-has-all
+    to: FACT-papra-subject-auth-create-role-middleware
+    created_at: "2026-06-21T13:04:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-241ebbda20ba
+    type: requires_property
+    from: REQ-papra-events-multiple-handlers-registered-for-same-event-are
+    to: FACT-papra-events-emit-event-multiple-handlers-registered-for-the-same-event-are
+    created_at: "2026-06-09T08:22:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4fa68929de47
+    type: constrains
+    from: REQ-papra-events-multiple-handlers-registered-for-same-event-are
+    to: FACT-papra-subject-events-emit-event
+    created_at: "2026-06-09T08:22:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-14b9fa90c586
+    type: requires_property
+    from: REQ-papra-document-search-documents-trashed-event-fires-documents-are-marked
+    to: FACT-papra-document-search-register-sync-document-search-event-handlers-when-documents-trashed-event-fires-the-documents-are
+    created_at: "2025-12-20T15:09:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-573b1861a6aa
+    type: constrains
+    from: REQ-papra-document-search-documents-trashed-event-fires-documents-are-marked
+    to: FACT-papra-subject-document-search-register-sync-document-search-event-handlers
+    created_at: "2025-12-20T15:09:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-bdd63a0aaf52
+    type: requires_property
+    from: REQ-papra-documents-document-size-exceeds-organization-storage-limit-error
+    to: FACT-papra-documents-create-document-if-the-document-size-exceeds-the-organization-storage
+    created_at: "2026-01-18T15:54:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7bbc99186632
+    type: constrains
+    from: REQ-papra-documents-document-size-exceeds-organization-storage-limit-error
+    to: FACT-papra-subject-documents-create-document
+    created_at: "2026-01-18T15:54:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5613e1fa328e
+    type: requires_property
+    from: REQ-papra-documents-arguments-can-be-wrapped-in-quotes-to
+    to: FACT-papra-documents-tokenize-string-arguments-arguments-can-be-wrapped-in-quotes-to-include
+    created_at: "2026-06-25T11:26:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-610a40bb0041
+    type: constrains
+    from: REQ-papra-documents-arguments-can-be-wrapped-in-quotes-to
+    to: FACT-papra-subject-documents-tokenize-string-arguments
+    created_at: "2026-06-25T11:26:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-06915a50c97f
+    type: requires_property
+    from: REQ-papra-storage-treats-size-exactly-at-threshold-as-fully
+    to: FACT-papra-storage-buffer-stream-up-to-threshold-treats-a-size-exactly-at-the-threshold-as
+    created_at: "2025-11-04T10:33:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-55ff77883637
+    type: constrains
+    from: REQ-papra-storage-treats-size-exactly-at-threshold-as-fully
+    to: FACT-papra-subject-storage-buffer-stream-up-to-threshold
+    created_at: "2025-11-04T10:33:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-1ab747b894b8
+    type: requires_property
+    from: REQ-papra-auto-tagging-there-are-existing-tags-and-new-tags
+    to: FACT-papra-auto-tagging-build-auto-tagging-system-prompt-when-there-are-existing-tags-and-new-tags
+    created_at: "2026-02-21T09:39:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-965a97fcbb04
+    type: constrains
+    from: REQ-papra-auto-tagging-there-are-existing-tags-and-new-tags
+    to: FACT-papra-subject-auto-tagging-build-auto-tagging-system-prompt
+    created_at: "2026-02-21T09:39:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-44c1ab575d4d
+    type: requires_property
+    from: REQ-papra-storage-trailing-slash-on-endpoint-does-not-produce
+    to: FACT-papra-storage-build-endpoint-url-a-trailing-slash-on-the-endpoint-does-not
+    created_at: "2025-04-11T15:22:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f98eb91f5a5c
+    type: constrains
+    from: REQ-papra-storage-trailing-slash-on-endpoint-does-not-produce
+    to: FACT-papra-subject-storage-build-endpoint-url
+    created_at: "2025-04-11T15:22:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

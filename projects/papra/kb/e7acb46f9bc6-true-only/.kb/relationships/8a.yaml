@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-892bfd546541
+    type: requires_property
+    from: REQ-papra-document-search-expiry-2025-06-01-returns-documents-with
+    to: FACT-papra-document-search-database-fts5-repository-expiry-2025-06-01-returns-documents-with-expiry
+    created_at: "2026-01-19T11:50:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1ad706679566
+    type: constrains
+    from: REQ-papra-document-search-expiry-2025-06-01-returns-documents-with
+    to: FACT-papra-subject-document-search-database-fts5-repository
+    created_at: "2026-01-19T11:50:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e36991be7460
+    type: requires_property
+    from: REQ-papra-documents-re-evaluates-current-dates-and-random-expressions
+    to: FACT-papra-documents-sync-document-storage-key-re-evaluates-current-dates-and-random-expressions-on
+    created_at: "2026-07-15T15:20:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-11f94151958a
+    type: constrains
+    from: REQ-papra-documents-re-evaluates-current-dates-and-random-expressions
+    to: FACT-papra-subject-documents-sync-document-storage-key
+    created_at: "2026-07-15T15:20:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f8f5d5e946b6
+    type: requires_property
+    from: REQ-papra-documents-document-is-created-document-activity-log-is
+    to: FACT-papra-documents-register-insert-activity-log-on-document-created-handler-when-a-document-is-created-a-document-activity
+    created_at: "2026-09-10T10:55:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a2502d98775b
+    type: constrains
+    from: REQ-papra-documents-document-is-created-document-activity-log-is
+    to: FACT-papra-subject-documents-register-insert-activity-log-on-document-created-handler
+    created_at: "2026-09-10T10:55:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-08c336437595
+    type: requires_property
+    from: REQ-papra-documents-default-requires-argument-even-when-value-is
+    to: FACT-papra-documents-evaluate-storage-pattern-expression-default-requires-an-argument-even-when-the-value
+    created_at: "2026-07-13T08:09:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-94d16b7cc3f6
+    type: constrains
+    from: REQ-papra-documents-default-requires-argument-even-when-value-is
+    to: FACT-papra-subject-documents-evaluate-storage-pattern-expression
+    created_at: "2026-07-13T08:09:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

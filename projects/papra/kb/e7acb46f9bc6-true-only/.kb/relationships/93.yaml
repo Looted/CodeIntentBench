@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-b9b932c82f09
+    type: requires_property
+    from: REQ-papra-documents-is-opt-in-and-does-not-synchronize
+    to: FACT-papra-documents-sync-document-storage-key-is-opt-in-and-does-not-synchronize-legacy
+    created_at: "2025-04-12T10:14:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8aeb364cabc2
+    type: constrains
+    from: REQ-papra-documents-is-opt-in-and-does-not-synchronize
+    to: FACT-papra-subject-documents-sync-document-storage-key
+    created_at: "2025-04-12T10:14:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5e94a3b76508
+    type: requires_property
+    from: REQ-papra-documents-pattern-is-valid-if-it-only-contains
+    to: FACT-papra-documents-is-storage-pattern-valid-a-pattern-is-valid-if-it-only-contains
+    created_at: "2025-11-28T10:00:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-51abb1162969
+    type: constrains
+    from: REQ-papra-documents-pattern-is-valid-if-it-only-contains
+    to: FACT-papra-subject-documents-is-storage-pattern-valid
+    created_at: "2025-11-28T10:00:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2aea86f27341
+    type: requires_property
+    from: REQ-papra-organizations-processes-documents-in-batches-for-large-organizations
+    to: FACT-papra-organizations-purge-expired-soft-deleted-organization-processes-documents-in-batches-for-large-organizations
+    created_at: "2026-09-13T10:17:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-38791beac6b5
+    type: constrains
+    from: REQ-papra-organizations-processes-documents-in-batches-for-large-organizations
+    to: FACT-papra-subject-organizations-purge-expired-soft-deleted-organization
+    created_at: "2026-09-13T10:17:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-797dea043f96
+    type: requires_property
+    from: REQ-papra-tagging-rules-condition-is-valid-is-field-value-is
+    to: FACT-papra-tagging-rules-equal-tagging-rule-condition-the-condition-is-valid-is-the-field-value
+    created_at: "2025-07-03T09:09:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2b0be88fddb1
+    type: constrains
+    from: REQ-papra-tagging-rules-condition-is-valid-is-field-value-is
+    to: FACT-papra-subject-tagging-rules-equal-tagging-rule-condition
+    created_at: "2025-07-03T09:09:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

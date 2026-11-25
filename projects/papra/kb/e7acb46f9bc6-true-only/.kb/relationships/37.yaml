@@ -1,0 +1,162 @@
+relationships:
+  - id: rel-9610189337c3
+    type: verified_by
+    from: REQ-tag-names-are-unique-per-organization-rega-7B5F6F2D
+    to: TEST-papra-server-src-modules-tags-tags-repository
+    created_at: "2026-10-14T12:09:54.734Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: verified_by
+    from: REQ-tag-names-are-unique-per-organization-rega-7B5F6F2D
+    to: TEST-papra-server-src-modules-tags-tags-repository-models
+    created_at: 2026-10-14T12:09:54.735Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-84c45423d6b5
+  - type: verified_by
+    from: REQ-tag-names-are-unique-per-organization-rega-7B5F6F2D
+    to: TEST-papra-server-src-modules-tags-tags-usecases
+    created_at: 2026-10-14T12:09:54.741Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-432d70589b54
+  - type: requires_property
+    from: REQ-tag-names-are-unique-per-organization-rega-7B5F6F2D
+    to: FACT-papra-tags-tag-name-unique-case-insensitive-per-organization
+    created_at: 2026-11-15T21:46:14.033Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-30a1d0e59161
+  - type: constrains
+    from: REQ-tag-names-are-unique-per-organization-rega-7B5F6F2D
+    to: FACT-papra-subject-tags-tag
+    created_at: 2026-11-15T21:46:14.038Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-a8cc2d68ec88
+  - type: requires_property
+    from: REQ-tag-names-are-unique-per-organization-rega-7B5F6F2D
+    to: FACT-papra-tags-tag-unique-constraint-column
+    created_at: 2026-11-15T21:46:14.041Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-986421e26f12
+  - type: requires_property
+    from: REQ-tag-names-are-unique-per-organization-rega-7B5F6F2D
+    to: FACT-papra-tags-tag-duplicate-error-code
+    created_at: 2026-11-15T21:46:14.044Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-832ec767d238
+  - type: requires_property
+    from: REQ-papra-former-members-can-be-reinvited
+    to: FACT-papra-invitations-invitation-former-member-can-be-reinvited
+    created_at: 2026-11-16T10:18:05.847Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4734fc607ac5
+  - type: constrains
+    from: REQ-papra-former-members-can-be-reinvited
+    to: FACT-papra-subject-invitations-invitation
+    created_at: 2026-11-16T10:18:05.865Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b37d6f7d77ed
+  - type: requires_property
+    from: REQ-papra-former-members-can-be-reinvited
+    to: FACT-papra-invitations-invitation-new-invitation-blocked-by
+    created_at: 2026-11-16T10:18:05.873Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-3ac28990a884
+  - type: requires_property
+    from: REQ-papra-former-members-can-be-reinvited
+    to: FACT-papra-invitations-invitation-closed-invitations-block-new-invitation
+    created_at: 2026-11-16T10:18:05.879Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-cf5eeae259b5
+  - type: requires_property
+    from: REQ-papra-former-members-can-be-reinvited
+    to: FACT-papra-invitations-member-limit-counts-stale-pending-invitations
+    created_at: 2026-11-16T10:18:05.883Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-feb28e44a9eb
+  - type: constrains
+    from: REQ-papra-former-members-can-be-reinvited
+    to: FACT-papra-subject-invitations-member-limit
+    created_at: 2026-11-16T10:18:05.887Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-fe5aad58eb89
+  - type: requires_property
+    from: REQ-papra-document-reprocess-endpoint
+    to: FACT-papra-documents-reprocess-reruns
+    created_at: 2026-11-16T10:20:29.583Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-77e89799bbbb
+  - type: constrains
+    from: REQ-papra-document-reprocess-endpoint
+    to: FACT-papra-subject-documents-reprocess
+    created_at: 2026-11-16T10:20:29.600Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-df1c597f8b21
+  - type: requires_property
+    from: REQ-papra-tagging-rule-delete-confirmation
+    to: FACT-papra-tagging-rules-delete-confirmation-required
+    created_at: 2026-11-16T10:22:10.578Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-7f3720484343
+  - type: constrains
+    from: REQ-papra-tagging-rule-delete-confirmation
+    to: FACT-papra-subject-tagging-rules-delete-confirmation
+    created_at: 2026-11-16T10:22:10.595Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-3e0c16759bf6
+  - type: verified_by
+    from: REQ-papra-former-members-can-be-reinvited
+    to: TEST-papra-server-src-modules-organizations-organizations-repository
+    created_at: 2026-11-16T10:26:50.882Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-77719201cb1a
+  - type: verified_by
+    from: REQ-papra-former-members-can-be-reinvited
+    to: TEST-papra-server-src-modules-organizations-organizations-usecases
+    created_at: 2026-11-16T10:26:50.897Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-43526aef3b99
+  - id: rel-326cfa7f4ee9
+    type: requires_property
+    from: REQ-papra-rate-limit-trims-whitespace-around-config-string
+    to: FACT-papra-rate-limit-parse-rate-limit-config-trims-whitespace-around-the-config-string
+    created_at: "2026-02-10T12:23:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4a1f752dddbb
+    type: constrains
+    from: REQ-papra-rate-limit-trims-whitespace-around-config-string
+    to: FACT-papra-subject-rate-limit-parse-rate-limit-config
+    created_at: "2026-02-10T12:23:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-db6fb05ce00b
+    type: requires_property
+    from: REQ-papra-documents-handles-result-set-larger-than-sql-host
+    to: FACT-papra-documents-trash-documents-batch-handles-a-result-set-larger-than-the-sql
+    created_at: "2025-11-15T13:29:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-537eeca5d43d
+    type: constrains
+    from: REQ-papra-documents-handles-result-set-larger-than-sql-host
+    to: FACT-papra-subject-documents-trash-documents-batch
+    created_at: "2025-11-15T13:29:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

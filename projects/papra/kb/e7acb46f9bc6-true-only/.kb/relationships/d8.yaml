@@ -1,0 +1,43 @@
+relationships:
+  - id: rel-e8af947572fc
+    type: requires_property
+    from: REQ-papra-max-tags-per-organization
+    to: FACT-papra-tags-per-organization-limit-configurable
+    created_at: "2026-11-16T10:21:41.486Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-max-tags-per-organization
+    to: FACT-papra-subject-tags-per-organization-limit
+    created_at: 2026-11-16T10:21:41.487Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-7ed3d3cf46d4
+  - type: requires_property
+    from: REQ-papra-max-tags-per-organization
+    to: FACT-papra-tags-per-organization-limit-default
+    created_at: 2026-11-16T10:21:41.498Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-104fe0c61e5e
+  - type: verified_by
+    from: REQ-papra-max-tags-per-organization
+    to: TEST-papra-server-src-modules-tags-tags-usecases
+    created_at: 2026-11-16T10:26:54.691Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c99227fc5dc9
+  - id: rel-a33841d300a6
+    type: requires_property
+    from: REQ-papra-document-search-pagination-permits-retrieving-subsequent-pages-of-results
+    to: FACT-papra-document-search-pagination-pagination-permits-retrieving-subsequent-pages-of-results
+    created_at: "2026-07-02T14:32:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b12e08a44f10
+    type: constrains
+    from: REQ-papra-document-search-pagination-permits-retrieving-subsequent-pages-of-results
+    to: FACT-papra-subject-document-search-pagination
+    created_at: "2026-07-02T14:32:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

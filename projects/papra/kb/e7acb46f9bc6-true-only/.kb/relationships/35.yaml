@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-096a73798e7c
+    type: requires_property
+    from: REQ-papra-documents-lost-database-comparison-retains-destination-referenced-by
+    to: FACT-papra-documents-sync-document-storage-key-a-lost-database-comparison-retains-the-destination-referenced
+    created_at: "2025-04-27T16:21:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-211099bd31ca
+    type: constrains
+    from: REQ-papra-documents-lost-database-comparison-retains-destination-referenced-by
+    to: FACT-papra-subject-documents-sync-document-storage-key
+    created_at: "2025-04-27T16:21:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-116a892ab7c3
+    type: requires_property
+    from: REQ-papra-documents-stored-document-its-content-is-extracted-and
+    to: FACT-papra-documents-extract-and-save-document-file-content-given-a-stored-document-its-content-is-extracted
+    created_at: "2025-11-19T12:56:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ebe8f2cba715
+    type: constrains
+    from: REQ-papra-documents-stored-document-its-content-is-extracted-and
+    to: FACT-papra-subject-documents-extract-and-save-document-file-content
+    created_at: "2025-11-19T12:56:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

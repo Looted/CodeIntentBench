@@ -1,0 +1,113 @@
+relationships:
+  - id: rel-c836e079b890
+    type: requires_property
+    from: REQ-papra-storage-pattern-organization-name
+    to: FACT-papra-storage-pattern-organization-name-available-as-expression
+    created_at: "2026-11-16T10:17:53.573Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-storage-pattern-organization-name
+    to: FACT-papra-subject-storage-pattern-organization-name
+    created_at: 2026-11-16T10:17:53.574Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-09a4f080a3ac
+  - type: requires_property
+    from: REQ-papra-storage-pattern-organization-name
+    to: FACT-papra-storage-pattern-organization-name-unique-per-instance
+    created_at: 2026-11-16T10:17:53.584Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9e211131a5a5
+  - type: requires_property
+    from: REQ-papra-ai-credits-off-self-hosted
+    to: FACT-papra-auto-tagging-ai-credits-enabled-by-default-self-hosted
+    created_at: 2026-11-16T10:22:20.825Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-799556fd111e
+  - type: constrains
+    from: REQ-papra-ai-credits-off-self-hosted
+    to: FACT-papra-subject-auto-tagging-ai-credits
+    created_at: 2026-11-16T10:22:20.837Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-392175455ac1
+  - type: verified_by
+    from: REQ-papra-storage-pattern-organization-name
+    to: TEST-papra-server-src-modules-documents-storage-patterns-storage-pattern-usecases
+    created_at: 2026-11-16T10:27:07.189Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-518513d47961
+  - id: rel-4cb98566caf0
+    type: requires_property
+    from: REQ-papra-auth-auth-type-is-api-key-apikey-is
+    to: FACT-papra-auth-check-authentication-when-the-auth-type-is-api-key-the
+    created_at: "2025-10-07T14:05:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-002fc306c23d
+    type: constrains
+    from: REQ-papra-auth-auth-type-is-api-key-apikey-is
+    to: FACT-papra-subject-auth-check-authentication
+    created_at: "2025-10-07T14:05:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f610b3c96094
+    type: requires_property
+    from: REQ-papra-documents-papra-instance-with-some-encrypted-and-some
+    to: FACT-papra-documents-encrypt-all-unencrypted-documents-given-a-papra-instance-with-some-encrypted-and
+    created_at: "2026-06-17T17:20:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0a642a679e3c
+    type: constrains
+    from: REQ-papra-documents-papra-instance-with-some-encrypted-and-some
+    to: FACT-papra-subject-documents-encrypt-all-unencrypted-documents
+    created_at: "2026-06-17T17:20:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-51cb871362ba
+    type: requires_property
+    from: REQ-papra-documents-throws-error-if-document-id-does-not
+    to: FACT-papra-documents-resolve-batch-target-document-ids-throws-an-error-if-a-document-id-does
+    created_at: "2025-08-26T16:07:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-aa5e106fae7c
+    type: constrains
+    from: REQ-papra-documents-throws-error-if-document-id-does-not
+    to: FACT-papra-subject-documents-resolve-batch-target-document-ids
+    created_at: "2025-08-26T16:07:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cc504d0af5dc
+    type: requires_property
+    from: REQ-papra-documents-check-if-given-list-of-document-ids
+    to: FACT-papra-documents-are-all-documents-in-organization-check-if-a-given-list-of-document-ids
+    created_at: "2025-10-16T11:11:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-30f83f1e4528
+    type: constrains
+    from: REQ-papra-documents-check-if-given-list-of-document-ids
+    to: FACT-papra-subject-documents-are-all-documents-in-organization
+    created_at: "2025-10-16T11:11:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-be72e09dd3b7
+    type: requires_property
+    from: REQ-papra-documents-empty-string-uses-fallback
+    to: FACT-papra-documents-evaluate-storage-pattern-expression-an-empty-string-uses-the-fallback
+    created_at: "2025-10-09T08:25:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-01d2be04a464
+    type: constrains
+    from: REQ-papra-documents-empty-string-uses-fallback
+    to: FACT-papra-subject-documents-evaluate-storage-pattern-expression
+    created_at: "2025-10-09T08:25:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -1,0 +1,71 @@
+relationships:
+  - id: rel-7d3579f2b57e
+    type: requires_property
+    from: REQ-papra-ai-valid-model-must-be-in-format-adapter
+    to: FACT-papra-ai-is-valid-model-id-a-valid-model-must-be-in-the-format
+    created_at: "2026-08-24T15:28:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-249ca1780fba
+    type: constrains
+    from: REQ-papra-ai-valid-model-must-be-in-format-adapter
+    to: FACT-papra-subject-ai-is-valid-model-id
+    created_at: "2026-08-24T15:28:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9b8070133f3f
+    type: requires_property
+    from: REQ-papra-api-keys-one-can-create-custom-property-definition-using
+    to: FACT-papra-api-keys-custom-property-api-key-e2e-one-can-create-a-custom-property-definition-using
+    created_at: "2026-06-03T15:46:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6e99424bb7bc
+    type: constrains
+    from: REQ-papra-api-keys-one-can-create-custom-property-definition-using
+    to: FACT-papra-subject-api-keys-custom-property-api-key-e2e
+    created_at: "2026-06-03T15:46:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-11fa0eeee11c
+    type: requires_property
+    from: REQ-papra-documents-interpolates-document-pattern-and-resolves-collisions-with
+    to: FACT-papra-documents-create-document-storage-key-interpolates-the-document-pattern-and-resolves-collisions-with
+    created_at: "2025-05-11T14:18:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f258d61a96a5
+    type: constrains
+    from: REQ-papra-documents-interpolates-document-pattern-and-resolves-collisions-with
+    to: FACT-papra-subject-documents-create-document-storage-key
+    created_at: "2025-05-11T14:18:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-96991523013c
+    type: requires_property
+    from: REQ-papra-documents-resolves-collisions-without-replacing-another-stored-file
+    to: FACT-papra-documents-sync-document-storage-key-resolves-collisions-without-replacing-another-stored-file
+    created_at: "2026-02-08T17:34:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7618f7ef7628
+    type: constrains
+    from: REQ-papra-documents-resolves-collisions-without-replacing-another-stored-file
+    to: FACT-papra-subject-documents-sync-document-storage-key
+    created_at: "2026-02-08T17:34:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ad6dd34f09c2
+    type: requires_property
+    from: REQ-papra-documents-parses-body-with-only-documentdate-as-iso
+    to: FACT-papra-documents-update-document-body-schema-parses-a-body-with-only-documentdate-as-an
+    created_at: "2026-09-05T14:42:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-45f065894775
+    type: constrains
+    from: REQ-papra-documents-parses-body-with-only-documentdate-as-iso
+    to: FACT-papra-subject-documents-update-document-body-schema
+    created_at: "2026-09-05T14:42:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

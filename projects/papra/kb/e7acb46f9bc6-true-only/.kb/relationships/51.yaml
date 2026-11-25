@@ -1,0 +1,43 @@
+relationships:
+  - id: rel-b1192289bd73
+    type: requires_property
+    from: REQ-papra-documents-malformed-json-and-comma-separated-options-are
+    to: FACT-papra-documents-docling-options-schema-malformed-json-and-comma-separated-options-are-rejected
+    created_at: "2026-03-08T17:17:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6b44e9347a15
+    type: constrains
+    from: REQ-papra-documents-malformed-json-and-comma-separated-options-are
+    to: FACT-papra-subject-documents-docling-options-schema
+    created_at: "2026-03-08T17:17:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1ce8ed20bdeb
+    type: requires_property
+    from: REQ-papra-documents-uses-random-suffix-fallback-after-incremental-attempts
+    to: FACT-papra-documents-create-document-storage-key-uses-the-random-suffix-fallback-after-incremental-attempts
+    created_at: "2026-07-28T17:09:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-43bf55bedde2
+    type: constrains
+    from: REQ-papra-documents-uses-random-suffix-fallback-after-incremental-attempts
+    to: FACT-papra-subject-documents-create-document-storage-key
+    created_at: "2026-07-28T17:09:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-519230cb3e32
+    type: requires_property
+    from: REQ-papra-storage-no-keys-provided-should-not-raise-error
+    to: FACT-papra-storage-storage-key-encryption-keys-schema-no-keys-provided-should-not-raise-an-error
+    created_at: "2026-07-10T16:17:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-de3a09b6c582
+    type: constrains
+    from: REQ-papra-storage-no-keys-provided-should-not-raise-error
+    to: FACT-papra-subject-storage-storage-key-encryption-keys-schema
+    created_at: "2026-07-10T16:17:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

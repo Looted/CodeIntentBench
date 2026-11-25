@@ -1,0 +1,106 @@
+relationships:
+  - id: rel-17d7297ddcd0
+    type: verified_by
+    from: REQ-a-tagging-rule-applies-only-to-documents-u-C9F8BBF7
+    to: TEST-papra-server-src-modules-tagging-rules-tagging-rules-usecases
+    created_at: "2026-10-14T12:09:52.175Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: requires_property
+    from: REQ-a-tagging-rule-applies-only-to-documents-u-C9F8BBF7
+    to: FACT-papra-tagging-rules-rule-applies-automatically-to-existing-documents
+    created_at: 2026-11-15T21:44:58.510Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-0e58f6daef9e
+  - type: constrains
+    from: REQ-a-tagging-rule-applies-only-to-documents-u-C9F8BBF7
+    to: FACT-papra-subject-tagging-rules-rule
+    created_at: 2026-11-15T21:44:58.515Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c2ee4dad9d51
+  - type: requires_property
+    from: REQ-a-tagging-rule-applies-only-to-documents-u-C9F8BBF7
+    to: FACT-papra-tagging-rules-apply-to-existing-explicit-user-action
+    created_at: 2026-11-15T21:44:58.517Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9918ff0ae197
+  - type: constrains
+    from: REQ-a-tagging-rule-applies-only-to-documents-u-C9F8BBF7
+    to: FACT-papra-subject-tagging-rules-apply-to-existing
+    created_at: 2026-11-15T21:44:58.519Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-1fa2fa4931b8
+  - type: requires_property
+    from: REQ-papra-manage-subscription-off-by-default
+    to: FACT-papra-billing-manage-subscription-enabled-by-default
+    created_at: 2026-11-16T10:24:41.087Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-71669f8c7ca9
+  - type: constrains
+    from: REQ-papra-manage-subscription-off-by-default
+    to: FACT-papra-subject-billing-manage-subscription
+    created_at: 2026-11-16T10:24:41.106Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ab938f864acc
+  - type: requires_property
+    from: REQ-papra-admin-can-delete-users
+    to: FACT-papra-admin-user-deletion-available
+    created_at: 2026-11-16T10:25:46.493Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-aaa8cc7a14df
+  - type: constrains
+    from: REQ-papra-admin-can-delete-users
+    to: FACT-papra-subject-admin-user-deletion
+    created_at: 2026-11-16T10:25:46.511Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d2c5d467a230
+  - id: rel-33a98b87d802
+    type: requires_property
+    from: REQ-papra-document-search-search-query-can-have-special-characters
+    to: FACT-papra-document-search-search-organization-documents-search-query-can-have-special-characters
+    created_at: "2025-06-17T14:13:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-42bdee563615
+    type: constrains
+    from: REQ-papra-document-search-search-query-can-have-special-characters
+    to: FACT-papra-subject-document-search-search-organization-documents
+    created_at: "2025-06-17T14:13:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-655212c8ea3c
+    type: requires_property
+    from: REQ-papra-documents-document-can-be-created-retrieved-and-soft
+    to: FACT-papra-documents-documents-repository-a-document-can-be-created-retrieved-and-soft
+    created_at: "2026-05-26T08:48:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b3f98544c68f
+    type: constrains
+    from: REQ-papra-documents-document-can-be-created-retrieved-and-soft
+    to: FACT-papra-subject-documents-documents-repository
+    created_at: "2026-05-26T08:48:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-72c848761074
+    type: requires_property
+    from: REQ-papra-intake-emails-ingestion-is-enabled-and-request-signature-is
+    to: FACT-papra-intake-emails-intake-emails-e2e-when-the-ingestion-is-enabled-and-the-request
+    created_at: "2025-08-21T17:30:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-94debfeda82b
+    type: constrains
+    from: REQ-papra-intake-emails-ingestion-is-enabled-and-request-signature-is
+    to: FACT-papra-subject-intake-emails-intake-emails-e2e
+    created_at: "2025-08-21T17:30:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

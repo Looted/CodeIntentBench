@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-b70db25fd030
+    type: requires_property
+    from: REQ-papra-documents-undefined-value-uses-fallback-without-transformers
+    to: FACT-papra-documents-evaluate-storage-pattern-expression-an-undefined-value-uses-the-fallback-without-transformers
+    created_at: "2025-11-01T17:08:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6ce1d429b69c
+    type: constrains
+    from: REQ-papra-documents-undefined-value-uses-fallback-without-transformers
+    to: FACT-papra-subject-documents-evaluate-storage-pattern-expression
+    created_at: "2025-11-01T17:08:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

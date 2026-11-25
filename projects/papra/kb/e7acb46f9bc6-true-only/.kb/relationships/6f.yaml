@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-704e669c24c5
+    type: requires_property
+    from: REQ-papra-document-search-builds-query-to-find-documents-with-date
+    to: FACT-papra-document-search-handle-document-has-date-filter-builds-query-to-find-documents-with-a-date
+    created_at: "2026-08-23T12:21:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f1fefad0ed62
+    type: constrains
+    from: REQ-papra-document-search-builds-query-to-find-documents-with-date
+    to: FACT-papra-subject-document-search-handle-document-has-date-filter
+    created_at: "2026-08-23T12:21:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

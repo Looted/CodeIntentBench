@@ -1,0 +1,64 @@
+relationships:
+  - id: rel-871f7ca2bdc2
+    type: verified_by
+    from: REQ-only-privileged-members-of-an-organization-FCDD9696
+    to: TEST-papra-server-src-modules-organizations-organizations-usecases
+    created_at: "2026-10-14T12:09:51.165Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: requires_property
+    from: REQ-only-privileged-members-of-an-organization-FCDD9696
+    to: FACT-papra-invitations-invitation-allowed-inviter-roles
+    created_at: 2026-11-15T21:45:50.936Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d29b8cbced67
+  - type: constrains
+    from: REQ-only-privileged-members-of-an-organization-FCDD9696
+    to: FACT-papra-subject-invitations-invitation
+    created_at: 2026-11-15T21:45:50.940Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-55a39f238a84
+  - id: rel-e278f36a3e5c
+    type: requires_property
+    from: REQ-papra-admin-using-search-parameter-it-filters-by-email
+    to: FACT-papra-admin-admin-users-routes-permission-protection-when-using-search-parameter-it-filters-by-email
+    created_at: "2026-05-20T11:17:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ce303ef0daa8
+    type: constrains
+    from: REQ-papra-admin-using-search-parameter-it-filters-by-email
+    to: FACT-papra-subject-admin-admin-users-routes-permission-protection
+    created_at: "2026-05-20T11:17:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-13252de21a5f
+    type: requires_property
+    from: REQ-papra-custom-properties-can-list-property-definitions-for-organization
+    to: FACT-papra-custom-properties-custom-properties-e2e-can-list-property-definitions-for-an-organization
+    created_at: "2025-07-08T16:45:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ded42bc88200
+    type: constrains
+    from: REQ-papra-custom-properties-can-list-property-definitions-for-organization
+    to: FACT-papra-subject-custom-properties-custom-properties-e2e
+    created_at: "2025-07-08T16:45:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-06e02aa1c955
+    type: requires_property
+    from: REQ-papra-custom-properties-deletes-options-omitted-from-incoming-list
+    to: FACT-papra-custom-properties-sync-select-options-deletes-options-omitted-from-the-incoming-list
+    created_at: "2025-09-04T08:20:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-bb0e8dd962b5
+    type: constrains
+    from: REQ-papra-custom-properties-deletes-options-omitted-from-incoming-list
+    to: FACT-papra-subject-custom-properties-sync-select-options
+    created_at: "2025-09-04T08:20:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

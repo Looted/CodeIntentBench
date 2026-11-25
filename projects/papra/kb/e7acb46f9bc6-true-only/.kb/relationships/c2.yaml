@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-2a7b63bfe8f2
+    type: requires_property
+    from: REQ-papra-tagging-rules-applying-rule-to-existing-documents-tags-only
+    to: FACT-papra-tagging-rules-apply-tagging-rule-to-existing-documents-applying-rule-to-existing-documents-tags-only-matching
+    created_at: "2026-02-06T09:25:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9764a6ff96bc
+    type: constrains
+    from: REQ-papra-tagging-rules-applying-rule-to-existing-documents-tags-only
+    to: FACT-papra-subject-tagging-rules-apply-tagging-rule-to-existing-documents
+    created_at: "2026-02-06T09:25:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-adcc976d47c5
+    type: requires_property
+    from: REQ-papra-users-throws-error-when-user-does-not-exist
+    to: FACT-papra-users-delete-user-throws-an-error-when-the-user-does-not
+    created_at: "2025-03-20T10:58:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-16d4447dcb87
+    type: constrains
+    from: REQ-papra-users-throws-error-when-user-does-not-exist
+    to: FACT-papra-subject-users-delete-user
+    created_at: "2025-03-20T10:58:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

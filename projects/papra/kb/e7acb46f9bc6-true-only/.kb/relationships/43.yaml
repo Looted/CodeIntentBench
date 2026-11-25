@@ -1,0 +1,50 @@
+relationships:
+  - id: rel-a3bfe779c6bb
+    type: requires_property
+    from: REQ-papra-auth-secret-required-in-production
+    to: FACT-papra-auth-secret-required-in-production
+    created_at: "2026-11-16T10:24:59.937Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-auth-secret-required-in-production
+    to: FACT-papra-subject-auth-secret
+    created_at: 2026-11-16T10:24:59.938Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-0498acbea1a3
+  - type: verified_by
+    from: REQ-papra-auth-secret-required-in-production
+    to: TEST-papra-server-src-modules-app-auth-auth-config-models
+    created_at: 2026-11-16T10:26:47.124Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-7967d3564024
+  - id: rel-f699efe34cec
+    type: requires_property
+    from: REQ-papra-documents-inserts-one-activity-log-entry-per-input
+    to: FACT-papra-documents-register-documents-activity-log-inserts-one-activity-log-entry-per-input-in
+    created_at: "2025-11-10T17:27:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a1dde279dacf
+    type: constrains
+    from: REQ-papra-documents-inserts-one-activity-log-entry-per-input
+    to: FACT-papra-subject-documents-register-documents-activity-log
+    created_at: "2025-11-10T17:27:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-05c402a2062c
+    type: requires_property
+    from: REQ-papra-document-search-warranty-on-is-accepted-as-valid-boolean
+    to: FACT-papra-document-search-query-builder-custom-properties-warranty-on-is-accepted-as-a-valid-boolean
+    created_at: "2025-05-10T11:02:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-77aca5cb39fb
+    type: constrains
+    from: REQ-papra-document-search-warranty-on-is-accepted-as-valid-boolean
+    to: FACT-papra-subject-document-search-query-builder-custom-properties
+    created_at: "2025-05-10T11:02:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

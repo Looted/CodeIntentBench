@@ -1,0 +1,71 @@
+relationships:
+  - type: verified_by
+    from: REQ-only-the-organization-owner-can-delete-an--8207027D
+    to: TEST-papra-server-src-modules-organizations-organizations-usecases
+    created_at: 2026-10-14T12:09:48.278Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-39787e732bc7
+  - type: verified_by
+    from: REQ-only-the-organization-owner-can-delete-an--8207027D
+    to: TEST-papra-server-src-modules-organizations-organizations-repository
+    created_at: 2026-10-14T12:09:48.285Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9704f9016537
+  - type: requires_predicate
+    from: REQ-only-the-organization-owner-can-delete-an--8207027D
+    to: FACT-papra-perm-organization-owner-delete-organization
+    created_at: 2026-11-15T21:42:59.798Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-cdabb3375dfc
+  - type: requires_predicate
+    from: REQ-only-the-organization-owner-can-delete-an--8207027D
+    to: FACT-papra-perm-organization-admin-or-member-delete-organization
+    created_at: 2026-11-15T21:42:59.805Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-fd55d24fbb1d
+  - id: rel-8d5ef48313eb
+    type: requires_property
+    from: REQ-papra-auth-auth-type-is-api-key-requiredapikeypermissions-are
+    to: FACT-papra-auth-check-authentication-when-the-auth-type-is-api-key-the-2
+    created_at: "2026-06-19T16:08:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-677ccc66c3b9
+    type: constrains
+    from: REQ-papra-auth-auth-type-is-api-key-requiredapikeypermissions-are
+    to: FACT-papra-subject-auth-check-authentication
+    created_at: "2026-06-19T16:08:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3bd7f6a8cfff
+    type: requires_property
+    from: REQ-papra-document-search-labels-urgent-returns-documents-that-have-urgent
+    to: FACT-papra-document-search-database-fts5-repository-labels-urgent-returns-documents-that-have-the-urgent
+    created_at: "2025-03-02T12:44:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b4b57d90b548
+    type: constrains
+    from: REQ-papra-document-search-labels-urgent-returns-documents-that-have-urgent
+    to: FACT-papra-subject-document-search-database-fts5-repository
+    created_at: "2025-03-02T12:44:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-63fa343c154b
+    type: requires_property
+    from: REQ-papra-documents-custom-default-overrides-missing-document-date-fallback
+    to: FACT-papra-documents-build-storage-key-a-custom-default-overrides-the-missing-document-date
+    created_at: "2025-09-17T16:52:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-97aacf607d45
+    type: constrains
+    from: REQ-papra-documents-custom-default-overrides-missing-document-date-fallback
+    to: FACT-papra-subject-documents-build-storage-key
+    created_at: "2025-09-17T16:52:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

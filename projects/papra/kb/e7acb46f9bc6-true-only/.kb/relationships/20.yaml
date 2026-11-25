@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-3aab48e992ce
+    type: requires_property
+    from: REQ-papra-document-search-warranty-true-returns-only-documents-with-warranty
+    to: FACT-papra-document-search-database-fts5-repository-warranty-true-returns-only-documents-with-warranty-true
+    created_at: "2026-04-09T17:40:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-78bfed77a8d6
+    type: constrains
+    from: REQ-papra-document-search-warranty-true-returns-only-documents-with-warranty
+    to: FACT-papra-subject-document-search-database-fts5-repository
+    created_at: "2026-04-09T17:40:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f37b517d97ed
+    type: requires_property
+    from: REQ-papra-documents-document-date-and-creation-date-expressions-with
+    to: FACT-papra-documents-is-storage-pattern-valid-document-date-and-creation-date-expressions-with-formatting
+    created_at: "2026-08-16T10:39:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3194e7b5aee1
+    type: constrains
+    from: REQ-papra-documents-document-date-and-creation-date-expressions-with
+    to: FACT-papra-subject-documents-is-storage-pattern-valid
+    created_at: "2026-08-16T10:39:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

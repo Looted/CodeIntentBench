@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-d50ff8853d22
+    type: requires_property
+    from: REQ-papra-storage-driver-hard-deletes-files
+    to: FACT-papra-storage-driver-delete-hard-deletes-file
+    created_at: "2026-11-16T10:19:34.458Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-storage-driver-hard-deletes-files
+    to: FACT-papra-subject-storage-driver-delete
+    created_at: 2026-11-16T10:19:34.459Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-91e7657ae592
+  - id: rel-8d070c8e3916
+    type: requires_property
+    from: REQ-papra-ingestion-folders-user-can-configure-error-folder-as-absolute
+    to: FACT-papra-ingestion-folders-is-file-in-error-folder-the-user-can-configure-the-error-folder-as-2
+    created_at: "2025-03-21T10:27:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1c9cbd787877
+    type: constrains
+    from: REQ-papra-ingestion-folders-user-can-configure-error-folder-as-absolute
+    to: FACT-papra-subject-ingestion-folders-is-file-in-error-folder
+    created_at: "2025-03-21T10:27:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

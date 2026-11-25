@@ -1,0 +1,71 @@
+relationships:
+  - id: rel-6bb5df81fbd3
+    type: requires_property
+    from: REQ-papra-client-guard-uses-organization-limit
+    to: FACT-papra-upload-client-guard-limit-source
+    created_at: "2026-11-16T10:23:21.381Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-client-guard-uses-organization-limit
+    to: FACT-papra-subject-upload-client-guard
+    created_at: 2026-11-16T10:23:21.381Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-41701685df36
+  - type: requires_property
+    from: REQ-papra-upload-only-to-member-organizations
+    to: FACT-papra-upload-organization-scope-non-member-upload-allowed
+    created_at: 2026-11-16T10:23:28.021Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-88082e2cf23e
+  - type: constrains
+    from: REQ-papra-upload-only-to-member-organizations
+    to: FACT-papra-subject-upload-organization-scope
+    created_at: 2026-11-16T10:23:28.038Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2fd11349a459
+  - id: rel-604a9fa19e52
+    type: requires_property
+    from: REQ-papra-auth-by-default-trusted-origins-are-only-baseurl
+    to: FACT-papra-auth-get-trusted-origins-by-default-the-trusted-origins-are-only-the
+    created_at: "2026-02-09T13:17:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b3edf2da986f
+    type: constrains
+    from: REQ-papra-auth-by-default-trusted-origins-are-only-baseurl
+    to: FACT-papra-subject-auth-get-trusted-origins
+    created_at: "2026-02-09T13:17:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0ba1affb18db
+    type: requires_property
+    from: REQ-papra-documents-docling-replaces-graphical-content-with-image-this
+    to: FACT-papra-documents-strip-docling-image-placeholders-docling-replaces-graphical-content-with-image-this-function
+    created_at: "2025-04-16T10:22:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-27bd4f6dda74
+    type: constrains
+    from: REQ-papra-documents-docling-replaces-graphical-content-with-image-this
+    to: FACT-papra-subject-documents-strip-docling-image-placeholders
+    created_at: "2025-04-16T10:22:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5d46b85c5d52
+    type: requires_property
+    from: REQ-papra-documents-restoring-deleted-document-via-duplicate-upload-optimistically
+    to: FACT-papra-documents-create-document-when-restoring-a-deleted-document-via-duplicate-upload
+    created_at: "2026-08-08T10:48:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b857d3c9f1e0
+    type: constrains
+    from: REQ-papra-documents-restoring-deleted-document-via-duplicate-upload-optimistically
+    to: FACT-papra-subject-documents-create-document
+    created_at: "2026-08-08T10:48:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
