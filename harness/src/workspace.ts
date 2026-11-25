@@ -37,7 +37,7 @@ export function workspaceDir(dir: string): string {
 
 /** A bare mirror of the project repository, fetched once and reused by every run. */
 export function ensureMirror(project: ProjectConfig, commits: string[]): string {
-  const mirror = join(CACHE_DIR, 'repos', `${project.name}.git`);
+  const mirror = mirrorDir(project);
   if (!existsSync(mirror)) {
     mkdirSync(join(CACHE_DIR, 'repos'), { recursive: true });
     must(`git clone --quiet --mirror ${JSON.stringify(project.repository)} ${JSON.stringify(mirror)}`);
@@ -46,6 +46,40 @@ export function ensureMirror(project: ProjectConfig, commits: string[]): string 
   if (missing.length > 0) must(`git -C ${JSON.stringify(mirror)} fetch --quiet origin`);
   for (const c of commits) must(`git -C ${JSON.stringify(mirror)} cat-file -e ${c}^{commit}`);
   return mirror;
+}
+
+/**
+ * An unpatched base keeps the project's history up to the base commit, as a developer has it there, and nothing after it:
+ * every ref but the base branch goes (later branches and release tags), and the clone stops borrowing the mirror's
+ * objects, so a later commit cannot be found with `git fsck --unreachable` or read back by its hash. A commit a step needs
+ * from later history (a hidden test, a scripted cherry-pick) is read from the mirror or fetched into the clone on demand
+ * (`readAtCommit`, `ensureCommitInWorkspace`).
+ */
+export function cutHistoryAtBase(ws: string, git: (cmd: string) => string): void {
+  const refs = git(`for-each-ref '--format=%(refname)'`).split('\n').map((r) => r.trim()).filter((r) => r && r !== `refs/heads/${BASE_BRANCH}`);
+  for (const r of refs) git(`update-ref -d ${JSON.stringify(r)}`);
+  git('reflog expire --expire=now --all');
+  git('repack -a -d -q');
+  rmSync(join(ws, '.git', 'objects', 'info', 'alternates'), { force: true });
+  git('prune --expire=now');
+}
+
+/** The bare mirror a project's workspaces are cloned from. */
+export function mirrorDir(project: Pick<ProjectConfig, 'name'>): string {
+  return join(CACHE_DIR, 'repos', `${project.name}.git`);
+}
+
+/** A file at a commit: from the workspace when it has the commit, otherwise from the project's mirror (no objects copied into the workspace). */
+export function readAtCommit(ws: string, project: Pick<ProjectConfig, 'name'>, commit: string, file: string, env?: NodeJS.ProcessEnv): { code: number; stdout: string } {
+  const r = sh(`git -C ${JSON.stringify(ws)} show ${commit}:${JSON.stringify(file)}`, { quiet: true, env });
+  if (r.code === 0) return r;
+  return sh(`git --git-dir=${JSON.stringify(mirrorDir(project))} show ${commit}:${JSON.stringify(file)}`, { quiet: true, env });
+}
+
+/** Fetches a later commit into a workspace whose history was cut at the base, for a scripted step that applies it. */
+export function ensureCommitInWorkspace(ws: string, project: Pick<ProjectConfig, 'name'>, commit: string): void {
+  if (sh(`git -C ${JSON.stringify(ws)} cat-file -e ${commit}^{commit}`, { quiet: true }).code === 0) return;
+  must(`git -C ${JSON.stringify(ws)} fetch --quiet --no-tags ${JSON.stringify(mirrorDir(project))} ${commit}`);
 }
 
 /**
@@ -110,6 +144,8 @@ export function prepareWorkspace(dir: string, project: ProjectConfig, task: Pick
     const refs = git(`for-each-ref '--format=%(refname)'`).split('\n').map((r) => r.trim()).filter((r) => r && r !== `refs/heads/${BASE_BRANCH}`);
     for (const r of refs) git(`update-ref -d ${JSON.stringify(r)}`);
     git('reflog expire --expire=now --all');
+  } else {
+    cutHistoryAtBase(ws, git);
   }
   // Hooks the project installs on `prepare` (husky, lefthook) would interfere with grading commits.
   sh(`git -C ${JSON.stringify(ws)} config core.hooksPath /dev/null`, { quiet: true });

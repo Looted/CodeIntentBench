@@ -16,7 +16,7 @@ import { editsBeforeReply, externalItemIds, governingTouched, idForms } from './
 import type { JudgeVerdict } from './judge.ts';
 import { must, sh } from './shell.ts';
 import type { AgentConfig, Arc, ArcRunRecord, ArcStep, AuditResult, Grade, ProjectConfig, StepGrade, StepOutcome, StepRecord, SurfacePoint, TestOutcome } from './types.ts';
-import { BASE_BRANCH, GIT_IDENTITY, loadArmHost, prepareWorkspace, workspaceDir } from './workspace.ts';
+import { BASE_BRANCH, GIT_IDENTITY, loadArmHost, prepareWorkspace, readAtCommit, workspaceDir } from './workspace.ts';
 
 const q = (s: string) => JSON.stringify(s);
 const BASE_ENV: NodeJS.ProcessEnv = { ...process.env, ...GIT_IDENTITY };
@@ -89,7 +89,7 @@ function git(ws: string, cmd: string): string {
  * back. A source of the form `dir:<path>` copies the benchmark's own file; anything
  * else is a commit in the workspace's history.
  */
-function withHiddenTests(ws: string, files: Map<string, string>, notes: string[], fn: () => void): void {
+function withHiddenTests(ws: string, project: ProjectConfig, files: Map<string, string>, notes: string[], fn: () => void): void {
   const saved = new Map<string, Buffer | null>();
   for (const [file, source] of files) {
     const abs = join(ws, file);
@@ -99,7 +99,7 @@ function withHiddenTests(ws: string, files: Map<string, string>, notes: string[]
       const from = join(source.slice(4), file);
       if (existsSync(from)) content = readFileSync(from); else notes.push(`hidden test ${file} not found under ${source.slice(4)}`);
     } else {
-      const r = sh(`git -C ${q(ws)} show ${source}:${q(file)}`, { quiet: true, env: ENV });
+      const r = readAtCommit(ws, project, source, file, ENV);
       if (r.code === 0) content = r.stdout; else notes.push(`hidden test ${file} not found at ${source.slice(0, 12)}`);
     }
     if (content === undefined) continue;
@@ -182,7 +182,7 @@ export async function gradeStep(inp: StepGradeInputs): Promise<StepGrade> {
   else if (STORE_SERVER[inp.arm] && !agent.tools_available.some((t) => t.startsWith(`mcp__${STORE_SERVER[inp.arm]}__`))) { grade.invalid = true; grade.invalid_reason = `${inp.arm} arm without its MCP tools in the session`; }
   if (grade.invalid) return grade;
 
-  withHiddenTests(ws, hidden, notes, () => {
+  withHiddenTests(ws, project, hidden, notes, () => {
     if (intentTests.length) grade.rule_tests = runVitest(ws, project, dir, 'intent', intentTests);
     if (step.grading.task_tests?.length) grade.task_tests = runVitest(ws, project, dir, 'task', step.grading.task_tests);
     const regression = step.grading.regression_tests;
@@ -328,7 +328,7 @@ export async function runArc(projectName: string, arc: Arc, arm: string, attempt
     throw e;
   }
   readSize();
-  // Every commit a step may need (hidden tests, replay) must be reachable in the shared clone.
+  // Every commit a step may need (hidden tests, replay) must exist in the project mirror; a workspace cut at its base reads them from there.
   const ws = workspaceDir(dir);
   for (const c of [...sources, ...decisionsOf(arc).map((d) => d.intent.tests_commit)].filter(Boolean)) sh(`git -C ${q(ws)} cat-file -e ${c}^{commit}`, { quiet: true });
   const host = loadArmHost(arm);
