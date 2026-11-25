@@ -1,0 +1,30 @@
+relationships:
+  [
+    {
+        type: requires_property,
+        from: REQ-per-document-expiry-dates-are-not-a-separa-495A8BDE,
+        to: FACT-papra-custom-properties-property-dedicated-expiry-date-feature,
+        created_at: 2026-11-15T21:46:04.239Z,
+        created_by: kibi/upsert,
+        source: mcp://kibi/upsert,
+        id: rel-06103ec4afc1
+      },
+    {
+        type: constrains,
+        from: REQ-per-document-expiry-dates-are-not-a-separa-495A8BDE,
+        to: FACT-papra-subject-custom-properties-property,
+        created_at: 2026-11-15T21:46:04.246Z,
+        created_by: kibi/upsert,
+        source: mcp://kibi/upsert,
+        id: rel-dacac3b9c07f
+      },
+    {
+        type: requires_property,
+        from: REQ-per-document-expiry-dates-are-not-a-separa-495A8BDE,
+        to: FACT-papra-custom-properties-property-records-expiry-dates,
+        created_at: 2026-11-15T21:46:04.249Z,
+        created_by: kibi/upsert,
+        source: mcp://kibi/upsert,
+        id: rel-34446692b824
+      }
+  ]

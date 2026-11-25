@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-00f47607671a
+    type: requires_property
+    from: REQ-papra-no-open-in-new-tab
+    to: FACT-papra-documents-open-in-new-tab-available
+    created_at: "2026-11-25T19:27:26.914Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-no-open-in-new-tab
+    to: FACT-papra-subject-documents-open-in-new-tab
+    created_at: 2026-11-25T19:27:26.914Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b98752d98f96

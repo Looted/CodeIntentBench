@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-8324410bf86c
+    type: requires_property
+    from: REQ-with-encryption-enabled-each-document-is-e-3A4DEA2F
+    to: FACT-papra-encryption-document-key-algorithm-per-document
+    created_at: "2026-11-15T21:43:51.440Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-with-encryption-enabled-each-document-is-e-3A4DEA2F
+    to: FACT-papra-subject-encryption-document-key
+    created_at: 2026-11-15T21:43:51.441Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-3494935c9e16
+  - type: requires_property
+    from: REQ-with-encryption-enabled-each-document-is-e-3A4DEA2F
+    to: FACT-papra-encryption-document-key-wrapped-and-stored-in-database
+    created_at: 2026-11-15T21:43:51.445Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d0eaf0ec6750
+  - type: verified_by
+    from: REQ-with-encryption-enabled-each-document-is-e-3A4DEA2F
+    to: TEST-papra-server-src-modules-documents-storage-encryption-document-encryption-usecases
+    created_at: 2026-11-16T04:52:14.287Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-60259e07d42a

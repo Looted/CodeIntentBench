@@ -1,0 +1,64 @@
+relationships:
+  - type: verified_by
+    from: REQ-AUTO-198A6A47509791DF
+    to: TEST-papra-server-src-modules-ingestion-folders-ingestion-folder-models
+    created_at: 2026-10-14T12:10:03.784Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d9af3f7a1402
+  - type: requires_property
+    from: REQ-AUTO-198A6A47509791DF
+    to: FACT-papra-ingestion-folder-special-folders-accept-absolute-paths
+    created_at: 2026-11-15T21:40:46.743Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-73e74b06aea2
+  - type: constrains
+    from: REQ-AUTO-198A6A47509791DF
+    to: FACT-papra-subject-ingestion-folder-special-folders
+    created_at: 2026-11-15T21:40:46.750Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-a5b2902fc359
+  - type: requires_property
+    from: REQ-AUTO-198A6A47509791DF
+    to: FACT-papra-ingestion-folder-watcher-ingests-files-under-error-or-move-folder
+    created_at: 2026-11-15T21:40:46.752Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-29cc356dead0
+  - type: constrains
+    from: REQ-AUTO-198A6A47509791DF
+    to: FACT-papra-subject-ingestion-folder-watcher
+    created_at: 2026-11-15T21:40:46.755Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-5c16f3d6de39
+  - type: verified_by
+    from: REQ-AUTO-198A6A47509791DF
+    to: TEST-papra-server-src-modules-ingestion-folders-ingestion-folders-usecases
+    created_at: 2026-11-16T04:52:01.275Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9c4cad2bd7e1
+  - type: requires_property
+    from: REQ-papra-intake-attachment-mime-coercion
+    to: FACT-papra-intake-email-attachment-mime-coercion
+    created_at: 2026-11-25T19:31:06.469Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4b0179d6715a
+  - type: constrains
+    from: REQ-papra-intake-attachment-mime-coercion
+    to: FACT-papra-subject-intake-email-attachment-mime
+    created_at: 2026-11-25T19:31:06.484Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-197fe35154cf
+  - type: verified_by
+    from: REQ-papra-intake-attachment-mime-coercion
+    to: TEST-papra-server-src-modules-shared-mime-types-mime-types-usecases
+    created_at: 2026-11-25T19:31:54.941Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-adb9a43659e4

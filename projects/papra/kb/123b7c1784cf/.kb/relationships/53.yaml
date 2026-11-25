@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-79dea36b7be2
+    type: requires_property
+    from: REQ-papra-intake-catch-all-driver
+    to: FACT-papra-intake-email-catch-all-driver-username-generation
+    created_at: "2026-11-25T19:31:09.734Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-intake-catch-all-driver
+    to: FACT-papra-subject-intake-email-catch-all-driver
+    created_at: 2026-11-25T19:31:09.734Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c33f8f34c19c

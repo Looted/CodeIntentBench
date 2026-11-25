@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-a6ef7c48b724
+    type: requires_property
+    from: REQ-papra-webhook-ssrf-protection
+    to: FACT-papra-webhook-url-ssrf-protection-rejects-unsafe-url-on-create-and-update
+    created_at: "2026-11-25T19:26:53.133Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-webhook-ssrf-protection
+    to: FACT-papra-subject-webhook-url-ssrf-protection
+    created_at: 2026-11-25T19:26:53.133Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2fd6f8c7ff12
+  - type: requires_property
+    from: REQ-papra-webhook-ssrf-protection
+    to: FACT-papra-webhook-url-ssrf-protection-allowlisted-hostnames-exempt
+    created_at: 2026-11-25T19:26:53.146Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-98ab6464955b
+  - type: verified_by
+    from: REQ-papra-webhook-ssrf-protection
+    to: TEST-papra-server-src-modules-webhooks-webhooks-usecases
+    created_at: 2026-11-25T19:32:05.402Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-fc6312da5199

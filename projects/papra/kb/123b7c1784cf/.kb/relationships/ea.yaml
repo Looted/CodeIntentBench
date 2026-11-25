@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-4c75c6f9331d
+    type: requires_property
+    from: REQ-papra-intake-uses-original-destination
+    to: FACT-papra-intake-email-forwarded-destination-matched-by
+    created_at: "2026-11-25T19:31:03.312Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-intake-uses-original-destination
+    to: FACT-papra-subject-intake-email-forwarded-destination
+    created_at: 2026-11-25T19:31:03.312Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-78d0ff676167

@@ -1,0 +1,36 @@
+relationships:
+  - id: rel-a0b9197acab3
+    type: requires_property
+    from: REQ-papra-orphan-file-cleanup-on-trashed-duplicate
+    to: FACT-papra-documents-orphan-cleanup-orphan-file-deleted
+    created_at: "2026-11-25T19:27:33.864Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-orphan-file-cleanup-on-trashed-duplicate
+    to: FACT-papra-subject-documents-orphan-cleanup
+    created_at: 2026-11-25T19:27:33.865Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-e10464721a54
+  - type: requires_property
+    from: REQ-papra-tag-listing-requires-membership
+    to: FACT-papra-webhook-listing-non-member-can-list
+    created_at: 2026-11-25T19:28:38.377Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4e5aa699de94
+  - type: constrains
+    from: REQ-papra-tag-listing-requires-membership
+    to: FACT-papra-subject-webhook-listing
+    created_at: 2026-11-25T19:28:38.391Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-aeec86a93908
+  - type: verified_by
+    from: REQ-papra-tag-listing-requires-membership
+    to: TEST-papra-server-src-modules-organizations-organizations-usecases
+    created_at: 2026-11-25T19:32:04.374Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ab462dcaf473

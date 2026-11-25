@@ -1,0 +1,36 @@
+relationships:
+  - id: rel-83282bfac438
+    type: requires_property
+    from: REQ-papra-tag-duplicates-return-409
+    to: FACT-papra-tags-duplicate-status-create-duplicate-status
+    created_at: "2026-11-25T19:28:31.214Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-tag-duplicates-return-409
+    to: FACT-papra-subject-tags-duplicate-status
+    created_at: 2026-11-25T19:28:31.215Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2f8b803e779d
+  - type: requires_property
+    from: REQ-papra-tag-duplicates-return-409
+    to: FACT-papra-tags-duplicate-status-add-existing-tag-status
+    created_at: 2026-11-25T19:28:31.227Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4aac17c50a14
+  - type: verified_by
+    from: REQ-papra-tag-duplicates-return-409
+    to: TEST-papra-server-src-modules-tags-tags-repository
+    created_at: 2026-11-25T19:32:03.373Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c0ab9a5f2edf
+  - type: verified_by
+    from: REQ-papra-tag-duplicates-return-409
+    to: TEST-papra-server-src-modules-tags-tags-usecases
+    created_at: 2026-11-25T19:37:04.691Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6612582a8205
