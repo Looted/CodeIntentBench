@@ -40,7 +40,7 @@ if [ ! -x "$swipl_bin" ]; then
 fi
 
 case "$arm" in
-  kibi|kibi-conv)
+  kibi|kibi-*)
     # Kibi's own usage policy for agents (AGENTS.md) stays: it is part of what a Kibi-onboarded repository ships.
     # The Kibi the agent talks to is the pinned release that arms/kibi/setup installs next to the workspace, not the
     # checkout's own build: the workspace's kibi-mcp link and CLI shims are removed so the plugin's launcher and PATH
