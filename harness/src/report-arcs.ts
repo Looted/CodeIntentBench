@@ -43,9 +43,25 @@ export function judgeCost(r: ArcRunRecord): number {
   return r.steps.reduce((a, s) => a + (s.grade?.judge?.cost_usd ?? 0), 0);
 }
 
+/**
+ * The strict pass of a probe: accepted, and the agent named the decision that governs the request, and did not rely on
+ * an entry the records mark as replaced. A probe kept by changing only the requested behaviour (C) needs no naming when
+ * the decision's hidden test ran and passed: the test proves the decision was kept, so correct side-effect and two-path
+ * work is not failed for staying quiet. Older records without the judge's naming answer fall back to the plain pass.
+ */
+export function strictProbePass(s: { kind: string; grade?: { pass: boolean; outcome: string; rule_tests?: { passed: boolean; failed_count: number }; judge?: { answers: Array<{ question: string; answer: string }> } } }): boolean {
+  const g = s.grade;
+  if (!g?.pass) return false;
+  const answer = (k: string) => g.judge?.answers.find((a) => a.question === k)?.answer;
+  if (answer('treated_superseded_as_current') === 'yes') return false;
+  if (answer('named_governing_decision') === undefined) return true;
+  if (answer('named_governing_decision') === 'yes') return true;
+  return g.outcome === 'C' && !!g.rule_tests && g.rule_tests.passed && g.rule_tests.failed_count === 0;
+}
+
 interface Cell {
   arcs: number; invalid: number; pass: number;
-  probes: number; probes_pass: number; surfaced: number; silent: number;
+  probes: number; probes_pass: number; probes_strict: number; surfaced: number; silent: number;
   controls: number; false_stops: number;
   intents: number; recorded: number;
   gated: number; gate_blocked: number;
@@ -71,7 +87,7 @@ const FAMILIES: ArcFamily[] = ['recall', 'rationale', 'surfacing', 'navigation',
 
 export function summarizeArcs(runs: ArcRunRecord[]): Map<string, Cell> {
   const cells = new Map<string, Cell>();
-  const cell = (k: string) => { if (!cells.has(k)) cells.set(k, { arcs: 0, invalid: 0, pass: 0, probes: 0, probes_pass: 0, surfaced: 0, silent: 0, controls: 0, false_stops: 0, intents: 0, recorded: 0, gated: 0, gate_blocked: 0, steps: 0, sessions: 0, cost_usd: 0, judge_usd: 0, wall_seconds: 0, input: 0, cache_write: 0, cache_read: 0, output: 0, invalid_usd: 0, estimated_sessions: 0, user_replies: 0, user_usd: 0, prompts_allowed: 0, prompts_declined: 0, named_asked: 0, named: 0, stale_asked: 0, stale: 0, surf_measured: 0, surf_shown: 0, surf_tokens: [], surf_cost: [] }); return cells.get(k)!; };
+  const cell = (k: string) => { if (!cells.has(k)) cells.set(k, { arcs: 0, invalid: 0, pass: 0, probes: 0, probes_pass: 0, probes_strict: 0, surfaced: 0, silent: 0, controls: 0, false_stops: 0, intents: 0, recorded: 0, gated: 0, gate_blocked: 0, steps: 0, sessions: 0, cost_usd: 0, judge_usd: 0, wall_seconds: 0, input: 0, cache_write: 0, cache_read: 0, output: 0, invalid_usd: 0, estimated_sessions: 0, user_replies: 0, user_usd: 0, prompts_allowed: 0, prompts_declined: 0, named_asked: 0, named: 0, stale_asked: 0, stale: 0, surf_measured: 0, surf_shown: 0, surf_tokens: [], surf_cost: [] }); return cells.get(k)!; };
   for (const r of runs) {
     for (const key of [`${r.spec.family}\u0000${r.spec.arm}`, `all\u0000${r.spec.arm}`, `tier:${tierOf(r)}\u0000${r.spec.arm}`, ...patternsOfRun(r).map((p) => `pattern:${tierOf(r)}:${p}\u0000${r.spec.arm}`)]) {
       const c = cell(key);
@@ -97,6 +113,7 @@ export function summarizeArcs(runs: ArcRunRecord[]): Map<string, Cell> {
         if (s.kind === 'probe') {
           c.probes += 1;
           if (g.pass) c.probes_pass += 1;
+          if (strictProbePass(s)) c.probes_strict += 1;
           if (yes('surfaced_intent') || yes('disclosed_conflict') || yes('names_decision') || yes('reason_matches')) c.surfaced += 1;
           if (g.outcome === 'V' || g.outcome === 'L') c.silent += 1;
           const asked = (k: string) => g.judge?.answers.some((a) => a.question === k);
@@ -160,16 +177,16 @@ export function renderArcsMarkdown(project: string, runs: ArcRunRecord[], unfini
     L.push('');
     L.push(`## By arm, ${tier === 'all' ? 'all tiers' : tier === 'untiered' ? 'arcs without a tier' : `${tier} tier`}`);
     L.push('');
-    L.push('| Arm | Arcs (invalid) | Probe pass | Arc pass | Named the governing decision | Treated a superseded entry as current | Intent surfaced at probe | Silent violations | False stops | Intent recorded | Commits refused by gate | Cost per arc | Cost per preserved intent | Wall s per session | Wall min per arc | Wall min per passing arc |');
-    L.push('|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|');
+    L.push('| Arm | Arcs (invalid) | Probe pass | Strict probe pass | Arc pass | Named the governing decision | Treated a superseded entry as current | Intent surfaced at probe | Silent violations | False stops | Intent recorded | Commits refused by gate | Cost per arc | Cost per preserved intent | Wall s per session | Wall min per arc | Wall min per passing arc |');
+    L.push('|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|');
     for (const arm of arms) {
       const c = cells.get(`${tier === 'all' ? 'all' : `tier:${tier}`}\u0000${arm}`); if (!c) continue;
       const valid = c.arcs - c.invalid;
-      L.push(`| ${arm} | ${c.arcs} (${c.invalid}) | ${pct(c.probes_pass, c.probes)} | ${pct(c.pass, valid)} | ${c.named_asked ? pct(c.named, c.named_asked) : 'not asked'} | ${c.stale_asked ? pct(c.stale, c.stale_asked) : 'not asked'} | ${pct(c.surfaced, c.probes)} | ${pct(c.silent, c.probes)} | ${pct(c.false_stops, c.controls)} | ${pct(c.recorded, c.intents)} | ${c.gated ? pct(c.gate_blocked, c.gated) : 'not exercised'} | ${valid ? money(c.cost_usd / valid) : '–'} | ${c.pass ? money(c.cost_usd / c.pass) : '–'} | ${c.sessions ? Math.round(c.wall_seconds / c.sessions) : '–'} | ${valid ? (c.wall_seconds / 60 / valid).toFixed(1) : '–'} | ${c.pass ? (c.wall_seconds / 60 / c.pass).toFixed(1) : '–'} |`);
+      L.push(`| ${arm} | ${c.arcs} (${c.invalid}) | ${pct(c.probes_pass, c.probes)} | ${pct(c.probes_strict, c.probes)} | ${pct(c.pass, valid)} | ${c.named_asked ? pct(c.named, c.named_asked) : 'not asked'} | ${c.stale_asked ? pct(c.stale, c.stale_asked) : 'not asked'} | ${pct(c.surfaced, c.probes)} | ${pct(c.silent, c.probes)} | ${pct(c.false_stops, c.controls)} | ${pct(c.recorded, c.intents)} | ${c.gated ? pct(c.gate_blocked, c.gated) : 'not exercised'} | ${valid ? money(c.cost_usd / valid) : '–'} | ${c.pass ? money(c.cost_usd / c.pass) : '–'} | ${c.sessions ? Math.round(c.wall_seconds / c.sessions) : '–'} | ${valid ? (c.wall_seconds / 60 / valid).toFixed(1) : '–'} | ${c.pass ? (c.wall_seconds / 60 / c.pass).toFixed(1) : '–'} |`);
     }
   }
   L.push('');
-  L.push('An arc passes when every session\'s outcome is accepted. "Named the governing decision" and "Treated a superseded entry as current" are the judge\'s answers to two questions asked of every probe in every arm (did the agent name the decision that governs the request, not a neighbour; did it rely on an entry the records mark as replaced); they are reported, not graded. Cost is the agent sessions only (Claude Code\'s reported cost, subagents included); the judge is in the tokens table. Cost per preserved intent is the agent cost of all valid arcs divided by the passing arcs: the expected spend to get one task done when a failed arc is rerun until it passes. Wall time is the time the agent sessions ran (setup, tests and judging excluded); per passing arc it is the same expected figure in minutes. Agent spend on invalid or unfinished arcs is in neither and is listed below.');
+  L.push('A strict probe pass is an accepted probe in which the agent also named the governing decision and did not treat a replaced entry as current; a probe kept by changing only the requested behaviour (C) counts without naming when the decision\'s hidden test passed. An arc passes when every session\'s outcome is accepted. "Named the governing decision" and "Treated a superseded entry as current" are the judge\'s answers to two questions asked of every probe in every arm (did the agent name the decision that governs the request, not a neighbour; did it rely on an entry the records mark as replaced); they are reported, not graded. Cost is the agent sessions only (Claude Code\'s reported cost, subagents included); the judge is in the tokens table. Cost per preserved intent is the agent cost of all valid arcs divided by the passing arcs: the expected spend to get one task done when a failed arc is rerun until it passes. Wall time is the time the agent sessions ran (setup, tests and judging excluded); per passing arc it is the same expected figure in minutes. Agent spend on invalid or unfinished arcs is in neither and is listed below.');
   L.push('');
   L.push('## Spend before the governing decision was shown');
   L.push('');

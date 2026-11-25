@@ -19,6 +19,22 @@ os.makedirs(f"{out}/tables", exist_ok=True)
 os.makedirs(f"{out}/raw", exist_ok=True)
 
 
+
+def strict_probe_pass(s):
+    """Mirrors strictProbePass in harness/src/report-arcs.ts: accepted, named the governing decision and did not treat a
+    replaced entry as current; a C whose hidden decision test passed needs no naming. Records without the naming answer
+    fall back to the plain pass."""
+    g = s.get("grade") or {}
+    if not g.get("pass"):
+        return False
+    ans = {a.get("question"): a.get("answer") for a in (g.get("judge") or {}).get("answers") or []}
+    if ans.get("treated_superseded_as_current") == "yes":
+        return False
+    if ans.get("named_governing_decision") in (None, "yes"):
+        return True
+    t = g.get("rule_tests") or {}
+    return g.get("outcome") == "C" and bool(t) and bool(t.get("passed")) and not t.get("failed_count")
+
 def read_json(path, default=None):
     try:
         return json.load(open(path))
@@ -53,6 +69,7 @@ for label, runs in batches:
             "invalid": r.get("invalid"), "pass": r.get("pass"),
             "probes": sum(1 for s in steps if s.get("kind") == "probe"),
             "probes_passed": sum(1 for s in steps if s.get("kind") == "probe" and (s.get("grade") or {}).get("pass")),
+            "probes_strict": sum(1 for s in steps if s.get("kind") == "probe" and strict_probe_pass(s)),
             "controls": sum(1 for s in steps if s.get("kind") == "control"),
             "controls_passed": sum(1 for s in steps if s.get("kind") == "control" and (s.get("grade") or {}).get("pass")),
             "agent_cost_usd": r.get("agent_cost_usd"), "judge_cost_usd": r.get("judge_cost_usd"),
@@ -68,6 +85,7 @@ for label, runs in batches:
             answers = (g.get("judge") or {}).get("answers") or []
             tables["steps"].append({
                 **sk, "outcome": g.get("outcome"), "pass": g.get("pass"), "invalid": g.get("invalid"),
+                "strict_pass": strict_probe_pass(s) if s.get("kind") == "probe" else None,
                 "terminal_reason": s.get("terminal_reason"), "turns": u.get("turns"), "tool_calls": u.get("tool_calls"),
                 "wall_seconds": u.get("wall_seconds"), "cost_usd": u.get("cost_usd"),
                 "input_tokens": u.get("input_tokens"), "output_tokens": u.get("output_tokens"),
