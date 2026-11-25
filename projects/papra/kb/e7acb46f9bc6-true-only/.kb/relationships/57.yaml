@@ -1,0 +1,71 @@
+relationships:
+  - id: rel-a73b2e836b0b
+    type: requires_property
+    from: REQ-papra-auth-auth-type-is-api-key-session-is
+    to: FACT-papra-auth-check-authentication-when-the-auth-type-is-api-key-the-3
+    created_at: "2026-05-07T08:41:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-83633392ecbc
+    type: constrains
+    from: REQ-papra-auth-auth-type-is-api-key-session-is
+    to: FACT-papra-subject-auth-check-authentication
+    created_at: "2026-05-07T08:41:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-004ec07eddef
+    type: requires_property
+    from: REQ-papra-documents-text-is-read-by-walking-nested-path
+    to: FACT-papra-documents-extract-text-from-response-the-text-is-read-by-walking-a-nested
+    created_at: "2026-06-10T09:18:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ebeab63ba851
+    type: constrains
+    from: REQ-papra-documents-text-is-read-by-walking-nested-path
+    to: FACT-papra-subject-documents-extract-text-from-response
+    created_at: "2026-06-10T09:18:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cfec2b425a56
+    type: requires_property
+    from: REQ-papra-documents-tags-are-attached-to-correct-document
+    to: FACT-papra-documents-enrich-documents-for-api-tags-are-attached-to-the-correct-document
+    created_at: "2026-05-14T16:29:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-47b41b04f614
+    type: constrains
+    from: REQ-papra-documents-tags-are-attached-to-correct-document
+    to: FACT-papra-subject-documents-enrich-documents-for-api
+    created_at: "2026-05-14T16:29:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e0d15fc10cd3
+    type: requires_property
+    from: REQ-papra-documents-users-can-soft-delete-document-by-moving
+    to: FACT-papra-documents-trash-document-users-can-soft-delete-a-document-by-moving
+    created_at: "2025-05-22T12:35:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-484dcece0265
+    type: constrains
+    from: REQ-papra-documents-users-can-soft-delete-document-by-moving
+    to: FACT-papra-subject-documents-trash-document
+    created_at: "2025-05-22T12:35:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6233ca819872
+    type: requires_property
+    from: REQ-papra-intake-emails-make-sure-that-webhook-secret-is-set
+    to: FACT-papra-intake-emails-ensure-intake-email-webhook-secretis-set-when-intake-emails-are-enabled-make-sure-that-the-webhook-secret-is-set
+    created_at: "2025-05-01T17:21:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1359ab7ec2e5
+    type: constrains
+    from: REQ-papra-intake-emails-make-sure-that-webhook-secret-is-set
+    to: FACT-papra-subject-intake-emails-ensure-intake-email-webhook-secretis-set-when-intake-emails-are-enabled
+    created_at: "2025-05-01T17:21:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

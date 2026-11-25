@@ -1,0 +1,50 @@
+relationships:
+  - id: rel-68c0dc6c7729
+    type: requires_property
+    from: REQ-papra-intake-webhook-secret-length
+    to: FACT-papra-intake-email-webhook-secret-length-range
+    created_at: "2026-11-16T10:17:32.624Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-intake-webhook-secret-length
+    to: FACT-papra-subject-intake-email-webhook-secret
+    created_at: 2026-11-16T10:17:32.624Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b142994b0253
+  - type: requires_property
+    from: REQ-papra-intake-webhook-secret-length
+    to: FACT-papra-intake-email-webhook-secret-has-default-value
+    created_at: 2026-11-16T10:17:32.638Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ade0a3e18642
+  - id: rel-8313fa76179f
+    type: requires_property
+    from: REQ-papra-plans-no-price-id-matches-plan-or-when
+    to: FACT-papra-plans-resolve-organization-plan-from-price-ids-when-no-price-id-matches-a-plan-or
+    created_at: "2025-05-05T11:41:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f8fde67acead
+    type: constrains
+    from: REQ-papra-plans-no-price-id-matches-plan-or-when
+    to: FACT-papra-subject-plans-resolve-organization-plan-from-price-ids
+    created_at: "2025-05-05T11:41:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-df2c5180c520
+    type: requires_property
+    from: REQ-papra-storage-existing-path-prefix-on-endpoint-is-kept
+    to: FACT-papra-storage-build-endpoint-url-an-existing-path-prefix-on-the-endpoint-is
+    created_at: "2025-03-19T17:03:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-19e8b3f44a87
+    type: constrains
+    from: REQ-papra-storage-existing-path-prefix-on-endpoint-is-kept
+    to: FACT-papra-subject-storage-build-endpoint-url
+    created_at: "2025-03-19T17:03:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

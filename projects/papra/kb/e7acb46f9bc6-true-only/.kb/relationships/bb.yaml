@@ -1,0 +1,85 @@
+relationships:
+  - id: rel-7e235dbc88fa
+    type: verified_by
+    from: REQ-documents-are-never-mutated-after-upload-n-409E8212
+    to: TEST-papra-server-src-modules-documents-documents-usecases
+    created_at: "2026-10-14T12:09:40.376Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: requires_property
+    from: REQ-documents-are-never-mutated-after-upload-n-409E8212
+    to: FACT-papra-document-stored-file-mutated-after-upload
+    created_at: 2026-11-15T21:42:26.799Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-8364985b4e4c
+  - type: constrains
+    from: REQ-documents-are-never-mutated-after-upload-n-409E8212
+    to: FACT-papra-subject-document-stored-file
+    created_at: 2026-11-15T21:42:26.804Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-758d8d35a66e
+  - type: requires_property
+    from: REQ-documents-are-never-mutated-after-upload-n-409E8212
+    to: FACT-papra-document-stored-file-retrieved-byte-identical
+    created_at: 2026-11-15T21:42:26.805Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-bf1debc03d40
+  - id: rel-d53c8f8f1b9c
+    type: requires_property
+    from: REQ-papra-document-search-collects-issues-from-all-sub-expressions-when
+    to: FACT-papra-document-search-handle-and-expression-collects-issues-from-all-sub-expressions-when-combining
+    created_at: "2025-04-03T17:09:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-72bd67b1c1f7
+    type: constrains
+    from: REQ-papra-document-search-collects-issues-from-all-sub-expressions-when
+    to: FACT-papra-subject-document-search-handle-and-expression
+    created_at: "2025-04-03T17:09:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-af0eb2820db1
+    type: requires_property
+    from: REQ-papra-documents-deletion-during-copy-rejects-database-update-and
+    to: FACT-papra-documents-sync-document-storage-key-deletion-during-the-copy-rejects-the-database-update
+    created_at: "2025-04-28T08:05:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c4cd2819c6b7
+    type: constrains
+    from: REQ-papra-documents-deletion-during-copy-rejects-database-update-and
+    to: FACT-papra-subject-documents-sync-document-storage-key
+    created_at: "2025-04-28T08:05:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fb9cd89c9c7b
+    type: requires_property
+    from: REQ-papra-tags-retrieves-all-tags-for-organization-along-with
+    to: FACT-papra-tags-get-organization-tags-retrieves-all-tags-for-an-organization-along-with
+    created_at: "2026-03-13T16:22:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7fb587da5426
+    type: constrains
+    from: REQ-papra-tags-retrieves-all-tags-for-organization-along-with
+    to: FACT-papra-subject-tags-get-organization-tags
+    created_at: "2026-03-13T16:22:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-33de93c7dec8
+    type: requires_property
+    from: REQ-papra-tags-tag-is-assigned-to-only-deleted-documents
+    to: FACT-papra-tags-get-organization-tags-when-a-tag-is-assigned-to-only-deleted
+    created_at: "2026-09-04T14:23:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cd47db66b1e2
+    type: constrains
+    from: REQ-papra-tags-tag-is-assigned-to-only-deleted-documents
+    to: FACT-papra-subject-tags-get-organization-tags
+    created_at: "2026-09-04T14:23:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

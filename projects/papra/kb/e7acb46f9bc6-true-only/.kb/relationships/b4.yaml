@@ -1,0 +1,43 @@
+relationships:
+  - id: rel-1c62d3a666d1
+    type: requires_property
+    from: REQ-papra-config-use-generic-baseurl-if-set-otherwise-use-2
+    to: FACT-papra-config-get-server-base-url-use-the-generic-baseurl-if-set-otherwise-use
+    created_at: "2025-02-01T17:18:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b1002fbfbf19
+    type: constrains
+    from: REQ-papra-config-use-generic-baseurl-if-set-otherwise-use-2
+    to: FACT-papra-subject-config-get-server-base-url
+    created_at: "2025-02-01T17:18:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c2471b4d6b29
+    type: requires_property
+    from: REQ-papra-documents-configured-options-accompany-document-upload-and-response
+    to: FACT-papra-documents-extract-text-with-docling-server-configured-options-accompany-the-document-upload-and-the
+    created_at: "2025-10-22T15:19:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-96762c76451a
+    type: constrains
+    from: REQ-papra-documents-configured-options-accompany-document-upload-and-response
+    to: FACT-papra-subject-documents-extract-text-with-docling-server
+    created_at: "2025-10-22T15:19:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-639912dc5adc
+    type: requires_property
+    from: REQ-papra-tagging-rules-conditionmatchmode-is-all-default-tags-are-not
+    to: FACT-papra-tagging-rules-apply-tagging-rules-when-conditionmatchmode-is-all-default-tags-are-not
+    created_at: "2026-09-28T10:10:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b090d5bc629b
+    type: constrains
+    from: REQ-papra-tagging-rules-conditionmatchmode-is-all-default-tags-are-not
+    to: FACT-papra-subject-tagging-rules-apply-tagging-rules
+    created_at: "2026-09-28T10:10:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

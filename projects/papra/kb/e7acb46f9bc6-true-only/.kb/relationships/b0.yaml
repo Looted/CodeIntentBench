@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-8b331812ae34
+    type: requires_property
+    from: REQ-papra-documents-formats-document-from-database-into-user-facing
+    to: FACT-papra-documents-format-document-for-api-formats-a-document-from-the-database-into-a
+    created_at: "2025-10-03T09:45:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-82d90a72f099
+    type: constrains
+    from: REQ-papra-documents-formats-document-from-database-into-user-facing
+    to: FACT-papra-subject-documents-format-document-for-api
+    created_at: "2025-10-03T09:45:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c7b64727294c
+    type: requires_property
+    from: REQ-papra-documents-reserved-file-names-on-windows-get-underscore
+    to: FACT-papra-documents-ensure-safe-file-name-reserved-file-names-on-windows-get-an-underscore
+    created_at: "2025-08-21T13:25:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-391cb196f9ff
+    type: constrains
+    from: REQ-papra-documents-reserved-file-names-on-windows-get-underscore
+    to: FACT-papra-subject-documents-ensure-safe-file-name
+    created_at: "2025-08-21T13:25:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

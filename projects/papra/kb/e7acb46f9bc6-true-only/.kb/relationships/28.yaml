@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-12c010493b6f
+    type: requires_property
+    from: REQ-papra-documents-document-is-updated-document-updated-event-is
+    to: FACT-papra-documents-update-document-when-a-document-is-updated-a-document-updated
+    created_at: "2025-05-26T15:21:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a980463ad954
+    type: constrains
+    from: REQ-papra-documents-document-is-updated-document-updated-event-is
+    to: FACT-papra-subject-documents-update-document
+    created_at: "2025-05-26T15:21:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

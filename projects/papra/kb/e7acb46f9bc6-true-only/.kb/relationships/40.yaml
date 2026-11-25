@@ -1,0 +1,43 @@
+relationships:
+  - id: rel-98312abf715c
+    type: requires_property
+    from: REQ-papra-document-search-has-warranty-returns-all-documents-that-have
+    to: FACT-papra-document-search-database-fts5-repository-has-warranty-returns-all-documents-that-have-any
+    created_at: "2026-08-09T13:17:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f0f32adb6c03
+    type: constrains
+    from: REQ-papra-document-search-has-warranty-returns-all-documents-that-have
+    to: FACT-papra-subject-document-search-database-fts5-repository
+    created_at: "2026-08-09T13:17:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9a20e810bed7
+    type: requires_property
+    from: REQ-papra-documents-overlapping-updates-publish-latest-name-and-retain
+    to: FACT-papra-documents-sync-document-storage-key-overlapping-updates-publish-the-latest-name-and-retain
+    created_at: "2026-05-19T16:28:53.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-541585baca1c
+    type: constrains
+    from: REQ-papra-documents-overlapping-updates-publish-latest-name-and-retain
+    to: FACT-papra-subject-documents-sync-document-storage-key
+    created_at: "2026-05-19T16:28:53.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6128bae2eac8
+    type: requires_property
+    from: REQ-papra-intake-emails-fails-if-string-is-not-valid-json
+    to: FACT-papra-intake-emails-intake-email-ingestion-email-field-schema-fails-if-the-string-is-not-valid-json
+    created_at: "2025-02-26T12:31:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b541974adf92
+    type: constrains
+    from: REQ-papra-intake-emails-fails-if-string-is-not-valid-json
+    to: FACT-papra-subject-intake-emails-intake-email-ingestion-email-field-schema
+    created_at: "2025-02-26T12:31:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

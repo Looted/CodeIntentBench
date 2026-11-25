@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-92b6f391efa7
+    type: requires_property
+    from: REQ-papra-ingestion-folders-for-some-reason-file-cannot-be-read
+    to: FACT-papra-ingestion-folders-process-file-if-for-some-reason-the-file-cannot-be
+    created_at: "2025-09-27T10:52:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3e12f730d296
+    type: constrains
+    from: REQ-papra-ingestion-folders-for-some-reason-file-cannot-be-read
+    to: FACT-papra-subject-ingestion-folders-process-file
+    created_at: "2025-09-27T10:52:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d9a5b29085a3
+    type: requires_property
+    from: REQ-papra-tagging-rules-organizations-without-any-tagging-rules-get-empty
+    to: FACT-papra-tagging-rules-get-organization-enabled-tagging-rules-organizations-without-any-tagging-rules-get-an-empty
+    created_at: "2025-11-11T08:44:24.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-474ce8bf8a0d
+    type: constrains
+    from: REQ-papra-tagging-rules-organizations-without-any-tagging-rules-get-empty
+    to: FACT-papra-subject-tagging-rules-get-organization-enabled-tagging-rules
+    created_at: "2025-11-11T08:44:24.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

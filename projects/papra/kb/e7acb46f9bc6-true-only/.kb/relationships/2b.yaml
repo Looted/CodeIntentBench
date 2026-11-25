@@ -1,0 +1,71 @@
+relationships:
+  - id: rel-94c4b5ae563a
+    type: requires_property
+    from: REQ-papra-documents-list-no-tag-filter
+    to: FACT-papra-documents-list-endpoint-accepts-tags-parameter
+    created_at: "2026-11-16T10:20:48.432Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-documents-list-no-tag-filter
+    to: FACT-papra-subject-documents-list-endpoint
+    created_at: 2026-11-16T10:20:48.432Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-beaa0695564c
+  - type: requires_property
+    from: REQ-papra-documents-list-no-tag-filter
+    to: FACT-papra-documents-list-endpoint-tag-filtering-via
+    created_at: 2026-11-16T10:20:48.445Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-7d72ba8019d6
+  - type: requires_property
+    from: REQ-papra-document-sort-falls-back-to-import-date
+    to: FACT-papra-documents-sort-tie-break-field
+    created_at: 2026-11-16T10:21:03.125Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-dde9612e5acd
+  - type: constrains
+    from: REQ-papra-document-sort-falls-back-to-import-date
+    to: FACT-papra-subject-documents-sort
+    created_at: 2026-11-16T10:21:03.139Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4ad31f7ef940
+  - type: verified_by
+    from: REQ-papra-document-sort-falls-back-to-import-date
+    to: TEST-papra-server-src-modules-documents-document-search-database-fts5-database-fts5-repository-models
+    created_at: 2026-11-16T10:26:48.097Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-89f0d11bffdf
+  - id: rel-cbaca9ceca99
+    type: requires_property
+    from: REQ-papra-document-share-links-hashed-password-can-be-verified
+    to: FACT-papra-document-share-links-document-share-links-password-an-hashed-password-can-be-verified
+    created_at: "2026-05-21T09:55:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a8c7547d881a
+    type: constrains
+    from: REQ-papra-document-share-links-hashed-password-can-be-verified
+    to: FACT-papra-subject-document-share-links-document-share-links-password
+    created_at: "2026-05-21T09:55:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-116090a9e7c5
+    type: requires_property
+    from: REQ-papra-documents-document-is-uploaded-with-markdown-and-image
+    to: FACT-papra-documents-build-docling-request-body-the-document-is-uploaded-with-markdown-and-image
+    created_at: "2026-09-19T10:46:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0094b8f31c32
+    type: constrains
+    from: REQ-papra-documents-document-is-uploaded-with-markdown-and-image
+    to: FACT-papra-subject-documents-build-docling-request-body
+    created_at: "2026-09-19T10:46:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

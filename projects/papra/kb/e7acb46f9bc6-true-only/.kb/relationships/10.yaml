@@ -1,0 +1,43 @@
+relationships:
+  - id: rel-ef6b30e1b7eb
+    type: requires_property
+    from: REQ-papra-document-search-filter-for-unknown-key-returns-no-results
+    to: FACT-papra-document-search-database-fts5-repository-a-filter-for-an-unknown-key-returns-no
+    created_at: "2025-09-25T15:20:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-507364d4cdb1
+    type: constrains
+    from: REQ-papra-document-search-filter-for-unknown-key-returns-no-results
+    to: FACT-papra-subject-document-search-database-fts5-repository
+    created_at: "2025-09-25T15:20:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-be4d794e4a08
+    type: requires_property
+    from: REQ-papra-documents-fails-if-documentdate-is-invalid-date-string
+    to: FACT-papra-documents-update-document-body-schema-fails-if-documentdate-is-an-invalid-date-string
+    created_at: "2025-12-09T10:01:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-96b2bba22ba4
+    type: constrains
+    from: REQ-papra-documents-fails-if-documentdate-is-invalid-date-string
+    to: FACT-papra-subject-documents-update-document-body-schema
+    created_at: "2025-12-09T10:01:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2c7215e9302d
+    type: requires_property
+    from: REQ-papra-tagging-rules-tagging-rules-from-other-organizations-are-not
+    to: FACT-papra-tagging-rules-get-organization-enabled-tagging-rules-tagging-rules-from-other-organizations-are-not-included
+    created_at: "2025-03-24T15:52:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ee6d45bae801
+    type: constrains
+    from: REQ-papra-tagging-rules-tagging-rules-from-other-organizations-are-not
+    to: FACT-papra-subject-tagging-rules-get-organization-enabled-tagging-rules
+    created_at: "2025-03-24T15:52:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

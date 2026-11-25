@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-a1b1de7d18ac
+    type: requires_property
+    from: REQ-papra-webhooks-without-secret
+    to: FACT-papra-webhook-secret-required
+    created_at: "2026-11-16T10:23:01.744Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-webhooks-without-secret
+    to: FACT-papra-subject-webhook-secret
+    created_at: 2026-11-16T10:23:01.744Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4f9757cc648b
+  - id: rel-4edb4cbc1e25
+    type: requires_property
+    from: REQ-papra-auth-auth-type-is-session-session-is-required
+    to: FACT-papra-auth-check-authentication-when-the-auth-type-is-session-the-session
+    created_at: "2025-07-02T09:48:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-204d31be7115
+    type: constrains
+    from: REQ-papra-auth-auth-type-is-session-session-is-required
+    to: FACT-papra-subject-auth-check-authentication
+    created_at: "2025-07-02T09:48:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

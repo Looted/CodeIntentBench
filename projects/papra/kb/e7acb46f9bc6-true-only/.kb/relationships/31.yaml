@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-bc623ac5eb95
+    type: requires_property
+    from: REQ-papra-documents-preserves-per-entry-differences-in-event-userid
+    to: FACT-papra-documents-register-documents-activity-log-preserves-per-entry-differences-in-event-userid-and
+    created_at: "2026-07-01T15:00:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-63fef2c813e1
+    type: constrains
+    from: REQ-papra-documents-preserves-per-entry-differences-in-event-userid
+    to: FACT-papra-subject-documents-register-documents-activity-log
+    created_at: "2026-07-01T15:00:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-563efe95b6d9
+    type: requires_property
+    from: REQ-papra-document-search-with-multiple-tags-per-documents-page-size
+    to: FACT-papra-document-search-pagination-with-multiple-tags-per-documents-the-page-size
+    created_at: "2026-09-09T13:03:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-317706ef24d3
+    type: constrains
+    from: REQ-papra-document-search-with-multiple-tags-per-documents-page-size
+    to: FACT-papra-subject-document-search-pagination
+    created_at: "2026-09-09T13:03:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1369d5ad3f7d
+    type: requires_property
+    from: REQ-papra-document-search-returns-no-op-sql-query-that-always
+    to: FACT-papra-document-search-handle-unsupported-expression-returns-a-no-op-sql-query-that-always
+    created_at: "2025-11-18T14:04:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e82292efe14a
+    type: constrains
+    from: REQ-papra-document-search-returns-no-op-sql-query-that-always
+    to: FACT-papra-subject-document-search-handle-unsupported-expression
+    created_at: "2025-11-18T14:04:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-bcde20ce60fa
+    type: requires_property
+    from: REQ-papra-ingestion-folders-file-is-located-in-post-processed-done
+    to: FACT-papra-ingestion-folders-process-file-if-a-file-is-located-in-the-post
+    created_at: "2025-10-18T08:39:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4d71d6664f7b
+    type: constrains
+    from: REQ-papra-ingestion-folders-file-is-located-in-post-processed-done
+    to: FACT-papra-subject-ingestion-folders-process-file
+    created_at: "2025-10-18T08:39:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

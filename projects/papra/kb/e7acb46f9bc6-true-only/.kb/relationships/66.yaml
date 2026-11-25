@@ -1,0 +1,43 @@
+relationships:
+  - id: rel-7ce4fa8cf8ec
+    type: requires_property
+    from: REQ-papra-custom-properties-does-not-wipe-existing-options-when-foreign
+    to: FACT-papra-custom-properties-sync-select-options-does-not-wipe-existing-options-when-a-foreign
+    created_at: "2025-11-16T08:48:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b8d2a4e96f93
+    type: constrains
+    from: REQ-papra-custom-properties-does-not-wipe-existing-options-when-foreign
+    to: FACT-papra-subject-custom-properties-sync-select-options
+    created_at: "2025-11-16T08:48:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-837d6672824c
+    type: requires_property
+    from: REQ-papra-document-search-category-invoice-builds-exact-match-subquery-on
+    to: FACT-papra-document-search-query-builder-custom-properties-category-invoice-builds-an-exact-match-subquery-on
+    created_at: "2025-05-24T14:08:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5515041f4cb9
+    type: constrains
+    from: REQ-papra-document-search-category-invoice-builds-exact-match-subquery-on
+    to: FACT-papra-subject-document-search-query-builder-custom-properties
+    created_at: "2025-05-24T14:08:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-246c37890986
+    type: requires_property
+    from: REQ-papra-storage-given-storage-key-is-not-already-taken
+    to: FACT-papra-storage-ensure-storage-key-is-available-when-a-given-storage-key-is-not-already
+    created_at: "2025-07-25T15:27:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c87d8d6ee54e
+    type: constrains
+    from: REQ-papra-storage-given-storage-key-is-not-already-taken
+    to: FACT-papra-subject-storage-ensure-storage-key-is-available
+    created_at: "2025-07-25T15:27:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

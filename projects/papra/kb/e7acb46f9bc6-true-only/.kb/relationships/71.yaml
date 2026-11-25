@@ -1,0 +1,85 @@
+relationships:
+  - id: rel-19916ae85e87
+    type: verified_by
+    from: REQ-documents-are-stored-as-ingested-with-no-m-73A751A1
+    to: TEST-papra-server-src-modules-documents-documents-usecases
+    created_at: "2026-10-14T12:09:44.440Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: requires_property
+    from: REQ-documents-are-stored-as-ingested-with-no-m-73A751A1
+    to: FACT-papra-document-stored-file-write-once
+    created_at: 2026-11-15T21:42:28.538Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-0b9be8a049cc
+  - type: constrains
+    from: REQ-documents-are-stored-as-ingested-with-no-m-73A751A1
+    to: FACT-papra-subject-document-stored-file
+    created_at: 2026-11-15T21:42:28.543Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-72b9055482fe
+  - type: verified_by
+    from: REQ-documents-are-stored-as-ingested-with-no-m-73A751A1
+    to: TEST-papra-server-src-modules-storage-storage-usecases
+    created_at: 2026-11-16T10:26:34.499Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-770eb3d086ff
+  - id: rel-cdf3a1f0e810
+    type: requires_property
+    from: REQ-papra-document-search-custom-property-key-from-org-2-does
+    to: FACT-papra-document-search-database-fts5-repository-a-custom-property-key-from-org-2-does
+    created_at: "2026-03-20T16:18:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-967a2bf88c58
+    type: constrains
+    from: REQ-papra-document-search-custom-property-key-from-org-2-does
+    to: FACT-papra-subject-document-search-database-fts5-repository
+    created_at: "2026-03-20T16:18:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b0ce08c068f2
+    type: requires_property
+    from: REQ-papra-documents-uploading-documents-with-various-utf-8-characters
+    to: FACT-papra-documents-documents-e2e-uploading-documents-with-various-utf-8-characters-in
+    created_at: "2026-05-05T11:38:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ce8d67dc2b4c
+    type: constrains
+    from: REQ-papra-documents-uploading-documents-with-various-utf-8-characters
+    to: FACT-papra-subject-documents-documents-e2e
+    created_at: "2026-05-05T11:38:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-323eea84950d
+    type: requires_property
+    from: REQ-papra-documents-empty-or-undefined-argument-string-returns-empty
+    to: FACT-papra-documents-tokenize-string-arguments-empty-or-undefined-argument-string-returns-an-empty
+    created_at: "2025-03-11T16:29:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4e9e71e12200
+    type: constrains
+    from: REQ-papra-documents-empty-or-undefined-argument-string-returns-empty
+    to: FACT-papra-subject-documents-tokenize-string-arguments
+    created_at: "2025-03-11T16:29:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-89a81cdf1822
+    type: requires_property
+    from: REQ-papra-storage-copies-unencrypted-files-without-encrypting-them-after
+    to: FACT-papra-storage-storage-encryption-services-copies-unencrypted-files-without-encrypting-them-after-encryption
+    created_at: "2026-01-09T11:45:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d24f1822fdef
+    type: constrains
+    from: REQ-papra-storage-copies-unencrypted-files-without-encrypting-them-after
+    to: FACT-papra-subject-storage-storage-encryption-services
+    created_at: "2026-01-09T11:45:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

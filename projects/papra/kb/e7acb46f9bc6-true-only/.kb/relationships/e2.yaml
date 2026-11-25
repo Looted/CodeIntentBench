@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-a01156ff91ea
+    type: requires_property
+    from: REQ-papra-tag-rename-duplicate-error
+    to: FACT-papra-tags-duplicate-update-explicit-error
+    created_at: "2026-11-16T10:21:33.430Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-tag-rename-duplicate-error
+    to: FACT-papra-subject-tags-duplicate-update
+    created_at: 2026-11-16T10:21:33.431Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-aa3e0d4ff911
+  - id: rel-7b8d67514752
+    type: requires_property
+    from: REQ-papra-auth-app-baseurl-is-set-it-should-be
+    to: FACT-papra-auth-get-trusted-origins-if-the-app-baseurl-is-set-it-should
+    created_at: "2026-05-19T14:14:06.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6c0a74226fc2
+    type: constrains
+    from: REQ-papra-auth-app-baseurl-is-set-it-should-be
+    to: FACT-papra-subject-auth-get-trusted-origins
+    created_at: "2026-05-19T14:14:06.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

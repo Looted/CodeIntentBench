@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-f16d0940e007
+    type: requires_property
+    from: REQ-papra-documents-json-format-embeds-base64-encoded-file-alongside
+    to: FACT-papra-documents-build-request-body-the-json-format-embeds-the-base64-encoded-file
+    created_at: "2025-06-02T13:19:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-eabbf311409a
+    type: constrains
+    from: REQ-papra-documents-json-format-embeds-base64-encoded-file-alongside
+    to: FACT-papra-subject-documents-build-request-body
+    created_at: "2025-06-02T13:19:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

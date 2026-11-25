@@ -1,0 +1,64 @@
+relationships:
+  - id: rel-3880af3f4921
+    type: requires_property
+    from: REQ-papra-registration-disabled-blocks-api
+    to: FACT-papra-auth-registration-api-registration-when-disabled
+    created_at: "2026-11-16T10:25:07.267Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-registration-disabled-blocks-api
+    to: FACT-papra-subject-auth-registration
+    created_at: 2026-11-16T10:25:07.267Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-29776cf95ec0
+  - type: verified_by
+    from: REQ-papra-registration-disabled-blocks-api
+    to: TEST-papra-server-src-modules-app-auth-e2e-email-verification-e2e
+    created_at: 2026-11-16T10:28:41.632Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b21ea4427d1f
+  - type: verified_by
+    from: REQ-papra-registration-disabled-blocks-api
+    to: TEST-papra-server-src-modules-app-auth-e2e-registration-e2e
+    created_at: 2026-11-16T10:28:41.638Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-f9a94dfd407f
+  - type: verified_by
+    from: REQ-papra-registration-disabled-blocks-api
+    to: TEST-papra-server-src-modules-app-health-check-e2e-health-check-e2e
+    created_at: 2026-11-16T10:28:41.640Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6af50073b0a5
+  - id: rel-0ca995c06404
+    type: requires_property
+    from: REQ-papra-auth-users-can-login-immediately-after-signup-when
+    to: FACT-papra-auth-email-verification-e2e-users-can-login-immediately-after-signup-when-email
+    created_at: "2025-09-21T13:20:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a46cb691604d
+    type: constrains
+    from: REQ-papra-auth-users-can-login-immediately-after-signup-when
+    to: FACT-papra-subject-auth-email-verification-e2e
+    created_at: "2025-09-21T13:20:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f24c91acebbc
+    type: requires_property
+    from: REQ-papra-plan-entitlements-organization-has-no-active-entitlement-no-coupon
+    to: FACT-papra-plan-entitlements-resolve-organization-entitlement-coupon-id-when-the-organization-has-no-active-entitlement-no
+    created_at: "2025-06-15T08:36:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-dbbae0b318cd
+    type: constrains
+    from: REQ-papra-plan-entitlements-organization-has-no-active-entitlement-no-coupon
+    to: FACT-papra-subject-plan-entitlements-resolve-organization-entitlement-coupon-id
+    created_at: "2025-06-15T08:36:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

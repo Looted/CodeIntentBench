@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-deb51d4de9b9
+    type: requires_property
+    from: REQ-papra-admin-user-has-view-users-permission-request-succeeds-2
+    to: FACT-papra-admin-admin-organizations-routes-permission-protection-when-the-user-has-the-view-users-permission-2
+    created_at: "2026-03-21T12:50:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f564701f5e51
+    type: constrains
+    from: REQ-papra-admin-user-has-view-users-permission-request-succeeds-2
+    to: FACT-papra-subject-admin-admin-organizations-routes-permission-protection
+    created_at: "2026-03-21T12:50:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-82c3899b173c
+    type: requires_property
+    from: REQ-papra-documents-pattern-with-default-argument-is-valid
+    to: FACT-papra-documents-is-storage-pattern-valid-a-pattern-with-a-default-argument-is-valid
+    created_at: "2025-08-01T14:00:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-13366e6e0f24
+    type: constrains
+    from: REQ-papra-documents-pattern-with-default-argument-is-valid
+    to: FACT-papra-subject-documents-is-storage-pattern-valid
+    created_at: "2025-08-01T14:00:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

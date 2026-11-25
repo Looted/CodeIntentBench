@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-af81f2ec8e6f
+    type: requires_property
+    from: REQ-papra-documents-default-replaces-null-date-after-formatting-and
+    to: FACT-papra-documents-evaluate-storage-pattern-expression-default-replaces-a-null-date-after-formatting-and
+    created_at: "2026-05-14T08:20:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-41e8eb1d1b2d
+    type: constrains
+    from: REQ-papra-documents-default-replaces-null-date-after-formatting-and
+    to: FACT-papra-subject-documents-evaluate-storage-pattern-expression
+    created_at: "2026-05-14T08:20:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1461078e71bc
+    type: requires_property
+    from: REQ-papra-documents-transformers-can-end-with-curly-braces-if
+    to: FACT-papra-documents-build-storage-key-transformers-can-end-with-curly-braces-if-they
+    created_at: "2026-07-01T17:56:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c73f935ab92f
+    type: constrains
+    from: REQ-papra-documents-transformers-can-end-with-curly-braces-if
+    to: FACT-papra-subject-documents-build-storage-key
+    created_at: "2026-07-01T17:56:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-68f80bc2630f
+    type: requires_property
+    from: REQ-papra-organizations-owner-can-soft-delete-organization-with-all
+    to: FACT-papra-organizations-soft-delete-organization-owner-can-soft-delete-organization-with-all-metadata
+    created_at: "2026-04-05T15:37:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-63a55fa6c067
+    type: constrains
+    from: REQ-papra-organizations-owner-can-soft-delete-organization-with-all
+    to: FACT-papra-subject-organizations-soft-delete-organization
+    created_at: "2026-04-05T15:37:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-143074257500
+    type: requires_property
+    from: REQ-papra-plan-entitlements-user-already-has-entitlement-of-same-type
+    to: FACT-papra-plan-entitlements-create-plan-entitlement-when-the-user-already-has-an-entitlement-of
+    created_at: "2026-08-27T12:08:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d225a1e8fa42
+    type: constrains
+    from: REQ-papra-plan-entitlements-user-already-has-entitlement-of-same-type
+    to: FACT-papra-subject-plan-entitlements-create-plan-entitlement
+    created_at: "2026-08-27T12:08:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

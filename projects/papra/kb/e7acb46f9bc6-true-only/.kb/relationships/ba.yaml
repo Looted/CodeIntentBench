@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-7137dc969235
+    type: requires_property
+    from: REQ-papra-custom-properties-assigns-displayorder-based-on-array-position
+    to: FACT-papra-custom-properties-sync-select-options-assigns-displayorder-based-on-array-position
+    created_at: "2025-10-14T16:39:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9cd57b7b217a
+    type: constrains
+    from: REQ-papra-custom-properties-assigns-displayorder-based-on-array-position
+    to: FACT-papra-subject-custom-properties-sync-select-options
+    created_at: "2025-10-14T16:39:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1906f6922167
+    type: requires_property
+    from: REQ-papra-document-search-has-warranty-combined-with-value-filter-narrows
+    to: FACT-papra-document-search-database-fts5-repository-has-warranty-combined-with-a-value-filter-narrows
+    created_at: "2026-07-23T14:29:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b2e2ceab72a0
+    type: constrains
+    from: REQ-papra-document-search-has-warranty-combined-with-value-filter-narrows
+    to: FACT-papra-subject-document-search-database-fts5-repository
+    created_at: "2026-07-23T14:29:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

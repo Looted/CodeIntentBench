@@ -1,0 +1,106 @@
+relationships:
+  - id: rel-7c15e300d518
+    type: verified_by
+    from: REQ-documents-are-deduplicated-per-organizatio-7DDB2737
+    to: TEST-papra-server-src-modules-documents-documents-usecases
+    created_at: "2026-10-14T12:09:36.424Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: verified_by
+    from: REQ-documents-are-deduplicated-per-organizatio-7DDB2737
+    to: TEST-papra-server-src-modules-documents-documents-repository
+    created_at: 2026-10-14T12:09:36.426Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c551b05556ef
+  - type: requires_property
+    from: REQ-documents-are-deduplicated-per-organizatio-7DDB2737
+    to: FACT-papra-document-deduplication-scope-and-key
+    created_at: 2026-11-15T21:42:23.865Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-03e35695bf50
+  - type: constrains
+    from: REQ-documents-are-deduplicated-per-organizatio-7DDB2737
+    to: FACT-papra-subject-document-deduplication
+    created_at: 2026-11-15T21:42:23.870Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-8a1bbb1e1498
+  - type: requires_property
+    from: REQ-documents-are-deduplicated-per-organizatio-7DDB2737
+    to: FACT-papra-document-deduplication-rejects-existing-content
+    created_at: 2026-11-15T21:42:23.872Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-27535d0953d0
+  - type: requires_property
+    from: REQ-papra-native-tesseract-when-available
+    to: FACT-papra-ocr-tesseract-engine-preferred-engine
+    created_at: 2026-11-16T10:22:36.163Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b10289f0ccab
+  - type: constrains
+    from: REQ-papra-native-tesseract-when-available
+    to: FACT-papra-subject-ocr-tesseract-engine
+    created_at: 2026-11-16T10:22:36.176Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-7eea171acff6
+  - type: verified_by
+    from: REQ-documents-are-deduplicated-per-organizatio-7DDB2737
+    to: TEST-papra-server-src-modules-documents-document-encryption-usecases
+    created_at: 2026-11-16T10:26:32.291Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-0826f122725c
+  - type: verified_by
+    from: REQ-documents-are-deduplicated-per-organizatio-7DDB2737
+    to: TEST-papra-server-src-modules-documents-document-storage-usecases
+    created_at: 2026-11-16T10:26:32.299Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ef86a046cd2d
+  - id: rel-01380ef221f4
+    type: requires_property
+    from: REQ-papra-document-share-links-access-is-denied-without-token-on-protected
+    to: FACT-papra-document-share-links-document-share-links-usecases-access-is-denied-without-a-token-on-a
+    created_at: "2026-06-27T15:21:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8be2a444693a
+    type: constrains
+    from: REQ-papra-document-share-links-access-is-denied-without-token-on-protected
+    to: FACT-papra-subject-document-share-links-document-share-links-usecases
+    created_at: "2026-06-27T15:21:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c4d08355cb5e
+    type: requires_property
+    from: REQ-papra-document-search-warranty-yes-is-accepted-as-valid-boolean
+    to: FACT-papra-document-search-query-builder-custom-properties-warranty-yes-is-accepted-as-a-valid-boolean
+    created_at: "2025-04-21T08:54:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0ac580ed435b
+    type: constrains
+    from: REQ-papra-document-search-warranty-yes-is-accepted-as-valid-boolean
+    to: FACT-papra-subject-document-search-query-builder-custom-properties
+    created_at: "2025-04-21T08:54:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-653751bd8f26
+    type: requires_property
+    from: REQ-papra-organizations-only-owner-can-delete-organization-admins-and
+    to: FACT-papra-organizations-soft-delete-organization-only-owner-can-delete-organization-admins-and-members
+    created_at: "2025-06-11T11:46:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8f1de09c4156
+    type: constrains
+    from: REQ-papra-organizations-only-owner-can-delete-organization-admins-and
+    to: FACT-papra-subject-organizations-soft-delete-organization
+    created_at: "2025-06-11T11:46:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

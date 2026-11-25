@@ -1,0 +1,43 @@
+relationships:
+  - id: rel-5f5f6728d634
+    type: requires_property
+    from: REQ-papra-tag-list-newest-first
+    to: FACT-papra-tags-list-order-default-order
+    created_at: "2026-11-16T10:21:57.458Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-tag-list-newest-first
+    to: FACT-papra-subject-tags-list-order
+    created_at: 2026-11-16T10:21:57.458Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-f1c15c588738
+  - id: rel-30175220eeca
+    type: requires_property
+    from: REQ-papra-documents-stale-storage-key-update-cannot-replace-newer
+    to: FACT-papra-documents-sync-document-storage-key-a-stale-storage-key-update-cannot-replace-a
+    created_at: "2026-04-24T11:01:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-96030f21862d
+    type: constrains
+    from: REQ-papra-documents-stale-storage-key-update-cannot-replace-newer
+    to: FACT-papra-subject-documents-sync-document-storage-key
+    created_at: "2026-04-24T11:01:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-671fced645b6
+    type: requires_property
+    from: REQ-papra-documents-rejects-more-than-1000-document-ids
+    to: FACT-papra-documents-batch-trash-body-schema-rejects-more-than-1000-document-ids
+    created_at: "2025-04-06T17:52:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-66d59381a604
+    type: constrains
+    from: REQ-papra-documents-rejects-more-than-1000-document-ids
+    to: FACT-papra-subject-documents-batch-trash-body-schema
+    created_at: "2025-04-06T17:52:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

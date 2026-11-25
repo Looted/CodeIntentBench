@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-904204f0c733
+    type: requires_property
+    from: REQ-papra-document-trash-returns-204
+    to: FACT-papra-documents-trash-response-status-code
+    created_at: "2026-11-16T10:20:20.180Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-document-trash-returns-204
+    to: FACT-papra-subject-documents-trash-response
+    created_at: 2026-11-16T10:20:20.181Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-957f64ff3d7a
+  - id: rel-cb85bef1034d
+    type: requires_property
+    from: REQ-papra-documents-docling-options-accepts-json-object-with-docling
+    to: FACT-papra-documents-docling-options-schema-docling-options-accepts-a-json-object-with-docling
+    created_at: "2026-09-18T15:23:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f26228ba7d63
+    type: constrains
+    from: REQ-papra-documents-docling-options-accepts-json-object-with-docling
+    to: FACT-papra-subject-documents-docling-options-schema
+    created_at: "2026-09-18T15:23:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-74ee7956f25c
+    type: requires_property
+    from: REQ-papra-document-search-combines-multiple-expressions-with-and-logic
+    to: FACT-papra-document-search-handle-and-expression-combines-multiple-expressions-with-and-logic
+    created_at: "2026-03-14T11:26:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ddbb43ba4970
+    type: constrains
+    from: REQ-papra-document-search-combines-multiple-expressions-with-and-logic
+    to: FACT-papra-subject-document-search-handle-and-expression
+    created_at: "2026-03-14T11:26:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7c789165e6b2
+    type: requires_property
+    from: REQ-papra-storage-even-random-suffix-fallback-is-taken-throw
+    to: FACT-papra-storage-ensure-storage-key-is-available-if-even-the-random-suffix-fallback-is-taken
+    created_at: "2025-06-05T10:50:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-60c1c53f4900
+    type: constrains
+    from: REQ-papra-storage-even-random-suffix-fallback-is-taken-throw
+    to: FACT-papra-subject-storage-ensure-storage-key-is-available
+    created_at: "2025-06-05T10:50:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

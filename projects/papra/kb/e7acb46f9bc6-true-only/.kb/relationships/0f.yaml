@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-73501dc2d636
+    type: requires_property
+    from: REQ-papra-documents-uses-legacy-document-key-without-checking-for
+    to: FACT-papra-documents-create-document-storage-key-uses-the-legacy-document-key-without-checking-for
+    created_at: "2025-06-27T10:34:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-28fd65c7f970
+    type: constrains
+    from: REQ-papra-documents-uses-legacy-document-key-without-checking-for
+    to: FACT-papra-subject-documents-create-document-storage-key
+    created_at: "2025-06-27T10:34:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

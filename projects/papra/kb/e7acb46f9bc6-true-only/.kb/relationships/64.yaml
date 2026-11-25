@@ -1,0 +1,43 @@
+relationships:
+  - id: rel-0447c53a6384
+    type: requires_property
+    from: REQ-papra-document-search-returns-error-for-unsupported-expression-types
+    to: FACT-papra-document-search-handle-unsupported-expression-returns-error-for-unsupported-expression-types
+    created_at: "2026-04-24T14:24:53.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-94f7fde632a8
+    type: constrains
+    from: REQ-papra-document-search-returns-error-for-unsupported-expression-types
+    to: FACT-papra-subject-document-search-handle-unsupported-expression
+    created_at: "2026-04-24T14:24:53.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-38fedc72eb9c
+    type: requires_property
+    from: REQ-papra-documents-document-deleted-before-handling-is-no-op
+    to: FACT-papra-documents-sync-document-storage-key-a-document-deleted-before-handling-is-a-no
+    created_at: "2026-08-19T13:26:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f762f2912aec
+    type: constrains
+    from: REQ-papra-documents-document-deleted-before-handling-is-no-op
+    to: FACT-papra-subject-documents-sync-document-storage-key
+    created_at: "2026-08-19T13:26:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3442bcd0eff6
+    type: requires_property
+    from: REQ-papra-documents-adds-and-removes-tags-across-targeted-documents
+    to: FACT-papra-documents-documents-e2e-adds-and-removes-tags-across-the-targeted-documents
+    created_at: "2025-06-26T15:55:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-174a98bb751f
+    type: constrains
+    from: REQ-papra-documents-adds-and-removes-tags-across-targeted-documents
+    to: FACT-papra-subject-documents-documents-e2e
+    created_at: "2025-06-26T15:55:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -1,0 +1,71 @@
+relationships:
+  - id: rel-ea3794a995a5
+    type: requires_property
+    from: REQ-papra-admin-user-has-delete-users-permission-and-target
+    to: FACT-papra-admin-admin-users-routes-permission-protection-when-the-user-has-the-delete-users-permission
+    created_at: "2025-06-08T12:27:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f0b77158e1c5
+    type: constrains
+    from: REQ-papra-admin-user-has-delete-users-permission-and-target
+    to: FACT-papra-subject-admin-admin-users-routes-permission-protection
+    created_at: "2025-06-08T12:27:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d03d6c064ef1
+    type: requires_property
+    from: REQ-papra-custom-properties-throws-on-duplicate-name-within-organization
+    to: FACT-papra-custom-properties-custom-properties-repository-throws-on-duplicate-name-within-organization
+    created_at: "2025-09-04T16:02:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-52a18fa25531
+    type: constrains
+    from: REQ-papra-custom-properties-throws-on-duplicate-name-within-organization
+    to: FACT-papra-subject-custom-properties-custom-properties-repository
+    created_at: "2025-09-04T16:02:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-98f5569755c4
+    type: requires_property
+    from: REQ-papra-documents-documents-are-sorted-by-creation-date-most
+    to: FACT-papra-documents-documents-e2e-documents-are-sorted-by-creation-date-most-recent
+    created_at: "2026-05-21T10:32:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e9c09f159fc3
+    type: constrains
+    from: REQ-papra-documents-documents-are-sorted-by-creation-date-most
+    to: FACT-papra-subject-documents-documents-e2e
+    created_at: "2026-05-21T10:32:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3dc9c5f74491
+    type: requires_property
+    from: REQ-papra-plan-entitlements-user-already-has-active-entitlement-of-same
+    to: FACT-papra-plan-entitlements-claim-user-plan-entitlement-when-the-user-already-has-an-active-entitlement
+    created_at: "2025-08-15T13:34:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4f9fab3b05c8
+    type: constrains
+    from: REQ-papra-plan-entitlements-user-already-has-active-entitlement-of-same
+    to: FACT-papra-subject-plan-entitlements-claim-user-plan-entitlement
+    created_at: "2025-08-15T13:34:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fe12ec81a182
+    type: requires_property
+    from: REQ-papra-storage-storage-key-path-can-contain-directories-suffix
+    to: FACT-papra-storage-add-suffix-to-storage-key-the-storage-key-path-can-contain-directories-the
+    created_at: "2025-04-25T17:31:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8e762fb4029f
+    type: constrains
+    from: REQ-papra-storage-storage-key-path-can-contain-directories-suffix
+    to: FACT-papra-subject-storage-add-suffix-to-storage-key
+    created_at: "2025-04-25T17:31:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

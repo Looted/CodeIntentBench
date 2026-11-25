@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-cd692ff6d321
+    type: requires_property
+    from: REQ-papra-auto-tagging-creation-of-new-tags-is-allowed-and
+    to: FACT-papra-auto-tagging-get-tags-actions-when-the-creation-of-new-tags-is-allowed
+    created_at: "2025-08-01T14:52:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7ac49f38c983
+    type: constrains
+    from: REQ-papra-auto-tagging-creation-of-new-tags-is-allowed-and
+    to: FACT-papra-subject-auto-tagging-get-tags-actions
+    created_at: "2025-08-01T14:52:16.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

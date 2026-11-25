@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-5ce36d471420
+    type: requires_property
+    from: REQ-papra-document-search-warranty-false-returns-only-documents-with-warranty
+    to: FACT-papra-document-search-database-fts5-repository-warranty-false-returns-only-documents-with-warranty-false
+    created_at: "2025-04-17T08:57:53.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-af6353512b39
+    type: constrains
+    from: REQ-papra-document-search-warranty-false-returns-only-documents-with-warranty
+    to: FACT-papra-subject-document-search-database-fts5-repository
+    created_at: "2025-04-17T08:57:53.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

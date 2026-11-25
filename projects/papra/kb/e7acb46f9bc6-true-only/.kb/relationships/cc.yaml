@@ -1,0 +1,113 @@
+relationships:
+  - id: rel-64dac5ca8dec
+    type: verified_by
+    from: REQ-tag-name-and-colour-are-validated-server-s-1890EF60
+    to: TEST-papra-server-src-modules-tags-tags-schemas
+    created_at: "2026-10-14T12:09:55.889Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: requires_property
+    from: REQ-tag-name-and-colour-are-validated-server-s-1890EF60
+    to: FACT-papra-tags-tag-validated-by-api-schema
+    created_at: 2026-11-15T21:46:10.450Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-bd7fe5e2467c
+  - type: constrains
+    from: REQ-tag-name-and-colour-are-validated-server-s-1890EF60
+    to: FACT-papra-subject-tags-tag
+    created_at: 2026-11-15T21:46:10.455Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-fa43084737d3
+  - type: requires_property
+    from: REQ-tag-name-and-colour-are-validated-server-s-1890EF60
+    to: FACT-papra-tags-tag-client-validation-is-guard
+    created_at: 2026-11-15T21:46:10.457Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-e6e7a5010a24
+  - type: verified_by
+    from: REQ-tag-name-and-colour-are-validated-server-s-1890EF60
+    to: TEST-papra-server-src-modules-admin-organizations-e2e-organizations-e2e
+    created_at: 2026-11-16T04:52:10.830Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-46f29cda92d8
+  - type: requires_property
+    from: REQ-papra-b2-storage-driver-supported
+    to: FACT-papra-storage-b2-driver-available-v1
+    created_at: 2026-11-16T10:19:37.518Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-22bf88d6d27b
+  - type: constrains
+    from: REQ-papra-b2-storage-driver-supported
+    to: FACT-papra-subject-storage-b2-driver
+    created_at: 2026-11-16T10:19:37.534Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-7cbd80b4fc41
+  - type: verified_by
+    from: REQ-tag-name-and-colour-are-validated-server-s-1890EF60
+    to: TEST-papra-server-src-modules-documents-e2e-batch-tags-e2e
+    created_at: 2026-11-16T10:28:47.516Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-271a0afafabb
+  - id: rel-8f6f68741faf
+    type: requires_property
+    from: REQ-papra-auto-tagging-creation-of-new-tags-is-not-allowed
+    to: FACT-papra-auto-tagging-get-tags-actions-when-the-creation-of-new-tags-is-not
+    created_at: "2026-03-08T09:57:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-42a0c8ac4dbf
+    type: constrains
+    from: REQ-papra-auto-tagging-creation-of-new-tags-is-not-allowed
+    to: FACT-papra-subject-auto-tagging-get-tags-actions
+    created_at: "2026-03-08T09:57:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-08ebc0259275
+    type: requires_property
+    from: REQ-papra-custom-properties-setting-value-twice-overwrites-it
+    to: FACT-papra-custom-properties-custom-properties-e2e-setting-a-value-twice-overwrites-it
+    created_at: "2025-11-08T10:17:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f690e3bbc4ea
+    type: constrains
+    from: REQ-papra-custom-properties-setting-value-twice-overwrites-it
+    to: FACT-papra-subject-custom-properties-custom-properties-e2e
+    created_at: "2025-11-08T10:17:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a765b2cdb801
+    type: requires_property
+    from: REQ-papra-document-search-assignee-usr-1-returns-only-documents-assigned
+    to: FACT-papra-document-search-database-fts5-repository-assignee-usr-1-returns-only-documents-assigned-to
+    created_at: "2025-10-26T09:27:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-288551c9aeef
+    type: constrains
+    from: REQ-papra-document-search-assignee-usr-1-returns-only-documents-assigned
+    to: FACT-papra-subject-document-search-database-fts5-repository
+    created_at: "2025-10-26T09:27:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4e88218278dd
+    type: requires_property
+    from: REQ-papra-document-search-warranty-disabled-is-accepted-as-valid-boolean
+    to: FACT-papra-document-search-query-builder-custom-properties-warranty-disabled-is-accepted-as-a-valid-boolean
+    created_at: "2025-06-06T16:04:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-215e55402929
+    type: constrains
+    from: REQ-papra-document-search-warranty-disabled-is-accepted-as-valid-boolean
+    to: FACT-papra-subject-document-search-query-builder-custom-properties
+    created_at: "2025-06-06T16:04:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

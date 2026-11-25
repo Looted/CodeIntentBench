@@ -1,0 +1,43 @@
+relationships:
+  - id: rel-4c75c6f9331d
+    type: requires_property
+    from: REQ-papra-intake-uses-original-destination
+    to: FACT-papra-intake-email-forwarded-destination-matched-by
+    created_at: "2026-11-16T10:25:18.858Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-intake-uses-original-destination
+    to: FACT-papra-subject-intake-email-forwarded-destination
+    created_at: 2026-11-16T10:25:18.858Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-78d0ff676167
+  - id: rel-a72c05bca600
+    type: requires_property
+    from: REQ-papra-documents-rejects-request-if-any-documentid-does-not
+    to: FACT-papra-documents-tag-documents-batch-rejects-the-request-if-any-documentid-does-not
+    created_at: "2026-08-07T11:29:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3acf07bbd6b7
+    type: constrains
+    from: REQ-papra-documents-rejects-request-if-any-documentid-does-not
+    to: FACT-papra-subject-documents-tag-documents-batch
+    created_at: "2026-08-07T11:29:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d3dff37724fe
+    type: requires_property
+    from: REQ-papra-documents-transformers-without-arguments-called-with-arguments-are
+    to: FACT-papra-documents-build-storage-key-transformers-without-arguments-called-with-arguments-are-ok
+    created_at: "2025-11-18T11:28:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d825cf13f053
+    type: constrains
+    from: REQ-papra-documents-transformers-without-arguments-called-with-arguments-are
+    to: FACT-papra-subject-documents-build-storage-key
+    created_at: "2025-11-18T11:28:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

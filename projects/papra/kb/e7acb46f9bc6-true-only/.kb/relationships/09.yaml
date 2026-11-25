@@ -1,0 +1,71 @@
+relationships:
+  - id: rel-5ad2e3982f86
+    type: requires_property
+    from: REQ-papra-admin-user-does-not-have-delete-users-permission
+    to: FACT-papra-admin-admin-users-routes-permission-protection-when-the-user-does-not-have-the-delete
+    created_at: "2025-06-19T13:56:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-18ab2e52cecd
+    type: constrains
+    from: REQ-papra-admin-user-does-not-have-delete-users-permission
+    to: FACT-papra-subject-admin-admin-users-routes-permission-protection
+    created_at: "2025-06-19T13:56:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b2184cc7f34f
+    type: requires_property
+    from: REQ-papra-config-exposes-selectable-domains-returned-by-intake-email
+    to: FACT-papra-config-get-public-config-exposes-the-selectable-domains-returned-by-the-intake
+    created_at: "2025-03-10T17:47:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4c10e8d7aff7
+    type: constrains
+    from: REQ-papra-config-exposes-selectable-domains-returned-by-intake-email
+    to: FACT-papra-subject-config-get-public-config
+    created_at: "2025-03-10T17:47:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-20bab7edcf74
+    type: requires_property
+    from: REQ-papra-documents-fails-if-no-field-is-provided
+    to: FACT-papra-documents-update-document-body-schema-fails-if-no-field-is-provided
+    created_at: "2025-12-05T12:59:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-68958f99e3c5
+    type: constrains
+    from: REQ-papra-documents-fails-if-no-field-is-provided
+    to: FACT-papra-subject-documents-update-document-body-schema
+    created_at: "2025-12-05T12:59:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e2a68df2a5b4
+    type: requires_property
+    from: REQ-papra-plan-entitlements-entitlement-does-not-exist-not-found-error
+    to: FACT-papra-plan-entitlements-delete-user-plan-entitlement-when-the-entitlement-does-not-exist-a-not
+    created_at: "2026-04-12T14:49:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-63c30956fa4a
+    type: constrains
+    from: REQ-papra-plan-entitlements-entitlement-does-not-exist-not-found-error
+    to: FACT-papra-subject-plan-entitlements-delete-user-plan-entitlement
+    created_at: "2026-04-12T14:49:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4d27a9c19a30
+    type: requires_property
+    from: REQ-papra-tags-deletetag-scoped-by-organizationid-does-not-delete
+    to: FACT-papra-tags-delete-tag-deletetag-scoped-by-organizationid-does-not-delete-tags
+    created_at: "2025-12-20T08:15:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-60492df0f75c
+    type: constrains
+    from: REQ-papra-tags-deletetag-scoped-by-organizationid-does-not-delete
+    to: FACT-papra-subject-tags-delete-tag
+    created_at: "2025-12-20T08:15:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-dfcbc0d99268
+    type: requires_property
+    from: REQ-papra-documents-emits-documents-trashed-event-with-actually-trashed
+    to: FACT-papra-documents-trash-documents-batch-emits-a-documents-trashed-event-with-the-actually
+    created_at: "2026-02-22T16:14:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8e191b583e22
+    type: constrains
+    from: REQ-papra-documents-emits-documents-trashed-event-with-actually-trashed
+    to: FACT-papra-subject-documents-trash-documents-batch
+    created_at: "2026-02-22T16:14:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

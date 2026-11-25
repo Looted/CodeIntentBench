@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-ba1ae577aa75
+    type: requires_property
+    from: REQ-papra-auth-401-unauthorized-error-is-returned
+    to: FACT-papra-auth-create-role-middleware-a-401-unauthorized-error-is-returned
+    created_at: "2026-05-25T14:18:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-915615217eeb
+    type: constrains
+    from: REQ-papra-auth-401-unauthorized-error-is-returned
+    to: FACT-papra-subject-auth-create-role-middleware
+    created_at: "2026-05-25T14:18:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c8c93d48c8ef
+    type: requires_property
+    from: REQ-papra-app-process-mode-is-set-to-worker-only
+    to: FACT-papra-app-get-process-mode-when-the-process-mode-is-set-to-worker
+    created_at: "2026-01-14T16:39:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c3454075b0f8
+    type: constrains
+    from: REQ-papra-app-process-mode-is-set-to-worker-only
+    to: FACT-papra-subject-app-get-process-mode
+    created_at: "2026-01-14T16:39:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-21f0b7461c1b
+    type: requires_property
+    from: REQ-papra-custom-properties-aggregates-multi-select-property-values-into-arrays
+    to: FACT-papra-custom-properties-aggregate-document-custom-property-values-aggregates-multi-select-property-values-into-arrays
+    created_at: "2025-02-24T09:52:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4782cb59b217
+    type: constrains
+    from: REQ-papra-custom-properties-aggregates-multi-select-property-values-into-arrays
+    to: FACT-papra-subject-custom-properties-aggregate-document-custom-property-values
+    created_at: "2025-02-24T09:52:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-49a17052781b
+    type: requires_property
+    from: REQ-papra-document-search-amount-150-returns-only-document-with-amount
+    to: FACT-papra-document-search-database-fts5-repository-amount-150-returns-only-the-document-with-amount
+    created_at: "2025-09-06T15:29:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-bf46aa193fd8
+    type: constrains
+    from: REQ-papra-document-search-amount-150-returns-only-document-with-amount
+    to: FACT-papra-subject-document-search-database-fts5-repository
+    created_at: "2025-09-06T15:29:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

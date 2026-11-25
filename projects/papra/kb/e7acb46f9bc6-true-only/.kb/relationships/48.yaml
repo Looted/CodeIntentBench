@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-64bc4562fb29
+    type: requires_property
+    from: REQ-papra-rate-limit-units-can-be-seconds-s-minutes-m
+    to: FACT-papra-rate-limit-parse-rate-limit-config-units-can-be-seconds-s-minutes-m-or
+    created_at: "2025-03-03T10:33:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2b8aad6b4022
+    type: constrains
+    from: REQ-papra-rate-limit-units-can-be-seconds-s-minutes-m
+    to: FACT-papra-subject-rate-limit-parse-rate-limit-config
+    created_at: "2025-03-03T10:33:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c1fa71708140
+    type: requires_property
+    from: REQ-papra-webhooks-ssrf-protection-is-enabled-updating-webhook-with
+    to: FACT-papra-webhooks-update-webhook-when-ssrf-protection-is-enabled-updating-a-webhook
+    created_at: "2026-03-18T13:13:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6f9d8469ca51
+    type: constrains
+    from: REQ-papra-webhooks-ssrf-protection-is-enabled-updating-webhook-with
+    to: FACT-papra-subject-webhooks-update-webhook
+    created_at: "2026-03-18T13:13:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

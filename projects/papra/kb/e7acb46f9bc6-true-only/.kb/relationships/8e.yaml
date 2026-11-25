@@ -1,0 +1,43 @@
+relationships:
+  - id: rel-2beb1591ea27
+    type: requires_property
+    from: REQ-papra-documents-parses-body-with-both-addtagids-and-removetagids
+    to: FACT-papra-documents-batch-tags-body-schema-parses-a-body-with-both-addtagids-and-removetagids
+    created_at: "2025-03-16T13:52:53.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e7e7d274136e
+    type: constrains
+    from: REQ-papra-documents-parses-body-with-both-addtagids-and-removetagids
+    to: FACT-papra-subject-documents-batch-tags-body-schema
+    created_at: "2025-03-16T13:52:53.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-bb4902aa7f96
+    type: requires_property
+    from: REQ-papra-documents-organization-rename-keeps-existing-keys-until-later
+    to: FACT-papra-documents-storage-key-document-updated-handler-an-organization-rename-keeps-existing-keys-until-a
+    created_at: "2026-08-21T13:02:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a2d6a36f9dc4
+    type: constrains
+    from: REQ-papra-documents-organization-rename-keeps-existing-keys-until-later
+    to: FACT-papra-subject-documents-storage-key-document-updated-handler
+    created_at: "2026-08-21T13:02:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4266336a2154
+    type: requires_property
+    from: REQ-papra-documents-does-not-fire-webhook-for-empty-side
+    to: FACT-papra-documents-register-trigger-webhooks-on-document-tags-changed-handler-does-not-fire-a-webhook-for-an-empty
+    created_at: "2026-05-10T17:19:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-45560e58d866
+    type: constrains
+    from: REQ-papra-documents-does-not-fire-webhook-for-empty-side
+    to: FACT-papra-subject-documents-register-trigger-webhooks-on-document-tags-changed-handler
+    created_at: "2026-05-10T17:19:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

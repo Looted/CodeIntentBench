@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-16b4d94ef388
+    type: requires_property
+    from: REQ-papra-config-exposes-empty-domain-list-when-intake-email
+    to: FACT-papra-config-get-public-config-exposes-an-empty-domain-list-when-the-intake
+    created_at: "2025-08-28T10:36:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ef0e777d052b
+    type: constrains
+    from: REQ-papra-config-exposes-empty-domain-list-when-intake-email
+    to: FACT-papra-subject-config-get-public-config
+    created_at: "2025-08-28T10:36:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-419aee0774b6
+    type: requires_property
+    from: REQ-papra-documents-failed-database-update-retains-both-files-and
+    to: FACT-papra-documents-sync-document-storage-key-a-failed-database-update-retains-both-files-and
+    created_at: "2025-08-10T17:10:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d2a4f47661b1
+    type: constrains
+    from: REQ-papra-documents-failed-database-update-retains-both-files-and
+    to: FACT-papra-subject-documents-sync-document-storage-key
+    created_at: "2025-08-10T17:10:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9e0490a601f1
+    type: requires_property
+    from: REQ-papra-documents-fallback-does-not-hide-invalid-date
+    to: FACT-papra-documents-evaluate-storage-pattern-expression-a-fallback-does-not-hide-an-invalid-date
+    created_at: "2026-02-08T16:55:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f6d802ddd59b
+    type: constrains
+    from: REQ-papra-documents-fallback-does-not-hide-invalid-date
+    to: FACT-papra-subject-documents-evaluate-storage-pattern-expression
+    created_at: "2026-02-08T16:55:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ec5bb658308f
+    type: requires_property
+    from: REQ-papra-plan-entitlements-entitlement-driver-does-not-define-subscription-discount
+    to: FACT-papra-plan-entitlements-resolve-organization-entitlement-coupon-id-when-the-entitlement-driver-does-not-define-a
+    created_at: "2025-03-23T11:25:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5b83151b4517
+    type: constrains
+    from: REQ-papra-plan-entitlements-entitlement-driver-does-not-define-subscription-discount
+    to: FACT-papra-subject-plan-entitlements-resolve-organization-entitlement-coupon-id
+    created_at: "2025-03-23T11:25:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

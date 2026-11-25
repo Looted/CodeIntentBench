@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-9956b629f174
+    type: requires_property
+    from: REQ-papra-auth-trusted-app-schemes-are-defined-they-should
+    to: FACT-papra-auth-get-trusted-origins-when-trusted-app-schemes-are-defined-they-should
+    created_at: "2026-04-07T13:51:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-49f0b9e01c19
+    type: constrains
+    from: REQ-papra-auth-trusted-app-schemes-are-defined-they-should
+    to: FACT-papra-subject-auth-get-trusted-origins
+    created_at: "2026-04-07T13:51:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6799a4386623
+    type: requires_property
+    from: REQ-papra-tagging-rules-document-matches-tagging-rule-tag-is-applied
+    to: FACT-papra-tagging-rules-apply-tagging-rules-when-a-document-matches-a-tagging-rule-the
+    created_at: "2026-02-15T13:57:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fb8ae8be6f32
+    type: constrains
+    from: REQ-papra-tagging-rules-document-matches-tagging-rule-tag-is-applied
+    to: FACT-papra-subject-tagging-rules-apply-tagging-rules
+    created_at: "2026-02-15T13:57:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

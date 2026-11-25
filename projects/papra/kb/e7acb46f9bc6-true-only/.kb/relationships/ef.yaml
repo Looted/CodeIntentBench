@@ -1,0 +1,43 @@
+relationships:
+  - id: rel-273fb4dc8cfc
+    type: requires_property
+    from: REQ-papra-b2-storage-driver-dropped
+    to: FACT-papra-storage-b2-driver-available
+    created_at: "2026-11-16T10:19:43.393Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-b2-storage-driver-dropped
+    to: FACT-papra-subject-storage-b2-driver
+    created_at: 2026-11-16T10:19:43.393Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-252f26dbd814
+  - type: requires_property
+    from: REQ-papra-b2-storage-driver-dropped
+    to: FACT-papra-storage-b2-driver-replacement
+    created_at: 2026-11-16T10:19:43.407Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-962027bbb87b
+  - type: supersedes
+    from: REQ-papra-b2-storage-driver-dropped
+    to: REQ-papra-b2-storage-driver-supported
+    created_at: 2026-11-16T10:19:43.411Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c1fb279944f4
+  - id: rel-335c22f4fcff
+    type: requires_property
+    from: REQ-papra-document-search-tag-filter-value-is-proper-tag-id
+    to: FACT-papra-document-search-handle-tag-filter-when-the-tag-filter-value-is-a-proper
+    created_at: "2025-06-01T12:14:06.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-454e22920a36
+    type: constrains
+    from: REQ-papra-document-search-tag-filter-value-is-proper-tag-id
+    to: FACT-papra-subject-document-search-handle-tag-filter
+    created_at: "2025-06-01T12:14:06.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

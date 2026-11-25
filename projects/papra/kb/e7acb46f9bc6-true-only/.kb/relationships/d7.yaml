@@ -1,0 +1,78 @@
+relationships:
+  - id: rel-27484a6b1bfc
+    type: requires_property
+    from: REQ-the-documents-page-keeps-the-current-searc-F4067AA3
+    to: FACT-papra-search-url-state-query-parameter
+    created_at: "2026-11-15T21:43:21.216Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-the-documents-page-keeps-the-current-searc-F4067AA3
+    to: FACT-papra-subject-search-url-state
+    created_at: 2026-11-15T21:43:21.216Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-04f53cfb2724
+  - type: requires_property
+    from: REQ-the-documents-page-keeps-the-current-searc-F4067AA3
+    to: FACT-papra-search-url-state-bookmarkable
+    created_at: 2026-11-15T21:43:21.220Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b4ff75667f32
+  - id: rel-168c17f3920b
+    type: requires_property
+    from: REQ-papra-admin-entitlement-type-is-unknown-400-error-is
+    to: FACT-papra-admin-admin-user-plan-entitlements-routes-when-the-entitlement-type-is-unknown-a-400
+    created_at: "2025-02-22T15:17:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9f7579f419d3
+    type: constrains
+    from: REQ-papra-admin-entitlement-type-is-unknown-400-error-is
+    to: FACT-papra-subject-admin-admin-user-plan-entitlements-routes
+    created_at: "2025-02-22T15:17:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7c3fe57b8435
+    type: requires_property
+    from: REQ-papra-documents-duplicated-document-ids-from-organizations-are-accepted
+    to: FACT-papra-documents-are-all-documents-in-organization-duplicated-document-ids-from-the-organizations-are-accepted
+    created_at: "2025-07-19T15:49:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b14a1179c505
+    type: constrains
+    from: REQ-papra-documents-duplicated-document-ids-from-organizations-are-accepted
+    to: FACT-papra-subject-documents-are-all-documents-in-organization
+    created_at: "2025-07-19T15:49:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e0e25ca9af10
+    type: requires_property
+    from: REQ-papra-documents-first-default-supplies-value-for-later-defaults
+    to: FACT-papra-documents-evaluate-storage-pattern-expression-the-first-default-supplies-the-value-for-later
+    created_at: "2025-05-12T08:55:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f301cbc15ccd
+    type: constrains
+    from: REQ-papra-documents-first-default-supplies-value-for-later-defaults
+    to: FACT-papra-subject-documents-evaluate-storage-pattern-expression
+    created_at: "2025-05-12T08:55:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e1bc4a3ce611
+    type: requires_property
+    from: REQ-papra-users-no-users-exist-in-database-count-is
+    to: FACT-papra-users-get-user-count-when-no-users-exist-in-the-database-the
+    created_at: "2026-08-01T08:23:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d90c4a9953d6
+    type: constrains
+    from: REQ-papra-users-no-users-exist-in-database-count-is
+    to: FACT-papra-subject-users-get-user-count
+    created_at: "2026-08-01T08:23:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

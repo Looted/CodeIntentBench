@@ -1,0 +1,71 @@
+relationships:
+  - id: rel-87b59a4a8eef
+    type: requires_property
+    from: REQ-papra-search-endpoint-complete-documents
+    to: FACT-papra-documents-search-endpoint-response-shape-v2
+    created_at: "2026-11-16T10:20:43.630Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-search-endpoint-complete-documents
+    to: FACT-papra-subject-documents-search-endpoint
+    created_at: 2026-11-16T10:20:43.630Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-8052ccf54924
+  - type: requires_property
+    from: REQ-papra-search-endpoint-complete-documents
+    to: FACT-papra-documents-search-endpoint-nests-under-search-results-v2
+    created_at: 2026-11-16T10:20:43.644Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-15b4b037b231
+  - type: supersedes
+    from: REQ-papra-search-endpoint-complete-documents
+    to: REQ-papra-search-endpoint-nested-results
+    created_at: 2026-11-16T10:20:43.647Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-621818fff8db
+  - type: requires_property
+    from: REQ-papra-upload-route-dedicated-timeout
+    to: FACT-papra-upload-route-timeout-longer-than-default
+    created_at: 2026-11-16T10:23:31.048Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-15950b6b0ebf
+  - type: constrains
+    from: REQ-papra-upload-route-dedicated-timeout
+    to: FACT-papra-subject-upload-route-timeout
+    created_at: 2026-11-16T10:23:31.064Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6c44edd6039d
+  - id: rel-b71932b08ac3
+    type: requires_property
+    from: REQ-papra-documents-does-not-emit-event-when-no-documents
+    to: FACT-papra-documents-trash-documents-batch-does-not-emit-an-event-when-no-documents
+    created_at: "2025-09-20T09:58:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3ed1c653cc92
+    type: constrains
+    from: REQ-papra-documents-does-not-emit-event-when-no-documents
+    to: FACT-papra-subject-documents-trash-documents-batch
+    created_at: "2025-09-20T09:58:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b50c96bc4985
+    type: requires_property
+    from: REQ-papra-organizations-only-organization-owners-and-admins-can-invite
+    to: FACT-papra-organizations-invite-member-to-organization-only-organization-owners-and-admins-can-invite-members
+    created_at: "2025-07-04T10:36:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-841cf6904abb
+    type: constrains
+    from: REQ-papra-organizations-only-organization-owners-and-admins-can-invite
+    to: FACT-papra-subject-organizations-invite-member-to-organization
+    created_at: "2025-07-04T10:36:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

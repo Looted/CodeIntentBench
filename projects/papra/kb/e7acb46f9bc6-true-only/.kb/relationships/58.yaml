@@ -1,0 +1,43 @@
+relationships:
+  - id: rel-21a636afa16e
+    type: requires_property
+    from: REQ-papra-api-keys-api-key-is-created-with-correct-hash
+    to: FACT-papra-api-keys-create-api-key-the-api-key-is-created-with-the-correct
+    created_at: "2026-03-10T09:30:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-617bd23f0d91
+    type: constrains
+    from: REQ-papra-api-keys-api-key-is-created-with-correct-hash
+    to: FACT-papra-subject-api-keys-create-api-key
+    created_at: "2026-03-10T09:30:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8dbe6e6560ea
+    type: requires_property
+    from: REQ-papra-documents-retrieve-document-count-and-total-size-for
+    to: FACT-papra-documents-get-organization-stats-retrieve-document-count-and-total-size-for-an
+    created_at: "2025-02-05T11:47:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-90bdcc621611
+    type: constrains
+    from: REQ-papra-documents-retrieve-document-count-and-total-size-for
+    to: FACT-papra-subject-documents-get-organization-stats
+    created_at: "2025-02-05T11:47:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-21275ab28991
+    type: requires_property
+    from: REQ-papra-intake-emails-fails-if-entry-is-not-valid-email
+    to: FACT-papra-intake-emails-allowed-origins-schema-fails-if-an-entry-is-not-a-valid
+    created_at: "2026-04-05T09:24:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-19baa66f6ebf
+    type: constrains
+    from: REQ-papra-intake-emails-fails-if-entry-is-not-valid-email
+    to: FACT-papra-subject-intake-emails-allowed-origins-schema
+    created_at: "2026-04-05T09:24:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

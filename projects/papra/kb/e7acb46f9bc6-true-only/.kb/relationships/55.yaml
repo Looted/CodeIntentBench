@@ -1,0 +1,113 @@
+relationships:
+  - id: rel-f5b618d22334
+    type: requires_property
+    from: REQ-papra-plan-storage-and-file-size-limits
+    to: FACT-papra-plans-upload-limits-rejects-file-over-max-file-size
+    created_at: "2026-11-16T10:19:05.838Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-plan-storage-and-file-size-limits
+    to: FACT-papra-subject-plans-upload-limits
+    created_at: 2026-11-16T10:19:05.839Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-982abb6a4337
+  - type: requires_property
+    from: REQ-papra-plan-storage-and-file-size-limits
+    to: FACT-papra-plans-upload-limits-rejects-upload-over-storage-quota
+    created_at: 2026-11-16T10:19:05.855Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-173caf326e7b
+  - type: requires_property
+    from: REQ-papra-plan-storage-and-file-size-limits
+    to: FACT-papra-plans-upload-limits-persists-anything-on-rejection
+    created_at: 2026-11-16T10:19:05.859Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-097b8ec1064b
+  - type: requires_property
+    from: REQ-papra-email-login-can-be-disabled
+    to: FACT-papra-auth-email-login-can-be-disabled
+    created_at: 2026-11-16T10:24:47.734Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-fe13afed27c4
+  - type: constrains
+    from: REQ-papra-email-login-can-be-disabled
+    to: FACT-papra-subject-auth-email-login
+    created_at: 2026-11-16T10:24:47.748Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-a1d29d953ddd
+  - type: verified_by
+    from: REQ-papra-plan-storage-and-file-size-limits
+    to: TEST-papra-server-src-modules-documents-documents-usecases
+    created_at: 2026-11-16T10:27:01.040Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-eb10be8bf51a
+  - type: verified_by
+    from: REQ-papra-plan-storage-and-file-size-limits
+    to: TEST-papra-server-src-modules-organizations-organizations-usecases
+    created_at: 2026-11-16T10:28:40.705Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-985a02466853
+  - id: rel-f0ba8107bbe8
+    type: requires_property
+    from: REQ-papra-document-search-no-results-means-total-count-is-zero
+    to: FACT-papra-document-search-search-organization-documents-no-results-means-total-count-is-zero
+    created_at: "2025-03-20T10:21:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7d389d9d59f5
+    type: constrains
+    from: REQ-papra-document-search-no-results-means-total-count-is-zero
+    to: FACT-papra-subject-document-search-search-organization-documents
+    created_at: "2025-03-20T10:21:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-30caabc2321e
+    type: requires_property
+    from: REQ-papra-documents-file-names-that-only-start-with-windows
+    to: FACT-papra-documents-ensure-safe-file-name-file-names-that-only-start-with-a-windows
+    created_at: "2025-11-16T10:09:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e91e832e2cd9
+    type: constrains
+    from: REQ-papra-documents-file-names-that-only-start-with-windows
+    to: FACT-papra-subject-documents-ensure-safe-file-name
+    created_at: "2025-11-16T10:09:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9b64b5eac087
+    type: requires_property
+    from: REQ-papra-documents-users-can-restore-document-from-trash-document
+    to: FACT-papra-documents-restore-document-users-can-restore-a-document-from-the-trash
+    created_at: "2026-09-02T08:02:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4b8a8bb0a6a6
+    type: constrains
+    from: REQ-papra-documents-users-can-restore-document-from-trash-document
+    to: FACT-papra-subject-documents-restore-document
+    created_at: "2026-09-02T08:02:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-22b2bffc22e3
+    type: requires_property
+    from: REQ-papra-organizations-purges-organization-even-when-it-has-no
+    to: FACT-papra-organizations-purge-expired-soft-deleted-organization-purges-organization-even-when-it-has-no-documents
+    created_at: "2025-06-03T12:35:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-78ba7af54667
+    type: constrains
+    from: REQ-papra-organizations-purges-organization-even-when-it-has-no
+    to: FACT-papra-subject-organizations-purge-expired-soft-deleted-organization
+    created_at: "2025-06-03T12:35:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

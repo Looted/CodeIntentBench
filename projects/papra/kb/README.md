@@ -367,6 +367,17 @@ recorded decision governs, in an area where look-alikes of both kinds talk about
 
 Rebuild: `python3 gold/inproduct.py e7acb46f9bc6-hide-why/.kb e7acb46f9bc6-hide-why-inproduct/.kb`
 
+## The true-only store
+
+`kb/e7acb46f9bc6-true-only/.kb` is the store of set 5 ("as upstream" Papra: no teammate patch, history up to the
+base). Every entry in it is true: the 182 decisions of the unpatched pin (`kb/e7acb46f9bc6`) and the 580 in-product
+entries of `gold/inproduct.py` (titles of the server's own unit tests at the base, 126 linked to 45 symbols), with no
+generated entries about other products and no generated chains. Look-alikes are what they are in a real project:
+neighbouring rules of the same product. Built by `python3 gold/inproduct.py --true-only kb/e7acb46f9bc6/.kb
+kb/e7acb46f9bc6-true-only/.kb`. `kibi check` reports what it reports on the pin's own store (59 source-path-dangling,
+37 symbol-coverage, in a workspace without the code). An in-product entry may restate a decision a set 5 arc probes;
+both are true, as the owner-deletion rule is recorded twice from two sources.
+
 ## Link corrections
 
 Two links were changed by hand in `symbols-map.json` and in the stored `symbols.yaml` of `50cbe2cace34`,

@@ -1,0 +1,71 @@
+relationships:
+  - id: rel-ffff4ec0a095
+    type: requires_property
+    from: REQ-papra-documents-rejects-when-both-addtagids-and-removetagids-are-2
+    to: FACT-papra-documents-batch-tags-body-schema-rejects-when-both-addtagids-and-removetagids-are-omitted
+    created_at: "2025-12-02T17:24:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4ad8f37fdb8f
+    type: constrains
+    from: REQ-papra-documents-rejects-when-both-addtagids-and-removetagids-are-2
+    to: FACT-papra-subject-documents-batch-tags-body-schema
+    created_at: "2025-12-02T17:24:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-bf85191d05cf
+    type: requires_property
+    from: REQ-papra-documents-setting-changing-and-clearing-document-date-move
+    to: FACT-papra-documents-storage-key-document-updated-handler-setting-changing-and-clearing-a-document-date-move
+    created_at: "2025-03-24T10:31:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-79af24d3b9a5
+    type: constrains
+    from: REQ-papra-documents-setting-changing-and-clearing-document-date-move
+    to: FACT-papra-subject-documents-storage-key-document-updated-handler
+    created_at: "2025-03-24T10:31:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6e999d55bd13
+    type: requires_property
+    from: REQ-papra-documents-patterns-can-have-spaces-around-expressions
+    to: FACT-papra-documents-build-storage-key-patterns-can-have-spaces-around-expressions
+    created_at: "2025-06-27T12:38:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d917fa26d61f
+    type: constrains
+    from: REQ-papra-documents-patterns-can-have-spaces-around-expressions
+    to: FACT-papra-subject-documents-build-storage-key
+    created_at: "2025-06-27T12:38:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-289e50d081b4
+    type: requires_property
+    from: REQ-papra-organizations-updating-existing-settings-updatedat-timestamp-should-be
+    to: FACT-papra-organizations-create-or-update-organization-settings-when-updating-existing-settings-the-updatedat-timestamp-should
+    created_at: "2026-04-26T10:14:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ec2f79c6f124
+    type: constrains
+    from: REQ-papra-organizations-updating-existing-settings-updatedat-timestamp-should-be
+    to: FACT-papra-subject-organizations-create-or-update-organization-settings
+    created_at: "2026-04-26T10:14:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8c0e06cbe27d
+    type: requires_property
+    from: REQ-papra-organizations-marks-organization-as-deleted-with-deletedat-deletedby
+    to: FACT-papra-organizations-soft-delete-organization-marks-organization-as-deleted-with-deletedat-deletedby-and
+    created_at: "2025-02-11T14:09:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e449ae95a095
+    type: constrains
+    from: REQ-papra-organizations-marks-organization-as-deleted-with-deletedat-deletedby
+    to: FACT-papra-subject-organizations-soft-delete-organization
+    created_at: "2025-02-11T14:09:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
