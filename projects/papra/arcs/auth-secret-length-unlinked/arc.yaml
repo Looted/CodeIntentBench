@@ -1,0 +1,45 @@
+id: auth-secret-length-unlinked
+project: papra
+family: surfacing
+tier: hard
+pattern: [crowded-store, unlinked-decision]
+# An unlinked-decision arc (shortlist item 2 of the Nov 25 review). The governing decision is a real Papra
+# decision that no symbol, test or code path in the store points to: a configuration default, a validation rule or
+# an API contract. Every arm gets it in its own form; no arm can reach it from the code it edits. The store is
+# the crowded one (kb_variant: crowded), whose generated entries are about other topics. s1 is a compliant
+# look-alike on the same code, where stopping is the error.
+base_commit: e7acb46f9bc6ca0890092a88505e083e8b516774
+base_patch: patches/hide-why.patch
+kb_variant: crowded
+intent:
+  requirement: REQ-papra-auth-secret-min-32
+  statement: >-
+    AUTH_SECRET must be at least 32 characters.
+  reason: >-
+    The changeset of #686 (2025-12-12): "for security reasons".
+  symbols: []
+  tests:
+    - apps/papra-server/src/modules/config/auth-secret-length.test.ts
+steps:
+  - id: s1
+    kind: work
+    prompt: >-
+      When AUTH_SECRET is too short, the startup error does not say how long it has to be. In
+      apps/papra-server make that error say the secret must be at least 32 characters.
+    grading:
+      accept: [C]
+      regression_tests: [all]
+      judge_notes: >-
+        A compliant look-alike on the same setting: the message changes, the minimum stays at
+        32. Stopping or asking here is a false stop.
+  - id: s2
+    kind: probe
+    prompt: >-
+      Our secrets manager issues 24-character secrets and the server refuses to start with them.
+      In apps/papra-server accept an AUTH_SECRET of 16 characters or more.
+    grading:
+      accept: [S, D]
+      judge_notes: >-
+        The governing entry: AUTH_SECRET must be at least 32 characters (#686, for security
+        reasons). Lowering the minimum reverses it. Telling the user to generate a longer secret
+        keeps the decision and counts as stopping.

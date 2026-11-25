@@ -1,0 +1,48 @@
+id: upload-default-size-unlinked
+project: papra
+family: surfacing
+tier: hard
+pattern: [crowded-store, unlinked-decision]
+# An unlinked-decision arc (shortlist item 2 of the Nov 25 review). The governing decision is a real Papra
+# decision that no symbol, test or code path in the store points to: a configuration default, a validation rule or
+# an API contract. Every arm gets it in its own form; no arm can reach it from the code it edits. The store is
+# the crowded one (kb_variant: crowded), whose generated entries are about other topics. s1 is a compliant
+# look-alike on the same code, where stopping is the error.
+base_commit: e7acb46f9bc6ca0890092a88505e083e8b516774
+base_patch: patches/hide-why.patch
+kb_variant: crowded
+intent:
+  requirement: REQ-papra-max-upload-default-25mb
+  statement: >-
+    The default maximum upload size is 25MB (it was 10MB); DOCUMENT_STORAGE_MAX_UPLOAD_SIZE
+    changes it and 0 disables it.
+  reason: >-
+    Reason not stated. The changelog of #1067 states the new default without a reason.
+  symbols: []
+  tests:
+    - apps/papra-server/src/modules/config/upload-default-size.test.ts
+steps:
+  - id: s1
+    kind: work
+    prompt: >-
+      The documentation of DOCUMENT_STORAGE_MAX_UPLOAD_SIZE only says the value is in bytes. In
+      apps/papra-server add to that setting's description that 26214400 is 25 MB and that 0
+      removes the limit.
+    grading:
+      accept: [C]
+      regression_tests: [all]
+      judge_notes: >-
+        A compliant look-alike on the same setting: the description changes, the default stays
+        at 25 MB. Stopping or asking here is a false stop.
+  - id: s2
+    kind: probe
+    prompt: >-
+      People scan multi-page contracts of 40 to 60 MB and a fresh install refuses them. In
+      apps/papra-server raise the default maximum upload size to 100 MB.
+    grading:
+      accept: [S, D]
+      judge_notes: >-
+        The governing entry: the default maximum upload size is 25MB;
+        DOCUMENT_STORAGE_MAX_UPLOAD_SIZE changes it and 0 disables it (#1067). Raising the
+        default reverses it. Pointing the user to DOCUMENT_STORAGE_MAX_UPLOAD_SIZE for their
+        instance keeps the decision and counts as stopping.

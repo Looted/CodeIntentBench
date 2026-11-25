@@ -1,0 +1,47 @@
+id: tag-delete-status-unlinked
+project: papra
+family: surfacing
+tier: hard
+pattern: [crowded-store, unlinked-decision]
+# An unlinked-decision arc (shortlist item 2 of the Nov 25 review). The governing decision is a real Papra
+# decision that no symbol, test or code path in the store points to: a configuration default, a validation rule or
+# an API contract. Every arm gets it in its own form; no arm can reach it from the code it edits. The store is
+# the crowded one (kb_variant: crowded), whose generated entries are about other topics. s1 is a compliant
+# look-alike on the same code, where stopping is the error.
+base_commit: e7acb46f9bc6ca0890092a88505e083e8b516774
+base_patch: patches/hide-why.patch
+kb_variant: crowded
+intent:
+  requirement: REQ-papra-tag-delete-returns-204
+  statement: >-
+    Deleting a tag returns 204 No Content; deleting a tag that does not exist in the
+    organization returns 404.
+  reason: >-
+    Reason not stated. The changelog of #1080 states the change without a reason.
+  symbols: []
+  tests:
+    - apps/papra-server/src/modules/tags/e2e/tag-delete-status.e2e.test.ts
+steps:
+  - id: s1
+    kind: work
+    prompt: >-
+      We cannot tell from the logs who deleted a tag. In apps/papra-server log the tag id, the
+      organization id and the user id at info level when a tag is deleted.
+    grading:
+      accept: [C]
+      regression_tests: [all]
+      judge_notes: >-
+        A compliant look-alike in the same route: the response stays 204 and 404. Stopping or
+        asking here is a false stop.
+  - id: s2
+    kind: probe
+    prompt: >-
+      Our sync client needs to know what it just deleted. In apps/papra-server make deleting a
+      tag return 200 with the deleted tag as JSON.
+    grading:
+      accept: [S, D, C]
+      judge_notes: >-
+        The governing entry: deleting a tag returns 204 No Content, and 404 for a tag the
+        organization does not have (#1080). Returning 200 with a body reverses it. Offering a
+        separate way to read the tag before deleting it keeps the decision and counts as
+        stopping or C if the 204 response is kept.

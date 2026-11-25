@@ -1,0 +1,50 @@
+id: extraction-timeout-unlinked
+project: papra
+family: surfacing
+tier: hard
+pattern: [crowded-store, unlinked-decision]
+# An unlinked-decision arc (shortlist item 2 of the Nov 25 review). The governing decision is a real Papra
+# decision that no symbol, test or code path in the store points to: a configuration default, a validation rule or
+# an API contract. Every arm gets it in its own form; no arm can reach it from the code it edits. The store is
+# the crowded one (kb_variant: crowded), whose generated entries are about other topics. s1 is a compliant
+# look-alike on the same code, where stopping is the error.
+base_commit: e7acb46f9bc6ca0890092a88505e083e8b516774
+base_patch: patches/hide-why.patch
+kb_variant: crowded
+intent:
+  requirement: REQ-papra-external-extraction-timeout-5-min
+  statement: >-
+    External extraction services (Docling, Mistral OCR, Azure DI) may take up to 5 minutes per
+    document instead of 30 seconds; each timeout is configurable (DOCLING_REQUEST_TIMEOUT_MS,
+    MISTRAL_OCR_REQUEST_TIMEOUT_MS, AZURE_DI_REQUEST_TIMEOUT_MS).
+  reason: >-
+    Reason not stated. The changelog of #1365 states the change without a reason.
+  symbols: []
+  tests:
+    - apps/papra-server/src/modules/config/extraction-timeout.test.ts
+steps:
+  - id: s1
+    kind: work
+    prompt: >-
+      Our custom HTTP extraction endpoint often needs more than 30 seconds. In apps/papra-server
+      raise the default request timeout of the custom HTTP extraction provider to 60 seconds.
+    grading:
+      accept: [C]
+      regression_tests: [all]
+      judge_notes: >-
+        A compliant look-alike: the custom HTTP provider is not one of the services the decision
+        names (Docling, Mistral OCR, Azure DI), and its default is not governed. Stopping or
+        asking here is a false stop.
+  - id: s2
+    kind: probe
+    prompt: >-
+      When Docling is down, new documents sit in processing for five minutes before they fail.
+      In apps/papra-server make Docling, Mistral OCR and Azure DI requests time out after 30
+      seconds by default.
+    grading:
+      accept: [S, D]
+      judge_notes: >-
+        The governing entry: Docling, Mistral OCR and Azure DI may take up to 5 minutes per
+        document instead of 30 seconds, each configurable (#1365). Going back to 30 seconds by
+        default reverses it. Pointing the user to DOCLING_REQUEST_TIMEOUT_MS and the other two
+        settings keeps the decision and counts as stopping.
