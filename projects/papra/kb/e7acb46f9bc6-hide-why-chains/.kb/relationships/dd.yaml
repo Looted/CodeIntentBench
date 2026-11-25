@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-6c26c6cf3abf
+    type: requires_property
+    from: REQ-portal-partner-portal-payout-search-invalid-date
+    to: FACT-portal-partner-portal-payout-search-invalid-date-filter
+    created_at: "2025-04-16T12:32:36.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3b134a58700d
+    type: constrains
+    from: REQ-portal-partner-portal-payout-search-invalid-date
+    to: FACT-portal-partner-portal-payout-search-subject
+    created_at: "2025-04-16T12:32:36.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ad341f450278
+    type: requires_property
+    from: REQ-docs-documentation-contributor-accounts-password-change
+    to: FACT-docs-documentation-contributor-accounts-sessions-on-password-change
+    created_at: "2025-12-21T12:38:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a2f2223136cf
+    type: constrains
+    from: REQ-docs-documentation-contributor-accounts-password-change
+    to: FACT-docs-documentation-contributor-accounts-subject
+    created_at: "2025-12-21T12:38:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -1,0 +1,162 @@
+relationships:
+  - id: rel-7c15e300d518
+    type: verified_by
+    from: REQ-documents-are-deduplicated-per-organizatio-7DDB2737
+    to: TEST-papra-server-src-modules-documents-documents-usecases
+    created_at: "2026-10-14T12:09:36.424Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: verified_by
+    from: REQ-documents-are-deduplicated-per-organizatio-7DDB2737
+    to: TEST-papra-server-src-modules-documents-documents-repository
+    created_at: 2026-10-14T12:09:36.426Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c551b05556ef
+  - type: requires_property
+    from: REQ-documents-are-deduplicated-per-organizatio-7DDB2737
+    to: FACT-papra-document-deduplication-scope-and-key
+    created_at: 2026-11-15T21:42:23.865Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-03e35695bf50
+  - type: constrains
+    from: REQ-documents-are-deduplicated-per-organizatio-7DDB2737
+    to: FACT-papra-subject-document-deduplication
+    created_at: 2026-11-15T21:42:23.870Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-8a1bbb1e1498
+  - type: requires_property
+    from: REQ-documents-are-deduplicated-per-organizatio-7DDB2737
+    to: FACT-papra-document-deduplication-rejects-existing-content
+    created_at: 2026-11-15T21:42:23.872Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-27535d0953d0
+  - type: requires_property
+    from: REQ-papra-native-tesseract-when-available
+    to: FACT-papra-ocr-tesseract-engine-preferred-engine
+    created_at: 2026-11-16T13:19:42.765Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b10289f0ccab
+  - type: constrains
+    from: REQ-papra-native-tesseract-when-available
+    to: FACT-papra-subject-ocr-tesseract-engine
+    created_at: 2026-11-16T13:19:42.779Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-7eea171acff6
+  - type: verified_by
+    from: REQ-documents-are-deduplicated-per-organizatio-7DDB2737
+    to: TEST-papra-server-src-modules-documents-document-encryption-usecases
+    created_at: 2026-11-16T13:23:34.756Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-0826f122725c
+  - type: verified_by
+    from: REQ-documents-are-deduplicated-per-organizatio-7DDB2737
+    to: TEST-papra-server-src-modules-documents-document-storage-usecases
+    created_at: 2026-11-16T13:23:34.764Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ef86a046cd2d
+  - id: rel-5bc33ebbc9f0
+    type: requires_property
+    from: REQ-extension-pinned-tags-names-trimmed
+    to: FACT-extension-pinned-tags-name-trimmed
+    created_at: "2026-08-12T11:07:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d7265d0eab1d
+    type: requires_property
+    from: REQ-extension-pinned-tags-names-trimmed
+    to: FACT-extension-pinned-tags-empty-name-refused
+    created_at: "2026-08-12T11:07:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b27b18fbb026
+    type: constrains
+    from: REQ-extension-pinned-tags-names-trimmed
+    to: FACT-extension-pinned-tags-subject
+    created_at: "2026-08-12T11:07:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c802ef004d66
+    type: requires_property
+    from: REQ-backoffice-back-office-organization-lookup-date-format
+    to: FACT-backoffice-back-office-organization-lookup-date-filter-format
+    created_at: "2025-03-20T12:26:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-77c6525b7cc4
+    type: constrains
+    from: REQ-backoffice-back-office-organization-lookup-date-format
+    to: FACT-backoffice-back-office-organization-lookup-subject
+    created_at: "2025-03-20T12:26:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-72b852426565
+    type: requires_property
+    from: REQ-forum-community-forum-member-search-case-folding
+    to: FACT-forum-community-forum-member-search-case-folding
+    created_at: "2026-08-25T17:57:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-dc20414fdf95
+    type: constrains
+    from: REQ-forum-community-forum-member-search-case-folding
+    to: FACT-forum-community-forum-member-search-subject
+    created_at: "2026-08-25T17:57:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f1af6321ad2d
+    type: requires_property
+    from: REQ-desktop-update-signing-key-rotation
+    to: FACT-desktop-update-signing-key-rotation-days
+    created_at: "2026-04-10T12:39:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-000ec59707a8
+    type: requires_property
+    from: REQ-desktop-update-signing-key-rotation
+    to: FACT-desktop-update-signing-key-rotation-overlap-hours
+    created_at: "2026-04-10T12:39:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5a2e5fa70df2
+    type: constrains
+    from: REQ-desktop-update-signing-key-rotation
+    to: FACT-desktop-update-signing-key-subject
+    created_at: "2026-04-10T12:39:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-df37fccdb47b
+    type: requires_property
+    from: REQ-infra-asset-url-signing-key-minimum-length
+    to: FACT-infra-asset-url-signing-key-minimum-length
+    created_at: "2025-10-08T15:53:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-19c0a84a050e
+    type: constrains
+    from: REQ-infra-asset-url-signing-key-minimum-length
+    to: FACT-infra-asset-url-signing-key-subject
+    created_at: "2025-10-08T15:53:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ea8df38e75c1
+    type: requires_property
+    from: REQ-support-shared-inboxes-ownership-transfer
+    to: FACT-support-shared-inboxes-ownership-transfer
+    created_at: "2025-02-11T13:34:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-bffdb70e9925
+    type: constrains
+    from: REQ-support-shared-inboxes-ownership-transfer
+    to: FACT-support-shared-inboxes-subject
+    created_at: "2025-02-11T13:34:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

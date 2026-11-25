@@ -1,0 +1,50 @@
+relationships:
+  - id: rel-e10e101cb1cc
+    type: requires_property
+    from: REQ-website-demo-workspaces-at-the-limit
+    to: FACT-website-demo-workspaces-at-limit
+    created_at: "2025-04-27T10:40:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4862fc4a41b6
+    type: constrains
+    from: REQ-website-demo-workspaces-at-the-limit
+    to: FACT-website-demo-workspaces-subject
+    created_at: "2025-04-27T10:40:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-059c0259a235
+    type: requires_property
+    from: REQ-website-demo-workspaces-deletion-grace
+    to: FACT-website-demo-workspaces-restore-window-days
+    created_at: "2025-04-22T11:28:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-695622a60a0c
+    type: requires_property
+    from: REQ-website-demo-workspaces-deletion-grace
+    to: FACT-website-demo-workspaces-purged-after-window
+    created_at: "2025-04-22T11:28:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c13e52008dbb
+    type: constrains
+    from: REQ-website-demo-workspaces-deletion-grace
+    to: FACT-website-demo-workspaces-subject
+    created_at: "2025-04-22T11:28:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-87da255bb2a5
+    type: requires_property
+    from: REQ-backoffice-back-office-staff-accounts-reset-and-two-factor
+    to: FACT-backoffice-back-office-staff-accounts-reset-disables-two-factor
+    created_at: "2026-09-21T15:25:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-900a39e3845b
+    type: constrains
+    from: REQ-backoffice-back-office-staff-accounts-reset-and-two-factor
+    to: FACT-backoffice-back-office-staff-accounts-subject
+    created_at: "2026-09-21T15:25:15.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-15aac5250830
+    type: requires_property
+    from: REQ-telemetry-event-labels-batch-size
+    to: FACT-telemetry-event-labels-batch-maximum
+    created_at: "2025-07-06T10:37:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c363539601d5
+    type: constrains
+    from: REQ-telemetry-event-labels-batch-size
+    to: FACT-telemetry-event-labels-subject
+    created_at: "2025-07-06T10:37:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-631641d95c6e
+    type: requires_property
+    from: REQ-backoffice-back-office-audit-log-search-minimum-length
+    to: FACT-backoffice-back-office-audit-log-search-query-min-length
+    created_at: "2026-01-25T16:10:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0ebe229d8cb7
+    type: constrains
+    from: REQ-backoffice-back-office-audit-log-search-minimum-length
+    to: FACT-backoffice-back-office-audit-log-search-subject
+    created_at: "2026-01-25T16:10:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

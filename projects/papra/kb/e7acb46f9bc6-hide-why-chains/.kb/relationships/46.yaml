@@ -1,0 +1,113 @@
+relationships:
+  - id: rel-904204f0c733
+    type: requires_property
+    from: REQ-papra-document-trash-returns-204
+    to: FACT-papra-documents-trash-response-status-code
+    created_at: "2026-11-16T13:17:22.749Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-document-trash-returns-204
+    to: FACT-papra-subject-documents-trash-response
+    created_at: 2026-11-16T13:17:22.749Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-957f64ff3d7a
+  - id: rel-293ef16fd396
+    type: requires_property
+    from: REQ-website-changelog-labels-maximum-count
+    to: FACT-website-changelog-labels-maximum-count
+    created_at: "2026-09-23T15:40:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a3e0de11e854
+    type: requires_property
+    from: REQ-website-changelog-labels-maximum-count
+    to: FACT-website-changelog-labels-limit-configurable
+    created_at: "2026-09-23T15:40:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b6f5e2da0bf4
+    type: constrains
+    from: REQ-website-changelog-labels-maximum-count
+    to: FACT-website-changelog-labels-subject
+    created_at: "2026-09-23T15:40:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c30e1bcdb582
+    type: requires_property
+    from: REQ-cli-tag-aliases-maximum-count
+    to: FACT-cli-tag-aliases-maximum-count
+    created_at: "2025-09-13T10:14:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-563880da3b52
+    type: requires_property
+    from: REQ-cli-tag-aliases-maximum-count
+    to: FACT-cli-tag-aliases-limit-configurable
+    created_at: "2025-09-13T10:14:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3e057347afc3
+    type: constrains
+    from: REQ-cli-tag-aliases-maximum-count
+    to: FACT-cli-tag-aliases-subject
+    created_at: "2025-09-13T10:14:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7fc08ef09e4f
+    type: requires_property
+    from: REQ-mobile-mobile-app-tag-picker-filter-page-size
+    to: FACT-mobile-mobile-app-tag-picker-filter-page-size-maximum
+    created_at: "2025-08-07T17:14:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-beb14a58b5b1
+    type: constrains
+    from: REQ-mobile-mobile-app-tag-picker-filter-page-size
+    to: FACT-mobile-mobile-app-tag-picker-filter-subject
+    created_at: "2025-08-07T17:14:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1687a757851e
+    type: requires_property
+    from: REQ-backoffice-organizations-deletion-grace
+    to: FACT-backoffice-organizations-restore-window-days
+    created_at: "2026-04-10T15:37:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3135e5e99612
+    type: requires_property
+    from: REQ-backoffice-organizations-deletion-grace
+    to: FACT-backoffice-organizations-purged-after-window
+    created_at: "2026-04-10T15:37:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-93e3fb0333b7
+    type: constrains
+    from: REQ-backoffice-organizations-deletion-grace
+    to: FACT-backoffice-organizations-subject
+    created_at: "2026-04-10T15:37:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5cd67420ea6c
+    type: requires_property
+    from: REQ-website-demo-workspaces-what-counts
+    to: FACT-website-demo-workspaces-counted-toward-limit
+    created_at: "2026-02-26T17:47:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-66e45c21c116
+    type: requires_property
+    from: REQ-website-demo-workspaces-what-counts
+    to: FACT-website-demo-workspaces-limit-detail
+    created_at: "2026-02-26T17:47:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6143cb148043
+    type: constrains
+    from: REQ-website-demo-workspaces-what-counts
+    to: FACT-website-demo-workspaces-subject
+    created_at: "2026-02-26T17:47:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

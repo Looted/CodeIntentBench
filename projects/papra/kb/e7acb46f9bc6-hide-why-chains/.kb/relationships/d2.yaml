@@ -1,0 +1,92 @@
+relationships:
+  - id: rel-b09b9f0c6b97
+    type: requires_property
+    from: REQ-papra-external-extraction-providers
+    to: FACT-papra-content-extraction-external-providers-available
+    created_at: "2026-11-16T13:19:46.499Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-external-extraction-providers
+    to: FACT-papra-subject-content-extraction-external-providers
+    created_at: 2026-11-16T13:19:46.499Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d17bac971c05
+  - type: requires_property
+    from: REQ-papra-external-extraction-providers
+    to: FACT-papra-content-extraction-external-providers-default-provider
+    created_at: 2026-11-16T13:19:46.511Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-20f7553e692a
+  - id: rel-de3f3289aa81
+    type: requires_property
+    from: REQ-mobile-offline-tag-drafts-names-trimmed
+    to: FACT-mobile-offline-tag-drafts-name-trimmed
+    created_at: "2025-12-10T14:44:45.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-59822d88c2a5
+    type: requires_property
+    from: REQ-mobile-offline-tag-drafts-names-trimmed
+    to: FACT-mobile-offline-tag-drafts-empty-name-refused
+    created_at: "2025-12-10T14:44:45.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0b134fa7fb19
+    type: constrains
+    from: REQ-mobile-offline-tag-drafts-names-trimmed
+    to: FACT-mobile-offline-tag-drafts-subject
+    created_at: "2025-12-10T14:44:45.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c4838352e70a
+    type: requires_property
+    from: REQ-desktop-watch-folder-labels-maximum-count
+    to: FACT-desktop-watch-folder-labels-maximum-count
+    created_at: "2026-06-10T08:52:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9bb2ad87cb45
+    type: requires_property
+    from: REQ-desktop-watch-folder-labels-maximum-count
+    to: FACT-desktop-watch-folder-labels-limit-configurable
+    created_at: "2026-06-10T08:52:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8fce97da75b7
+    type: constrains
+    from: REQ-desktop-watch-folder-labels-maximum-count
+    to: FACT-desktop-watch-folder-labels-subject
+    created_at: "2026-06-10T08:52:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-dfe95345f12e
+    type: requires_property
+    from: REQ-desktop-desktop-sync-client-local-file-search-date-format
+    to: FACT-desktop-desktop-sync-client-local-file-search-date-filter-format
+    created_at: "2026-08-22T11:23:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fdb773e5fa72
+    type: constrains
+    from: REQ-desktop-desktop-sync-client-local-file-search-date-format
+    to: FACT-desktop-desktop-sync-client-local-file-search-subject
+    created_at: "2026-08-22T11:23:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a04158c1b298
+    type: requires_property
+    from: REQ-portal-partner-portal-client-search-unknown-filter
+    to: FACT-portal-partner-portal-client-search-unknown-filter
+    created_at: "2025-03-07T17:32:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c94f5922e762
+    type: constrains
+    from: REQ-portal-partner-portal-client-search-unknown-filter
+    to: FACT-portal-partner-portal-client-search-subject
+    created_at: "2025-03-07T17:32:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

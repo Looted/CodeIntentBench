@@ -1,0 +1,50 @@
+relationships:
+  - id: rel-66958e48e2dd
+    type: requires_property
+    from: REQ-docs-sidebar-groups-maximum-count
+    to: FACT-docs-sidebar-groups-maximum-count
+    created_at: "2026-09-02T08:26:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0cee451088f2
+    type: requires_property
+    from: REQ-docs-sidebar-groups-maximum-count
+    to: FACT-docs-sidebar-groups-limit-configurable
+    created_at: "2026-09-02T08:26:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9b373416a16a
+    type: constrains
+    from: REQ-docs-sidebar-groups-maximum-count
+    to: FACT-docs-sidebar-groups-subject
+    created_at: "2026-09-02T08:26:54.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ea9457c95f68
+    type: requires_property
+    from: REQ-forum-community-forum-post-search-date-format
+    to: FACT-forum-community-forum-post-search-date-filter-format
+    created_at: "2025-09-04T13:23:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1ec6fa3fda5c
+    type: constrains
+    from: REQ-forum-community-forum-post-search-date-format
+    to: FACT-forum-community-forum-post-search-subject
+    created_at: "2025-09-04T13:23:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4f993f7c4f0c
+    type: requires_property
+    from: REQ-n8n-organization-connections-name-uniqueness
+    to: FACT-n8n-organization-connections-name-uniqueness
+    created_at: "2025-02-06T16:39:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-70cee59739d9
+    type: constrains
+    from: REQ-n8n-organization-connections-name-uniqueness
+    to: FACT-n8n-organization-connections-subject
+    created_at: "2025-02-06T16:39:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

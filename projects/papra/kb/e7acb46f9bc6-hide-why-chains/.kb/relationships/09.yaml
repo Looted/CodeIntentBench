@@ -1,0 +1,71 @@
+relationships:
+  - id: rel-52deaf9ea545
+    type: requires_property
+    from: REQ-cli-profiles-name-length
+    to: FACT-cli-profiles-name-max-length
+    created_at: "2025-05-10T15:35:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3c9123e61419
+    type: constrains
+    from: REQ-cli-profiles-name-length
+    to: FACT-cli-profiles-subject
+    created_at: "2025-05-10T15:35:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6c3faae96e01
+    type: requires_property
+    from: REQ-telemetry-event-labels-listing-order
+    to: FACT-telemetry-event-labels-listing-order
+    created_at: "2026-08-16T08:16:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3967dae2ca63
+    type: constrains
+    from: REQ-telemetry-event-labels-listing-order
+    to: FACT-telemetry-event-labels-subject
+    created_at: "2026-08-16T08:16:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-293104e628f9
+    type: requires_property
+    from: REQ-mobile-mobile-app-tag-picker-filter-minimum-length
+    to: FACT-mobile-mobile-app-tag-picker-filter-query-min-length
+    created_at: "2025-09-21T15:09:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4f0b6084ff34
+    type: constrains
+    from: REQ-mobile-mobile-app-tag-picker-filter-minimum-length
+    to: FACT-mobile-mobile-app-tag-picker-filter-subject
+    created_at: "2025-09-21T15:09:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fd41bf6505f1
+    type: requires_property
+    from: REQ-docs-docsearch-admin-key-required-in-production
+    to: FACT-docs-docsearch-admin-key-required-in-production
+    created_at: "2026-06-27T14:25:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-61904a8871d0
+    type: constrains
+    from: REQ-docs-docsearch-admin-key-required-in-production
+    to: FACT-docs-docsearch-admin-key-subject
+    created_at: "2026-06-27T14:25:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-dc21766c3914
+    type: requires_property
+    from: REQ-infra-backup-encryption-key-minimum-length-earlier
+    to: FACT-infra-backup-encryption-key-minimum-length-earlier
+    created_at: "2026-03-16T11:55:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e454b4feef29
+    type: constrains
+    from: REQ-infra-backup-encryption-key-minimum-length-earlier
+    to: FACT-infra-backup-encryption-key-subject
+    created_at: "2026-03-16T11:55:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -1,0 +1,6 @@
+{
+ "An instance admin cannot change the limit for an individual user": "normative",
+ "The server uses a built-in default AUTH_SECRET when none is set": "normative",
+ "When AUTH_SECRET is not set in production, the server generates a random secret at startup and logs a warning": "condition",
+ "When an allowed-domain list is configured, emails whose domain is in the list or is a subdomain of a listed domain may sign up": "condition"
+}

@@ -1,0 +1,106 @@
+relationships:
+  - id: rel-aa0e9a96945c
+    type: requires_property
+    from: REQ-papra-webhooks-standard-webhooks-spec
+    to: FACT-papra-webhook-signature-format
+    created_at: "2026-11-16T13:20:03.511Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-webhooks-standard-webhooks-spec
+    to: FACT-papra-subject-webhook-signature
+    created_at: 2026-11-16T13:20:03.512Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-5563641b198d
+  - id: rel-873482f8bd2a
+    type: requires_property
+    from: REQ-backoffice-coupon-codes-listing-order
+    to: FACT-backoffice-coupon-codes-listing-order
+    created_at: "2025-06-11T13:48:58.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-de00fde910f3
+    type: constrains
+    from: REQ-backoffice-coupon-codes-listing-order
+    to: FACT-backoffice-coupon-codes-subject
+    created_at: "2025-06-11T13:48:58.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d9c3a43c9406
+    type: requires_property
+    from: REQ-docs-api-reference-search-page-size
+    to: FACT-docs-api-reference-search-page-size-maximum
+    created_at: "2026-04-01T13:54:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e0c8119bb5c6
+    type: constrains
+    from: REQ-docs-api-reference-search-page-size
+    to: FACT-docs-api-reference-search-subject
+    created_at: "2026-04-01T13:54:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-02cc7fcff01b
+    type: requires_property
+    from: REQ-forum-community-forum-member-search-unknown-filter
+    to: FACT-forum-community-forum-member-search-unknown-filter
+    created_at: "2026-07-24T11:18:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c1df2201f3ce
+    type: constrains
+    from: REQ-forum-community-forum-member-search-unknown-filter
+    to: FACT-forum-community-forum-member-search-subject
+    created_at: "2026-07-24T11:18:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5ebb6f850dcc
+    type: requires_property
+    from: REQ-marketplace-author-registration-plus-addressing
+    to: FACT-marketplace-author-registration-plus-addressing
+    created_at: "2025-12-06T11:54:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7ccc36af66fa
+    type: constrains
+    from: REQ-marketplace-author-registration-plus-addressing
+    to: FACT-marketplace-author-registration-subject
+    created_at: "2025-12-06T11:54:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8b52ac20de0c
+    type: requires_property
+    from: REQ-forum-forum-groups-limit-override
+    to: FACT-forum-forum-groups-limit-override
+    created_at: "2025-02-20T15:12:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-51742ce608da
+    type: constrains
+    from: REQ-forum-forum-groups-limit-override
+    to: FACT-forum-forum-groups-subject
+    created_at: "2025-02-20T15:12:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e5254f445f6e
+    type: requires_property
+    from: REQ-forum-community-forum-accounts-password-length
+    to: FACT-forum-community-forum-accounts-password-min-length
+    created_at: "2025-10-17T12:54:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-dda7cb0e5967
+    type: requires_property
+    from: REQ-forum-community-forum-accounts-password-length
+    to: FACT-forum-community-forum-accounts-character-class-rule
+    created_at: "2025-10-17T12:54:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1b13b67df08e
+    type: constrains
+    from: REQ-forum-community-forum-accounts-password-length
+    to: FACT-forum-community-forum-accounts-subject
+    created_at: "2025-10-17T12:54:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

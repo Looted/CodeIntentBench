@@ -1,0 +1,120 @@
+relationships:
+  - id: rel-db3e20665760
+    type: requires_property
+    from: REQ-papra-max-upload-size-can-be-disabled
+    to: FACT-papra-upload-max-size-disabled-by-value
+    created_at: "2026-11-16T13:20:25.236Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-max-upload-size-can-be-disabled
+    to: FACT-papra-subject-upload-max-size
+    created_at: 2026-11-16T13:20:25.237Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6a5a6e50198e
+  - type: requires_property
+    from: REQ-papra-max-upload-default-25mb
+    to: FACT-papra-upload-max-size-default-megabytes
+    created_at: 2026-11-16T13:20:47.403Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-852c29534980
+  - type: constrains
+    from: REQ-papra-max-upload-default-25mb
+    to: FACT-papra-subject-upload-max-size
+    created_at: 2026-11-16T13:20:47.422Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-3e0730224a64
+  - type: requires_property
+    from: REQ-papra-max-upload-default-25mb
+    to: FACT-papra-upload-max-size-setting
+    created_at: 2026-11-16T13:20:47.426Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-dcece91ea38d
+  - id: rel-6f2815fe1e6d
+    type: requires_property
+    from: REQ-backoffice-customer-tags-name-length
+    to: FACT-backoffice-customer-tags-name-max-length
+    created_at: "2026-07-28T16:26:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-da1710824f8c
+    type: constrains
+    from: REQ-backoffice-customer-tags-name-length
+    to: FACT-backoffice-customer-tags-subject
+    created_at: "2026-07-28T16:26:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-55313fa32ec8
+    type: requires_property
+    from: REQ-support-ticket-tags-unique-ignoring-case
+    to: FACT-support-ticket-tags-name-uniqueness
+    created_at: "2025-04-16T11:20:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e9528c6eea22
+    type: requires_property
+    from: REQ-support-ticket-tags-unique-ignoring-case
+    to: FACT-support-ticket-tags-duplicate-error
+    created_at: "2025-04-16T11:20:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6efc692c2896
+    type: constrains
+    from: REQ-support-ticket-tags-unique-ignoring-case
+    to: FACT-support-ticket-tags-subject
+    created_at: "2025-04-16T11:20:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1aad69d00c69
+    type: requires_property
+    from: REQ-marketplace-marketplace-auth-secret-minimum-length-earlier
+    to: FACT-marketplace-marketplace-auth-secret-minimum-length-earlier
+    created_at: "2025-09-02T12:02:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9da4fca29274
+    type: constrains
+    from: REQ-marketplace-marketplace-auth-secret-minimum-length-earlier
+    to: FACT-marketplace-marketplace-auth-secret-subject
+    created_at: "2025-09-02T12:02:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-923400ecad37
+    type: requires_property
+    from: REQ-mobile-signed-in-accounts-deletion-grace
+    to: FACT-mobile-signed-in-accounts-restore-window-days
+    created_at: "2025-02-26T10:57:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-711cfa117fde
+    type: requires_property
+    from: REQ-mobile-signed-in-accounts-deletion-grace
+    to: FACT-mobile-signed-in-accounts-purged-after-window
+    created_at: "2025-02-26T10:57:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-67cb122c433b
+    type: constrains
+    from: REQ-mobile-signed-in-accounts-deletion-grace
+    to: FACT-mobile-signed-in-accounts-subject
+    created_at: "2025-02-26T10:57:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-02cfc54589eb
+    type: requires_property
+    from: REQ-portal-partner-portal-accounts-reset-rate-limit
+    to: FACT-portal-partner-portal-accounts-reset-emails-per-hour
+    created_at: "2026-04-27T09:33:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-646547d6ab75
+    type: constrains
+    from: REQ-portal-partner-portal-accounts-reset-rate-limit
+    to: FACT-portal-partner-portal-accounts-subject
+    created_at: "2026-04-27T09:33:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

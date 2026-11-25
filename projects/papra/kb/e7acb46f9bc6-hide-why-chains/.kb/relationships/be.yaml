@@ -1,0 +1,106 @@
+relationships:
+  - id: rel-859f23a68147
+    type: requires_property
+    from: REQ-backoffice-back-office-organization-lookup-unknown-filter
+    to: FACT-backoffice-back-office-organization-lookup-unknown-filter
+    created_at: "2025-12-25T17:48:58.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6dd33af34f81
+    type: constrains
+    from: REQ-backoffice-back-office-organization-lookup-unknown-filter
+    to: FACT-backoffice-back-office-organization-lookup-subject
+    created_at: "2025-12-25T17:48:58.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a0c4e1bd2de1
+    type: requires_property
+    from: REQ-portal-partner-portal-payout-search-minimum-length
+    to: FACT-portal-partner-portal-payout-search-query-min-length
+    created_at: "2026-08-10T14:22:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f40d82dc0fce
+    type: constrains
+    from: REQ-portal-partner-portal-payout-search-minimum-length
+    to: FACT-portal-partner-portal-payout-search-subject
+    created_at: "2026-08-10T14:22:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a5fd57d335b5
+    type: requires_property
+    from: REQ-marketplace-template-marketplace-search-invalid-date
+    to: FACT-marketplace-template-marketplace-search-invalid-date-filter
+    created_at: "2026-04-26T17:52:36.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-963399fbb451
+    type: constrains
+    from: REQ-marketplace-template-marketplace-search-invalid-date
+    to: FACT-marketplace-template-marketplace-search-subject
+    created_at: "2026-04-26T17:52:36.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2349a366d12c
+    type: requires_property
+    from: REQ-mobile-push-relay-auth-key-generated-when-missing
+    to: FACT-mobile-push-relay-auth-key-required-in-production
+    created_at: "2025-08-15T10:37:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d955440bdec2
+    type: requires_property
+    from: REQ-mobile-push-relay-auth-key-generated-when-missing
+    to: FACT-mobile-push-relay-auth-key-missing-secret-warning
+    created_at: "2025-08-15T10:37:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d86c13ab28c1
+    type: constrains
+    from: REQ-mobile-push-relay-auth-key-generated-when-missing
+    to: FACT-mobile-push-relay-auth-key-subject
+    created_at: "2025-08-15T10:37:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-052ab7cabdbc
+    type: requires_property
+    from: REQ-website-newsletter-preference-accounts-password-length
+    to: FACT-website-newsletter-preference-accounts-password-min-length
+    created_at: "2025-11-16T10:55:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-369224b6de0c
+    type: requires_property
+    from: REQ-website-newsletter-preference-accounts-password-length
+    to: FACT-website-newsletter-preference-accounts-character-class-rule
+    created_at: "2025-11-16T10:55:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c68911e202bd
+    type: constrains
+    from: REQ-website-newsletter-preference-accounts-password-length
+    to: FACT-website-newsletter-preference-accounts-subject
+    created_at: "2025-11-16T10:55:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0908495e44f7
+    type: requires_property
+    from: REQ-n8n-integration-service-accounts-reset-link-single-use
+    to: FACT-n8n-integration-service-accounts-reset-link-single-use
+    created_at: "2025-06-20T15:58:36.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-25efd9a7a756
+    type: requires_property
+    from: REQ-n8n-integration-service-accounts-reset-link-single-use
+    to: FACT-n8n-integration-service-accounts-new-link-invalidates-old
+    created_at: "2025-06-20T15:58:36.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a65adeb73f33
+    type: constrains
+    from: REQ-n8n-integration-service-accounts-reset-link-single-use
+    to: FACT-n8n-integration-service-accounts-subject
+    created_at: "2025-06-20T15:58:36.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

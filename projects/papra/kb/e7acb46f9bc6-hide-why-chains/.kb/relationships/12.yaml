@@ -1,0 +1,127 @@
+relationships:
+  - id: rel-6ba5ab8b7abd
+    type: requires_property
+    from: REQ-backoffice-customer-tags-names-trimmed
+    to: FACT-backoffice-customer-tags-name-trimmed
+    created_at: "2026-03-27T09:47:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0bda5e40eff8
+    type: requires_property
+    from: REQ-backoffice-customer-tags-names-trimmed
+    to: FACT-backoffice-customer-tags-empty-name-refused
+    created_at: "2026-03-27T09:47:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-86b5cac619dd
+    type: constrains
+    from: REQ-backoffice-customer-tags-names-trimmed
+    to: FACT-backoffice-customer-tags-subject
+    created_at: "2026-03-27T09:47:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a01468d26a58
+    type: requires_property
+    from: REQ-mobile-mobile-app-tag-picker-filter-unknown-filter
+    to: FACT-mobile-mobile-app-tag-picker-filter-unknown-filter
+    created_at: "2026-08-03T14:12:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c75ea1e9cff0
+    type: constrains
+    from: REQ-mobile-mobile-app-tag-picker-filter-unknown-filter
+    to: FACT-mobile-mobile-app-tag-picker-filter-subject
+    created_at: "2026-08-03T14:12:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-deffd1b1026a
+    type: requires_property
+    from: REQ-backoffice-back-office-customer-search-query-length
+    to: FACT-backoffice-back-office-customer-search-query-max-length
+    created_at: "2026-02-19T16:27:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-93b6e56269cd
+    type: requires_property
+    from: REQ-backoffice-back-office-customer-search-query-length
+    to: FACT-backoffice-back-office-customer-search-over-length-input
+    created_at: "2026-02-19T16:27:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d47a739c3360
+    type: constrains
+    from: REQ-backoffice-back-office-customer-search-query-length
+    to: FACT-backoffice-back-office-customer-search-subject
+    created_at: "2026-02-19T16:27:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-845e4e7ee62d
+    type: requires_property
+    from: REQ-support-help-centre-article-search-date-format
+    to: FACT-support-help-centre-article-search-date-filter-format
+    created_at: "2025-05-11T08:49:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ef1b689a5a43
+    type: constrains
+    from: REQ-support-help-centre-article-search-date-format
+    to: FACT-support-help-centre-article-search-subject
+    created_at: "2025-05-11T08:49:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a167f81048ac
+    type: requires_property
+    from: REQ-license-license-signing-key-required-in-production
+    to: FACT-license-license-signing-key-required-in-production
+    created_at: "2025-09-08T15:51:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-366b6ab0ae7c
+    type: constrains
+    from: REQ-license-license-signing-key-required-in-production
+    to: FACT-license-license-signing-key-subject
+    created_at: "2025-09-08T15:51:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d2fb1973d4c0
+    type: requires_property
+    from: REQ-backoffice-staff-sign-in-email-confirmation
+    to: FACT-backoffice-staff-sign-in-email-confirmation
+    created_at: "2025-02-04T08:50:06.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a95bdbc07cd2
+    type: constrains
+    from: REQ-backoffice-staff-sign-in-email-confirmation
+    to: FACT-backoffice-staff-sign-in-subject
+    created_at: "2025-02-04T08:50:06.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3c9b0c97d15e
+    type: requires_property
+    from: REQ-status-status-subscriptions-plus-addressing
+    to: FACT-status-status-subscriptions-plus-addressing
+    created_at: "2025-12-09T08:33:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a7a918db03aa
+    type: constrains
+    from: REQ-status-status-subscriptions-plus-addressing
+    to: FACT-status-status-subscriptions-subject
+    created_at: "2025-12-09T08:33:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b84dc904b693
+    type: requires_property
+    from: REQ-marketplace-template-author-accounts-reset-notification
+    to: FACT-marketplace-template-author-accounts-reset-confirmation-email
+    created_at: "2025-10-05T12:13:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fb9a744f5d8b
+    type: constrains
+    from: REQ-marketplace-template-author-accounts-reset-notification
+    to: FACT-marketplace-template-author-accounts-subject
+    created_at: "2025-10-05T12:13:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

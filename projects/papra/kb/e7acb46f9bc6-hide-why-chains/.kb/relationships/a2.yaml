@@ -1,0 +1,99 @@
+relationships:
+  - id: rel-76e8381180b9
+    type: requires_property
+    from: REQ-cli-tag-aliases-listing-order
+    to: FACT-cli-tag-aliases-listing-order
+    created_at: "2025-02-11T11:15:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2290635888d4
+    type: constrains
+    from: REQ-cli-tag-aliases-listing-order
+    to: FACT-cli-tag-aliases-subject
+    created_at: "2025-02-11T11:15:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9365b9f3c6b8
+    type: requires_property
+    from: REQ-portal-workspace-templates-listing-order
+    to: FACT-portal-workspace-templates-listing-order
+    created_at: "2026-03-27T08:55:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-22a578158572
+    type: constrains
+    from: REQ-portal-workspace-templates-listing-order
+    to: FACT-portal-workspace-templates-subject
+    created_at: "2026-03-27T08:55:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fa6495931e06
+    type: requires_property
+    from: REQ-forum-forum-categories-delete-in-use
+    to: FACT-forum-forum-categories-delete-in-use
+    created_at: "2025-11-19T15:08:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-840500093056
+    type: constrains
+    from: REQ-forum-forum-categories-delete-in-use
+    to: FACT-forum-forum-categories-subject
+    created_at: "2025-11-19T15:08:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-714a82f99586
+    type: requires_property
+    from: REQ-docs-documentation-site-search-case-folding
+    to: FACT-docs-documentation-site-search-case-folding
+    created_at: "2025-10-23T15:26:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-76fa6785dc4f
+    type: constrains
+    from: REQ-docs-documentation-site-search-case-folding
+    to: FACT-docs-documentation-site-search-subject
+    created_at: "2025-10-23T15:26:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3eec4fda85bb
+    type: requires_property
+    from: REQ-extension-browser-extension-address-bar-search-query-length
+    to: FACT-extension-browser-extension-address-bar-search-query-max-length
+    created_at: "2026-07-07T16:15:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4167f0725775
+    type: requires_property
+    from: REQ-extension-browser-extension-address-bar-search-query-length
+    to: FACT-extension-browser-extension-address-bar-search-over-length-input
+    created_at: "2026-07-07T16:15:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c3eb0addf5d2
+    type: constrains
+    from: REQ-extension-browser-extension-address-bar-search-query-length
+    to: FACT-extension-browser-extension-address-bar-search-subject
+    created_at: "2026-07-07T16:15:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-bf25af6a058c
+    type: requires_property
+    from: REQ-status-status-webhook-secret-never-logged
+    to: FACT-status-status-webhook-secret-value-logged
+    created_at: "2025-02-20T17:51:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3e02beed7ca4
+    type: requires_property
+    from: REQ-status-status-webhook-secret-never-logged
+    to: FACT-status-status-webhook-secret-startup-log
+    created_at: "2025-02-20T17:51:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b6cfe9c7f8b5
+    type: constrains
+    from: REQ-status-status-webhook-secret-never-logged
+    to: FACT-status-status-webhook-secret-subject
+    created_at: "2025-02-20T17:51:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

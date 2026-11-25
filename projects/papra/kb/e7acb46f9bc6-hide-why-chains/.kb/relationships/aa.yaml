@@ -1,0 +1,134 @@
+relationships:
+  - type: verified_by
+    from: REQ-on-self-hosted-instances-the-first-registe-1C953705
+    to: TEST-papra-server-src-modules-roles-event-handlers-first-user-admin-user-created
+    created_at: 2026-10-14T12:10:06.919Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ccb560b33cc1
+  - type: requires_property
+    from: REQ-on-self-hosted-instances-the-first-registe-1C953705
+    to: FACT-papra-auth-first-user-admin-enabled-by-default
+    created_at: 2026-11-15T21:42:51.714Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-a8929e4f3a3c
+  - type: constrains
+    from: REQ-on-self-hosted-instances-the-first-registe-1C953705
+    to: FACT-papra-subject-auth-first-user-admin
+    created_at: 2026-11-15T21:42:51.718Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-79d60631b8bc
+  - type: requires_property
+    from: REQ-on-self-hosted-instances-the-first-registe-1C953705
+    to: FACT-papra-auth-first-user-admin-max-users-granted
+    created_at: 2026-11-15T21:42:51.720Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-41dac5db2a4a
+  - type: verified_by
+    from: REQ-on-self-hosted-instances-the-first-registe-1C953705
+    to: TEST-papra-server-src-modules-app-auth-auth-models
+    created_at: 2026-11-16T13:30:08.329Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-64152c975e41
+  - id: rel-931cac65f7c8
+    type: requires_property
+    from: REQ-docs-glossary-terms-listing-order
+    to: FACT-docs-glossary-terms-listing-order
+    created_at: "2025-07-16T17:45:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-79317892cb56
+    type: constrains
+    from: REQ-docs-glossary-terms-listing-order
+    to: FACT-docs-glossary-terms-subject
+    created_at: "2025-07-16T17:45:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fe2f6ecf0037
+    type: requires_property
+    from: REQ-extension-browser-extension-clip-history-search-minimum-length
+    to: FACT-extension-browser-extension-clip-history-search-query-min-length
+    created_at: "2025-09-25T12:12:58.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-63a2f6e03a4d
+    type: constrains
+    from: REQ-extension-browser-extension-clip-history-search-minimum-length
+    to: FACT-extension-browser-extension-clip-history-search-subject
+    created_at: "2025-09-25T12:12:58.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1971b93eeffa
+    type: requires_property
+    from: REQ-mobile-pinned-organizations-ownership-transfer
+    to: FACT-mobile-pinned-organizations-ownership-transfer
+    created_at: "2026-05-16T13:06:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-341fe55c3dfb
+    type: constrains
+    from: REQ-mobile-pinned-organizations-ownership-transfer
+    to: FACT-mobile-pinned-organizations-subject
+    created_at: "2026-05-16T13:06:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-215cf64dd423
+    type: requires_property
+    from: REQ-n8n-organization-connections-at-the-limit
+    to: FACT-n8n-organization-connections-at-limit
+    created_at: "2025-09-23T13:44:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d1d27865714c
+    type: constrains
+    from: REQ-n8n-organization-connections-at-the-limit
+    to: FACT-n8n-organization-connections-subject
+    created_at: "2025-09-23T13:44:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1a483af09573
+    type: requires_property
+    from: REQ-telemetry-telemetry-dashboard-accounts-session-lifetime
+    to: FACT-telemetry-telemetry-dashboard-accounts-session-days
+    created_at: "2026-05-22T11:23:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6db0e9e2100e
+    type: requires_property
+    from: REQ-telemetry-telemetry-dashboard-accounts-session-lifetime
+    to: FACT-telemetry-telemetry-dashboard-accounts-session-idle-minutes
+    created_at: "2026-05-22T11:23:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b74945eed246
+    type: constrains
+    from: REQ-telemetry-telemetry-dashboard-accounts-session-lifetime
+    to: FACT-telemetry-telemetry-dashboard-accounts-subject
+    created_at: "2026-05-22T11:23:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3362fc433321
+    type: requires_property
+    from: REQ-papra-organization-tags-uncapped
+    to: FACT-papra-tags-per-organization-limit-tag-count-capped-aae86f
+    created_at: "2025-12-02T10:41:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-77acc4bcec53
+    type: constrains
+    from: REQ-papra-organization-tags-uncapped
+    to: FACT-papra-subject-tags-per-organization-limit
+    created_at: "2025-12-02T10:41:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-555a99b815b4
+    type: supersedes
+    from: REQ-papra-organization-tags-uncapped
+    to: REQ-papra-organization-tag-count-cap
+    created_at: "2025-12-02T10:41:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

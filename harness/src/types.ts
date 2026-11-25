@@ -235,8 +235,8 @@ export type StepOutcome = OutcomeClass | 'L';
  * and defeats the reason the user gave for it), `stale-assumption` (the user stated the decision as a
  * stopgap resting on an assumption; a later session describes a situation in which it no longer holds).
  */
-export type ArcPattern = 'near-matches' | 'superseded' | 'quiet-contradiction' | 'firm-default' | 'long-capture' | 'indirect-reach' | 'evidence' | 'search-gap' | 'unlinked-control' | 'code-gap' | 'side-effect' | 'crowded-store' | 'reason-over-letter' | 'stale-assumption';
-export const ARC_PATTERNS: ArcPattern[] = ['near-matches', 'superseded', 'quiet-contradiction', 'firm-default', 'long-capture', 'indirect-reach', 'evidence', 'search-gap', 'unlinked-control', 'code-gap', 'side-effect', 'crowded-store', 'reason-over-letter', 'stale-assumption'];
+export type ArcPattern = 'near-matches' | 'superseded' | 'quiet-contradiction' | 'firm-default' | 'long-capture' | 'indirect-reach' | 'evidence' | 'search-gap' | 'unlinked-control' | 'code-gap' | 'side-effect' | 'crowded-store' | 'reason-over-letter' | 'stale-assumption' | 'mirror-control' | 'in-product-crowd' | 'trap-control' | 'unlinked-decision';
+export const ARC_PATTERNS: ArcPattern[] = ['near-matches', 'superseded', 'quiet-contradiction', 'firm-default', 'long-capture', 'indirect-reach', 'evidence', 'search-gap', 'unlinked-control', 'code-gap', 'side-effect', 'crowded-store', 'reason-over-letter', 'stale-assumption', 'mirror-control', 'in-product-crowd', 'trap-control', 'unlinked-decision'];
 /** `easy`: the calibration floor a notes file is expected to pass. `hard`: what the arms are compared on. */
 export type ArcTier = 'easy' | 'hard';
 

@@ -1,0 +1,92 @@
+relationships:
+  - id: rel-907a136deb93
+    type: requires_property
+    from: REQ-papra-search-index-by-ids
+    to: FACT-papra-search-index-keys-keys
+    created_at: "2026-11-16T13:18:08.197Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-search-index-by-ids
+    to: FACT-papra-subject-search-index-keys
+    created_at: 2026-11-16T13:18:08.197Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4a87fc3bebc8
+  - id: rel-a2de136a9aa5
+    type: requires_property
+    from: REQ-status-status-page-incident-filter-case-folding
+    to: FACT-status-status-page-incident-filter-case-folding
+    created_at: "2025-12-27T13:39:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6089f336dffa
+    type: constrains
+    from: REQ-status-status-page-incident-filter-case-folding
+    to: FACT-status-status-page-incident-filter-subject
+    created_at: "2025-12-27T13:39:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-62e9cc2f4f25
+    type: requires_property
+    from: REQ-website-newsletter-signing-key-minimum-length
+    to: FACT-website-newsletter-signing-key-minimum-length
+    created_at: "2026-06-21T13:50:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e872c0688375
+    type: constrains
+    from: REQ-website-newsletter-signing-key-minimum-length
+    to: FACT-website-newsletter-signing-key-subject
+    created_at: "2026-06-21T13:50:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-466aa3454222
+    type: requires_property
+    from: REQ-website-newsletter-signing-key-example-value-refused
+    to: FACT-website-newsletter-signing-key-example-value-refused
+    created_at: "2025-12-25T09:14:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e1cf6e5ea2d4
+    type: constrains
+    from: REQ-website-newsletter-signing-key-example-value-refused
+    to: FACT-website-newsletter-signing-key-subject
+    created_at: "2025-12-25T09:14:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-84e07af40a73
+    type: requires_property
+    from: REQ-backoffice-organizations-what-counts
+    to: FACT-backoffice-organizations-counted-toward-limit
+    created_at: "2026-02-24T14:05:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-875d7d7376e4
+    type: requires_property
+    from: REQ-backoffice-organizations-what-counts
+    to: FACT-backoffice-organizations-limit-detail
+    created_at: "2026-02-24T14:05:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3c8a24ab7872
+    type: constrains
+    from: REQ-backoffice-organizations-what-counts
+    to: FACT-backoffice-organizations-subject
+    created_at: "2026-02-24T14:05:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-abf67754f7d8
+    type: requires_property
+    from: REQ-mobile-signed-in-accounts-at-the-limit
+    to: FACT-mobile-signed-in-accounts-at-limit
+    created_at: "2026-03-20T15:51:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d1ee15b9adb4
+    type: constrains
+    from: REQ-mobile-signed-in-accounts-at-the-limit
+    to: FACT-mobile-signed-in-accounts-subject
+    created_at: "2026-03-20T15:51:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

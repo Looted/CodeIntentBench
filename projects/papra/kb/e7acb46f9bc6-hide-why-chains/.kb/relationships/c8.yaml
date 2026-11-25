@@ -1,0 +1,204 @@
+relationships:
+  - id: rel-85a1baeb1705
+    type: requires_property
+    from: REQ-inbound-intake-email-webhooks-are-signed-w-27EFD88D
+    to: FACT-papra-intake-email-webhook-requests-signed-with-secret
+    created_at: "2026-11-15T21:42:39.379Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-inbound-intake-email-webhooks-are-signed-w-27EFD88D
+    to: FACT-papra-subject-intake-email-webhook
+    created_at: 2026-11-15T21:42:39.380Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-315a6d291491
+  - type: requires_property
+    from: REQ-inbound-intake-email-webhooks-are-signed-w-27EFD88D
+    to: FACT-papra-intake-email-webhook-authenticates-relay
+    created_at: 2026-11-15T21:42:39.387Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b18c3b0950dc
+  - type: verified_by
+    from: REQ-inbound-intake-email-webhooks-are-signed-w-27EFD88D
+    to: TEST-papra-server-src-modules-intake-emails-e2e-ingest-intake-emails-e2e
+    created_at: 2026-11-16T04:52:08.241Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9a416a2541db
+  - type: verified_by
+    from: REQ-inbound-intake-email-webhooks-are-signed-w-27EFD88D
+    to: TEST-papra-server-src-modules-intake-emails-intake-emails-usecases
+    created_at: 2026-11-16T04:52:08.247Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-71bf29a47d52
+  - type: requires_property
+    from: REQ-papra-storage-pattern-document-date
+    to: FACT-papra-storage-pattern-document-date-available-as-expression
+    created_at: 2026-11-16T13:17:04.786Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-045c3e252a90
+  - type: constrains
+    from: REQ-papra-storage-pattern-document-date
+    to: FACT-papra-subject-storage-pattern-document-date
+    created_at: 2026-11-16T13:17:04.799Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4de76f6dcbdd
+  - type: requires_property
+    from: REQ-papra-storage-pattern-document-date
+    to: FACT-papra-storage-pattern-document-date-value-when-missing
+    created_at: 2026-11-16T13:17:04.803Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-e3d91842b253
+  - type: requires_property
+    from: REQ-papra-ingestion-watcher-stability
+    to: FACT-papra-ingestion-folder-watcher-stability-threshold-setting
+    created_at: 2026-11-16T13:22:37.413Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-3f82eef72644
+  - type: constrains
+    from: REQ-papra-ingestion-watcher-stability
+    to: FACT-papra-subject-ingestion-folder-watcher-stability
+    created_at: 2026-11-16T13:22:37.429Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-3e2c23098ad2
+  - type: requires_property
+    from: REQ-papra-ingestion-watcher-stability
+    to: FACT-papra-ingestion-folder-watcher-stability-poll-setting
+    created_at: 2026-11-16T13:22:37.434Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-04e1ebb0539d
+  - id: rel-08b7bf7b350f
+    type: requires_property
+    from: REQ-mobile-offline-tag-drafts-batch-size
+    to: FACT-mobile-offline-tag-drafts-batch-maximum
+    created_at: "2025-07-20T08:24:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4a8a4d8d78e8
+    type: constrains
+    from: REQ-mobile-offline-tag-drafts-batch-size
+    to: FACT-mobile-offline-tag-drafts-subject
+    created_at: "2025-07-20T08:24:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3304dc788ea1
+    type: requires_property
+    from: REQ-backoffice-back-office-customer-search-case-folding
+    to: FACT-backoffice-back-office-customer-search-case-folding
+    created_at: "2025-08-16T16:44:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-740993ee9cce
+    type: constrains
+    from: REQ-backoffice-back-office-customer-search-case-folding
+    to: FACT-backoffice-back-office-customer-search-subject
+    created_at: "2025-08-16T16:44:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8fb168b8eac8
+    type: requires_property
+    from: REQ-infra-backup-encryption-key-generated-when-missing
+    to: FACT-infra-backup-encryption-key-required-in-production
+    created_at: "2026-05-08T15:25:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-80a21f75de79
+    type: requires_property
+    from: REQ-infra-backup-encryption-key-generated-when-missing
+    to: FACT-infra-backup-encryption-key-missing-secret-warning
+    created_at: "2026-05-08T15:25:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ada07c00e86b
+    type: constrains
+    from: REQ-infra-backup-encryption-key-generated-when-missing
+    to: FACT-infra-backup-encryption-key-subject
+    created_at: "2026-05-08T15:25:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-490d96bfbc8a
+    type: requires_property
+    from: REQ-backoffice-staff-sign-in-allowed-domains
+    to: FACT-backoffice-staff-sign-in-allowed-domain-matching
+    created_at: "2025-05-22T14:22:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a590ceaeb4fa
+    type: requires_property
+    from: REQ-backoffice-staff-sign-in-allowed-domains
+    to: FACT-backoffice-staff-sign-in-domain-case-folding
+    created_at: "2025-05-22T14:22:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2fa021422af9
+    type: constrains
+    from: REQ-backoffice-staff-sign-in-allowed-domains
+    to: FACT-backoffice-staff-sign-in-subject
+    created_at: "2025-05-22T14:22:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a2398b7d2ec5
+    type: requires_property
+    from: REQ-support-support-contacts-deletion-grace
+    to: FACT-support-support-contacts-restore-window-days
+    created_at: "2026-07-14T17:41:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-eb751bc1b2d4
+    type: requires_property
+    from: REQ-support-support-contacts-deletion-grace
+    to: FACT-support-support-contacts-purged-after-window
+    created_at: "2026-07-14T17:41:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b2dca67c2b22
+    type: constrains
+    from: REQ-support-support-contacts-deletion-grace
+    to: FACT-support-support-contacts-subject
+    created_at: "2026-07-14T17:41:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1176fab9ded3
+    type: requires_property
+    from: REQ-education-sponsored-organizations-deletion-grace
+    to: FACT-education-sponsored-organizations-restore-window-days
+    created_at: "2025-04-23T09:56:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6746fce766e6
+    type: requires_property
+    from: REQ-education-sponsored-organizations-deletion-grace
+    to: FACT-education-sponsored-organizations-purged-after-window
+    created_at: "2025-04-23T09:56:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-12540647f450
+    type: constrains
+    from: REQ-education-sponsored-organizations-deletion-grace
+    to: FACT-education-sponsored-organizations-subject
+    created_at: "2025-04-23T09:56:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-49f4b3f65ae9
+    type: requires_property
+    from: REQ-website-newsletter-preference-accounts-reset-and-sessions
+    to: FACT-website-newsletter-preference-accounts-sessions-ended-on-reset
+    created_at: "2025-07-05T08:02:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2a8e6dcc6f0b
+    type: constrains
+    from: REQ-website-newsletter-preference-accounts-reset-and-sessions
+    to: FACT-website-newsletter-preference-accounts-subject
+    created_at: "2025-07-05T08:02:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

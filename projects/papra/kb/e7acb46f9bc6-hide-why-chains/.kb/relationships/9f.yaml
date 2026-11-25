@@ -1,0 +1,85 @@
+relationships:
+  - id: rel-46fcc6d64cdc
+    type: requires_property
+    from: REQ-marketplace-template-categories-name-length
+    to: FACT-marketplace-template-categories-name-max-length
+    created_at: "2025-02-22T14:05:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-013e917f8662
+    type: constrains
+    from: REQ-marketplace-template-categories-name-length
+    to: FACT-marketplace-template-categories-subject
+    created_at: "2025-02-22T14:05:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3883b4d85d1e
+    type: requires_property
+    from: REQ-extension-browser-extension-clip-history-search-invalid-date
+    to: FACT-extension-browser-extension-clip-history-search-invalid-date-filter
+    created_at: "2026-01-24T11:46:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-046f8da14861
+    type: constrains
+    from: REQ-extension-browser-extension-clip-history-search-invalid-date
+    to: FACT-extension-browser-extension-clip-history-search-subject
+    created_at: "2026-01-24T11:46:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2541939fa01f
+    type: requires_property
+    from: REQ-backoffice-backoffice-session-secret-minimum-length-earlier
+    to: FACT-backoffice-backoffice-session-secret-minimum-length-earlier
+    created_at: "2025-08-12T16:05:36.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-30a0d787d3d1
+    type: constrains
+    from: REQ-backoffice-backoffice-session-secret-minimum-length-earlier
+    to: FACT-backoffice-backoffice-session-secret-subject
+    created_at: "2025-08-12T16:05:36.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-05dd945068e5
+    type: requires_property
+    from: REQ-support-shared-inboxes-what-counts
+    to: FACT-support-shared-inboxes-counted-toward-limit
+    created_at: "2025-06-18T10:13:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c736cd7fec52
+    type: requires_property
+    from: REQ-support-shared-inboxes-what-counts
+    to: FACT-support-shared-inboxes-limit-detail
+    created_at: "2025-06-18T10:13:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-66f78c071885
+    type: constrains
+    from: REQ-support-shared-inboxes-what-counts
+    to: FACT-support-shared-inboxes-subject
+    created_at: "2025-06-18T10:13:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-265b3eaae1ac
+    type: requires_property
+    from: REQ-marketplace-template-author-accounts-session-lifetime
+    to: FACT-marketplace-template-author-accounts-session-days
+    created_at: "2026-07-26T17:59:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f170ced1eda2
+    type: requires_property
+    from: REQ-marketplace-template-author-accounts-session-lifetime
+    to: FACT-marketplace-template-author-accounts-session-idle-minutes
+    created_at: "2026-07-26T17:59:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ad80d4350a40
+    type: constrains
+    from: REQ-marketplace-template-author-accounts-session-lifetime
+    to: FACT-marketplace-template-author-accounts-subject
+    created_at: "2026-07-26T17:59:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -1,0 +1,106 @@
+relationships:
+  - id: rel-eff453c7f50f
+    type: requires_property
+    from: REQ-extension-clip-presets-batch-size
+    to: FACT-extension-clip-presets-batch-maximum
+    created_at: "2026-04-09T13:32:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8b28f3945395
+    type: constrains
+    from: REQ-extension-clip-presets-batch-size
+    to: FACT-extension-clip-presets-subject
+    created_at: "2026-04-09T13:32:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-29b36d30fb6c
+    type: requires_property
+    from: REQ-status-component-groups-delete-in-use
+    to: FACT-status-component-groups-delete-in-use
+    created_at: "2025-12-10T15:30:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6f99d3c71ed0
+    type: constrains
+    from: REQ-status-component-groups-delete-in-use
+    to: FACT-status-component-groups-subject
+    created_at: "2025-12-10T15:30:26.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-23f1496a821a
+    type: requires_property
+    from: REQ-telemetry-event-labels-maximum-count
+    to: FACT-telemetry-event-labels-maximum-count
+    created_at: "2026-01-09T13:58:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-10c71e88345b
+    type: requires_property
+    from: REQ-telemetry-event-labels-maximum-count
+    to: FACT-telemetry-event-labels-limit-configurable
+    created_at: "2026-01-09T13:58:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5972a0f79ec7
+    type: constrains
+    from: REQ-telemetry-event-labels-maximum-count
+    to: FACT-telemetry-event-labels-subject
+    created_at: "2026-01-09T13:58:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-23fbc031ac9b
+    type: requires_property
+    from: REQ-website-template-gallery-search-minimum-length
+    to: FACT-website-template-gallery-search-query-min-length
+    created_at: "2025-03-10T15:42:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0354271eaa79
+    type: constrains
+    from: REQ-website-template-gallery-search-minimum-length
+    to: FACT-website-template-gallery-search-subject
+    created_at: "2025-03-10T15:42:50.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-47b92b9fc9dc
+    type: requires_property
+    from: REQ-backoffice-back-office-customer-search-unknown-filter
+    to: FACT-backoffice-back-office-customer-search-unknown-filter
+    created_at: "2026-01-08T16:16:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-997faf209fd3
+    type: constrains
+    from: REQ-backoffice-back-office-customer-search-unknown-filter
+    to: FACT-backoffice-back-office-customer-search-subject
+    created_at: "2026-01-08T16:16:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-52ba028e697b
+    type: requires_property
+    from: REQ-backoffice-back-office-invoice-search-empty-query
+    to: FACT-backoffice-back-office-invoice-search-empty-query
+    created_at: "2025-11-01T12:08:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4bec1990ead8
+    type: constrains
+    from: REQ-backoffice-back-office-invoice-search-empty-query
+    to: FACT-backoffice-back-office-invoice-search-subject
+    created_at: "2025-11-01T12:08:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-74e5be087a41
+    type: requires_property
+    from: REQ-n8n-integration-service-accounts-reset-unknown-address
+    to: FACT-n8n-integration-service-accounts-reset-reveals-account
+    created_at: "2026-01-14T17:07:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-46006565df04
+    type: constrains
+    from: REQ-n8n-integration-service-accounts-reset-unknown-address
+    to: FACT-n8n-integration-service-accounts-subject
+    created_at: "2026-01-14T17:07:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

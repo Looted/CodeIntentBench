@@ -1,0 +1,71 @@
+relationships:
+  - id: rel-94c4b5ae563a
+    type: requires_property
+    from: REQ-papra-documents-list-no-tag-filter
+    to: FACT-papra-documents-list-endpoint-accepts-tags-parameter
+    created_at: "2026-11-16T13:17:49.807Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-documents-list-no-tag-filter
+    to: FACT-papra-subject-documents-list-endpoint
+    created_at: 2026-11-16T13:17:49.807Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-beaa0695564c
+  - type: requires_property
+    from: REQ-papra-documents-list-no-tag-filter
+    to: FACT-papra-documents-list-endpoint-tag-filtering-via
+    created_at: 2026-11-16T13:17:49.819Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-7d72ba8019d6
+  - type: requires_property
+    from: REQ-papra-document-sort-falls-back-to-import-date
+    to: FACT-papra-documents-sort-tie-break-field
+    created_at: 2026-11-16T13:18:05.183Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-dde9612e5acd
+  - type: constrains
+    from: REQ-papra-document-sort-falls-back-to-import-date
+    to: FACT-papra-subject-documents-sort
+    created_at: 2026-11-16T13:18:05.195Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4ad31f7ef940
+  - type: verified_by
+    from: REQ-papra-document-sort-falls-back-to-import-date
+    to: TEST-papra-server-src-modules-documents-document-search-database-fts5-database-fts5-repository-models
+    created_at: 2026-11-16T13:23:50.106Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-89f0d11bffdf
+  - id: rel-c481588c2967
+    type: requires_property
+    from: REQ-education-classroom-workspaces-limit-override
+    to: FACT-education-classroom-workspaces-limit-override
+    created_at: "2025-04-17T09:12:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-eb52b8282876
+    type: constrains
+    from: REQ-education-classroom-workspaces-limit-override
+    to: FACT-education-classroom-workspaces-subject
+    created_at: "2025-04-17T09:12:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3b8d4369a225
+    type: requires_property
+    from: REQ-papra-password-reset-signs-out-everywhere
+    to: FACT-papra-auth-password-reset-revokes-sessions-2b5839
+    created_at: "2025-05-20T08:03:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c0a7338a07a0
+    type: constrains
+    from: REQ-papra-password-reset-signs-out-everywhere
+    to: FACT-papra-subject-auth-password-reset
+    created_at: "2025-05-20T08:03:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -1,0 +1,43 @@
+relationships:
+  - id: rel-41e0225ac626
+    type: requires_property
+    from: REQ-papra-files-served-as-attachment-octet-stream
+    to: FACT-papra-documents-file-download-content-type
+    created_at: "2026-11-16T13:17:14.130Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-files-served-as-attachment-octet-stream
+    to: FACT-papra-subject-documents-file-download
+    created_at: 2026-11-16T13:17:14.131Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ccc940fbb9b2
+  - id: rel-a0560f71a2b1
+    type: requires_property
+    from: REQ-cli-import-labels-delete-in-use
+    to: FACT-cli-import-labels-delete-in-use
+    created_at: "2025-06-11T14:53:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cfd07225df65
+    type: constrains
+    from: REQ-cli-import-labels-delete-in-use
+    to: FACT-cli-import-labels-subject
+    created_at: "2025-06-11T14:53:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a4833de6cda9
+    type: requires_property
+    from: REQ-status-status-page-administrator-accounts-email-change
+    to: FACT-status-status-page-administrator-accounts-sessions-on-email-change
+    created_at: "2025-06-13T14:37:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-19225ab9d6d5
+    type: constrains
+    from: REQ-status-status-page-administrator-accounts-email-change
+    to: FACT-status-status-page-administrator-accounts-subject
+    created_at: "2025-06-13T14:37:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

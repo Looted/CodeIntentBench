@@ -1,0 +1,141 @@
+relationships:
+  - id: rel-423ba1ef6594
+    type: verified_by
+    from: REQ-the-has-tags-filter-selects-documents-with-7EF848DC
+    to: TEST-papra-server-src-modules-documents-document-search-database-fts5-query-builder-query-builder
+    created_at: "2026-10-14T12:09:58.943Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: requires_property
+    from: REQ-the-has-tags-filter-selects-documents-with-7EF848DC
+    to: FACT-papra-search-filter-has-tags-min-tags-matched
+    created_at: 2026-11-15T21:43:26.803Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-a1e111b7fe4f
+  - type: constrains
+    from: REQ-the-has-tags-filter-selects-documents-with-7EF848DC
+    to: FACT-papra-subject-search-filter-has-tags
+    created_at: 2026-11-15T21:43:26.807Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-dc922e77bd74
+  - type: requires_property
+    from: REQ-the-has-tags-filter-selects-documents-with-7EF848DC
+    to: FACT-papra-search-filter-has-tags-negation-selects-untagged
+    created_at: 2026-11-15T21:43:26.809Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-fc0b60df3737
+  - type: requires_property
+    from: REQ-papra-storage-migration-script
+    to: FACT-papra-storage-migration-script-available
+    created_at: 2026-11-16T13:17:01.273Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-1d2dc21c1760
+  - type: constrains
+    from: REQ-papra-storage-migration-script
+    to: FACT-papra-subject-storage-migration-script
+    created_at: 2026-11-16T13:17:01.288Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c68f96c1d93b
+  - type: requires_property
+    from: REQ-papra-password-reset-revokes-sessions
+    to: FACT-papra-auth-password-reset-revokes-sessions
+    created_at: 2026-11-16T13:22:12.786Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9192c1f57073
+  - type: constrains
+    from: REQ-papra-password-reset-revokes-sessions
+    to: FACT-papra-subject-auth-password-reset
+    created_at: 2026-11-16T13:22:12.800Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-8739107046f5
+  - type: verified_by
+    from: REQ-papra-password-reset-revokes-sessions
+    to: TEST-papra-server-src-modules-app-auth-auth-models
+    created_at: 2026-11-16T13:30:12.244Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-30060040447b
+  - type: verified_by
+    from: REQ-papra-password-reset-revokes-sessions
+    to: TEST-papra-server-src-modules-app-auth-e2e-email-verification-e2e
+    created_at: 2026-11-16T13:30:12.252Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c60b5025b4c5
+  - type: verified_by
+    from: REQ-papra-password-reset-revokes-sessions
+    to: TEST-papra-server-src-modules-app-auth-e2e-registration-e2e
+    created_at: 2026-11-16T13:30:12.256Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c91e3ac7686c
+  - type: verified_by
+    from: REQ-papra-password-reset-revokes-sessions
+    to: TEST-papra-server-src-modules-app-health-check-e2e-health-check-e2e
+    created_at: 2026-11-16T13:30:12.261Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-baffaf32728d
+  - id: rel-772b930491c2
+    type: requires_property
+    from: REQ-support-canned-replies-delete-in-use
+    to: FACT-support-canned-replies-delete-in-use
+    created_at: "2025-10-04T15:25:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6449756c545c
+    type: constrains
+    from: REQ-support-canned-replies-delete-in-use
+    to: FACT-support-canned-replies-subject
+    created_at: "2025-10-04T15:25:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fb64a320c29e
+    type: requires_property
+    from: REQ-portal-sub-partner-accounts-name-length
+    to: FACT-portal-sub-partner-accounts-name-max-length
+    created_at: "2026-03-26T10:18:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9141f6bb9afb
+    type: constrains
+    from: REQ-portal-sub-partner-accounts-name-length
+    to: FACT-portal-sub-partner-accounts-subject
+    created_at: "2026-03-26T10:18:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-62367af5c2c3
+    type: requires_property
+    from: REQ-backoffice-staff-teams-maximum-count
+    to: FACT-backoffice-staff-teams-maximum-count
+    created_at: "2025-06-22T09:53:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3e7bed47621b
+    type: requires_property
+    from: REQ-backoffice-staff-teams-maximum-count
+    to: FACT-backoffice-staff-teams-limit-configurable
+    created_at: "2025-06-22T09:53:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9c17d082645a
+    type: constrains
+    from: REQ-backoffice-staff-teams-maximum-count
+    to: FACT-backoffice-staff-teams-subject
+    created_at: "2025-06-22T09:53:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9228b3c0e8ec
+    type: supersedes
+    from: REQ-papra-password-reset-revokes-sessions
+    to: REQ-papra-password-reset-keeps-other-devices
+    created_at: "2026-11-16T13:22:12.780Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

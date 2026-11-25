@@ -1,0 +1,50 @@
+relationships:
+  - id: rel-d823bcedd91a
+    type: requires_property
+    from: REQ-support-ticket-tags-name-length
+    to: FACT-support-ticket-tags-name-max-length
+    created_at: "2025-10-11T09:49:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-69057e16f0ca
+    type: constrains
+    from: REQ-support-ticket-tags-name-length
+    to: FACT-support-ticket-tags-subject
+    created_at: "2025-10-11T09:49:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-07886f9809ca
+    type: requires_property
+    from: REQ-docs-docs-feedback-secret-generated-when-missing
+    to: FACT-docs-docs-feedback-secret-required-in-production
+    created_at: "2025-10-21T16:54:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8001d292f3b7
+    type: requires_property
+    from: REQ-docs-docs-feedback-secret-generated-when-missing
+    to: FACT-docs-docs-feedback-secret-missing-secret-warning
+    created_at: "2025-10-21T16:54:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-642296e7733f
+    type: constrains
+    from: REQ-docs-docs-feedback-secret-generated-when-missing
+    to: FACT-docs-docs-feedback-secret-subject
+    created_at: "2025-10-21T16:54:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-86b2bb0ed6c0
+    type: requires_property
+    from: REQ-marketplace-published-templates-ownership-transfer
+    to: FACT-marketplace-published-templates-ownership-transfer
+    created_at: "2025-08-27T08:26:24.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e3e0e16257dc
+    type: constrains
+    from: REQ-marketplace-published-templates-ownership-transfer
+    to: FACT-marketplace-published-templates-subject
+    created_at: "2025-08-27T08:26:24.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

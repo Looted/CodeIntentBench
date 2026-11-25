@@ -1,0 +1,85 @@
+relationships:
+  - id: rel-32faeeadb360
+    type: requires_property
+    from: REQ-client-tag-filter-shortcuts-name-length
+    to: FACT-client-tag-filter-shortcuts-name-max-length
+    created_at: "2026-02-01T15:59:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a5e7ae58025f
+    type: constrains
+    from: REQ-client-tag-filter-shortcuts-name-length
+    to: FACT-client-tag-filter-shortcuts-subject
+    created_at: "2026-02-01T15:59:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b916970aafa4
+    type: requires_property
+    from: REQ-docs-api-reference-search-case-folding
+    to: FACT-docs-api-reference-search-case-folding
+    created_at: "2026-08-11T16:39:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-715a52ac284d
+    type: constrains
+    from: REQ-docs-api-reference-search-case-folding
+    to: FACT-docs-api-reference-search-subject
+    created_at: "2026-08-11T16:39:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b972d352c628
+    type: requires_property
+    from: REQ-desktop-desktop-sync-client-sync-log-filter-query-length
+    to: FACT-desktop-desktop-sync-client-sync-log-filter-query-max-length
+    created_at: "2025-07-06T10:54:36.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ea0bfad8d3e2
+    type: requires_property
+    from: REQ-desktop-desktop-sync-client-sync-log-filter-query-length
+    to: FACT-desktop-desktop-sync-client-sync-log-filter-over-length-input
+    created_at: "2025-07-06T10:54:36.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-05b47a0e3409
+    type: constrains
+    from: REQ-desktop-desktop-sync-client-sync-log-filter-query-length
+    to: FACT-desktop-desktop-sync-client-sync-log-filter-subject
+    created_at: "2025-07-06T10:54:36.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f624255c2e6d
+    type: requires_property
+    from: REQ-license-license-trial-requests-plus-addressing
+    to: FACT-license-license-trial-requests-plus-addressing
+    created_at: "2025-12-26T13:05:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-959d48a815a6
+    type: constrains
+    from: REQ-license-license-trial-requests-plus-addressing
+    to: FACT-license-license-trial-requests-subject
+    created_at: "2025-12-26T13:05:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2976e7c3295f
+    type: requires_property
+    from: REQ-backoffice-back-office-staff-accounts-password-length
+    to: FACT-backoffice-back-office-staff-accounts-password-min-length
+    created_at: "2025-04-02T12:48:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-198cb8df2c5f
+    type: requires_property
+    from: REQ-backoffice-back-office-staff-accounts-password-length
+    to: FACT-backoffice-back-office-staff-accounts-character-class-rule
+    created_at: "2025-04-02T12:48:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-08949799cbea
+    type: constrains
+    from: REQ-backoffice-back-office-staff-accounts-password-length
+    to: FACT-backoffice-back-office-staff-accounts-subject
+    created_at: "2025-04-02T12:48:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -1,0 +1,78 @@
+relationships:
+  - id: rel-98e94909efdb
+    type: requires_property
+    from: REQ-website-blog-tags-batch-size
+    to: FACT-website-blog-tags-batch-maximum
+    created_at: "2025-11-25T15:34:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4241b0e58694
+    type: constrains
+    from: REQ-website-blog-tags-batch-size
+    to: FACT-website-blog-tags-subject
+    created_at: "2025-11-25T15:34:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-390d032be290
+    type: requires_property
+    from: REQ-docs-glossary-terms-name-length
+    to: FACT-docs-glossary-terms-name-max-length
+    created_at: "2025-07-20T17:15:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-16037f13070b
+    type: constrains
+    from: REQ-docs-glossary-terms-name-length
+    to: FACT-docs-glossary-terms-subject
+    created_at: "2025-07-20T17:15:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8ccac5ba58c1
+    type: requires_property
+    from: REQ-extension-connected-organizations-name-uniqueness
+    to: FACT-extension-connected-organizations-name-uniqueness
+    created_at: "2026-03-02T10:42:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-43de84762af2
+    type: constrains
+    from: REQ-extension-connected-organizations-name-uniqueness
+    to: FACT-extension-connected-organizations-subject
+    created_at: "2026-03-02T10:42:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4a537c836fa6
+    type: requires_property
+    from: REQ-marketplace-published-templates-deletion-grace
+    to: FACT-marketplace-published-templates-restore-window-days
+    created_at: "2025-07-05T17:27:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-af7a43cd0856
+    type: requires_property
+    from: REQ-marketplace-published-templates-deletion-grace
+    to: FACT-marketplace-published-templates-purged-after-window
+    created_at: "2025-07-05T17:27:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3ef4ff451d5a
+    type: constrains
+    from: REQ-marketplace-published-templates-deletion-grace
+    to: FACT-marketplace-published-templates-subject
+    created_at: "2025-07-05T17:27:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-813860160061
+    type: requires_property
+    from: REQ-education-education-portal-accounts-reset-notification
+    to: FACT-education-education-portal-accounts-reset-confirmation-email
+    created_at: "2025-05-14T09:06:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3ab3f962e8aa
+    type: constrains
+    from: REQ-education-education-portal-accounts-reset-notification
+    to: FACT-education-education-portal-accounts-subject
+    created_at: "2025-05-14T09:06:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

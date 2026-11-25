@@ -1,0 +1,43 @@
+relationships:
+  - id: rel-caa03df15d3a
+    type: requires_property
+    from: REQ-client-tag-filter-shortcuts-maximum-count-earlier
+    to: FACT-client-tag-filter-shortcuts-maximum-count-earlier
+    created_at: "2025-06-03T14:47:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-30ddb563fea8
+    type: constrains
+    from: REQ-client-tag-filter-shortcuts-maximum-count-earlier
+    to: FACT-client-tag-filter-shortcuts-subject
+    created_at: "2025-06-03T14:47:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5ad2abbe6570
+    type: requires_property
+    from: REQ-forum-forum-categories-name-length
+    to: FACT-forum-forum-categories-name-max-length
+    created_at: "2026-06-27T17:59:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b60b82d0cfc8
+    type: constrains
+    from: REQ-forum-forum-categories-name-length
+    to: FACT-forum-forum-categories-subject
+    created_at: "2026-06-27T17:59:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-57aa4a778ce0
+    type: requires_property
+    from: REQ-education-sponsored-organizations-ownership-transfer
+    to: FACT-education-sponsored-organizations-ownership-transfer
+    created_at: "2025-05-27T13:51:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-39c2fc573a4d
+    type: constrains
+    from: REQ-education-sponsored-organizations-ownership-transfer
+    to: FACT-education-sponsored-organizations-subject
+    created_at: "2025-05-27T13:51:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

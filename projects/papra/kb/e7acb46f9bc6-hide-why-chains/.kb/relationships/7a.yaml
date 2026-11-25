@@ -1,0 +1,71 @@
+relationships:
+  - id: rel-396f095b92fe
+    type: requires_property
+    from: REQ-mobile-offline-tag-drafts-name-length
+    to: FACT-mobile-offline-tag-drafts-name-max-length
+    created_at: "2025-05-23T14:26:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3b1022c7884a
+    type: constrains
+    from: REQ-mobile-offline-tag-drafts-name-length
+    to: FACT-mobile-offline-tag-drafts-subject
+    created_at: "2025-05-23T14:26:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c382a8d0ea0c
+    type: requires_property
+    from: REQ-cli-import-labels-batch-size
+    to: FACT-cli-import-labels-batch-maximum
+    created_at: "2026-05-13T17:07:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f63752929f4a
+    type: constrains
+    from: REQ-cli-import-labels-batch-size
+    to: FACT-cli-import-labels-subject
+    created_at: "2026-05-13T17:07:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ca3f3f95d263
+    type: requires_property
+    from: REQ-extension-site-rules-batch-size
+    to: FACT-extension-site-rules-batch-maximum
+    created_at: "2025-09-14T13:00:45.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b30e79fd2453
+    type: constrains
+    from: REQ-extension-site-rules-batch-size
+    to: FACT-extension-site-rules-subject
+    created_at: "2025-09-14T13:00:45.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2e92975d3aca
+    type: requires_property
+    from: REQ-website-newsletter-signing-key-required-in-production
+    to: FACT-website-newsletter-signing-key-required-in-production
+    created_at: "2026-06-22T12:02:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-33ce05838d65
+    type: constrains
+    from: REQ-website-newsletter-signing-key-required-in-production
+    to: FACT-website-newsletter-signing-key-subject
+    created_at: "2026-06-22T12:02:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-824958274e2c
+    type: requires_property
+    from: REQ-forum-community-forum-accounts-password-change
+    to: FACT-forum-community-forum-accounts-sessions-on-password-change
+    created_at: "2025-10-19T12:40:58.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-448e0acc5588
+    type: constrains
+    from: REQ-forum-community-forum-accounts-password-change
+    to: FACT-forum-community-forum-accounts-subject
+    created_at: "2025-10-19T12:40:58.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

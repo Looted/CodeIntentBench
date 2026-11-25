@@ -1,0 +1,85 @@
+relationships:
+  - id: rel-447c8753269d
+    type: requires_property
+    from: REQ-papra-intake-addresses-rfc5322
+    to: FACT-papra-intake-email-origin-address-validation
+    created_at: "2026-11-16T13:22:23.531Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-intake-addresses-rfc5322
+    to: FACT-papra-subject-intake-email-origin-address
+    created_at: 2026-11-16T13:22:23.532Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-11432f78dbf7
+  - id: rel-0acba6d752bf
+    type: requires_property
+    from: REQ-client-tag-filter-shortcuts-delete-in-use
+    to: FACT-client-tag-filter-shortcuts-delete-in-use
+    created_at: "2025-06-05T11:24:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1e9762c4b1b7
+    type: constrains
+    from: REQ-client-tag-filter-shortcuts-delete-in-use
+    to: FACT-client-tag-filter-shortcuts-subject
+    created_at: "2025-06-05T11:24:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a04360705f5b
+    type: requires_property
+    from: REQ-extension-browser-extension-address-bar-search-invalid-date
+    to: FACT-extension-browser-extension-address-bar-search-invalid-date-filter
+    created_at: "2025-02-08T08:50:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-96966e4a05ab
+    type: constrains
+    from: REQ-extension-browser-extension-address-bar-search-invalid-date
+    to: FACT-extension-browser-extension-address-bar-search-subject
+    created_at: "2025-02-08T08:50:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9cc32c28b970
+    type: requires_property
+    from: REQ-marketplace-author-registration-allowed-domains
+    to: FACT-marketplace-author-registration-allowed-domain-matching
+    created_at: "2025-10-06T17:20:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b40fa7cbb1b2
+    type: requires_property
+    from: REQ-marketplace-author-registration-allowed-domains
+    to: FACT-marketplace-author-registration-domain-case-folding
+    created_at: "2025-10-06T17:20:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1045b43e06e1
+    type: constrains
+    from: REQ-marketplace-author-registration-allowed-domains
+    to: FACT-marketplace-author-registration-subject
+    created_at: "2025-10-06T17:20:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7ab215f615c3
+    type: requires_property
+    from: REQ-cli-saved-organizations-what-counts
+    to: FACT-cli-saved-organizations-counted-toward-limit
+    created_at: "2026-02-28T15:03:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-df5759e7203d
+    type: requires_property
+    from: REQ-cli-saved-organizations-what-counts
+    to: FACT-cli-saved-organizations-limit-detail
+    created_at: "2026-02-28T15:03:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b53eed03cc08
+    type: constrains
+    from: REQ-cli-saved-organizations-what-counts
+    to: FACT-cli-saved-organizations-subject
+    created_at: "2026-02-28T15:03:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

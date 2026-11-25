@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-c781ab926d1f
+    type: requires_property
+    from: REQ-papra-azure-blob-storage-driver
+    to: FACT-papra-storage-azure-driver-available
+    created_at: "2026-11-16T13:16:45.862Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-azure-blob-storage-driver
+    to: FACT-papra-subject-storage-azure-driver
+    created_at: 2026-11-16T13:16:45.863Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-055963601064
+  - id: rel-7fe353863fec
+    type: requires_property
+    from: REQ-website-template-gallery-search-page-size
+    to: FACT-website-template-gallery-search-page-size-maximum
+    created_at: "2025-06-22T09:59:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ade1978367c9
+    type: constrains
+    from: REQ-website-template-gallery-search-page-size
+    to: FACT-website-template-gallery-search-subject
+    created_at: "2025-06-22T09:59:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6aeff53fd1d1
+    type: requires_property
+    from: REQ-support-support-sso-secret-development-default
+    to: FACT-support-support-sso-secret-development-default
+    created_at: "2026-08-08T17:50:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-614987d00211
+    type: constrains
+    from: REQ-support-support-sso-secret-development-default
+    to: FACT-support-support-sso-secret-subject
+    created_at: "2026-08-08T17:50:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5d597f07d480
+    type: requires_property
+    from: REQ-infra-infrastructure-console-accounts-reset-notification
+    to: FACT-infra-infrastructure-console-accounts-reset-confirmation-email
+    created_at: "2025-04-12T16:25:24.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c19b3dedae46
+    type: constrains
+    from: REQ-infra-infrastructure-console-accounts-reset-notification
+    to: FACT-infra-infrastructure-console-accounts-subject
+    created_at: "2025-04-12T16:25:24.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

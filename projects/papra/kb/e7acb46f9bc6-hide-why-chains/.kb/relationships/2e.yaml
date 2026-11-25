@@ -1,0 +1,113 @@
+relationships:
+  - id: rel-6175b8736790
+    type: requires_property
+    from: REQ-papra-user-owned-organization-cap
+    to: FACT-papra-organizations-user-cap-default-max-owned-organizations
+    created_at: "2026-11-16T13:16:33.215Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-user-owned-organization-cap
+    to: FACT-papra-subject-organizations-user-cap
+    created_at: 2026-11-16T13:16:33.216Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-97c4d3781334
+  - type: requires_property
+    from: REQ-papra-user-owned-organization-cap
+    to: FACT-papra-organizations-user-cap-counted-organizations
+    created_at: 2026-11-16T13:16:33.231Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-69544078fb3b
+  - type: requires_property
+    from: REQ-papra-user-owned-organization-cap
+    to: FACT-papra-organizations-user-cap-per-user-override-by-instance-admin
+    created_at: 2026-11-16T13:16:33.234Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b6f827390f66
+  - type: verified_by
+    from: REQ-papra-user-owned-organization-cap
+    to: TEST-papra-server-src-modules-organizations-organizations-models
+    created_at: 2026-11-16T13:24:11.171Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-7e75ccf8f99c
+  - type: verified_by
+    from: REQ-papra-user-owned-organization-cap
+    to: TEST-papra-server-src-modules-organizations-organizations-usecases
+    created_at: 2026-11-16T13:24:11.177Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-1c8ebe661a69
+  - id: rel-169bdf14fe2a
+    type: requires_property
+    from: REQ-cli-tag-aliases-unique-ignoring-case
+    to: FACT-cli-tag-aliases-name-uniqueness
+    created_at: "2025-04-14T15:39:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-dfccf07df7f0
+    type: requires_property
+    from: REQ-cli-tag-aliases-unique-ignoring-case
+    to: FACT-cli-tag-aliases-duplicate-error
+    created_at: "2025-04-14T15:39:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4fd9c9331950
+    type: constrains
+    from: REQ-cli-tag-aliases-unique-ignoring-case
+    to: FACT-cli-tag-aliases-subject
+    created_at: "2025-04-14T15:39:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-26930dfb7ea2
+    type: requires_property
+    from: REQ-status-status-page-administrator-accounts-reset-unknown-address
+    to: FACT-status-status-page-administrator-accounts-reset-reveals-account
+    created_at: "2026-02-15T09:45:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c32bc945a54a
+    type: constrains
+    from: REQ-status-status-page-administrator-accounts-reset-unknown-address
+    to: FACT-status-status-page-administrator-accounts-subject
+    created_at: "2026-02-15T09:45:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4e79622ec701
+    type: requires_property
+    from: REQ-website-newsletter-preference-accounts-password-change
+    to: FACT-website-newsletter-preference-accounts-sessions-on-password-change
+    created_at: "2026-07-11T12:43:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8f69c39fccca
+    type: constrains
+    from: REQ-website-newsletter-preference-accounts-password-change
+    to: FACT-website-newsletter-preference-accounts-subject
+    created_at: "2026-07-11T12:43:27.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-84fcb32fca3c
+    type: requires_property
+    from: REQ-infra-infrastructure-console-accounts-password-change
+    to: FACT-infra-infrastructure-console-accounts-sessions-on-password-change
+    created_at: "2026-06-07T12:33:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ddcf8b6a1cd5
+    type: constrains
+    from: REQ-infra-infrastructure-console-accounts-password-change
+    to: FACT-infra-infrastructure-console-accounts-subject
+    created_at: "2026-06-07T12:33:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-33fe8cb8bcfa
+    type: supersedes
+    from: REQ-papra-user-owned-organization-cap
+    to: REQ-papra-organization-ownership-unlimited
+    created_at: "2026-11-16T13:22:12.780Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

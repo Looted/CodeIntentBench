@@ -1,0 +1,141 @@
+relationships:
+  - id: rel-6bb5df81fbd3
+    type: requires_property
+    from: REQ-papra-client-guard-uses-organization-limit
+    to: FACT-papra-upload-client-guard-limit-source
+    created_at: "2026-11-16T13:20:30.703Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-client-guard-uses-organization-limit
+    to: FACT-papra-subject-upload-client-guard
+    created_at: 2026-11-16T13:20:30.704Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-41701685df36
+  - type: requires_property
+    from: REQ-papra-upload-only-to-member-organizations
+    to: FACT-papra-upload-organization-scope-non-member-upload-allowed
+    created_at: 2026-11-16T13:20:36.924Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-88082e2cf23e
+  - type: constrains
+    from: REQ-papra-upload-only-to-member-organizations
+    to: FACT-papra-subject-upload-organization-scope
+    created_at: 2026-11-16T13:20:36.938Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2fd11349a459
+  - id: rel-992c4e284acf
+    type: requires_property
+    from: REQ-website-case-study-tags-names-trimmed
+    to: FACT-website-case-study-tags-name-trimmed
+    created_at: "2026-05-13T14:39:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c856ce703dbd
+    type: requires_property
+    from: REQ-website-case-study-tags-names-trimmed
+    to: FACT-website-case-study-tags-empty-name-refused
+    created_at: "2026-05-13T14:39:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b57ebd27a7ef
+    type: constrains
+    from: REQ-website-case-study-tags-names-trimmed
+    to: FACT-website-case-study-tags-subject
+    created_at: "2026-05-13T14:39:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-29688be39179
+    type: requires_property
+    from: REQ-website-blog-search-unknown-filter
+    to: FACT-website-blog-search-unknown-filter
+    created_at: "2025-09-04T10:20:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d200044e1808
+    type: constrains
+    from: REQ-website-blog-search-unknown-filter
+    to: FACT-website-blog-search-subject
+    created_at: "2025-09-04T10:20:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ee9086029650
+    type: requires_property
+    from: REQ-forum-community-forum-post-search-text-filter-matching
+    to: FACT-forum-community-forum-post-search-text-filter-matching
+    created_at: "2025-06-08T09:34:36.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4687541e0cb4
+    type: constrains
+    from: REQ-forum-community-forum-post-search-text-filter-matching
+    to: FACT-forum-community-forum-post-search-subject
+    created_at: "2025-06-08T09:34:36.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-548c329f153b
+    type: requires_property
+    from: REQ-backoffice-billing-webhook-secret-required-in-production
+    to: FACT-backoffice-billing-webhook-secret-required-in-production
+    created_at: "2026-04-04T15:05:36.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b6b0a0664131
+    type: constrains
+    from: REQ-backoffice-billing-webhook-secret-required-in-production
+    to: FACT-backoffice-billing-webhook-secret-subject
+    created_at: "2026-04-04T15:05:36.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-07d23dff5382
+    type: requires_property
+    from: REQ-support-support-contacts-maximum-count
+    to: FACT-support-support-contacts-maximum-count
+    created_at: "2026-08-17T09:57:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e6b9d5756c75
+    type: requires_property
+    from: REQ-support-support-contacts-maximum-count
+    to: FACT-support-support-contacts-limit-configurable
+    created_at: "2026-08-17T09:57:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2c9ccb8450e5
+    type: constrains
+    from: REQ-support-support-contacts-maximum-count
+    to: FACT-support-support-contacts-subject
+    created_at: "2026-08-17T09:57:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a70f6b30a5fd
+    type: requires_property
+    from: REQ-marketplace-published-templates-name-length
+    to: FACT-marketplace-published-templates-name-max-length
+    created_at: "2025-03-10T08:43:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-41afac0ca1b4
+    type: constrains
+    from: REQ-marketplace-published-templates-name-length
+    to: FACT-marketplace-published-templates-subject
+    created_at: "2025-03-10T08:43:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7d4700523285
+    type: requires_property
+    from: REQ-website-demo-workspaces-name-length
+    to: FACT-website-demo-workspaces-name-max-length
+    created_at: "2026-07-26T11:08:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2cd2cfea7f20
+    type: constrains
+    from: REQ-website-demo-workspaces-name-length
+    to: FACT-website-demo-workspaces-subject
+    created_at: "2026-07-26T11:08:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

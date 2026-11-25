@@ -1,0 +1,120 @@
+relationships:
+  - id: rel-789871db6819
+    type: requires_property
+    from: REQ-cli-profiles-batch-size
+    to: FACT-cli-profiles-batch-maximum
+    created_at: "2025-02-24T13:28:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e2af1b63c6dd
+    type: constrains
+    from: REQ-cli-profiles-batch-size
+    to: FACT-cli-profiles-subject
+    created_at: "2025-02-24T13:28:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9725ad5ec149
+    type: requires_property
+    from: REQ-telemetry-telemetry-ingest-token-rotation
+    to: FACT-telemetry-telemetry-ingest-token-rotation-days
+    created_at: "2025-06-22T08:48:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d3ec150e36e9
+    type: requires_property
+    from: REQ-telemetry-telemetry-ingest-token-rotation
+    to: FACT-telemetry-telemetry-ingest-token-rotation-overlap-hours
+    created_at: "2025-06-22T08:48:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3d07f9b5e265
+    type: constrains
+    from: REQ-telemetry-telemetry-ingest-token-rotation
+    to: FACT-telemetry-telemetry-ingest-token-subject
+    created_at: "2025-06-22T08:48:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-be44024019ec
+    type: requires_property
+    from: REQ-portal-sub-partner-accounts-at-the-limit
+    to: FACT-portal-sub-partner-accounts-at-limit
+    created_at: "2025-02-04T08:58:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0a7619ab70e8
+    type: constrains
+    from: REQ-portal-sub-partner-accounts-at-the-limit
+    to: FACT-portal-sub-partner-accounts-subject
+    created_at: "2025-02-04T08:58:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6079efda794d
+    type: requires_property
+    from: REQ-desktop-sync-folders-what-counts
+    to: FACT-desktop-sync-folders-counted-toward-limit
+    created_at: "2026-05-13T11:53:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-465f3c7211f1
+    type: requires_property
+    from: REQ-desktop-sync-folders-what-counts
+    to: FACT-desktop-sync-folders-limit-detail
+    created_at: "2026-05-13T11:53:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fdaf73239fe0
+    type: constrains
+    from: REQ-desktop-sync-folders-what-counts
+    to: FACT-desktop-sync-folders-subject
+    created_at: "2026-05-13T11:53:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1786e4871c4e
+    type: requires_property
+    from: REQ-marketplace-published-templates-what-counts
+    to: FACT-marketplace-published-templates-counted-toward-limit
+    created_at: "2025-11-20T14:58:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6fd740b98b3a
+    type: requires_property
+    from: REQ-marketplace-published-templates-what-counts
+    to: FACT-marketplace-published-templates-limit-detail
+    created_at: "2025-11-20T14:58:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9d12741974c2
+    type: constrains
+    from: REQ-marketplace-published-templates-what-counts
+    to: FACT-marketplace-published-templates-subject
+    created_at: "2025-11-20T14:58:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ade808b88167
+    type: supersedes
+    from: REQ-status-subscriber-lists-maximum-count
+    to: REQ-status-subscriber-lists-maximum-count-earlier
+    created_at: "2026-04-16T08:22:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4720391d601f
+    type: requires_property
+    from: REQ-status-subscriber-lists-maximum-count
+    to: FACT-status-subscriber-lists-maximum-count
+    created_at: "2026-04-16T08:22:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-214ddb85301b
+    type: requires_property
+    from: REQ-status-subscriber-lists-maximum-count
+    to: FACT-status-subscriber-lists-limit-configurable
+    created_at: "2026-04-16T08:22:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-19e9db187b7e
+    type: constrains
+    from: REQ-status-subscriber-lists-maximum-count
+    to: FACT-status-subscriber-lists-subject
+    created_at: "2026-04-16T08:22:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

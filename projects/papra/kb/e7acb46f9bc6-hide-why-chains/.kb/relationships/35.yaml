@@ -1,0 +1,120 @@
+relationships:
+  - id: rel-1f7091ce4de7
+    type: requires_property
+    from: REQ-status-component-groups-batch-size
+    to: FACT-status-component-groups-batch-maximum
+    created_at: "2026-02-17T16:01:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a5b06941e94b
+    type: constrains
+    from: REQ-status-component-groups-batch-size
+    to: FACT-status-component-groups-subject
+    created_at: "2026-02-17T16:01:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d13d749d7804
+    type: requires_property
+    from: REQ-backoffice-billing-webhook-secret-never-logged
+    to: FACT-backoffice-billing-webhook-secret-value-logged
+    created_at: "2026-04-12T08:37:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e8351122a267
+    type: requires_property
+    from: REQ-backoffice-billing-webhook-secret-never-logged
+    to: FACT-backoffice-billing-webhook-secret-startup-log
+    created_at: "2026-04-12T08:37:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c887df4f739e
+    type: constrains
+    from: REQ-backoffice-billing-webhook-secret-never-logged
+    to: FACT-backoffice-billing-webhook-secret-subject
+    created_at: "2026-04-12T08:37:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b2a5e1e85cb0
+    type: requires_property
+    from: REQ-website-newsletter-signing-key-rotation
+    to: FACT-website-newsletter-signing-key-rotation-days
+    created_at: "2025-05-24T16:13:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9cbdd0cf67f6
+    type: requires_property
+    from: REQ-website-newsletter-signing-key-rotation
+    to: FACT-website-newsletter-signing-key-rotation-overlap-hours
+    created_at: "2025-05-24T16:13:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3538721b065e
+    type: constrains
+    from: REQ-website-newsletter-signing-key-rotation
+    to: FACT-website-newsletter-signing-key-subject
+    created_at: "2025-05-24T16:13:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cfe6b10c85b2
+    type: requires_property
+    from: REQ-forum-forum-sso-secret-development-default
+    to: FACT-forum-forum-sso-secret-development-default
+    created_at: "2026-07-12T17:16:58.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-afd5697e3fcd
+    type: constrains
+    from: REQ-forum-forum-sso-secret-development-default
+    to: FACT-forum-forum-sso-secret-subject
+    created_at: "2026-07-12T17:16:58.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a3ce6e5dde77
+    type: requires_property
+    from: REQ-portal-partner-portal-jwt-secret-generated-when-missing
+    to: FACT-portal-partner-portal-jwt-secret-required-in-production
+    created_at: "2025-05-14T15:28:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5617e65fa0a8
+    type: requires_property
+    from: REQ-portal-partner-portal-jwt-secret-generated-when-missing
+    to: FACT-portal-partner-portal-jwt-secret-missing-secret-warning
+    created_at: "2025-05-14T15:28:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e74d2310425a
+    type: constrains
+    from: REQ-portal-partner-portal-jwt-secret-generated-when-missing
+    to: FACT-portal-partner-portal-jwt-secret-subject
+    created_at: "2025-05-14T15:28:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c90503ceefcf
+    type: requires_property
+    from: REQ-education-education-portal-accounts-reset-and-sessions
+    to: FACT-education-education-portal-accounts-sessions-ended-on-reset
+    created_at: "2025-10-06T09:52:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-317b12e5164e
+    type: constrains
+    from: REQ-education-education-portal-accounts-reset-and-sessions
+    to: FACT-education-education-portal-accounts-subject
+    created_at: "2025-10-06T09:52:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-eb644d858a0f
+    type: requires_property
+    from: REQ-papra-search-text-256-characters
+    to: FACT-papra-search-query-length-max-characters-35b338
+    created_at: "2025-06-09T10:22:36.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-351d39de28bd
+    type: constrains
+    from: REQ-papra-search-text-256-characters
+    to: FACT-papra-subject-search-query-length
+    created_at: "2025-06-09T10:22:36.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

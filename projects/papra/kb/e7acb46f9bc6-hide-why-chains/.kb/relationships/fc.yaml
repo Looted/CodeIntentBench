@@ -1,0 +1,78 @@
+relationships:
+  - id: rel-7409de3ab200
+    type: requires_property
+    from: REQ-telemetry-dashboard-tags-maximum-count
+    to: FACT-telemetry-dashboard-tags-maximum-count
+    created_at: "2025-12-23T09:40:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7340fde0e0b8
+    type: requires_property
+    from: REQ-telemetry-dashboard-tags-maximum-count
+    to: FACT-telemetry-dashboard-tags-limit-configurable
+    created_at: "2025-12-23T09:40:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a0394b5a00ac
+    type: constrains
+    from: REQ-telemetry-dashboard-tags-maximum-count
+    to: FACT-telemetry-dashboard-tags-subject
+    created_at: "2025-12-23T09:40:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-940becb2096e
+    type: requires_property
+    from: REQ-support-support-contacts-limit-override
+    to: FACT-support-support-contacts-limit-override
+    created_at: "2026-06-10T16:00:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-694ab79e25b4
+    type: constrains
+    from: REQ-support-support-contacts-limit-override
+    to: FACT-support-support-contacts-subject
+    created_at: "2026-06-10T16:00:23.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8f15ca0c12f6
+    type: requires_property
+    from: REQ-support-shared-inboxes-limit-override
+    to: FACT-support-shared-inboxes-limit-override
+    created_at: "2025-03-02T11:26:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-014beb881e3e
+    type: constrains
+    from: REQ-support-shared-inboxes-limit-override
+    to: FACT-support-shared-inboxes-subject
+    created_at: "2025-03-02T11:26:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-005c36db96de
+    type: requires_property
+    from: REQ-license-activations-name-uniqueness
+    to: FACT-license-activations-name-uniqueness
+    created_at: "2025-10-14T09:24:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a2d614aef083
+    type: constrains
+    from: REQ-license-activations-name-uniqueness
+    to: FACT-license-activations-subject
+    created_at: "2025-10-14T09:24:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-89182a75b6b2
+    type: requires_property
+    from: REQ-status-status-page-administrator-accounts-reset-rate-limit
+    to: FACT-status-status-page-administrator-accounts-reset-emails-per-hour
+    created_at: "2025-04-09T14:21:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3514a5fb7a1c
+    type: constrains
+    from: REQ-status-status-page-administrator-accounts-reset-rate-limit
+    to: FACT-status-status-page-administrator-accounts-subject
+    created_at: "2025-04-09T14:21:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
