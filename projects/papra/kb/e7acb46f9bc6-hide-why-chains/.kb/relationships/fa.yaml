@@ -1,0 +1,22 @@
+relationships:
+  - id: rel-bd9e0fbb56d5
+    type: requires_property
+    from: REQ-license-license-keys-deletion-grace
+    to: FACT-license-license-keys-restore-window-days
+    created_at: "2026-02-08T09:41:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ccfaa2f8e9b4
+    type: requires_property
+    from: REQ-license-license-keys-deletion-grace
+    to: FACT-license-license-keys-purged-after-window
+    created_at: "2026-02-08T09:41:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7970f62c94c7
+    type: constrains
+    from: REQ-license-license-keys-deletion-grace
+    to: FACT-license-license-keys-subject
+    created_at: "2026-02-08T09:41:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

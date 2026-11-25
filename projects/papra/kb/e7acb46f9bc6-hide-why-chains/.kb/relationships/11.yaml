@@ -1,0 +1,106 @@
+relationships:
+  - id: rel-d2507b04e2b7
+    type: requires_property
+    from: REQ-papra-auto-tagging-logs-activity
+    to: FACT-papra-tagging-rules-side-effects-logs-activity
+    created_at: "2026-11-16T13:19:12.464Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-auto-tagging-logs-activity
+    to: FACT-papra-subject-tagging-rules-side-effects
+    created_at: 2026-11-16T13:19:12.465Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-79c4ebca1285
+  - type: requires_property
+    from: REQ-papra-auto-tagging-logs-activity
+    to: FACT-papra-tagging-rules-side-effects-triggers-tag-added-webhook
+    created_at: 2026-11-16T13:19:12.477Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c5879b8af640
+  - id: rel-5fb1b81f70c8
+    type: requires_property
+    from: REQ-mobile-quick-labels-names-trimmed
+    to: FACT-mobile-quick-labels-name-trimmed
+    created_at: "2025-03-13T17:16:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d392bc91deae
+    type: requires_property
+    from: REQ-mobile-quick-labels-names-trimmed
+    to: FACT-mobile-quick-labels-empty-name-refused
+    created_at: "2025-03-13T17:16:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-608cb044eca3
+    type: constrains
+    from: REQ-mobile-quick-labels-names-trimmed
+    to: FACT-mobile-quick-labels-subject
+    created_at: "2025-03-13T17:16:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-69b96c13b0c0
+    type: requires_property
+    from: REQ-marketplace-marketplace-auth-secret-rotation
+    to: FACT-marketplace-marketplace-auth-secret-rotation-days
+    created_at: "2025-04-01T17:21:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-536e6ff87d3d
+    type: requires_property
+    from: REQ-marketplace-marketplace-auth-secret-rotation
+    to: FACT-marketplace-marketplace-auth-secret-rotation-overlap-hours
+    created_at: "2025-04-01T17:21:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d4d1692562c0
+    type: constrains
+    from: REQ-marketplace-marketplace-auth-secret-rotation
+    to: FACT-marketplace-marketplace-auth-secret-subject
+    created_at: "2025-04-01T17:21:09.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4a5653c3b0ff
+    type: requires_property
+    from: REQ-telemetry-dashboards-what-counts
+    to: FACT-telemetry-dashboards-counted-toward-limit
+    created_at: "2025-05-03T13:38:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ee4c090ae41a
+    type: requires_property
+    from: REQ-telemetry-dashboards-what-counts
+    to: FACT-telemetry-dashboards-limit-detail
+    created_at: "2025-05-03T13:38:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3663565cce3b
+    type: constrains
+    from: REQ-telemetry-dashboards-what-counts
+    to: FACT-telemetry-dashboards-subject
+    created_at: "2025-05-03T13:38:59.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2e6792b0c7b9
+    type: requires_property
+    from: REQ-marketplace-template-author-accounts-concurrent-sessions
+    to: FACT-marketplace-template-author-accounts-concurrent-sessions
+    created_at: "2026-06-05T15:36:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cb7e98933f91
+    type: requires_property
+    from: REQ-marketplace-template-author-accounts-concurrent-sessions
+    to: FACT-marketplace-template-author-accounts-over-limit
+    created_at: "2026-06-05T15:36:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-08eeb349040d
+    type: constrains
+    from: REQ-marketplace-template-author-accounts-concurrent-sessions
+    to: FACT-marketplace-template-author-accounts-subject
+    created_at: "2026-06-05T15:36:52.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

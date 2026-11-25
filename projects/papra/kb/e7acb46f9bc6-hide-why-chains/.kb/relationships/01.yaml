@@ -1,0 +1,141 @@
+relationships:
+  - id: rel-a88ccde2d468
+    type: requires_property
+    from: REQ-papra-member-cap-counts-pending-invitations
+    to: FACT-papra-invitations-member-limit-set-by-plan
+    created_at: "2026-11-16T13:15:54.632Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-member-cap-counts-pending-invitations
+    to: FACT-papra-subject-invitations-member-limit
+    created_at: 2026-11-16T13:15:54.632Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-552d94b31d3c
+  - type: requires_property
+    from: REQ-papra-member-cap-counts-pending-invitations
+    to: FACT-papra-invitations-member-limit-pending-invitations-count-toward-maximum
+    created_at: 2026-11-16T13:15:54.643Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2817fc2cbb8a
+  - type: requires_property
+    from: REQ-papra-member-cap-counts-pending-invitations
+    to: FACT-papra-invitations-member-limit-invitation-or-resend-refused-at-limit
+    created_at: 2026-11-16T13:15:54.646Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-83e04b6fae75
+  - type: supersedes
+    from: REQ-papra-member-cap-counts-pending-invitations
+    to: REQ-papra-member-limit-counts-pending-invitations
+    created_at: 2026-11-16T13:15:54.648Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2fcf3be142d2
+  - type: verified_by
+    from: REQ-papra-member-cap-counts-pending-invitations
+    to: TEST-papra-server-src-modules-organizations-organizations-usecases
+    created_at: 2026-11-16T13:23:57.638Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-df41e8145353
+  - id: rel-d3b14214340d
+    type: requires_property
+    from: REQ-website-blog-categories-delete-in-use
+    to: FACT-website-blog-categories-delete-in-use
+    created_at: "2026-02-25T10:14:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3c1f1a64d55e
+    type: constrains
+    from: REQ-website-blog-categories-delete-in-use
+    to: FACT-website-blog-categories-subject
+    created_at: "2026-02-25T10:14:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b8ba87d171e6
+    type: requires_property
+    from: REQ-client-tag-filter-shortcuts-listing-order
+    to: FACT-client-tag-filter-shortcuts-listing-order
+    created_at: "2025-09-22T15:51:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f02eaa8c0e20
+    type: constrains
+    from: REQ-client-tag-filter-shortcuts-listing-order
+    to: FACT-client-tag-filter-shortcuts-subject
+    created_at: "2025-09-22T15:51:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3fa20cafdea7
+    type: requires_property
+    from: REQ-cli-tag-aliases-delete-in-use
+    to: FACT-cli-tag-aliases-delete-in-use
+    created_at: "2026-05-21T16:56:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-560fd370b300
+    type: constrains
+    from: REQ-cli-tag-aliases-delete-in-use
+    to: FACT-cli-tag-aliases-subject
+    created_at: "2026-05-21T16:56:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1d627f55374c
+    type: requires_property
+    from: REQ-status-component-groups-maximum-count
+    to: FACT-status-component-groups-maximum-count
+    created_at: "2026-08-25T17:42:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b6a93a1b7d27
+    type: requires_property
+    from: REQ-status-component-groups-maximum-count
+    to: FACT-status-component-groups-limit-configurable
+    created_at: "2026-08-25T17:42:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a306a8ebdeb6
+    type: constrains
+    from: REQ-status-component-groups-maximum-count
+    to: FACT-status-component-groups-subject
+    created_at: "2026-08-25T17:42:07.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-08bae1f04fef
+    type: requires_property
+    from: REQ-backoffice-backoffice-session-secret-rotation
+    to: FACT-backoffice-backoffice-session-secret-rotation-days
+    created_at: "2026-05-15T10:05:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d7deba9d1650
+    type: requires_property
+    from: REQ-backoffice-backoffice-session-secret-rotation
+    to: FACT-backoffice-backoffice-session-secret-rotation-overlap-hours
+    created_at: "2026-05-15T10:05:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-54d815f549c7
+    type: constrains
+    from: REQ-backoffice-backoffice-session-secret-rotation
+    to: FACT-backoffice-backoffice-session-secret-subject
+    created_at: "2026-05-15T10:05:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3f7f94541894
+    type: requires_property
+    from: REQ-website-cloud-waiting-list-rate-limit
+    to: FACT-website-cloud-waiting-list-requests-per-ip-per-day
+    created_at: "2026-02-15T15:05:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-248ae5e33537
+    type: constrains
+    from: REQ-website-cloud-waiting-list-rate-limit
+    to: FACT-website-cloud-waiting-list-subject
+    created_at: "2026-02-15T15:05:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

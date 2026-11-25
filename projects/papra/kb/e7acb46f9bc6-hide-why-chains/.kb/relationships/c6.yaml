@@ -1,0 +1,127 @@
+relationships:
+  - id: rel-6db329add44b
+    type: requires_property
+    from: REQ-papra-owner-cannot-be-removed
+    to: FACT-papra-organizations-member-removal-allowed-roles
+    created_at: "2026-11-16T13:16:05.733Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-owner-cannot-be-removed
+    to: FACT-papra-subject-organizations-member-removal
+    created_at: 2026-11-16T13:16:05.733Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2f78b541e64d
+  - type: requires_property
+    from: REQ-papra-owner-cannot-be-removed
+    to: FACT-papra-organizations-member-removal-owner-removable
+    created_at: 2026-11-16T13:16:05.743Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-7c5e02e43283
+  - type: requires_property
+    from: REQ-papra-tag-delete-returns-204
+    to: FACT-papra-tags-delete-response-status-code
+    created_at: 2026-11-16T13:18:55.357Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-68c6eaed7384
+  - type: constrains
+    from: REQ-papra-tag-delete-returns-204
+    to: FACT-papra-subject-tags-delete-response
+    created_at: 2026-11-16T13:18:55.370Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-fd8db5c002ee
+  - type: requires_property
+    from: REQ-papra-tag-delete-returns-204
+    to: FACT-papra-tags-delete-response-missing-tag-status-code
+    created_at: 2026-11-16T13:18:55.374Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c18983406b9c
+  - type: verified_by
+    from: REQ-papra-owner-cannot-be-removed
+    to: TEST-papra-server-src-modules-organizations-organizations-models
+    created_at: 2026-11-16T13:24:01.597Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-df2417df1a75
+  - type: verified_by
+    from: REQ-papra-owner-cannot-be-removed
+    to: TEST-papra-server-src-modules-organizations-organizations-usecases
+    created_at: 2026-11-16T13:24:01.607Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b11f6c478fae
+  - id: rel-c0802cfc163e
+    type: requires_property
+    from: REQ-backoffice-back-office-organization-lookup-page-size
+    to: FACT-backoffice-back-office-organization-lookup-page-size-maximum
+    created_at: "2026-06-19T12:49:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c208e59f33d9
+    type: constrains
+    from: REQ-backoffice-back-office-organization-lookup-page-size
+    to: FACT-backoffice-back-office-organization-lookup-subject
+    created_at: "2026-06-19T12:49:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c1be7baa2ab7
+    type: requires_property
+    from: REQ-telemetry-telemetry-dashboard-search-page-size
+    to: FACT-telemetry-telemetry-dashboard-search-page-size-maximum
+    created_at: "2025-04-23T14:57:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4c8131a2e70f
+    type: constrains
+    from: REQ-telemetry-telemetry-dashboard-search-page-size
+    to: FACT-telemetry-telemetry-dashboard-search-subject
+    created_at: "2025-04-23T14:57:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-87a2ea5128fc
+    type: requires_property
+    from: REQ-extension-connected-organizations-ownership-transfer
+    to: FACT-extension-connected-organizations-ownership-transfer
+    created_at: "2025-04-02T08:43:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1e9d71d8bbe4
+    type: constrains
+    from: REQ-extension-connected-organizations-ownership-transfer
+    to: FACT-extension-connected-organizations-subject
+    created_at: "2025-04-02T08:43:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-58a18e02764e
+    type: requires_property
+    from: REQ-support-shared-inboxes-name-length
+    to: FACT-support-shared-inboxes-name-max-length
+    created_at: "2025-10-04T10:14:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6b135c5df73e
+    type: constrains
+    from: REQ-support-shared-inboxes-name-length
+    to: FACT-support-shared-inboxes-subject
+    created_at: "2025-10-04T10:14:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d3721d02abbe
+    type: requires_property
+    from: REQ-backoffice-back-office-staff-accounts-reset-and-sessions
+    to: FACT-backoffice-back-office-staff-accounts-sessions-ended-on-reset
+    created_at: "2025-11-21T16:53:24.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7eb19d0a62b3
+    type: constrains
+    from: REQ-backoffice-back-office-staff-accounts-reset-and-sessions
+    to: FACT-backoffice-back-office-staff-accounts-subject
+    created_at: "2025-11-21T16:53:24.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

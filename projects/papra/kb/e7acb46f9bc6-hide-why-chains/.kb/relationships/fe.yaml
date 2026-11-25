@@ -1,0 +1,127 @@
+relationships:
+  - id: rel-54020e07f263
+    type: requires_property
+    from: REQ-papra-storage-key-persisted-sync-optional
+    to: FACT-papra-document-storage-key-persisted-with-document
+    created_at: "2026-11-16T13:14:52.853Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-storage-key-persisted-sync-optional
+    to: FACT-papra-subject-document-storage-key
+    created_at: 2026-11-16T13:14:52.853Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-64f8f5077e57
+  - type: requires_property
+    from: REQ-papra-storage-key-persisted-sync-optional
+    to: FACT-papra-document-storage-key-pattern-change-scope-by-default
+    created_at: 2026-11-16T13:14:52.864Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-310ca92181dd
+  - type: requires_property
+    from: REQ-papra-storage-key-persisted-sync-optional
+    to: FACT-papra-document-storage-key-existing-key-changes-only-by
+    created_at: 2026-11-16T13:14:52.867Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-bfc9b14429c9
+  - type: supersedes
+    from: REQ-papra-storage-key-persisted-sync-optional
+    to: REQ-a-document-s-storage-key-is-generated-at-u-4715C9F2
+    created_at: 2026-11-16T13:14:52.869Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-bd609aa93e05
+  - type: verified_by
+    from: REQ-papra-storage-key-persisted-sync-optional
+    to: TEST-papra-server-src-modules-documents-document-encryption-usecases
+    created_at: 2026-11-16T13:24:07.227Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ddb62c5960eb
+  - type: verified_by
+    from: REQ-papra-storage-key-persisted-sync-optional
+    to: TEST-papra-server-src-modules-documents-document-storage-usecases
+    created_at: 2026-11-16T13:24:07.233Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-fe960aee2292
+  - type: verified_by
+    from: REQ-papra-storage-key-persisted-sync-optional
+    to: TEST-papra-server-src-modules-documents-documents-repository
+    created_at: 2026-11-16T13:24:07.237Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-f249bbee9134
+  - type: verified_by
+    from: REQ-papra-storage-key-persisted-sync-optional
+    to: TEST-papra-server-src-modules-documents-documents-usecases
+    created_at: 2026-11-16T13:24:07.240Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-1ed59b8a293d
+  - id: rel-fc693e8446d9
+    type: requires_property
+    from: REQ-backoffice-customer-tags-unique-ignoring-case
+    to: FACT-backoffice-customer-tags-name-uniqueness
+    created_at: "2026-06-05T13:57:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-33e63710493a
+    type: requires_property
+    from: REQ-backoffice-customer-tags-unique-ignoring-case
+    to: FACT-backoffice-customer-tags-duplicate-error
+    created_at: "2026-06-05T13:57:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7f0481def7be
+    type: constrains
+    from: REQ-backoffice-customer-tags-unique-ignoring-case
+    to: FACT-backoffice-customer-tags-subject
+    created_at: "2026-06-05T13:57:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-97bf33a407eb
+    type: requires_property
+    from: REQ-backoffice-organization-labels-names-trimmed
+    to: FACT-backoffice-organization-labels-name-trimmed
+    created_at: "2025-03-28T09:47:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-173b8bc5ffef
+    type: requires_property
+    from: REQ-backoffice-organization-labels-names-trimmed
+    to: FACT-backoffice-organization-labels-empty-name-refused
+    created_at: "2025-03-28T09:47:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-eed687061898
+    type: constrains
+    from: REQ-backoffice-organization-labels-names-trimmed
+    to: FACT-backoffice-organization-labels-subject
+    created_at: "2025-03-28T09:47:39.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f3a19d19a746
+    type: requires_property
+    from: REQ-status-component-groups-unique-ignoring-case
+    to: FACT-status-component-groups-name-uniqueness
+    created_at: "2025-07-04T15:16:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d259ae683c60
+    type: requires_property
+    from: REQ-status-component-groups-unique-ignoring-case
+    to: FACT-status-component-groups-duplicate-error
+    created_at: "2025-07-04T15:16:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4fe68525310c
+    type: constrains
+    from: REQ-status-component-groups-unique-ignoring-case
+    to: FACT-status-component-groups-subject
+    created_at: "2025-07-04T15:16:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

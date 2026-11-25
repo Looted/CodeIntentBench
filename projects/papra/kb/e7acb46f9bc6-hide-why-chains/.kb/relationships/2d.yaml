@@ -1,0 +1,43 @@
+relationships:
+  - id: rel-7a67b5e339c9
+    type: requires_property
+    from: REQ-portal-partner-portal-client-search-minimum-length
+    to: FACT-portal-partner-portal-client-search-query-min-length
+    created_at: "2025-03-21T10:06:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-85e0d7c71857
+    type: constrains
+    from: REQ-portal-partner-portal-client-search-minimum-length
+    to: FACT-portal-partner-portal-client-search-subject
+    created_at: "2025-03-21T10:06:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8f9266d4119e
+    type: requires_property
+    from: REQ-website-webinar-registration-repeat-address
+    to: FACT-website-webinar-registration-repeat-address
+    created_at: "2026-08-01T09:58:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-88ab873b8b3e
+    type: constrains
+    from: REQ-website-webinar-registration-repeat-address
+    to: FACT-website-webinar-registration-subject
+    created_at: "2026-08-01T09:58:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5efc29898e50
+    type: requires_property
+    from: REQ-license-license-portal-accounts-password-change
+    to: FACT-license-license-portal-accounts-sessions-on-password-change
+    created_at: "2025-04-08T09:12:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-26c770f5c3be
+    type: constrains
+    from: REQ-license-license-portal-accounts-password-change
+    to: FACT-license-license-portal-accounts-subject
+    created_at: "2025-04-08T09:12:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

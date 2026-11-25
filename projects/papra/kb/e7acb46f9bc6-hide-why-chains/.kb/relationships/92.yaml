@@ -1,0 +1,120 @@
+relationships:
+  - id: rel-9c73fc3d61db
+    type: requires_property
+    from: REQ-papra-webhook-secret-redacted
+    to: FACT-papra-webhook-secret-returned-in-update-response
+    created_at: "2026-11-16T13:20:07.774Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-webhook-secret-redacted
+    to: FACT-papra-subject-webhook-secret
+    created_at: 2026-11-16T13:20:07.774Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-1544efc8c0bd
+  - id: rel-e076ef17dcbd
+    type: requires_property
+    from: REQ-cli-import-labels-maximum-count
+    to: FACT-cli-import-labels-maximum-count
+    created_at: "2026-07-28T17:48:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4e986aab2194
+    type: requires_property
+    from: REQ-cli-import-labels-maximum-count
+    to: FACT-cli-import-labels-limit-configurable
+    created_at: "2026-07-28T17:48:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-672d2e3ebd99
+    type: constrains
+    from: REQ-cli-import-labels-maximum-count
+    to: FACT-cli-import-labels-subject
+    created_at: "2026-07-28T17:48:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9049a4e518b4
+    type: requires_property
+    from: REQ-extension-site-rules-listing-order
+    to: FACT-extension-site-rules-listing-order
+    created_at: "2025-10-06T13:29:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-919de2650899
+    type: constrains
+    from: REQ-extension-site-rules-listing-order
+    to: FACT-extension-site-rules-subject
+    created_at: "2025-10-06T13:29:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-64526c84e697
+    type: requires_property
+    from: REQ-cli-papra-history-filter-query-length
+    to: FACT-cli-papra-history-filter-query-max-length
+    created_at: "2026-04-21T12:50:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-64e2ea5de135
+    type: requires_property
+    from: REQ-cli-papra-history-filter-query-length
+    to: FACT-cli-papra-history-filter-over-length-input
+    created_at: "2026-04-21T12:50:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0e0a6c2dcf71
+    type: constrains
+    from: REQ-cli-papra-history-filter-query-length
+    to: FACT-cli-papra-history-filter-subject
+    created_at: "2026-04-21T12:50:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-48bae61c2d65
+    type: requires_property
+    from: REQ-support-support-portal-ticket-search-minimum-length
+    to: FACT-support-support-portal-ticket-search-query-min-length
+    created_at: "2026-04-08T17:54:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7818aa629354
+    type: constrains
+    from: REQ-support-support-portal-ticket-search-minimum-length
+    to: FACT-support-support-portal-ticket-search-subject
+    created_at: "2026-04-08T17:54:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-676b142f99df
+    type: requires_property
+    from: REQ-docs-docsearch-admin-key-development-default
+    to: FACT-docs-docsearch-admin-key-development-default
+    created_at: "2026-04-21T10:32:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-05e25dd8527a
+    type: constrains
+    from: REQ-docs-docsearch-admin-key-development-default
+    to: FACT-docs-docsearch-admin-key-subject
+    created_at: "2026-04-21T10:32:18.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a6b63805235b
+    type: requires_property
+    from: REQ-backoffice-trial-organizations-what-counts
+    to: FACT-backoffice-trial-organizations-counted-toward-limit
+    created_at: "2025-05-07T11:31:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-aca3e5c01026
+    type: requires_property
+    from: REQ-backoffice-trial-organizations-what-counts
+    to: FACT-backoffice-trial-organizations-limit-detail
+    created_at: "2025-05-07T11:31:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b0bb8b336dcd
+    type: constrains
+    from: REQ-backoffice-trial-organizations-what-counts
+    to: FACT-backoffice-trial-organizations-subject
+    created_at: "2025-05-07T11:31:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

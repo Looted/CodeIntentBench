@@ -1,0 +1,43 @@
+relationships:
+  - id: rel-08b83b0b27e5
+    type: requires_property
+    from: REQ-docs-docs-feedback-secret-minimum-length
+    to: FACT-docs-docs-feedback-secret-minimum-length
+    created_at: "2026-09-03T09:14:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c6d4b93d2414
+    type: constrains
+    from: REQ-docs-docs-feedback-secret-minimum-length
+    to: FACT-docs-docs-feedback-secret-subject
+    created_at: "2026-09-03T09:14:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4c59f65df350
+    type: requires_property
+    from: REQ-website-newsletter-preference-accounts-reset-unknown-address
+    to: FACT-website-newsletter-preference-accounts-reset-reveals-account
+    created_at: "2025-12-14T13:10:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b7fc839a0056
+    type: constrains
+    from: REQ-website-newsletter-preference-accounts-reset-unknown-address
+    to: FACT-website-newsletter-preference-accounts-subject
+    created_at: "2025-12-14T13:10:55.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fb4eb28cc697
+    type: requires_property
+    from: REQ-papra-auth-secret-built-in-default
+    to: FACT-papra-auth-secret-default-secret-allowed-6d04f6
+    created_at: "2025-03-11T09:54:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8468f824301c
+    type: constrains
+    from: REQ-papra-auth-secret-built-in-default
+    to: FACT-papra-subject-auth-secret
+    created_at: "2025-03-11T09:54:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

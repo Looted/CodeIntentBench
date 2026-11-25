@@ -1,0 +1,99 @@
+relationships:
+  - id: rel-1aae0de33c04
+    type: requires_property
+    from: REQ-website-blog-categories-batch-size
+    to: FACT-website-blog-categories-batch-maximum
+    created_at: "2026-08-22T10:18:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-833acd87f2a5
+    type: constrains
+    from: REQ-website-blog-categories-batch-size
+    to: FACT-website-blog-categories-subject
+    created_at: "2026-08-22T10:18:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-bdca3fcc2e23
+    type: requires_property
+    from: REQ-telemetry-telemetry-event-search-case-folding
+    to: FACT-telemetry-telemetry-event-search-case-folding
+    created_at: "2025-04-13T16:47:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7879af9e111f
+    type: constrains
+    from: REQ-telemetry-telemetry-event-search-case-folding
+    to: FACT-telemetry-telemetry-event-search-subject
+    created_at: "2025-04-13T16:47:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ad92ef8f0bc3
+    type: requires_property
+    from: REQ-telemetry-telemetry-event-search-empty-query
+    to: FACT-telemetry-telemetry-event-search-empty-query
+    created_at: "2025-12-23T11:44:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f04e6cc2eb4c
+    type: constrains
+    from: REQ-telemetry-telemetry-event-search-empty-query
+    to: FACT-telemetry-telemetry-event-search-subject
+    created_at: "2025-12-23T11:44:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e192761e939f
+    type: requires_property
+    from: REQ-backoffice-billing-webhook-secret-development-default
+    to: FACT-backoffice-billing-webhook-secret-development-default
+    created_at: "2026-09-22T10:52:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6e6cc1136648
+    type: constrains
+    from: REQ-backoffice-billing-webhook-secret-development-default
+    to: FACT-backoffice-billing-webhook-secret-subject
+    created_at: "2026-09-22T10:52:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c0ef8286a7dd
+    type: supersedes
+    from: REQ-infra-backup-encryption-key-minimum-length
+    to: REQ-infra-backup-encryption-key-minimum-length-earlier
+    created_at: "2026-04-16T13:08:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1fa720808b75
+    type: requires_property
+    from: REQ-infra-backup-encryption-key-minimum-length
+    to: FACT-infra-backup-encryption-key-minimum-length
+    created_at: "2026-04-16T13:08:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d0135e21f722
+    type: constrains
+    from: REQ-infra-backup-encryption-key-minimum-length
+    to: FACT-infra-backup-encryption-key-subject
+    created_at: "2026-04-16T13:08:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4bd88cabe9c9
+    type: requires_property
+    from: REQ-portal-partner-registration-allowed-domains
+    to: FACT-portal-partner-registration-allowed-domain-matching
+    created_at: "2025-10-02T12:19:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-043a2e5f6ff7
+    type: requires_property
+    from: REQ-portal-partner-registration-allowed-domains
+    to: FACT-portal-partner-registration-domain-case-folding
+    created_at: "2025-10-02T12:19:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7a2f5f3228a0
+    type: constrains
+    from: REQ-portal-partner-registration-allowed-domains
+    to: FACT-portal-partner-registration-subject
+    created_at: "2025-10-02T12:19:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

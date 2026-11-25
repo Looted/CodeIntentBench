@@ -1,0 +1,162 @@
+relationships:
+  - id: rel-e3f67e3a8567
+    type: requires_property
+    from: REQ-papra-quoted-search-filters
+    to: FACT-papra-search-quoted-filters-available
+    created_at: "2026-11-16T13:18:21.233Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-quoted-search-filters
+    to: FACT-papra-subject-search-quoted-filters
+    created_at: 2026-11-16T13:18:21.233Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-8100ece00e2c
+  - type: requires_property
+    from: REQ-papra-rate-limit-ip-header-configurable
+    to: FACT-papra-rate-limit-ip-header-configurable
+    created_at: 2026-11-16T13:21:18.853Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9b67e2da7f00
+  - type: constrains
+    from: REQ-papra-rate-limit-ip-header-configurable
+    to: FACT-papra-subject-rate-limit-ip-header
+    created_at: 2026-11-16T13:21:18.865Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ea3070aea78f
+  - id: rel-949c7c10aad5
+    type: requires_property
+    from: REQ-docs-page-tags-names-trimmed
+    to: FACT-docs-page-tags-name-trimmed
+    created_at: "2025-03-05T12:56:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5561ffa6a360
+    type: requires_property
+    from: REQ-docs-page-tags-names-trimmed
+    to: FACT-docs-page-tags-empty-name-refused
+    created_at: "2025-03-05T12:56:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8e4928df8ad2
+    type: constrains
+    from: REQ-docs-page-tags-names-trimmed
+    to: FACT-docs-page-tags-subject
+    created_at: "2025-03-05T12:56:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-99ecbdc000c7
+    type: requires_property
+    from: REQ-backoffice-back-office-audit-log-search-case-folding
+    to: FACT-backoffice-back-office-audit-log-search-case-folding
+    created_at: "2026-04-10T13:03:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a1d3c1fe4a9f
+    type: constrains
+    from: REQ-backoffice-back-office-audit-log-search-case-folding
+    to: FACT-backoffice-back-office-audit-log-search-subject
+    created_at: "2026-04-10T13:03:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-bd9d8f648668
+    type: requires_property
+    from: REQ-education-edu-portal-session-secret-rotation
+    to: FACT-education-edu-portal-session-secret-rotation-days
+    created_at: "2025-12-22T16:39:06.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-93e313881eae
+    type: requires_property
+    from: REQ-education-edu-portal-session-secret-rotation
+    to: FACT-education-edu-portal-session-secret-rotation-overlap-hours
+    created_at: "2025-12-22T16:39:06.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5626b122263b
+    type: constrains
+    from: REQ-education-edu-portal-session-secret-rotation
+    to: FACT-education-edu-portal-session-secret-subject
+    created_at: "2025-12-22T16:39:06.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a5cc6dcd6a79
+    type: requires_property
+    from: REQ-education-edu-portal-session-secret-development-default
+    to: FACT-education-edu-portal-session-secret-development-default
+    created_at: "2026-05-09T09:16:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-da62cacd1f41
+    type: constrains
+    from: REQ-education-edu-portal-session-secret-development-default
+    to: FACT-education-edu-portal-session-secret-subject
+    created_at: "2026-05-09T09:16:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5b41d12cd70a
+    type: requires_property
+    from: REQ-mobile-pinned-organizations-at-the-limit
+    to: FACT-mobile-pinned-organizations-at-limit
+    created_at: "2025-06-17T15:41:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4e64abc51a02
+    type: constrains
+    from: REQ-mobile-pinned-organizations-at-the-limit
+    to: FACT-mobile-pinned-organizations-subject
+    created_at: "2025-06-17T15:41:49.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a3df9e2e34d6
+    type: requires_property
+    from: REQ-education-education-portal-accounts-session-lifetime
+    to: FACT-education-education-portal-accounts-session-days
+    created_at: "2025-06-09T15:16:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7ab48447a3ed
+    type: requires_property
+    from: REQ-education-education-portal-accounts-session-lifetime
+    to: FACT-education-education-portal-accounts-session-idle-minutes
+    created_at: "2025-06-09T15:16:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-12b5d468790c
+    type: constrains
+    from: REQ-education-education-portal-accounts-session-lifetime
+    to: FACT-education-education-portal-accounts-subject
+    created_at: "2025-06-09T15:16:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ec3176ee681d
+    type: requires_property
+    from: REQ-papra-signup-allowed-domains-include-subdomains
+    to: FACT-papra-auth-signup-email-domains-allowlist-includes-subdomains-d41924
+    created_at: "2025-10-29T09:38:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d465e1a3a786
+    type: requires_property
+    from: REQ-papra-signup-allowed-domains-include-subdomains
+    to: FACT-papra-auth-signup-email-domains-case-sensitive-d41924
+    created_at: "2025-10-29T09:38:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c9ba75123eaf
+    type: constrains
+    from: REQ-papra-signup-allowed-domains-include-subdomains
+    to: FACT-papra-subject-auth-signup-email-domains
+    created_at: "2025-10-29T09:38:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f3ceb4f2a0e6
+    type: supersedes
+    from: REQ-papra-signup-allowed-domains-include-subdomains
+    to: REQ-papra-signup-any-email-domain
+    created_at: "2025-10-29T09:38:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -321,6 +321,21 @@ search outside the top 8. A search that names the server's own terms (`AUTH_SECR
 "case-insensitive") still returns the entry first; a search made only of the topic's common words
 ("search query length limit", "organization limit") returns eight entries about other products.
 
+
+## The chains store
+
+`kb/e7acb46f9bc6-hide-why-chains/.kb` is the crowded store plus a made-up history for six real decisions that the
+crowded arcs probe (tags per organization, password reset and sessions, organizations a user owns, AUTH_SECRET in
+production, search query length, sign-up email domains). Each gets two closed earlier versions, each superseded by
+the next, and the real entry supersedes the newer one. **The history is synthetic** (`gold/chains.py` says so in its
+header; the store text does not). The newer replaced version always allows what the arc's probe asks, and one
+replaced version forbids what the arc's mirror control asks. In the password-reset chain the current entry restores
+the oldest value. Ids carry no hint of age or status. The real entries keep their statements, facts and links; each
+gains a "## Why this changed" section that says the reason is not stated, which `kibi check` asks of a superseding
+decision. `kibi check` reports what it reports on the crowded store. The arcs `*-chains` use it.
+
+Rebuild: `python3 gold/chains.py e7acb46f9bc6-hide-why-crowded/.kb e7acb46f9bc6-hide-why-chains/.kb`
+(`gold/chains-roles.json` holds the clause roles; `chains.py --roles <workspace>` rebuilds it).
 ## Link corrections
 
 Two links were changed by hand in `symbols-map.json` and in the stored `symbols.yaml` of `50cbe2cace34`,

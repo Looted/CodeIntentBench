@@ -1,0 +1,127 @@
+relationships:
+  - id: rel-a6ef7c48b724
+    type: requires_property
+    from: REQ-papra-webhook-ssrf-protection
+    to: FACT-papra-webhook-url-ssrf-protection-rejects-unsafe-url-on-create-and-update
+    created_at: "2026-11-16T13:16:36.791Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-webhook-ssrf-protection
+    to: FACT-papra-subject-webhook-url-ssrf-protection
+    created_at: 2026-11-16T13:16:36.791Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2fd6f8c7ff12
+  - type: requires_property
+    from: REQ-papra-webhook-ssrf-protection
+    to: FACT-papra-webhook-url-ssrf-protection-allowlisted-hostnames-exempt
+    created_at: 2026-11-16T13:16:36.801Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-98ab6464955b
+  - type: verified_by
+    from: REQ-papra-webhook-ssrf-protection
+    to: TEST-papra-server-src-modules-webhooks-webhooks-usecases
+    created_at: 2026-11-16T13:24:12.146Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-fc6312da5199
+  - id: rel-95bea0265dce
+    type: requires_property
+    from: REQ-backoffice-organization-labels-batch-size
+    to: FACT-backoffice-organization-labels-batch-maximum
+    created_at: "2025-08-13T14:44:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f1fbbd9a0154
+    type: constrains
+    from: REQ-backoffice-organization-labels-batch-size
+    to: FACT-backoffice-organization-labels-subject
+    created_at: "2025-08-13T14:44:11.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-88ae1e8d31ca
+    type: requires_property
+    from: REQ-portal-workspace-templates-name-length
+    to: FACT-portal-workspace-templates-name-max-length
+    created_at: "2026-09-15T14:32:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-76eae921aff1
+    type: constrains
+    from: REQ-portal-workspace-templates-name-length
+    to: FACT-portal-workspace-templates-subject
+    created_at: "2026-09-15T14:32:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-573e10d261c0
+    type: requires_property
+    from: REQ-education-education-discount-requests-repeat-address
+    to: FACT-education-education-discount-requests-repeat-address
+    created_at: "2026-05-09T14:33:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cf58bc6d07a6
+    type: constrains
+    from: REQ-education-education-discount-requests-repeat-address
+    to: FACT-education-education-discount-requests-subject
+    created_at: "2026-05-09T14:33:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-54a27840222a
+    type: requires_property
+    from: REQ-mobile-signed-in-accounts-limit-override
+    to: FACT-mobile-signed-in-accounts-limit-override
+    created_at: "2025-07-24T14:07:24.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-319ba0049d26
+    type: constrains
+    from: REQ-mobile-signed-in-accounts-limit-override
+    to: FACT-mobile-signed-in-accounts-subject
+    created_at: "2025-07-24T14:07:24.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d95d6b651e7b
+    type: requires_property
+    from: REQ-support-support-portal-accounts-concurrent-sessions
+    to: FACT-support-support-portal-accounts-concurrent-sessions
+    created_at: "2025-12-16T08:27:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a7cbf4115196
+    type: requires_property
+    from: REQ-support-support-portal-accounts-concurrent-sessions
+    to: FACT-support-support-portal-accounts-over-limit
+    created_at: "2025-12-16T08:27:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f38b23032ce6
+    type: constrains
+    from: REQ-support-support-portal-accounts-concurrent-sessions
+    to: FACT-support-support-portal-accounts-subject
+    created_at: "2025-12-16T08:27:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4cd482883553
+    type: requires_property
+    from: REQ-status-status-page-administrator-accounts-password-length
+    to: FACT-status-status-page-administrator-accounts-password-min-length
+    created_at: "2025-08-06T12:15:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6b5be77e9670
+    type: requires_property
+    from: REQ-status-status-page-administrator-accounts-password-length
+    to: FACT-status-status-page-administrator-accounts-character-class-rule
+    created_at: "2025-08-06T12:15:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-febf9806be39
+    type: constrains
+    from: REQ-status-status-page-administrator-accounts-password-length
+    to: FACT-status-status-page-administrator-accounts-subject
+    created_at: "2025-08-06T12:15:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

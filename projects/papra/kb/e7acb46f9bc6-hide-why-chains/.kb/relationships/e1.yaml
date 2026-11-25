@@ -1,0 +1,78 @@
+relationships:
+  - id: rel-68c0dc6c7729
+    type: requires_property
+    from: REQ-papra-intake-webhook-secret-length
+    to: FACT-papra-intake-email-webhook-secret-length-range
+    created_at: "2026-11-16T13:14:42.851Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-intake-webhook-secret-length
+    to: FACT-papra-subject-intake-email-webhook-secret
+    created_at: 2026-11-16T13:14:42.852Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b142994b0253
+  - type: requires_property
+    from: REQ-papra-intake-webhook-secret-length
+    to: FACT-papra-intake-email-webhook-secret-has-default-value
+    created_at: 2026-11-16T13:14:42.866Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ade0a3e18642
+  - id: rel-8fbad04ff1c7
+    type: requires_property
+    from: REQ-mobile-quick-labels-batch-size
+    to: FACT-mobile-quick-labels-batch-maximum
+    created_at: "2025-10-21T16:14:36.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d2d6945c4dcc
+    type: constrains
+    from: REQ-mobile-quick-labels-batch-size
+    to: FACT-mobile-quick-labels-subject
+    created_at: "2025-10-21T16:14:36.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-bc77dcc981a0
+    type: requires_property
+    from: REQ-education-education-portal-course-search-query-length
+    to: FACT-education-education-portal-course-search-query-max-length
+    created_at: "2025-02-11T10:21:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-eea75ea6b4eb
+    type: requires_property
+    from: REQ-education-education-portal-course-search-query-length
+    to: FACT-education-education-portal-course-search-over-length-input
+    created_at: "2025-02-11T10:21:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6f146f2196ef
+    type: constrains
+    from: REQ-education-education-portal-course-search-query-length
+    to: FACT-education-education-portal-course-search-subject
+    created_at: "2025-02-11T10:21:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-05aacd00911d
+    type: requires_property
+    from: REQ-license-license-trial-requests-blocked-domains
+    to: FACT-license-license-trial-requests-disposable-domains-refused
+    created_at: "2025-04-25T16:05:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2c732bea3469
+    type: requires_property
+    from: REQ-license-license-trial-requests-blocked-domains
+    to: FACT-license-license-trial-requests-list-precedence
+    created_at: "2025-04-25T16:05:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c6253e05f9d9
+    type: constrains
+    from: REQ-license-license-trial-requests-blocked-domains
+    to: FACT-license-license-trial-requests-subject
+    created_at: "2025-04-25T16:05:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-bb80ee7a6e3b
+    type: requires_property
+    from: REQ-mobile-scan-presets-maximum-count
+    to: FACT-mobile-scan-presets-maximum-count
+    created_at: "2025-03-16T11:03:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7472778e3a2d
+    type: requires_property
+    from: REQ-mobile-scan-presets-maximum-count
+    to: FACT-mobile-scan-presets-limit-configurable
+    created_at: "2025-03-16T11:03:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ea51e20c52af
+    type: constrains
+    from: REQ-mobile-scan-presets-maximum-count
+    to: FACT-mobile-scan-presets-subject
+    created_at: "2025-03-16T11:03:38.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-56526f2955bd
+    type: requires_property
+    from: REQ-support-shared-inboxes-maximum-count
+    to: FACT-support-shared-inboxes-maximum-count
+    created_at: "2026-06-07T12:50:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c1b0991779e5
+    type: requires_property
+    from: REQ-support-shared-inboxes-maximum-count
+    to: FACT-support-shared-inboxes-limit-configurable
+    created_at: "2026-06-07T12:50:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ce1e74b94829
+    type: constrains
+    from: REQ-support-shared-inboxes-maximum-count
+    to: FACT-support-shared-inboxes-subject
+    created_at: "2026-06-07T12:50:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2f790475c60b
+    type: requires_property
+    from: REQ-portal-partner-portal-accounts-reset-unknown-address
+    to: FACT-portal-partner-portal-accounts-reset-reveals-account
+    created_at: "2026-01-06T12:53:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e1cbb54d359e
+    type: constrains
+    from: REQ-portal-partner-portal-accounts-reset-unknown-address
+    to: FACT-portal-partner-portal-accounts-subject
+    created_at: "2026-01-06T12:53:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

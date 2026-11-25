@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-79dea36b7be2
+    type: requires_property
+    from: REQ-papra-intake-catch-all-driver
+    to: FACT-papra-intake-email-catch-all-driver-username-generation
+    created_at: "2026-11-16T13:22:33.612Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-intake-catch-all-driver
+    to: FACT-papra-subject-intake-email-catch-all-driver
+    created_at: 2026-11-16T13:22:33.613Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c33f8f34c19c
+  - id: rel-149b1007032e
+    type: requires_property
+    from: REQ-backoffice-support-macros-delete-in-use
+    to: FACT-backoffice-support-macros-delete-in-use
+    created_at: "2026-04-17T16:31:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1a028149b5b5
+    type: constrains
+    from: REQ-backoffice-support-macros-delete-in-use
+    to: FACT-backoffice-support-macros-subject
+    created_at: "2026-04-17T16:31:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fd758ceb9cd3
+    type: requires_property
+    from: REQ-client-web-client-demo-mode-search-page-size
+    to: FACT-client-web-client-demo-mode-search-page-size-maximum
+    created_at: "2025-07-17T12:11:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d584d43e5635
+    type: constrains
+    from: REQ-client-web-client-demo-mode-search-page-size
+    to: FACT-client-web-client-demo-mode-search-subject
+    created_at: "2025-07-17T12:11:00.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d6ae624dcec6
+    type: requires_property
+    from: REQ-license-license-portal-accounts-reset-unknown-address
+    to: FACT-license-license-portal-accounts-reset-reveals-account
+    created_at: "2025-07-14T14:57:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c5a3ecd94ea1
+    type: constrains
+    from: REQ-license-license-portal-accounts-reset-unknown-address
+    to: FACT-license-license-portal-accounts-subject
+    created_at: "2025-07-14T14:57:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

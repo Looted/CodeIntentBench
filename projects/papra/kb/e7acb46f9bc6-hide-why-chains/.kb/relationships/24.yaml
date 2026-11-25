@@ -1,0 +1,43 @@
+relationships:
+  - id: rel-76d75d89fc61
+    type: requires_property
+    from: REQ-portal-client-labels-batch-size
+    to: FACT-portal-client-labels-batch-maximum
+    created_at: "2025-08-13T15:01:06.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3bad67d5d5ef
+    type: constrains
+    from: REQ-portal-client-labels-batch-size
+    to: FACT-portal-client-labels-subject
+    created_at: "2025-08-13T15:01:06.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-996ddbb19dcc
+    type: requires_property
+    from: REQ-backoffice-back-office-staff-accounts-reset-rate-limit
+    to: FACT-backoffice-back-office-staff-accounts-reset-emails-per-hour
+    created_at: "2026-07-27T17:30:24.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-978b3e9ce5d4
+    type: constrains
+    from: REQ-backoffice-back-office-staff-accounts-reset-rate-limit
+    to: FACT-backoffice-back-office-staff-accounts-subject
+    created_at: "2026-07-27T17:30:24.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-947042516132
+    type: requires_property
+    from: REQ-infra-infrastructure-console-accounts-reset-link-validity
+    to: FACT-infra-infrastructure-console-accounts-reset-link-minutes
+    created_at: "2026-04-05T11:20:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c6d8818b904d
+    type: constrains
+    from: REQ-infra-infrastructure-console-accounts-reset-link-validity
+    to: FACT-infra-infrastructure-console-accounts-subject
+    created_at: "2026-04-05T11:20:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

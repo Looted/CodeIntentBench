@@ -1,0 +1,106 @@
+relationships:
+  - id: rel-2bce40b8f7b2
+    type: requires_property
+    from: REQ-papra-docker-email-dry-run-default
+    to: FACT-papra-email-sending-docker-default-mode-v1
+    created_at: "2026-11-16T13:20:50.527Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-docker-email-dry-run-default
+    to: FACT-papra-subject-email-sending
+    created_at: 2026-11-16T13:20:50.527Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-19e23bb9f2a2
+  - id: rel-ebf443a5a112
+    type: requires_property
+    from: REQ-cli-profiles-names-trimmed
+    to: FACT-cli-profiles-name-trimmed
+    created_at: "2025-12-18T09:37:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a15e048ab0b1
+    type: requires_property
+    from: REQ-cli-profiles-names-trimmed
+    to: FACT-cli-profiles-empty-name-refused
+    created_at: "2025-12-18T09:37:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-027c6dba863a
+    type: constrains
+    from: REQ-cli-profiles-names-trimmed
+    to: FACT-cli-profiles-subject
+    created_at: "2025-12-18T09:37:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e75187533e04
+    type: requires_property
+    from: REQ-forum-forum-registration-repeat-address
+    to: FACT-forum-forum-registration-repeat-address
+    created_at: "2025-09-10T17:28:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c921dcac4825
+    type: constrains
+    from: REQ-forum-forum-registration-repeat-address
+    to: FACT-forum-forum-registration-subject
+    created_at: "2025-09-10T17:28:22.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6fbc8b036ba2
+    type: requires_property
+    from: REQ-license-license-trial-requests-rate-limit
+    to: FACT-license-license-trial-requests-requests-per-ip-per-hour
+    created_at: "2026-08-17T09:31:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cc1470965d63
+    type: constrains
+    from: REQ-license-license-trial-requests-rate-limit
+    to: FACT-license-license-trial-requests-subject
+    created_at: "2026-08-17T09:31:31.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b2e52f2e38be
+    type: requires_property
+    from: REQ-portal-referral-links-maximum-count
+    to: FACT-portal-referral-links-maximum-count
+    created_at: "2025-05-22T12:40:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1ddafd76f7e5
+    type: requires_property
+    from: REQ-portal-referral-links-maximum-count
+    to: FACT-portal-referral-links-limit-configurable
+    created_at: "2025-05-22T12:40:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-332a9ffb99ca
+    type: constrains
+    from: REQ-portal-referral-links-maximum-count
+    to: FACT-portal-referral-links-subject
+    created_at: "2025-05-22T12:40:40.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1333582c5619
+    type: requires_property
+    from: REQ-license-license-portal-accounts-password-length
+    to: FACT-license-license-portal-accounts-password-min-length
+    created_at: "2026-09-16T13:23:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-eb939893708a
+    type: requires_property
+    from: REQ-license-license-portal-accounts-password-length
+    to: FACT-license-license-portal-accounts-character-class-rule
+    created_at: "2026-09-16T13:23:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-98e297748352
+    type: constrains
+    from: REQ-license-license-portal-accounts-password-length
+    to: FACT-license-license-portal-accounts-subject
+    created_at: "2026-09-16T13:23:41.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

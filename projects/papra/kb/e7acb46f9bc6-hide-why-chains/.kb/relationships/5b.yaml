@@ -1,0 +1,113 @@
+relationships:
+  - id: rel-b7f471b70f4a
+    type: requires_property
+    from: REQ-mobile-saved-filters-unique-ignoring-case
+    to: FACT-mobile-saved-filters-name-uniqueness
+    created_at: "2026-06-24T13:49:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-58badc0c781d
+    type: requires_property
+    from: REQ-mobile-saved-filters-unique-ignoring-case
+    to: FACT-mobile-saved-filters-duplicate-error
+    created_at: "2026-06-24T13:49:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2be9f16021ec
+    type: constrains
+    from: REQ-mobile-saved-filters-unique-ignoring-case
+    to: FACT-mobile-saved-filters-subject
+    created_at: "2026-06-24T13:49:35.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-70e6e020c834
+    type: requires_property
+    from: REQ-extension-site-rules-maximum-count
+    to: FACT-extension-site-rules-maximum-count
+    created_at: "2025-10-09T12:18:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e6e92cd336d8
+    type: requires_property
+    from: REQ-extension-site-rules-maximum-count
+    to: FACT-extension-site-rules-limit-configurable
+    created_at: "2025-10-09T12:18:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-905284f29479
+    type: constrains
+    from: REQ-extension-site-rules-maximum-count
+    to: FACT-extension-site-rules-subject
+    created_at: "2025-10-09T12:18:17.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d3688888c7c7
+    type: requires_property
+    from: REQ-support-help-centre-article-search-case-folding
+    to: FACT-support-help-centre-article-search-case-folding
+    created_at: "2025-02-22T08:58:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-cf8fa0713724
+    type: constrains
+    from: REQ-support-help-centre-article-search-case-folding
+    to: FACT-support-help-centre-article-search-subject
+    created_at: "2025-02-22T08:58:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-403e0705394f
+    type: requires_property
+    from: REQ-license-license-trial-requests-email-confirmation
+    to: FACT-license-license-trial-requests-email-confirmation
+    created_at: "2025-10-04T17:11:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d24c18cde341
+    type: constrains
+    from: REQ-license-license-trial-requests-email-confirmation
+    to: FACT-license-license-trial-requests-subject
+    created_at: "2025-10-04T17:11:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-35db834248cd
+    type: requires_property
+    from: REQ-portal-referral-links-name-uniqueness
+    to: FACT-portal-referral-links-name-uniqueness
+    created_at: "2026-05-26T17:47:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-723adb0e3799
+    type: constrains
+    from: REQ-portal-referral-links-name-uniqueness
+    to: FACT-portal-referral-links-subject
+    created_at: "2026-05-26T17:47:43.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c7012951d672
+    type: requires_property
+    from: REQ-backoffice-staff-teams-name-length
+    to: FACT-backoffice-staff-teams-name-max-length
+    created_at: "2026-01-21T16:58:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f7b73f206e2e
+    type: constrains
+    from: REQ-backoffice-staff-teams-name-length
+    to: FACT-backoffice-staff-teams-subject
+    created_at: "2026-01-21T16:58:03.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6344953c8ccb
+    type: requires_property
+    from: REQ-n8n-integration-service-accounts-reset-notification
+    to: FACT-n8n-integration-service-accounts-reset-confirmation-email
+    created_at: "2026-01-05T15:04:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fd7c1785027b
+    type: constrains
+    from: REQ-n8n-integration-service-accounts-reset-notification
+    to: FACT-n8n-integration-service-accounts-subject
+    created_at: "2026-01-05T15:04:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

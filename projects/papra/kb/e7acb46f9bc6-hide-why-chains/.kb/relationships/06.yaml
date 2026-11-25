@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-070818d2a289
+    type: requires_property
+    from: REQ-forum-community-forum-post-search-invalid-date
+    to: FACT-forum-community-forum-post-search-invalid-date-filter
+    created_at: "2026-06-22T17:46:53.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-76b09d4a1c77
+    type: constrains
+    from: REQ-forum-community-forum-post-search-invalid-date
+    to: FACT-forum-community-forum-post-search-subject
+    created_at: "2026-06-22T17:46:53.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a1518c5421b0
+    type: requires_property
+    from: REQ-backoffice-organizations-name-uniqueness
+    to: FACT-backoffice-organizations-name-uniqueness
+    created_at: "2025-03-14T10:43:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1bce1bbf154e
+    type: constrains
+    from: REQ-backoffice-organizations-name-uniqueness
+    to: FACT-backoffice-organizations-subject
+    created_at: "2025-03-14T10:43:12.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ccc8bdff7882
+    type: requires_property
+    from: REQ-telemetry-projects-name-uniqueness
+    to: FACT-telemetry-projects-name-uniqueness
+    created_at: "2026-06-11T08:26:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-52635b83f28e
+    type: constrains
+    from: REQ-telemetry-projects-name-uniqueness
+    to: FACT-telemetry-projects-subject
+    created_at: "2026-06-11T08:26:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d15a1b666260
+    type: requires_property
+    from: REQ-backoffice-back-office-staff-accounts-reset-notification
+    to: FACT-backoffice-back-office-staff-accounts-reset-confirmation-email
+    created_at: "2025-08-08T12:59:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6cc3133bc67a
+    type: constrains
+    from: REQ-backoffice-back-office-staff-accounts-reset-notification
+    to: FACT-backoffice-back-office-staff-accounts-subject
+    created_at: "2025-08-08T12:59:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

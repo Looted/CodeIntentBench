@@ -1,0 +1,78 @@
+relationships:
+  - id: rel-1ab03924152c
+    type: requires_property
+    from: REQ-mobile-saved-filters-maximum-count
+    to: FACT-mobile-saved-filters-maximum-count
+    created_at: "2026-03-06T15:07:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c38ec0152501
+    type: requires_property
+    from: REQ-mobile-saved-filters-maximum-count
+    to: FACT-mobile-saved-filters-limit-configurable
+    created_at: "2026-03-06T15:07:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-317f497746f7
+    type: constrains
+    from: REQ-mobile-saved-filters-maximum-count
+    to: FACT-mobile-saved-filters-subject
+    created_at: "2026-03-06T15:07:25.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-de429c57ce94
+    type: requires_property
+    from: REQ-client-web-client-demo-mode-search-invalid-date
+    to: FACT-client-web-client-demo-mode-search-invalid-date-filter
+    created_at: "2025-12-10T16:49:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0d37d5f053ca
+    type: constrains
+    from: REQ-client-web-client-demo-mode-search-invalid-date
+    to: FACT-client-web-client-demo-mode-search-subject
+    created_at: "2025-12-10T16:49:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-81f18c1fe822
+    type: requires_property
+    from: REQ-website-newsletter-sign-up-email-confirmation
+    to: FACT-website-newsletter-sign-up-email-confirmation
+    created_at: "2025-08-02T09:39:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fbbb86a51305
+    type: constrains
+    from: REQ-website-newsletter-sign-up-email-confirmation
+    to: FACT-website-newsletter-sign-up-subject
+    created_at: "2025-08-02T09:39:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3260c45e1301
+    type: requires_property
+    from: REQ-education-education-discount-requests-plus-addressing
+    to: FACT-education-education-discount-requests-plus-addressing
+    created_at: "2026-07-21T13:16:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-86aed8302caf
+    type: constrains
+    from: REQ-education-education-discount-requests-plus-addressing
+    to: FACT-education-education-discount-requests-subject
+    created_at: "2026-07-21T13:16:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8e186ae0a64c
+    type: requires_property
+    from: REQ-license-license-keys-at-the-limit
+    to: FACT-license-license-keys-at-limit
+    created_at: "2026-06-04T15:18:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-01c29db2a49f
+    type: constrains
+    from: REQ-license-license-keys-at-the-limit
+    to: FACT-license-license-keys-subject
+    created_at: "2026-06-04T15:18:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

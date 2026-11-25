@@ -1,0 +1,127 @@
+relationships:
+  - id: rel-0dab0d58119f
+    type: requires_property
+    from: REQ-papra-intake-webhook-secret-required
+    to: FACT-papra-intake-email-webhook-secret-default-value
+    created_at: "2026-11-16T13:14:47.773Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-intake-webhook-secret-required
+    to: FACT-papra-subject-intake-email-webhook-secret
+    created_at: 2026-11-16T13:14:47.773Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-e4a98aa4f7eb
+  - type: requires_property
+    from: REQ-papra-intake-webhook-secret-required
+    to: FACT-papra-intake-email-webhook-secret-required-at-startup-when-intake-emails-enabled
+    created_at: 2026-11-16T13:14:47.784Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-255d2acef5d4
+  - type: requires_property
+    from: REQ-papra-intake-webhook-secret-required
+    to: FACT-papra-intake-email-webhook-accepts-requests-without-configured-secret
+    created_at: 2026-11-16T13:14:47.786Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b9b7ecfda7ce
+  - type: constrains
+    from: REQ-papra-intake-webhook-secret-required
+    to: FACT-papra-subject-intake-email-webhook
+    created_at: 2026-11-16T13:14:47.788Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-5fe125659ba9
+  - type: requires_property
+    from: REQ-papra-intake-webhook-secret-required
+    to: FACT-papra-intake-email-webhook-secret-length-range-when-set
+    created_at: 2026-11-16T13:14:47.790Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6d0a6ce8e55e
+  - type: supersedes
+    from: REQ-papra-intake-webhook-secret-required
+    to: REQ-papra-intake-webhook-secret-length
+    created_at: 2026-11-16T13:14:47.793Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-158d0d7100ac
+  - type: verified_by
+    from: REQ-papra-intake-webhook-secret-required
+    to: TEST-papra-server-src-modules-intake-emails-intake-emails-config-models
+    created_at: 2026-11-16T13:23:55.694Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-636e816523be
+  - type: verified_by
+    from: REQ-papra-intake-webhook-secret-required
+    to: TEST-papra-server-src-modules-intake-emails-intake-emails-usecases
+    created_at: 2026-11-16T13:30:10.353Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-31dc36e3565a
+  - id: rel-8b4f176d35e6
+    type: requires_property
+    from: REQ-backoffice-customer-tags-batch-size
+    to: FACT-backoffice-customer-tags-batch-maximum
+    created_at: "2025-08-08T15:41:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-dde25de772c0
+    type: constrains
+    from: REQ-backoffice-customer-tags-batch-size
+    to: FACT-backoffice-customer-tags-subject
+    created_at: "2025-08-08T15:41:21.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0b01e81f1700
+    type: requires_property
+    from: REQ-telemetry-telemetry-ingest-token-never-logged
+    to: FACT-telemetry-telemetry-ingest-token-value-logged
+    created_at: "2025-10-23T15:51:36.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b4aeb3e704ed
+    type: requires_property
+    from: REQ-telemetry-telemetry-ingest-token-never-logged
+    to: FACT-telemetry-telemetry-ingest-token-startup-log
+    created_at: "2025-10-23T15:51:36.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7bec01d2d764
+    type: constrains
+    from: REQ-telemetry-telemetry-ingest-token-never-logged
+    to: FACT-telemetry-telemetry-ingest-token-subject
+    created_at: "2025-10-23T15:51:36.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7fee5fe18ca7
+    type: requires_property
+    from: REQ-portal-partner-portal-jwt-secret-example-value-refused
+    to: FACT-portal-partner-portal-jwt-secret-example-value-refused
+    created_at: "2025-03-21T11:32:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-250d5f2eb970
+    type: constrains
+    from: REQ-portal-partner-portal-jwt-secret-example-value-refused
+    to: FACT-portal-partner-portal-jwt-secret-subject
+    created_at: "2025-03-21T11:32:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-db454cd78818
+    type: requires_property
+    from: REQ-portal-partner-registration-plus-addressing
+    to: FACT-portal-partner-registration-plus-addressing
+    created_at: "2026-03-12T08:39:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e2d9cd4b68ce
+    type: constrains
+    from: REQ-portal-partner-registration-plus-addressing
+    to: FACT-portal-partner-registration-subject
+    created_at: "2026-03-12T08:39:57.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

@@ -1,0 +1,141 @@
+relationships:
+  - id: rel-798f40d61590
+    type: requires_property
+    from: REQ-papra-email-user-name-sanitized
+    to: FACT-papra-email-templates-user-value-handling-v1
+    created_at: "2026-11-16T13:21:00.664Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-email-user-name-sanitized
+    to: FACT-papra-subject-email-templates
+    created_at: 2026-11-16T13:21:00.665Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-f9f94409bb0a
+  - id: rel-09b7c6667af5
+    type: requires_property
+    from: REQ-client-web-client-command-palette-search-text-filter-matching
+    to: FACT-client-web-client-command-palette-search-text-filter-matching
+    created_at: "2025-08-25T13:23:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2aa7f3072ef9
+    type: constrains
+    from: REQ-client-web-client-command-palette-search-text-filter-matching
+    to: FACT-client-web-client-command-palette-search-subject
+    created_at: "2025-08-25T13:23:46.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6c9490e5378c
+    type: requires_property
+    from: REQ-cli-papra-history-filter-empty-query
+    to: FACT-cli-papra-history-filter-empty-query
+    created_at: "2026-06-20T15:08:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0e9556bcba16
+    type: constrains
+    from: REQ-cli-papra-history-filter-empty-query
+    to: FACT-cli-papra-history-filter-subject
+    created_at: "2026-06-20T15:08:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-aeeb78762336
+    type: requires_property
+    from: REQ-forum-community-forum-post-search-query-length-earlier
+    to: FACT-forum-community-forum-post-search-query-max-length-earlier
+    created_at: "2025-06-05T13:50:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-849a7788366c
+    type: constrains
+    from: REQ-forum-community-forum-post-search-query-length-earlier
+    to: FACT-forum-community-forum-post-search-subject
+    created_at: "2025-06-05T13:50:05.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a91c997732c7
+    type: requires_property
+    from: REQ-mobile-push-relay-auth-key-source
+    to: FACT-mobile-push-relay-auth-key-value-source
+    created_at: "2025-05-06T12:06:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9be217b23d0b
+    type: constrains
+    from: REQ-mobile-push-relay-auth-key-source
+    to: FACT-mobile-push-relay-auth-key-subject
+    created_at: "2025-05-06T12:06:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-01abf3a0594b
+    type: requires_property
+    from: REQ-desktop-sync-folders-at-the-limit
+    to: FACT-desktop-sync-folders-at-limit
+    created_at: "2026-05-03T13:51:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3ef7d3bc18b1
+    type: constrains
+    from: REQ-desktop-sync-folders-at-the-limit
+    to: FACT-desktop-sync-folders-subject
+    created_at: "2026-05-03T13:51:20.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-705087f9fd00
+    type: requires_property
+    from: REQ-telemetry-projects-deletion-grace
+    to: FACT-telemetry-projects-restore-window-days
+    created_at: "2026-06-23T08:28:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8790f8559e71
+    type: requires_property
+    from: REQ-telemetry-projects-deletion-grace
+    to: FACT-telemetry-projects-purged-after-window
+    created_at: "2026-06-23T08:28:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-18f768db1cc1
+    type: constrains
+    from: REQ-telemetry-projects-deletion-grace
+    to: FACT-telemetry-projects-subject
+    created_at: "2026-06-23T08:28:30.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ac4d12547d43
+    type: requires_property
+    from: REQ-forum-community-forum-accounts-session-lifetime
+    to: FACT-forum-community-forum-accounts-session-days
+    created_at: "2026-01-27T08:38:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2a2251a1f66b
+    type: requires_property
+    from: REQ-forum-community-forum-accounts-session-lifetime
+    to: FACT-forum-community-forum-accounts-session-idle-minutes
+    created_at: "2026-01-27T08:38:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-08228b5ee5a3
+    type: constrains
+    from: REQ-forum-community-forum-accounts-session-lifetime
+    to: FACT-forum-community-forum-accounts-subject
+    created_at: "2026-01-27T08:38:56.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-fa2e6aa285aa
+    type: requires_property
+    from: REQ-portal-partner-portal-accounts-password-change
+    to: FACT-portal-partner-portal-accounts-sessions-on-password-change
+    created_at: "2026-05-18T14:27:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8daa9d11f062
+    type: constrains
+    from: REQ-portal-partner-portal-accounts-password-change
+    to: FACT-portal-partner-portal-accounts-subject
+    created_at: "2026-05-18T14:27:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

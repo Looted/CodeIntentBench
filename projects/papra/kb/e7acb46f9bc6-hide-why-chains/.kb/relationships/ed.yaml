@@ -1,0 +1,50 @@
+relationships:
+  - id: rel-0c94f96d1ef2
+    type: requires_property
+    from: REQ-cli-papra-logs-filter-empty-query
+    to: FACT-cli-papra-logs-filter-empty-query
+    created_at: "2026-02-19T14:00:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-85956465f259
+    type: constrains
+    from: REQ-cli-papra-logs-filter-empty-query
+    to: FACT-cli-papra-logs-filter-subject
+    created_at: "2026-02-19T14:00:51.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a397105d32a0
+    type: requires_property
+    from: REQ-portal-sub-partner-accounts-deletion-grace
+    to: FACT-portal-sub-partner-accounts-restore-window-days
+    created_at: "2025-03-22T17:32:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c3c4cb55c100
+    type: requires_property
+    from: REQ-portal-sub-partner-accounts-deletion-grace
+    to: FACT-portal-sub-partner-accounts-purged-after-window
+    created_at: "2025-03-22T17:32:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-69f12a288863
+    type: constrains
+    from: REQ-portal-sub-partner-accounts-deletion-grace
+    to: FACT-portal-sub-partner-accounts-subject
+    created_at: "2025-03-22T17:32:44.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-23478f1e18e1
+    type: requires_property
+    from: REQ-portal-partner-portal-accounts-email-change
+    to: FACT-portal-partner-portal-accounts-sessions-on-email-change
+    created_at: "2026-01-02T15:46:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2821fcf5ef31
+    type: constrains
+    from: REQ-portal-partner-portal-accounts-email-change
+    to: FACT-portal-partner-portal-accounts-subject
+    created_at: "2026-01-02T15:46:04.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

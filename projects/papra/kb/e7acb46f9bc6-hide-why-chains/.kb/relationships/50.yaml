@@ -1,0 +1,162 @@
+relationships:
+  - id: rel-c564adcf1326
+    type: requires_property
+    from: REQ-client-tag-colour-presets-listing-order
+    to: FACT-client-tag-colour-presets-listing-order
+    created_at: "2026-02-21T12:21:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a51314e81949
+    type: constrains
+    from: REQ-client-tag-colour-presets-listing-order
+    to: FACT-client-tag-colour-presets-subject
+    created_at: "2026-02-21T12:21:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-13fad62522b8
+    type: requires_property
+    from: REQ-education-course-labels-delete-in-use
+    to: FACT-education-course-labels-delete-in-use
+    created_at: "2025-06-24T08:15:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-a09635de8eb7
+    type: constrains
+    from: REQ-education-course-labels-delete-in-use
+    to: FACT-education-course-labels-subject
+    created_at: "2025-06-24T08:15:32.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3f2d97ba9f4d
+    type: requires_property
+    from: REQ-cli-papra-logs-filter-unknown-filter
+    to: FACT-cli-papra-logs-filter-unknown-filter
+    created_at: "2026-09-11T08:46:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-14b63cbe4bb9
+    type: constrains
+    from: REQ-cli-papra-logs-filter-unknown-filter
+    to: FACT-cli-papra-logs-filter-subject
+    created_at: "2026-09-11T08:46:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-47492203fadf
+    type: requires_property
+    from: REQ-support-support-portal-ticket-search-date-format
+    to: FACT-support-support-portal-ticket-search-date-filter-format
+    created_at: "2026-04-15T14:27:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ca33e120c192
+    type: constrains
+    from: REQ-support-support-portal-ticket-search-date-format
+    to: FACT-support-support-portal-ticket-search-subject
+    created_at: "2026-04-15T14:27:13.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c2b57914c8dc
+    type: requires_property
+    from: REQ-docs-docsearch-admin-key-source
+    to: FACT-docs-docsearch-admin-key-value-source
+    created_at: "2025-11-21T15:36:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-55bd827233fe
+    type: constrains
+    from: REQ-docs-docsearch-admin-key-source
+    to: FACT-docs-docsearch-admin-key-subject
+    created_at: "2025-11-21T15:36:37.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-dd8a112a4bfa
+    type: requires_property
+    from: REQ-website-cloud-waiting-list-allowed-domains
+    to: FACT-website-cloud-waiting-list-allowed-domain-matching
+    created_at: "2025-02-13T14:40:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8e7e7d52630d
+    type: requires_property
+    from: REQ-website-cloud-waiting-list-allowed-domains
+    to: FACT-website-cloud-waiting-list-domain-case-folding
+    created_at: "2025-02-13T14:40:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-938cb16edd16
+    type: constrains
+    from: REQ-website-cloud-waiting-list-allowed-domains
+    to: FACT-website-cloud-waiting-list-subject
+    created_at: "2025-02-13T14:40:02.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-c64e6d2bd2c3
+    type: requires_property
+    from: REQ-website-webinar-registration-blocked-domains
+    to: FACT-website-webinar-registration-disposable-domains-refused
+    created_at: "2025-06-07T12:37:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-9ed470774e7d
+    type: requires_property
+    from: REQ-website-webinar-registration-blocked-domains
+    to: FACT-website-webinar-registration-list-precedence
+    created_at: "2025-06-07T12:37:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-eac250cc794e
+    type: constrains
+    from: REQ-website-webinar-registration-blocked-domains
+    to: FACT-website-webinar-registration-subject
+    created_at: "2025-06-07T12:37:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-2af537eed0cf
+    type: requires_property
+    from: REQ-mobile-pinned-organizations-what-counts
+    to: FACT-mobile-pinned-organizations-counted-toward-limit
+    created_at: "2026-08-12T11:16:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d547954ab502
+    type: requires_property
+    from: REQ-mobile-pinned-organizations-what-counts
+    to: FACT-mobile-pinned-organizations-limit-detail
+    created_at: "2026-08-12T11:16:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f069909ef930
+    type: constrains
+    from: REQ-mobile-pinned-organizations-what-counts
+    to: FACT-mobile-pinned-organizations-subject
+    created_at: "2026-08-12T11:16:14.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-d8b49d491bb2
+    type: supersedes
+    from: REQ-desktop-linked-organizations-maximum-count
+    to: REQ-desktop-linked-organizations-maximum-count-earlier
+    created_at: "2025-06-16T10:34:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ddde20434fe4
+    type: requires_property
+    from: REQ-desktop-linked-organizations-maximum-count
+    to: FACT-desktop-linked-organizations-maximum-count
+    created_at: "2025-06-16T10:34:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e59a111d0d55
+    type: requires_property
+    from: REQ-desktop-linked-organizations-maximum-count
+    to: FACT-desktop-linked-organizations-limit-configurable
+    created_at: "2025-06-16T10:34:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-6c2ff5c0171e
+    type: constrains
+    from: REQ-desktop-linked-organizations-maximum-count
+    to: FACT-desktop-linked-organizations-subject
+    created_at: "2025-06-16T10:34:29.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

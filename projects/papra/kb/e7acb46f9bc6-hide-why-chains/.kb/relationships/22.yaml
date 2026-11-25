@@ -1,0 +1,57 @@
+relationships:
+  - id: rel-258b9e16afe7
+    type: requires_property
+    from: REQ-docs-page-tags-unique-ignoring-case
+    to: FACT-docs-page-tags-name-uniqueness
+    created_at: "2025-09-03T15:14:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-52ea741b973f
+    type: requires_property
+    from: REQ-docs-page-tags-unique-ignoring-case
+    to: FACT-docs-page-tags-duplicate-error
+    created_at: "2025-09-03T15:14:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-77a065187b86
+    type: constrains
+    from: REQ-docs-page-tags-unique-ignoring-case
+    to: FACT-docs-page-tags-subject
+    created_at: "2025-09-03T15:14:08.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7e81db427488
+    type: requires_property
+    from: REQ-client-web-client-demo-mode-search-case-folding
+    to: FACT-client-web-client-demo-mode-search-case-folding
+    created_at: "2025-09-12T17:39:36.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-908518ab4cee
+    type: constrains
+    from: REQ-client-web-client-demo-mode-search-case-folding
+    to: FACT-client-web-client-demo-mode-search-subject
+    created_at: "2025-09-12T17:39:36.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-660f5d8f7d27
+    type: requires_property
+    from: REQ-infra-asset-url-signing-key-never-logged
+    to: FACT-infra-asset-url-signing-key-value-logged
+    created_at: "2025-11-10T16:05:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-7a620663b342
+    type: requires_property
+    from: REQ-infra-asset-url-signing-key-never-logged
+    to: FACT-infra-asset-url-signing-key-startup-log
+    created_at: "2025-11-10T16:05:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-26988e8fec48
+    type: constrains
+    from: REQ-infra-asset-url-signing-key-never-logged
+    to: FACT-infra-asset-url-signing-key-subject
+    created_at: "2025-11-10T16:05:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

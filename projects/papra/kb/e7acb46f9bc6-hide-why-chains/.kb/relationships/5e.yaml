@@ -1,0 +1,155 @@
+relationships:
+  - id: rel-4dfcf3ba5a21
+    type: requires_property
+    from: REQ-accounts-can-enable-two-factor-authenticat-63D00769
+    to: FACT-papra-auth-two-factor-available-to-accounts
+    created_at: "2026-11-15T21:42:08.885Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-accounts-can-enable-two-factor-authenticat-63D00769
+    to: FACT-papra-subject-auth-two-factor
+    created_at: 2026-11-15T21:42:08.886Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-5457bdfc8ff0
+  - type: requires_property
+    from: REQ-papra-share-link-gone-semantics
+    to: FACT-papra-share-link-public-access-status-when-unavailable
+    created_at: 2026-11-16T13:16:18.245Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-991aafaae01c
+  - type: constrains
+    from: REQ-papra-share-link-gone-semantics
+    to: FACT-papra-subject-share-link-public-access
+    created_at: 2026-11-16T13:16:18.258Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ce66a957a069
+  - type: requires_property
+    from: REQ-papra-share-link-gone-semantics
+    to: FACT-papra-share-link-public-access-link-deleted-when-document-trashed
+    created_at: 2026-11-16T13:16:18.260Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-8b97b40c27bf
+  - type: requires_property
+    from: REQ-papra-share-link-gone-semantics
+    to: FACT-papra-share-link-public-access-resumes-when-document-or-organization-restored
+    created_at: 2026-11-16T13:16:18.263Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-5071f3dac1d6
+  - type: restates
+    from: REQ-papra-share-link-gone-semantics
+    to: REQ-papra-share-links-of-deleted-organizations
+    created_at: 2026-11-16T13:16:18.265Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-1e547de36107
+  - type: verified_by
+    from: REQ-papra-share-link-gone-semantics
+    to: TEST-papra-server-src-modules-document-share-links-document-share-links-usecases
+    created_at: 2026-11-16T13:24:04.211Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-0fdb41e2fbe5
+  - id: rel-d00bec66c09d
+    type: requires_property
+    from: REQ-website-blog-categories-names-trimmed
+    to: FACT-website-blog-categories-name-trimmed
+    created_at: "2025-08-17T16:39:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-ed1feca0b571
+    type: requires_property
+    from: REQ-website-blog-categories-names-trimmed
+    to: FACT-website-blog-categories-empty-name-refused
+    created_at: "2025-08-17T16:39:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e48f4a8f35af
+    type: constrains
+    from: REQ-website-blog-categories-names-trimmed
+    to: FACT-website-blog-categories-subject
+    created_at: "2025-08-17T16:39:01.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-5936ca7ebf83
+    type: requires_property
+    from: REQ-support-ticket-tags-delete-in-use
+    to: FACT-support-ticket-tags-delete-in-use
+    created_at: "2026-09-09T10:53:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f9ebab31ba7e
+    type: constrains
+    from: REQ-support-ticket-tags-delete-in-use
+    to: FACT-support-ticket-tags-subject
+    created_at: "2026-09-09T10:53:28.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f73b82c1efba
+    type: requires_property
+    from: REQ-forum-forum-tags-names-trimmed
+    to: FACT-forum-forum-tags-name-trimmed
+    created_at: "2025-10-17T14:51:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-013614d5d402
+    type: requires_property
+    from: REQ-forum-forum-tags-names-trimmed
+    to: FACT-forum-forum-tags-empty-name-refused
+    created_at: "2025-10-17T14:51:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-8c55a57fad04
+    type: constrains
+    from: REQ-forum-forum-tags-names-trimmed
+    to: FACT-forum-forum-tags-subject
+    created_at: "2025-10-17T14:51:42.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e67a393cb098
+    type: requires_property
+    from: REQ-marketplace-template-tags-name-length
+    to: FACT-marketplace-template-tags-name-max-length
+    created_at: "2026-09-06T08:50:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-0f6d72d3c89a
+    type: constrains
+    from: REQ-marketplace-template-tags-name-length
+    to: FACT-marketplace-template-tags-subject
+    created_at: "2026-09-06T08:50:10.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-116e26c3a01a
+    type: requires_property
+    from: REQ-client-web-client-command-palette-search-case-folding
+    to: FACT-client-web-client-command-palette-search-case-folding
+    created_at: "2026-03-03T11:45:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-3540faab664f
+    type: constrains
+    from: REQ-client-web-client-command-palette-search-case-folding
+    to: FACT-client-web-client-command-palette-search-subject
+    created_at: "2026-03-03T11:45:34.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f628435cfcb1
+    type: requires_property
+    from: REQ-desktop-linked-organizations-ownership-transfer
+    to: FACT-desktop-linked-organizations-ownership-transfer
+    created_at: "2025-12-11T11:58:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-1819eff05854
+    type: constrains
+    from: REQ-desktop-linked-organizations-ownership-transfer
+    to: FACT-desktop-linked-organizations-subject
+    created_at: "2025-12-11T11:58:19.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

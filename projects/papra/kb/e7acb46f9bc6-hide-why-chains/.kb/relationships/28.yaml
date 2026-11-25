@@ -1,0 +1,64 @@
+relationships:
+  - id: rel-ca4b443f69ed
+    type: requires_property
+    from: REQ-website-case-study-tags-maximum-count
+    to: FACT-website-case-study-tags-maximum-count
+    created_at: "2025-12-12T17:23:45.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-71b09d8b8b73
+    type: requires_property
+    from: REQ-website-case-study-tags-maximum-count
+    to: FACT-website-case-study-tags-limit-configurable
+    created_at: "2025-12-12T17:23:45.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-f245bfc6cc92
+    type: constrains
+    from: REQ-website-case-study-tags-maximum-count
+    to: FACT-website-case-study-tags-subject
+    created_at: "2025-12-12T17:23:45.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-aaf39e282c72
+    type: requires_property
+    from: REQ-forum-community-forum-post-search-case-folding
+    to: FACT-forum-community-forum-post-search-case-folding
+    created_at: "2025-05-07T10:28:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-b9fc342ea335
+    type: constrains
+    from: REQ-forum-community-forum-post-search-case-folding
+    to: FACT-forum-community-forum-post-search-subject
+    created_at: "2025-05-07T10:28:33.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-e2bc672a7cb5
+    type: requires_property
+    from: REQ-support-shared-inboxes-name-uniqueness
+    to: FACT-support-shared-inboxes-name-uniqueness
+    created_at: "2025-08-25T09:03:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-4e5b8c133b63
+    type: constrains
+    from: REQ-support-shared-inboxes-name-uniqueness
+    to: FACT-support-shared-inboxes-subject
+    created_at: "2025-08-25T09:03:48.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-de2d27dddd1c
+    type: requires_property
+    from: REQ-license-license-keys-name-length
+    to: FACT-license-license-keys-name-max-length
+    created_at: "2025-10-08T16:41:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - id: rel-533eb4a9b841
+    type: constrains
+    from: REQ-license-license-keys-name-length
+    to: FACT-license-license-keys-subject
+    created_at: "2025-10-08T16:41:47.000Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
