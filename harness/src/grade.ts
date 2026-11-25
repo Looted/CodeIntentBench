@@ -11,6 +11,7 @@ export const RULE_RECORD_PATHS: Record<string, RegExp> = {
   kibi: /^\.kb\//,
   'kibi-conv': /^\.kb\//,
   'kibi-hints': /^\.kb\//,
+  'kibi-fused': /^\.kb\//,
   'kibi-proved': /^(\.kb\/|proof\/steps\/)/,
   'agents-md': /^(AGENTS|CLAUDE)\.md$/,
   docs: /^docs\/decisions\//,

@@ -83,7 +83,8 @@ for (const rule of rules) {
       semantic_source_field: contract.source_field,
       semantic_source_hash: contract.source_hash,
       semantic_inventory: inventory,
-      logic_claims: inventory.map((p: any) => p.claim_key),
+      // Only assertive claims belong in logic_claims; the advisor marks an example or other non-assertive clause nonlogical.
+      logic_claims: inventory.filter((p: any) => p.status !== 'nonlogical').map((p: any) => p.claim_key),
     },
     document: { body },
     relationships: tests.map((_, i) => ({ type: 'verified_by', from: reqId(rule), to: testId(rule, i) })),

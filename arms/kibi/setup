@@ -21,7 +21,10 @@ if [ -n "${KIBI_SOURCE_PACKS:-}" ]; then
   packs=$(ls "$KIBI_SOURCE_PACKS"/kibi-{cli,mcp,core,runtime,agent-core,plugin-sdk,plugin-builtin,plugin-treesitter,plugin-jev,plugin-ui}-[0-9]*.tgz)
   # kibi-swipl (the bundled SWI-Prolog) is a dependency from 2026.11.5 on; older checkouts have no pack for it.
   swipl=$(ls "$KIBI_SOURCE_PACKS"/kibi-swipl-[0-9]*.tgz 2>/dev/null || true)
-  packs="$packs $swipl"
+  # The bundled search-hints plugin (a dependency of kibi-cli from 2026.11.6 on) comes from the same build, so a
+  # version not yet on npm resolves.
+  hints_pack=$(ls "$KIBI_SOURCE_PACKS"/kibi-plugin-search-hints-[0-9]*.tgz 2>/dev/null || true)
+  packs="$packs $swipl $hints_pack"
   ( cd "$run/kibi" && npm install --silent --no-audit --no-fund $packs )
   echo "source build: $(cat "$KIBI_SOURCE_PACKS/SOURCE" 2>/dev/null || echo unknown)" > "$run/kibi-source.txt"
 else
@@ -95,8 +98,12 @@ else
 fi
 # From 2026.11.6 on Kibi bundles its search-hints plugin and turns it on by default; a project opts out by listing it
 # in package.json kibi.declinedPlugins. Hints are their own arm (kibi-hints, against memory-embed), so the plain
-# kibi arm declines them, the way a team that does not want them would.
-if [ -z "${CIB_KIBI_HINTS:-}" ]; then
+# kibi arm declines them, the way a team that does not want them would. From develop 9c3f05cfb (PR 888) kb_search fuses
+# the hints' ranking into every search, so a run measuring that search keeps Kibi's default (CIB_KIBI_BUNDLED_HINTS=1):
+# the bundled plugin stays on and nothing is installed beside it.
+if [ -n "${CIB_KIBI_BUNDLED_HINTS:-}" ]; then
+  echo "search hints: bundled, on by default (not declined)" > "$run/search-hints.txt"
+elif [ -z "${CIB_KIBI_HINTS:-}" ]; then
   node -e '
     const fs = require("fs"); const p = JSON.parse(fs.readFileSync("package.json", "utf8"));
     p.kibi = p.kibi ?? {}; const d = new Set(p.kibi.declinedPlugins ?? []); d.add("kibi-plugin-search-hints");
