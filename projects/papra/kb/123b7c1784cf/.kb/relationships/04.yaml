@@ -1,0 +1,36 @@
+relationships:
+  - id: rel-4ec2c61545b6
+    type: requires_property
+    from: REQ-papra-search-endpoint-nested-results
+    to: FACT-papra-documents-search-endpoint-response-shape-v1
+    created_at: "2026-11-25T19:27:43.703Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-search-endpoint-nested-results
+    to: FACT-papra-subject-documents-search-endpoint
+    created_at: 2026-11-25T19:27:43.703Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-22dab9819567
+  - type: requires_property
+    from: REQ-papra-search-endpoint-nested-results
+    to: FACT-papra-documents-search-endpoint-result-fields-v1
+    created_at: 2026-11-25T19:27:43.715Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6dd36afa0bdc
+  - type: requires_property
+    from: REQ-papra-tag-search-link-quotes-names
+    to: FACT-papra-tags-search-link-quotes-names-with-spaces
+    created_at: 2026-11-25T19:28:42.019Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-662bd27cdcef
+  - type: constrains
+    from: REQ-papra-tag-search-link-quotes-names
+    to: FACT-papra-subject-tags-search-link
+    created_at: 2026-11-25T19:28:42.037Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-f9b2c0bea4cd

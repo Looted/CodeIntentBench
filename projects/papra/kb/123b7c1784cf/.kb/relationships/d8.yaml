@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-e8af947572fc
+    type: requires_property
+    from: REQ-papra-max-tags-per-organization
+    to: FACT-papra-tags-per-organization-limit-configurable
+    created_at: "2026-11-25T19:28:35.004Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-max-tags-per-organization
+    to: FACT-papra-subject-tags-per-organization-limit
+    created_at: 2026-11-25T19:28:35.004Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-7ed3d3cf46d4
+  - type: requires_property
+    from: REQ-papra-max-tags-per-organization
+    to: FACT-papra-tags-per-organization-limit-default
+    created_at: 2026-11-25T19:28:35.021Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-104fe0c61e5e
+  - type: verified_by
+    from: REQ-papra-max-tags-per-organization
+    to: TEST-papra-server-src-modules-tags-tags-usecases
+    created_at: 2026-11-25T19:31:57.093Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c99227fc5dc9

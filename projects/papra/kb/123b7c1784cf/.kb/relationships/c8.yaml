@@ -1,0 +1,36 @@
+relationships:
+  - id: rel-85a1baeb1705
+    type: requires_property
+    from: REQ-inbound-intake-email-webhooks-are-signed-w-27EFD88D
+    to: FACT-papra-intake-email-webhook-requests-signed-with-secret
+    created_at: "2026-11-15T21:42:39.379Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-inbound-intake-email-webhooks-are-signed-w-27EFD88D
+    to: FACT-papra-subject-intake-email-webhook
+    created_at: 2026-11-15T21:42:39.380Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-315a6d291491
+  - type: requires_property
+    from: REQ-inbound-intake-email-webhooks-are-signed-w-27EFD88D
+    to: FACT-papra-intake-email-webhook-authenticates-relay
+    created_at: 2026-11-15T21:42:39.387Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b18c3b0950dc
+  - type: verified_by
+    from: REQ-inbound-intake-email-webhooks-are-signed-w-27EFD88D
+    to: TEST-papra-server-src-modules-intake-emails-e2e-ingest-intake-emails-e2e
+    created_at: 2026-11-16T04:52:08.241Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9a416a2541db
+  - type: verified_by
+    from: REQ-inbound-intake-email-webhooks-are-signed-w-27EFD88D
+    to: TEST-papra-server-src-modules-intake-emails-intake-emails-usecases
+    created_at: 2026-11-16T04:52:08.247Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-71bf29a47d52

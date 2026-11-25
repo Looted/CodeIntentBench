@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-0b812d5292dc
+    type: requires_property
+    from: REQ-papra-office-document-extraction
+    to: FACT-papra-content-extraction-formats-office-formats-supported
+    created_at: "2026-11-25T19:29:00.648Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-office-document-extraction
+    to: FACT-papra-subject-content-extraction-formats
+    created_at: 2026-11-25T19:29:00.649Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c02705ca1f33
+  - type: requires_property
+    from: REQ-papra-browser-upload-concurrency-limited
+    to: FACT-papra-upload-concurrency-limited
+    created_at: 2026-11-25T19:29:40.774Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-731cfedb165c
+  - type: constrains
+    from: REQ-papra-browser-upload-concurrency-limited
+    to: FACT-papra-subject-upload-concurrency
+    created_at: 2026-11-25T19:29:40.788Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c3d2695e0bfa

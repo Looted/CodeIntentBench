@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-8de22d93194d
+    type: requires_property
+    from: REQ-papra-tag-colour-case-insensitive
+    to: FACT-papra-tags-color-hex-case-insensitive
+    created_at: "2026-11-25T19:28:20.268Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-tag-colour-case-insensitive
+    to: FACT-papra-subject-tags-color
+    created_at: 2026-11-25T19:28:20.268Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b0fe94386310

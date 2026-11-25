@@ -7,12 +7,13 @@ its own container (`../arm-prepare.sh`): the Kibi arms get the knowledge base it
 it exported into rule files (`harness/src/arm-tools/kb-export.ts`, one rule per requirement with its reason,
 its source citation, the code paths that implement it and the test files linked to them; 42 of the 44 April rules carry code paths).
 
-Three bases, one per commit the arcs start from:
+Four bases, one per commit the arcs start from:
 
 | Base | Date | Arcs | Requirements |
 |---|---|---|---|
 | `884d4704106b` | 2026-04-02 | `api-key-expiry-*`, `api-key-cache-long` | 44, all active |
 | `50cbe2cace34` | 2026-09-18 | `member-cap-refactor` | 66, of which 3 closed |
+| `123b7c1784cf` | 2026-04-16, mid-way through the zod-to-valibot migration | set 5 (half-finished refactor), not built yet | 132, of which 5 closed |
 | `e7acb46f9bc6` | 2026-10-06, the project pin | `intake-secret-superseded`, `storage-key-org-rename`, `no-mutation-exif` | 70, of which 4 closed |
 
 Each claim carries the date its behaviour and source existed, and a base only gets the claims dated on
@@ -172,6 +173,11 @@ April one, with the pinned `kibi` on PATH and a clone of Papra that has the comm
 3. `kibi sync --refresh-symbol-coordinates`, then test entities whose file is gone and facts nothing
    links to are deleted, then `kibi sync`.
 4. `declarations.py` and `coverage.py` (see above), then `kibi sync` and `kibi check`.
+
+`123b7c1784cf` (set 5, "as upstream", no patch) was built with `gold/snapshot.sh 123b7c17 <workdir>` and the
+pinned Kibi 2.44.0, then stored as `--store` does. Its `kibi check`: `symbol-coverage` 20; diagnostics
+`coverage_depth_review` 127, one `broad_requirement_review` (REQ-papra-active-subscription-blocks-deletion) and one
+`multi_requirement_symbol_review` (inviteMemberToOrganization, three requirements).
 
 ### What later.json holds
 

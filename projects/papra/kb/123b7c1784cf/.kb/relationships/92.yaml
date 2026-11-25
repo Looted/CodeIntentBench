@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-9c73fc3d61db
+    type: requires_property
+    from: REQ-papra-webhook-secret-redacted
+    to: FACT-papra-webhook-secret-returned-in-update-response
+    created_at: "2026-11-25T19:29:20.797Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-webhook-secret-redacted
+    to: FACT-papra-subject-webhook-secret
+    created_at: 2026-11-25T19:29:20.798Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-1544efc8c0bd

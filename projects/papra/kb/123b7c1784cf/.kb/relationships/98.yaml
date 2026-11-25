@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-038c84a9ff8b
+    type: requires_property
+    from: REQ-papra-tags-changeable-with-api-keys
+    to: FACT-papra-tags-api-key-access-allowed
+    created_at: "2026-11-25T19:28:17.040Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-tags-changeable-with-api-keys
+    to: FACT-papra-subject-tags-api-key-access
+    created_at: 2026-11-25T19:28:17.041Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2946a42328b6
+  - type: requires_property
+    from: REQ-papra-pdf-page-render-ocr-fallback
+    to: FACT-papra-content-extraction-pdf-fallback-renders-pages-for-ocr
+    created_at: 2026-11-25T19:29:03.875Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-f707e04bf652
+  - type: constrains
+    from: REQ-papra-pdf-page-render-ocr-fallback
+    to: FACT-papra-subject-content-extraction-pdf-fallback
+    created_at: 2026-11-25T19:29:03.890Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-e607ec01d172

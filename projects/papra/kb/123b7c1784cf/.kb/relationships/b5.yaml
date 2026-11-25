@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-0cd311ff9993
+    type: requires_property
+    from: REQ-papra-email-drivers-logger
+    to: FACT-papra-email-sending-driver-setting
+    created_at: "2026-11-25T19:29:57.498Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-email-drivers-logger
+    to: FACT-papra-subject-email-sending
+    created_at: 2026-11-25T19:29:57.498Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-dffcf379180e
+  - type: requires_property
+    from: REQ-papra-email-drivers-logger
+    to: FACT-papra-email-sending-dry-run-setting-available
+    created_at: 2026-11-25T19:29:57.510Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-39e0cfaf1e5f
+  - type: supersedes
+    from: REQ-papra-email-drivers-logger
+    to: REQ-papra-docker-email-dry-run-default
+    created_at: 2026-11-25T19:29:57.513Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-e481fa8c5370

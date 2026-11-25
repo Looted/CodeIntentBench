@@ -1,0 +1,22 @@
+relationships:
+  - id: rel-7042020c85c5
+    type: requires_predicate
+    from: REQ-expired-cancelled-or-rejected-invitations--CDCCD352
+    to: FACT-papra-perm-privileged-member-resend-closed-invitation
+    created_at: "2026-11-15T21:42:31.402Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: requires_property
+    from: REQ-expired-cancelled-or-rejected-invitations--CDCCD352
+    to: FACT-papra-invitations-invitation-accepted-is-final
+    created_at: 2026-11-15T21:45:26.458Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-82fc381964c7
+  - type: constrains
+    from: REQ-expired-cancelled-or-rejected-invitations--CDCCD352
+    to: FACT-papra-subject-invitations-invitation
+    created_at: 2026-11-15T21:45:26.462Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-267d10284718

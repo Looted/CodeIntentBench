@@ -1,0 +1,22 @@
+relationships:
+  - id: rel-94c4b5ae563a
+    type: requires_property
+    from: REQ-papra-documents-list-no-tag-filter
+    to: FACT-papra-documents-list-endpoint-accepts-tags-parameter
+    created_at: "2026-11-25T19:27:52.134Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-documents-list-no-tag-filter
+    to: FACT-papra-subject-documents-list-endpoint
+    created_at: 2026-11-25T19:27:52.134Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-beaa0695564c
+  - type: requires_property
+    from: REQ-papra-documents-list-no-tag-filter
+    to: FACT-papra-documents-list-endpoint-tag-filtering-via
+    created_at: 2026-11-25T19:27:52.147Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-7d72ba8019d6

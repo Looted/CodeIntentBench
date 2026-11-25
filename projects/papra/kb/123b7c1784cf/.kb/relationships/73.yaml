@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-0f4f2e762e67
+    type: requires_property
+    from: REQ-papra-server-hostname-configurable
+    to: FACT-papra-server-hostname-configurable
+    created_at: "2026-11-25T19:30:22.594Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-server-hostname-configurable
+    to: FACT-papra-subject-server-hostname
+    created_at: 2026-11-25T19:30:22.595Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-491334876adc

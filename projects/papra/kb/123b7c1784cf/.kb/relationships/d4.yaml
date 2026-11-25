@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-e3f67e3a8567
+    type: requires_property
+    from: REQ-papra-quoted-search-filters
+    to: FACT-papra-search-quoted-filters-available
+    created_at: "2026-11-25T19:28:10.517Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: constrains
+    from: REQ-papra-quoted-search-filters
+    to: FACT-papra-subject-search-quoted-filters
+    created_at: 2026-11-25T19:28:10.518Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-8100ece00e2c
+  - type: requires_property
+    from: REQ-papra-rate-limit-ip-header-configurable
+    to: FACT-papra-rate-limit-ip-header-configurable
+    created_at: 2026-11-25T19:30:18.839Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9b67e2da7f00
+  - type: constrains
+    from: REQ-papra-rate-limit-ip-header-configurable
+    to: FACT-papra-subject-rate-limit-ip-header
+    created_at: 2026-11-25T19:30:18.853Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ea3070aea78f

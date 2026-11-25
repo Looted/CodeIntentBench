@@ -1,0 +1,50 @@
+relationships:
+  - id: rel-7c15e300d518
+    type: verified_by
+    from: REQ-documents-are-deduplicated-per-organizatio-7DDB2737
+    to: TEST-papra-server-src-modules-documents-documents-usecases
+    created_at: "2026-10-14T12:09:36.424Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: verified_by
+    from: REQ-documents-are-deduplicated-per-organizatio-7DDB2737
+    to: TEST-papra-server-src-modules-documents-documents-repository
+    created_at: 2026-10-14T12:09:36.426Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c551b05556ef
+  - type: requires_property
+    from: REQ-documents-are-deduplicated-per-organizatio-7DDB2737
+    to: FACT-papra-document-deduplication-scope-and-key
+    created_at: 2026-11-15T21:42:23.865Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-03e35695bf50
+  - type: constrains
+    from: REQ-documents-are-deduplicated-per-organizatio-7DDB2737
+    to: FACT-papra-subject-document-deduplication
+    created_at: 2026-11-15T21:42:23.870Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-8a1bbb1e1498
+  - type: requires_property
+    from: REQ-documents-are-deduplicated-per-organizatio-7DDB2737
+    to: FACT-papra-document-deduplication-rejects-existing-content
+    created_at: 2026-11-15T21:42:23.872Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-27535d0953d0
+  - type: requires_property
+    from: REQ-papra-native-tesseract-when-available
+    to: FACT-papra-ocr-tesseract-engine-preferred-engine
+    created_at: 2026-11-25T19:29:10.406Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b10289f0ccab
+  - type: constrains
+    from: REQ-papra-native-tesseract-when-available
+    to: FACT-papra-subject-ocr-tesseract-engine
+    created_at: 2026-11-25T19:29:10.421Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-7eea171acff6
