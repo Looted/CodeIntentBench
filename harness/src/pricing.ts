@@ -1,6 +1,6 @@
 // List prices per million tokens, used only to cross-check the cost Claude Code reports and to
 // estimate the cost of a session that ended without a result event (killed on timeout).
-// Override or extend with CIB_MODEL_PRICING='{"model":{"input":2,"output":10,"cache_read":0.1,"cache_write_5m":2.5,"cache_write_1h":4}}'.
+// Override or extend with FENCEBENCH_MODEL_PRICING='{"model":{"input":2,"output":10,"cache_read":0.1,"cache_write_5m":2.5,"cache_write_1h":4}}'.
 export interface ModelPrice { input: number; output: number; cache_read: number; cache_write_5m: number; cache_write_1h: number }
 
 const DEFAULT_PRICES: Record<string, ModelPrice> = {
@@ -9,7 +9,7 @@ const DEFAULT_PRICES: Record<string, ModelPrice> = {
 
 export function priceFor(model: string): ModelPrice | undefined {
   let extra: Record<string, ModelPrice> = {};
-  try { extra = process.env.CIB_MODEL_PRICING ? JSON.parse(process.env.CIB_MODEL_PRICING) : {}; } catch { /* ignored: bad override */ }
+  try { extra = process.env.FENCEBENCH_MODEL_PRICING ? JSON.parse(process.env.FENCEBENCH_MODEL_PRICING) : {}; } catch { /* ignored: bad override */ }
   const table = { ...DEFAULT_PRICES, ...extra };
   return table[model] ?? table[model.replace(/\[.*\]$/, '')] ?? Object.entries(table).find(([k]) => model.startsWith(k))?.[1];
 }
@@ -24,13 +24,13 @@ export function priceTokens(model: string, t: TokenCounts): number | undefined {
 }
 
 // Context windows in tokens, used only by the agents-md arm's size guard. The current Claude models
-// take one million tokens; override or extend with CIB_MODEL_CONTEXT_TOKENS='{"model":200000}'.
+// take one million tokens; override or extend with FENCEBENCH_MODEL_CONTEXT_TOKENS='{"model":200000}'.
 const DEFAULT_CONTEXT_TOKENS = 1_000_000;
 const CONTEXT_TOKENS: Record<string, number> = { 'claude-haiku-4-5': 200_000 };
 
 export function contextTokensFor(model: string | undefined): number {
   let extra: Record<string, number> = {};
-  try { extra = process.env.CIB_MODEL_CONTEXT_TOKENS ? JSON.parse(process.env.CIB_MODEL_CONTEXT_TOKENS) : {}; } catch { /* ignored: bad override */ }
+  try { extra = process.env.FENCEBENCH_MODEL_CONTEXT_TOKENS ? JSON.parse(process.env.FENCEBENCH_MODEL_CONTEXT_TOKENS) : {}; } catch { /* ignored: bad override */ }
   const table = { ...CONTEXT_TOKENS, ...extra };
   if (!model) return DEFAULT_CONTEXT_TOKENS;
   return table[model] ?? Object.entries(table).find(([k]) => model.startsWith(k))?.[1] ?? DEFAULT_CONTEXT_TOKENS;

@@ -319,7 +319,7 @@ export async function runArc(projectName: string, arc: Arc, arm: string, attempt
   opts.log(`arc ${arc.id} / ${arm} / attempt ${attempt} → ${dir}`);
   const sources = arc.steps.map((s) => s.source?.commit).filter((c): c is string => Boolean(c));
   // The arm's setup may size its container against the agent's model (agents-md: the file must fit the context window).
-  process.env.CIB_AGENT_MODEL = opts.agent.model;
+  process.env.FENCEBENCH_AGENT_MODEL = opts.agent.model;
   const sizeFile = join(dir, 'agents-md-size.json');
   const readSize = () => { if (existsSync(sizeFile)) { try { record.agents_md = JSON.parse(readFileSync(sizeFile, 'utf8')); } catch { /* keep the raw file */ } } };
   const endUnscored = (reason: string) => {
@@ -383,7 +383,7 @@ export async function runArc(projectName: string, arc: Arc, arm: string, attempt
     if (step.script) {
       // A teammate's change between sessions: applied by the benchmark, committed, never graded.
       const script = join(arc._dir ?? '', step.script);
-      must(`${q(script)} ${q(ws)}`, { cwd: ws, env: { ...ENV, CIB_WORKSPACE: ws, CIB_ARC_DIR: arc._dir ?? '', CIB_RUN_DIR: dir, CIB_ARM: arm } });
+      must(`${q(script)} ${q(ws)}`, { cwd: ws, env: { ...ENV, FENCEBENCH_WORKSPACE: ws, FENCEBENCH_ARC_DIR: arc._dir ?? '', FENCEBENCH_RUN_DIR: dir, FENCEBENCH_ARM: arm } });
       // The teammate commits with the same tooling as the user: the arm's before-commit step (Kibi
       // refreshes its symbol links) runs first, as it does before a session's commit.
       const teammateBeforeCommit = join(ARMS_DIR, arm, 'before-commit');

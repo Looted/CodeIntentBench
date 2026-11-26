@@ -10,8 +10,8 @@ const ID = ['-c', 'user.name=t', '-c', 'user.email=t@example.com'];
 const g = (cwd: string, ...a: string[]) => execFileSync('git', [...ID, ...a], { cwd, encoding: 'utf8' }).trim();
 
 test('an unpatched workspace keeps history up to its base and nothing after it', () => {
-  const root = mkdtempSync(join(tmpdir(), 'cib-cut-'));
-  const project = { name: `cib-test-cut-${process.pid}` };
+  const root = mkdtempSync(join(tmpdir(), 'fencebench-cut-'));
+  const project = { name: `fencebench-test-cut-${process.pid}` };
   const mirror = mirrorDir(project);
   try {
     const src = join(root, 'src'); mkdirSync(src);

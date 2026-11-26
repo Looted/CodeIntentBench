@@ -19,30 +19,30 @@ import { must, sh } from './shell.ts';
 import type { AgentConfig, Arc, ArcRunRecord, ArcStep, RunRecord, RunSpec, Task } from './types.ts';
 import { BASE_BRANCH, GIT_IDENTITY, ensureCommitInWorkspace, loadArmHost, prepareWorkspace, runDir, workspaceDir } from './workspace.ts';
 
-const HELP = `CodeIntentBench harness
+const HELP = `FenceBench harness
 
-  cib validate [--skip-audit]          check projects, rules, tasks and arcs, then run the equivalence audit
-  cib audit [--project P] [--arc A[,B]] [--arm A[,B]] [--keep]
+  fencebench validate [--skip-audit]          check projects, rules, tasks and arcs, then run the equivalence audit
+  fencebench audit [--project P] [--arc A[,B]] [--arm A[,B]] [--keep]
                                        the equivalence audit alone: after each arm's setup, every decision an
                                        arc is about must be in the arm's container with its reason, status,
                                        firmness and code paths. No model is called. An arc that fails is not scored.
-  cib list [--project P]               list tasks and arms
-  cib prepare --project P --task T --arm A [--out DIR]
+  fencebench list [--project P]               list tasks and arms
+  fencebench prepare --project P --task T --arm A [--out DIR]
                                        build a workspace and stop (debugging arms)
-  cib run --project P --task T|all --arm A[,B] [--attempts N] [--model M] [--effort E]
+  fencebench run --project P --task T|all --arm A[,B] [--attempts N] [--model M] [--effort E]
           [--max-turns N] [--timeout MIN] [--budget USD] [--judge-model M] [--agent claude|replay]
           [--permissions bypass|accept-edits] [--allowed-tools "Bash(pnpm:*),Bash(npx vitest:*)"]
           [--keep] [--skip-judge]
                                        prepare, run the agent, grade, record
-  cib grade --run DIR [--judge-model M] re-grade an existing run directory (needs --keep)
-  cib rejudge (--run DIR | --project P) [--judge-model M] [--steps s3,s4]
+  fencebench grade --run DIR [--judge-model M] re-grade an existing run directory (needs --keep)
+  fencebench rejudge (--run DIR | --project P) [--judge-model M] [--steps s3,s4]
                                        re-run the judge and the decision table from saved artifacts
-  cib report [--project P]             aggregate runs into runs/<project>/report.md (and report-arcs.md)
-  cib run-arc --project P --arc A|all --arm A[,B] [--family F] [--attempts N] [--user-replies N] [--user-model M] [--user-style task|agreeable] [agent options as for run]
+  fencebench report [--project P]             aggregate runs into runs/<project>/report.md (and report-arcs.md)
+  fencebench run-arc --project P --arc A|all --arm A[,B] [--family F] [--attempts N] [--user-replies N] [--user-model M] [--user-style task|agreeable] [agent options as for run]
                                        run a feature arc: fresh sessions on one carried workspace; with --user-replies N a
                                        scripted user answers up to N times when a session stops to wait on the user
 
-Environment: CIB_RUNS_DIR (default: <repo>/runs), CIB_CACHE_DIR (default: <repo>/cache).
+Environment: FENCEBENCH_RUNS_DIR (default: <repo>/runs), FENCEBENCH_CACHE_DIR (default: <repo>/cache).
 Node 26 (or the project's runtime) must be on PATH before the project installs.
 `;
 
@@ -58,7 +58,7 @@ const { values: v, positionals } = parseArgs({
   },
 });
 const cmd = positionals[0];
-const log = (s: string) => process.stderr.write(`[cib] ${s}\n`);
+const log = (s: string) => process.stderr.write(`[fencebench] ${s}\n`);
 
 function agentConfig(): AgentConfig {
   return {
@@ -142,7 +142,7 @@ function replayAgent(dir: string, task: Task): AgentResult {
     final = 'Nothing to do in replay mode.';
   }
   writeFileSync(join(dir, 'transcript.jsonl'), JSON.stringify({ type: 'result', result: final, num_turns: 1, total_cost_usd: 0, usage: {} }) + '\n');
-  return { code: 0, timed_out: false, usage: { input_tokens: 0, cache_read_input_tokens: 0, cache_creation_input_tokens: 0, output_tokens: 0, cost_usd: 0, tool_calls: 0, turns: 1, wall_seconds: 0 }, terminal_reason: 'replay', final_answer: final, tools_available: ['Edit', 'Bash', ...(process.env.CIB_REPLAY_KIBI ? ['mcp__kibi__kb_search'] : [])], tool_calls: [], permission_denials: 0 };
+  return { code: 0, timed_out: false, usage: { input_tokens: 0, cache_read_input_tokens: 0, cache_creation_input_tokens: 0, output_tokens: 0, cost_usd: 0, tool_calls: 0, turns: 1, wall_seconds: 0 }, terminal_reason: 'replay', final_answer: final, tools_available: ['Edit', 'Bash', ...(process.env.FENCEBENCH_REPLAY_KIBI ? ['mcp__kibi__kb_search'] : [])], tool_calls: [], permission_denials: 0 };
 }
 
 /** Scripted stand-in for an arc session: cherry-picks the step's source commit when it has one. */
@@ -164,7 +164,7 @@ function replayStep(ws: string, step: ArcStep, dir: string): AgentResult {
     final = 'I did not make this change: it conflicts with a recorded project decision. Please confirm whether the decision should change.';
   }
   writeFileSync(join(dir, 'transcript.jsonl'), JSON.stringify({ type: 'result', result: final, num_turns: 1, total_cost_usd: 0, usage: {} }) + '\n');
-  return { code: 0, timed_out: false, usage: { input_tokens: 0, cache_read_input_tokens: 0, cache_creation_input_tokens: 0, output_tokens: 0, cost_usd: 0, tool_calls: 0, turns: 1, wall_seconds: 0 }, terminal_reason: 'replay', final_answer: final, tools_available: ['Edit', 'Bash', ...(process.env.CIB_REPLAY_KIBI ? ['mcp__kibi__kb_search'] : []), ...(process.env.CIB_REPLAY_MCP ? [`mcp__${process.env.CIB_REPLAY_MCP}__x`] : [])], tool_calls: [], permission_denials: 0 };
+  return { code: 0, timed_out: false, usage: { input_tokens: 0, cache_read_input_tokens: 0, cache_creation_input_tokens: 0, output_tokens: 0, cost_usd: 0, tool_calls: 0, turns: 1, wall_seconds: 0 }, terminal_reason: 'replay', final_answer: final, tools_available: ['Edit', 'Bash', ...(process.env.FENCEBENCH_REPLAY_KIBI ? ['mcp__kibi__kb_search'] : []), ...(process.env.FENCEBENCH_REPLAY_MCP ? [`mcp__${process.env.FENCEBENCH_REPLAY_MCP}__x`] : [])], tool_calls: [], permission_denials: 0 };
 }
 
 async function runOne(projectName: string, task: Task, arm: string, attempt: number): Promise<RunRecord> {

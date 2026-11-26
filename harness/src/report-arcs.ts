@@ -151,7 +151,7 @@ export function renderArcsMarkdown(project: string, runs: ArcRunRecord[], unfini
   const arms = [...new Set(runs.map((r) => r.spec.arm))].sort();
   const L: string[] = [];
   const money = (x: number) => `$${x.toFixed(2)}`;
-  L.push(`# CodeIntentBench arc results: ${project}`);
+  L.push(`# FenceBench arc results: ${project}`);
   L.push('');
   L.push(`${runs.length} arc runs (${runs.filter((r) => r.invalid).length} invalid). The headline is the share of probe sessions passed, by the pattern the arc tests; whether every session of an arc passed comes second, because one slip in an unrelated session fails a long arc. Hard and easy arcs are reported apart. Rates show 95% Wilson intervals where given.`);
   L.push('');
@@ -261,7 +261,7 @@ export function renderArcsMarkdown(project: string, runs: ArcRunRecord[], unfini
   return L.join('\n');
 }
 
-/** Arcs whose arms were audited as holding different facts for a decision: the same check `cib audit` makes, over the run records. */
+/** Arcs whose arms were audited as holding different facts for a decision: the same check `fencebench audit` makes, over the run records. */
 export function auditMismatches(runs: ArcRunRecord[]): string[] {
   const out: string[] = [];
   const byArc = new Map<string, ArcRunRecord[]>();

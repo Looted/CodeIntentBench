@@ -13,12 +13,12 @@ set -euo pipefail
 ws="$1"; arm="$2"; rules="$3"; run="$4"
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 harness="$(cd "$here/../../harness" && pwd)"
-[ "${CIB_MODE:-task}" = "arc" ] || exit 0
+[ "${FENCEBENCH_MODE:-task}" = "arc" ] || exit 0
 cd "$ws"
 
 # The harness names the base: the commit's first 12 characters, plus the teammate patch's name when the
 # arc starts from a patched base (whose single commit is not the upstream one).
-base="${CIB_BASE_KEY:-$(git rev-parse HEAD | cut -c1-12)}"
+base="${FENCEBENCH_BASE_KEY:-$(git rev-parse HEAD | cut -c1-12)}"
 kb="$here/kb/$base/.kb"
 if [ ! -d "$kb" ]; then echo "no onboarded knowledge base for base $base under $here/kb" >&2; exit 1; fi
 rm -rf .kb

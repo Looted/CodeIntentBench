@@ -16,7 +16,7 @@ _git() { git -c user.name=check -c user.email=check@example.com "$@"; }
 check_prepare() {
   REF="$1"; local patch="${2:-patches/hide-why.patch}"
   if [ -d "$REF/.git" ] && _git -C "$REF" rev-parse --verify -q base >/dev/null; then check_go base; return; fi
-  local mirror="${CIB_CACHE_DIR:-$PAPRA_DIR/../../cache}/repos/papra.git"
+  local mirror="${FENCEBENCH_CACHE_DIR:-$PAPRA_DIR/../../cache}/repos/papra.git"
   [ -d "$mirror" ] || git clone --quiet --mirror https://github.com/papra-hq/papra "$mirror"
   rm -rf "$REF"
   git clone --quiet --shared --no-checkout "$mirror" "$REF"

@@ -2,8 +2,8 @@
 // The `agents-md` arm: every rule in one AGENTS.md that Claude Code loads whole into every session.
 // The file is never truncated. Its size is written to <runDir>/agents-md-size.json and reported with
 // the results; when its estimated tokens exceed the budget the setup fails ("does not fit") instead
-// of running sessions on a context that cannot hold it. The budget is CIB_AGENTS_MD_TOKEN_BUDGET,
-// or by default the context window of the agent's model (CIB_AGENT_MODEL, set by the harness).
+// of running sessions on a context that cannot hold it. The budget is FENCEBENCH_AGENTS_MD_TOKEN_BUDGET,
+// or by default the context window of the agent's model (FENCEBENCH_AGENT_MODEL, set by the harness).
 import { readFileSync, readdirSync, writeFileSync, existsSync } from 'node:fs';
 import { join, basename } from 'node:path';
 import YAML from 'yaml';
@@ -15,15 +15,15 @@ const [ws, rulesDir, projectName, runDir] = process.argv.slice(2);
 if (!ws || !rulesDir) throw new Error('usage: render-agents-md.ts <workspace> <rulesDir> [projectName] [runDir]');
 const rules = readdirSync(rulesDir).filter((f) => f.endsWith('.yaml')).sort().map((f) => YAML.parse(readFileSync(join(rulesDir, f), 'utf8')) as Rule);
 const text = renderAgentsMd(projectName ?? basename(ws), rules);
-const model = process.env.CIB_AGENT_MODEL || undefined;
-const override = process.env.CIB_AGENTS_MD_TOKEN_BUDGET;
+const model = process.env.FENCEBENCH_AGENT_MODEL || undefined;
+const override = process.env.FENCEBENCH_AGENTS_MD_TOKEN_BUDGET;
 const budget = override ? Number(override) : contextTokensFor(model);
-if (!Number.isFinite(budget) || budget <= 0) throw new Error(`CIB_AGENTS_MD_TOKEN_BUDGET must be a positive number, got '${override}'`);
-const size = { rules: rules.length, bytes: Buffer.byteLength(text, 'utf8'), estimated_tokens: estimateTokens(text), token_budget: budget, budget_source: override ? 'CIB_AGENTS_MD_TOKEN_BUDGET' : `context window of ${model ?? 'the default model'}`, fits: true };
+if (!Number.isFinite(budget) || budget <= 0) throw new Error(`FENCEBENCH_AGENTS_MD_TOKEN_BUDGET must be a positive number, got '${override}'`);
+const size = { rules: rules.length, bytes: Buffer.byteLength(text, 'utf8'), estimated_tokens: estimateTokens(text), token_budget: budget, budget_source: override ? 'FENCEBENCH_AGENTS_MD_TOKEN_BUDGET' : `context window of ${model ?? 'the default model'}`, fits: true };
 size.fits = size.estimated_tokens <= budget;
 if (runDir) writeFileSync(join(runDir, 'agents-md-size.json'), JSON.stringify(size, null, 2));
 if (!size.fits) {
-  console.error(`agents-md: does not fit. AGENTS.md with ${rules.length} rules is ${size.bytes} bytes, about ${size.estimated_tokens} tokens, over the budget of ${budget} tokens (${size.budget_source}). Nothing was truncated and nothing was written; raise CIB_AGENTS_MD_TOKEN_BUDGET or report this arm as "does not fit".`);
+  console.error(`agents-md: does not fit. AGENTS.md with ${rules.length} rules is ${size.bytes} bytes, about ${size.estimated_tokens} tokens, over the budget of ${budget} tokens (${size.budget_source}). Nothing was truncated and nothing was written; raise FENCEBENCH_AGENTS_MD_TOKEN_BUDGET or report this arm as "does not fit".`);
   process.exit(3);
 }
 writeFileSync(join(ws, 'AGENTS.md'), text);

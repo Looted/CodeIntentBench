@@ -7,7 +7,7 @@ import { effectiveFirmness, exportKb, isCurrent } from '../src/kb-rules.ts';
 import { memoryNote, renderAgentsMd, renderDecisionDoc, trackerIssue } from '../src/render.ts';
 import { writeKb } from './fixtures.ts';
 
-const kb = writeKb(mkdtempSync(join(tmpdir(), 'cib-kb-')));
+const kb = writeKb(mkdtempSync(join(tmpdir(), 'fencebench-kb-')));
 const out = exportKb(kb, { includeAdr: true });
 const byId = (id: string) => out.rules.find((r) => r.id === id)!;
 

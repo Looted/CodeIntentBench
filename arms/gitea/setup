@@ -8,7 +8,7 @@ ws="$1"; rules="$2"; run="$3"
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 harness="$(cd "$here/../../harness" && pwd)"
 . "$here/versions.env"
-cache="${CIB_CACHE_DIR:-$here/../../cache}/gitea"
+cache="${FENCEBENCH_CACHE_DIR:-$here/../../cache}/gitea"
 bin="$cache/bin-$GITEA_VERSION-$GITEA_MCP_VERSION"
 
 # The official binaries, checked against their published SHA-256 sums.
@@ -27,7 +27,7 @@ fi
 node "$harness/src/arm-tools/seed-store.ts" tracker "$run/tracker-seed.json" "$rules" > /dev/null
 # Products that a real organisation would track in their own repositories (projects/<project>/gitea-repos.json:
 # component -> repository) move out of papra/papra; every other issue stays there with its component labels.
-repos_map="$here/../../projects/${CIB_PROJECT:-papra}/gitea-repos.json"
+repos_map="$here/../../projects/${FENCEBENCH_PROJECT:-papra}/gitea-repos.json"
 if [ -f "$repos_map" ]; then
   python3 -I - "$run/tracker-seed.json" "$repos_map" <<'PY'
 import json, sys

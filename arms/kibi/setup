@@ -52,7 +52,7 @@ if [ -n "${KIBI_SOURCE_PLUGIN:-}" ] && [ ! -d "$run/plugin/kibi-claude" ]; then
 fi
 if [ ! -d "$run/plugin/kibi-claude" ]; then
   mkdir -p "$run/plugin"
-  cache="${CIB_CACHE_DIR:-$here/../../cache}/kibi-repo"
+  cache="${FENCEBENCH_CACHE_DIR:-$here/../../cache}/kibi-repo"
   if [ ! -d "$cache/.git" ]; then git clone --quiet --filter=blob:none https://github.com/Looted/kibi "$cache"; fi
   git -C "$cache" fetch --quiet origin "$KIBI_REPO_COMMIT" 2>/dev/null || git -C "$cache" fetch --quiet origin
   rm -rf "$run/plugin/kibi-claude"
@@ -88,7 +88,7 @@ node "$here/../../harness/src/arm-tools/kibi-import.ts" "$ws" "$rules" "$run"
 # The benchmark measures recall of intent, so the plain kibi arm (and kibi-hints) runs at remember, the way a team
 # that keeps verification off would; kibi-proved is the team that proves its requirements and stays at test.
 # A Kibi older than the setting ignores the key.
-if [ -z "${CIB_KIBI_PROVED:-}" ]; then
+if [ -z "${FENCEBENCH_KIBI_PROVED:-}" ]; then
   node -e '
     const fs = require("fs"); const p = JSON.parse(fs.readFileSync("package.json", "utf8"));
     p.kibi = p.kibi ?? {}; p.kibi.level = "remember"; fs.writeFileSync("package.json", JSON.stringify(p, null, 2) + "\n");'
@@ -99,22 +99,22 @@ fi
 # From 2026.11.6 on Kibi bundles its search-hints plugin and turns it on by default; a project opts out by listing it
 # in package.json kibi.declinedPlugins. Hints are their own arm (kibi-hints, against memory-embed), so the plain
 # kibi arm declines them, the way a team that does not want them would. From develop 9c3f05cfb (PR 888) kb_search fuses
-# the hints' ranking into every search, so a run measuring that search keeps Kibi's default (CIB_KIBI_BUNDLED_HINTS=1):
+# the hints' ranking into every search, so a run measuring that search keeps Kibi's default (FENCEBENCH_KIBI_BUNDLED_HINTS=1):
 # the bundled plugin stays on and nothing is installed beside it.
-if [ -n "${CIB_KIBI_BUNDLED_HINTS:-}" ]; then
+if [ -n "${FENCEBENCH_KIBI_BUNDLED_HINTS:-}" ]; then
   echo "search hints: bundled, on by default (not declined)" > "$run/search-hints.txt"
-elif [ -z "${CIB_KIBI_HINTS:-}" ]; then
+elif [ -z "${FENCEBENCH_KIBI_HINTS:-}" ]; then
   node -e '
     const fs = require("fs"); const p = JSON.parse(fs.readFileSync("package.json", "utf8"));
     p.kibi = p.kibi ?? {}; const d = new Set(p.kibi.declinedPlugins ?? []); d.add("kibi-plugin-search-hints");
     p.kibi.declinedPlugins = [...d]; fs.writeFileSync("package.json", JSON.stringify(p, null, 2) + "\n");'
   echo "search hints: declined (package.json kibi.declinedPlugins)" > "$run/search-hints.txt"
 fi
-# A team that proves its requirements (arm kibi-proved, CIB_KIBI_PROVED=1) has a proof integration and some
+# A team that proves its requirements (arm kibi-proved, FENCEBENCH_KIBI_PROVED=1) has a proof integration and some
 # requirements already at the tested floor: the project's proof-ready spec (kb/proof-ready/) is applied with Kibi's
 # own operations and its tests are proved against this checkout, so the receipts are current.
-if [ -n "${CIB_KIBI_PROVED:-}" ]; then
-  spec="$here/../../projects/${CIB_PROJECT:-papra}/kb/proof-ready"
+if [ -n "${FENCEBENCH_KIBI_PROVED:-}" ]; then
+  spec="$here/../../projects/${FENCEBENCH_PROJECT:-papra}/kb/proof-ready"
   [ -d "$spec" ] || { echo "kibi-proved: no proof-ready spec at $spec" >&2; exit 1; }
   bash "$spec/apply.sh" "$ws" "$run" > "$run/proof-ready.log" 2>&1 || { tail -40 "$run/proof-ready.log" >&2; exit 1; }
   # Usage telemetry from the setup phase must not be attributed to the agent.
@@ -123,9 +123,9 @@ fi
 # Kibi's bootstrap offers its search-hints plugin (offline embeddings that suggest requirements when a lexical
 # search is weak) once a knowledge base holds 50 or more requirements; a team with a store this size has
 # accepted it. Installed as its README says: a dev dependency of the project, activated in package.json#kibi.
-# Only in the kibi-hints arm (CIB_KIBI_HINTS=1): embeddings are a separate arm, against memory-embed.
+# Only in the kibi-hints arm (FENCEBENCH_KIBI_HINTS=1): embeddings are a separate arm, against memory-embed.
 reqs="$(find .kb -path '*requirements*' -name '*.md' 2>/dev/null | wc -l)"
-if [ -n "${CIB_KIBI_HINTS:-}" ] && [ -n "${KIBI_SEARCH_HINTS:-}" ] && [ "$reqs" -ge 50 ] && ! grep -q '"kibi-plugin-search-hints"' package.json; then
+if [ -n "${FENCEBENCH_KIBI_HINTS:-}" ] && [ -n "${KIBI_SEARCH_HINTS:-}" ] && [ "$reqs" -ge 50 ] && ! grep -q '"kibi-plugin-search-hints"' package.json; then
   hints="kibi-plugin-search-hints@$KIBI_SEARCH_HINTS"
   [ -n "${KIBI_SOURCE_PACKS:-}" ] && hints="$(ls "$KIBI_SOURCE_PACKS"/kibi-plugin-search-hints-[0-9]*.tgz)"
   if [ -f pnpm-lock.yaml ]; then pnpm add -D -w "$hints" > "$run/search-hints-install.log" 2>&1

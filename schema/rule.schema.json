@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/Looted/CodeIntentBench/schema/rule.schema.json",
-  "title": "CodeIntentBench rule",
+  "$id": "https://github.com/Looted/FenceBench/schema/rule.schema.json",
+  "title": "FenceBench rule",
   "description": "One recorded project rule. The neutral source every arm renders from.",
   "type": "object",
   "required": [
