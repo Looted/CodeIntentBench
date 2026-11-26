@@ -15,7 +15,7 @@ relink() {
 { git ls-files -co --exclude-standard -z -- docs/decisions AGENTS.md CLAUDE.md .kb 2>/dev/null || true; } | while IFS= read -r -d '' f; do
   if grep -qE "webhooks\.http-client|createWebhookHttpClient" "$f"; then relink "$f"; fi
 done
-for store in "${CIB_RUN_DIR:-/nonexistent}/memory.json" "${CIB_RUN_DIR:-/nonexistent}/tracker.json"; do
+for store in "${FENCEBENCH_RUN_DIR:-/nonexistent}/memory.json" "${FENCEBENCH_RUN_DIR:-/nonexistent}/tracker.json"; do
   if [ -f "$store" ]; then relink "$store"; fi
 done
 echo "teammate: the store pointers now name delivery/webhook-delivery.client.ts and createDeliveryClient"

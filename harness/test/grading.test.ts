@@ -40,7 +40,7 @@ test('names in an answer: backticked identifiers and constants, not prose', () =
 });
 
 test('edits before the first reply count only source files and only when a reply happened', () => {
-  const dir = mkdtempSync(join(tmpdir(), 'cib-'));
+  const dir = mkdtempSync(join(tmpdir(), 'fencebench-'));
   const ev = (name: string, file: string) => JSON.stringify({ type: 'assistant', message: { content: [{ type: 'tool_use', name, input: { file_path: file } }] } });
   writeFileSync(join(dir, 'transcript.jsonl'), [ev('Edit', '/w/p/src/a.ts'), ev('Write', '/w/p/docs/decisions/x.md'), ev('Read', '/w/p/src/b.ts')].join('\n'));
   assert.deepEqual(editsBeforeReply(dir, '/w/p'), []);
@@ -49,7 +49,7 @@ test('edits before the first reply count only source files and only when a reply
 });
 
 test('the governing entry is found in store writes, store files and comment blocks', () => {
-  const dir = mkdtempSync(join(tmpdir(), 'cib-'));
+  const dir = mkdtempSync(join(tmpdir(), 'fencebench-'));
   const call = (name: string, input: unknown) => JSON.stringify({ type: 'assistant', message: { content: [{ type: 'tool_use', name, input }] } });
   writeFileSync(join(dir, 'transcript.jsonl'), call('mcp__tracker__tracker_create_issue', { title: 'Unrelated', body: 'new' }));
   assert.equal(governingTouched(dir, '', 'tracker', ['REQ-hook-no-redirect', 'T-12']), false);

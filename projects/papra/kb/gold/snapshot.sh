@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Build the knowledge base snapshot of a later Papra base commit from the stored April snapshot.
 # Usage: snapshot.sh <base-sha> <workdir> [--store]
-#   PAPRA_MIRROR  a clone of papra-hq/papra that has the base commit (default: $CIB_CACHE_DIR/repos/papra.git)
+#   PAPRA_MIRROR  a clone of papra-hq/papra that has the base commit (default: $FENCEBENCH_CACHE_DIR/repos/papra.git)
 #   BASE_PATCH    a teammate patch (relative to projects/papra, e.g. patches/hide-why.patch) applied on the
 #                 base; the snapshot is then keyed <sha12>-<patch name>, as the harness names a patched base.
 # The pinned kibi (arms/kibi/versions.env) must be on PATH. The workspace is <workdir>/ws-<sha12>, the
@@ -9,7 +9,7 @@
 set -euo pipefail
 sha="$1"; work="$(mkdir -p "$2" && cd "$2" && pwd)"; store="${3:-}"
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-mirror="${PAPRA_MIRROR:-${CIB_CACHE_DIR:?set PAPRA_MIRROR or CIB_CACHE_DIR}/repos/papra.git}"
+mirror="${PAPRA_MIRROR:-${FENCEBENCH_CACHE_DIR:?set PAPRA_MIRROR or FENCEBENCH_CACHE_DIR}/repos/papra.git}"
 from=884d4704106b
 G="git -c user.name=kb -c user.email=kb@localhost"
 full="$(git --git-dir="$mirror" rev-parse "$sha^{commit}")"; short="${full:0:12}"

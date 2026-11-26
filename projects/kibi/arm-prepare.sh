@@ -24,7 +24,7 @@ rmdir .claude 2>/dev/null || true
 # concurrent runs wait for the first install. Versions follow arms/kibi/versions.env.
 # shellcheck disable=SC1091
 . "$here/../../arms/kibi/versions.env"
-swipl_dir="${CIB_CACHE_DIR:-$run}/kibi-swipl"
+swipl_dir="${FENCEBENCH_CACHE_DIR:-$run}/kibi-swipl"
 swipl_bin="$swipl_dir/node_modules/kibi-swipl-linux-x64-gnu/bin/swipl"
 if [ ! -x "$swipl_bin" ]; then
   mkdir -p "$(dirname "$swipl_dir")"

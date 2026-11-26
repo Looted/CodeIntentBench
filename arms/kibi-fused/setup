@@ -2,5 +2,5 @@
 # Arm `kibi-fused`: the kibi arm at the remember level with Kibi's bundled search hints left on, its default. From
 # develop 9c3f05cfb (PR 888) kb_search fuses the hints' ranking by meaning into every search and returns decision
 # cards; declining the bundled plugin would switch that half of the search off. Everything else is the kibi arm's setup.
-export CIB_KIBI_BUNDLED_HINTS=1
+export FENCEBENCH_KIBI_BUNDLED_HINTS=1
 exec "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../kibi/setup" "$@"
