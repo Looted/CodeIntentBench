@@ -49,6 +49,8 @@ export interface Rule {
   // Standing, as the project's knowledge base records it. Absent on hand-written rule files.
   kind?: 'requirement' | 'adr';
   title?: string;
+  /** The areas it belongs to, as the knowledge base tags them (`component:<name>`): a product or a module. */
+  components?: string[];
   /** The entity's status as recorded (open, active, accepted, closed, superseded, retired, ...). */
   status?: string;
   /** Why a retired entity was retired, when recorded. */

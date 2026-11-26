@@ -47,7 +47,7 @@ export function editsBeforeReply(sdir: string, ws: string): string[] {
   return [...files];
 }
 
-/** Forms an entry id takes in the arms' stores (the tracker titles it with spaces). */
+/** Forms an entry id takes in the arms' stores (stores seeded before Nov 26 titled tracker issues with the id's words). */
 export function idForms(id: string): string[] {
   return [...new Set([id, id.replace(/-/g, ' '), id.toUpperCase().replace(/-/g, ' ')])];
 }

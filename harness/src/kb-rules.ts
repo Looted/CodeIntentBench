@@ -140,6 +140,8 @@ export function exportKb(kb: string, opts: { includeAdr?: boolean } = {}): KbExp
     rule.kind = kind;
     const title = typeof e.front.title === 'string' ? e.front.title.trim() : '';
     if (title && title !== statement) rule.title = title;
+    const components = (Array.isArray(e.front.tags) ? e.front.tags : []).map(String).filter((t: string) => t.startsWith('component:')).map((t: string) => t.slice('component:'.length).trim()).filter(Boolean);
+    if (components.length) rule.components = [...new Set(components)].sort();
     if (e.front.status !== undefined && e.front.status !== null && String(e.front.status).trim()) rule.status = String(e.front.status).trim();
     rule.firmness = effectiveFirmness(e.front.firmness, e.front.origin);
     const o = e.front.origin && typeof e.front.origin === 'object' ? e.front.origin : {};

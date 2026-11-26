@@ -22,13 +22,16 @@ const render = (i: Issue, full: boolean) => {
 serve('tracker', '0.1.0', [
   {
     name: 'tracker_search',
-    description: 'Search issues by keywords (title, body, comments, labels). Returns the best matches with their ids; use tracker_get for the full issue.',
-    inputSchema: { type: 'object', properties: { query: { type: 'string' }, limit: { type: 'number', default: 10 } }, required: ['query'] },
-    handler: ({ query, limit }) => {
+    description: 'Search issues by keywords (title, body, comments, labels), optionally within one label (for example component:tags). Returns the best matches with their ids and says how many more match; use tracker_get for the full issue.',
+    inputSchema: { type: 'object', properties: { query: { type: 'string' }, label: { type: 'string' }, limit: { type: 'number', default: 10 } }, required: ['query'] },
+    handler: ({ query, label, limit }) => {
       const s = load();
-      const hits = rank(String(query), s.issues.map((i) => [i.title, i.body, i.labels.join(' '), ...i.comments.map((c) => c.text)].join('\n')), Number(limit ?? 10));
-      if (hits.length === 0) return `No issues match "${query}" (${s.issues.length} issues in the tracker).`;
-      return hits.map((h) => render(s.issues[h.index], false)).join('\n');
+      const pool = s.issues.filter((i) => !label || i.labels.includes(String(label)));
+      const all = rank(String(query), pool.map((i) => [i.title, i.body, i.labels.join(' '), ...i.comments.map((c) => c.text)].join('\n')), pool.length);
+      if (all.length === 0) return `No issues match "${query}"${label ? ` with label ${label}` : ''} (${pool.length} issues${label ? ' with that label' : ' in the tracker'}).`;
+      const shown = all.slice(0, Number(limit ?? 10));
+      const more = all.length - shown.length;
+      return [...shown.map((h) => render(pool[h.index], false)), ...(more > 0 ? [`… ${more} more issues match; narrow the query or pass a label.`] : [])].join('\n');
     },
   },
   {

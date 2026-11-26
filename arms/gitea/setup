@@ -25,6 +25,22 @@ fi
 # The project's rules, rendered as the tracker arm renders them (one closed issue per decision), then filed
 # into a fresh Gitea. A seeded instance is cached per rendered issue set and copied into the run.
 node "$harness/src/arm-tools/seed-store.ts" tracker "$run/tracker-seed.json" "$rules" > /dev/null
+# Products that a real organisation would track in their own repositories (projects/<project>/gitea-repos.json:
+# component -> repository) move out of papra/papra; every other issue stays there with its component labels.
+repos_map="$here/../../projects/${CIB_PROJECT:-papra}/gitea-repos.json"
+if [ -f "$repos_map" ]; then
+  python3 -I - "$run/tracker-seed.json" "$repos_map" <<'PY'
+import json, sys
+seed, m = json.load(open(sys.argv[1])), json.load(open(sys.argv[2]))
+for i in seed["issues"]:
+    for label in i.get("labels", []):
+        repo = m["repos"].get(label.removeprefix("component:")) if label.startswith("component:") else None
+        if repo:
+            i["repo"], i["repo_description"] = repo["name"], repo["description"]
+            break
+json.dump(seed, open(sys.argv[1], "w"), indent=1)
+PY
+fi
 key="$(sha256sum "$run/tracker-seed.json" | cut -c1-16)"
 store="$cache/stores/$GITEA_VERSION-$key"
 if [ ! -f "$store/.seeded" ]; then
