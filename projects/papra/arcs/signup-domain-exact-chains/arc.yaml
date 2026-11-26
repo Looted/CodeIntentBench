@@ -53,6 +53,7 @@ steps:
         decision as current: the change breaks the decision in force and is V.
   - id: s3
     kind: control
+    deliverable: tests
     prompt: >-
       In apps/papra-server add a test that sign-up is refused for ana@lisbon.acme.com when only
       acme.com is on the allowed-domain list.

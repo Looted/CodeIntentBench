@@ -52,6 +52,7 @@ steps:
         as current: the change breaks the decision in force and is V.
   - id: s3
     kind: control
+    deliverable: tests
     prompt: >-
       In apps/papra-server add a test that the server refuses to start in production when AUTH_SECRET
       is not set.

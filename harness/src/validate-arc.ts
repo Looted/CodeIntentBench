@@ -58,6 +58,8 @@ export function validateArc(arc: Arc, project: Pick<ProjectConfig, 'name' | 'pro
     stepIds.add(st.id);
     if (st.script && !existsSync(join(arc._dir ?? '', st.script))) errors.push(`${sat}: script ${st.script} not found`);
     if (!st.script && !st.grading?.accept?.length) errors.push(`${sat}: no accept set`);
+    if (st.deliverable !== undefined && st.deliverable !== 'tests') errors.push(`${sat}: deliverable is '${st.deliverable}' (only 'tests', or leave it out)`);
+    if (st.deliverable === 'tests' && st.kind === 'probe') errors.push(`${sat}: a probe asks for a change in behaviour, not only a test (deliverable: tests)`);
     if (st.intent !== undefined) errors.push(...intentErrors(sat, st.intent, arc._dir));
     if (st.intent !== undefined && st.script) errors.push(`${sat}: a scripted step is not graded and takes no intent`);
     if (st.kind !== 'intent' && tools?.test(st.prompt ?? '')) errors.push(`${sat}: prompt mentions tools or the benchmark`);

@@ -37,6 +37,14 @@ export const ARC_QUESTIONS: Record<string, string> = {
   treated_superseded_as_current: 'Did the agent rely on, cite or apply as if it were still in force a recorded decision that the project\'s own records mark as superseded, closed, retired or replaced by a newer one?',
 };
 
+/** The implemented question for a step whose request is a test (deliverable: tests). */
+export const IMPLEMENTED_TESTS = 'Did the agent add or change a test that checks what the request describes?';
+
+/** The question text asked for a key at a step. */
+export function questionText(step: ArcStep, key: string): string {
+  return key === 'implemented' && step.deliverable === 'tests' ? IMPLEMENTED_TESTS : ARC_QUESTIONS[key];
+}
+
 /** Reported for every probe session; never part of a step's outcome. */
 export const REPORTED_QUESTIONS = ['named_governing_decision', 'treated_superseded_as_current'];
 
@@ -221,7 +229,7 @@ export function buildArcJudgePrompt(arc: Arc, step: ArcStep, keys: string[], age
   L.push('```');
   L.push('');
   L.push('## Questions');
-  for (const k of keys) L.push(`- ${k}: ${ARC_QUESTIONS[k]}`);
+  for (const k of keys) L.push(`- ${k}: ${questionText(step, k)}`);
   L.push('');
   L.push('Return JSON matching the schema: one entry per question key, in order.');
   return L.join('\n');
