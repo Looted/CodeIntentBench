@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+# Arm `basic-memory`: decisions live in Basic Memory (the open-source basic-memory package, local), as
+# Markdown notes it indexes for full-text and vector search (its default local FastEmbed model), reached over
+# its own MCP server (`basic-memory mcp`) with its own tools. Versions are pinned in requirements.lock.
+# Arguments: <workspace> <rulesDir> <runDir>
+set -euo pipefail
+ws="$1"; rules="$2"; run="$3"
+here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+harness="$(cd "$here/../../harness" && pwd)"
+cache="${CIB_CACHE_DIR:-$here/../../cache}/basic-memory"
+lock="$(sha256sum "$here/requirements.lock" | cut -c1-12)"
+venv="$cache/venv-$lock"
+export BASIC_MEMORY_SEMANTIC_EMBEDDING_CACHE_DIR="$cache/fastembed" HF_HUB_DISABLE_TELEMETRY=1 DO_NOT_TRACK=1
+
+if [ ! -f "$venv/.installed" ]; then
+  # A venv's scripts carry its absolute path, so it is built in place; the marker says it finished.
+  rm -rf "$venv"
+  uv="$(command -v uv || echo "$HOME/.local/bin/uv")"
+  "$uv" venv -q --python 3.13 "$venv" > "$run/bm-install.log" 2>&1
+  VIRTUAL_ENV="$venv" "$uv" pip install -q -r "$here/requirements.lock" >> "$run/bm-install.log" 2>&1 || { rm -rf "$venv"; tail -20 "$run/bm-install.log" >&2; exit 1; }
+  touch "$venv/.installed"
+fi
+
+# The notes, written as an agent would have saved them (bm_write: title, folder, observations), then indexed
+# by Basic Memory itself. A seeded store (notes + index) is cached per note set and copied into the run.
+rm -rf "$run/bm-seed" && mkdir -p "$run/bm-seed"
+if [ -n "$(ls -A "$rules" 2>/dev/null)" ]; then
+  node "$harness/src/arm-tools/seed-store.ts" basic-memory "$run/bm-seed" "$rules" > /dev/null
+fi
+key="$( (cd "$run/bm-seed" && find . -type f -name '*.md' | sort | xargs -r sha256sum) | sha256sum | cut -c1-16)"
+store="$cache/stores/$lock-$key"
+if [ ! -f "$store/.seeded" ]; then
+  rm -rf "$store" && mkdir -p "$store"
+  cp -R "$run/bm-seed" "$store/notes"
+  BASIC_MEMORY_CONFIG_DIR="$store/config" "$venv/bin/basic-memory" project add papra "$store/notes" --default > "$run/bm-seed.log" 2>&1 || { tail -20 "$run/bm-seed.log" >&2; exit 1; }
+  # Only the project's own notes: the default "main" project (in the user's home) is removed.
+  BASIC_MEMORY_CONFIG_DIR="$store/config" "$venv/bin/basic-memory" project remove main >> "$run/bm-seed.log" 2>&1 || true
+  touch "$store/.seeded"
+fi
+# The run's copy; the index records the notes' absolute path, so it is pointed at the copy.
+rm -rf "$run/bm-notes" "$run/bm-config"
+cp -R "$store/notes" "$run/bm-notes"; cp -R "$store/config" "$run/bm-config"
+python3 -I "$here/repoint.py" "$run/bm-config" "$store/notes" "$run/bm-notes"
+BASIC_MEMORY_CONFIG_DIR="$run/bm-config" "$venv/bin/basic-memory" project index papra >> "$run/bm-seed.log" 2>&1 || { tail -20 "$run/bm-seed.log" >&2; exit 1; }
+cat > "$run/mcp.json" <<JSON
+{ "mcpServers": { "basic-memory": { "command": "$venv/bin/basic-memory", "args": ["mcp"],
+  "env": { "BASIC_MEMORY_CONFIG_DIR": "$run/bm-config", "BASIC_MEMORY_SEMANTIC_EMBEDDING_CACHE_DIR": "$BASIC_MEMORY_SEMANTIC_EMBEDDING_CACHE_DIR", "HF_HUB_OFFLINE": "1", "HF_HUB_DISABLE_TELEMETRY": "1", "DO_NOT_TRACK": "1" } } } }
+JSON
+echo "$(grep -i '^basic-memory==' "$here/requirements.lock"), $(find "$run/bm-notes" -name '*.md' | wc -l) notes" > "$run/bm-version.txt"

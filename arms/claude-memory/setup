@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Arm `claude-memory`: decisions live in Claude Code's own auto memory, the memory most Claude Code users
+# already have. The rules are written as that memory would hold them: one topic file per component
+# (frontmatter name, description, type) and the MEMORY.md index Claude Code loads at session start. The
+# directory is in the run, so it persists across an arc's sessions; host.json points autoMemoryDirectory at
+# it and turns auto memory on (the harness turns it off for every other arm).
+# Arguments: <workspace> <rulesDir> <runDir>
+set -euo pipefail
+ws="$1"; rules="$2"; run="$3"
+here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+rm -rf "$run/claude-memory" && mkdir -p "$run/claude-memory"
+if [ -n "$(ls -A "$rules" 2>/dev/null)" ]; then
+  node "$here/../../harness/src/arm-tools/seed-store.ts" claude-memory "$run/claude-memory" "$rules" > /dev/null
+fi

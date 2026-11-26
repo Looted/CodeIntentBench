@@ -1,0 +1,4 @@
+{
+  "path_prepend": ["bd"],
+  "allowed_tools": ["Bash(bd:*)"]
+}

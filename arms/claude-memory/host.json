@@ -1,0 +1,4 @@
+{
+  "env": { "CLAUDE_CODE_DISABLE_AUTO_MEMORY": "0" },
+  "settings": { "autoMemoryEnabled": true, "autoMemoryDirectory": "${RUN_DIR}/claude-memory" }
+}

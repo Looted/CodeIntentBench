@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# Arm `beads`: decisions live as issues in beads (`bd`), the issue tracker built for coding agents (the
+# official release binary, version in versions.env). The workspace is set up the way beads' quick start says:
+# `bd init`, which writes its AGENTS.md and CLAUDE.md guidance and the Claude Code SessionStart hook that runs
+# `bd prime`. The rules are then imported as closed decision issues (beads' JSONL interchange format, titled
+# and labelled as the tracker arm's issues). Anonymous usage metrics are turned off.
+# Arguments: <workspace> <rulesDir> <runDir>
+set -euo pipefail
+ws="$1"; rules="$2"; run="$3"
+here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+harness="$(cd "$here/../../harness" && pwd)"
+. "$here/versions.env"
+cache="${CIB_CACHE_DIR:-$here/../../cache}/beads"
+bin="$cache/bin-$BEADS_VERSION"
+
+if [ ! -x "$bin/bd" ]; then
+  tmp="$(mktemp -d)"; trap 'rm -rf "$tmp"' EXIT
+  curl -sfL -o "$tmp/bd.tgz" "$BEADS_URL"
+  echo "$(curl -sfL "$BEADS_SUMS_URL" | grep "linux_amd64.tar.gz" | awk '{print $1}')  $tmp/bd.tgz" | sha256sum -c --quiet
+  mkdir -p "$tmp/x" && tar xzf "$tmp/bd.tgz" -C "$tmp/x"
+  mkdir -p "$bin" && cp "$tmp/x/bd" "$bin/bd" && chmod +x "$bin/bd"
+fi
+# On the agent's PATH (host.json path_prepend: bd -> <run>/bd/node_modules/.bin).
+mkdir -p "$run/bd/node_modules/.bin" && ln -sf "$bin/bd" "$run/bd/node_modules/.bin/bd"
+bd="$bin/bd"
+"$bd" metrics off > /dev/null 2>&1 || true
+
+cd "$ws"
+"$bd" init --non-interactive -p papra > "$run/bd-init.log" 2>&1 || { tail -20 "$run/bd-init.log" >&2; exit 1; }
+if [ -n "$(ls -A "$rules" 2>/dev/null)" ]; then
+  node "$harness/src/arm-tools/seed-store.ts" beads "$run/beads-seed.jsonl" "$rules" > /dev/null
+  "$bd" import -i "$run/beads-seed.jsonl" >> "$run/bd-init.log" 2>&1 || { tail -20 "$run/bd-init.log" >&2; exit 1; }
+fi
+# What the store holds, as the equivalence audit reads it.
+"$bd" export --no-color > "$run/beads-export.jsonl" 2>> "$run/bd-init.log"
+echo "bd $("$bd" version 2>/dev/null | head -1), $(wc -l < "$run/beads-export.jsonl") issues" > "$run/bd-version.txt"

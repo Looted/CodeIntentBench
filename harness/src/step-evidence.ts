@@ -52,7 +52,7 @@ export function idForms(id: string): string[] {
   return [...new Set([id, id.replace(/-/g, ' '), id.toUpperCase().replace(/-/g, ' ')])];
 }
 
-const STORE_WRITE = /^(mcp__.*__)?(tracker_create_issue|tracker_update_issue|memory_save|memory_delete|kb_upsert|kb_delete|kb_supersede|kb_link|kb_record|issue_write|add_memory|update_memory|delete_memory)$|kb_upsert|kb_update/;
+const STORE_WRITE = /^(mcp__.*__)?(tracker_create_issue|tracker_update_issue|memory_save|memory_delete|kb_upsert|kb_delete|kb_supersede|kb_link|kb_record|issue_write|add_memory|update_memory|delete_memory|bm_write|bm_edit|bm_delete|bm_move)$|kb_upsert|kb_update/;
 
 /**
  * Did the session change the governing entry, or write a new entry that links to it? Read from the
@@ -70,9 +70,12 @@ export function governingTouched(sdir: string, diff: string, arm: string, keys: 
       if (STORE_WRITE.test(u.name) && hit(JSON.stringify(u.input))) return true;
       // Kibi's CLI writes through Bash as well.
       if (u.name === 'Bash' && /(^|[\s;&|(])kibi\s+(upsert|supersede|link|update)/.test(String(u.input.command ?? '')) && hit(String(u.input.command))) return true;
+      // beads writes through its CLI; Claude Code's auto memory is files the agent edits.
+      if (u.name === 'Bash' && /(^|[\s;&|(])bd\s+(create|update|close|reopen|comments?|edit|dep|label)/.test(String(u.input.command ?? '')) && hit(String(u.input.command))) return true;
+      if (/^(Edit|MultiEdit|Write)$/.test(u.name) && /(^|\/)claude-memory\//.test(String(u.input.file_path ?? '')) && hit(JSON.stringify(u.input))) return true;
     }
   }
-  const storeFile = /^(\.kb\/|docs\/decisions\/|AGENTS\.md$|CLAUDE\.md$)/;
+  const storeFile = /^(\.kb\/|\.beads\/|docs\/decisions\/|AGENTS\.md$|CLAUDE\.md$)/;
   let file = '';
   let hunk: string[] = [];
   const flush = () => {
