@@ -10,7 +10,7 @@ ws="$1"; rules="$2"; run="$3"
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 harness="$(cd "$here/../../harness" && pwd)"
 . "$here/versions.env"
-cache="${CIB_CACHE_DIR:-$here/../../cache}/beads"
+cache="${FENCEBENCH_CACHE_DIR:-$here/../../cache}/beads"
 bin="$cache/bin-$BEADS_VERSION"
 
 if [ ! -x "$bin/bd" ]; then

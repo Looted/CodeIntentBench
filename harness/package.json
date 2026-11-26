@@ -1,17 +1,17 @@
 {
-  "name": "codeintentbench-harness",
+  "name": "fencebench-harness",
   "version": "0.1.0",
   "private": true,
-  "description": "Runs CodeIntentBench tasks against coding agents under different rule-delivery arms and grades the results.",
+  "description": "Runs FenceBench tasks against coding agents under different rule-delivery arms and grades the results.",
   "type": "module",
   "engines": {
     "node": ">=24"
   },
   "bin": {
-    "cib": "./src/cli.ts"
+    "fencebench": "./src/cli.ts"
   },
   "scripts": {
-    "cib": "node src/cli.ts",
+    "fencebench": "node src/cli.ts",
     "check": "node --check src/cli.ts && node src/cli.ts validate",
     "test": "node --test test/*.test.ts",
     "typecheck": "tsc --noEmit -p tsconfig.json"

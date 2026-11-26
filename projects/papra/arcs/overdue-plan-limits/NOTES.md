@@ -22,7 +22,7 @@ reaches it: "subscription past due plan limits" ranks it 1 by keywords and 3 fus
 
 ## What Kibi's edit hook does
 
-Checked with the released Kibi on the arm's workspace (`cib audit --arm kibi --keep`), by feeding the
+Checked with the released Kibi on the arm's workspace (`fencebench audit --arm kibi --keep`), by feeding the
 plugin's PreToolUse hook an Edit of each site:
 
 | Edit | Hook |

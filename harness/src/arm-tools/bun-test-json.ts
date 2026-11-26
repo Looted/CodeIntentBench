@@ -18,7 +18,7 @@ for (const a of args) {
 }
 if (!outputFile) throw new Error('bun-test-json.ts: --outputFile=<path> is required');
 
-const tmp = mkdtempSync(join(tmpdir(), 'cib-bun-'));
+const tmp = mkdtempSync(join(tmpdir(), 'fencebench-bun-'));
 const junit = join(tmp, 'junit.xml');
 const env: NodeJS.ProcessEnv = { ...process.env, NODE_ENV: process.env.NODE_ENV ?? 'test', KIBI_ENGINE_IDLE_TIMEOUT_MS: process.env.KIBI_ENGINE_IDLE_TIMEOUT_MS ?? '30000', KIBI_RUNTIME_DIR: process.env.KIBI_RUNTIME_DIR ?? join(tmp, 'runtime') };
 delete env.KIBI_BRANCH;

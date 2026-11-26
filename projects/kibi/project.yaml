@@ -33,8 +33,8 @@ tests:
   # The released swipl is put on PATH as well: some of the repository's tests set KIBI_SWIPL=system
   # for the whole process, and without a swipl on PATH every later file in the same run that starts
   # the engine fails (292 tests of the full suite on an untouched checkout; 4 with it on PATH).
-  all: export PATH="${KIBI_SWIPL%/*}:$PATH" && bun run --silent build:cli-stack && bun run --silent build:mcp && node "$CIB_HARNESS_DIR/src/arm-tools/bun-test-json.ts" packages/cli/tests packages/mcp/tests packages/agent-core/tests packages/claude/tests packages/codex/tests scripts/tests
-  files: export PATH="${KIBI_SWIPL%/*}:$PATH" && bun run --silent build:cli-stack && bun run --silent build:mcp && node "$CIB_HARNESS_DIR/src/arm-tools/bun-test-json.ts"
+  all: export PATH="${KIBI_SWIPL%/*}:$PATH" && bun run --silent build:cli-stack && bun run --silent build:mcp && node "$FENCEBENCH_HARNESS_DIR/src/arm-tools/bun-test-json.ts" packages/cli/tests packages/mcp/tests packages/agent-core/tests packages/claude/tests packages/codex/tests scripts/tests
+  files: export PATH="${KIBI_SWIPL%/*}:$PATH" && bun run --silent build:cli-stack && bun run --silent build:mcp && node "$FENCEBENCH_HARNESS_DIR/src/arm-tools/bun-test-json.ts"
   # On an untouched checkout the full suite (22,873 tests in 1,455 files; 28 minutes on four cores
   # with other work running) fails these four, each on the test's own timeout: three also when their files run alone,
   # the happy-path one when the machine is busy. Recorded, not counted. The eight tests listed here

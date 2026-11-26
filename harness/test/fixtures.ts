@@ -51,7 +51,7 @@ export interface Containers { root: string; ws: string; run: string; rules: Rule
 
 /** A workspace and run directory holding every passive arm's container, rendered from the fixture knowledge base as the arm setups render them. */
 export function writeContainers(): Containers {
-  const root = mkdtempSync(join(tmpdir(), 'cib-test-'));
+  const root = mkdtempSync(join(tmpdir(), 'fencebench-test-'));
   const ws = join(root, 'workspace'); const run = root;
   mkdirSync(join(ws, 'docs', 'decisions'), { recursive: true });
   mkdirSync(join(run, 'rules'), { recursive: true });

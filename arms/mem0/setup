@@ -6,7 +6,7 @@ set -euo pipefail
 ws="$1"; rules="$2"; run="$3"
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 harness="$(cd "$here/../../harness" && pwd)"
-cache="${CIB_CACHE_DIR:-$here/../../cache}/mem0"
+cache="${FENCEBENCH_CACHE_DIR:-$here/../../cache}/mem0"
 lock="$(sha256sum "$here/requirements.lock" | cut -c1-12)"
 venv="$cache/venv-$lock"
 export FASTEMBED_CACHE_PATH="$cache/fastembed" MEM0_TELEMETRY=False HF_HUB_DISABLE_TELEMETRY=1

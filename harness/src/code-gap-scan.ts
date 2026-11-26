@@ -6,7 +6,7 @@
 // declaration are added. Ranks as in gap-check.ts: keywords (memory, tracker) and keywords plus embeddings
 // (memory-embed). A code-gap probe needs the decision outside the top 8 in both, and also for the request.
 // Prints the links outside the top 8 in both (every link with --all) and a count.
-// <memory.json> is a seeded store (`cib audit --arm memory-embed --keep`), <checkout> the project at the base.
+// <memory.json> is a seeded store (`fencebench audit --arm memory-embed --keep`), <checkout> the project at the base.
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { parse } from 'yaml';

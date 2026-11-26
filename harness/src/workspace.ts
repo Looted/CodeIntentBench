@@ -29,9 +29,9 @@ export function workspaceDir(dir: string): string {
   const abs = resolve(dir);
   const rel = relative(RUNS_DIR, abs);
   const project = rel && !rel.startsWith('..') && !isAbsolute(rel) ? rel.split(sep)[0] : 'project';
-  // CIB_WORK_ROOT puts workspaces under a short root: Kibi's first sync crashes SWI-Prolog when the
+  // FENCEBENCH_WORK_ROOT puts workspaces under a short root: Kibi's first sync crashes SWI-Prolog when the
   // workspace path is long (about 118 characters), which deep runs directories reach.
-  const root = process.env.CIB_WORK_ROOT ? resolve(process.env.CIB_WORK_ROOT) : join(RUNS_DIR, '_w');
+  const root = process.env.FENCEBENCH_WORK_ROOT ? resolve(process.env.FENCEBENCH_WORK_ROOT) : join(RUNS_DIR, '_w');
   return join(root, createHash('sha1').update(abs).digest('hex').slice(0, 12), project);
 }
 
@@ -165,7 +165,7 @@ export function prepareWorkspace(dir: string, project: ProjectConfig, task: Pick
   // scope exists at that commit are part of the rule set the arm delivers; the same
   // subset is what grading uses. Every arm receives the same files.
   const rulesDir = join(dir, 'rules');
-  // `CIB_MODE` tells the project's arm_prepare and the arm setup whether this is a rule-mode task or an arc.
+  // `FENCEBENCH_MODE` tells the project's arm_prepare and the arm setup whether this is a rule-mode task or an arc.
   const mode = opts.rules === 'none' ? 'arc' : 'task';
   let rules: Rule[] = [];
   if (opts.rules === 'none') { rmSync(rulesDir, { recursive: true, force: true }); mkdirSync(rulesDir, { recursive: true }); }
@@ -175,7 +175,7 @@ export function prepareWorkspace(dir: string, project: ProjectConfig, task: Pick
     log(`arm prepare: ${project.setup.arm_prepare} (${arm})`);
     must(`${JSON.stringify(script)} ${JSON.stringify(ws)} ${JSON.stringify(arm)} ${JSON.stringify(rulesDir)} ${JSON.stringify(dir)}`, {
       cwd: ws,
-      env: { ...process.env, ...GIT_IDENTITY, CIB_RUN_DIR: dir, CIB_WORKSPACE: ws, CIB_RULES_DIR: rulesDir, CIB_PROJECT: project.name, CIB_CACHE_DIR: CACHE_DIR, CIB_MODE: mode, CIB_BASE_COMMIT: base, CIB_BASE_KEY: baseKey({ base_commit: base, base_patch: task.base_patch, kb_variant: task.kb_variant }) },
+      env: { ...process.env, ...GIT_IDENTITY, FENCEBENCH_RUN_DIR: dir, FENCEBENCH_WORKSPACE: ws, FENCEBENCH_RULES_DIR: rulesDir, FENCEBENCH_PROJECT: project.name, FENCEBENCH_CACHE_DIR: CACHE_DIR, FENCEBENCH_MODE: mode, FENCEBENCH_BASE_COMMIT: base, FENCEBENCH_BASE_KEY: baseKey({ base_commit: base, base_patch: task.base_patch, kb_variant: task.kb_variant }) },
     });
   }
   const setup = join(ARMS_DIR, arm, 'setup');
@@ -183,7 +183,7 @@ export function prepareWorkspace(dir: string, project: ProjectConfig, task: Pick
     log(`arm setup: ${arm}`);
     must(`${JSON.stringify(setup)} ${JSON.stringify(ws)} ${JSON.stringify(rulesDir)} ${JSON.stringify(dir)}`, {
       cwd: ws,
-      env: { ...process.env, ...GIT_IDENTITY, CIB_RUN_DIR: dir, CIB_WORKSPACE: ws, CIB_RULES_DIR: rulesDir, CIB_PROJECT: project.name, CIB_CACHE_DIR: CACHE_DIR, CIB_MODE: mode, CIB_BASE_COMMIT: base, CIB_BASE_KEY: baseKey({ base_commit: base, base_patch: task.base_patch, kb_variant: task.kb_variant }) },
+      env: { ...process.env, ...GIT_IDENTITY, FENCEBENCH_RUN_DIR: dir, FENCEBENCH_WORKSPACE: ws, FENCEBENCH_RULES_DIR: rulesDir, FENCEBENCH_PROJECT: project.name, FENCEBENCH_CACHE_DIR: CACHE_DIR, FENCEBENCH_MODE: mode, FENCEBENCH_BASE_COMMIT: base, FENCEBENCH_BASE_KEY: baseKey({ base_commit: base, base_patch: task.base_patch, kb_variant: task.kb_variant }) },
     });
   }
 

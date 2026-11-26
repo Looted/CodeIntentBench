@@ -25,7 +25,7 @@ in hand or not, changes the shared guard.
 
 ## What Kibi's edit hook does
 
-Checked with the released Kibi on the arm's workspace (`cib audit --arm kibi --keep`), by feeding the
+Checked with the released Kibi on the arm's workspace (`fencebench audit --arm kibi --keep`), by feeding the
 plugin's PreToolUse hook an Edit of each site:
 
 | Edit | Hook |

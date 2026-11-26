@@ -144,7 +144,7 @@ test('spend before the decision was shown is read from the transcript', () => {
 });
 
 test('the surfacing measure is skipped where there is nothing to look for', () => {
-  const dir = mkdtempSync(join(tmpdir(), 'cib-step-'));
+  const dir = mkdtempSync(join(tmpdir(), 'fencebench-step-'));
   writeFileSync(join(dir, 'transcript.jsonl'), transcript);
   const arc = fixtureArc();
   const audit: AuditResult = { arm: 'docs', ok: true, decisions: [{ scope: 'arc', id: 'REQ-hooks-never-deny', matched: 'requirement', statement: 'Codex hooks must never deny a tool call', failures: [] }, { scope: 's3', matched: 'stated-in-session', failures: [] }] };
@@ -159,19 +159,19 @@ test('agents-md is written whole or not at all', () => {
   const script = join(here, '..', 'src', 'arm-tools', 'render-agents-md.ts');
   const ws = join(c.root, 'ws2'); mkdirSync(ws);
   const run = (env: Record<string, string>) => spawnSync(process.execPath, [script, ws, join(c.run, 'rules'), 'fixture', c.run], { env: { ...process.env, ...env }, encoding: 'utf8' });
-  const small = run({ CIB_AGENTS_MD_TOKEN_BUDGET: '50' });
+  const small = run({ FENCEBENCH_AGENTS_MD_TOKEN_BUDGET: '50' });
   assert.equal(small.status, 3);
   assert.match(small.stderr, /does not fit/);
   assert.equal(existsSync(join(ws, 'AGENTS.md')), false);
   const size = JSON.parse(readFileSync(join(c.run, 'agents-md-size.json'), 'utf8'));
   assert.equal(size.fits, false);
   assert.equal(size.token_budget, 50);
-  const whole = run({ CIB_AGENTS_MD_TOKEN_BUDGET: '', CIB_AGENT_MODEL: 'claude-sonnet-5-5' });
+  const whole = run({ FENCEBENCH_AGENTS_MD_TOKEN_BUDGET: '', FENCEBENCH_AGENT_MODEL: 'claude-sonnet-5-5' });
   assert.equal(whole.status, 0, whole.stderr);
   const after = JSON.parse(readFileSync(join(c.run, 'agents-md-size.json'), 'utf8'));
   assert.deepEqual([after.fits, after.token_budget, after.rules], [true, 1_000_000, 6]);
   assert.equal(Buffer.byteLength(readFileSync(join(ws, 'AGENTS.md'))), after.bytes);
-  assert.equal(run({ CIB_AGENTS_MD_TOKEN_BUDGET: '', CIB_AGENT_MODEL: 'claude-haiku-4-5' }).status, 0);
+  assert.equal(run({ FENCEBENCH_AGENTS_MD_TOKEN_BUDGET: '', FENCEBENCH_AGENT_MODEL: 'claude-haiku-4-5' }).status, 0);
   assert.equal(JSON.parse(readFileSync(join(c.run, 'agents-md-size.json'), 'utf8')).token_budget, 200_000);
 });
 
@@ -190,7 +190,7 @@ test('the report leads with probe pass by pattern and keeps the tiers apart', ()
     run('k1', 'docs', 'hard', ['near-matches', 'firm-default'], [step('s1', 'control', true), step('s2', 'probe', false, 'no', null), step('s3', 'probe', true, 'yes', 4000)]),
     run('k6', 'docs', 'hard', ['superseded'], [step('s1', 'probe', true, 'yes', 2000)]),
     run('e1', 'docs', 'easy', undefined, [step('s1', 'probe', true)]),
-    { ...run('k4', 'agents-md', 'hard', ['near-matches'], []), invalid: true, invalid_reason: 'agents-md does not fit: 5 bytes', agents_md: { rules: 1, bytes: 5, estimated_tokens: 2, token_budget: 1, budget_source: 'CIB_AGENTS_MD_TOKEN_BUDGET', fits: false } },
+    { ...run('k4', 'agents-md', 'hard', ['near-matches'], []), invalid: true, invalid_reason: 'agents-md does not fit: 5 bytes', agents_md: { rules: 1, bytes: 5, estimated_tokens: 2, token_budget: 1, budget_source: 'FENCEBENCH_AGENTS_MD_TOKEN_BUDGET', fits: false } },
   ];
   const cells = summarizeArcs(runs);
   const cell = (k: string) => cells.get(`${k}\u0000docs`)!;

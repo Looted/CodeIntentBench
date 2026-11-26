@@ -11,11 +11,11 @@ Each project directory holds `project.yaml` (repository, pinned commit, licence,
 3. Step 1 (`kind: intent`) is the request in the user's voice, carrying the constraint and the reason, with the real commit as `source` and hidden `task_tests` that any correct implementation passes (prefer tests against a stable surface, such as the config schema, over tests that pin function names).
 4. Middle steps (`work`, `control`) are later real changes on the same feature, with their own hidden tests; they must not mention the decision.
 5. The probe is the step that needs the intent: a conflicting request (`recall`, `surfacing`, `drift`, `branch`, `standing`), a question (`rationale`, `navigation`), or a verification request (`evidence`). Set `grading.accept` to the outcomes that count as keeping the intent and write `judge_notes` saying what counts as surfacing the decision.
-6. `cib validate` checks the shape and that no work-shaped prompt hints at a decision; `cib run-arc --agent replay --skip-judge` cherry-picks the source commits to exercise the pipeline without a model.
+6. `fencebench validate` checks the shape and that no work-shaped prompt hints at a decision; `fencebench run-arc --agent replay --skip-judge` cherry-picks the source commits to exercise the pipeline without a model.
 
 ## Choosing a project
 
-A good project for CodeIntentBench:
+A good project for FenceBench:
 
 - is public under an OSI licence (copyleft licences are flagged, not excluded: the benchmark pins a commit and publishes only its own rule and task files);
 - is TypeScript (first release), one package, installs with one command and runs its unit tests in minutes without Docker or an external database; roughly 5k-60k lines of source;

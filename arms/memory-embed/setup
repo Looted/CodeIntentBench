@@ -9,7 +9,7 @@ here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 harness="$(cd "$here/../../harness" && pwd)"
 node_bin="$(command -v node)"
 . "$here/../kibi/versions.env"
-cache="${CIB_CACHE_DIR:-$here/../../cache}/memory-embed/$KIBI_SEARCH_HINTS"
+cache="${FENCEBENCH_CACHE_DIR:-$here/../../cache}/memory-embed/$KIBI_SEARCH_HINTS"
 module="$cache/node_modules/kibi-plugin-search-hints/dist/index.js"
 if [ ! -f "$module" ]; then
   mkdir -p "$cache"
