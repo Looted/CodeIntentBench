@@ -154,3 +154,43 @@ export function memoryNote(rule: Rule, index: number): MemoryNote {
   const tags = ['decision', ...(rule.status ? [rule.status] : []), ...(rule.firmness ? [rule.firmness] : [])];
   return { id: `M-${index + 1}`, text, tags, created_at: validDate(rule.origin?.recorded_at) ?? SEED_DATE };
 }
+
+/** The `basic-memory` arm: a rule as one Basic Memory note (Markdown with frontmatter, observations and relations), filed by component. */
+export function basicMemoryNote(rule: Rule): { path: string; text: string } {
+  const area = rule.components?.[0] ?? 'general';
+  const tags = ['decision', ...(rule.components ?? []), ...(rule.status ? [rule.status] : []), ...(rule.firmness ? [rule.firmness] : [])];
+  const obs = [
+    `- [decision] ${rule.statement.trim().replace(/\s+/g, ' ')}`,
+    ...(rule.rationale ? [`- [why] ${rule.rationale.trim().replace(/\s+/g, ' ')}`] : []),
+    ...whereLines(rule).map((w) => `- [applies_to] ${w}`),
+    ...standingLines(rule).map((l) => `- [standing] ${l}`),
+    `- [id] ${rule.id}`,
+  ];
+  const rels = [...(rule.supersedes ?? []).map((id) => `- supersedes [[${id}]]`), ...(rule.superseded_by ?? []).map((id) => `- superseded_by [[${id}]]`)];
+  const title = headline(rule).replace(/"/g, "'");
+  const text = ['---', `title: "${title}"`, 'type: decision', `permalink: decisions/${area}/${rule.id.toLowerCase()}`, `tags: [${tags.map((t) => JSON.stringify(t)).join(', ')}]`, '---', '', `# ${title}`, '', '## Observations', ...obs, '', ...(rels.length ? ['## Relations', ...rels, ''] : [])].join('\n');
+  return { path: `decisions/${area}/${rule.id}.md`, text };
+}
+
+/**
+ * The `claude-memory` arm: Claude Code's auto memory as it would hold the decisions. One topic file per
+ * component (frontmatter name, description, type), each decision written as a memory note, and the MEMORY.md
+ * index that Claude Code loads at session start, one line per topic file.
+ */
+export function claudeMemoryFiles(rules: Rule[]): Array<{ path: string; text: string }> {
+  const byArea = new Map<string, Rule[]>();
+  // Grouped by the topic file's name, so components spelled two ways (api_keys, api-keys) share one file.
+  const slug = (a: string) => a.replace(/[^a-z0-9]+/gi, '-').toLowerCase();
+  for (const r of rules) { const a = slug(r.components?.[0] ?? 'general'); byArea.set(a, [...(byArea.get(a) ?? []), r]); }
+  const files: Array<{ path: string; text: string }> = [];
+  const index: string[] = [];
+  for (const [area, list] of [...byArea.entries()].sort(([a], [b]) => a.localeCompare(b))) {
+    const name = `decisions-${area}`;
+    const description = `Product decisions about ${area.replace(/-/g, ' ')} (${list.length}): what was decided, why, where in the code, and standing`;
+    const body = list.map((r, i) => `## ${headline(r)}\n\n${memoryNote(r, i).text}`).join('\n\n');
+    files.push({ path: `${name}.md`, text: `---\nname: ${name}\ndescription: ${description}\nmetadata:\n  type: project\n---\n\n${body}\n` });
+    index.push(`- [${name}](${name}.md): ${description}`);
+  }
+  files.push({ path: 'MEMORY.md', text: `${index.join('\n')}\n` });
+  return files;
+}

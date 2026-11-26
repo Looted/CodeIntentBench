@@ -1,0 +1,17 @@
+{
+  "mcp_config": "${RUN_DIR}/mcp.json",
+  "allowed_tools": [
+    "mcp__basic-memory__bm_context",
+    "mcp__basic-memory__bm_delete",
+    "mcp__basic-memory__bm_edit",
+    "mcp__basic-memory__bm_find",
+    "mcp__basic-memory__bm_list",
+    "mcp__basic-memory__bm_man",
+    "mcp__basic-memory__bm_move",
+    "mcp__basic-memory__bm_schema",
+    "mcp__basic-memory__bm_project",
+    "mcp__basic-memory__bm_search",
+    "mcp__basic-memory__bm_read",
+    "mcp__basic-memory__bm_write"
+  ]
+}

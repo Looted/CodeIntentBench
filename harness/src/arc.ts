@@ -36,7 +36,7 @@ export function arcRunDir(project: string, arc: string, arm: string, id: string)
  * and the in-repository substrates (decision records, AGENTS.md, the Kibi KB).
  */
 /** The MCP server name of each arm whose decisions live behind MCP tools. */
-const STORE_SERVER: Record<string, string> = { tracker: 'tracker', memory: 'memory', 'memory-embed': 'memory', gitea: 'gitea', mem0: 'mem0' };
+const STORE_SERVER: Record<string, string> = { tracker: 'tracker', memory: 'memory', 'memory-embed': 'memory', gitea: 'gitea', mem0: 'mem0', 'basic-memory': 'basic-memory' };
 
 /** A fingerprint of every decision store the arm can write, including the real-tool arms' (Gitea's issues, mem0's history database, which mem0 writes on every add, update and delete). */
 function storeHash(dir: string, ws: string): string {
@@ -50,7 +50,16 @@ function storeHash(dir: string, ws: string): string {
       for (const sql of ['SELECT id, name, content, is_closed, updated_unix FROM issue ORDER BY id', 'SELECT id, content, updated_unix FROM comment ORDER BY id', 'SELECT issue_id, label_id FROM issue_label ORDER BY issue_id, label_id']) h.update(JSON.stringify(db.prepare(sql).all()));
     } finally { db.close(); }
   }
-  const listed = sh(`git -C ${q(ws)} ls-files -co --exclude-standard -z -- docs/decisions AGENTS.md .kb`, { quiet: true, env: ENV }).stdout;
+  // File-backed stores outside the workspace: Basic Memory's notes, Claude Code's auto memory.
+  for (const sub of ['bm-notes', 'claude-memory']) {
+    const root = join(dir, sub);
+    if (!existsSync(root)) continue;
+    for (const rel of (readdirSync(root, { recursive: true }) as string[]).filter((f) => f.endsWith('.md')).sort()) { h.update(`${sub}/${rel}`); h.update(readFileSync(join(root, rel))); }
+  }
+  // beads keeps its issues in an embedded Dolt database under .beads (git-ignored); its own export is the content.
+  const bd = join(dir, 'bd', 'node_modules', '.bin', 'bd');
+  if (existsSync(join(ws, '.beads')) && existsSync(bd)) h.update(sh(`cd ${q(ws)} && ${q(bd)} export --no-color 2>/dev/null`, { quiet: true, env: ENV }).stdout);
+  const listed = sh(`git -C ${q(ws)} ls-files -co --exclude-standard -z -- docs/decisions AGENTS.md .kb .beads`, { quiet: true, env: ENV }).stdout;
   for (const rel of listed.split('\0').filter(Boolean).sort()) {
     const abs = join(ws, rel);
     if (existsSync(abs)) { h.update(rel); h.update(readFileSync(abs)); }

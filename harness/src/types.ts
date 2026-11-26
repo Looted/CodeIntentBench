@@ -92,6 +92,8 @@ export interface ArmHost {
   path_prepend?: string[];
   /** Tool patterns the arm's tools need under `--permissions accept-edits` (merged with --allowed-tools). */
   allowed_tools?: string[];
+  /** Claude Code user settings for the agent (written to its config dir's settings.json); `${RUN_DIR}` expands in string values. */
+  settings?: Record<string, string | number | boolean>;
   /** An MCP configuration file passed with `--mcp-config` (and `--strict-mcp-config`); `${RUN_DIR}` expands. */
   mcp_config?: string;
 }

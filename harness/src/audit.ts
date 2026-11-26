@@ -129,6 +129,30 @@ export function containerEntry(arm: string, ws: string, runDir: string, rule: Ru
     }
     return undefined;
   }
+  if (arm === 'beads') {
+    // The issues the workspace's beads store holds, as the arm's setup exported them (bd export).
+    const file = join(runDir, 'beads-export.jsonl');
+    if (!existsSync(file)) return undefined;
+    const issue = readFileSync(file, 'utf8').split('\n').filter(Boolean).map((l) => JSON.parse(l)).find((i) => isIssueOf(String(i.title), rule));
+    return issue ? `${issue.title}\n${issue.description}\n${(issue.labels ?? []).join(' ')}` : undefined;
+  }
+  if (arm === 'basic-memory') {
+    // The note the arm's setup wrote for the decision (decisions/<component>/<id>.md under the notes folder).
+    const root = join(runDir, 'bm-notes');
+    if (!existsSync(root)) return undefined;
+    const f = (readdirSync(root, { recursive: true }) as string[]).find((p) => p.endsWith(`/${rule.id}.md`));
+    return f ? readFileSync(join(root, f), 'utf8') : undefined;
+  }
+  if (arm === 'claude-memory') {
+    // The section of a topic file that holds the decision (its memory note carries `Id: <id>.`).
+    const root = join(runDir, 'claude-memory');
+    if (!existsSync(root)) return undefined;
+    for (const f of readdirSync(root).filter((n) => n.endsWith('.md') && n !== 'MEMORY.md')) {
+      const section = readFileSync(join(root, f), 'utf8').split(/^## /m).find((s) => s.includes(`Id: ${rule.id}.`));
+      if (section) return section;
+    }
+    return undefined;
+  }
   if (arm === 'memory' || arm === 'memory-embed') {
     const file = join(runDir, 'memory.json');
     if (!existsSync(file)) return undefined;

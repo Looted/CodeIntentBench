@@ -69,6 +69,10 @@ export function buildEnv(dir: string, arm: string, host: ArmHost, hostDir = dir,
   env.CLAUDE_CONFIG_DIR = keepConfig ? join(dir, 'claude-config') : isolatedConfigDir(dir);
   const prepend = hostPathPrepend(host, hostDir);
   env.CLAUDE_CODE_DISABLE_AUTO_MEMORY = '1';
+  if (host.settings) {
+    const settings = Object.fromEntries(Object.entries(host.settings).map(([k, v]) => [k, typeof v === 'string' ? expandHostValue(v, hostDir, arm) : v]));
+    writeFileSync(join(env.CLAUDE_CONFIG_DIR, 'settings.json'), JSON.stringify(settings, null, 2));
+  }
   if (prepend.length > 0) env.PATH = [...prepend, env.PATH ?? ''].join(':');
   for (const [k, v] of Object.entries(host.env ?? {})) env[k] = expandHostValue(v, hostDir, arm);
   return env;
@@ -144,9 +148,9 @@ export async function runAgentWithHost(dir: string, arm: string, agent: AgentCon
  */
 export function isDecisionLookup(name: string, input: Record<string, any>): boolean {
   const target = String(input.command ?? input.file_path ?? input.path ?? '');
-  return /kb_|tracker_|memory_|^mcp__gitea__|^mcp__mem0__/i.test(name)
-    || (name === 'Bash' && /(^|[\s;&|(])kibi\s/.test(String(input.command ?? '')))
-    || (/^(Bash|Read|Grep|Glob)$/.test(name) && /(^|\/)\.kb\/|docs\/decisions|AGENTS\.md/.test(target));
+  return /kb_|tracker_|memory_|^mcp__gitea__|^mcp__mem0__|^mcp__basic-memory__/i.test(name)
+    || (name === 'Bash' && /(^|[\s;&|(])(kibi|bd)\s/.test(String(input.command ?? '')))
+    || (/^(Bash|Read|Grep|Glob)$/.test(name) && /(^|\/)\.kb\/|docs\/decisions|AGENTS\.md|(^|\/)claude-memory\//.test(target));
 }
 
 /**
@@ -168,8 +172,8 @@ export function hookSource(hookName: string): string {
 /** Which lookup showed a decision: the store tool's name without its MCP prefix, `cli` for a store CLI called from a shell, `file-read` for a store file read directly. */
 export function lookupSource(name: string, input: Record<string, any>): string {
   const tool = name.replace(/^mcp__.*__/, '');
-  if (/kb_|tracker_|memory_|^mcp__gitea__|^mcp__mem0__/i.test(name)) return tool;
-  if (name === 'Bash' && /(^|[\s;&|(])kibi\s/.test(String(input.command ?? ''))) return 'cli';
+  if (/kb_|tracker_|memory_|^mcp__gitea__|^mcp__mem0__|^mcp__basic-memory__/i.test(name)) return tool;
+  if (name === 'Bash' && /(^|[\s;&|(])(kibi|bd)\s/.test(String(input.command ?? ''))) return 'cli';
   return 'file-read';
 }
 
