@@ -9,6 +9,10 @@ set -euo pipefail
 ws="$1"; rules="$2"; run="$3"
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 rm -rf "$run/claude-memory" && mkdir -p "$run/claude-memory"
+# The agent sees the memory directory's path in its context, and the run directory's path names the arc and
+# the arm; it reaches the memory through a neutral link instead (host.json: /tmp/cmem/${RUN_KEY}/memory).
+key="$(printf '%s' "$run" | sha1sum | cut -c1-12)"
+mkdir -p "/tmp/cmem/$key" && ln -sfn "$run/claude-memory" "/tmp/cmem/$key/memory"
 if [ -n "$(ls -A "$rules" 2>/dev/null)" ]; then
   node "$here/../../harness/src/arm-tools/seed-store.ts" claude-memory "$run/claude-memory" "$rules" > /dev/null
 fi
