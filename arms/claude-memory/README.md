@@ -9,9 +9,10 @@ writes the files with its ordinary tools (Read, Grep, Edit, Write); nothing fire
   note in the `memory` arm's words, and `MEMORY.md` with one line per topic file
   (`harness/src/render.ts`, `claudeMemoryFiles`).
 - `host.json` turns auto memory on for this arm only (`CLAUDE_CODE_DISABLE_AUTO_MEMORY=0`) and sets
-  `autoMemoryDirectory` to `/tmp/cmem/<run key>/memory`, a link to `<run>/claude-memory` (the run's own path
-  names the arc and arm, and the agent sees this path) in the agent's own settings, so every session of an arc
-  shares one memory.
+  `autoMemoryDirectory` to `/tmp/cmem/<run key>/memory` in the agent's own settings, so every session of an arc
+  shares one memory. The agent sees this path, and the run's own path names the arc and arm, so the memory
+  lives there and `<run>/claude-memory` links to it. The link must point this way: Claude Code reads its auto
+  memory without a permission prompt only when the real path is inside the memory directory.
 - Same convention sentence as the other memory arms.
 
 Stands for: Claude Code auto memory, and similar built-in memories (Copilot memory, Cursor memories).
