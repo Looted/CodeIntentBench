@@ -6,4 +6,4 @@ Stands for: Jira, YouTrack, Linear, GitHub issues.
 
 The store (`<run>/tracker.json`) is outside Git, so it does not follow branches, exactly like a real tracker.
 
-In rule mode the project's rules are seeded as closed issues by `harness/src/arm-tools/seed-store.ts`.
+In rule mode the project's rules are seeded as closed issues by `harness/src/arm-tools/seed-store.ts`. An issue is titled with the decision's first clause and keyed by its id (`... [REQ-...]`), and labelled with its components (`component:tags`). Search takes an optional label and says how many more issues match beyond the ones shown.

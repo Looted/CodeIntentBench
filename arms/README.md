@@ -6,6 +6,7 @@ An arm decides how a project's rules (`projects/<name>/rules/*.yaml`) reach the 
 |---|---|---|---|
 | `none` | Nothing added. | Nothing added; code, tests and Git history are the only memory. | the real-world default |
 | `docs` | One decision file per rule under `docs/decisions/`. | Empty `docs/decisions/` folder; the convention says to record decisions there. | a requirements folder, ADRs, a wiki in the repo |
+| `docs-hook` | As `docs`. | As `docs`, plus a pre-read and pre-edit hook that lists the decision files whose Where section names the file (at most 5, once per file per session). | ADRs in the repo with the twenty-line hook a careful team adds |
 | `tracker` | Rules seeded as closed issues in a file-backed issue tracker over MCP. | Empty tracker; the convention says to search it and file decisions as issues. | Jira, YouTrack, Linear, GitHub issues |
 | `memory` | Rules seeded as notes in a file-backed keyword-search memory over MCP. | Empty memory; the convention says to search it and save decisions. | mem0, Zep, auto-memory, vector memory stores |
 | `memory-embed` | As `memory`, searched by keywords and by meaning (potion-base-8M from Kibi's search-hints package, fused by reciprocal rank). | As `memory`. | vector memory stores with hybrid search; the counterpart of `kibi-hints` |

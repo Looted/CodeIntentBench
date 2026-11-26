@@ -15,6 +15,7 @@ export const RULE_RECORD_PATHS: Record<string, RegExp> = {
   'kibi-proved': /^(\.kb\/|proof\/steps\/)/,
   'agents-md': /^(AGENTS|CLAUDE)\.md$/,
   docs: /^docs\/decisions\//,
+  'docs-hook': /^docs\/decisions\//,
 };
 
 /** A test file (unit or e2e). */

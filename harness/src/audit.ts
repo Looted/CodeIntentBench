@@ -15,7 +15,7 @@ import { decisionsOf } from './intent.ts';
 import { requiredKeys, defaultDecision } from './judge-arc.ts';
 import { exportKb } from './kb-rules.ts';
 import { sh } from './shell.ts';
-import { statusLine, firmnessLine } from './render.ts';
+import { statusLine, firmnessLine, isIssueOf } from './render.ts';
 import type { Arc, ArcIntent, ArcStep, AuditDecision, AuditResult, Rule } from './types.ts';
 
 const norm = (t: string) => t.replace(/\s+/g, ' ').trim();
@@ -80,7 +80,7 @@ export function findDecision(intent: ArcIntent, rules: Rule[]): { rule?: Rule; m
 
 /** The text of one decision's entry in an arm's container, or undefined when the container has no such entry. */
 export function containerEntry(arm: string, ws: string, runDir: string, rule: Rule): string | undefined {
-  if (arm === 'docs') {
+  if (arm === 'docs' || arm === 'docs-hook') {
     const dir = join(ws, 'docs', 'decisions');
     if (!existsSync(dir)) return undefined;
     const file = readdirSync(dir).find((f) => f.replace(/^\d+-/, '') === `${rule.id}.md`);
@@ -98,14 +98,14 @@ export function containerEntry(arm: string, ws: string, runDir: string, rule: Ru
   if (arm === 'tracker') {
     const file = join(runDir, 'tracker.json');
     if (!existsSync(file)) return undefined;
-    const issue = (JSON.parse(readFileSync(file, 'utf8')).issues ?? []).find((i: any) => i.title === rule.id.replace(/-/g, ' '));
+    const issue = (JSON.parse(readFileSync(file, 'utf8')).issues ?? []).find((i: any) => isIssueOf(String(i.title), rule));
     return issue ? `${issue.title}\n${issue.body}\n${(issue.labels ?? []).join(' ')}` : undefined;
   }
   if (arm === 'gitea') {
     // The issues the run's Gitea instance holds, as the arm's setup exported them from Gitea's API.
     const file = join(runDir, 'gitea-issues.json');
     if (!existsSync(file)) return undefined;
-    const issue = (JSON.parse(readFileSync(file, 'utf8')) as any[]).find((i) => i.title === rule.id.replace(/-/g, ' '));
+    const issue = (JSON.parse(readFileSync(file, 'utf8')) as any[]).find((i) => isIssueOf(String(i.title), rule));
     return issue ? `${issue.title}\n${issue.body}\n${(issue.labels ?? []).join(' ')}` : undefined;
   }
   if (arm === 'mem0') {

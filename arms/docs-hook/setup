@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Arm `docs-hook`: the `docs` arm (one Markdown file per decision under docs/decisions) plus the small
+# Claude Code hook a careful team would add: before a read or an edit of a file, it lists the decision
+# files whose Where section names that file. Nothing else differs from `docs`.
+# Arguments: <workspace> <rulesDir> <runDir>
+set -euo pipefail
+here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+exec "$here/../docs/setup" "$@"

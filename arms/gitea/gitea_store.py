@@ -4,7 +4,8 @@
   gitea_store.py export <gitea-binary> <workDir> <out.json>
 
 seed creates an instance in workDir (SQLite, the default bleve issue indexer, a Unix socket, no SSH or mail),
-an admin user `papra` with an access token, a repository papra/papra, and one issue per decision with the
+an admin user `papra` with an access token, one repository per product (papra/papra by default; an issue's `repo`
+field names another), and one issue per decision with the
 title, body and labels the tracker arm renders, closed as the tracker arm's are. It waits until the issue
 indexer has indexed every issue. export lists every issue the instance holds (title, body, labels, state).
 """
@@ -133,17 +134,24 @@ def seed(gitea, work, seed_file):
         f.write(token)
     p = start(gitea, work)
     try:
-        api(work, token, "POST", "/user/repos", {"name": "papra", "description": "Papra: document management and archiving"})
+        # One repository per product, as an organisation files its products' issues; an issue without a repo goes to papra.
+        repos = {"papra": "Papra: document management and archiving"}
+        for issue in issues:
+            repos.setdefault(issue.get("repo") or "papra", issue.get("repo_description") or "")
+        for name, description in repos.items():
+            api(work, token, "POST", "/user/repos", {"name": name, "description": description})
         label_ids = {}
         for issue in issues:
+            repo = issue.get("repo") or "papra"
             for name in issue.get("labels", []):
-                if name not in label_ids:
-                    created, _ = api(work, token, "POST", "/repos/papra/papra/labels", {"name": name, "color": "#888888"})
-                    label_ids[name] = created["id"]
+                if (repo, name) not in label_ids:
+                    created, _ = api(work, token, "POST", f"/repos/papra/{repo}/labels", {"name": name, "color": "#888888"})
+                    label_ids[(repo, name)] = created["id"]
         for k, issue in enumerate(issues):
-            api(work, token, "POST", "/repos/papra/papra/issues", {
+            repo = issue.get("repo") or "papra"
+            api(work, token, "POST", f"/repos/papra/{repo}/issues", {
                 "title": issue["title"], "body": issue["body"],
-                "labels": [label_ids[n] for n in issue.get("labels", [])],
+                "labels": [label_ids[(repo, n)] for n in issue.get("labels", [])],
                 "closed": issue.get("status") == "closed",
             })
             if k % 200 == 0:
@@ -165,14 +173,17 @@ def export(gitea, work, out):
     token = open(os.path.join(work, "token")).read().strip()
     p = start(gitea, work)
     try:
-        rows, page = [], 1
-        while True:
-            batch, _ = api(work, token, "GET", f"/repos/papra/papra/issues?state=all&type=issues&limit=50&page={page}")
-            if not batch:
-                break
-            rows += [{"number": i["number"], "title": i["title"], "body": i["body"], "state": i["state"],
-                      "labels": [l["name"] for l in i.get("labels", [])]} for i in batch]
-            page += 1
+        rows = []
+        repos, _ = api(work, token, "GET", "/user/repos?limit=50")
+        for repo in sorted(r["name"] for r in repos):
+            page = 1
+            while True:
+                batch, _ = api(work, token, "GET", f"/repos/papra/{repo}/issues?state=all&type=issues&limit=50&page={page}")
+                if not batch:
+                    break
+                rows += [{"repo": f"papra/{repo}", "number": i["number"], "title": i["title"], "body": i["body"], "state": i["state"],
+                          "labels": [l["name"] for l in i.get("labels", [])]} for i in batch]
+                page += 1
     finally:
         stop(p)
     with open(out, "w") as f:

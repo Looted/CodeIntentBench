@@ -117,13 +117,32 @@ const validDate = (s?: string) => (s && !Number.isNaN(Date.parse(s)) ? new Date(
 
 export interface TrackerIssue { id: string; title: string; body: string; status: 'open' | 'closed'; labels: string[]; comments: Array<{ at: string; text: string }>; created_at: string; updated_at: string }
 
+/** A short headline: the statement's first clause, at most about 90 characters, cut at a word. */
+export function headline(rule: Rule): string {
+  const s = rule.statement.replace(/\s+/g, ' ').trim();
+  const first = s.split(/;\s|\.\s|:\s/)[0].replace(/[.;:]$/, '');
+  if (first.length <= 90) return first;
+  const cut = first.slice(0, 90);
+  return `${cut.slice(0, Math.max(cut.lastIndexOf(' '), 40))}…`;
+}
+
+/** A tracker issue's title: the headline a person would write, with the decision's id as the issue key. */
+export function issueTitle(rule: Rule): string {
+  return `${headline(rule)} [${rule.id}]`;
+}
+
+/** Is this the issue that holds the rule (its title carries the id as the key)? */
+export function isIssueOf(title: string, rule: Rule): boolean {
+  return title.endsWith(`[${rule.id}]`);
+}
+
 /** The `tracker` arm: a rule as a resolved issue, the way a team files a decision. The issue is closed; the decision's own status is in the body and a label. */
 export function trackerIssue(rule: Rule, index: number): TrackerIssue {
   const standing = standingLines(rule);
   const body = [`Decision: ${rule.statement.trim()}`, ...(rule.rationale ? [`Why: ${rule.rationale.trim()}`] : []), `Where: ${whereLines(rule).join(', ')}`, ...(standing.length ? [standing.join('\n')] : [])].join('\n\n');
-  const labels = ['decision', ...(rule.status ? [`decision-status:${rule.status}`] : []), ...(rule.firmness ? [`firmness:${rule.firmness}`] : [])];
+  const labels = ['decision', ...(rule.components ?? []).map((c) => `component:${c}`), ...(rule.status ? [`decision-status:${rule.status}`] : []), ...(rule.firmness ? [`firmness:${rule.firmness}`] : [])];
   const created = validDate(rule.origin?.recorded_at) ?? SEED_DATE;
-  return { id: `T-${index + 1}`, title: rule.id.replace(/-/g, ' '), body, status: 'closed', labels, comments: [], created_at: created, updated_at: validDate(rule.origin?.updated_at) ?? created };
+  return { id: `T-${index + 1}`, title: issueTitle(rule), body, status: 'closed', labels, comments: [], created_at: created, updated_at: validDate(rule.origin?.updated_at) ?? created };
 }
 
 export interface MemoryNote { id: string; text: string; tags: string[]; created_at: string }

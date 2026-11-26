@@ -1,0 +1,18 @@
+{
+  "about": "Products that a real organisation would track in repositories of their own (the crowd's surfaces outside the Papra monorepo). The gitea arm files their decisions there; everything else stays in papra/papra with its component labels. Monorepo surfaces (website, docs, client, mobile, cli, sdk) stay in papra/papra.",
+  "repos": {
+    "extension": { "name": "browser-extension", "description": "Papra browser extension" },
+    "desktop": { "name": "desktop-sync", "description": "Papra desktop sync client" },
+    "backoffice": { "name": "cloud-backoffice", "description": "Papra Cloud back office" },
+    "portal": { "name": "partner-portal", "description": "Papra partner portal" },
+    "support": { "name": "support-portal", "description": "Papra support portal" },
+    "forum": { "name": "community-forum", "description": "Papra community forum operations" },
+    "status": { "name": "status-page", "description": "Papra status page" },
+    "license": { "name": "license-server", "description": "Papra license server" },
+    "telemetry": { "name": "telemetry-dashboard", "description": "Papra telemetry dashboard" },
+    "education": { "name": "education-portal", "description": "Papra education programme portal" },
+    "marketplace": { "name": "template-marketplace", "description": "Papra template marketplace" },
+    "n8n": { "name": "n8n-integration", "description": "Papra n8n integration" },
+    "infra": { "name": "infrastructure", "description": "Papra hosted infrastructure" }
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "name": "docs-decisions",
+  "version": "0.1.0",
+  "description": "Before a read or an edit of a file, lists the decision files in docs/decisions whose Where section names it."
+}

@@ -1,0 +1,5 @@
+{
+  "plugin_dirs": [
+    "${ARM_DIR}/plugin/docs-decisions"
+  ]
+}
