@@ -150,7 +150,7 @@ export function isDecisionLookup(name: string, input: Record<string, any>): bool
   const target = String(input.command ?? input.file_path ?? input.path ?? '');
   return /kb_|tracker_|memory_|^mcp__gitea__|^mcp__mem0__|^mcp__basic-memory__/i.test(name)
     || (name === 'Bash' && /(^|[\s;&|(])(kibi|bd)\s/.test(String(input.command ?? '')))
-    || (/^(Bash|Read|Grep|Glob)$/.test(name) && /(^|\/)\.kb\/|docs\/decisions|AGENTS\.md|(^|\/)claude-memory\//.test(target));
+    || (/^(Bash|Read|Grep|Glob)$/.test(name) && /(^|\/)\.kb\/|docs\/decisions|AGENTS\.md|(^|\/)claude-memory\/|\/tmp\/cmem\//.test(target));
 }
 
 /**

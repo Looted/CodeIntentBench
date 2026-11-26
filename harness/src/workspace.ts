@@ -228,8 +228,14 @@ export function loadArmHost(arm: string): ArmHost {
 }
 
 /** `${RUN_DIR}`, `${ARM_DIR}` and `${WORKSPACE}` in host.json values. */
+/** `${RUN_KEY}`: a short neutral name for a run, for paths the agent sees (the run dir's own path names the arc and arm). */
+export function runKey(dir: string): string {
+  return createHash('sha1').update(dir).digest('hex').slice(0, 12);
+}
+
 export function expandHostValue(value: string, dir: string, arm: string): string {
   return value
+    .replaceAll('${RUN_KEY}', runKey(dir))
     .replaceAll('${RUN_DIR}', dir)
     .replaceAll('${ARM_DIR}', join(ARMS_DIR, arm))
     .replaceAll('${WORKSPACE}', workspaceDir(dir));

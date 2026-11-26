@@ -72,7 +72,7 @@ export function governingTouched(sdir: string, diff: string, arm: string, keys: 
       if (u.name === 'Bash' && /(^|[\s;&|(])kibi\s+(upsert|supersede|link|update)/.test(String(u.input.command ?? '')) && hit(String(u.input.command))) return true;
       // beads writes through its CLI; Claude Code's auto memory is files the agent edits.
       if (u.name === 'Bash' && /(^|[\s;&|(])bd\s+(create|update|close|reopen|comments?|edit|dep|label)/.test(String(u.input.command ?? '')) && hit(String(u.input.command))) return true;
-      if (/^(Edit|MultiEdit|Write)$/.test(u.name) && /(^|\/)claude-memory\//.test(String(u.input.file_path ?? '')) && hit(JSON.stringify(u.input))) return true;
+      if (/^(Edit|MultiEdit|Write)$/.test(u.name) && /(^|\/)claude-memory\/|\/tmp\/cmem\//.test(String(u.input.file_path ?? '')) && hit(JSON.stringify(u.input))) return true;
     }
   }
   const storeFile = /^(\.kb\/|\.beads\/|docs\/decisions\/|AGENTS\.md$|CLAUDE\.md$)/;
