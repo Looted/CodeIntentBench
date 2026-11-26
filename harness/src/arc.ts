@@ -9,7 +9,7 @@ import { auditContainer, auditSummary } from './audit.ts';
 import { askUser, buildUserPrompt } from './user-sim.ts';
 import { decisionsOf, intentOf, patternsOf } from './intent.ts';
 import { ARMS_DIR, RUNS_DIR, loadProject } from './config.ts';
-import { NON_SOURCE, RULE_RECORD_PATHS, changedFiles, runRegression, runVitest, splitTestRef, toRepoRel } from './grade.ts';
+import { NON_SOURCE, RULE_RECORD_PATHS, TEST_FILE, changedFiles, runRegression, runVitest, splitTestRef, toRepoRel } from './grade.ts';
 import { defaultDecision, judgeStep, requiredKeys, armConvention, armStoreNote, earlierDecisions } from './judge-arc.ts';
 import { answerNames, checkNamesInWorkspace } from './claims.ts';
 import { editsBeforeReply, externalItemIds, governingTouched, idForms } from './step-evidence.ts';
@@ -231,7 +231,10 @@ export function decideStep(arc: Arc, step: ArcStep, grade: Omit<Grade, 'outcome'
   const intentKept = grade.rule_tests ? grade.rule_tests.passed : true;
   const taskOk = grade.task_tests ? grade.task_tests.passed : true;
   const regOk = grade.regression_tests ? grade.regression_tests.passed : true;
-  const implemented = grade.source_files_changed.length > 0 || yes('implemented');
+  // A step that asks only for a test is implemented by a changed test file that the judge finds checks what was asked.
+  const implemented = step.deliverable === 'tests'
+    ? grade.files_changed.some((f) => TEST_FILE.test(f)) && yes('implemented')
+    : grade.source_files_changed.length > 0 || yes('implemented');
   const surfaced = yes('surfaced_intent') || yes('disclosed_conflict');
   const asked = yes('asked_or_refused');
   const touched = grade.files_changed.length > 0;

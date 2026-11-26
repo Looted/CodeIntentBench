@@ -35,7 +35,7 @@ const HELP = `CodeIntentBench harness
           [--keep] [--skip-judge]
                                        prepare, run the agent, grade, record
   cib grade --run DIR [--judge-model M] re-grade an existing run directory (needs --keep)
-  cib rejudge (--run DIR | --project P) [--judge-model M]
+  cib rejudge (--run DIR | --project P) [--judge-model M] [--steps s3,s4]
                                        re-run the judge and the decision table from saved artifacts
   cib report [--project P]             aggregate runs into runs/<project>/report.md (and report-arcs.md)
   cib run-arc --project P --arc A|all --arm A[,B] [--family F] [--attempts N] [--user-replies N] [--user-model M] [--user-style task|agreeable] [agent options as for run]
@@ -49,7 +49,7 @@ Node 26 (or the project's runtime) must be on PATH before the project installs.
 const { values: v, positionals } = parseArgs({
   allowPositionals: true,
   options: {
-    project: { type: 'string' }, task: { type: 'string' }, arc: { type: 'string' }, family: { type: 'string' }, arm: { type: 'string' }, out: { type: 'string' }, run: { type: 'string' },
+    project: { type: 'string' }, steps: { type: 'string' }, task: { type: 'string' }, arc: { type: 'string' }, family: { type: 'string' }, arm: { type: 'string' }, out: { type: 'string' }, run: { type: 'string' },
     attempts: { type: 'string', default: '1' }, model: { type: 'string', default: 'claude-sonnet-5-5' }, effort: { type: 'string', default: 'low' },
     'max-turns': { type: 'string', default: '60' }, timeout: { type: 'string', default: '25' }, budget: { type: 'string' },
     'judge-model': { type: 'string', default: 'claude-sonnet-5-5' }, agent: { type: 'string', default: 'claude' },
@@ -280,7 +280,7 @@ async function main(): Promise<number> {
         for (const id of readdirSync(join(root, arc, arm))) if (existsSync(join(root, arc, arm, id, 'arc.json'))) arcDirs.push(join(root, arc, arm, id));
       }
     }
-    for (const dir of arcDirs) await rejudgeArc(dir, v['judge-model']!);
+    for (const dir of arcDirs) await rejudgeArc(dir, v['judge-model']!, v.steps ? v.steps.split(',') : undefined);
     for (const dir of dirs) {
       if (existsSync(join(dir, 'arc.json'))) continue;
       const record = JSON.parse(readFileSync(join(dir, 'run.json'), 'utf8')) as RunRecord;
@@ -330,7 +330,7 @@ async function main(): Promise<number> {
 main().then((code) => process.exit(code), (e) => { console.error(e instanceof Error ? e.message : e); process.exit(1); });
 
 /** Re-runs the judge on every graded step of a finished arc run and re-applies the decision table. */
-async function rejudgeArc(dir: string, judgeModel: string): Promise<void> {
+async function rejudgeArc(dir: string, judgeModel: string, onlySteps?: string[]): Promise<void> {
   const record = JSON.parse(readFileSync(join(dir, 'run.json'), 'utf8')) as ArcRunRecord;
   const arc = JSON.parse(readFileSync(join(dir, 'arc.json'), 'utf8')) as Arc;
   const firstBranch = arc.steps[0].branch ?? BASE_BRANCH;
@@ -338,7 +338,12 @@ async function rejudgeArc(dir: string, judgeModel: string): Promise<void> {
   let current: Arc | undefined;
   try { current = loadArc(record.spec.project, arc.id); } catch { current = undefined; }
   for (const rec of record.steps) {
-    const step = arc.steps.find((s) => s.id === rec.id);
+    // `--steps`: re-judge only these steps; the others keep their grade.
+    if (onlySteps && !onlySteps.includes(rec.id)) continue;
+    const recorded = arc.steps.find((s) => s.id === rec.id);
+    // What a step asks the agent to deliver is read from the arc as it is now, when the step's prompt is unchanged.
+    const cur = current?.steps.find((s) => s.id === rec.id);
+    const step = recorded && cur?.deliverable && cur.prompt === recorded.prompt ? { ...recorded, deliverable: cur.deliverable } : recorded;
     if (current && !current.steps.some((s) => s.id === rec.id)) {
       if (rec.grade && !(rec.grade.notes ?? []).includes('voided: step removed from the arc')) rec.grade.notes = [...(rec.grade.notes ?? []), 'voided: step removed from the arc'];
       continue;

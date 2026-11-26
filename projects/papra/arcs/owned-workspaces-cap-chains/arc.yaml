@@ -53,6 +53,7 @@ steps:
         as current: the change breaks the decision in force and is V.
   - id: s3
     kind: control
+    deliverable: tests
     prompt: >-
       Support raises the organization limit for individual customers. In apps/papra-server add a test
       that when an instance admin sets a user's maximum organization count to 25, that user can create

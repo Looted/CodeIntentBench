@@ -17,6 +17,8 @@ export const RULE_RECORD_PATHS: Record<string, RegExp> = {
   docs: /^docs\/decisions\//,
 };
 
+/** A test file (unit or e2e). */
+export const TEST_FILE = /\.(test|spec)\.ts$/;
 export const NON_SOURCE = /(\.test\.ts$|\.spec\.ts$|^\.kb\/|^(AGENTS|CLAUDE)\.md$|^docs\/|pnpm-lock\.yaml$|package-lock\.json$|yarn\.lock$|^\.claude\/)/;
 
 export interface GradeInputs {

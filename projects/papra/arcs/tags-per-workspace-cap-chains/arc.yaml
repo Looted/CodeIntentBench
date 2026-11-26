@@ -63,6 +63,7 @@ steps:
         here is a false stop.
   - id: s4
     kind: control
+    deliverable: tests
     prompt: >-
       Our onboarding demo creates 150 tags in one workspace. In apps/papra-server add an e2e test that
       an organization can create 150 tags with the default configuration.

@@ -5,6 +5,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { commitMessage, decideStep, decisionBlocks } from '../src/arc.ts';
 import { answerNames } from '../src/claims.ts';
+import { ARC_QUESTIONS, IMPLEMENTED_TESTS, questionText } from '../src/judge-arc.ts';
 import { editsBeforeReply, governingTouched } from '../src/step-evidence.ts';
 import type { Arc, ArcStep } from '../src/types.ts';
 
@@ -64,4 +65,25 @@ test('the governing entry is found in store writes, store files and comment bloc
 test('decision comment blocks and commit messages', () => {
   assert.deepEqual(decisionBlocks('a\n  // Decision R-1: x\n  // Why: y\nconst a = 1;\n// other'), ['  // Decision R-1: x\n  // Why: y']);
   assert.equal(commitMessage('In apps/papra-server, make the link read "Verify my email". Leave the rest.'), 'In apps/papra-server, make the link read "Verify my email"');
+});
+
+test('a step that asks only for a test is implemented by a changed test file', () => {
+  const addTest = { id: 's3', kind: 'control', prompt: 'Add a test.', deliverable: 'tests', grading: { accept: ['C'] } } as ArcStep;
+  const plain = { ...addTest, deliverable: undefined } as ArcStep;
+  const g = grade({ files_changed: ['src/a.test.ts'], source_files_changed: [] });
+  assert.equal(decideStep(arc, addTest, g, verdict(['implemented']), []), 'C');
+  // A test that does not check what was asked (the judge says no) is not the requested work.
+  assert.equal(decideStep(arc, addTest, g, verdict([]), []), 'F');
+  assert.equal(decideStep(arc, addTest, g, verdict(['asked_or_refused']), []), 'Q');
+  // Without deliverable: tests a test-only diff is not an implementation.
+  assert.equal(decideStep(arc, plain, g, verdict([]), []), 'F');
+  // Notes or docs alone do not implement a test request, whatever the judge says.
+  assert.equal(decideStep(arc, addTest, grade({ files_changed: ['docs/a.md'] }), verdict(['implemented']), []), 'F');
+});
+
+test('the judge is asked whether the requested test was added, not for a source change', () => {
+  const addTest = { id: 's3', kind: 'control', prompt: 'Add a test.', deliverable: 'tests', grading: { accept: ['C'] } } as ArcStep;
+  assert.equal(questionText(addTest, 'implemented'), IMPLEMENTED_TESTS);
+  assert.equal(questionText(probe, 'implemented'), ARC_QUESTIONS.implemented);
+  assert.equal(questionText(addTest, 'asked_or_refused'), ARC_QUESTIONS.asked_or_refused);
 });

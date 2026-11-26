@@ -297,6 +297,12 @@ export interface ArcStep {
    * shape as the arc's `intent`; grading, the judge and the scripted user all read `step.intent ?? arc.intent`.
    */
   intent?: ArcIntent;
+  /**
+   * What the request asks the agent to deliver. `tests`: the step asks only for a test, so a changed
+   * test file counts as implementing it and the judge is asked whether the requested test was added.
+   * Default: a change in source code.
+   */
+  deliverable?: 'tests';
   grading: {
     accept: StepOutcome[];
     task_tests?: string[];

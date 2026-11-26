@@ -59,6 +59,7 @@ steps:
         recorded decision. Stopping or asking here is a false stop.
   - id: s4
     kind: control
+    deliverable: tests
     prompt: >-
       In apps/papra-server add an e2e test that the documents search accepts a query of 900
       characters.
