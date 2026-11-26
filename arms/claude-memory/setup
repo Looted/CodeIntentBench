@@ -2,17 +2,20 @@
 # Arm `claude-memory`: decisions live in Claude Code's own auto memory, the memory most Claude Code users
 # already have. The rules are written as that memory would hold them: one topic file per component
 # (frontmatter name, description, type) and the MEMORY.md index Claude Code loads at session start. The
-# directory is in the run, so it persists across an arc's sessions; host.json points autoMemoryDirectory at
+# directory outlives each session, so it persists across an arc's sessions; host.json points autoMemoryDirectory at
 # it and turns auto memory on (the harness turns it off for every other arm).
 # Arguments: <workspace> <rulesDir> <runDir>
 set -euo pipefail
 ws="$1"; rules="$2"; run="$3"
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-rm -rf "$run/claude-memory" && mkdir -p "$run/claude-memory"
 # The agent sees the memory directory's path in its context, and the run directory's path names the arc and
-# the arm; it reaches the memory through a neutral link instead (host.json: /tmp/cmem/${RUN_KEY}/memory).
+# the arm; the memory lives at a neutral path instead (host.json: /tmp/cmem/${RUN_KEY}/memory). It must be a
+# real directory there: Claude Code lets the agent read its auto memory without a prompt only when the path
+# resolves inside the memory directory, so a link from there into the run is refused on every read. The run
+# keeps a link to it for the audit and the store hash.
 key="$(printf '%s' "$run" | sha1sum | cut -c1-12)"
-mkdir -p "/tmp/cmem/$key" && ln -sfn "$run/claude-memory" "/tmp/cmem/$key/memory"
+mem="/tmp/cmem/$key/memory"
+rm -rf "$run/claude-memory" "$mem" && mkdir -p "$mem" && ln -sfn "$mem" "$run/claude-memory"
 if [ -n "$(ls -A "$rules" 2>/dev/null)" ]; then
-  node "$here/../../harness/src/arm-tools/seed-store.ts" claude-memory "$run/claude-memory" "$rules" > /dev/null
+  node "$here/../../harness/src/arm-tools/seed-store.ts" claude-memory "$mem" "$rules" > /dev/null
 fi
